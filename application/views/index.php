@@ -8,6 +8,15 @@
 	?>
 
 	<style>
+		.all-menu {
+			float: right;
+			margin-top: -15px;
+			margin-bottom: 5px;
+			font-weight: bold;
+			font-size: 17px;
+			color: #444444;
+		}
+
 		.table-box {
 			min-height: 340px;
 		}
@@ -89,9 +98,7 @@
 		</div>
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px"> 공지사항</h5>
-			<a href="#" style="float: right; margin-top: -15px; margin-bottom: 5px">
-				<img src="/asset/images/link_all_more.png">
-			</a>
+			<a href="#" class="all-menu"> 전체보기 → </a>
 			<table id="noticeTable" class="table">
 				<thead>
 				<tr>
@@ -107,9 +114,7 @@
 	<div class="row">
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px"> 담당자정보</h5>
-			<a href="/master/company_list" style="float: right; margin-top: -15px; margin-bottom: 5px">
-				<img src="/asset/images/link_all_more.png">
-			</a>
+			<a href="/master/company_list" class="all-menu"> 전체보기 → </a>
 			<table id="companyManagerTable" class="table">
 				<thead>
 				<tr>
@@ -124,9 +129,7 @@
 		</div>
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">운영일정</h5>
-			<a href="/master/package_list" style="float: right; margin-top: -15px; margin-bottom: 5px">
-				<img src="/asset/images/link_all_more.png">
-			</a>
+			<a href="/master/package_list" class="all-menu"> 전체보기 → </a>
 			<table id="manageScheduleTable" class="table">
 				<thead>
 				<tr>

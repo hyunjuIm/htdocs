@@ -53,7 +53,8 @@
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(6)">선택D</a>
 					</li>
 					<li class="nav-item" id="addTab">
-						<a class="nav-link" data-toggle="tab" href="#addTab" style="font-weight: bold; background: #E6E6E6"
+						<a class="nav-link" data-toggle="tab" href="#addTab"
+						   style="font-weight: bold; background: #E6E6E6"
 						   onclick="addPackageTab()">+</a>
 					</li>
 				</ul>
@@ -63,8 +64,13 @@
 							<tbody>
 							<tr>
 								<th>최대선택개수</th>
-								<td><input type="number" class="form-control" id="choiceLimit" placeholder="" style="width: 100px"></td>
-								<td><div class="btn-save-square" style="padding: 2px 15px; font-size: 13px" onclick="setChoiceNum()">저장</div></td>
+								<td><input type="number" class="form-control" id="choiceLimit" placeholder=""
+										   style="width: 100px"></td>
+								<td>
+									<div class="btn-save-square" style="padding: 2px 15px; font-size: 13px"
+										 onclick="setChoiceNum()">저장
+									</div>
+								</td>
 							</tr>
 							</tbody>
 						</table>
@@ -72,7 +78,8 @@
 						<table id="packageTable">
 							<thead>
 							<tr>
-								<th style="width: 5%"><input type="checkbox" id="packageCheck" name="packageCheck" onclick="clickAll(id, name)"></th>
+								<th style="width: 5%"><input type="checkbox" id="packageCheck" name="packageCheck"
+															 onclick="clickAll(id, name)"></th>
 								<th>세부항목</th>
 								<th>검사명</th>
 								<th>구분</th>
@@ -91,8 +98,11 @@
 		</div>
 		<div class="col-xs-auto" style="margin-top: 15%">
 			<div style="display: grid; justify-content: center; align-items: center">
-				<div class="btn-purple-square" style="font-size: 18px; padding: 5px 10px; margin-bottom: 5px" onclick="delInjection()"> ▶ </div>
-				<div class="btn-purple-square" style="font-size: 18px; padding: 5px 10px" onclick="addInjection()"> ◀ </div>
+				<div class="btn-purple-square" style="font-size: 18px; padding: 5px 10px; margin-bottom: 5px"
+					 onclick="delInjection()"> ▶
+				</div>
+				<div class="btn-purple-square" style="font-size: 18px; padding: 5px 10px" onclick="addInjection()"> ◀
+				</div>
 			</div>
 		</div>
 		<div class="col" style="margin: 0 auto; padding: 20px">
@@ -108,7 +118,7 @@
 
 				<ul class="nav nav-tabs">
 					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#" onclick="clickInjectionTab(0)" >전체</a>
+						<a class="nav-link active" data-toggle="tab" href="#" onclick="clickInjectionTab(0)">전체</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickInjectionTab(1)">기본</a>
@@ -128,7 +138,8 @@
 						<table id="injectionTable">
 							<thead>
 							<tr>
-								<th style="width: 7%"><input type="checkbox" id="injectionCheck" name="injectionCheck" onclick="clickAll(id, name)"></th>
+								<th style="width: 7%"><input type="checkbox" id="injectionCheck" name="injectionCheck"
+															 onclick="clickAll(id, name)"></th>
 								<th>세부항목</th>
 								<th>검사명</th>
 								<th>관리코드</th>
@@ -145,7 +156,8 @@
 	<hr>
 	<div class="row" style="padding: 20px">
 		<div style="margin: 0 auto">
-			<div class="btn-save-square" style="font-size: 18px; padding: 7px 40px; margin-right: 20px" onclick="savePackageItems()">
+			<div class="btn-save-square" style="font-size: 18px; padding: 7px 40px; margin-right: 20px"
+				 onclick="savePackageItems()">
 				저장
 			</div>
 			<div class="btn-cancel-square" style="font-size: 18px; padding: 7px 40px;" onclick="cancelPackageItems()">
@@ -177,19 +189,19 @@ require('check_data.php');
 	function addPackageTab() {
 		if ($("#selectPackageA").css("display") == "none") {
 			$("#selectPackageA").show();
-			tabSize=4;
+			tabSize = 4;
 		} else {
 			if ($("#selectPackageB").css("display") == "none") {
 				$("#selectPackageB").show();
-				tabSize=5;
+				tabSize = 5;
 			} else {
 				if ($("#selectPackageC").css("display") == "none") {
 					$("#selectPackageC").show();
-					tabSize=6;
+					tabSize = 6;
 				} else {
 					if ($("#selectPackageD").css("display") == "none") {
 						$("#selectPackageD").show();
-						tabSize=7;
+						tabSize = 7;
 						$("#addTab").hide();
 					} else {
 						alert("더이상 추가할 수 없습니다.");
@@ -204,7 +216,7 @@ require('check_data.php');
 	var injectionItems = new Array();
 
 	//검사항목 탭 전환
-	function clickInjectionTab(id){
+	function clickInjectionTab(id) {
 		$("#injectionTable tbody").empty();
 
 		for (i = 0; i < injectionItems[id].length; i++) {
@@ -233,7 +245,7 @@ require('check_data.php');
 			var value = data[i].details + "#" + data[i].inspection + "#" + data[i].code;
 			var html = '';
 			html += '<tr>"';
-			html += '<td><input type="checkbox" name="injectionCheck" onclick="clickOne(name)" value = \'' +value + '\'></td>';
+			html += '<td><input type="checkbox" name="injectionCheck" onclick="clickOne(name)" value = \'' + value + '\'></td>';
 			html += '<td>' + data[i].details + '</td>';
 			html += '<td>' + data[i].inspection + '</td>';
 			html += '<td>' + data[i].code + '</td>';
@@ -253,7 +265,7 @@ require('check_data.php');
 			}
 		}
 
-		if(search == null) {
+		if (search == null) {
 			injectionItems[0] = injection0;
 			injectionItems[1] = injection1;
 			injectionItems[2] = injection2;
@@ -272,7 +284,7 @@ require('check_data.php');
 		$('#injectionTable > tbody').empty();
 
 		var search = new Object();
-		search.searchWord =  $("#searchInjectionWord").val();
+		search.searchWord = $("#searchInjectionWord").val();
 
 		//검사항목리스트
 		instance.post('M008001_RES', search).then(res => {
@@ -290,7 +302,7 @@ require('check_data.php');
 
 	$(document).ready(function () {
 		var val = location.href.substr(
-			location.href.lastIndexOf('=') + 1
+				location.href.lastIndexOf('=') + 1
 		);
 		pkgId.pkgId = val;
 
@@ -326,25 +338,25 @@ require('check_data.php');
 			} else if (data[i].ipClass == "추가") {
 				package2.push(data[i]);
 			} else if (data[i].ipClass == "선택A") {
-				if(tabSize < 4){
+				if (tabSize < 4) {
 					$("#selectPackageA").show();
-					tabSize=4;
+					tabSize = 4;
 				}
 				package3.push(data[i]);
 			} else if (data[i].ipClass == "선택B") {
-				if(tabSize < 5) {
+				if (tabSize < 5) {
 					$("#selectPackageB").show();
 					tabSize = 5;
 				}
 				package4.push(data[i]);
 			} else if (data[i].ipClass == "선택C") {
-				if(tabSize < 6) {
+				if (tabSize < 6) {
 					$("#selectPackageC").show();
 					tabSize = 6;
 				}
 				package5.push(data[i]);
 			} else if (data[i].ipClass == "선택D") {
-				if(tabSize < 7) {
+				if (tabSize < 7) {
 					$("#selectPackageD").show();
 					tabSize = 7;
 				}
@@ -363,23 +375,23 @@ require('check_data.php');
 		printLeftTable(0);
 	}
 
-	function leftTableRefresh(id){
+	function leftTableRefresh(id) {
 		tabId = id;
 		$("#packageTable tbody").empty();
 		printLeftTable(id);
 	}
 
-	function printLeftTable(id){
+	function printLeftTable(id) {
 		for (i = 0; i < packageTabItems[id].length; i++) {
 			var html = '';
 			html += '<tr>"';
 			html += '<td><input type="checkbox" name="packageCheck" onclick="clickOne(name)" value = \'' + packageTabItems[id][i].ipCode + '\' ' +
-				'id = \'' + packageTabItems[id][i].id + '\'' +
-				'value = \'' + packageTabItems[id][i].id + '\'></td>';
+					'id = \'' + packageTabItems[id][i].id + '\'' +
+					'value = \'' + packageTabItems[id][i].id + '\'></td>';
 
 
-			for(j = 0; j < injectionItems[0].length; j++) {
-				if(packageTabItems[id][i].ipCode == injectionItems[0][j].code) {
+			for (j = 0; j < injectionItems[0].length; j++) {
+				if (packageTabItems[id][i].ipCode == injectionItems[0][j].code) {
 					html += '<td>' + injectionItems[0][j].details + '</td>';
 					html += '<td>' + injectionItems[0][j].inspection + '</td>';
 				}
@@ -424,12 +436,12 @@ require('check_data.php');
 	}
 
 	//패키지구성 탭 전환
-	function clickPackageTab(id){
+	function clickPackageTab(id) {
 		tabId = id;
 		leftTableRefresh(id);
 
 		$("#choiceLimit").val(choiceLimitArr[id]);
-		if(id > 2) {
+		if (id > 2) {
 			$("#selectNumTable").show();
 		} else {
 			$("#selectNumTable").hide();
@@ -441,9 +453,9 @@ require('check_data.php');
 		var index = -1;
 
 		//전체 배열에서의 인덱스
-		for(i = 0; i<packageTabItems[0].length; i++){
-			if(packageTabItems[0][i].ipCode == code) {
-				index=i;
+		for (i = 0; i < packageTabItems[0].length; i++) {
+			if (packageTabItems[0][i].ipCode == code) {
+				index = i;
 			}
 		}
 
@@ -451,16 +463,16 @@ require('check_data.php');
 		var beforeIdx = tabItems.indexOf(value);
 
 		//쭉 스캔 후 일치하면 삭제
-		for(i=1;i<tabSize;i++) {
-			for (j=0;j<packageTabItems[i].length;j++) {
-				if(packageTabItems[i][j].ipCode == code) {
+		for (i = 1; i < tabSize; i++) {
+			for (j = 0; j < packageTabItems[i].length; j++) {
+				if (packageTabItems[i][j].ipCode == code) {
 					packageTabItems[i].splice(j, 1);
 				}
 			}
 		}
 
 		//바뀐 배열에 삽입
-		if(beforeIdx != 0 ) {
+		if (beforeIdx != 0) {
 			packageTabItems[beforeIdx].push(packageTabItems[0][index]);
 		}
 
@@ -471,24 +483,24 @@ require('check_data.php');
 	function changeSex(code, value) {
 		var sex = 0;
 
-		if(value == "전체") {
+		if (value == "전체") {
 			sex = 0;
-		} else if(value == "남") {
+		} else if (value == "남") {
 			sex = 1;
 		} else if (value == "여") {
 			sex = 2;
 		}
 
 		//전체 배열에서의 인덱스
-		for(i = 0; i<packageTabItems[0].length; i++){
-			if(packageTabItems[0][i].ipCode == code) {
-				index=i;
+		for (i = 0; i < packageTabItems[0].length; i++) {
+			if (packageTabItems[0][i].ipCode == code) {
+				index = i;
 			}
 		}
-		for(i=1;i<tabSize;i++) {
-			for (j=0;j<packageTabItems[i].length;j++) {
+		for (i = 1; i < tabSize; i++) {
+			for (j = 0; j < packageTabItems[i].length; j++) {
 
-				if(packageTabItems[i][j].ipCode == code) {
+				if (packageTabItems[i][j].ipCode == code) {
 					packageTabItems[i][j].sex = sex;
 				}
 			}
@@ -535,7 +547,7 @@ require('check_data.php');
 	//패키지구성 선택항목 최대선택개수
 	function setChoiceNum() {
 		choiceLimitArr[tabId] = $("#choiceLimit").val();
-		for(i = 0 ; i< packageTabItems[tabId].length; i++){
+		for (i = 0; i < packageTabItems[tabId].length; i++) {
 			packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
 		}
 	}
@@ -543,21 +555,21 @@ require('check_data.php');
 	//검사항목 추가
 	function addInjection() {
 		$("input:checkbox[name=injectionCheck]:checked").each(function (index) {
-			if($(this).val() != "on") {
+			if ($(this).val() != "on") {
 				var value = $(this).val();
 				var values = value.split("#");
 				var check = 0;
 
 				//검사 관리코드 중복검사
-				for(i=0;i<packageTabItems[0].length;i++) {
-					if(packageTabItems[0][i].ipCode == values[2]) {
+				for (i = 0; i < packageTabItems[0].length; i++) {
+					if (packageTabItems[0][i].ipCode == values[2]) {
 						alert("검사명 : " + values[1] + "\n세부항목 : " + values[0] + "\n\n중복입니다. 다시 확인해주세요.");
 						check++;
 					}
 				}
 
 				//중복 아닌 검사항목만 추가
-				if(check == 0) {
+				if (check == 0) {
 					//검사항목 추가 임시 배열
 					var add = new Object();
 					add.inspection = values[0];
@@ -580,7 +592,7 @@ require('check_data.php');
 	//검사항목 삭제
 	function delInjection() {
 		$("input:checkbox[name=packageCheck]:checked").each(function (index) {
-			if($(this).val() != "on") {
+			if ($(this).val() != "on") {
 				var value = $(this).val();
 
 				//패키지구성에서 삭제
@@ -599,17 +611,17 @@ require('check_data.php');
 	}
 
 	//패키지구성 최종 저장
-	function savePackageItems(){
+	function savePackageItems() {
 		var sendItems = new Object();
 
 		var text = "";
-		for(i=0;i<packageTabItems[0].length;i++) {
-			if(packageTabItems[0][i].ipClass == "전체") {
+		for (i = 0; i < packageTabItems[0].length; i++) {
+			if (packageTabItems[0][i].ipClass == "전체") {
 				text += packageTabItems[0][i].detail + "\n"
-				console.log(i + ": " +packageTabItems[0][i]);
+				console.log(i + ": " + packageTabItems[0][i]);
 			}
 		}
-		if(text != "") {
+		if (text != "") {
 			alert(text + "\n구분 변경 후, 저장하세요.");
 		} else {
 			sendItems.pkgId = pkgId.pkgId;
@@ -617,14 +629,14 @@ require('check_data.php');
 			console.log("===============");
 			console.log(sendItems);
 
-			if (confirm("저장하시겠습니까?") == true){
+			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M008002_REQ', sendItems).then(res => {
 					console.log(res.data.message);
-					if(res.data.message == "success") {
+					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 					}
 				});
-			}else{
+			} else {
 				return false;
 			}
 		}

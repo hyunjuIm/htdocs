@@ -31,11 +31,19 @@
 					<a class="dropdown-item" href="/master/package_create">패키지생성</a>
 				</div>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item ">
 				<a class="nav-link" href="/master/billing_list">청구관리</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">결과관리</a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
+				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					결과관리
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
+					<a class="dropdown-item" href="/master/result_list">검진결과</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/master/result_legal_data">법적자료</a>
+				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
@@ -77,8 +85,8 @@
 	var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMU0giLCJleHAiOjE2MDMwOTU5MzJ9.ZrwYNSVhfzpHPxEI01PQ757Z7hvaFr1jDRiEvKFvb7U";
 
 	const instance = axios.create({
-		baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		//baseURL: "http://192.168.219.101:8080/master/api/v1/",
+		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
+		baseURL: "http://192.168.219.101:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});

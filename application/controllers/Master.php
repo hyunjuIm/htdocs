@@ -57,4 +57,15 @@ class master extends CI_Controller
 		$this->load->view('billing_detail');
 	}
 
+	//결과관리 - 검진결과
+	public function result_list()
+	{
+		$this->load->view('result_list');
+	}
+
+	//결과관리 - 법적자료
+	public function result_legal_data()
+	{
+		$this->load->view('result_legal_data');
+	}
 }
