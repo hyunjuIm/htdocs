@@ -23,7 +23,6 @@ table {
 	width: 100%;
 	text-align: center;
 	margin: auto;
-	vertical-align: middle;
 	border-collapse: collapse;
 	line-height: 30px;
 	border-bottom: #E6E6E6 1px solid;
@@ -31,7 +30,6 @@ table {
 
 th, tr, td {
 	margin: 0 auto;
-	vertical-align:middle;
 	text-align:center;
 }
 
@@ -230,3 +228,4 @@ ul.img-circle li {
 	font-size: 18px;
 	min-width: 130px;
 }
+

@@ -294,13 +294,13 @@ require('package_modal.php');
 
 		for (i = 0; i < companySelect.length; i++) {
 			var jbSplit = companySelect[i].split('-');
-			var arr = jbSplit[jbSplit.length - 1];
+			var branchName = jbSplit[jbSplit.length - 1];
 
+			//TODO: 고객사 수정완료
 			if(selectCompany.value == jbSplit[0]) {
-				var opt = document.createElement("option");
-				opt.value = companySelect[i].coId;
-				opt.innerHTML = arr;
-				branch.appendChild(opt);
+				var html = '';
+				html += '<option>' + branchName + '</option>'
+				$("#billComBranch").append(html);
 			}
 		}
 	}

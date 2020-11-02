@@ -51,9 +51,9 @@
 					통계관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
-					<a class="dropdown-item" href="#">기업통계</a>
+					<a class="dropdown-item" href="/master/statistics_company">기업통계</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">병원통계</a>
+					<a class="dropdown-item" href="/master/statistics_hospital">병원통계</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">

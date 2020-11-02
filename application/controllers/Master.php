@@ -68,4 +68,16 @@ class master extends CI_Controller
 	{
 		$this->load->view('result_legal_data');
 	}
+
+	//기업통계
+	public function statistics_company()
+	{
+		$this->load->view('statistics_company');
+	}
+
+	//병원통계
+	public function statistics_hospital()
+	{
+		$this->load->view('statistics_hospital');
+	}
 }
