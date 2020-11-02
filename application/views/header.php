@@ -85,8 +85,8 @@
 	var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMU0giLCJleHAiOjE2MDMwOTU5MzJ9.ZrwYNSVhfzpHPxEI01PQ757Z7hvaFr1jDRiEvKFvb7U";
 
 	const instance = axios.create({
-		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		baseURL: "http://192.168.219.101:8080/master/api/v1/",
+		baseURL: "https://api.dualhealth.kr/master/api/v1/",
+		//baseURL: "http://192.168.219.101:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});

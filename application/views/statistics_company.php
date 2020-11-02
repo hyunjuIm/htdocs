@@ -8,7 +8,7 @@
 	?>
 
 	<!--그래프-->
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
 
 	<style>
 		.table {
@@ -22,6 +22,11 @@
 
 		td {
 			background: white;
+		}
+
+		.sum-td {
+			font-weight: bold;
+			color: red;
 		}
 
 		.table-bordered > thead > tr > th,
@@ -63,7 +68,7 @@
 						</label>
 						<div class="form-group col" style="display: flex">
 							<select id="stComName" class="form-control" style="margin-right: 10px"
-									onchange="setPackageCompanySelectOption(this, 'stComBranch')">
+									onchange="setCompanySelectOption(this, 'stComBranch')">
 								<option selected>-선택-</option>
 							</select>
 						</div>
@@ -95,7 +100,7 @@
 	</div>
 
 	<div class="row" style="margin: 0 auto;padding: 50px">
-		<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+		<canvas id="companyChart" width="90%" height="15%"></canvas>
 	</div>
 	
 	<div class="row " style="margin: 0px 30px">
@@ -219,7 +224,7 @@ require('check_data.php');
 
 		companySelect = data.coNameBranch;
 
-		//병원명
+		//사업연도
 		for (i = 0; i < data.year.length; i++) {
 			var html = '';
 			html += '<option>' + data.year[i] + '</option>'
@@ -229,7 +234,7 @@ require('check_data.php');
 	}
 
 	//사업장 리스트 셋팅
-	function setPackageCompanySelectOption(selectCompany, targetBranch) {
+	function setCompanySelectOption(selectCompany, targetBranch) {
 		var branch = document.getElementById(targetBranch);
 
 		var opt = document.createElement("option");
@@ -257,17 +262,11 @@ require('check_data.php');
 		}
 	}
 
-	//그래프를 위한 월별 통계
-	var rsvCount = new Array();
-	var famRsvCount = new Array();
-	var ispCount = new Array();
-	var famIspCount = new Array();
-
 	//기업 통계 테이블
 	function setStaticsCompanyData(data) {
 		console.log(data);
 
-		$('#statisticsCompanyInfos > tbody > tr > td').empty();
+		$('#statisticsCompanyInfos > tbody > tr > td').remove();
 
 		//합계
 		var targetSum = 0;
@@ -284,16 +283,21 @@ require('check_data.php');
 			famRsvSum += data[i].famRsvCount;
 			ispSum += data[i].ispCount;
 			famIspSum += data[i].famIspCount;
-
 		}
 
-		$("#targetCount").append('<td>' + targetSum + '</td>');
-		$("#famTargetCount").append('<td>' + famTargetSum + '</td>');
-		$("#rsvCount").append('<td>' + rsvSum + '</td>');
-		$("#famRsvCount").append('<td>' + famRsvSum + '</td>');
-		$("#ispCount").append('<td>' + ispSum + '</td>');
-		$("#famIspCount").append('<td>' + famIspSum + '</td>');
+		$("#targetCount").append('<td class="sum-td">' + targetSum + '</td>');
+		$("#famTargetCount").append('<td class="sum-td">' + famTargetSum + '</td>');
+		$("#rsvCount").append('<td class="sum-td">' + rsvSum + '</td>');
+		$("#famRsvCount").append('<td class="sum-td">' + famRsvSum + '</td>');
+		$("#ispCount").append('<td class="sum-td">' + ispSum + '</td>');
+		$("#famIspCount").append('<td class="sum-td">' + famIspSum + '</td>');
 
+
+		//그래프를 위한 월별 통계
+		var rsvCount = new Array();
+		var famRsvCount = new Array();
+		var ispCount = new Array();
+		var famIspCount = new Array();
 
 		//월별 통계
 		for (i = 0; i < data.length; i++) {
@@ -325,121 +329,41 @@ require('check_data.php');
 			$("#famIspCount").append(html);
 			famIspCount.push(data[i].famIspCount);
 		}
-		drawChart(data);
 
-	}
-
-
-	function drawChart(data){
-		//그래프 차트
-		var chart = new CanvasJS.Chart("chartContainer", {
-			animationEnabled: true,
-			theme: "light2",
-			axisX: {
-				valueFormatString: "MMM"
-			},
-			axisY: {
-			},
-			toolTip: {
-				shared: true
-			},
-			legend: {
-				cursor: "pointer",
-				itemclick: toggleDataSeries
-			},
-			data: [
-				{
-					type: "column",
-					name: "직원예약자수",
-					showInLegend: true,
-					xValueFormatString: "MMMM YYYY",
-					dataPoints: [
-						{ x: new Date(2016, 1),  y: data[0].targetCount},
-						{ x: new Date(2016, 2),  y: data[1].targetCount},
-						{ x: new Date(2016, 3),  y: data[2].targetCount},
-						{ x: new Date(2016, 4),  y: data[3].targetCount},
-						{ x: new Date(2016, 5),  y: data[4].targetCount},
-						{ x: new Date(2016, 6),  y: data[5].targetCount},
-						{ x: new Date(2016, 7),  y: data[6].targetCount},
-						{ x: new Date(2016, 8),  y: data[7].targetCount},
-						{ x: new Date(2016, 9),  y: data[8].targetCount},
-						{ x: new Date(2016, 10), y: data[9].targetCount},
-						{ x: new Date(2016, 11), y: data[10].targetCount},
-						{ x: new Date(2016, 12), y: data[11].targetCount}
-					]
-				},
-				{
-					type: "column",
-					name: "가족예약자수",
-					showInLegend: true,
-					xValueFormatString: "MMMM YYYY",
-					dataPoints: [
-						{ x: new Date(2016, 1),  y: data[0].famTargetCount},
-						{ x: new Date(2016, 2),  y: data[1].famTargetCount},
-						{ x: new Date(2016, 3),  y: data[2].famTargetCount},
-						{ x: new Date(2016, 4),  y: data[3].famTargetCount},
-						{ x: new Date(2016, 5),  y: data[4].famTargetCount},
-						{ x: new Date(2016, 6),  y: data[5].famTargetCount},
-						{ x: new Date(2016, 7),  y: data[6].famTargetCount},
-						{ x: new Date(2016, 8),  y: data[7].famTargetCount},
-						{ x: new Date(2016, 9),  y: data[8].famTargetCount},
-						{ x: new Date(2016, 10), y: data[9].famTargetCount},
-						{ x: new Date(2016, 11), y: data[10].famTargetCount},
-						{ x: new Date(2016, 12), y: data[11].famTargetCount}
-					]
-				},
-				{
-					type: "line",
-					name: "직원수검자수",
-					showInLegend: true,
-					dataPoints: [
-						{ x: new Date(2016, 1),  y: data[0].famTargetCount},
-						{ x: new Date(2016, 2),  y: data[1].famTargetCount},
-						{ x: new Date(2016, 3),  y: data[2].famTargetCount},
-						{ x: new Date(2016, 4),  y: data[3].famTargetCount},
-						{ x: new Date(2016, 5),  y: data[4].famTargetCount},
-						{ x: new Date(2016, 6),  y: data[5].famTargetCount},
-						{ x: new Date(2016, 7),  y: data[6].famTargetCount},
-						{ x: new Date(2016, 8),  y: data[7].famTargetCount},
-						{ x: new Date(2016, 9),  y: data[8].famTargetCount},
-						{ x: new Date(2016, 10), y: data[9].famTargetCount},
-						{ x: new Date(2016, 11), y: data[10].famTargetCount},
-						{ x: new Date(2016, 12), y: data[11].famTargetCount}
-					]
-				},
-				{
-					type: "line",
-					name: "가족수검자수",
-					markerBorderColor: "white",
-					markerBorderThickness: 2,
-					showInLegend: true,
-					dataPoints: [
-						{ x: new Date(2016, 1),  y: data[0].famTargetCount},
-						{ x: new Date(2016, 2),  y: data[1].famTargetCount},
-						{ x: new Date(2016, 3),  y: data[2].famTargetCount},
-						{ x: new Date(2016, 4),  y: data[3].famTargetCount},
-						{ x: new Date(2016, 5),  y: data[4].famTargetCount},
-						{ x: new Date(2016, 6),  y: data[5].famTargetCount},
-						{ x: new Date(2016, 7),  y: data[6].famTargetCount},
-						{ x: new Date(2016, 8),  y: data[7].famTargetCount},
-						{ x: new Date(2016, 9),  y: data[8].famTargetCount},
-						{ x: new Date(2016, 10), y: data[9].famTargetCount},
-						{ x: new Date(2016, 11), y: data[10].famTargetCount},
-						{ x: new Date(2016, 12), y: data[11].famTargetCount}
-					]
+		//기업 통계 그래프 그리기
+		var ctx = document.getElementById("companyChart");
+		var companyChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+				datasets: [{
+					label: '직원예약자수',
+					data: rsvCount,
+					backgroundColor: '#3529b1'
+				}, {
+					label: '가족예약자수',
+					data: famRsvCount,
+					backgroundColor: '#5645ED'
+				}, {
+					label: '직원수검자수',
+					data: ispCount,
+					backgroundColor: '#FBC805'
+				}, {
+					label: '가족수검자수',
+					data: famIspCount,
+					backgroundColor: '#10B64A'
 				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
 		});
-		chart.render();
-	}
-
-
-	function toggleDataSeries(e) {
-		if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-			e.dataSeries.visible = false;
-		} else {
-			e.dataSeries.visible = true;
-		}
-		e.chart.render();
 	}
 
 </script>
