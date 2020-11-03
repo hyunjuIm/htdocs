@@ -88,17 +88,19 @@
 		</form>
 	</div>
 
-	<div class="row">
-	</div>
+	<hr>
 
-	<!--페이징-->
-	<div class="row"
-	<form style="margin: 0 auto; width: 70%; padding: 10px">
-		<div class="page_wrap">
-			<div class="page_nation" id="paging">
+	<div class="row">
+		<div style="margin: 0 auto">
+			<div class="btn-save-square" style="font-size: 18px; padding: 7px 40px; margin-right: 20px"
+				 onclick="saveNotice()">
+				저장
+			</div>
+			<div class="btn-cancel-square" style="font-size: 18px; padding: 7px 40px;" onclick="cancelNoticeUpdate()">
+				취소
 			</div>
 		</div>
-	</form>
+	</div>
 </div>
 </div>
 <!--콘텐츠 내용-->
@@ -116,25 +118,154 @@ require('check_data.php');
 ?>
 
 <script>
+
 	function targetCheck(id) {
 		$("#target").empty();
 		if ($("#" + id + "").is(':checked')) {
 			if (id == 'ntTargetCus' || id == 'ntTargetCom') {
 				$("#target").append(
-						'<select id="stComName" class="form-control" style="margin-right: 10px"' +
-						'onchange="setCompanySelectOption(this,111)">' +
+						'<select id="ntComName" class="form-control" style="margin-right: 10px"' +
+						'onchange="setNoticeCompanyBranchOption(this,\'' + 'ntComBranch' + '\')">' +
 						'<option selected>-선택-</option>' +
 						'</select>' +
-						'<select id="stComBranch" class="form-control">' +
+						'<select id="ntComBranch" class="form-control">' +
 						'<option selected>-선택-</option>' +
 						'</select>'
 				);
 			} else if (id == 'ntTargetHos') {
 				$("#target").append(
-						'<select id="hosName" class="form-control" style="margin-right: 10px">' +
+						'<select id="ntHosName" class="form-control" style="margin-right: 10px">' +
 						'<option selected>-선택-</option>' +
 						'</select>'
 				);
+			}
+		}
+
+		instance.post('M013003_RES').then(res => {
+			console.log(res.data);
+			setNoticeTargetOption(res.data, id);
+		});
+	}
+
+	var companySelect;
+
+	//읽기대상 selector
+	function setNoticeTargetOption(data, id) {
+		if (id == 'ntTargetCus' || id == 'ntTargetCom') {
+			//회사
+			var name = [];
+			var nameSize = 0;
+
+			for (i = 0; i < data[1].length; i++) {
+				var check = 0;
+
+				//회사명 - 지점있을때
+				var jbSplit = data[1][i].split('-');
+				var companyName = jbSplit[0];
+
+				for (var j = 0; j < nameSize; j++) {
+					if (name[j] == companyName) {
+						check += 1;
+					}
+				}
+				if (check < 1) {
+					name[nameSize] = companyName;
+					nameSize += 1;
+				}
+			}
+
+			for (i = 0; i < nameSize; i++) {
+				var html = '';
+				html += '<option value=\'' + name[i] + '\'>' + name[i] + '</option>'
+				$("#ntComName").append(html);
+			}
+
+			companySelect = data[1];
+
+		} else if (id == 'ntTargetHos') {
+			for (i = 0; i < data[0].length; i++) {
+				var html = '';
+				html += '<option value=\'' + data[0][i] + '\'>' + data[0][i] + '</option>'
+				$("#ntHosName").append(html);
+			}
+
+		}
+	}
+
+	//사업장 리스트 셋팅
+	function setNoticeCompanyBranchOption(selectCompany, targetBranch) {
+		var branch = document.getElementById(targetBranch);
+
+		var opt = document.createElement("option");
+		branch.appendChild(opt);
+
+		removeAll(branch);
+
+		for (i = 0; i < companySelect.length; i++) {
+			var jbSplit = companySelect[i].split('-');
+			var branchName = jbSplit[jbSplit.length - 1];
+
+			//TODO: 고객사 수정완료
+			if (selectCompany.value == jbSplit[0]) {
+				var html = '';
+				html += '<option value=\'' + branchName + '\'>' + branchName + '</option>'
+				$("#" + targetBranch + "").append(html);
+			}
+		}
+	}
+
+	//옵션 삭제
+	function removeAll(e) {
+		for (var i = 0, limit = e.options.length; i < limit - 1; ++i) {
+			e.remove(1);
+		}
+	}
+
+	//저장
+	function saveNotice() {
+		var saveItems = new Object();
+
+		saveItems.title = document.getElementById('ntTitle').value;
+		saveItems.fileName = "파일이름";
+		saveItems.author = "관리자";
+		saveItems.content = document.getElementById('ntContent').value;
+
+		var check_count = document.getElementsByName("ntTarget").length;
+
+		for (var i = 0; i < check_count; i++) {
+			if (document.getElementsByName("ntTarget")[i].checked == true) {
+				saveItems.target = document.getElementsByName("ntTarget")[i].value;
+			}
+		}
+
+		var name = "";
+		if (saveItems.target == "고객" || saveItems.target == "기업") {
+			name += $("#ntComName option:selected").val();
+			name += "-";
+			name += $("#ntComBranch option:selected").val();
+		} else if (saveItems.target == "병원") {
+			name += $("#ntHosName option:selected").val();
+		}
+		saveItems.targetName = name;
+
+		console.log(saveItems);
+
+		if(saveItems.title == "") {
+			alert("제목을 입력해주세요.")
+		} else if (saveItems.content == "") {
+			alert("내용을 입력해주세요.")
+		} else if (saveItems.target == "" || saveItems.target == null || saveItems.target.indexOf("-선택-") > -1) {
+			alert("읽기대상을 선택해주세요." + saveItems.target.indexOf("-선택-"));
+		} else {
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M013004_REQ', saveItems).then(res => {
+					if (res.data.message == "success") {
+						alert("저장되었습니다.");
+						history.back();
+					}
+				});
+			} else {
+				return false;
 			}
 		}
 	}

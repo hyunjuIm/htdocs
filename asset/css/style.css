@@ -114,16 +114,28 @@ td {
 	display: inline-block;
 	padding: 8px 20px;
 	background: white;
-	border: solid 1px #424242;
+	box-shadow: 0 0 0 1px #424242 inset;
 	text-align: center;
 	color: #424242;
 	font-size: 15px;
 	text-decoration: none;
 }
 
+.btn-delete-square {
+	cursor: pointer;
+	display: inline-block;
+	padding: 8px 20px;
+	background: #D32F2F;
+	text-align: center;
+	color: #fff;
+	font-size: 15px;
+	text-decoration: none;
+}
+
 .btn-save-square:hover,
 .btn-purple-square:hover,
-.btn-light-purple-square:hover{
+.btn-light-purple-square:hover,
+.btn-delete-square:hover {
 	color: white
 }
 

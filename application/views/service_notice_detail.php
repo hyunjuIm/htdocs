@@ -59,7 +59,7 @@
 					<td id="ntTarget"></td>
 				</tr>
 				<tr>
-					<td id="ntContent" colspan="2" style="height: 400px; background: white; padding: 30px"></td>
+					<td id="ntContent" colspan="2" style="height: 400px; background: white; padding: 40px"></td>
 				</tr>
 				</tbody>
 			</table>
@@ -69,11 +69,12 @@
 	<div class="row">
 	</div>
 
-	<!--페이징-->
 	<div class="row">
 	<form style="margin: 0 auto; width: 70%">
-		<div class="btn-purple-square" style="float:right">
-			<a style="color: white" onclick="sendNoticeID()">수정</a>
+		<div style="float:right">
+			<div class="btn-cancel-square" onclick="cancelNoticeDetail()">목록</div>
+			<div class="btn-purple-square" onclick="sendNoticeID()"> 수정 </div>
+			<div class="btn-light-purple-square" onclick="deleteNotice()"> 삭제 </div>
 		</div>
 	</form>
 </div>
@@ -100,11 +101,11 @@ require('check_data.php');
 			location.href.lastIndexOf('=') + 1
 		);
 		nId.id = val;
+		nId.dummy = "123";
 
 		instance.post('M013003_REQ_RES', nId).then(res => {
 			setNoticeDetailData(res.data);
 		});
-
 	})
 
 	function setNoticeDetailData(data){
@@ -120,5 +121,25 @@ require('check_data.php');
 	//공지 수정에 값 던지기
 	function sendNoticeID() {
 		location.href = "service_notice_update?id=" + nId.id;
+	}
+
+	//취소 - 되돌아가기
+	function cancelNoticeDetail() {
+		history.back();
+	}
+
+	//TODO: api로 삭제안돼요
+	function deleteNotice() {
+		if (confirm("삭제하시겠습니까?") == true) {
+			console.log(nId);
+			instance.post('M013005_REQ', nId).then(res => {
+				console.log(res.data.message);
+				if (res.data.message == "success") {
+					alert("삭제되었습니다.");
+				}
+			});
+		} else {
+			return false;
+		}
 	}
 </script>

@@ -59,12 +59,14 @@
 			</table>
 		</form>
 	</div>
-	
+
 	<div class="row">
 		<form style="margin: 0 auto; width: 85%">
-			<div class="btn-purple-square" style="float:right">
-				<a style="color: white" href="/master/service_notice_write">글쓰기</a>
-			</div>
+			<a style="color: white" href="/master/service_notice_write">
+				<div class="btn-purple-square" style="float:right">
+					글쓰기
+				</div>
+			</a>
 		</form>
 	</div>
 
@@ -107,7 +109,7 @@ require('check_data.php');
 			$("#ntYear").append(html);
 		}
 		pageCount = 0;
-		for(i = 0; i<data.count; i+=10){
+		for (i = 0; i < data.count; i += 10) {
 			pageCount++;
 		}
 		console.log(pageCount);
@@ -117,7 +119,7 @@ require('check_data.php');
 		searchNoticeData(0);
 	}
 
-	function drawTable(){
+	function drawTable() {
 		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
@@ -135,15 +137,16 @@ require('check_data.php');
 		pageNum = index;
 		drawTable();
 	}
+
 	//페이징-화살표클릭
-	function pmPageNum(val){//화살표클릭
-		console.log("before: pageNum: " + pageNum +", pageCount: "+ pageCount+", val: " + val);
+	function pmPageNum(val) {//화살표클릭
+		console.log("before: pageNum: " + pageNum + ", pageCount: " + pageCount + ", val: " + val);
 
 		pageNum += parseInt(val);
-		if(pageNum < 0) pageNum = 0;
-		if(pageCount <= pageNum) pageNum = pageCount-1;
+		if (pageNum < 0) pageNum = 0;
+		if (pageCount <= pageNum) pageNum = pageCount - 1;
 
-		console.log("after: pageNum: " + pageNum +", pageCount: "+ pageCount+", val: " + val);
+		console.log("after: pageNum: " + pageNum + ", pageCount: " + pageCount + ", val: " + val);
 		drawTable();
 	}
 
@@ -154,21 +157,21 @@ require('check_data.php');
 
 
 		var html = "";
-		var pre = parseInt(index)-1;
-		if(pre < 0) {
+		var pre = parseInt(index) - 1;
+		if (pre < 0) {
 			pre = 0;
 		}
 		html += '<a class="arrow pprev" onclick= "searchNoticeData(\'' + 0 + '\')" href="#"></a>'
-		html +=	'<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
 		for (i = 0; i < pageCount; i++) {
 			var html = '';
 
-			var num = i+1;
+			var num = i + 1;
 
-			if(i == index) {
-				html += '<a onclick= "searchNoticeData(\'' + i + '\')" class="active">'+ num +'</a>';
+			if (i == index) {
+				html += '<a onclick= "searchNoticeData(\'' + i + '\')" class="active">' + num + '</a>';
 			} else {
 				html += '<a onclick= "searchNoticeData(\'' + i + '\')" href="#">' + num + '</a>';
 			}
@@ -178,7 +181,7 @@ require('check_data.php');
 
 		var html = "";
 		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html +=	'<a class="arrow nnext" onclick= "searchNoticeData(\'' + (pageCount-1) + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchNoticeData(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
 
 		for (i = 0; i < data.length; i++) {

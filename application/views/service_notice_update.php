@@ -88,9 +88,6 @@
 	</div>
 
 	<div class="row">
-	</div>
-
-	<div class="row">
 		<div style="margin: 0 auto">
 			<div class="btn-save-square" style="font-size: 18px; padding: 7px 40px; margin-right: 20px"
 				 onclick="saveNoticeUpdate()">
@@ -129,7 +126,6 @@ require('check_data.php');
 		instance.post('M013003_REQ_RES', nId).then(res => {
 			setNoticeUpdateData(res.data);
 		});
-
 	})
 
 	var noticeData;
@@ -179,7 +175,7 @@ require('check_data.php');
 	var companySelect;
 	var target;
 	
-	//검색 selector
+	//읽기대상 selector
 	function setNoticeTargetOption(data, id) {
 		target = data.targetName.split('-');
 
@@ -276,31 +272,35 @@ require('check_data.php');
 		saveItems.fileName = "파일이름";
 		saveItems.author = "임현주";
 		saveItems.content = document.getElementById('ntContent').value;
-		saveItems.target = document.getElementById('ntTarget').value;
 
-		//TODO: 엉엉엉
-		var name;
-		if($("#ntTarget").val() == "고객" || $("#ntTarget").val() == "기업") {
+		var check_count = document.getElementsByName("ntTarget").length;
+
+		for (var i=0; i<check_count; i++) {
+			if (document.getElementsByName("ntTarget")[i].checked == true) {
+				saveItems.target = document.getElementsByName("ntTarget")[i].value;
+			}
+		}
+
+		var name = "";
+		if(saveItems.target == "고객" || saveItems.target == "기업") {
 			name += $("#ntComName option:selected").val();
 			name += "-";
 			name += $("#ntComBranch option:selected").val();
-		} else if($("#ntTarget").val() == "병원") {
+		} else if(saveItems.target == "병원") {
 			name += $("#ntHosName option:selected").val();
 		}
-
 		saveItems.targetName = name;
 
-		if ($("#").val() == "-선택-") {
-			alert("고객사를 선택해주세요.")
-		}
-		if ($("#billingCompanyBranch").val() == "-선택-") {
-			alert("사업장을 선택해주세요.")
-		}
-		else {
+		console.log(saveItems);
+
+		if (saveItems.target == "" || saveItems.target == null || saveItems.target .indexOf("-선택-") > -1 ) {
+			alert("읽기대상을 선택해주세요.")
+		} else {
 			if (confirm("저장하시겠습니까?") == true){
 				instance.post('M013004_REQ', saveItems).then(res => {
 					if(res.data.message == "success") {
 						alert("저장되었습니다.");
+						history.back();
 					}
 				});
 			}else{
