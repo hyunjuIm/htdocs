@@ -279,14 +279,16 @@ require('check_data.php');
 		saveItems.target = document.getElementById('ntTarget').value;
 
 		//TODO: 엉엉엉
-		var targetName;
+		var name;
 		if($("#ntTarget").val() == "고객" || $("#ntTarget").val() == "기업") {
-			targetName +=
+			name += $("#ntComName option:selected").val();
+			name += "-";
+			name += $("#ntComBranch option:selected").val();
 		} else if($("#ntTarget").val() == "병원") {
-
+			name += $("#ntHosName option:selected").val();
 		}
 
-		saveItems.targetName = document.getElementById('ntContent').value;
+		saveItems.targetName = name;
 
 		if ($("#").val() == "-선택-") {
 			alert("고객사를 선택해주세요.")
