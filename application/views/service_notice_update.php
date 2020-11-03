@@ -278,6 +278,7 @@ require('check_data.php');
 		saveItems.content = document.getElementById('ntContent').value;
 		saveItems.target = document.getElementById('ntTarget').value;
 
+		//TODO: 엉엉엉
 		var targetName;
 		if($("#ntTarget").val() == "고객" || $("#ntTarget").val() == "기업") {
 			targetName +=
