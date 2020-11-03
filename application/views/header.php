@@ -62,7 +62,7 @@
 					서비스관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
-					<a class="dropdown-item" href="#">공지사항</a>
+					<a class="dropdown-item" href="/master/service_notice">공지사항</a>
 				</div>
 			</li>
 			<li class="nav-item">
@@ -85,8 +85,8 @@
 	var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMU0giLCJleHAiOjE2MDMwOTU5MzJ9.ZrwYNSVhfzpHPxEI01PQ757Z7hvaFr1jDRiEvKFvb7U";
 
 	const instance = axios.create({
-		baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		//baseURL: "http://192.168.219.101:8080/master/api/v1/",
+		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
+		baseURL: "http://192.168.219.101:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
