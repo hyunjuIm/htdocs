@@ -36,7 +36,7 @@
 						</label>
 						<div class="form-group col" style="display: flex">
 							<select id="resComName" class="form-control" style="margin-right: 10px"
-									onchange="setPackageCompanySelectOption(this, 'resComBranch')">
+									onchange="setCompanySelectOption(this, 'resComBranch')">
 								<option selected>-전체-</option>
 							</select>
 							<select id="resComBranch" class="form-control">
@@ -218,35 +218,6 @@ require('check_data.php');
 			$("#resultUpload").append(html);
 		}
 
-	}
-
-	//사업장 리스트 셋팅
-	function setPackageCompanySelectOption(selectCompany, targetBranch) {
-		var branch = document.getElementById(targetBranch);
-
-		var opt = document.createElement("option");
-		branch.appendChild(opt);
-
-		removeAll(branch);
-
-		for (i = 0; i < companySelect.length; i++) {
-			var jbSplit = companySelect[i].split('-');
-			var arr = jbSplit[jbSplit.length - 1];
-
-			if(selectCompany.value == jbSplit[0]) {
-				var opt = document.createElement("option");
-				opt.value = companySelect[i].coId;
-				opt.innerHTML = arr;
-				branch.appendChild(opt);
-			}
-		}
-	}
-
-	//옵션 삭제
-	function removeAll(e){
-		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
-			e.remove(1);
-		}
 	}
 
 	//패키지 생성 테이블

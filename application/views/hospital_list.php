@@ -102,7 +102,7 @@
 				<thead>
 				<tr>
 					<th>NO</th>
-					<th>병원명</th>
+					<th style="color: #3529b1">병원명</th>
 					<th>지역</th>
 					<th>서비스</th>
 					<th>계약유무</th>
@@ -205,7 +205,9 @@ require('hospital_modal.php');
 			var html = '';
 			html += '<tr>"';
 			html += '<td>' + data[i].id + '</td>';
-			html += '<td data-toggle="modal" data-target="#hospitalDetailModal" onClick="clickHospitalDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
+			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
+					'data-toggle="modal" data-target="#hospitalDetailModal" ' +
+					'onClick="clickHospitalDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
 			html += '<td>' + data[i].place + '</td>';
 			html += '<td>' + data[i].services + '</td>';
 			if (data[i].contract) {

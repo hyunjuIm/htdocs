@@ -243,7 +243,6 @@ require('check_data.php');
 			var jbSplit = companySelect[i].split('-');
 			var branchName = jbSplit[jbSplit.length - 1];
 
-			//TODO: 고객사 수정완료
 			if(selectCompany.value == jbSplit[0]) {
 				var html = '';
 				if(branchName == target[1]) {
@@ -293,7 +292,7 @@ require('check_data.php');
 
 		console.log(saveItems);
 
-		if (saveItems.target == "" || saveItems.target == null || saveItems.target .indexOf("-선택-") > -1 ) {
+		if (saveItems.target == "" || saveItems.target == null || saveItems.target.indexOf("-선택-") > -1 ) {
 			alert("읽기대상을 선택해주세요.")
 		} else {
 			if (confirm("저장하시겠습니까?") == true){

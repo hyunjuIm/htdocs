@@ -130,10 +130,10 @@
 				<tr>
 					<th style="width: 3%">NO</th>
 					<th style="width: 10%">고객사명</th>
-					<th style="width: 8%">사업장명</th>
+					<th style="width: 8%; color: #3529b1;">사업장명</th>
 					<th>서비스</th>
 					<th style="width: 4%">지역</th>
-					<th style="width: 10%">병원명</th>
+					<th style="width: 10%; color: #3529b1;">병원명</th>
 					<th>고객사계약</th>
 					<th style="width: 7%">단가</th>
 					<th style="width: 5%">직원수</th>
@@ -159,12 +159,13 @@ require('hospital_modal.php');
 ?>
 
 </body>
-</html>
 
 <!--체크박스 검사-->
 <?php
 require('check_data.php');
 ?>
+
+</html>
 
 <script type="text/javascript">
 	//검색항목리스트
@@ -283,10 +284,14 @@ require('check_data.php');
 			html += '<tr>"';
 			html += '<td>' + data[i].coId + '</td>';
 			html += '<td>' + data[i].coName + '</td>';
-			html += '<td data-toggle="modal" data-target="#companyDetailModal" onClick="clickCompanyDetail(\'' + data[i].coId + '\')">' + data[i].coBranch + '</td>';
+			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
+					'data-toggle="modal" data-target="#companyDetailModal" ' +
+					'onClick="clickCompanyDetail(\'' + data[i].coId + '\')">' + data[i].coBranch + '</td>';
 			html += '<td>' + data[i].service + '</td>';
 			html += '<td>' + data[i].place + '</td>';
-			html += '<td data-toggle="modal" data-target="#hospitalDetailModal" onClick="clickHospitalDetail(\'' + data[i].hoId + '\')">' + data[i].hoName + '</td>';
+			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
+					'data-toggle="modal" data-target="#hospitalDetailModal" ' +
+					'onClick="clickHospitalDetail(\'' + data[i].hoId + '\')">' + data[i].hoName + '</td>';
 
 			if (data[i].coContract) {
 				html += '<td>Y</td>';

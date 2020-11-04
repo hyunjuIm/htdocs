@@ -13,8 +13,12 @@
 			margin-top: -15px;
 			margin-bottom: 5px;
 			font-weight: bold;
-			font-size: 17px;
-			color: #444444;
+			font-size: 15px;
+			color: #555555;
+		}
+
+		.all-menu:hover {
+			color: #5645ED;
 		}
 
 		.table-box {
@@ -98,7 +102,7 @@
 		</div>
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px"> 공지사항</h5>
-			<a href="/master/service_notice" class="all-menu"> 전체보기 → </a>
+			<a href="/master/service_notice" class="all-menu"> 전체보기 </a>
 			<table id="noticeTable" class="table">
 				<thead>
 				<tr>
@@ -114,7 +118,7 @@
 	<div class="row">
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px"> 담당자정보</h5>
-			<a href="/master/company_list" class="all-menu"> 전체보기 → </a>
+			<a href="/master/company_list" class="all-menu"> 전체보기 </a>
 			<table id="companyManagerTable" class="table">
 				<thead>
 				<tr>
@@ -129,7 +133,7 @@
 		</div>
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">운영일정</h5>
-			<a href="/master/package_list" class="all-menu"> 전체보기 → </a>
+			<a href="/master/package_list" class="all-menu"> 전체보기 </a>
 			<table id="manageScheduleTable" class="table">
 				<thead>
 				<tr>

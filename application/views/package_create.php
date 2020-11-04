@@ -36,7 +36,7 @@
 						</label>
 						<div class="form-group col" style="display: flex">
 							<select id="pacComName" class="form-control" style="margin-right: 10px"
-									onchange="setPackageCompanySelectOption(this, 'pacComBranch')">
+									onchange="setCompanySelectOption(this, 'pacComBranch')">
 								<option selected>-전체-</option>
 							</select>
 							<select id="pacComBranch" class="form-control">
@@ -120,7 +120,6 @@
 		</div>
 	</div>
 
-
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
@@ -156,6 +155,13 @@ require('package_modal.php');
 ?>
 
 </body>
+
+<!--체크박스 검사-->
+<?php
+require('check_data.php');
+?>
+
+
 </html>
 
 <script type="text/javascript">
@@ -281,35 +287,6 @@ require('package_modal.php');
 			$("#status").append(html);
 		}
 
-	}
-
-	//사업장 리스트 셋팅
-	function setPackageCompanySelectOption(selectCompany, targetBranch) {
-		var branch = document.getElementById(targetBranch);
-
-		var opt = document.createElement("option");
-		branch.appendChild(opt);
-
-		removeAll(branch);
-
-		for (i = 0; i < companySelect.length; i++) {
-			var jbSplit = companySelect[i].split('-');
-			var branchName = jbSplit[jbSplit.length - 1];
-
-			//TODO: 고객사 수정완료
-			if(selectCompany.value == jbSplit[0]) {
-				var html = '';
-				html += '<option>' + branchName + '</option>'
-				$("#billComBranch").append(html);
-			}
-		}
-	}
-
-	//옵션 삭제
-	function removeAll(e){
-		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
-			e.remove(1);
-		}
 	}
 
 	//세부항목 설정에 pkgID 값 던지기

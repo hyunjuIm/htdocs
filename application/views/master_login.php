@@ -79,18 +79,6 @@
 			transition: all 0.3s ease-in-out;
 		}
 
-		input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-			background-color: #5645ED;
-		}
-
-		input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-			-moz-transform: scale(0.95);
-			-webkit-transform: scale(0.95);
-			-o-transform: scale(0.95);
-			-ms-transform: scale(0.95);
-			transform: scale(0.95);
-		}
-
 		input[type=text], input[type=password] {
 			background-color: #f6f6f6;
 			border: none;
@@ -202,7 +190,7 @@
 </head>
 
 <body background="../../asset/images/bg_login.png">
-<div style="height: 100%; float: right; vertical-align: middle; margin: 0 1%">
+<div style="height: 100%; float: right; vertical-align: middle; background: mediumpurple; padding: 0 5%">
 	<div class="wrapper fadeInDown">
 		<form id="formContent"  style="padding: 50px">
 			<p style="text-align: center; color: #3529b1; font-size: 400%; font-weight: bold">MASTER</p>
@@ -210,7 +198,9 @@
 				   style="margin-bottom: 10px; text-align: left" onkeyup="enterKey();">
 			<input type="password" id="password" class="fadeIn third" name="login" placeholder="PASSWORD"
 				   style="margin-bottom: 30px; text-align: left" onkeyup="enterKey();">
-			<img class="fadeIn fourth" src="/asset/images/btn_login.png" style="width: 90%; cursor: pointer" value="Log In" onclick="masterLogin()">
+			<div class="fadeIn fourth btn-light-purple-square"
+				 style="font-size: 20px;font-weight: bold;width: 90%; border-radius: 30px; padding: 12px 20px;"
+				 value="Log In" onclick="masterLogin()">LOGIN</div>
 		</form>
 	</div>
 </div>
@@ -218,6 +208,11 @@
 </html>
 
 <script>
+	//이미 로그인 되어 있으면 홈으로
+	var token = sessionStorage.getItem("token");
+	if(token != null){
+		location.href = "/";
+	}
 
 	function enterKey() {
 		if (window.event.keyCode == 13) {
@@ -245,20 +240,18 @@
 		requestMember.level = "MASTER";
 
 		const instance = axios.create({
-			//baseURL: "https://api.dualhealth.kr/master/api/v1/",
-			baseURL: "http://192.168.219.101:8080/permission/",
+			baseURL: "https://api.dualhealth.kr/permission/",
+			//baseURL: "http://192.168.219.101:8080/permission/",
 			timeout: 5000
 		});
 
-
 		instance.post('login', requestMember).then(res => {
-			console.log(res.data);
-			if(res.data.message == "FAILED") {
+			if(res.data.message == "FAILED" || (res.data).indexOf("FAILED") > -1) {
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
 			} else {
-				sessionStorage.setItem("token", res.data.data);
+				//sessionStorage.setItem("token", res.data.data);
+				sessionStorage.setItem("token", res.data);
 				location.href = "/master/index";
-
 			}
 		});
 

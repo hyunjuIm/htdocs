@@ -7,6 +7,12 @@
 	require('head.php');
 	?>
 
+	<style>
+		th, td {
+			vertical-align: middle !important;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -227,7 +233,9 @@ require('check_data.php');
 			var no = i+1;
 			html += '<td>' + no + '</td>';
 
-			html += '<td data-toggle="modal" data-target="#companyDetailModal" onClick="clickCompanyDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
+			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer" ' +
+					'data-toggle="modal" data-target="#companyDetailModal" ' +
+					'onClick="clickCompanyDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
 			html += '<td>' + data[i].branch + '</td>';
 			html += '<td>' + regExp(data[i].services) + '</td>';
 

@@ -125,7 +125,7 @@ require('check_data.php');
 			if (id == 'ntTargetCus' || id == 'ntTargetCom') {
 				$("#target").append(
 						'<select id="ntComName" class="form-control" style="margin-right: 10px"' +
-						'onchange="setNoticeCompanyBranchOption(this,\'' + 'ntComBranch' + '\')">' +
+						'onchange="setCompanySelectOption(this,\'' + 'ntComBranch' + '\')">' +
 						'<option selected>-선택-</option>' +
 						'</select>' +
 						'<select id="ntComBranch" class="form-control">' +
@@ -189,35 +189,6 @@ require('check_data.php');
 				$("#ntHosName").append(html);
 			}
 
-		}
-	}
-
-	//사업장 리스트 셋팅
-	function setNoticeCompanyBranchOption(selectCompany, targetBranch) {
-		var branch = document.getElementById(targetBranch);
-
-		var opt = document.createElement("option");
-		branch.appendChild(opt);
-
-		removeAll(branch);
-
-		for (i = 0; i < companySelect.length; i++) {
-			var jbSplit = companySelect[i].split('-');
-			var branchName = jbSplit[jbSplit.length - 1];
-
-			//TODO: 고객사 수정완료
-			if (selectCompany.value == jbSplit[0]) {
-				var html = '';
-				html += '<option value=\'' + branchName + '\'>' + branchName + '</option>'
-				$("#" + targetBranch + "").append(html);
-			}
-		}
-	}
-
-	//옵션 삭제
-	function removeAll(e) {
-		for (var i = 0, limit = e.options.length; i < limit - 1; ++i) {
-			e.remove(1);
 		}
 	}
 

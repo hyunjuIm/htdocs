@@ -7,6 +7,12 @@
 	require('head.php');
 	?>
 
+	<style>
+		th, td {
+			vertical-align: middle !important;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -54,7 +60,7 @@
 						</label>
 						<div class="form-group col" style="display: flex">
 							<select id="companyName" class="form-control" style="margin-right: 10px"
-									onchange="setPackageCompanySelectOption(this, 'companyBranch')">
+									onchange="setCompanySelectOption(this, 'companyBranch')">
 								<option selected>-전체-</option>
 							</select>
 							<select id="companyBranch" class="form-control">
@@ -131,8 +137,8 @@
 					<th>패키지</th>
 					<th>패키지<br>금액</th>
 					<th>지원금</th>
-					<th style="width: 5%">개인정보<br>동의<br>(듀얼)</th>
-					<th style="width: 5%">개인정보<br>동의<br>(병원)</th>
+					<th style="width: 5%">개인정보동의<br>(듀얼)</th>
+					<th style="width: 5%">개인정보동의<br>(병원)</th>
 					<th style="width: 5%">공단<br>차감</th>
 				</tr>
 				</thead>
@@ -267,35 +273,6 @@ require('check_data.php');
 		}
 	}
 
-	//사업장 리스트 셋팅
-	function setPackageCompanySelectOption(selectCompany, targetBranch) {
-		var branch = document.getElementById(targetBranch);
-
-		var opt = document.createElement("option");
-		branch.appendChild(opt);
-
-		removeAll(branch);
-
-		for (i = 0; i < companySelect.length; i++) {
-			var jbSplit = companySelect[i].split('-');
-			var arr = jbSplit[jbSplit.length - 1];
-
-			if(selectCompany.value == jbSplit[0]) {
-				var opt = document.createElement("option");
-				opt.value = companySelect[i].coId;
-				opt.innerHTML = arr;
-				branch.appendChild(opt);
-			}
-		}
-	}
-
-	//옵션 삭제
-	function removeAll(e){
-		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
-			e.remove(1);
-		}
-	}
-
 	//예약관리 테이블
 	function setReservationData(data) {
 		for (i = 0; i < data.length; i++) {
@@ -309,7 +286,8 @@ require('check_data.php');
 			html += '<td>' + data[i].serviceName + '</td>';
 			html += '<td>' + data[i].companyName + '</td>';
 			html += '<td>' + data[i].companyBranch + '</td>';
-			html += '<td data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">' + data[i].familyId + '</td>';
+			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer" ' +
+					'data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">' + data[i].familyId + '</td>';
 			html += '<td>' + data[i].familyName + '</td>';
 			html += '<td>' + data[i].familyGrade + '</td>';
 			html += '<td>' + data[i].familyBirthDate + '</td>';

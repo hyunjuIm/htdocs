@@ -65,4 +65,32 @@
 			return result;
 		}
 	}
+
+	//사업장 리스트 셋팅
+	function setCompanySelectOption(selectCompany, targetBranch) {
+		var branch = document.getElementById(targetBranch);
+
+		var opt = document.createElement("option");
+		branch.appendChild(opt);
+
+		removeAll(branch);
+
+		for (i = 0; i < companySelect.length; i++) {
+			var jbSplit = companySelect[i].split('-');
+			var branchName = jbSplit[jbSplit.length - 1];
+
+			if(selectCompany.value == jbSplit[0]) {
+				var html = '';
+				html += '<option>' + branchName + '</option>'
+				$("#"+targetBranch+"").append(html);
+			}
+		}
+	}
+
+	//옵션 삭제
+	function removeAll(e){
+		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
+			e.remove(1);
+		}
+	}
 </script>
