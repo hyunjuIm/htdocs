@@ -121,17 +121,6 @@ td {
 	text-decoration: none;
 }
 
-.btn-delete-square {
-	cursor: pointer;
-	display: inline-block;
-	padding: 8px 20px;
-	background: #D32F2F;
-	text-align: center;
-	color: #fff;
-	font-size: 15px;
-	text-decoration: none;
-}
-
 .btn-save-square:hover,
 .btn-purple-square:hover,
 .btn-light-purple-square:hover,
@@ -145,6 +134,7 @@ td {
 	height: 36px;
 	background: url("../images/btn_excel.png") no-repeat;
 }
+
 
 ul.img-circle li {
 	padding-left: 20px;

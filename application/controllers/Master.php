@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class master extends CI_Controller
 {
+	//로그인
+	public function master_login()
+	{
+		$this->load->view('master_login');
+	}
+
 	//메인화면
 	public function index()
 	{
@@ -81,7 +87,7 @@ class master extends CI_Controller
 		$this->load->view('statistics_hospital');
 	}
 
-	//공지사항 - 리스트
+	//공지사항 - 전체 리스트
 	public function service_notice()
 	{
 		$this->load->view('service_notice');
@@ -103,5 +109,11 @@ class master extends CI_Controller
 	public function service_notice_update()
 	{
 		$this->load->view('service_notice_update');
+	}
+
+	//고객센터 - 전체 리스트
+	public function service_qan_list()
+	{
+		$this->load->view('service_qan_list');
 	}
 }

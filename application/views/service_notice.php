@@ -101,13 +101,13 @@ require('check_data.php');
 
 	//검색 selector
 	function setNoticeOption(data) {
-
 		//연도
 		for (i = 0; i < data.year.length; i++) {
 			var html = '';
 			html += '<option>' + data.year[i] + '</option>'
 			$("#ntYear").append(html);
 		}
+
 		pageCount = 0;
 		for (i = 0; i < data.count; i += 10) {
 			pageCount++;

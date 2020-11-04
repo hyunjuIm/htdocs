@@ -63,6 +63,8 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
 					<a class="dropdown-item" href="/master/service_notice">공지사항</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/master/service_qan_list">고객센터</a>
 				</div>
 			</li>
 			<li class="nav-item">
@@ -71,10 +73,7 @@
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="#">관리자관리</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">로그아웃</a>
+				<a class="nav-link" href="#" onclick="clearToken()">로그아웃</a>
 			</li>
 		</ul>
 	</div>
@@ -82,12 +81,23 @@
 
 <!--axios-->
 <script>
-	var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJMU0giLCJleHAiOjE2MDMwOTU5MzJ9.ZrwYNSVhfzpHPxEI01PQ757Z7hvaFr1jDRiEvKFvb7U";
+	function clearToken(){
+		sessionStorage.clear();
+		alert("로그아웃 되었습니다.");
+		location.href = "/master/master_login";
+	}
+
+	var token = sessionStorage.getItem("token");
+	if(token == null){
+		alert("세션이 만료되었습니다. 로그인 후 이용해주세요.");
+		location.href = "/master/master_login";
+	}
 
 	const instance = axios.create({
-		baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		//baseURL: "http://192.168.219.101:8080/master/api/v1/",
+		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
+		baseURL: "http://192.168.219.101:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
 </script>
+
