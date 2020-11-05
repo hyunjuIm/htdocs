@@ -175,7 +175,7 @@
 								</tr>
 								<tr>
 									<th>예약 확정일</th>
-									<td colspan="2" id="cus-ipDate" contentEditable="true"></td>
+									<td colspan="2" id="cus-ipDate"></td>
 								</tr>
 								</tbody>
 							</table>

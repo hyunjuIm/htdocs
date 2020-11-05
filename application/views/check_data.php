@@ -1,4 +1,12 @@
 <script>
+	//검색 - 엔터키
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchInformation();
+		}
+	}
+
 	//체크박스 전체 선택
 	function clickAll(id, name) {
 		if ($("#"+id+"").is(':checked')) {

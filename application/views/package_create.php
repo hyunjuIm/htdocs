@@ -7,6 +7,12 @@
 	require('head.php');
 	?>
 
+	<style>
+		th, td {
+			vertical-align: middle !important;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -111,7 +117,7 @@
 						<div class="btn-light-purple-square" data-toggle="modal" data-target="#packageCreateModal">
 							신규생성
 						</div>
-						<div class="btn-save-square"  onclick="searchPackageCreateInformation()">
+						<div class="btn-save-square" onclick="searchPackageCreateInformation()">
 							검색
 						</div>
 					</div>
@@ -123,19 +129,21 @@
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
-				class="btn-default-small excel" style="float: right"></div>
+					class="btn-default-small excel" style="float: right"></div>
 			<table id="packageCreateInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
+					<th style="width: 3%"><input type="checkbox" id="packageCheck" name="packageCheck"
+												 onclick="clickAll(id, name)"></th>
 					<th style="width: 3%">NO</th>
-					<th>사용</th>
-					<th>병원명</th>
-					<th>고객사명</th>
-					<th>사업장명</th>
-					<th>패키지</th>
+					<th style="width: 5%">사용</th>
+					<th style="width: 10%">병원명</th>
+					<th style="width: 10%">고객사명</th>
+					<th style="width: 10%">사업장명</th>
+					<th style="width: 10%">패키지</th>
 					<th>패키지단가</th>
 					<th>기업승인여부</th>
-					<th>기간</th>
+					<th style="width: 15%">기간</th>
 					<th>세부항목 상태</th>
 					<th>세부항목 설정</th>
 				</tr>
@@ -231,18 +239,18 @@ require('check_data.php');
 			var jbSplit = data.coNameBranch[i].split('-');
 			var companyName = jbSplit[0];
 
-			for(var j=0; j<nameSize; j++) {
-				if(name[j] == companyName) {
+			for (var j = 0; j < nameSize; j++) {
+				if (name[j] == companyName) {
 					check += 1;
 				}
 			}
-			if(check < 1) {
+			if (check < 1) {
 				name[nameSize] = companyName;
 				nameSize += 1;
 			}
 		}
 
-		for(i=0; i<nameSize; i++) {
+		for (i = 0; i < nameSize; i++) {
 			var html = '';
 			html += '<option value=\'' + name[i] + '\'>' + name[i] + '</option>'
 			$("#pacComName").append(html);
@@ -259,7 +267,8 @@ require('check_data.php');
 		//단가
 		for (i = 0; i < data.price.length; i++) {
 			var html = '';
-			html += '<option>' + data.price[i] + '</option>'
+			var price = parseInt(data.price[i]).toLocaleString();
+			html += '<option value=\'' + data.price[i] + '\'>' + price + '</option>'
 			$("#price").append(html);
 		}
 		//병원명
@@ -271,19 +280,31 @@ require('check_data.php');
 		//사용
 		for (i = 0; i < data.coApprove.length; i++) {
 			var html = '';
-			html += '<option>' + data.coApprove[i] + '</option>'
+			if(data.coApprove[i] == "true") {
+				html += '<option value="true">Y</option>'
+			} else {
+				html += '<option value="false">N</option>'
+			}
 			$("#coApprove").append(html);
 		}
 		//세부항목
 		for (i = 0; i < data.ijSet.length; i++) {
 			var html = '';
-			html += '<option>' + data.ijSet[i] + '</option>'
+			if(data.ijSet[i] == "true") {
+				html += '<option value="true">Y</option>'
+			} else {
+				html += '<option value="false">N</option>'
+			}
 			$("#ijSet").append(html);
 		}
 		//상태
 		for (i = 0; i < data.status.length; i++) {
 			var html = '';
-			html += '<option>' + data.status[i] + '</option>'
+			if(data.status[i] == "true") {
+				html += '<option value="true">Y</option>'
+			} else {
+				html += '<option value="false">N</option>'
+			}
 			$("#status").append(html);
 		}
 
@@ -299,8 +320,12 @@ require('check_data.php');
 		console.log(data);
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			html += '<tr>"';
-			html += '<td>' + data[i].pkgId + '</td>';
+			html += '<tr>';
+			html += '<td><input type="checkbox" name="packageCheck" onclick="clickOne(name)"></td>';
+
+			var no = i+1;
+			html += '<td>' + no + '</td>';
+
 			if (data[i].status) {
 				html += '<td>Y</td>';
 			} else {
@@ -310,7 +335,7 @@ require('check_data.php');
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
 			html += '<td>' + data[i].pkgName + '</td>';
-			html += '<td>' + data[i].price + '</td>';
+			html += '<td>' + data[i].price.toLocaleString() + '</td>';
 			if (data[i].coApprove) {
 				html += '<td>Y</td>';
 			} else {
@@ -323,7 +348,7 @@ require('check_data.php');
 				html += '<td>N</td>';
 			}
 			html += '<td><div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">' +
-				'<a style="color: white" onclick="sendPackageID(\'' + data[i].pkgId + '\')">설정</a></div></td>';
+					'<a style="color: white" onclick="sendPackageID(\'' + data[i].pkgId + '\')">설정</a></div></td>';
 			html += '</tr>';
 
 			$("#packageCreateInfos").append(html);

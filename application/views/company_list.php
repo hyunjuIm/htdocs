@@ -93,7 +93,7 @@
 				<h6>
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
-						<input type="text" id="searchWord" class="search-input" placeholder="회사명으로 검색하세요">
+						<input type="text" id="searchWord" class="search-input" placeholder="회사명으로 검색하세요" onkeyup="enterKey()">
 						<div class="search-icon" onclick="searchInformation()"></div>
 					</div>
 				</h6>
@@ -150,7 +150,6 @@ require('check_data.php');
 	instance.post('M004001_RES').then(res => {
 		setCompanySelectData(res.data);
 	});
-
 
 	//검색
 	function searchInformation() {

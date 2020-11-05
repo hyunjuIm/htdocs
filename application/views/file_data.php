@@ -1,43 +1,54 @@
 <script>
-	$("#FILE_TAG").on('change',function(){
-		var fileName = $("#FILE_TAG").val();
-		$(".upload-name").val(fileName);
-	});
+	//선택한 파일 이름
+	function viewFile(fis, view) {
+		var str = fis.value;
+		$("#" + view + "").val(fis.value.substring(str.lastIndexOf("\\") + 1));
+	}
 
 	//파일 업로드
-	function uploadFile() {
-		var photoFile = document.getElementById("FILE_TAG");
+	function uploadFile(id) {
+		var photoFile = document.getElementById(id);
+
+		if(photoFile.files[0] == null) {
+			alert("업로드할 파일이 없습니다.");
+			return false;
+		}
+
 		var params = new FormData();
 		params.append("file", photoFile.files[0]);
 		params.append('fileTarget', "hospital");
 		params.append('fileClass', "image");
 		params.append('id', hosId.hospitalId);
 
-		fileURL.post('uploadFile',params,{
+		fileURL.post('uploadFile', params, {
 			headers: {
 				'Content-Type': 'multipart/form-data'
 			}
 		}).then(res => {
 			console.log(res.data);
+			alert("저장되었습니다.")
 		});
 	}
 
 	//파일 다운로드
-	function downloadFile(){
-		var params = new URLSearchParams();
-		params.append("fileName","main_dashboard_btn02.png");
+	function downloadFile(view) {
+		var fileName = $("#" + view + "").val();
 
-		fileURL.get("downloadFile/main_dashboard_btn02.png", {
+		var downloadURL = "downloadFile/" + fileName;
+
+		console.log(downloadURL);
+
+		fileURL.get(downloadURL, {
 			responseType: 'arraybuffer',
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		}).then(response => {
 			const type = response.headers['content-type'];
-			const blob = new Blob([response.data], { type: type, encoding: 'UTF-8' });
+			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');
 			link.href = window.URL.createObjectURL(blob);
-			link.download = 'main_dashboard_btn02.png';
+			link.download = fileName;
 			link.click();
 
 			console.log(response);

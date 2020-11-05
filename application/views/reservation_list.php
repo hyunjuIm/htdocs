@@ -106,7 +106,7 @@
 				<h6>
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
-						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요">
+						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요" onkeyup="enterKey()">
 						<div class="search-icon" onclick="searchInformation()"></div>
 					</div>
 				</h6>

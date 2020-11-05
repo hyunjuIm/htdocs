@@ -71,7 +71,7 @@
 						<div class="btn-purple-square" data-toggle="modal" data-target="#hospitalCreateModal">
 							병원신규등록
 						</div>
-						<div class="btn-save-square"  onclick="searchInformation()">
+						<div class="btn-save-square" onclick="searchInformation()">
 							검색
 						</div>
 					</div>
@@ -86,7 +86,7 @@
 				<h6>
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
-						<input type="text" id="searchWord" class="search-input" placeholder="병원명으로 검색하세요">
+						<input type="text" id="searchWord" class="search-input" placeholder="병원명으로 검색하세요" onkeyup="enterKey()">
 						<div class="search-icon" onclick="searchInformation()"></div>
 					</div>
 				</h6>
@@ -101,7 +101,8 @@
 			<table id="hospitalInfo" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th>NO</th>
+					<th style="width: 5%"><input type="checkbox" id="hospitalCheck" name="hospitalCheck" onclick="clickAll(id, name)"></th>
+					<th style="width: 5%">NO</th>
 					<th style="color: #3529b1">병원명</th>
 					<th>지역</th>
 					<th>서비스</th>
@@ -127,6 +128,12 @@ require('hospital_modal.php');
 ?>
 
 </body>
+
+<!--체크박스 검사-->
+<?php
+require('check_data.php');
+?>
+
 </html>
 
 <script type="text/javascript">
@@ -147,7 +154,7 @@ require('hospital_modal.php');
 		searchItems.place = $("#place option:selected").val();
 		searchItems.contract = $("#contract option:selected").val();
 
-		searchItems.searchWord =  $("#searchWord").val();
+		searchItems.searchWord = $("#searchWord").val();
 
 		if (searchItems.year == "-전체-") {
 			searchItems.year = "all";
@@ -193,7 +200,11 @@ require('hospital_modal.php');
 		//계약유무
 		for (i = 0; i < data.contract.length; i++) {
 			var html = '';
-			html += '<option>' + data.contract[i] + '</option>'
+			if (data.contract[i] == "true") {
+				html += '<option value="true">Y</option>'
+			} else {
+				html += '<option value="false">N</option>'
+			}
 			$("#contract").append(html);
 		}
 	}
@@ -203,8 +214,12 @@ require('hospital_modal.php');
 		console.log(data);
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			html += '<tr>"';
-			html += '<td>' + data[i].id + '</td>';
+			var html = '';
+			html += '<tr>';
+			html += '<td><input type="checkbox" name="hospitalCheck" onclick="clickOne(name)"></td>';
+
+			var no = i+1;
+			html += '<td>' + no + '</td>';
 			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
 					'data-toggle="modal" data-target="#hospitalDetailModal" ' +
 					'onClick="clickHospitalDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';

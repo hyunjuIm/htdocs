@@ -20,7 +20,8 @@
 								<tbody>
 								<tr>
 									<th>기업명</th>
-									<td id="com-companyName" contentEditable="true"></td>
+									<td id="com-companyName"
+									="true" ></td>
 								</tr>
 								<tr>
 									<th>사업장명</th>
@@ -373,52 +374,102 @@
 									<th>시스템오픈</th>
 									<td id="add-com-systemOpen">
 										<div class="form-check form-check-inline">
-											<label class="form-check-label" for="systemOpenYes">YES&nbsp</label>
-											<input class="form-check-input" type="checkbox" id="systemOpenYes"
+											<label class="form-check-label" for="add-systemOpenYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-systemOpenYes"
 												   name="add-com-systemOpen" value="true" onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
-											<label class="form-check-label" for="systemOpenNo">NO&nbsp</label>
-											<input class="form-check-input" type="checkbox" id="systemOpenNo"
+											<label class="form-check-label" for="add-systemOpenNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-systemOpenNo"
 												   name="add-com-systemOpen" value="false" onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<th>듀얼(동의)</th>
-									<td id="cus-familyPsInfoDual">
+									<th>계약유무</th>
+									<td id="add-com-contract">
 										<div class="form-check form-check-inline">
-											<label class="form-check-label" for="familyPsInfoDualYes">YES&nbsp</label>
-											<input class="form-check-input" type="checkbox" id="familyPsInfoDualYes"
-												   name="cus-familyPsInfoDual" value="true"
-												   onclick="onlyCheck(this, name)">
+											<label class="form-check-label" for="add-contractYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-contractYes"
+												   name="add-com-contract" value="true" onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
-											<label class="form-check-label" for="familyPsInfoDualNo">NO&nbsp</label>
-											<input class="form-check-input" type="checkbox" id="familyPsInfoDualNo"
-												   name="cus-familyPsInfoDual" value="false"
-												   onclick="onlyCheck(this, name)">
+											<label class="form-check-label" for="add-contractNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-contractNo"
+												   name="add-com-contract" value="false" onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
 								<tr>
-									<th>계약유무</th>
-									<td id="add-com-contract" contentEditable="true"></td>
-								</tr>
-								<tr>
 									<th>예약기간</th>
 									<td>
-										<span id="add-com-reservationStartDate" contentEditable="true"></span>
-										~
-										<span id="add-com-reservationEndDate" contentEditable="true"></span>
+										<input type="text" id="add-com-reservationStartDate" placeholder=""
+											   style="width:87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#add-com-reservationStartDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+										<span style="font-size: 13px">~</span>
+										<input type="text" id="add-com-reservationEndDate" placeholder=""
+											   style="width: 87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#add-com-reservationEndDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
 									</td>
 								</tr>
 								<tr>
 									<th>검진기간</th>
 									<td>
-										<span id="add-com-inspectionStartDate" contentEditable="true"></span>
-										~
-										<span id="add-com-inspectionEndDate" contentEditable="true"></span>
+										<input type="text" id="add-com-inspectionStartDate" placeholder=""
+											   style="width:87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#add-com-inspectionStartDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+										<span style="font-size: 13px">~</span>
+										<input type="text" id="add-com-inspectionEndDate" placeholder=""
+											   style="width:87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#add-com-inspectionEndDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
 									</td>
 								</tr>
 								<tr>
@@ -435,14 +486,38 @@
 								</tr>
 								<tr>
 									<th>공단차감</th>
-									<td id="add-com-pcDiscount" contentEditable="true"></td>
+									<td id="add-com-pcDiscount">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="add-pcDiscountYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-pcDiscountYes"
+												   name="add-com-pcDiscount" value="true" onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="add-pcDiscountNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-pcDiscountNo"
+												   name="add-com-pcDiscount" value="false" onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<th>가족지원</th>
-									<td id="add-com-familySupport" contentEditable="true"></td>
+									<td id="add-com-familySupport">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="add-familySupportYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-familySupportYes"
+												   name="add-com-familySupport" value="true"
+												   onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="add-familySupportNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="add-familySupportNo"
+												   name="add-com-familySupport" value="false"
+												   onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
-									<th>사업자등록</th>
+									<th>사업자<br>등록번호</th>
 									<td id="add-com-license" contentEditable="true"></td>
 								</tr>
 								</tbody>
@@ -458,15 +533,71 @@
 									<tbody>
 									<tr>
 										<th>청구방식</th>
-										<td id="add-com-paymentCode" contentEditable="true"></td>
+										<td id="add-com-paymentCode">
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="add-com-paymentCode1">월별&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="add-com-paymentCode1"
+													   name="add-com-paymentCode" value="월별"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="add-com-paymentCode2">분기&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="add-com-paymentCode2"
+													   name="add-com-paymentCode" value="분기"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<br>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="add-com-paymentCode3">연별&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="add-com-paymentCode3"
+													   name="add-com-paymentCode" value="연별"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="add-com-paymentCode4">기타&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="add-com-paymentCode4"
+													   name="add-com-paymentCode" value="기타"
+													   onclick="onlyCheck(this, name)">
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<th>지원금방식</th>
-										<td id="add-com-supportFundCode" contentEditable="true"></td>
+										<td id="add-com-supportFundCode">
+											<div class="form-check form-check-inline">
+												<label class="form-check-label"
+													   for="add-com-supportFundCode1">계산서&nbsp</label>
+												<input class="form-check-input" type="checkbox"
+													   id="add-com-supportFundCode1"
+													   name="add-com-supportFundCode" value="계산서"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label"
+													   for="add-com-supportFundCode2">법인카드&nbsp</label>
+												<input class="form-check-input" type="checkbox"
+													   id="add-com-supportFundCode2"
+													   name="add-com-supportFundCode" value="법인카드"
+													   onclick="onlyCheck(this, name)">
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<th>추가금액<br>정산방식</th>
-										<td id="add-com-balanceCode" contentEditable="true"></td>
+										<td id="add-com-balanceCode">
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="add-com-balanceCode1">현장결제&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="add-com-balanceCode1"
+													   name="add-com-balanceCode" value="현장결제"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="add-com-balanceCode2">PG&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="add-com-balanceCode2"
+													   name="add-com-balanceCode" value="PG"
+													   onclick="onlyCheck(this, name)">
+											</div>
+										</td>
 									</tr>
 									</tbody>
 								</table>
@@ -731,40 +862,48 @@
 
 		saveItems.name = document.getElementById('add-com-name').innerText;
 		saveItems.branch = document.getElementById('add-com-branch').innerText;
-		saveItems.systemOpen = document.getElementById('add-com-systemOpen').innerText;
-		saveItems.contract = document.getElementById('add-com-contract').innerText;
+		saveItems.systemOpen = booleanData('add-com-systemOpen');
+		saveItems.contract = booleanData('add-com-contract');
 		saveItems.address = document.getElementById('add-com-address').innerText;
 		saveItems.email = document.getElementById('add-com-email').innerText;
-		saveItems.rebatePrice = document.getElementById('add-com-rebatePrice').innerText;
-		saveItems.pcDiscount = document.getElementById('add-com-pcDiscount').innerText;
-		saveItems.paymentCode = document.getElementById('add-com-paymentCode').innerText;
-		saveItems.supportFundCode = document.getElementById('add-com-supportFundCode').innerText;
-		saveItems.balanceCode = document.getElementById('add-com-balanceCode').innerText;
-		saveItems.familySupport = document.getElementById('add-com-familySupport').innerText;
+		saveItems.rebatePrice = savePrice('add-com-rebatePrice');
+		saveItems.pcDiscount = booleanData('add-com-pcDiscount');
+		saveItems.paymentCode = booleanData('add-com-paymentCode');
+		saveItems.supportFundCode = booleanData('add-com-supportFundCode');
+		saveItems.balanceCode = booleanData('add-com-balanceCode');
+		saveItems.familySupport = booleanData('add-com-familySupport');
 		saveItems.license = document.getElementById('add-com-license').innerText;
 		saveItems.memo = document.getElementById('add-com-memo').innerText;
-		saveItems.reservationStartDate = document.getElementById('add-com-reservationStartDate').innerText;
-		saveItems.reservationEndDate = document.getElementById('add-com-reservationEndDate').innerText;
-		saveItems.inspectionStartDate = document.getElementById('add-com-inspectionStartDate').innerText;
-		saveItems.inspectionEndDate = document.getElementById('add-com-inspectionEndDate').innerText;
+		saveItems.reservationStartDate = document.getElementById('add-com-reservationStartDate').value;
+		saveItems.reservationEndDate = document.getElementById('add-com-reservationEndDate').value;
+		saveItems.inspectionStartDate = document.getElementById('add-com-inspectionStartDate').value;
+		saveItems.inspectionEndDate = document.getElementById('add-com-inspectionEndDate').value;
 
 		console.log(saveItems);
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
-			alert("성명을 입력해주세요.");
-		} else if (saveItems.familyBirthDate == "") {
-			alert("생년월일을 입력해주세요.");
-		} else if (saveItems.familyPhone == "") {
-			alert("연락처를 입력해주세요.");
-		} else if (saveItems.familyAddress == "") {
+			alert("기업명을 입력해주세요.");
+		} else if (saveItems.branch == "") {
+			alert("사업장을 입력해주세요.");
+		} else if (saveItems.reservationStartDate == "" || saveItems.reservationEndDate == "") {
+			alert("예약기간을 선택해주세요.");
+		} else if (saveItems.inspectionStartDate == "" || saveItems.inspectionEndDate == "") {
+			alert("검진기간을 선택해주세요.");
+		} else if (saveItems.address == "") {
 			alert("주소를 입력해주세요.");
-		} else if (saveItems.familyEmail == "") {
+		} else if (saveItems.email == "") {
 			alert("이메일을 입력해주세요.");
-		} else if (saveItems.reservationFirstWishDate == "") {
-			alert("1차 예약일을 입력해주세요.");
-		} else if (saveItems.reservationSecondWishDate == "") {
-			alert("2차 예약일을 입력해주세요.");
+		} else if (!isEmail(saveItems.email)) {
+			alert("올바른 이메일을 입력해주세요.");
+		} else if (saveItems.license == "") {
+			alert("사업자등록번호를 입력해주세요.");
+		} else if (saveItems.paymentCode == null || saveItems.paymentCode == "") {
+			alert("청구방식을 선택해주세요.");
+		} else if (saveItems.supportFundCode == null ||  saveItems.supportFundCode == "") {
+			alert("지원금방식을 선택해주세요.");
+		} else if (saveItems.balanceCode == null || saveItems.balanceCode == "") {
+			alert("추가금액 정산방식을 선택해주세요.");
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M004006_REQ', saveItems).then(res => {

@@ -70,7 +70,7 @@
 							</table>
 						</div>
 						<div class="col">
-							<div class="filebox" style="margin-bottom: 85px;">
+							<div class="fileBox" style="margin-bottom: 40px;">
 								<div class="menu-title" style="font-size: 22px;margin-bottom: 20px">
 									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
 									첨부서식
@@ -78,16 +78,52 @@
 
 								<ul class="img-circle">
 									<form id="FILE_FORM" method="post" enctype="multipart/form-data" action="">
-										<li>대표이미지</li>
-										<input type="file" id="FILE_TAG" name="FILE_TAG">
-										<input class="upload-name" value="파일선택" disabled="disabled">
-										<label for="FILE_TAG">파일선택</label>
-
-										<div class="btn-purple-square" id="hosLicenseFile" onclick="uploadFile()"
-											 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
+										<div style="margin-bottom: 5px">
+											<li style="margin-bottom: 5px">
+												대표이미지
+												<div class="btn-purple-square" onclick="uploadFile('hosImgFile')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
+												</div>
+												<div class="btn-light-purple-square" onclick="downloadFile('hosImgFileName')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
+												</div>
+											</li>
+											<input type="file" id="hosImgFile" name="hosImgFile"
+												   onchange="viewFile(this, 'hosImgFileName')">
+											<input id="hosImgFileName" class="upload-name" value="파일선택" disabled="disabled">
+											<label for="hosImgFile">파일선택</label>
 										</div>
-										<div class="btn-light-purple-square" onclick="downloadFile()"
-											 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
+
+										<div style="margin-bottom: 5px">
+											<li style="margin-bottom: 5px">
+												사업자등록증
+												<div class="btn-purple-square" onclick="uploadFile('hosLicenseFile')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
+												</div>
+												<div class="btn-light-purple-square" onclick="downloadFile('hosLicenseFileName')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
+												</div>
+											</li>
+											<input type="file" id="hosLicenseFile" name="hosLicenseFile"
+												   onchange="viewFile(this, 'hosLicenseFileName')">
+											<input id="hosLicenseFileName" class="upload-name" value="파일선택" disabled="disabled">
+											<label for="hosLicenseFile">파일선택</label>
+										</div>
+
+										<div>
+											<li style="margin-bottom: 5px">
+												통장사본
+												<div class="btn-purple-square" onclick="uploadFile('hosBankFile')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
+												</div>
+												<div class="btn-light-purple-square" onclick="downloadFile('hosBankFileName')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
+												</div>
+											</li>
+											<input type="file" id="hosBankFile" name="hosBankFile"
+												   onchange="viewFile(this, 'hosBankFileName')">
+											<input id="hosBankFileName" class="upload-name" value="파일선택" disabled="disabled">
+											<label for="hosBankFile">파일선택</label>
 										</div>
 									</form>
 								</ul>
@@ -382,8 +418,9 @@ require('file_data.php');
 		document.getElementById('hos-systemOpen').innerHTML = data.systemOpen;
 		document.getElementById('hos-services').innerHTML = data.services;
 		document.getElementById('hos-contract').innerHTML = data.contract;
-		// document.getElementById('hos-image').innerHTML = data.image;
-		// document.getElementById('hos-url').innerHTML = data.url;
+		document.getElementById('hosImgFileName').value = data.image;
+		document.getElementById('hosLicenseFileName').value = data.license;
+		document.getElementById('hosBankFileName').value = data.bankbook;
 		document.getElementById('hos-grade').innerHTML = data.grade;
 
 		//HosManagerAddTable 담당자정보
@@ -468,8 +505,6 @@ require('file_data.php');
 			html += '<td><div class="btn-save-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px" onclick="delHospitalEquipment(this)">삭제</div></td>'
 			html += '</tr>';
 
-			console.log(html);
-
 			$("#hospitalEquipmentInfo").append(html);
 		}
 	}
@@ -551,9 +586,6 @@ require('file_data.php');
 		saveItems.pcPrice = document.getElementById('add-hos-pcPrice').innerText;
 		saveItems.systemOpen = document.getElementById('add-hos-systemOpen').innerText;
 		saveItems.contract = document.getElementById('add-hos-contract').innerText;
-		saveItems.license = document.getElementById('add-hos-license').innerText;
-		saveItems.bankbook = document.getElementById('add-hos-bankbook').innerText;
-		saveItems.image = 1423;//document.getElementById('add-hos-image').innerText;
 		saveItems.url = document.getElementById('add-hos-url').innerText;
 		saveItems.grade = document.getElementById('add-hos-grade').innerText;
 
@@ -572,6 +604,7 @@ require('file_data.php');
 		}
 	}
 
+	//TODO: 병원정보 저장 > 첨부 서식 분리
 	//수정된 정보로 저장
 	function saveHospitalInformation() {
 		var saveItems = new Object();
@@ -585,9 +618,6 @@ require('file_data.php');
 		saveItems.pcPrice = document.getElementById('hos-pcPrice').innerText;
 		saveItems.systemOpen = document.getElementById('hos-systemOpen').innerText;
 		saveItems.contract = document.getElementById('hos-contract').innerText;
-		saveItems.license = document.getElementById('hos-license').innerText;
-		saveItems.bankbook = document.getElementById('hos-bankbook').innerText;
-		saveItems.image = document.getElementById('hos-image').innerText;
 		saveItems.url = document.getElementById('hos-url').innerText;
 		saveItems.grade = document.getElementById('hos-grade').innerText;
 
