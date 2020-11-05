@@ -31,7 +31,23 @@
 								</tr>
 								<tr>
 									<th>생년월일</th>
-									<td id="cus-familyBirthDate" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-familyBirthDate" placeholder="" style="border:none;text-align: center">
+										<script>
+											$(function () {
+												$("#cus-familyBirthDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													maxDate: 0,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+													monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+									</td>
 								</tr>
 								<tr>
 									<th>연락처</th>
@@ -51,12 +67,14 @@
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPcDiscountYes">YES&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPcDiscountYes"
-												   name="cus-familyPcDiscount" value="true" onclick="onlyCheck(this, name)">
+												   name="cus-familyPcDiscount" value="true"
+												   onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPcDiscountNo">NO&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPcDiscountNo"
-												   name="cus-familyPcDiscount" value="false" onclick="onlyCheck(this, name)">
+												   name="cus-familyPcDiscount" value="false"
+												   onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
@@ -66,12 +84,14 @@
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPsInfoDualYes">YES&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPsInfoDualYes"
-												   name="cus-familyPsInfoDual" value="true" onclick="onlyCheck(this, name)">
+												   name="cus-familyPsInfoDual" value="true"
+												   onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPsInfoDualNo">NO&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPsInfoDualNo"
-												   name="cus-familyPsInfoDual" value="false" onclick="onlyCheck(this, name)">
+												   name="cus-familyPsInfoDual" value="false"
+												   onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
@@ -81,12 +101,14 @@
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPsInfoHosYes">YES&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPsInfoHosYes"
-												   name="cus-familyPsInfoHos" value="true" onclick="onlyCheck(this, name)">
+												   name="cus-familyPsInfoHos" value="true"
+												   onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPsInfoHosNo">NO&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPsInfoHosNo"
-												   name="cus-familyPsInfoHos" value="false" onclick="onlyCheck(this, name)">
+												   name="cus-familyPsInfoHos" value="false"
+												   onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
@@ -100,23 +122,54 @@
 								<tbody>
 								<tr>
 									<th>1차 예약일</th>
-									<td id="cus-reservationFirstWishDate" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-reservationFirstWishDate" placeholder="" style="width: 100px ;border:none;text-align: center">
+										<script>
+											$(function () {
+												$("#cus-reservationFirstWishDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+													monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+									</td>
 									<td style="width: 60px">
 										<div
-											class="btn-save-square"
-											style="padding: 0; width: inherit; font-size: 13px"
-											onclick="setIpDate(1)"> 확정
+												class="btn-save-square"
+												style="padding: 0; width: inherit; font-size: 13px"
+												onclick="setIpDate(1)"> 확정
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<th>2차 예약일</th>
-									<td id="cus-reservationSecondWishDate" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-reservationSecondWishDate" placeholder="" style="width: 100px ;border:none;text-align: center">
+										<script>
+											$(function () {
+												$("#cus-reservationSecondWishDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+													monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+									</td>
+									</td>
 									<td style="width: 60px">
 										<div
-											class="btn-save-square"
-											style="padding: 0; width: inherit; font-size: 13px"
-											onclick="setIpDate(2)"> 확정
+												class="btn-save-square"
+												style="padding: 0; width: inherit; font-size: 13px"
+												onclick="setIpDate(2)"> 확정
 										</div>
 									</td>
 								</tr>
@@ -142,16 +195,14 @@
 									<th>패키지</th>
 									<td id="cus-packageName"></td>
 								</tr>
-								<tr>
-									<th>선택검사</th>
-									<td id="cus-piiClassList"></td>
-								</tr>
-								<tr>
-									<th>추가검사</th>
-									<td id="cus-piiList"></td>
-								</tr>
 								</tbody>
 							</table>
+
+							<table class="table" id="info6">
+								<tbody>
+								</tbody>
+							</table>
+
 							<table class="table" id="info4">
 								<tbody>
 								<tr>
@@ -203,30 +254,32 @@
 	function setDetailCustomerData(data) {
 		console.log(data);
 
+		$("#info6").empty();
+
 		//info1 고객세부정보
 		document.getElementById('cus-companyName').innerHTML = data.companyName;
 		document.getElementById('cus-companyBranch').innerHTML = data.companyBranch;
 		document.getElementById('cus-familyName').innerHTML = data.familyName;
-		document.getElementById('cus-familyBirthDate').innerHTML = data.familyBirthDate;
+		document.getElementById('cus-familyBirthDate').value = data.familyBirthDate;
 		document.getElementById('cus-familyPhone').innerHTML = data.familyPhone;
 		document.getElementById('cus-familyAddress').innerHTML = data.familyAddress;
 		document.getElementById('cus-familyEmail').innerHTML = data.familyEmail;
 
-		if(data.familyPcDiscount) {
+		if (data.familyPcDiscount) {
 			$("input:checkbox[id='familyPcDiscountYes']").prop("checked", true);
 			$("input:checkbox[id='familyPcDiscountNo']").prop("checked", false);
 		} else {
 			$("input:checkbox[id='familyPcDiscountYes']").prop("checked", false);
 			$("input:checkbox[id='familyPcDiscountNo']").prop("checked", true);
 		}
-		if(data.familyPsInfoDual) {
+		if (data.familyPsInfoDual) {
 			$("input:checkbox[id='familyPsInfoDualYes']").prop("checked", true);
 			$("input:checkbox[id='familyPsInfoDualNo']").prop("checked", false);
 		} else {
 			$("input:checkbox[id='familyPsInfoDualYes']").prop("checked", false);
 			$("input:checkbox[id='familyPsInfoDualNo']").prop("checked", true);
 		}
-		if(data.familyPsInfoHos) {
+		if (data.familyPsInfoHos) {
 			$("input:checkbox[id='familyPsInfoHosYes']").prop("checked", true);
 			$("input:checkbox[id='familyPsInfoHosNo']").prop("checked", false);
 		} else {
@@ -236,19 +289,27 @@
 
 		//info2 예약일
 		document.getElementById('cus-packageReservation').innerHTML
-			= "예약기간 : " + data.packageReservationStartDate + " ~ " + data.packageReservationEndDate;
+				= "예약기간 : " + data.packageReservationStartDate + " ~ " + data.packageReservationEndDate;
 		document.getElementById('cus-packageInspection').innerHTML
-			= "검진기간 : " + data.packageInspectionStartDate + " ~ " + data.packageInspectionEndDate;
-		document.getElementById('cus-reservationFirstWishDate').innerHTML = data.reservationFirstWishDate;
-		document.getElementById('cus-reservationSecondWishDate').innerHTML = data.reservationSecondWishDate;
+				= "검진기간 : " + data.packageInspectionStartDate + " ~ " + data.packageInspectionEndDate;
+		document.getElementById('cus-reservationFirstWishDate').value = data.reservationFirstWishDate;
+		document.getElementById('cus-reservationSecondWishDate').value = data.reservationSecondWishDate;
 		document.getElementById('cus-ipDate').innerHTML = data.ipDate;
 
 		//info3 패키지 및 병원
 		document.getElementById('cus-packageServiceName').innerHTML = data.packageServiceName;
 		document.getElementById('cus-packageHospitalName').innerHTML = data.packageHospitalName;
 		document.getElementById('cus-packageName').innerHTML = data.packageName;
-		document.getElementById('cus-piiClassList').innerHTML = data.piiClassList;
-		document.getElementById('cus-piiList').innerHTML = data.piiList;
+
+		//info6 선택한 패키지 검사 항목
+		for (i = 0; i < data.piiList.length; i++) {
+			var html = "";
+			html += '<tr>';
+			html += '<th>' + data.piiList[i].ipClass + '</th>';
+			html += '<td>' + data.piiList[i].ipName + '</td>';
+			html += '</tr>'
+			$("#info6").append(html);
+		}
 
 		//info4 금액정보
 		document.getElementById('cus-packagePrice').innerHTML = data.packagePrice.toLocaleString();
@@ -262,9 +323,9 @@
 	//예약확정일
 	function setIpDate(num) {
 		if (num == 1) {
-			document.getElementById('cus-ipDate').innerHTML = document.getElementById('cus-reservationFirstWishDate').innerHTML;
+			document.getElementById('cus-ipDate').innerHTML = document.getElementById('cus-reservationFirstWishDate').value;
 		} else if (num == 2) {
-			document.getElementById('cus-ipDate').innerHTML = document.getElementById('cus-reservationSecondWishDate').innerHTML;
+			document.getElementById('cus-ipDate').innerHTML = document.getElementById('cus-reservationSecondWishDate').value;
 		}
 	}
 
@@ -274,7 +335,7 @@
 
 		saveItems.reservationId = rsvId.reservationId;
 		saveItems.familyName = document.getElementById('cus-familyName').innerText;
-		saveItems.familyBirthDate = document.getElementById('cus-familyBirthDate').innerText;
+		saveItems.familyBirthDate = document.getElementById('cus-familyBirthDate').value;
 		saveItems.familyPhone = document.getElementById('cus-familyPhone').innerText;
 		saveItems.familyAddress = document.getElementById('cus-familyAddress').innerText;
 		saveItems.familyEmail = document.getElementById('cus-familyEmail').innerText;
@@ -283,22 +344,43 @@
 		saveItems.familyPsInfoDual = booleanData("cus-familyPsInfoDual");
 		saveItems.familyPsInfoHos = booleanData("cus-familyPsInfoHos");
 
-		saveItems.reservationFirstWishDate = document.getElementById('cus-reservationFirstWishDate').innerText;
-		saveItems.reservationSecondWishDate = document.getElementById('cus-reservationSecondWishDate').innerText;
+		saveItems.reservationFirstWishDate = document.getElementById('cus-reservationFirstWishDate').value;
+		saveItems.reservationSecondWishDate = document.getElementById('cus-reservationSecondWishDate').value;
 		saveItems.ipDate = document.getElementById('cus-ipDate').innerText;
 		saveItems.companySupportPrice = savePrice('cus-companySupportPrice');
 		saveItems.memo = document.getElementById('cus-memo').innerText;
 
 		console.log(saveItems);
 
-		if (confirm("저장하시겠습니까?") == true){
-			instance.post('M003004_REQ_RES', saveItems).then(res => {
-				console.log(res.data.message);
-				alert("저장되었습니다.");
-				clickDetail(saveItems.reservationId);
-			});
-		}else{
-			return false;
+		//입력된 정보 검사
+		if (saveItems.familyName == "") {
+			alert("성명을 입력해주세요.");
+		} else if (saveItems.familyBirthDate == "") {
+			alert("생년월일을 입력해주세요.");
+		} else if (saveItems.familyPhone == "") {
+			alert("연락처를 입력해주세요.");
+		} else if (saveItems.familyAddress == "") {
+			alert("주소를 입력해주세요.");
+		} else if (saveItems.familyEmail == "") {
+			alert("이메일을 입력해주세요.");
+		} else if (saveItems.reservationFirstWishDate == "") {
+			alert("1차 예약일을 입력해주세요.");
+		} else if (saveItems.reservationSecondWishDate == "") {
+			alert("2차 예약일을 입력해주세요.");
+		} else if (!isPhoneNum(saveItems.familyPhone)) {
+			alert("올바른 연락처를 입력해주세요.");
+		} else if (!isEmail(saveItems.familyEmail)) {
+			alert("올바른 이메일을 입력해주세요.");
+		} else {
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M003004_REQ_RES', saveItems).then(res => {
+					console.log(res.data.message);
+					alert("저장되었습니다.");
+					clickDetail(saveItems.reservationId);
+				});
+			} else {
+				return false;
+			}
 		}
 	}
 </script>

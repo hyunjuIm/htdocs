@@ -12,6 +12,10 @@
 		crossorigin="anonymous"></script>
 <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Array.prototype.find"></script>
 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <!--axios-->
 
 <link rel="stylesheet" type="text/css" href="/asset/css/style.css" />

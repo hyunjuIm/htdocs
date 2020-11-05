@@ -1,6 +1,7 @@
 <!-- 병원 상세 정보 Modal -->
-<div class="modal fade" id="hospitalDetailModal" tabindex="-1" aria-labelledby="hospitalDetailModalLabel" aria-hidden="true">
-	<div class="modal-dialog " style="max-width: fit-content; width: 1000px; display: table;">
+<div class="modal fade" id="hospitalDetailModal" tabindex="-1" aria-labelledby="hospitalDetailModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog " style="max-width: fit-content; width: 900px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -69,28 +70,37 @@
 							</table>
 						</div>
 						<div class="col">
-							<div style="margin-bottom: 40px;">
-								<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
-									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
+							<div class="filebox" style="margin-bottom: 85px;">
+								<div class="menu-title" style="font-size: 22px;margin-bottom: 20px">
+									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
 									첨부서식
-									<div class="btn-light-purple-square"
-										 style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
-										 onclick="">upload</div>
 								</div>
-								<div class="table" id="HosFileTable">
-									<ul class="img-circle">
-										<li><a id="hos-image" href="#">대표 이미지</a></li>
-										<li><a id="hos-license" href="#">사업자등록증</a></li>
-										<li><a id="hos-bankbook" href="#">통장사본</a></li>
-									</ul>
-								</div>
+
+								<ul class="img-circle">
+									<form id="FILE_FORM" method="post" enctype="multipart/form-data" action="">
+										<li>대표이미지</li>
+										<input type="file" id="FILE_TAG" name="FILE_TAG">
+										<input class="upload-name" value="파일선택" disabled="disabled">
+										<label for="FILE_TAG">파일선택</label>
+
+										<div class="btn-purple-square" id="hosLicenseFile" onclick="uploadFile()"
+											 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
+										</div>
+										<div class="btn-light-purple-square" onclick="downloadFile()"
+											 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
+										</div>
+									</form>
+								</ul>
+
 							</div>
 
 							<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
-								<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
+								<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
 								담당자추가
-								<div class="btn-save-square" style="padding: 2px 6px; font-size: 13px; margin-left: 10px"
-									 onclick="setHospitalManagerData()">저장</div>
+								<div class="btn-save-square"
+									 style="padding: 2px 6px; font-size: 13px; margin-left: 10px"
+									 onclick="setHospitalManagerData()">저장
+								</div>
 							</div>
 							<table class="table" id="HosManagerTable">
 								<tbody>
@@ -123,7 +133,7 @@
 									<td id="add-hos-res-position" contentEditable="true"></td>
 								</tr>
 								<tr>
-									<th>SMS수신여부</th>
+									<th>SMS수신</th>
 									<td id="add-hos-res-receiveSMS" contentEditable="true"></td>
 								</tr>
 								</tbody>
@@ -142,12 +152,12 @@
 									<thead>
 									<tr>
 										<th style="width: 15%">담당자 정보</th>
-										<th style="width: 8%">이름</th>
-										<th style="width: 8%">직함</th>
-										<th style="width: 15%">직통번호</th>
-										<th style="width: 15%">연락처</th>
-										<th style="width: 25%">이메일</th>
-										<th>SMS수신여부</th>
+										<th style="">이름</th>
+										<th style="">직함</th>
+										<th style="width: 18%">직통번호</th>
+										<th style="width: 18%">연락처</th>
+										<th style="width: 18%">이메일</th>
+										<th style="width: 11%">SMS수신</th>
 									</tr>
 									</thead>
 									<tbody>
@@ -166,7 +176,8 @@
 </div>
 
 <!-- 병원 신규 생성 Modal -->
-<div class="modal fade" id="hospitalCreateModal" tabindex="-1" aria-labelledby="hospitalCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="hospitalCreateModal" tabindex="-1" aria-labelledby="hospitalCreateModalLabel"
+	 aria-hidden="true">
 	<div class="modal-dialog " style="max-width: fit-content; width: 800px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -229,20 +240,57 @@
 						</div>
 						<div class="col">
 							<div style="margin-bottom: 40px;">
-								<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
+								<div class="menu-title" style="font-size: 22px;">
 									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
 									첨부서식
-									<div class="btn-light-purple-square"
-										 style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
-										 onclick="">upload</div>
 								</div>
-								<div class="table" id="HosFileTable">
-									<ul class="img-circle">
-										<li><a id="add-hos-image" href="#">대표이미지</a></li>
-										<li><a id="add-hos-license" href="#">사업자등록증</a></li>
-										<li><a id="add-hos-bankbook" href="#">통장사본</a></li>
-									</ul>
-								</div>
+								<ul class="img-circle">
+									<form action="/post" method="post" enctype="multipart/form-data"
+										  style="height: 33px">
+										<div class="form-group row">
+											<div class="custom-file" id="inputFile">
+												<input name="file" type="file" class="custom-file-input"
+													   id="add-hosImgFile">
+												<label for="add-hosImgFile">
+													<li>대표이미지</li>
+												</label>
+												<input type="submit" value="upload" class="btn-light-purple-square"
+													   style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
+													   onclick="">
+											</div>
+										</div>
+									</form>
+									<form action="/post" method="post" enctype="multipart/form-data"
+										  style="height: 33px">
+										<div class="form-group row">
+											<div class="custom-file" id="inputFile">
+												<input name="file" type="file" class="custom-file-input"
+													   id="add-hosLicenseFile">
+												<label for="add-hosLicenseFile">
+													<li>사업자등록증</li>
+												</label>
+												<input type="submit" value="upload" class="btn-light-purple-square"
+													   style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
+													   onclick="">
+											</div>
+										</div>
+									</form>
+									<form action="/post" method="post" enctype="multipart/form-data"
+										  style="height: 33px">
+										<div class="form-group row">
+											<div class="custom-file" id="inputFile">
+												<input name="file" type="file" class="custom-file-input"
+													   id="add-hosBankFile">
+												<label for="add-hosBankFile">
+													<li>통장사본</li>
+												</label>
+												<input type="submit" value="upload" class="btn-light-purple-square"
+													   style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
+													   onclick="">
+											</div>
+										</div>
+									</form>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -256,7 +304,8 @@
 </div>
 
 <!-- 장비현황 Modal -->
-<div class="modal fade" id="hospitalEquipmentModal" tabindex="-1" aria-labelledby="hospitalEquipmentModalLabel" aria-hidden="true">
+<div class="modal fade" id="hospitalEquipmentModal" tabindex="-1" aria-labelledby="hospitalEquipmentModalLabel"
+	 aria-hidden="true">
 	<div class="modal-dialog " style="max-width: fit-content; width: 1300px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -280,11 +329,14 @@
 						<td><input type="text" placeholder="" id="eq-name"></td>
 						<td><input type="text" placeholder="" id="eq-modelCode"></td>
 						<td><input type="text" placeholder="" id="eq-uses"></td>
-						<td><input size="1" type="text" placeholder="" id="eq-count"></td>
-						<td><input size="3" type="text" placeholder="" id="eq-introductionYear"></td>
+						<td><input size="2" type="text" placeholder="" id="eq-count"></td>
+						<td><input size="6" type="text" placeholder="" id="eq-introductionYear"></td>
 						<td><input type="text" placeholder="" id="eq-memo"></td>
-						<td><div class="btn-purple-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px"
-								 onclick="addHospitalEquipment()">추가</div></td>
+						<td>
+							<div class="btn-purple-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px"
+								 onclick="addHospitalEquipment()">추가
+							</div>
+						</td>
 					</tr>
 					</thead>
 					<tbody>
@@ -300,11 +352,14 @@
 	</div>
 </div>
 
-
+<?php
+require('file_data.php');
+?>
 
 <script>
 	//병원 정보 상세
 	var hosId = Object();
+
 	function clickHospitalDetail(data) {
 		hosId.hospitalId = data;
 		instance.post('M005003_REQ_RES', hosId).then(res => {
@@ -327,8 +382,8 @@
 		document.getElementById('hos-systemOpen').innerHTML = data.systemOpen;
 		document.getElementById('hos-services').innerHTML = data.services;
 		document.getElementById('hos-contract').innerHTML = data.contract;
-		document.getElementById('hos-image').innerHTML = data.image;
-		document.getElementById('hos-url').innerHTML = data.url;
+		// document.getElementById('hos-image').innerHTML = data.image;
+		// document.getElementById('hos-url').innerHTML = data.url;
 		document.getElementById('hos-grade').innerHTML = data.grade;
 
 		//HosManagerAddTable 담당자정보
@@ -345,7 +400,6 @@
 			html += '<td>' + data.hospitalManagerDTOList[i].email + '</td>';
 			html += '<td>' + data.hospitalManagerDTOList[i].receiveSMS + '</td>';
 			html += '</tr>';
-			console.log(html);
 			$("#HosManagerAddTable").append(html);
 		}
 
@@ -407,8 +461,10 @@
 			html += '<td contentEditable="true">' + data[i].modelCode + '</td>';
 			html += '<td contentEditable="true">' + data[i].uses + '</td>';
 			html += '<td contentEditable="true">' + data[i].count + '</td>';
-			html += '<td contentEditable="true">' + data[i].introductionYear; + '</td>';
-			html += '<td contentEditable="true">' + data[i].memo; + '</td>';
+			html += '<td contentEditable="true">' + data[i].introductionYear;
+			+'</td>';
+			html += '<td contentEditable="true">' + data[i].memo;
+			+'</td>';
 			html += '<td><div class="btn-save-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px" onclick="delHospitalEquipment(this)">삭제</div></td>'
 			html += '</tr>';
 
@@ -430,12 +486,12 @@
 		var memo = $("#eq-memo").val();
 
 		html += '<tr>';
-		html += '<td contentEditable="true">'+name+'</td>';
-		html += '<td contentEditable="true">'+modelCode+'</td>';
-		html += '<td contentEditable="true">'+uses+'</td>';
-		html += '<td contentEditable="true">'+count+'</td>';
-		html += '<td contentEditable="true">'+introductionYear+'</td>';
-		html += '<td contentEditable="true">'+memo+'</td>';
+		html += '<td contentEditable="true">' + name + '</td>';
+		html += '<td contentEditable="true">' + modelCode + '</td>';
+		html += '<td contentEditable="true">' + uses + '</td>';
+		html += '<td contentEditable="true">' + count + '</td>';
+		html += '<td contentEditable="true">' + introductionYear + '</td>';
+		html += '<td contentEditable="true">' + memo + '</td>';
 		html += '<td><div class="btn-save-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px" onclick="delHospitalEquipment(this)">삭제</div></td>'
 		html += '</tr>';
 
@@ -460,9 +516,9 @@
 		var size = document.getElementById('hospitalEquipmentInfo').rows.length;
 
 		var hosEQList = Array();
-		var hosEQListSize =0;
+		var hosEQListSize = 0;
 
-		for(var i=2; i<size; i++){
+		for (var i = 2; i < size; i++) {
 			var hosEQ = Object();
 			hosEQ.hospitalId = hosId.hospitalId;
 			hosEQ.name = hospitalEquipmentInfo.rows[i].cells.item(0).innerText;
@@ -507,9 +563,9 @@
 			instance.post('M005006_REQ', saveItems).then(res => {
 				console.log(res.data.message);
 				alert("저장되었습니다.");
-				setTimeout(function(){
+				setTimeout(function () {
 					location.reload();
-				},3000);
+				}, 3000);
 			});
 		} else {
 			return false;

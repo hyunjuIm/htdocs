@@ -190,7 +190,7 @@
 </head>
 
 <body background="../../asset/images/bg_login.png">
-<div style="height: 100%; float: right; vertical-align: middle; background: mediumpurple; padding: 0 5%">
+<div style="height: 100%; float: right; vertical-align: middle; background: mediumpurple; padding: 0 4%">
 	<div class="wrapper fadeInDown">
 		<form id="formContent"  style="padding: 50px">
 			<p style="text-align: center; color: #3529b1; font-size: 400%; font-weight: bold">MASTER</p>
@@ -221,15 +221,14 @@
 		}
 	}
 
-	function masterLogin(){
+	function masterLogin() {
 		var requestMember = new Object();
 
-		if ($("#login").val() == "")
-		{
+		if ($("#login").val() == "") {
 			alert("아이디를 입력해주세요.");
 			$("#login").focus();//포커스를 id박스로 이동.
 			return;
-		} else if($("#password").val() == "") {
+		} else if ($("#password").val() == "") {
 			alert("비밀번호를 입력해주세요.");
 			$("#password").focus();//포커스를 id박스로 이동.
 			return;
@@ -241,20 +240,23 @@
 
 		//TODO:api 로그인 데이터 확인
 		const instance = axios.create({
-			baseURL: "https://api.dualhealth.kr/permission/",
-			//baseURL: "http://192.168.219.101:8080/permission/",
+			//baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.101:8080/permission/",
 			timeout: 5000
 		});
 
 		instance.post('login', requestMember).then(res => {
-			if(res.data.message == "FAILED" || (res.data).indexOf("FAILED") > -1) {
+			if (res.data.message == "FAILED") {
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
 			} else {
-				//sessionStorage.setItem("token", res.data.data);
-				sessionStorage.setItem("token", res.data);
+				sessionStorage.setItem("token", res.data.data);
+				//sessionStorage.setItem("token", res.data);
 				location.href = "/master/index";
 			}
+		}).catch(function (error) {
+			alert("잘못된 접근입니다.")
+			console.log(error);
 		});
-
 	}
+
 </script>

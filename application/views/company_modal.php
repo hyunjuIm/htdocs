@@ -63,17 +63,73 @@
 								<tr>
 									<th>예약기간</th>
 									<td>
-										<span id="com-reservationStartDate" contentEditable="true"></span>
-										~
-										<span id="com-reservationEndDate" contentEditable="true"></span>
+										<input type="text" id="com-reservationStartDate" placeholder=""
+											   style="width:87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#com-reservationStartDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+										<span style="font-size: 13px">~</span>
+										<input type="text" id="com-reservationEndDate" placeholder=""
+											   style="width: 87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#com-reservationEndDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
 									</td>
 								</tr>
 								<tr>
 									<th>검진기간</th>
 									<td>
-										<span id="com-inspectionStartDate" contentEditable="true"></span>
-										~
-										<span id="com-inspectionEndDate" contentEditable="true"></span>
+										<input type="text" id="com-inspectionStartDate" placeholder=""
+											   style="width:87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#com-inspectionStartDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+										<span style="font-size: 13px">~</span>
+										<input type="text" id="com-inspectionEndDate" placeholder=""
+											   style="width:87px ;border:none;text-align: center;font-size: 13px">
+										<script>
+											$(function () {
+												$("#com-inspectionEndDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
 									</td>
 								</tr>
 								<tr>
@@ -109,12 +165,14 @@
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familySupportYes">YES&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familySupportYes"
-												   name="com-familySupport" value="true" onclick="onlyCheck(this, name)">
+												   name="com-familySupport" value="true"
+												   onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familySupportNo">NO&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familySupportNo"
-												   name="com-familySupport" value="false" onclick="onlyCheck(this, name)">
+												   name="com-familySupport" value="false"
+												   onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
@@ -170,15 +228,71 @@
 									<tbody>
 									<tr>
 										<th>청구방식</th>
-										<td id="com-paymentCode" contentEditable="true"></td>
+										<td id="com-paymentCode">
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="com-paymentCode1">월별&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="com-paymentCode1"
+													   name="com-paymentCode" value="월별"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="com-paymentCode2">분기&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="com-paymentCode2"
+													   name="com-paymentCode" value="분기"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<br>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="com-paymentCode3">연별&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="com-paymentCode3"
+													   name="com-paymentCode" value="연별"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="com-paymentCode4">기타&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="com-paymentCode4"
+													   name="com-paymentCode" value="기타"
+													   onclick="onlyCheck(this, name)">
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<th>지원금방식</th>
-										<td id="com-supportFundCode" contentEditable="true"></td>
+										<td id="com-supportFundCode">
+											<div class="form-check form-check-inline">
+												<label class="form-check-label"
+													   for="com-supportFundCode1">계산서&nbsp</label>
+												<input class="form-check-input" type="checkbox"
+													   id="com-supportFundCode1"
+													   name="com-supportFundCode" value="계산서"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label"
+													   for="com-supportFundCode2">법인카드&nbsp</label>
+												<input class="form-check-input" type="checkbox"
+													   id="com-supportFundCode2"
+													   name="com-supportFundCode" value="법인카드"
+													   onclick="onlyCheck(this, name)">
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<th>추가금액<br>정산방식</th>
-										<td id="com-balanceCode" contentEditable="true"></td>
+										<td id="com-balanceCode">
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="com-balanceCode1">현장결제&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="com-balanceCode1"
+													   name="com-balanceCode" value="현장결제"
+													   onclick="onlyCheck(this, name)">
+											</div>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label" for="com-balanceCode2">PG&nbsp</label>
+												<input class="form-check-input" type="checkbox" id="com-balanceCode2"
+													   name="com-balanceCode" value="PG"
+													   onclick="onlyCheck(this, name)">
+											</div>
+										</td>
 									</tr>
 									</tbody>
 								</table>
@@ -257,7 +371,18 @@
 								</tr>
 								<tr>
 									<th>시스템오픈</th>
-									<td id="add-com-systemOpen" contentEditable="true"></td>
+									<td id="add-com-systemOpen">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="systemOpenYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="systemOpenYes"
+												   name="add-com-systemOpen" value="true" onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="systemOpenNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="systemOpenNo"
+												   name="add-com-systemOpen" value="false" onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<th>듀얼(동의)</th>
@@ -265,12 +390,14 @@
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPsInfoDualYes">YES&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPsInfoDualYes"
-												   name="cus-familyPsInfoDual" value="true" onclick="onlyCheck(this, name)">
+												   name="cus-familyPsInfoDual" value="true"
+												   onclick="onlyCheck(this, name)">
 										</div>
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="familyPsInfoDualNo">NO&nbsp</label>
 											<input class="form-check-input" type="checkbox" id="familyPsInfoDualNo"
-												   name="cus-familyPsInfoDual" value="false" onclick="onlyCheck(this, name)">
+												   name="cus-familyPsInfoDual" value="false"
+												   onclick="onlyCheck(this, name)">
 										</div>
 									</td>
 								</tr>
@@ -320,14 +447,6 @@
 								</tr>
 								</tbody>
 							</table>
-							<table class="table" id="ComInfoTable2">
-								<tbody>
-								<tr style="height: 200px">
-									<th>관리자메모</th>
-									<td id="add-com-memo" contentEditable="true"></td>
-								</tr>
-								</tbody>
-							</table>
 						</div>
 						<div class="col">
 							<div style="margin-bottom: 50px;">
@@ -351,6 +470,14 @@
 									</tr>
 									</tbody>
 								</table>
+								<table class="table" id="ComInfoTable2">
+									<tbody>
+									<tr style="height: 200px">
+										<th>관리자메모</th>
+										<td id="add-com-memo" contentEditable="true"></td>
+									</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -365,10 +492,6 @@
 
 
 <script>
-
-	/*
-	기업
-	 */
 	//기업 정보 상세
 	var cmnId = Object();
 
@@ -387,7 +510,7 @@
 		document.getElementById('com-companyName').innerHTML = data.companyName;
 		document.getElementById('com-companyBranch').innerHTML = data.companyBranch;
 
-		if(data.systemOpen) {
+		if (data.systemOpen) {
 			$("input:checkbox[id='systemOpenYes']").prop("checked", true);
 			$("input:checkbox[id='systemOpenNo']").prop("checked", false);
 		} else {
@@ -397,7 +520,7 @@
 
 		document.getElementById('com-serviceName').innerHTML = regExp(data.serviceName);
 
-		if(data.contract) {
+		if (data.contract) {
 			$("input:checkbox[id='contractYes']").prop("checked", true);
 			$("input:checkbox[id='contractNo']").prop("checked", false);
 		} else {
@@ -405,10 +528,10 @@
 			$("input:checkbox[id='contractNo']").prop("checked", true);
 		}
 
-		document.getElementById('com-reservationStartDate').innerHTML = data.reservationStartDate;
-		document.getElementById('com-reservationEndDate').innerHTML = data.reservationEndDate;
-		document.getElementById('com-inspectionStartDate').innerHTML = data.inspectionStartDate;
-		document.getElementById('com-inspectionEndDate').innerHTML = data.inspectionEndDate;
+		document.getElementById('com-reservationStartDate').value = data.reservationStartDate;
+		document.getElementById('com-reservationEndDate').value = data.reservationEndDate;
+		document.getElementById('com-inspectionStartDate').value = data.inspectionStartDate;
+		document.getElementById('com-inspectionEndDate').value = data.inspectionEndDate;
 		document.getElementById('com-rebatePrice').innerHTML = data.rebatePrice.toLocaleString();
 
 		var packagePrice = Array();
@@ -423,7 +546,7 @@
 		}
 		document.getElementById('com-supportPriceList').innerHTML = supportPrice.join(" / ");
 
-		if(data.pcDiscount) {
+		if (data.pcDiscount) {
 			$("input:checkbox[id='pcDiscountYes']").prop("checked", true);
 			$("input:checkbox[id='pcDiscountNo']").prop("checked", false);
 		} else {
@@ -431,7 +554,7 @@
 			$("input:checkbox[id='pcDiscountNo']").prop("checked", true);
 		}
 
-		if(data.familySupport) {
+		if (data.familySupport) {
 			$("input:checkbox[id='familySupportYes']").prop("checked", true);
 			$("input:checkbox[id='familySupportNo']").prop("checked", false);
 		} else {
@@ -443,9 +566,30 @@
 		document.getElementById('com-memo').innerHTML = data.memo;
 
 		//ComClaimTable 청구정보
-		document.getElementById('com-paymentCode').innerHTML = data.paymentCode;
-		document.getElementById('com-supportFundCode').innerHTML = data.supportFundCode;
-		document.getElementById('com-balanceCode').innerHTML = data.balanceCode;
+		var chk = document.getElementsByName('com-paymentCode');
+		for (var i = 0; i < chk.length; i++) {
+			if (chk[i].value == data.paymentCode) {
+				chk[i].checked = true;
+			} else {
+				chk[i].checked = false;
+			}
+		}
+		var chk = document.getElementsByName('com-supportFundCode');
+		for (var i = 0; i < chk.length; i++) {
+			if (chk[i].value == data.supportFundCode) {
+				chk[i].checked = true;
+			} else {
+				chk[i].checked = false;
+			}
+		}
+		var chk = document.getElementsByName('com-balanceCode');
+		for (var i = 0; i < chk.length; i++) {
+			if (chk[i].value == data.balanceCode) {
+				chk[i].checked = true;
+			} else {
+				chk[i].checked = false;
+			}
+		}
 
 		//ComFamilyTable 가족미지원
 		var fpackagePrice = Array();
@@ -458,6 +602,12 @@
 			fsupportPrice[i] = parseInt(data.fsupportPriceList[i]).toLocaleString();
 		}
 		document.getElementById('com-fsupportPriceList').innerHTML = fsupportPrice.join(" / ");
+
+		//담당자 추가 입력폼 초기화
+		document.getElementById('com-email').innerHTML = "";
+		document.getElementById('com-password').innerHTML = "";
+		document.getElementById('com-name').innerHTML = "";
+		document.getElementById('com-phone').innerHTML = "";
 
 		//ComManagerTable 담당자정보
 		$("#ComManagerTable").empty();
@@ -492,20 +642,86 @@
 
 		console.log(saveItems);
 
-		if (confirm("저장하시겠습니까?") == true) {
-			instance.post('M004004_REQ', saveItems).then(res => {
-				console.log(res.data.message);
-				if (res.data.message == "success") {
+		//입력된 정보 검사
+		if (saveItems.email == "") {
+			alert("이메일을 입력해주세요.");
+		} else if (saveItems.password == "") {
+			alert("비밀번호을 입력해주세요.");
+		} else if (saveItems.name == "") {
+			alert("이름을 입력해주세요.");
+		} else if (saveItems.phone == "") {
+			alert("연락처를 입력해주세요.");
+		} else if (!isPhoneNum(saveItems.phone)) {
+			alert("올바른 연락처를 입력해주세요.");
+		} else if (!isEmail(saveItems.email)) {
+			alert("올바른 이메일을 입력해주세요.");
+		} else {
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M004004_REQ', saveItems).then(res => {
+					console.log(res.data.message);
+					if (res.data.message == "success") {
+						alert("저장되었습니다.");
+						clickCompanyDetail(saveItems.companyId);
+						document.getElementById('com-email').innerHTML = "";
+						document.getElementById('com-password').innerHTML = "";
+						document.getElementById('com-name').innerHTML = "";
+						document.getElementById('com-phone').innerHTML = "";
+					}
+				});
+			} else {
+				return false;
+			}
+		}
+	}
+
+	//수정된 정보로 저장
+	function saveCompanyInformation() {
+		var saveItems = new Object();
+
+		saveItems.companyId = cmnId.companyId;
+		saveItems.companyName = document.getElementById('com-companyName').innerText;
+		saveItems.companyBranch = document.getElementById('com-companyBranch').innerText;
+		saveItems.systemOpen = booleanData("com-systemOpen");
+		saveItems.contract = booleanData("com-contract");
+		saveItems.reservationStartDate = document.getElementById('com-reservationStartDate').value;
+		saveItems.reservationEndDate = document.getElementById('com-reservationEndDate').value;
+		saveItems.inspectionStartDate = document.getElementById('com-inspectionStartDate').value;
+		saveItems.inspectionEndDate = document.getElementById('com-inspectionEndDate').value;
+		saveItems.rebatePrice = savePrice('com-rebatePrice');
+		saveItems.pcDiscount = booleanData("com-pcDiscount");
+		saveItems.familySupport = booleanData("com-familySupport");
+		saveItems.memo = document.getElementById('com-memo').innerText;
+		saveItems.paymentCode = booleanData('com-paymentCode');
+		saveItems.supportFundCode = booleanData('com-supportFundCode');
+		saveItems.balanceCode = booleanData('com-balanceCode');
+
+		console.log(saveItems);
+
+		//입력된 정보 검사
+		if (saveItems.companyName == "") {
+			alert("기업명을 입력해주세요.");
+		} else if (saveItems.companyBranch == "") {
+			alert("사업장을 입력해주세요.");
+		} else if (saveItems.reservationStartDate == "" || saveItems.reservationEndDate == "") {
+			alert("예약기간을 선택해주세요.");
+		} else if (saveItems.inspectionStartDate == "" || saveItems.inspectionEndDate == "") {
+			alert("검진기간을 선택해주세요.");
+		} else if (saveItems.paymentCode == null || saveItems.paymentCode == "") {
+			alert("청구방식을 선택해주세요.");
+		} else if (saveItems.supportFundCode == null ||  saveItems.supportFundCode == "") {
+			alert("지원금방식을 선택해주세요.");
+		} else if (saveItems.balanceCode == null || saveItems.balanceCode == "") {
+			alert("추가금액 정산방식을 선택해주세요.");
+		} else {
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M004005_REQ', saveItems).then(res => {
+					console.log(res.data.message);
 					alert("저장되었습니다.");
 					clickCompanyDetail(saveItems.companyId);
-					document.getElementById('com-email').innerHTML = "";
-					document.getElementById('com-password').innerHTML = "";
-					document.getElementById('com-name').innerHTML = "";
-					document.getElementById('com-phone').innerHTML = "";
-				}
-			});
-		} else {
-			return false;
+				});
+			} else {
+				return false;
+			}
 		}
 	}
 
@@ -532,50 +748,32 @@
 		saveItems.inspectionStartDate = document.getElementById('add-com-inspectionStartDate').innerText;
 		saveItems.inspectionEndDate = document.getElementById('add-com-inspectionEndDate').innerText;
 
-
 		console.log(saveItems);
 
-		if (confirm("저장하시겠습니까?") == true) {
-			instance.post('M004006_REQ', saveItems).then(res => {
-				console.log(res.data.message);
-				alert("저장되었습니다.");
-			});
+		//입력된 정보 검사
+		if (saveItems.name == "") {
+			alert("성명을 입력해주세요.");
+		} else if (saveItems.familyBirthDate == "") {
+			alert("생년월일을 입력해주세요.");
+		} else if (saveItems.familyPhone == "") {
+			alert("연락처를 입력해주세요.");
+		} else if (saveItems.familyAddress == "") {
+			alert("주소를 입력해주세요.");
+		} else if (saveItems.familyEmail == "") {
+			alert("이메일을 입력해주세요.");
+		} else if (saveItems.reservationFirstWishDate == "") {
+			alert("1차 예약일을 입력해주세요.");
+		} else if (saveItems.reservationSecondWishDate == "") {
+			alert("2차 예약일을 입력해주세요.");
 		} else {
-			return false;
-		}
-	}
-
-	//수정된 정보로 저장
-	function saveCompanyInformation() {
-		var saveItems = new Object();
-
-		saveItems.companyId = cmnId.companyId;
-		saveItems.companyName = document.getElementById('com-companyName').innerText;
-		saveItems.companyBranch = document.getElementById('com-companyBranch').innerText;
-		saveItems.systemOpen = booleanData("com-systemOpen");
-		saveItems.contract = booleanData("com-contract");
-		saveItems.reservationStartDate = document.getElementById('com-reservationStartDate').innerText;
-		saveItems.reservationEndDate = document.getElementById('com-reservationEndDate').innerText;
-		saveItems.inspectionStartDate = document.getElementById('com-inspectionStartDate').innerText;
-		saveItems.inspectionEndDate = document.getElementById('com-inspectionEndDate').innerText;
-		saveItems.rebatePrice = savePrice('com-rebatePrice');
-		saveItems.pcDiscount = booleanData("com-pcDiscount");
-		saveItems.familySupport = booleanData("com-familySupport");
-		saveItems.memo = document.getElementById('com-memo').innerText;
-		saveItems.paymentCode = document.getElementById('com-paymentCode').innerText;
-		saveItems.supportFundCode = document.getElementById('com-supportFundCode').innerText;
-		saveItems.balanceCode = document.getElementById('com-balanceCode').innerText;
-
-		console.log(saveItems);
-
-		if (confirm("저장하시겠습니까?") == true) {
-			instance.post('M004005_REQ', saveItems).then(res => {
-				console.log(res.data.message);
-				alert("저장되었습니다.");
-				clickCompanyDetail(saveItems.companyId);
-			});
-		} else {
-			return false;
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M004006_REQ', saveItems).then(res => {
+					console.log(res.data.message);
+					alert("저장되었습니다.");
+				});
+			} else {
+				return false;
+			}
 		}
 	}
 
