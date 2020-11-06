@@ -93,7 +93,7 @@
 				 onclick="saveNoticeUpdate()">
 				저장
 			</div>
-			<div class="btn-cancel-square" style="font-size: 18px; padding: 7px 40px;" onclick="cancelNoticeUpdate()">
+			<div class="btn-cancel-square" style="font-size: 18px; padding: 7px 40px;" onclick="cancelBack()">
 				취소
 			</div>
 		</div>
@@ -108,11 +108,6 @@ require('check_data.php');
 ?>
 
 </html>
-
-<!--체크박스 검사-->
-<?php
-require('check_data.php');
-?>
 
 <script>
 	//nID 값 받기
@@ -306,10 +301,5 @@ require('check_data.php');
 				return false;
 			}
 		}
-	}
-
-	//취소 - 되돌아가기
-	function cancelNoticeUpdate() {
-		history.back();
 	}
 </script>

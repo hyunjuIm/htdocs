@@ -240,15 +240,15 @@
 
 		//TODO:api 로그인 데이터 확인
 		const instance = axios.create({
-			baseURL: "https://api.dualhealth.kr/permission/",
-			//baseURL: "http://192.168.219.101:8080/permission/",
+			//baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.101:8080/permission/",
 			timeout: 5000
 		});
 
 		instance.post('login', requestMember).then(res => {
 			if (res.data.message == "FAILED") {
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-			} else {
+			} else if(res.data.message == "SUCCESS") {
 				sessionStorage.setItem("token", res.data.data);
 				location.href = "/master/index";
 				console.log(res.data);

@@ -72,7 +72,7 @@
 	<div class="row">
 	<form style="margin: 0 auto; width: 70%">
 		<div style="float:right">
-			<div class="btn-cancel-square" onclick="cancelNoticeDetail()">목록</div>
+			<div class="btn-cancel-square" onclick="cancelBack()">목록</div>
 			<div class="btn-purple-square" onclick="sendNoticeID()"> 수정 </div>
 			<div class="btn-light-purple-square" onclick="deleteNotice()"> 삭제 </div>
 		</div>
@@ -87,11 +87,6 @@ require('check_data.php');
 ?>
 
 </html>
-
-<!--체크박스 검사-->
-<?php
-require('check_data.php');
-?>
 
 <script>
 	//nID 값 받기
@@ -121,11 +116,6 @@ require('check_data.php');
 	//공지 수정에 값 던지기
 	function sendNoticeID() {
 		location.href = "service_notice_update?id=" + nId.id;
-	}
-
-	//취소 - 되돌아가기
-	function cancelNoticeDetail() {
-		history.back();
 	}
 
 	function deleteNotice() {

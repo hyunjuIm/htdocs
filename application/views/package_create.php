@@ -133,9 +133,9 @@
 			<table id="packageCreateInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th style="width: 3%"><input type="checkbox" id="packageCheck" name="packageCheck"
+					<th style="width: 4%"><input type="checkbox" id="packageCheck" name="packageCheck"
 												 onclick="clickAll(id, name)"></th>
-					<th style="width: 3%">NO</th>
+					<th style="width: 5%">NO</th>
 					<th style="width: 5%">사용</th>
 					<th style="width: 10%">병원명</th>
 					<th style="width: 10%">고객사명</th>
@@ -178,6 +178,8 @@ require('check_data.php');
 	instance.post('M007007_RES').then(res => {
 		setPackageCreateSelectData(res.data);
 	});
+
+	searchPackageCreateInformation();
 
 	//검색
 	function searchPackageCreateInformation() {
@@ -291,9 +293,9 @@ require('check_data.php');
 		for (i = 0; i < data.ijSet.length; i++) {
 			var html = '';
 			if(data.ijSet[i] == "true") {
-				html += '<option value="true">Y</option>'
+				html += '<option value="true">설정완료</option>'
 			} else {
-				html += '<option value="false">N</option>'
+				html += '<option value="false">미완료</option>'
 			}
 			$("#ijSet").append(html);
 		}
@@ -301,9 +303,9 @@ require('check_data.php');
 		for (i = 0; i < data.status.length; i++) {
 			var html = '';
 			if(data.status[i] == "true") {
-				html += '<option value="true">Y</option>'
+				html += '<option value="true">승인</option>'
 			} else {
-				html += '<option value="false">N</option>'
+				html += '<option value="false">미승인</option>'
 			}
 			$("#status").append(html);
 		}
@@ -343,12 +345,12 @@ require('check_data.php');
 			}
 			html += '<td style="width: 15%">' + data[i].reservationStartDate + "~" + data[i].reservationEndDate + '</td>';
 			if (data[i].ijSet) {
-				html += '<td>Y</td>';
+				html += '<td>설정완료</td>';
 			} else {
-				html += '<td>N</td>';
+				html += '<td>미완료</td>';
 			}
-			html += '<td><div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">' +
-					'<a style="color: white" onclick="sendPackageID(\'' + data[i].pkgId + '\')">설정</a></div></td>';
+			html += '<td><a style="color: white" onclick="sendPackageID(\'' + data[i].pkgId + '\')">' +
+					'<div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">설정</div></a></td>';
 			html += '</tr>';
 
 			$("#packageCreateInfos").append(html);

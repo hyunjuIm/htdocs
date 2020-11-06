@@ -151,6 +151,8 @@ require('check_data.php');
 		setCompanySelectData(res.data);
 	});
 
+	searchInformation();
+
 	//검색
 	function searchInformation() {
 		var searchItems = new Object();
@@ -203,9 +205,9 @@ require('check_data.php');
 		for (i = 0; i < data.status.length; i++) {
 			var html = '';
 			if(data.status[i] == "true") {
-				html += '<option value="true">Y</option>'
+				html += '<option value="true">진행중</option>'
 			} else {
-				html += '<option value="false">N</option>'
+				html += '<option value="false">종료</option>'
 			}
 			$("#status").append(html);
 		}

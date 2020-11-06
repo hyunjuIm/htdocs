@@ -170,6 +170,8 @@ require('check_data.php');
 		setPackageSelectData(res.data);
 	});
 
+	searchInformation();
+
 	//검색
 	function searchInformation() {
 		var searchItems = new Object();
@@ -269,13 +271,12 @@ require('check_data.php');
 			$("#hoName").append(html);
 		}
 		//진행상태
-		//TODO: 진행상태 값 뭐라고 넣을지
 		for (i = 0; i < data.status.length; i++) {
 			var html = '';
 			if(data.status[i] == "true") {
-				html += '<option value="true">Y</option>'
+				html += '<option value="true">진행중</option>'
 			} else {
-				html += '<option value="false">N</option>'
+				html += '<option value="false">종료</option>'
 			}
 			$("#status").append(html);
 		}

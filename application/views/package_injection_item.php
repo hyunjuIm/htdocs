@@ -31,25 +31,25 @@
 				</div>
 
 				<ul class="nav nav-tabs package-tabs">
-					<li class="nav-item" id="allPackageTab" onclick="clickTab(id)">
+					<li class="nav-item" id="allPackageTab" >
 						<a class="nav-link active" data-toggle="tab" href="#" onclick="clickPackageTab(0)">전체</a>
 					</li>
-					<li class="nav-item" id="basePackageTab" onclick="clickTab(id)">
+					<li class="nav-item" id="basePackageTab" >
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(1)">기본</a>
 					</li>
-					<li class="nav-item" id="addPackageTab" onclick="clickTab(id)">
+					<li class="nav-item" id="addPackageTab" >
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(2)">추가</a>
 					</li>
-					<li class="nav-item menu-title" id="selectPackageA" style="display: none" onclick="clickTab(id)">
+					<li class="nav-item menu-title" id="selectPackageA" style="display: none" >
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(3)">선택A</a>
 					</li>
-					<li class="nav-item" id="selectPackageB" style="display: none" onclick="clickTab(id)">
+					<li class="nav-item" id="selectPackageB" style="display: none" >
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(4)">선택B</a>
 					</li>
-					<li class="nav-item" id="selectPackageC" style="display: none" onclick="clickTab(id)">
+					<li class="nav-item" id="selectPackageC" style="display: none" >
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(5)">선택C</a>
 					</li>
-					<li class="nav-item" id="selectPackageD" style="display: none" onclick="clickTab(id)">
+					<li class="nav-item" id="selectPackageD" style="display: none" >
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(6)">선택D</a>
 					</li>
 					<li class="nav-item" id="addTab">
@@ -111,8 +111,9 @@
 					<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
 					검사항목
 				</div>
-				<div class="search" style="float: right;width: 250px">
-					<input type="text" id="searchInjectionWord" class="search-input" placeholder="검사명으로 검색하세요">
+				<div class="search" style="float: right;width: 250px;padding: 2px">
+					<input type="text" id="searchInjectionWord" class="search-input"
+						   placeholder="검사명으로 검색하세요" onkeyup="injectionEnterKey()">
 					<div class="search-icon" onclick="searchInjection()"></div>
 				</div>
 
@@ -160,7 +161,7 @@
 				 onclick="savePackageItems()">
 				저장
 			</div>
-			<div class="btn-cancel-square" style="font-size: 18px; padding: 7px 40px;" onclick="cancelPackageItems()">
+			<div class="btn-cancel-square" style="font-size: 18px; padding: 7px 40px;" onclick="cancelBack()">
 				취소
 			</div>
 		</div>
@@ -279,6 +280,13 @@ require('check_data.php');
 		}
 	}
 
+	function injectionEnterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchInjection();
+		}
+	}
+
 	//검사항목 검색
 	function searchInjection() {
 		$('#injectionTable > tbody').empty();
@@ -290,11 +298,6 @@ require('check_data.php');
 		instance.post('M008001_RES', search).then(res => {
 			setInjectionData(res.data, search.searchWord);
 		});
-	}
-
-	//선택한 탭 확인 (해당 탭 클릭)
-	function clickTab(id) {
-		//console.log(id);
 	}
 
 	//pkgID 값 받기
@@ -640,10 +643,5 @@ require('check_data.php');
 				return false;
 			}
 		}
-	}
-
-	//패키지구성 취소 - 되돌아가기
-	function cancelPackageItems() {
-		history.back();
 	}
 </script>

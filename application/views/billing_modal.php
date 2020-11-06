@@ -1,5 +1,6 @@
 <!-- 청구 신규 등록 Modal -->
-<div class="modal fade" id="billingCreateModal" tabindex="-1" aria-labelledby="billingCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="billingCreateModal" tabindex="-1" aria-labelledby="billingCreateModalLabel"
+	 aria-hidden="true">
 	<div class="modal-dialog " style="max-width: fit-content; width: 500px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -20,7 +21,8 @@
 								<tr>
 									<th>고객사명</th>
 									<td colspan="2">
-										<select id="billingCompanyName" class="form-control" onchange="setBillingModalCompanySelectOption(this, 'billingCompanyBranch')">
+										<select id="billingCompanyName" class="form-control"
+												onchange="setBillingModalCompanySelectOption(this, 'billingCompanyBranch')">
 											<option>-선택-</option>
 										</select>
 									</td>
@@ -37,24 +39,93 @@
 									<th>청구월</th>
 									<td colspan="2">
 										<select id="billingMonth" class="form-control">
-											<option>-선택-</option>
+											<option value="2020-01-01">1월</option>
+											<option value="2020-02-01">2월</option>
+											<option value="2020-03-01">3월</option>
+											<option value="2020-04-01">4월</option>
+											<option value="2020-05-01">5월</option>
+											<option value="2020-06-01">6월</option>
+											<option value="2020-07-01">7월</option>
+											<option value="2020-08-01">8월</option>
+											<option value="2020-09-01">9월</option>
+											<option value="2020-10-01">10월</option>
+											<option value="2020-11-01">11월</option>
+											<option value="2020-12-01">12월</option>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<th>기준일</th>
-									<td colspan="2" id="billingStandard" contentEditable="true">
-
+									<td colspan="2" id="billingStandard">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="billingStandard1">수검일&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="billingStandard1"
+												   name="billingStandard" value="true"
+												   onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="billingStandard2">결과등록일&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="billingStandard2"
+												   name="billingStandard" value="false"
+												   onclick="onlyCheck(this, name)">
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<th>기준날짜</th>
-									<td id="billingCalculationStartDate" contentEditable="true"></td>
-									<td id="billingCalculationEndDate" contentEditable="true"></td>
+									<td>
+										<input type="text" id="billingCalculationStartDate" placeholder=""
+											   style="border:none;text-align: center;width: 110px">
+										<script>
+											$(function () {
+												$("#billingCalculationStartDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+										~
+										<input type="text" id="billingCalculationEndDate" placeholder=""
+											   style="border:none;text-align: center;width: 110px">
+										<script>
+											$(function () {
+												$("#billingCalculationEndDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+									</td>
 								</tr>
 								<tr>
 									<th>계산서날짜</th>
-									<td colspan="2" id="billingCalculationDate" contentEditable="true"></td>
+									<td>
+										<input type="text" id="billingCalculationDate" placeholder=""
+											   style="border:none;text-align: center">
+										<script>
+											$(function () {
+												$("#billingCalculationDate").datepicker({
+													changeMonth: true,
+													changeYear: true,
+													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+													dateFormat: "yy-mm-dd",
+												});
+											});
+										</script>
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -70,7 +141,8 @@
 </div>
 
 <!-- 청구 상세 Modal -->
-<div class="modal fade" id="billingDetailModal" tabindex="-1" aria-labelledby="billingDetailModalLabel" aria-hidden="true">
+<div class="modal fade" id="billingDetailModal" tabindex="-1" aria-labelledby="billingDetailModalLabel"
+	 aria-hidden="true">
 	<div class="modal-dialog " style="max-width: fit-content; width: 1500px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -87,7 +159,7 @@
 					<table id="billDetailModalInfos" class="table table-hover" style="margin-top: 30px">
 						<thead>
 						<tr>
-							<th style="width: 3%">NO</th>
+							<th style="width: 5%">NO</th>
 							<th>상태</th>
 							<th>서비스</th>
 							<th style="width: 10%">고객사</th>
@@ -120,6 +192,7 @@
 	});
 
 	var billingCompanySelect;
+
 	//검색 selector
 	function setBillingModalSelectData(data) {
 
@@ -131,18 +204,18 @@
 			var check = 0;
 
 			//회사명 - 지점있을때
-			for(var j=0; j<nameSize; j++) {
-				if(name[j] == data[i].coName) {
+			for (var j = 0; j < nameSize; j++) {
+				if (name[j] == data[i].coName) {
 					check += 1;
 				}
 			}
-			if(check < 1) {
+			if (check < 1) {
 				name[nameSize] = data[i].coName;
 				nameSize += 1;
 			}
 		}
 
-		for(i=0; i<nameSize; i++) {
+		for (i = 0; i < nameSize; i++) {
 			var html = '';
 			html += '<option value=\'' + name[i] + '\'>' + name[i] + '</option>'
 			$("#billingCompanyName").append(html);
@@ -161,7 +234,7 @@
 		removeAll(branch);
 
 		for (i = 0; i < billingCompanySelect.length; i++) {
-			if(selectCompany.value == billingCompanySelect[i].coName) {
+			if (selectCompany.value == billingCompanySelect[i].coName) {
 				var opt = document.createElement("option");
 				opt.value = billingCompanySelect[i].coId;
 				opt.innerHTML = billingCompanySelect[i].coBranch;
@@ -171,8 +244,8 @@
 	}
 
 	//옵션 삭제
-	function removeAll(e){
-		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
+	function removeAll(e) {
+		for (var i = 0, limit = e.options.length; i < limit - 1; ++i) {
 			e.remove(1);
 		}
 	}
@@ -182,33 +255,39 @@
 		var saveItems = new Object();
 
 		saveItems.coId = $("#billingCompanyBranch").val();
-		// saveItems.billingMonth = document.getElementById('billingMonth').innerText;
-		// saveItems.standard = document.getElementById('billingStandard').innerText;
-		// saveItems.calculationStartDate = document.getElementById('billingCalculationStartDate').innerText;
-		// saveItems.calculationEndDate = document.getElementById('billingCalculationEndDate').innerText;
-		// saveItems.calculationDate = document.getElementById('billingCalculationDate').innerText;
+		saveItems.billingMonth = $("#billingMonth option:selected").val();
+		saveItems.standard = booleanData('billingStandard');
+		saveItems.calculationStartDate = document.getElementById('billingCalculationStartDate').value;
+		saveItems.calculationEndDate = document.getElementById('billingCalculationEndDate').value;
+		saveItems.calculationDate = document.getElementById('billingCalculationDate').value;
 
-		saveItems.billingMonth = "2020-08-23";
-		saveItems.standard = true;
-		saveItems.calculationStartDate = "2020-11-29";
-		saveItems.calculationEndDate = "2020-12-22";
-		saveItems.calculationDate = "2020-12-31";
-
+		var chkCount = 0;
+		var obj = document.getElementsByName('billingStandard');
+		for(i=0; i<obj.length; i++){
+			if(obj[i].checked){
+				chkCount++;
+			}
+		}
 
 		if ($("#billingCompanyName").val() == "-선택-") {
 			alert("고객사를 선택해주세요.")
-		}
-		if ($("#billingCompanyBranch").val() == "-선택-") {
+		} else if ($("#billingCompanyBranch").val() == "-선택-") {
 			alert("사업장을 선택해주세요.")
-		}
-		else {
-			if (confirm("저장하시겠습니까?") == true){
+		} else if (chkCount == 0) {
+			alert("기준일을 선택해주세요.")
+		} else if (saveItems.calculationStartDate == "" || saveItems.calculationEndDate == "") {
+			alert("기준날짜를 선택해주세요.");
+		} else if (saveItems.calculationDate == "-선택-") {
+			alert("계산서날짜를 선택해주세요.")
+		} else {
+			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M009002_REQ_RES', saveItems).then(res => {
-					if(res.data.message == "success") {
+					if (res.data.message == "success") {
 						alert("저장되었습니다.");
+						location.reload();
 					}
 				});
-			}else{
+			} else {
 				return false;
 			}
 		}
@@ -234,7 +313,10 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td>' + data[i].charId + '</td>';
+
+			var no = i + 1;
+			html += '<td>' + no + '</td>';
+
 			html += '<td>' + data[i].status + '</td>';
 			html += '<td>' + data[i].serviceName + '</td>';
 			html += '<td>' + data[i].coName + '</td>';

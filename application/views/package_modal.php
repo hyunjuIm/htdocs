@@ -27,7 +27,7 @@
 							<div>
 								<div class="search" style="width: 300px">
 									<input type="text" class="search-input" id="hosNameSearch"
-										   placeholder="병원명으로 검색하세요" onkeyup="enterPackageKey();">
+										   placeholder="병원명으로 검색하세요" onkeyup="packageEnterKey();">
 									<div class="search-icon" onclick="searchPackageInformation()"></div>
 								</div>
 							</div>
@@ -262,7 +262,7 @@
 	}
 
 	//검색 - 엔터키
-	function enterPackageKey() {
+	function packageEnterKey() {
 		if (window.event.keyCode == 13) {
 			searchPackageInformation();
 		}

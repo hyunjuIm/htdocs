@@ -67,9 +67,6 @@
 					<a class="dropdown-item" href="/master/service_qan_list">고객센터</a>
 				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">환경설정</a>
-			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
@@ -114,23 +111,23 @@
 		location.href = "/master/master_login";
 	}
 
-	//로그인 안되어있으면 홈화면으로
+	//로그인 안되어있으면 로그인 화면으로
 	var token = sessionStorage.getItem("token");
 	if(token == null){
 		location.href = "/master/master_login";
 	}
 
 	const instance = axios.create({
-		baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		//baseURL: "http://192.168.219.101:8080/master/api/v1/",
+		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
+		baseURL: "http://192.168.219.101:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "https://api.dualhealth.kr/",
-		//baseURL: "http://192.168.219.101:8080/",
+		//baseURL: "https://api.dualhealth.kr/",
+		baseURL: "http://192.168.219.101:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});

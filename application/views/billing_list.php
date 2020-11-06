@@ -7,6 +7,13 @@
 	require('head.php');
 	?>
 
+	<style>
+		th, td {
+			vertical-align: middle !important;
+		}
+	</style>
+
+
 </head>
 
 <body>
@@ -87,7 +94,8 @@
 			<table id="billInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th style="width: 3%">NO</th>
+					<th style="width: 5%"><input type="checkbox" id="billingCheck" name="billingCheck" onclick="clickAll(id, name)"></th>
+					<th style="width: 5%">NO</th>
 					<th style="width: 10%">고객사명</th>
 					<th style="width: 10%">사업장명</th>
 					<th>수검인원</th>
@@ -129,6 +137,8 @@ require('check_data.php');
 	instance.post('M009003_RES').then(res => {
 		setBillSelectData(res.data);
 	});
+
+	searchBillInformation();
 
 	//검색
 	function searchBillInformation() {
@@ -219,7 +229,12 @@ require('check_data.php');
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>"';
-			html += '<td>' + data[i].bid + '</td>';
+			html += '<tr>';
+			html += '<td><input type="checkbox" name="billingCheck" onclick="clickOne(name)"></td>';
+
+			var no = i+1;
+			html += '<td>' + no + '</td>';
+
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
 			html += '<td>' + data[i].ipCount + '</td>';
@@ -229,8 +244,8 @@ require('check_data.php');
 			html += '<td>' + data[i].psnCharge + '</td>';
 			html += '<td>' + data[i].calculateDate + '</td>';
 			html += '<td>' + data[i].calculateStartDate + "~" +  data[i].calculateEndDate+'</td>';
-			html += '<td><div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">' +
-				'<a style="color: white" onclick="sendBillID(\'' + data[i].bid + '\')">상세보기</a></div></td>';
+			html += '<td> <a style="color: white" onclick="sendBillID(\'' + data[i].bid + '\')">' +
+					'<div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">상세보기</div></a></td>';
 			html += '</tr>';
 
 			$("#billInfos").append(html);

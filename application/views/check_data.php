@@ -1,4 +1,11 @@
 <script>
+	//input 엔터키 이벤트 삭제
+	$('input[type="text"]').keydown(function() {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+		};
+	});
+
 	//검색 - 엔터키
 	function enterKey() {
 		if (window.event.keyCode == 13) {
@@ -111,5 +118,10 @@
 		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
 			e.remove(1);
 		}
+	}
+
+	//뒤로가기
+	function cancelBack() {
+		history.back();
 	}
 </script>

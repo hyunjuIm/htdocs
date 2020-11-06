@@ -143,6 +143,8 @@ require('check_data.php');
 		setHospitalSelectData(res.data);
 	});
 
+	searchInformation();
+
 	//검색
 	function searchInformation() {
 		var searchItems = new Object();
@@ -224,7 +226,7 @@ require('check_data.php');
 					'data-toggle="modal" data-target="#hospitalDetailModal" ' +
 					'onClick="clickHospitalDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
 			html += '<td>' + data[i].place + '</td>';
-			html += '<td>' + data[i].services + '</td>';
+			html += '<td>' + regExp(data[i].services) + '</td>';
 			if (data[i].contract) {
 				html += '<td>Y</td>';
 			} else {

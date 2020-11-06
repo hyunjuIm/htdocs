@@ -158,12 +158,14 @@ require('reservation_modal.php');
 ?>
 
 </body>
-</html>
 
 <!--체크박스 검사-->
 <?php
 require('check_data.php');
 ?>
+
+</html>
+
 
 <script type="text/javascript">
 
@@ -171,6 +173,8 @@ require('check_data.php');
 	instance.post('M003001_RES').then(res => {
 		setReservationSelectData(res.data);
 	});
+
+	searchInformation();
 
 	//검색
 	function searchInformation() {

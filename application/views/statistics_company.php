@@ -58,11 +58,11 @@
 		<div class="col">
 			<form style="margin: 0 auto; width: 95%; padding: 0px 10px">
 				<ul class="img-circle">
-					<div class="menu-title" style="font-size: 22px">
-						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
+					<div class="menu-title" style="font-size: 22px;margin-bottom: 25px">
+						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
 						기업통계
 					</div>
-					<div class="form-row row" style="margin: 0 auto;width: 80%">
+					<div class="form-row row" style="margin: 0 auto;width: 90%">
 						<label class="col-form-label">
 							<li>고객사</li>
 						</label>
@@ -111,7 +111,7 @@
 				<tbody>
 				<tr>
 					<th colspan="3"></th>
-					<th>합계</th>
+					<th style="color: red">합계</th>
 					<th>1</th>
 					<th>2</th>
 					<th>3</th>

@@ -134,14 +134,32 @@
 			<div
 				class="btn-default-small excel" style="float: right"></div>
 			<table id="statisticsHospitalInfos" class="table table-bordered" style="margin-top: 45px">
-				<thead>
+				<tbody>
 				<tr>
+					<th></th>
+					<th style="color: red">합계</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>9</th>
+					<th>10</th>
+					<th>11</th>
+					<th>12</th>
+				</tr>
+				<tr id="rsvCount">
 					<th>예약</th>
+				</tr>
+				<tr id="ispCount">
 					<th>수진</th>
+				</tr>
+				<tr id="resultCount">
 					<th>결과</th>
 				</tr>
-				</thead>
-				<tbody>
 				</tbody>
 			</table>
 		</form>
@@ -254,6 +272,21 @@ require('check_data.php');
 
 		$('#statisticsHospitalInfos > tbody > tr > td').remove();
 
+		//합계
+		var rsvSum = 0;
+		var ispSum = 0;
+		var resultSum = 0;
+
+		for (i = 0; i < data.length; i++) {
+			rsvSum += data[i].rsvCount;
+			ispSum += data[i].ispCount;
+			resultSum += data[i].resultCount;
+		}
+
+		$("#rsvCount").append('<td class="sum-td">' + rsvSum + '</td>');
+		$("#ispCount").append('<td class="sum-td">' + ispSum + '</td>');
+		$("#resultCount").append('<td class="sum-td">' + resultSum + '</td>');
+
 		//그래프를 위한 월별 통계
 		var rsvCount = new Array();
 		var ispCount = new Array();
@@ -262,13 +295,17 @@ require('check_data.php');
 		//월별 통계
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			html += '<tr>';
 			html += '<td>' + data[i].rsvCount + '</td>';
+			$("#rsvCount").append(html);
+
+			var html = '';
 			html += '<td>' + data[i].ispCount + '</td>';
+			$("#ispCount").append(html);
+
+			var html = '';
 			html += '<td>' + data[i].resultCount + '</td>';
-			html += '</tr>';
-			$("#statisticsHospitalInfos").append(html);
-			
+			$("#resultCount").append(html);
+
 			rsvCount.push(data[i].rsvCount);
 			ispCount.push(data[i].ispCount);
 			resultCount.push(data[i].resultCount);
