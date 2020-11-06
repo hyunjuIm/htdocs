@@ -1,7 +1,7 @@
 <!-- 병원 상세 정보 Modal -->
 <div class="modal fade" id="hospitalDetailModal" tabindex="-1" aria-labelledby="hospitalDetailModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog " style="max-width: fit-content; width: 900px; display: table;">
+	<div class="modal-dialog " style="max-width: fit-content; width: 1000px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,7 +48,18 @@
 								</tr>
 								<tr>
 									<th>공단차감</th>
-									<td id="hos-pcDiscount" contentEditable="true"></td>
+									<td id="hos-pcDiscount">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="pcDiscountYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="pcDiscountYes"
+												   name="hos-pcDiscount" value="true" onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="pcDiscountNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="pcDiscountNo"
+												   name="hos-pcDiscount" value="false" onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<th>공단금액</th>
@@ -56,7 +67,18 @@
 								</tr>
 								<tr>
 									<th>시스템오픈</th>
-									<td id="hos-systemOpen" contentEditable="true"></td>
+									<td id="hos-systemOpen">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="systemOpenYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="systemOpenYes"
+												   name="hos-systemOpen" value="true" onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="systemOpenNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="systemOpenNo"
+												   name="hos-systemOpen" value="false" onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<th>가능서비스</th>
@@ -64,7 +86,18 @@
 								</tr>
 								<tr>
 									<th>계약유무</th>
-									<td id="hos-contract" contentEditable="true"></td>
+									<td id="hos-contract">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="contractYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="contractYes"
+												   name="hos-contract" value="true" onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="contractNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="contractNo"
+												   name="hos-contract" value="false" onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -84,13 +117,15 @@
 												<div class="btn-purple-square" onclick="uploadFile('hosImgFile')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
-												<div class="btn-light-purple-square" onclick="downloadFile('hosImgFileName')"
+												<div class="btn-light-purple-square"
+													 onclick="downloadFile('hosImgFileName')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>
 											<input type="file" id="hosImgFile" name="hosImgFile"
 												   onchange="viewFile(this, 'hosImgFileName')">
-											<input id="hosImgFileName" class="upload-name" value="파일선택" disabled="disabled">
+											<input id="hosImgFileName" class="upload-name" value="파일선택"
+												   disabled="disabled">
 											<label for="hosImgFile">파일선택</label>
 										</div>
 
@@ -100,13 +135,15 @@
 												<div class="btn-purple-square" onclick="uploadFile('hosLicenseFile')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
-												<div class="btn-light-purple-square" onclick="downloadFile('hosLicenseFileName')"
+												<div class="btn-light-purple-square"
+													 onclick="downloadFile('hosLicenseFileName')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>
 											<input type="file" id="hosLicenseFile" name="hosLicenseFile"
 												   onchange="viewFile(this, 'hosLicenseFileName')">
-											<input id="hosLicenseFileName" class="upload-name" value="파일선택" disabled="disabled">
+											<input id="hosLicenseFileName" class="upload-name" value="파일선택"
+												   disabled="disabled">
 											<label for="hosLicenseFile">파일선택</label>
 										</div>
 
@@ -116,13 +153,15 @@
 												<div class="btn-purple-square" onclick="uploadFile('hosBankFile')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
-												<div class="btn-light-purple-square" onclick="downloadFile('hosBankFileName')"
+												<div class="btn-light-purple-square"
+													 onclick="downloadFile('hosBankFileName')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>
 											<input type="file" id="hosBankFile" name="hosBankFile"
 												   onchange="viewFile(this, 'hosBankFileName')">
-											<input id="hosBankFileName" class="upload-name" value="파일선택" disabled="disabled">
+											<input id="hosBankFileName" class="upload-name" value="파일선택"
+												   disabled="disabled">
 											<label for="hosBankFile">파일선택</label>
 										</div>
 									</form>
@@ -142,35 +181,48 @@
 								<tbody>
 								<tr>
 									<th>부서</th>
-									<td id="add-hos-res-department" contentEditable="true"></td>
+									<td id="add-hos-department" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>이메일</th>
-									<td id="add-hos-res-email" contentEditable="true"></td>
+									<td id="add-hos-email" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>비밀번호</th>
-									<td id="add-hos-res-password" contentEditable="true"></td>
+									<td id="add-hos-password" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>이름</th>
-									<td id="add-hos-res-name" contentEditable="true"></td>
+									<td id="add-hos-name" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>직통번호</th>
-									<td id="add-hos-res-phone" contentEditable="true"></td>
+									<td id="add-hos-phone" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>개인연락처</th>
-									<td id="add-hos-res-directPhone" contentEditable="true"></td>
+									<td id="add-hos-directPhone" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>직함</th>
-									<td id="add-hos-res-position" contentEditable="true"></td>
+									<td id="add-hos-position" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>SMS수신</th>
-									<td id="add-hos-res-receiveSMS" contentEditable="true"></td>
+									<td id="add-hos-receiveSMS">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="receiveSMSYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="receiveSMSYes"
+												   name="add-hos-receiveSMS" value="true"
+												   onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="receiveSMSNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="receiveSMSNo"
+												   name="add-hos-receiveSMS" value="false"
+												   onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -233,100 +285,159 @@
 								<tbody>
 								<tr>
 									<th>병원명</th>
-									<td id="add-hos-name" contentEditable="true"></td>
+									<td id="create-hos-name" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>주소</th>
-									<td id="add-hos-address" contentEditable="true"></td>
+									<td id="create-hos-address" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>등급</th>
-									<td id="add-hos-grade" contentEditable="true"></td>
+									<td id="create-hos-grade" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>대표번호</th>
-									<td id="add-hos-phone" contentEditable="true"></td>
+									<td id="create-hos-phone" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>사업자번호</th>
-									<td id="add-hos-licenseNum" contentEditable="true"></td>
+									<td id="create-hos-licenseNum" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>URL</th>
-									<td id="add-hos-url" contentEditable="true"></td>
+									<td id="create-hos-url" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>공단차감</th>
-									<td id="add-hos-pcDiscount" contentEditable="true"></td>
+									<td id="create-hos-pcDiscount">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="pcDiscountYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="pcDiscountYes"
+												   name="create-hos-pcDiscount" value="true"
+												   onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="pcDiscountNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="pcDiscountNo"
+												   name="create-hos-pcDiscount" value="false"
+												   onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<th>공단금액</th>
-									<td id="add-hos-pcPrice" contentEditable="true"></td>
+									<td id="create-hos-pcPrice" contentEditable="true"></td>
 								</tr>
 								<tr>
 									<th>시스템오픈</th>
-									<td id="add-hos-systemOpen" contentEditable="true"></td>
+									<td id="create-hos-systemOpen">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="systemOpenYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="systemOpenYes"
+												   name="create-hos-systemOpen" value="true"
+												   onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="systemOpenNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="systemOpenNo"
+												   name="create-hos-systemOpen" value="false"
+												   onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<th>계약유무</th>
-									<td id="add-hos-contract" contentEditable="true"></td>
+									<td id="create-hos-contract">
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="contractYes">YES&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="contractYes"
+												   name="create-hos-contract" value="true" onclick="onlyCheck(this, name)">
+										</div>
+										<div class="form-check form-check-inline">
+											<label class="form-check-label" for="contractNo">NO&nbsp</label>
+											<input class="form-check-input" type="checkbox" id="contractNo"
+												   name="create-hos-contract" value="false"
+												   onclick="onlyCheck(this, name)">
+										</div>
+									</td>
 								</tr>
 								</tbody>
 							</table>
 						</div>
 						<div class="col">
 							<div style="margin-bottom: 40px;">
-								<div class="menu-title" style="font-size: 22px;">
-									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
-									첨부서식
+								<div class="fileBox" style="margin-bottom: 40px;">
+									<div class="menu-title" style="font-size: 22px;margin-bottom: 20px">
+										<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
+										첨부서식
+									</div>
+									<ul class="img-circle">
+										<form id="ADD-FILE_FORM" method="post" enctype="multipart/form-data" action="">
+											<div style="margin-bottom: 5px">
+												<li style="margin-bottom: 5px">
+													대표이미지
+													<div class="btn-purple-square"
+														 onclick="uploadFile('create-hosImgFile')"
+														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+														업로드
+													</div>
+													<div class="btn-light-purple-square"
+														 onclick="downloadFile('create-hosImgFileName')"
+														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+														다운로드
+													</div>
+												</li>
+												<input type="file" id="create-hosImgFile" name="create-hosImgFile"
+													   onchange="viewFile(this, 'create-hosImgFileName')">
+												<input id="create-hosImgFileName" class="upload-name" value="파일선택"
+													   disabled="disabled">
+												<label for="create-hosImgFile">파일선택</label>
+											</div>
+
+											<div style="margin-bottom: 5px">
+												<li style="margin-bottom: 5px">
+													사업자등록증
+													<div class="btn-purple-square"
+														 onclick="uploadFile('create-hosLicenseFile')"
+														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+														업로드
+													</div>
+													<div class="btn-light-purple-square"
+														 onclick="downloadFile('create-hosLicenseFileName')"
+														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+														다운로드
+													</div>
+												</li>
+												<input type="file" id="create-hosLicenseFile" name="create-hosLicenseFile"
+													   onchange="viewFile(this, 'create-hosLicenseFileName')">
+												<input id="create-hosLicenseFileName" class="upload-name" value="파일선택"
+													   disabled="disabled">
+												<label for="create-hosLicenseFile">파일선택</label>
+											</div>
+
+											<div>
+												<li style="margin-bottom: 5px">
+													통장사본
+													<div class="btn-purple-square"
+														 onclick="uploadFile('create-hosBankFile')"
+														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+														업로드
+													</div>
+													<div class="btn-light-purple-square"
+														 onclick="downloadFile('create-hosBankFileName')"
+														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+														다운로드
+													</div>
+												</li>
+												<input type="file" id="create-hosBankFile" name="create-hosBankFile"
+													   onchange="viewFile(this, 'create-hosBankFileName')">
+												<input id="create-hosBankFileName" class="upload-name" value="파일선택"
+													   disabled="disabled">
+												<label for="create-hosBankFile">파일선택</label>
+											</div>
+										</form>
+									</ul>
 								</div>
-								<ul class="img-circle">
-									<form action="/post" method="post" enctype="multipart/form-data"
-										  style="height: 33px">
-										<div class="form-group row">
-											<div class="custom-file" id="inputFile">
-												<input name="file" type="file" class="custom-file-input"
-													   id="add-hosImgFile">
-												<label for="add-hosImgFile">
-													<li>대표이미지</li>
-												</label>
-												<input type="submit" value="upload" class="btn-light-purple-square"
-													   style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
-													   onclick="">
-											</div>
-										</div>
-									</form>
-									<form action="/post" method="post" enctype="multipart/form-data"
-										  style="height: 33px">
-										<div class="form-group row">
-											<div class="custom-file" id="inputFile">
-												<input name="file" type="file" class="custom-file-input"
-													   id="add-hosLicenseFile">
-												<label for="add-hosLicenseFile">
-													<li>사업자등록증</li>
-												</label>
-												<input type="submit" value="upload" class="btn-light-purple-square"
-													   style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
-													   onclick="">
-											</div>
-										</div>
-									</form>
-									<form action="/post" method="post" enctype="multipart/form-data"
-										  style="height: 33px">
-										<div class="form-group row">
-											<div class="custom-file" id="inputFile">
-												<input name="file" type="file" class="custom-file-input"
-													   id="add-hosBankFile">
-												<label for="add-hosBankFile">
-													<li>통장사본</li>
-												</label>
-												<input type="submit" value="upload" class="btn-light-purple-square"
-													   style="padding: 2px 6px; font-size: 12px; margin-left: 10px; border-radius: 20px"
-													   onclick="">
-											</div>
-										</div>
-									</form>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -413,11 +524,36 @@ require('file_data.php');
 		document.getElementById('hos-address').innerHTML = data.address;
 		document.getElementById('hos-phone').innerHTML = data.phone;
 		document.getElementById('hos-licenseNum').innerHTML = data.licenseNum;
-		document.getElementById('hos-pcDiscount').innerHTML = data.pcDiscount;
-		document.getElementById('hos-pcPrice').innerHTML = data.pcPrice;
-		document.getElementById('hos-systemOpen').innerHTML = data.systemOpen;
-		document.getElementById('hos-services').innerHTML = data.services;
-		document.getElementById('hos-contract').innerHTML = data.contract;
+
+		if (data.pcDiscount) {
+			$("input:checkbox[id='pcDiscountYes']").prop("checked", true);
+			$("input:checkbox[id='pcDiscountNo']").prop("checked", false);
+		} else {
+			$("input:checkbox[id='pcDiscountYes']").prop("checked", false);
+			$("input:checkbox[id='pcDiscountNo']").prop("checked", true);
+		}
+
+		document.getElementById('hos-pcPrice').innerHTML = parseInt(data.pcPrice).toLocaleString();
+
+		if (data.systemOpen) {
+			$("input:checkbox[id='systemOpenYes']").prop("checked", true);
+			$("input:checkbox[id='systemOpenNo']").prop("checked", false);
+		} else {
+			$("input:checkbox[id='systemOpenYes']").prop("checked", false);
+			$("input:checkbox[id='systemOpenNo']").prop("checked", true);
+		}
+
+		document.getElementById('hos-services').innerHTML = regExp(data.services);
+
+		if (data.contract) {
+			$("input:checkbox[id='contractYes']").prop("checked", true);
+			$("input:checkbox[id='contractNo']").prop("checked", false);
+		} else {
+			$("input:checkbox[id='contractYes']").prop("checked", false);
+			$("input:checkbox[id='contractNo']").prop("checked", true);
+		}
+
+		document.getElementById('hos-url').innerHTML = data.url;
 		document.getElementById('hosImgFileName').value = data.image;
 		document.getElementById('hosLicenseFileName').value = data.license;
 		document.getElementById('hosBankFileName').value = data.bankbook;
@@ -435,7 +571,11 @@ require('file_data.php');
 			html += '<td>' + data.hospitalManagerDTOList[i].directPhone + '</td>';
 			html += '<td>' + data.hospitalManagerDTOList[i].phone + '</td>';
 			html += '<td>' + data.hospitalManagerDTOList[i].email + '</td>';
-			html += '<td>' + data.hospitalManagerDTOList[i].receiveSMS + '</td>';
+			if (data.hospitalManagerDTOList[i].receiveSMS) {
+				html += '<td>Y</td>';
+			} else {
+				html += '<td>N</td>';
+			}
 			html += '</tr>';
 			$("#HosManagerAddTable").append(html);
 		}
@@ -447,35 +587,56 @@ require('file_data.php');
 		var saveItems = new Object();
 
 		saveItems.hospitalId = hosId.hospitalId;
-		saveItems.department = document.getElementById('add-hos-res-department').innerText;
-		saveItems.email = document.getElementById('add-hos-res-email').innerText;
-		saveItems.password = document.getElementById('add-hos-res-password').innerText;
-		saveItems.name = document.getElementById('add-hos-res-name').innerText;
-		saveItems.phone = document.getElementById('add-hos-res-phone').innerText;
-		saveItems.directPhone = document.getElementById('add-hos-res-directPhone').innerText;
-		saveItems.position = document.getElementById('add-hos-res-position').innerText;
-		saveItems.receiveSMS = document.getElementById('add-hos-res-receiveSMS').innerText;
+		saveItems.department = document.getElementById('add-hos-department').innerText;
+		saveItems.email = document.getElementById('add-hos-email').innerText;
+		saveItems.password = document.getElementById('add-hos-password').innerText;
+		saveItems.name = document.getElementById('add-hos-name').innerText;
+		saveItems.phone = document.getElementById('add-hos-phone').innerText;
+		saveItems.directPhone = document.getElementById('add-hos-directPhone').innerText;
+		saveItems.position = document.getElementById('add-hos-position').innerText;
+		saveItems.receiveSMS = booleanData('add-hos-receiveSMS');
 
 		console.log(saveItems);
 
-		if (confirm("저장하시겠습니까?") == true) {
-			instance.post('M005004_REQ', saveItems).then(res => {
-				console.log(res.data.message);
-				if (res.data.message == "success") {
-					alert("저장되었습니다.");
-					clickHospitalDetail(saveItems.hospitalId);
-					document.getElementById('add-hos-res-department').innerHTML = "";
-					document.getElementById('add-hos-res-email').innerHTML = "";
-					document.getElementById('add-hos-res-password').innerHTML = "";
-					document.getElementById('add-hos-res-name').innerHTML = "";
-					document.getElementById('add-hos-res-phone').innerHTML = "";
-					document.getElementById('add-hos-res-directPhone').innerHTML = "";
-					document.getElementById('add-hos-res-position').innerHTML = "";
-					document.getElementById('add-hos-res-receiveSMS').innerHTML = "";
-				}
-			});
+		//입력된 정보 검사
+		if (saveItems.department == "") {
+			alert("부서를 입력해주세요.");
+		} else if (saveItems.email == "") {
+			alert("이메일을 입력해주세요.");
+		} else if (saveItems.password == "") {
+			alert("비밀번호를 입력해주세요.");
+		} else if (saveItems.name == "") {
+			alert("이름을 입력해주세요.");
+		} else if (saveItems.phone == "") {
+			alert("직통번호를 입력해주세요.");
+		} else if (saveItems.directPhone == "") {
+			alert("개인연락처를 입력해주세요.");
+		} else if (saveItems.position == "") {
+			alert("직함을 입력해주세요.");
+		} else if (!isEmail(saveItems.email)) {
+			alert("올바른 이메일을 입력해주세요.");
+		} else if (!isPhoneNum(saveItems.directPhone)) {
+			alert("올바른 연락처를 입력해주세요.");
 		} else {
-			return false;
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M005004_REQ', saveItems).then(res => {
+					console.log(res.data.message);
+					if (res.data.message == "success") {
+						alert("저장되었습니다.");
+						clickHospitalDetail(saveItems.hospitalId);
+						document.getElementById('add-hos-department').innerHTML = "";
+						document.getElementById('add-hos-email').innerHTML = "";
+						document.getElementById('add-hos-password').innerHTML = "";
+						document.getElementById('add-hos-name').innerHTML = "";
+						document.getElementById('add-hos-phone').innerHTML = "";
+						document.getElementById('add-hos-directPhone').innerHTML = "";
+						document.getElementById('add-hos-position').innerHTML = "";
+						document.getElementById('add-hos-receiveSMS').innerHTML = "";
+					}
+				});
+			} else {
+				return false;
+			}
 		}
 	}
 
@@ -578,33 +739,52 @@ require('file_data.php');
 	function createHospitalData() {
 		var saveItems = new Object();
 
-		saveItems.name = document.getElementById('add-hos-name').innerText;
-		saveItems.address = document.getElementById('add-hos-address').innerText;
-		saveItems.phone = document.getElementById('add-hos-phone').innerText;
-		saveItems.license_num = document.getElementById('add-hos-licenseNum').innerText;
-		saveItems.pcDiscount = document.getElementById('add-hos-pcDiscount').innerText;
-		saveItems.pcPrice = document.getElementById('add-hos-pcPrice').innerText;
-		saveItems.systemOpen = document.getElementById('add-hos-systemOpen').innerText;
-		saveItems.contract = document.getElementById('add-hos-contract').innerText;
-		saveItems.url = document.getElementById('add-hos-url').innerText;
-		saveItems.grade = document.getElementById('add-hos-grade').innerText;
+		saveItems.name = document.getElementById('create-hos-name').innerText;
+		saveItems.address = document.getElementById('create-hos-address').innerText;
+		saveItems.phone = document.getElementById('create-hos-phone').innerText;
+		saveItems.license_num = document.getElementById('create-hos-licenseNum').innerText;
+		saveItems.pcDiscount = booleanData('create-hos-pcDiscount');
+		saveItems.pcPrice = savePrice('create-hos-pcPrice');
+		saveItems.systemOpen = booleanData('create-hos-systemOpen');
+		saveItems.contract = booleanData('create-hos-contract');
+		saveItems.url = document.getElementById('create-hos-url').innerText;
+		saveItems.grade = document.getElementById('create-hos-grade').innerText;
+		saveItems.image = document.getElementById('create-hosImgFileName').value;
+		saveItems.license = document.getElementById('create-hosLicenseFileName').value;
+		saveItems.bankbook = document.getElementById('create-hosBankFileName').value;
 
 		console.log(saveItems);
 
-		if (confirm("저장하시겠습니까?") == true) {
-			instance.post('M005006_REQ', saveItems).then(res => {
-				console.log(res.data.message);
-				alert("저장되었습니다.");
-				setTimeout(function () {
-					location.reload();
-				}, 3000);
-			});
+		//입력된 정보 검사
+		if (saveItems.name == "") {
+			alert("병원명을 입력해주세요.");
+		} else if (saveItems.address == "") {
+			alert("주소를 입력해주세요.");
+		} else if (saveItems.grade == "") {
+			alert("등급을 입력해주세요.");
+		} else if (saveItems.phone == "") {
+			alert("대표번호를 입력해주세요.");
+		} else if (saveItems.license_num == "") {
+			alert("사업자번호를 입력해주세요.");
+		} else if (saveItems.url == "") {
+			alert("URL을 입력해주세요.");
+		} else if (saveItems.pcPrice == "") {
+			alert("공단금액을 입력해주세요.");
 		} else {
-			return false;
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M005006_REQ', saveItems).then(res => {
+					console.log(res.data.message);
+					alert("저장되었습니다.");
+					setTimeout(function () {
+						location.reload();
+					}, 3000);
+				});
+			} else {
+				return false;
+			}
 		}
 	}
 
-	//TODO: 병원정보 저장 > 첨부 서식 분리
 	//수정된 정보로 저장
 	function saveHospitalInformation() {
 		var saveItems = new Object();
@@ -614,22 +794,42 @@ require('file_data.php');
 		saveItems.address = document.getElementById('hos-address').innerText;
 		saveItems.phone = document.getElementById('hos-phone').innerText;
 		saveItems.license_num = document.getElementById('hos-licenseNum').innerText;
-		saveItems.pcDiscount = document.getElementById('hos-pcDiscount').innerText;
-		saveItems.pcPrice = document.getElementById('hos-pcPrice').innerText;
-		saveItems.systemOpen = document.getElementById('hos-systemOpen').innerText;
-		saveItems.contract = document.getElementById('hos-contract').innerText;
+		saveItems.pcDiscount = booleanData('hos-pcDiscount');
+		saveItems.pcPrice = savePrice('hos-pcPrice');
+		saveItems.systemOpen = booleanData('hos-systemOpen');
+		saveItems.contract = booleanData('hos-contract');
 		saveItems.url = document.getElementById('hos-url').innerText;
 		saveItems.grade = document.getElementById('hos-grade').innerText;
+		saveItems.image = document.getElementById('hosImgFileName').value;
+		saveItems.license = document.getElementById('hosLicenseFileName').value;
+		saveItems.bankbook = document.getElementById('hosBankFileName').value;
 
 		console.log(saveItems);
 
-		if (confirm("저장하시겠습니까?") == true) {
-			instance.post('M005005_REQ', saveItems).then(res => {
-				console.log(res.data.message);
-				alert("저장되었습니다.");
-			});
+		//입력된 정보 검사
+		if (saveItems.name == "") {
+			alert("병원명을 입력해주세요.");
+		} else if (saveItems.address == "") {
+			alert("주소를 입력해주세요.");
+		} else if (saveItems.grade == "") {
+			alert("등급을 입력해주세요.");
+		} else if (saveItems.phone == "") {
+			alert("대표번호를 입력해주세요.");
+		} else if (saveItems.license_num == "") {
+			alert("사업자번호를 입력해주세요.");
+		} else if (saveItems.url == "") {
+			alert("URL을 입력해주세요.");
+		} else if (saveItems.pcPrice == "") {
+			alert("공단금액을 입력해주세요.");
 		} else {
-			return false;
+			if (confirm("저장하시겠습니까?") == true) {
+				instance.post('M005005_REQ', saveItems).then(res => {
+					console.log(res.data.message);
+					alert("저장되었습니다.");
+				});
+			} else {
+				return false;
+			}
 		}
 	}
 
