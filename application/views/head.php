@@ -19,6 +19,7 @@
 <!--axios-->
 
 <link rel="stylesheet" type="text/css" href="/asset/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/asset/css/table_style.css" />
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <style>

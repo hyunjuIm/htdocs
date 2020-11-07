@@ -16,7 +16,6 @@
 		}
 
 		th {
-			vertical-align: middle !important;
 			background: #e6e6e6;
 		}
 

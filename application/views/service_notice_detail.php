@@ -10,11 +10,11 @@
 	<style>
 		td {
 			text-align: left;
+			vertical-align: baseline !important;
 		}
 
 		th {
 			text-align: center;
-			vertical-align: middle !important;
 			width: 200px;
 			background: #f1f1f1;
 		}
@@ -40,7 +40,7 @@
 				공지사항
 			</div>
 
-			<table id="noticeInfos" class="table" style="margin-top: 30px">
+			<table id="noticeInfos" class="table" style="margin-top: 30px;">
 				<tbody>
 				<tr>
 					<th>제목</th>
@@ -110,7 +110,7 @@ require('check_data.php');
 		document.getElementById('ntAuthor').innerHTML = data.author;
 		document.getElementById('ntFile').innerHTML = data.fileName;
 		document.getElementById('ntTarget').innerHTML = data.target+ " ) " +data.targetName;
-		document.getElementById('ntContent').innerHTML = data.content;
+		document.getElementById('ntContent').innerHTML = textareaLine(data.content);
 	}
 
 	//공지 수정에 값 던지기

@@ -19,37 +19,6 @@ a:link {
 	cursor: pointer;
 }
 
-table {
-	width: 100%;
-	text-align: center;
-	margin: auto;
-	border-collapse: collapse;
-	line-height: 30px;
-	border-bottom: #E6E6E6 1px solid;
-}
-
-th, tr, td {
-	margin: 0 auto;
-	text-align:center;
-}
-
-th {
-	width: 130px;
-	background: #E6E6E6;
-	color: #444444;
-}
-
-tr {
-	color: #444;
-}
-
-td {
-	width: fit-content;
-	border: 1px;
-	solid: #efefef;
-	font-size: 15px;
-}
-
 .state-1, .state-2 {
 	width: 90%;
 	margin: 5px;

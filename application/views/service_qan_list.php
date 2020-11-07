@@ -15,6 +15,7 @@
 
 		.qna-td {
 			text-align: left;
+			vertical-align: baseline !important;
 		}
 	</style>
 

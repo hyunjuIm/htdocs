@@ -92,6 +92,12 @@
 		}
 	}
 
+	//textarea 줄바꿈 처리
+	function textareaLine(text) {
+		text = text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		return text;
+	}
+
 	//사업장 리스트 셋팅
 	function setCompanySelectOption(selectCompany, targetBranch) {
 		var branch = document.getElementById(targetBranch);

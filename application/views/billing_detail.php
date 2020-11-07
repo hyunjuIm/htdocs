@@ -7,13 +7,6 @@
 	require('head.php');
 	?>
 
-	<style>
-		th, td {
-			vertical-align: middle !important;
-		}
-	</style>
-
-
 </head>
 
 <body>

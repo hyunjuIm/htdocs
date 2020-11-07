@@ -10,12 +10,10 @@
 	<style>
 		td {
 			text-align: left;
-			vertical-align: middle !important;
 		}
 
 		th {
 			text-align: center;
-			vertical-align: middle !important;
 			width: 200px;
 			background: #f1f1f1;
 		}
