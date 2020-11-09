@@ -22,4 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/asset/css/table_style.css" />
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 
