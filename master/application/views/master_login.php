@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:고객센터</title>
+	<title>듀얼헬스케어:로그인</title>
 
 	<?php
 	require('head.php');

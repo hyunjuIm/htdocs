@@ -22,10 +22,4 @@
 <link rel="stylesheet" type="text/css" href="/asset/css/table_style.css" />
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<style>
-	ul {
-		list-style: none;
-	}
-</style>
-
 
