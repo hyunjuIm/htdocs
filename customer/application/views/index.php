@@ -8,12 +8,22 @@
 	?>
 
 	<style>
+		.menu-bar {
+			max-width: 320px;
+			min-width: 320px;
+		}
+
 		.wrapper {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
 
+		@media screen and (max-aspect-ratio: 320/568) {
+			.menu-bar {
+				max-width: none;
+			}
+		}
 	</style>
 
 </head>
@@ -28,7 +38,7 @@
 <!--상단 네비바-->
 <div class="container" style="max-width: none; height: inherit">
 	<div class="row" style="height: inherit">
-		<div class="col" style="background: #999900; max-width: 320px; min-width: 320px">
+		<div class="col menu-bar" style="background: #999900">
 			네비바
 		</div>
 		<div class="col wrapper">
