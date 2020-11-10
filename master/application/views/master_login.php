@@ -254,7 +254,10 @@
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
 			} else if(res.data.message == "SUCCESS") {
 				sessionStorage.setItem("token", res.data.data);
-				location.href = "/master/index";
+				location.href = "./index";
+				console.log(res.data);
+			} else {
+				alert("잘못된 접근입니다.")
 				console.log(res.data);
 			}
 		}).catch(function (error) {

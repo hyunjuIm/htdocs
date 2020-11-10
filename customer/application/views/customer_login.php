@@ -47,7 +47,8 @@
 		}
 
 		/* FORM TYPOGRAPHY*/
-		input[type=button], input[type=submit], input[type=reset] {
+
+		input[type=button], input[type=submit], input[type=reset]  {
 			background-color: #5645ED;
 			border: none;
 			color: white;
@@ -57,8 +58,8 @@
 			display: inline-block;
 			text-transform: uppercase;
 			font-size: 13px;
-			-webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
-			box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+			-webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+			box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
 			-webkit-border-radius: 5px 5px 5px 5px;
 			border-radius: 5px 5px 5px 5px;
 			margin: 5px 20px 40px 20px;
@@ -71,6 +72,7 @@
 
 		input[type=text], input[type=password] {
 			background-color: #f6f6f6;
+			border: none;
 			color: #0d0d0d;
 			padding: 15px 32px;
 			text-align: center;
@@ -269,22 +271,27 @@
 
 		requestMember.id = $("#login").val();
 		requestMember.password = $("#password").val();
-		requestMember.level = "MASTER";
+		requestMember.level = "CUSTOMER";
 
 		//TODO:api 로그인 데이터 확인
 		const instance = axios.create({
-			baseURL: "https://api.dualhealth.kr/permission/",
-			//baseURL: "http://192.168.219.105:8080/permission/",
+			//baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.105:8080/permission/",
 			timeout: 5000
 		});
 
 		instance.post('login', requestMember).then(res => {
 			if (res.data.message == "FAILED") {
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-			} else if (res.data.message == "SUCCESS") {
+			} else{
+				var split = res.data.message.split('/');
 				sessionStorage.setItem("token", res.data.data);
-				location.href = "/master/index";
-				console.log(res.data);
+				sessionStorage.setItem("userID", requestMember.id);
+				sessionStorage.setItem("name", split[0]);
+				sessionStorage.setItem("cusID", split[1]);
+				console.log(sessionStorage);
+
+				location.href = "./index";
 			}
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")

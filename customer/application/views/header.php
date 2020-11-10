@@ -1,7 +1,6 @@
 
 <!--axios-->
 <script>
-
 	var initMinute;  // 최초 설정할 시간(min)
 	var remainSecond;  // 남은시간(sec)
 
@@ -24,7 +23,7 @@
 		}else{ //세션만료 로그아웃
 			sessionStorage.clear();
 			alert("세션이 만료되었습니다. 로그인 후 이용해주세요.");
-			location.href = "/customer/customer_login";
+			location.href = "customer/customer_login";
 		}
 	}
 
@@ -32,13 +31,13 @@
 	function masterLogout(){
 		sessionStorage.clear();
 		alert("로그아웃 되었습니다.");
-		location.href = "/customer/customer_login";
+		location.href = "customer/customer_login";
 	}
 
 	//로그인 안되어있으면 로그인 화면으로
 	var token = sessionStorage.getItem("token");
 	if(token == null){
-		location.href = "/customer/customer_login";
+		location.href = "customer/customer_login";
 	}
 
 	const instance = axios.create({
