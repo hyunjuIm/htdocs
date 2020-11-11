@@ -11,7 +11,6 @@
 		body {
 			font-family: "Poppins", sans-serif;
 			width: 100vw;
-			height: 100vh;
 			text-align: center;
 		}
 
@@ -199,7 +198,7 @@
 			outline: none;
 		}
 
-		@media screen and (max-aspect-ratio: 320/568) {
+		@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 			.mobile {
 				display: block;
 				background: white;
