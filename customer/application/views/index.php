@@ -104,7 +104,7 @@
 					</div>
 				</div>
 			</form>
-			<!-- Example single danger button -->
+
 			<form>
 				<ul id="nav">
 					<li class="main-menu"><a href="#">검진예약</a>
