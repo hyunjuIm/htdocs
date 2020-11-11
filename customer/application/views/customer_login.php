@@ -274,8 +274,8 @@
 
 		//TODO:api 로그인 데이터 확인
 		const instance = axios.create({
-			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "http://192.168.219.105:8080/permission/",
+			baseURL: "https://api.dualhealth.kr/permission/",
+			//baseURL: "http://192.168.219.105:8080/permission/",
 			timeout: 5000
 		});
 
@@ -286,8 +286,8 @@
 				var split = res.data.message.split('/');
 				sessionStorage.setItem("token", res.data.data);
 				sessionStorage.setItem("userID", requestMember.id);
-				sessionStorage.setItem("name", split[0]);
-				sessionStorage.setItem("cusID", split[1]);
+				sessionStorage.setItem("userName", split[0]);
+				sessionStorage.setItem("userCusID", split[1]);
 				console.log(sessionStorage);
 
 				location.href = "./index";

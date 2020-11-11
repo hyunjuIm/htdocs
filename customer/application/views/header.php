@@ -41,8 +41,8 @@
 	}
 
 	const instance = axios.create({
-		//baseURL: "https://api.dualhealth.kr/customer/api/v1/",
-		baseURL: "http://192.168.219.105:8080/customer/api/v1/",
+		baseURL: "https://api.dualhealth.kr/customer/api/v1/",
+		//baseURL: "http://192.168.219.105:8080/customer/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
