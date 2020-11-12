@@ -61,38 +61,38 @@
 
 		.menu1:hover {
 			background-color: #6c0403 !important;
-			-webkit-animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-			animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		}
 
 		.menu2:hover {
 			background-color: #585345 !important;
-			-webkit-animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-			animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		}
 
 		.menu3:hover {
 			background-color: #000000 !important;
-			-webkit-animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-			animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		}
 
 		.menu4:hover {
 			background-color: #020a2b !important;
-			-webkit-animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-			animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		}
 
 		.menu5:hover {
 			background-color: #daa300 !important;
-			-webkit-animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-			animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		}
 
 		.menu6:hover {
 			background-color: #074b37 !important;
-			-webkit-animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-			animation: fade-in-fwd 1.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			-webkit-animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+			animation: fade-in-fwd 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		}
 
 		.notice-div {
