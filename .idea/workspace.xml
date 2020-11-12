@@ -20,14 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/side_bar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/css/side-bar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/htdocs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/htdocs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/bg_main.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/btn_plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/file_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/file_data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/hospital_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/hospital_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +48,9 @@
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/master/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,9 +65,14 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/asset/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -103,6 +122,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-" />
@@ -125,15 +145,32 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1500" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605078063296" />
-    <state x="1011" y="291" width="584" height="536" key="find.popup" timestamp="1605104930556">
+    <state x="206" y="88" width="1500" height="1027" key="dock-window-2" timestamp="1605148096387">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="206" y="88" width="1500" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605148096387" />
+    <state x="1987" y="0" width="1508" height="1027" key="dock-window-3" timestamp="1605155588235">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1987" y="0" width="1508" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605155588235" />
+    <state x="1920" y="0" width="1508" height="1027" key="dock-window-4" timestamp="1605155811395">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1508" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605155811395" />
+    <state x="760" y="120" width="584" height="536" key="find.popup" timestamp="1605154878209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
-    <state x="668" y="252" width="584" height="536" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605068918083" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1605099487813">
+    <state x="760" y="120" width="584" height="536" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605154878209" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1605169203373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605099487813" />
+    <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605169203373" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605163606341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605163606341" />
     <state x="790" y="311" key="svn.repositoryBrowser" timestamp="1604996918615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

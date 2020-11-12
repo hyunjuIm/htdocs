@@ -114,11 +114,11 @@
 										<div style="margin-bottom: 5px">
 											<li style="margin-bottom: 5px">
 												대표이미지
-												<div class="btn-purple-square" onclick="uploadFile('hosImgFile')"
+												<div class="btn-purple-square" onclick="uploadFile('hosImgFile', 'hospital', 'image')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
 												<div class="btn-light-purple-square"
-													 onclick="downloadFile('hosImgFileName')"
+													 onclick="downloadFile('hospital', 'image')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>
@@ -132,11 +132,11 @@
 										<div style="margin-bottom: 5px">
 											<li style="margin-bottom: 5px">
 												사업자등록증
-												<div class="btn-purple-square" onclick="uploadFile('hosLicenseFile')"
+												<div class="btn-purple-square" onclick="uploadFile('hosLicenseFile', 'hospital', 'license')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
 												<div class="btn-light-purple-square"
-													 onclick="downloadFile('hosLicenseFileName')"
+													 onclick="downloadFile('hospital', 'license')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>
@@ -150,11 +150,11 @@
 										<div>
 											<li style="margin-bottom: 5px">
 												통장사본
-												<div class="btn-purple-square" onclick="uploadFile('hosBankFile')"
+												<div class="btn-purple-square" onclick="uploadFile('hosBankFile', 'hospital', 'bankbook')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
 												<div class="btn-light-purple-square"
-													 onclick="downloadFile('hosBankFileName')"
+													 onclick="downloadFile('hospital', 'bankbook')"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>

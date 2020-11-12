@@ -274,8 +274,8 @@
 
 		//TODO:api 로그인 데이터 확인
 		const instance = axios.create({
-			baseURL: "https://api.dualhealth.kr/permission/",
-			//baseURL: "http://192.168.219.105:8080/permission/",
+			//baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.109:8080/permission/",
 			timeout: 5000
 		});
 

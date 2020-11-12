@@ -90,31 +90,24 @@
 
 <div class="col bd-sidebar" style="padding: 0">
 	<form style="padding: 35px 25px">
-		<div style="margin-bottom: 20px">
-			로고
+		<div style="margin-bottom: 40px">
+			<img src="/asset/images/logo.png">
 		</div>
-		<div style="margin-bottom: 30px">
+		<div style="margin-bottom: 20px">
 			<span id="nameView" style="font-weight: bolder"></span>
 			님 환영합니다.
 		</div>
 
-		<div style="width: 100%;margin-bottom: 30px">
+		<div style="width: 100%;margin-bottom: 20px">
 			<div style="padding: 5px;background: #5849ea; border-top-left-radius: 10px; border-top-right-radius: 10px">
 				예약현황
 			</div>
 			<div class="reservation-card">
 				<div id="carouselReservationControls" class="carousel slide" data-ride="carousel"
-					 data-interval="false" style="height: inherit; display: table-cell; vertical-align: middle">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							본인예약1
-						</div>
-						<div class="carousel-item">
-							가족예약2
-						</div>
-						<div class="carousel-item">
-							가족예약3
-						</div>
+					 data-interval="false" style="height: inherit; display: table-cell; vertical-align: middle;
+					 color: black; font-size: 16px; font-weight: bolder">
+					<div id="userScheduleInfos" class="carousel-inner">
+
 					</div>
 					<a class="carousel-control-prev" href="#carouselReservationControls" role="button"
 					   data-slide="prev">
@@ -131,15 +124,19 @@
 		</div>
 
 		<div style="padding: 5px 0; border: #666666 solid 1px; font-size: 14px; display: flex">
-			<div style="width: 50%">
-				내정보관리
-			</div>
+			<a style="width: 50%;cursor: pointer">
+				<div>
+					내정보관리
+				</div>
+			</a>
 			<div style="color: #666666">
 				|
 			</div>
-			<div style="width: 50%">
-				로그아웃
-			</div>
+			<a style="width: 50%;cursor: pointer">
+				<div>
+					로그아웃
+				</div>
+			</a>
 		</div>
 	</form>
 
@@ -180,7 +177,7 @@
 				개인정보처리방침
 			</div>
 		</div>
-		<div style="border-top: 1px solid #666666; padding: 15px 27px 40px; font-size: 12px">
+		<div style="border-top: 1px solid #666666; padding: 15px 27px 30px; font-size: 12px">
 			<div style="font-size: 15px; color: white;margin-bottom: 3px">
 				(주) 듀얼헬스케어
 			</div>
@@ -198,7 +195,6 @@
 <script>
 	$(document).ready(function () {
 		//사이드바 메뉴
-		var bind = true;
 		$('#nav > li > a').hover(function () {
 			$(this).next().slideDown(300);
 			$(this).css("background", "#1b1a25");
@@ -209,7 +205,6 @@
 			$('#nav li a').not(this).css("border-left", "none");
 		}, function () {
 			$('.main-menu').css("color", "white");
-			console.log("완전히 벗어남");
 			$('.main-menu').hover(function () {
 
 			}, function () {
@@ -218,10 +213,40 @@
 			});
 		});
 
-
 		//사이드바 사용자 정보
 		var userName = sessionStorage.getItem("userName");
 		console.log(sessionStorage);
 		$('#nameView').text(userName);
+
+		var userData = new Object();
+		userData.cusId = sessionStorage.getItem("userCusID");
+		instance.post('CU_001_002', userData).then(res => {
+			setMainUserInfo(res.data);
+		});
 	});
+
+	function setMainUserInfo(data) {
+		console.log(data);
+
+		for (i = 0; i < data.length; i++) {
+			var html = '';
+
+			if(data[i].grade == '본인') {
+				html += '<div class="carousel-item active">';
+			} else {
+				html += '<div class="carousel-item">';
+			}
+			html += data[i].name + '(' + data[i].grade + ')' + '<br>';
+			if(data[i].hospital != 'none') {
+				html += '예약병원 : ' + data[i].hospital + '<br>';
+			}
+			html += data[i].schedule;
+			if(data[i].hospital == 'none') {
+				html += '<br> <br>';
+			}
+			html += '</div>';
+
+			$("#userScheduleInfos").append(html);
+		}
+	}
 </script>

@@ -6,7 +6,7 @@
 	}
 
 	//파일 업로드
-	function uploadFile(id) {
+	function uploadFile(id, fileTarget, fileClass) {
 		var photoFile = document.getElementById(id);
 
 		if(photoFile.files[0] == null) {
@@ -16,8 +16,8 @@
 
 		var params = new FormData();
 		params.append("file", photoFile.files[0]);
-		params.append('fileTarget', "hospital");
-		params.append('fileClass', "image");
+		params.append('fileTarget', fileTarget);
+		params.append('fileClass', fileClass);
 		params.append('id', hosId.hospitalId);
 
 		fileURL.post('uploadFile', params, {
@@ -31,14 +31,13 @@
 	}
 
 	//파일 다운로드
-	function downloadFile(view) {
-		var fileName = $("#" + view + "").val();
+	function downloadFile(fileTarget, fileClass) {
+		var params = new FormData();
+		params.append('fileTarget', fileTarget);
+		params.append('fileClass', fileClass);
+		params.append('id', hosId.hospitalId);
 
-		var downloadURL = "downloadFile/" + fileName;
-
-		console.log(downloadURL);
-
-		fileURL.get(downloadURL, {
+		fileURL.post('downloadFile', params,{
 			responseType: 'arraybuffer',
 			headers: {
 				'Content-Type': 'application/json'
@@ -48,7 +47,7 @@
 			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');
 			link.href = window.URL.createObjectURL(blob);
-			link.download = fileName;
+			link.download = "fileName";
 			link.click();
 
 			console.log(response);
