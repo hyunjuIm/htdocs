@@ -5,13 +5,23 @@
 		height: 100vh;
 		min-width: 320px;
 		max-width: 320px;
-		color: white;
+		color: black;
 		text-align: center;
-		background-color: rgba(27, 26, 37, 0.95);
+		font-weight: 400;
+		background-color: white;
+		box-shadow: 0px 0px 10px #c6c6c6;
 	}
 
 	/*예약현황*/
-	.reservation-card {
+	.reservation-card-top {
+		padding: 5px;
+		background: #5849ea;
+		color: white;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+
+	.reservation-card-content {
 		padding: 5px;
 		background: white;
 		border-bottom-left-radius: 10px;
@@ -38,22 +48,37 @@
 		content: "›";
 	}
 
+	/*내정보관리*/
+	.my-info-box {
+		padding: 5px 0;
+		border: #cccccc solid 1px;
+		font-size: 14px;
+		display: flex;
+	}
+
+	.my-info-box a {
+		color: black;
+	}
+
 	/*사이드 메뉴*/
 	ul, li {
 		list-style-type: none;
 		padding-left: 0px;
 	}
 
+	#nav {
+		border-top: 1px solid #cccccc;
+	}
+
 	#nav li a {
 		display: block;
-		padding: 13px 40px;
+		padding: 11px 40px;
 		text-decoration: none;
-		color: white;
+		color: black;
 		text-align: left;
 	}
 
 	#nav li a:hover {
-		font-weight: bolder;
 		color: #5645ED;
 	}
 
@@ -62,7 +87,7 @@
 	}
 
 	.main-menu {
-		border-bottom: 1px solid #666666;
+		border-bottom: 1px solid #cccccc;
 	}
 
 	.sub-menu {
@@ -72,7 +97,7 @@
 	}
 
 	.main-menu a:hover, .sub-menu:hover {
-		background: #1b1a25;
+		background: #f2f2f2;
 	}
 
 	/*푸터 : 회사정보*/
@@ -80,32 +105,44 @@
 		width: 100%;
 		font-size: 13px;
 		text-align: left;
-		color: #aaaaaa;
+		color: #828282;
 		position: absolute;
 		bottom: 0px;
-		background: #1b1a25;
+		background: white;
+	}
+
+	.footer-top {
+		display: flex;
+		border-top: 1px solid #cccccc;
+		padding: 8px 27px;
+	}
+
+	.footer-middle {
+		border-top: 1px solid #cccccc;
+		padding: 15px 27px 20px;
+		font-size: 12px;
 	}
 
 </style>
 
-<div class="col bd-sidebar" style="padding: 0">
+<div class="col bd-sidebar side" style="padding: 0;" >
 	<form style="padding: 35px 25px">
 		<div style="margin-bottom: 40px">
-			<img src="/asset/images/logo.png">
+			<a href="/"> <img src="/asset/images/logo_light.png"> </a>
 		</div>
 		<div style="margin-bottom: 20px">
 			<span id="nameView" style="font-weight: bolder"></span>
 			님 환영합니다.
 		</div>
 
-		<div style="width: 100%;margin-bottom: 20px">
-			<div style="padding: 5px;background: #5849ea; border-top-left-radius: 10px; border-top-right-radius: 10px">
+		<div style="width: 100%;margin-bottom: 20px;border-radius: 10px;box-shadow: 0px 0px 10px #c6c6c6;">
+			<div class="reservation-card-top">
 				예약현황
 			</div>
-			<div class="reservation-card">
+			<div class="reservation-card-content">
 				<div id="carouselReservationControls" class="carousel slide" data-ride="carousel"
-					 data-interval="false" style="height: inherit; display: table-cell; vertical-align: middle;
-					 color: black; font-size: 16px; font-weight: bolder">
+					 style="height: inherit; display: table-cell; vertical-align: middle;
+					 color: black; font-size: 16px;">
 					<div id="userScheduleInfos" class="carousel-inner">
 
 					</div>
@@ -123,17 +160,17 @@
 			</div>
 		</div>
 
-		<div style="padding: 5px 0; border: #666666 solid 1px; font-size: 14px; display: flex">
-			<a style="width: 50%;cursor: pointer">
+		<div class="my-info-box">
+			<a href="/customer/my_page" style="width: 50%;cursor: pointer">
 				<div>
 					내정보관리
 				</div>
 			</a>
-			<div style="color: #666666">
+			<div style="color: #cccccc">
 				|
 			</div>
 			<a style="width: 50%;cursor: pointer">
-				<div>
+				<div onclick="customerLogout()">
 					로그아웃
 				</div>
 			</a>
@@ -141,44 +178,50 @@
 	</form>
 
 	<form>
-		<ul id="nav" style="border-top: 1px solid #666666">
-			<li class="main-menu"><a class="main-menu-item" href="#">검진예약</a>
+		<ul id="nav">
+			<li class="main-menu"><a class="main-menu-item" href="#">예약서비스</a>
 				<ul>
-					<li class="sub-menu"><a href="#">예약하기</a></li>
+					<li class="sub-menu"><a href="#">검진예약</a></li>
 					<li class="sub-menu"><a href="#">예약현황</a></li>
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
+			</li>
+			<li class="main-menu"><a class="main-menu-item" href="#">건강정보</a>
 				<ul>
-					<li class="sub-menu"><a href="#">자세히보기</a></li>
+					<li class="sub-menu"><a href="#">질병백과</a></li>
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">이용안내</a>
 				<ul>
-					<li class="sub-menu"><a href="#">공지사항</a></li>
 					<li class="sub-menu"><a href="#">병원별 검진 비교</a></li>
+					<li class="sub-menu"><a href="#">공지사항</a></li>
 					<li class="sub-menu"><a href="#">검강검진안내</a></li>
-					<li class="sub-menu"><a href="#">고객센터</a></li>
+				</ul>
+			</li>
+			<li class="main-menu"><a class="main-menu-item" href="#">고객센터</a>
+				<ul>
+					<li class="sub-menu"><a href="#">자주 묻는 질문</a></li>
+					<li class="sub-menu"><a href="#">1:1 문의</a></li>
 				</ul>
 			</li>
 		</ul>
-
 	</form>
 
 	<form class="footer">
-		<div style="display: flex; border-top: 1px solid #666666;padding: 10px 27px">
+		<div class="footer-top">
 			<div>
 				서비스이용약관
 			</div>
-			<div style="padding: 0 10px">
+			<div style="padding: 0 10px; color: #cccccc">
 				|
 			</div>
 			<div>
 				개인정보처리방침
 			</div>
 		</div>
-		<div style="border-top: 1px solid #666666; padding: 15px 27px 30px; font-size: 12px">
-			<div style="font-size: 15px; color: white;margin-bottom: 3px">
+		<div class="footer-middle">
+			<div style="font-size: 14px; color: black;margin-bottom: 3px;font-weight: 400">
 				(주) 듀얼헬스케어
 			</div>
 			<div>
@@ -197,7 +240,7 @@
 		//사이드바 메뉴
 		$('#nav > li > a').hover(function () {
 			$(this).next().slideDown(300);
-			$(this).css("background", "#1b1a25");
+			$(this).css("background", "#f2f2f2");
 			$(this).css("border-left", "7px solid #5849ea");
 
 			$('#nav li a').not(this).next().slideUp(300);
@@ -206,47 +249,11 @@
 		}, function () {
 			$('.main-menu').css("color", "white");
 			$('.main-menu').hover(function () {
-
 			}, function () {
 				$('#nav li a').next().slideUp(300);
+				$('#nav li a').not(this).css("background", "none");
 				$('#nav li a').not(this).css("border-left", "none");
 			});
 		});
-
-		//사이드바 사용자 정보
-		var userName = sessionStorage.getItem("userName");
-		console.log(sessionStorage);
-		$('#nameView').text(userName);
-
-		var userData = new Object();
-		userData.cusId = sessionStorage.getItem("userCusID");
-		instance.post('CU_001_002', userData).then(res => {
-			setMainUserInfo(res.data);
-		});
 	});
-
-	function setMainUserInfo(data) {
-		console.log(data);
-
-		for (i = 0; i < data.length; i++) {
-			var html = '';
-
-			if(data[i].grade == '본인') {
-				html += '<div class="carousel-item active">';
-			} else {
-				html += '<div class="carousel-item">';
-			}
-			html += data[i].name + '(' + data[i].grade + ')' + '<br>';
-			if(data[i].hospital != 'none') {
-				html += '예약병원 : ' + data[i].hospital + '<br>';
-			}
-			html += data[i].schedule;
-			if(data[i].hospital == 'none') {
-				html += '<br> <br>';
-			}
-			html += '</div>';
-
-			$("#userScheduleInfos").append(html);
-		}
-	}
 </script>

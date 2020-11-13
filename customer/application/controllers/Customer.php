@@ -15,4 +15,10 @@ class customer extends CI_Controller
 		$this->load->view('index');
 	}
 
+	//메인화면
+	public function my_page()
+	{
+		$this->load->view('my_page');
+	}
+
 }

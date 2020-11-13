@@ -13,24 +13,24 @@
 		}
 
 		.main-content {
-			width: 500px;
-			height: 250px;
-			min-width: 500px;
-			min-height: 250px;
-			background: rosybrown;
+			width: 530px;
+			height: 265px;
+			min-width: 530px;
+			min-height: 265px;
+			cursor: pointer;
+			padding: 0;
 		}
 
 		.sub-content {
-			width: 250px;
-			height: 250px;
-			min-width: 250px;
-			min-height: 250px;
+			width: 265px;
+			height: 265px;
+			min-width: 265px;
+			min-height: 265px;
 			border: white 1px solid;
 			color: white;
 			font-size: 15px;
 			font-weight: bolder;
 			cursor: pointer;
-			z-index: 1;
 		}
 
 		@-webkit-keyframes fade-in-fwd {
@@ -153,13 +153,15 @@
 	<div class="row" style="display: table">
 		<!-- 좌측 사이드바 -->
 		<?php
-		require('side_bar.php');
+		require('side_bar_dark.php');
 		?>
 		<!-- 우측 컨텐츠 -->
 		<div class="col" style="display: table-cell;vertical-align: middle">
 			<table style="margin: 0 auto">
 				<tr>
-					<td class="main-content" rowspan="2" colspan="2">건강관리서비스</td>
+					<td class="main-content" rowspan="2" colspan="2">
+						<img src="/asset/images/banner1.jpg" style="width: 530px;height: 530px;padding: 0">
+					</td>
 					<td class="sub-content" style="background-color: rgba( 108, 4, 3, 0.8)">
 						<div class="menu1 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
@@ -210,9 +212,10 @@
 				</tr>
 				<tr>
 					<td colspan="2"></td>
-					<td class="sub-content" colspan="2" style="background: white;">
+					<td class="" colspan="2"
+						style="background: white;border: white 1px solid;font-size: 15px;font-weight: bolder">
 						<div class="notice-div">
-							<div style="margin-bottom: 20px">
+							<div style="margin-bottom: 25px">
 								<span style="font-size: 14px;color: #5645ED">NOTICE<br></span>
 								<span style="font-size: 20px;color: black">공지사항<br></span>
 							</div>
@@ -221,11 +224,9 @@
 								</tbody>
 							</table>
 						</div>
-
-						<!--TODO:+버튼-->
-						<div style="float: right">
-							<img src="/asset/images/btn_plus.png" style="padding: 0">
-						</div>
+						<a style="vertical-align: bottom; float: right; padding-top: 13px">
+							<img src="/asset/images/btn_plus.png" style="cursor: pointer">
+						</a>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)">
 						<div class="menu6 wrap" style="width: inherit;height: inherit">
