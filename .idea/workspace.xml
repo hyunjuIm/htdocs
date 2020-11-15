@@ -21,24 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/side-bar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/table_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/my_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_password.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/master/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -79,6 +70,7 @@
       <updated>1604972422998</updated>
       <workItem from="1604972424036" duration="39385000" />
       <workItem from="1605089007809" duration="22559000" />
+      <workItem from="1605456722158" duration="52000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -115,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605171708652</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-">
+      <created>1605456645107</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605456645107</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,9 +145,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="838" y="417" key="Github.ShareDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1604997414465" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605171712980">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605456650311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605456650311" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605171712980" />
     <state x="1920" y="0" width="1500" height="1027" key="dock-window-1" timestamp="1605078063296">
       <screen x="1920" y="0" width="1920" height="1040" />

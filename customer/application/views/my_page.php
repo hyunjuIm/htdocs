@@ -82,7 +82,7 @@
 			border:1px solid #d5d5d5;
 		}
 
-		@media only screen and (max-width: 1024px) {
+		@media only screen and (max-width: 1700px) {
 			html {
 				font-size: 8px;
 			}
