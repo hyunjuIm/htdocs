@@ -15,10 +15,16 @@ class customer extends CI_Controller
 		$this->load->view('index');
 	}
 
-	//메인화면
+	//내정보
 	public function my_page()
 	{
 		$this->load->view('my_page');
+	}
+
+	//비밀번호 변경
+	public function my_password()
+	{
+		$this->load->view('my_password');
 	}
 
 }

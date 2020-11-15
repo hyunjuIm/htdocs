@@ -8,16 +8,14 @@
 	?>
 
 	<style>
-		body {
-			font-family: "Poppins", sans-serif;
-			width: 100vw;
-			text-align: center;
+		html {
+			font-size: 10px;
 		}
 
 		p {
 			text-align: center;
 			color: #3529b1;
-			font-size: 400%;
+			font-size: 6rem;
 			font-weight: bold;
 		}
 
@@ -35,9 +33,9 @@
 			-webkit-border-radius: 10px;
 			border-radius: 10px;
 			background: #fff;
-			padding: 30px;
+			padding: 3rem;
 			width: 90%;
-			max-width: 450px;
+			max-width: 45rem;
 			position: relative;
 			-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 			box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
@@ -47,7 +45,7 @@
 
 		/* FORM TYPOGRAPHY*/
 
-		input[type=button], input[type=submit], input[type=reset]  {
+		input[type=button], input[type=submit], input[type=reset] {
 			background-color: #5645ED;
 			border: none;
 			color: white;
@@ -56,9 +54,9 @@
 			text-decoration: none;
 			display: inline-block;
 			text-transform: uppercase;
-			font-size: 13px;
-			-webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-			box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+			font-size: 1.3rem;
+			-webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+			box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
 			-webkit-border-radius: 5px 5px 5px 5px;
 			border-radius: 5px 5px 5px 5px;
 			margin: 5px 20px 40px 20px;
@@ -71,13 +69,12 @@
 
 		input[type=text], input[type=password] {
 			background-color: #f6f6f6;
-			border: none;
 			color: #0d0d0d;
 			padding: 15px 32px;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
-			font-size: 16px;
+			font-size: 1.6rem;
 			margin: 5px;
 			width: 85%;
 			border: 2px solid #f6f6f6;
@@ -198,39 +195,51 @@
 			outline: none;
 		}
 
-		@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-			.mobile {
-				display: block;
+		@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+			html {
+				font-size: 9px;
+				height: 60px;
+			}
+
+			body {
 				background: white;
+				height: fit-content;
+			}
+
+			.container {
+				padding-top: 4rem;
 			}
 
 			#formContent {
 				all: unset;
+
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+				background: #fff;
+				width: 100%;
+				max-width: 45rem;
+				position: relative;
+				text-align: center;
 			}
 		}
 	</style>
 </head>
 
 <body background="../../asset/images/bg_login.jpg">
-
-<div class="mobile" style="height: inherit">
-	<div class="container" style="height: inherit">
-		<div class="row" style="height:inherit">
-			<div class="col-sm wrapper fadeInDown">
-				<form id="formContent">
-					<p>DUAL</p>
-					<input type="text" id="login" class="fadeIn second" name="login" placeholder="ID"
-						   style="margin-bottom: 10px; text-align: left" onkeyup="enterKey();"
-						   onkeydown="onlyAlphabet(this)">
-					<input type="password" id="password" class="fadeIn third" name="login" placeholder="PASSWORD"
-						   style="margin-bottom: 30px; text-align: left" onkeyup="enterKey();">
-					<div class="fadeIn fourth btn-light-purple-square"
-						 style="font-size: 20px;font-weight: bold;width: 90%; border-radius: 30px; padding: 12px 20px;"
-						 value="Log In" onclick="masterLogin()">LOGIN
-					</div>
-				</form>
+<div class="container" style="height: inherit">
+	<div class="col-sm wrapper fadeInDown">
+		<form id="formContent">
+			<p>DUAL</p>
+			<input type="text" id="login" class="fadeIn second" name="login" placeholder="ID"
+				   style="margin-bottom: 10px; text-align: left" onkeyup="enterKey();"
+				   onkeydown="onlyAlphabet(this)">
+			<input type="password" id="password" class="fadeIn third" name="login" placeholder="PASSWORD"
+				   style="margin-bottom: 30px; text-align: left" onkeyup="enterKey();">
+			<div class="fadeIn fourth btn-light-purple-square"
+				 style="font-size: 2rem;font-weight: bold;width: 90%; border-radius: 3rem; padding: 1.2rem 2rem;"
+				 value="Log In" onclick="customerLogin()">LOGIN
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
 
@@ -247,7 +256,7 @@
 	function enterKey() {
 		if (window.event.keyCode == 13) {
 			// 엔터키가 눌렸을 때 실행할 내용
-			masterLogin();
+			customerLogin();
 		}
 	}
 
@@ -255,7 +264,7 @@
 		ele.value = ele.value.replace(/[^\\!-z]/gi, "");
 	}
 
-	function masterLogin() {
+	function customerLogin() {
 		var requestMember = new Object();
 
 		if ($("#login").val() == "") {
@@ -273,15 +282,15 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "http://192.168.219.100:8080/permission/",
+			baseURL: "https://api.dualhealth.kr/permission/",
+			//baseURL: "http://192.168.219.100:8080/permission/",
 			timeout: 5000
 		});
 
 		instance.post('login', requestMember).then(res => {
 			if (res.data.message == "FAILED") {
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-			} else{
+			} else {
 				var split = res.data.message.split('/');
 				sessionStorage.setItem("token", res.data.data);
 				sessionStorage.setItem("userID", requestMember.id);

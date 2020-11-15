@@ -3,35 +3,46 @@
 	.bd-sidebar {
 		position: sticky;
 		height: 100vh;
-		min-width: 320px;
-		max-width: 320px;
+		min-height: 90rem;
+		min-width: 32rem;
+		max-width: 32rem;
 		color: white;
 		text-align: center;
 		background-color: rgba(27, 26, 37, 0.95);
 	}
 
+	/*로고*/
+	.logo {
+		width: 80%;
+	}
+
+	/*이름*/
+	#nameView {
+		font-size: 1.6rem;
+	}
+
 	/*예약현황*/
 	.reservation-card {
-		padding: 5px;
+		padding: 0.5rem;
 		background: white;
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
-		height: 100px;
+		border-bottom-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		height: 10rem;
 		color: black;
-		font-size: 15px;
+		font-size: 1.5rem;
 		display: table;
 		width: inherit;
 	}
 
 	.reservation-card-top {
-		padding: 5px;
+		padding: 0.5rem;
 		background: #5849ea;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
 	}
 
 	.slick-prev:before, .slick-next:before {
-		font-size: 40px;
+		font-size: 4rem;
 		line-height: 1;
 		color: gray;
 		opacity: 0.8;
@@ -47,9 +58,9 @@
 
 	/*내정보관리*/
 	.my-info-box {
-		padding: 5px 0;
+		padding: 0.5rem 0;
 		border: #666666 solid 1px;
-		font-size: 14px;
+		font-size: 1.4rem;
 		display: flex;
 	}
 
@@ -69,7 +80,7 @@
 
 	#nav li a {
 		display: block;
-		padding: 11px 40px;
+		padding: 1.1rem 4rem;
 		text-decoration: none;
 		color: white;
 		text-align: left;
@@ -89,7 +100,7 @@
 	}
 
 	.sub-menu {
-		padding-left: 30px;
+		padding-left: 3rem;
 		border-bottom: none;
 		color: #5645ED;
 	}
@@ -101,46 +112,46 @@
 	/*푸터 : 회사정보*/
 	.footer {
 		width: 100%;
-		font-size: 13px;
+		font-size: 1.3rem;
 		text-align: left;
 		color: #aaaaaa;
 		position: absolute;
-		bottom: 0px;
+		bottom: 0;
 		background: #1b1a25;
 	}
 
 	.footer-top {
 		display: flex;
 		border-top: 1px solid #666666;
-		padding: 8px 27px;
+		padding: 0.8rem 2.7rem;
 	}
 
 	.footer-middle {
 		border-top: 1px solid #666666;
-		padding: 15px 27px 20px;
-		font-size: 12px;
+		padding: 1.5rem 2.7rem 2rem;
+		font-size: 1.2rem;
 	}
 
 </style>
 
 <div class="col bd-sidebar" style="padding: 0">
-	<form style="padding: 35px 25px">
-		<div style="margin-bottom: 40px">
-			<a href="/"><img src="/asset/images/logo_dark.png"></a>
+	<form style="padding: 3.5rem 2.5rem">
+		<div style="margin-bottom: 3rem">
+			<a href="/"><img class="logo" src="/asset/images/logo_dark.png"></a>
 		</div>
-		<div style="margin-bottom: 20px">
+		<div style="margin-bottom: 2rem">
 			<span id="nameView" style="font-weight: bolder"></span>
 			님 환영합니다.
 		</div>
 
-		<div style="width: 100%;margin-bottom: 20px">
+		<div style="width: 100%;margin-bottom: 2rem">
 			<div class="reservation-card-top">
 				예약현황
 			</div>
 			<div class="reservation-card">
 				<div id="carouselReservationControls" class="carousel slide" data-ride="carousel"
 					 style="height: inherit; display: table-cell; vertical-align: middle;
-					 color: black; font-size: 16px; font-weight: bolder">
+					 color: black; font-size: 1.6rem; font-weight: bolder">
 					<div id="userScheduleInfos" class="carousel-inner">
 
 					</div>
@@ -211,7 +222,7 @@
 			<div>
 				서비스이용약관
 			</div>
-			<div style="padding: 0 10px">
+			<div style="padding: 0 1rem">
 				|
 			</div>
 			<div>
@@ -219,7 +230,7 @@
 			</div>
 		</div>
 		<div class="footer-middle">
-			<div style="font-size: 14px; color: white;margin-bottom: 3px">
+			<div style="font-size: 1.4rem; color: white;margin-bottom: 0.3rem">
 				(주) 듀얼헬스케어
 			</div>
 			<div>

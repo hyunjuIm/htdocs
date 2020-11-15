@@ -22,7 +22,7 @@
 		} else { //세션만료 로그아웃
 			sessionStorage.clear();
 			alert("세션이 만료되었습니다. 로그인 후 이용해주세요.");
-			location.href = "customer/customer_login";
+			location.href = "./customer_login";
 		}
 	}
 
@@ -53,10 +53,9 @@
 		if (res.data != "SUCCESS") {
 			sessionStorage.clear();
 			alert("중복로그인이 감지되어 로그아웃 되었습니다.");
-			location.href = "./customer_login";
+			location.href = "customer/customer_login";
 		}
 	}).catch(function (error) {
-		alert("잘못된 접근입니다.");
 		console.log(error);
 	});
 
@@ -93,8 +92,6 @@
 	});
 
 	function setMainUserInfo(data) {
-		console.log(data);
-
 		if (data.length == 0) {
 			var html = '';
 			html += '<div class="carousel-item active">';

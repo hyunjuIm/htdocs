@@ -8,35 +8,47 @@
 	?>
 
 	<style>
+		html {
+			font-size: 10px;
+		}
+
+		body {
+			font-size: 1.5rem;
+		}
+
 		table {
 			text-align: center;
 		}
 
 		.main-content {
-			width: 530px;
-			height: 265px;
-			min-width: 530px;
-			min-height: 265px;
+			width: 53rem;
+			height: 53rem;
+			min-width: 53rem;
+			min-height: 53rem;
 			cursor: pointer;
 			padding: 0;
 		}
 
 		.sub-content {
-			width: 265px;
-			height: 265px;
-			min-width: 265px;
-			min-height: 265px;
-			border: white 1px solid;
+			width: 26.5rem;
+			height: 26.5rem;
+			min-width: 26.5rem;
+			min-height: 26.5rem;
 			color: white;
-			font-size: 15px;
+			font-size: 1.5rem;
 			font-weight: bolder;
 			cursor: pointer;
+			border: white solid 1px;
+		}
+
+		.sub-content-title {
+			font-size: 2.2rem;
 		}
 
 		@-webkit-keyframes fade-in-fwd {
 			0% {
-				-webkit-transform: translateZ(-80px);
-				transform: translateZ(-80px);
+				-webkit-transform: translateZ(-8rem);
+				transform: translateZ(-8rem);
 				opacity: 0;
 			}
 			100% {
@@ -48,8 +60,8 @@
 
 		@keyframes fade-in-fwd {
 			0% {
-				-webkit-transform: translateZ(-80px);
-				transform: translateZ(-80px);
+				-webkit-transform: translateZ(-8rem);
+				transform: translateZ(-8rem);
 				opacity: 0;
 			}
 			100% {
@@ -97,9 +109,10 @@
 
 		.notice-div {
 			text-align: left;
-			padding: 20px;
 			cursor: default;
-			vertical-align: top;
+			font-size: 1.5rem;
+			font-weight: bolder;
+			padding: 2rem 4rem;
 		}
 
 		#mainNoticeInfos {
@@ -107,12 +120,11 @@
 			width: 100%;
 			text-align: left;
 			color: black;
-			height: 100px
 		}
 
 		#mainNoticeInfos td {
 			border-bottom: 1px solid #cbcbcb;
-			padding: 5px;
+			padding: 0.5rem;
 			cursor: pointer;
 		}
 
@@ -120,10 +132,9 @@
 			color: #5645ED;
 		}
 
-
 		#mainNoticeInfos .date {
 			width: 20%;
-			font-size: 13px;
+			font-size: 1.3rem;
 			color: #adadad;
 			text-align: right;
 		}
@@ -136,6 +147,18 @@
 		.inner {
 			align-self: center;
 			padding: 2rem;
+		}
+
+		@media only screen and (max-width: 1700px) {
+			html {
+				font-size: 8px;
+			}
+		}
+
+		@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+			html {
+				font-size: 7px;
+			}
 		}
 
 	</style>
@@ -156,17 +179,17 @@
 		require('side_bar_dark.php');
 		?>
 		<!-- 우측 컨텐츠 -->
-		<div class="col" style="display: table-cell;vertical-align: middle">
+		<div class="col" style="display: table-cell;vertical-align: middle;">
 			<table style="margin: 0 auto">
 				<tr>
 					<td class="main-content" rowspan="2" colspan="2">
-						<img src="/asset/images/banner1.jpg" style="width: 530px;height: 530px;padding: 0">
+						<img src="/asset/images/banner1.jpg" style="width: inherit;height: inherit">
 					</td>
 					<td class="sub-content" style="background-color: rgba( 108, 4, 3, 0.8)">
 						<div class="menu1 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon1.png" style="margin-bottom: 10px"><br>
-								<span style="font-size: 22px">내예약<br></span>
+								<span class="sub-content-title">내예약<br></span>
 								RESERVATION DETAILS
 							</div>
 						</div>
@@ -175,7 +198,7 @@
 						<div class="menu2 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon2.png" style="margin-bottom: 10px"><br>
-								<span style="font-size: 22px">검진예약<br></span>
+								<span class="sub-content-title">검진예약<br></span>
 								RESERVATION
 							</div>
 						</div>
@@ -184,7 +207,7 @@
 						<div class="menu3 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon3.png" style="margin-bottom: 10px"><br>
-								<span style="font-size: 22px">검진결과<br></span>
+								<span class="sub-content-title">검진결과<br></span>
 								RESULT
 							</div>
 						</div>
@@ -195,7 +218,7 @@
 						<div class="menu4 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon4.png" style="margin-bottom: 10px"><br>
-								<span style="font-size: 22px">병원별 비교<br></span>
+								<span class="sub-content-title">병원별 비교<br></span>
 								TO COMPARE HOSPITALS
 							</div>
 						</div>
@@ -204,37 +227,45 @@
 						<div class="menu5 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon5.png" style="margin-bottom: 10px"><br>
-								<span style="font-size: 22px">건강 컨텐츠<br></span>
+								<span class="sub-content-title">건강 컨텐츠<br></span>
 								HEALTH CONTENTS
 							</div>
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"></td>
-					<td class="" colspan="2"
-						style="background: white;border: white 1px solid;font-size: 15px;font-weight: bolder">
-						<div class="notice-div">
-							<div style="margin-bottom: 25px">
-								<span style="font-size: 14px;color: #5645ED">NOTICE<br></span>
-								<span style="font-size: 20px;color: black">공지사항<br></span>
+					<td colspan="2">
+					</td>
+					<td colspan="2" style="width: inherit;height:inherit;background: white;border: white solid 1px;">
+						<div class="notice-div" style="height: 22rem">
+							<div class="row"
+								 style="font-size: 1.4rem;color: #5645ED">
+								NOTICE
 							</div>
-							<table id="mainNoticeInfos">
-								<tbody>
-								</tbody>
-							</table>
+							<div class="row"
+								 style="margin-bottom: 2.5rem;font-size: 2rem;color: black">
+								공지사항
+							</div>
+							<div class="row">
+								<table id="mainNoticeInfos">
+									<tbody>
+									</tbody>
+								</table>
+							</div>
 						</div>
-						<a style="vertical-align: bottom; float: right; padding-top: 13px">
-							<img src="/asset/images/btn_plus.png" style="cursor: pointer">
-						</a>
+						<div style="display: table; float: right;height: 4.5rem">
+							<a style="display: table-cell; vertical-align: bottom">
+								<img src="/asset/images/btn_plus.png" style="cursor: pointer">
+							</a>
+						</div>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)">
 						<div class="menu6 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
-								<span style="font-size: 22px">고객센터<br></span>
+								<span class="sub-content-title">고객센터<br></span>
 								CUSTOMER CENTER<br>
-								<span style="font-size: 17px;color: #FFBB00">평일 9:00~18:00<br>1661-2654
+								<span style="font-size: 1.7rem;color: #FFBB00">평일 9:00~18:00<br>1661-2654
 						</span>
 							</div>
 						</div>

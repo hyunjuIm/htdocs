@@ -15,13 +15,12 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-<!--axios-->
-
-<link rel="stylesheet" type="text/css" href="/asset/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/asset/css/style.css?after" />
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
 
-<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
