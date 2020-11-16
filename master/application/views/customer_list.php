@@ -11,7 +11,7 @@
 		.info-input {
 			border:none;
 			text-align: center;
-			word-break:break-all;
+			width: 100%;
 		}
 	</style>
 </head>
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<hr>
-					<div class="btn-save-square" style="float: right;" onclick="searchInformation()">
+					<div class="btn-save-square" style="float: right;" onclick="searchCustomerData()">
 						검색
 					</div>
 				</ul>
@@ -67,7 +67,7 @@
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
 						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요" onkeyup="enterKey()">
-						<div class="search-icon" onclick="searchInformation()"></div>
+						<div class="search-icon" onclick="searchCustomerData()"></div>
 					</div>
 				</h6>
 			</div>
@@ -190,6 +190,8 @@ require('check_data.php');
 		searchItems.companyBranch = $("#companyBranch option:selected").val();
 
 		searchItems.searchWord =  $("#searchWord").val();
+
+		console.log(searchItems);
 
 		if (searchItems.companyName == "-전체-") {
 			searchItems.companyName = "all";

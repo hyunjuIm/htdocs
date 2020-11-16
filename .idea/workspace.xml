@@ -20,23 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/check_data.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/title1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/title_bar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/master/application/views/customer_list.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/master/application/views/customer_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/my_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/controllers/Master.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/controllers/Master.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/customer_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/customer_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/hospital_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/hospital_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/reservation_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/reservation_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/service_notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_notice.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,11 +186,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="156" y="18" width="1508" height="1027" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605246782972" />
-    <state x="760" y="120" width="584" height="536" key="find.popup" timestamp="1605515158288">
+    <state x="701" y="119" width="584" height="536" key="find.popup" timestamp="1605542388095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
-    <state x="701" y="119" width="584" height="536" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605456423737" />
+    <state x="701" y="119" width="584" height="536" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605542388095" />
     <state x="760" y="120" width="584" height="536" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605515158288" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605169203373">
       <screen x="0" y="0" width="1920" height="1040" />

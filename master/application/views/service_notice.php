@@ -127,6 +127,8 @@ require('check_data.php');
 		searchItems.title = $("#searchNoticeWord").val();
 		searchItems.year = $("#ntYear option:selected").val();
 
+		console.log(searchItems);
+
 		instance.post('M013002_REQ_RES', searchItems).then(res => {
 			setNoticeListData(res.data, pageNum);
 		});

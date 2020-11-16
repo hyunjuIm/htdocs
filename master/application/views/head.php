@@ -22,6 +22,8 @@
 <link rel="stylesheet" type="text/css" href="/asset/css/table_style.css" />
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+
 <style>
 	ul {
 		list-style: none;

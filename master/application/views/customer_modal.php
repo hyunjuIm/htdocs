@@ -11,7 +11,7 @@
 				<div class="row" style="min-width: 1300px">
 					<div class="col">
 						<div style="font-size: 22px; display: grid; text-align: center; margin-top: 30px;padding: 0 30px">
-							<img src="/asset/images/bg_h2_tit_top.png" style="margin: auto">
+							<img src="/asset/images/bg_h2_tit_top.png" style="margin: 0 auto">
 							<p style="margin: 10px">고객정보</p>
 							<table class="table table-bordered" id="customerInfo"
 								   style="margin-top:45px;font-size: 15px">
@@ -56,11 +56,11 @@
 							</table>
 							<div style="width: 100%">
 								<div class="btn btn-dark" style="margin: 30px auto 0 auto"
-									 onclick="saveInformation()">
+									 onclick="saveCustomerInformation()">
 									저장
 								</div>
 								<div class="btn btn-danger" style="margin: 30px auto 0 auto"
-									 onclick="saveInformation()">
+									 onclick="deleteCustomerInformation()">
 									삭제
 								</div>
 							</div>
@@ -73,17 +73,14 @@
 							<p style="margin: 10px;font-size: 22px;">가족정보</p>
 
 							<ul class="nav nav-tabs" id="customerTabMenu">
-								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#"
-									   onclick="clickFamilyTab('FAM#1')">본인</a>
-								</li>
 							</ul>
 
 							<div class="tab-content" style="border: 1px solid #E6E6E6">
-								<div class="tab-pane fade show active" id="packageTab">
-									<div class="container" style="margin-top: 20px;font-size: 15px">
-										<div class="row" style="width: 800px;padding: 20px">
-											<div class="col">
+								<div class="tab-pane fade show active">
+									<div class="container" id="customerTab"
+										 style="margin-top: 20px;font-size: 15px;visibility: hidden">
+										<div class="row" style="width: 850px;padding: 20px">
+											<div class="col-7">
 												<table class="table" name="info1">
 													<tbody>
 													<tr>
@@ -144,13 +141,17 @@
 													</tr>
 													<tr>
 														<th>연락처</th>
-														<td id="phone" contentEditable="true"></td>
+														<td>
+															<input class="info-input" type="text"
+																   id="phone">
+														</td>
 													</tr>
 													<tr>
 														<th rowspan="3">주소</th>
 														<td>
 															<input class="info-input" type="text"
-																   id="zipCode" placeholder="우편번호" readonly>
+																   id="zipCode" placeholder="우편번호"
+																   onclick="openAddressSearch()" readonly>
 														</td>
 													</tr>
 													<tr>
@@ -176,7 +177,7 @@
 													</tbody>
 												</table>
 											</div>
-											<div class="col">
+											<div class="col-5">
 												<table class="table" id="info2">
 													<tbody>
 													<tr>
@@ -251,7 +252,7 @@
 														<th>지원금비율</th>
 														<td>
 															<input class="info-input" type="number"
-																   id="supportPercent">
+																   style="width: 60px" id="supportPercent">%
 														</td>
 													</tr>
 													<tr>
@@ -271,7 +272,7 @@
 
 							<div style="width: 100%">
 								<div class="btn btn-dark" style="margin-top: 15px; float: right"
-									 onclick="saveInformation()">저장
+									 onclick="saveFamilyInformation()">저장
 								</div>
 							</div>
 						</div>
@@ -297,14 +298,18 @@
 
 	//클릭시 고객정보
 	function setDetailCustomerData(data) {
-		console.log(data);
+		$("#customerTabMenu").empty();
 
 		$("#customerId").val(data.cusEmail);
 		$("#customerName").val(data.name);
 		$("#customerCompanyName").val(data.coName);
 		$("#customerCompanyBranch").val(data.coBranch);
 
-		for (i = 1; i < data.familyDTOList.length; i++) {
+		if(data.familyDTOList.length == 0) {
+			$("#customerTab").css("visibility", "hidden");
+		}
+
+		for (i = 0; i < data.familyDTOList.length; i++) {
 			var html = "";
 			html += '<li class="nav-item">' +
 					'<a class="nav-link" data-toggle="tab" href="#" onclick="clickFamilyTab(\'' + data.familyDTOList[i].famId + '\')">' +
@@ -312,13 +317,17 @@
 			$("#customerTabMenu").append(html);
 		}
 
-		clickFamilyTab(data.familyDTOList[0].famId);
-
 		familyData = data.familyDTOList;
-		console.log(familyData);
 	}
 
+	var famId;
+
+	//가족 정보 탭 전환
 	function clickFamilyTab(id) {
+		$("#customerTab").css("visibility", "visible");
+
+		famId = id;
+
 		for (i = 0; i < familyData.length; i++) {
 			if (id == familyData[i].famId) {
 				$("#grade").val(familyData[i].grade);
@@ -358,12 +367,179 @@
 					$("input:checkbox[id='psInfoCheckHospitalNo']").prop("checked", false);
 				} else {
 					$("input:checkbox[id='psInfoCheckHospitalYes']").prop("checked", false);
-					$("input:checkbox[id='psInfoCheckHospitaltNo']").prop("checked", true);
+					$("input:checkbox[id='psInfoCheckHospitalNo']").prop("checked", true);
 				}
 
 				$("#supportPercent").val(familyData[i].supportPercent);
-				$("#supportPrice").val(familyData[i].supportPrice);
+				$("#supportPrice").val(familyData[i].supportPrice.toLocaleString());
 			}
+		}
+	}
+
+	//주소검색
+	function openAddressSearch() {
+		new daum.Postcode({
+			oncomplete: function (data) {
+				$("#zipCode").val(data.zonecode); // 우편번호 (5자리)
+				$("#address").val(data.address);
+				$("#buildingNum").val(data.buildingName);
+				$("#buildingNum").focus();
+			}
+		}).open();
+	}
+
+	//고객정보 수정
+	function saveCustomerInformation() {
+		if ($("#customerName").val() == "") {
+			alert("이름을 입력해주세요.");
+			$("#customerName").focus();
+			return;
+		} else if ($("#customerId").val() == "") {
+			alert("아이디를 입력해주세요.");
+			$("#customerId").focus();
+			return;
+		} else if ($("#customerCompanyName").val() == "") {
+			alert("소속을 입력해주세요.");
+			$("#customerCompanyName").focus();
+			return;
+		} else if ($("#customerCompanyBranch").val() == "") {
+			alert("사업장을 입력해주세요.");
+			$("#customerCompanyBranch").focus();
+			return;
+		} else if ($("#customerPassword").val() == "") {
+			alert("비밀번호를 입력해주세요.");
+			$("#customerPassword").focus();
+			return;
+		} else if ($("#customerPasswordCheck").val() == "") {
+			alert("비밀번호 확인을 입력해주세요.");
+			$("#customerPasswordCheck").focus();
+			return;
+		} else if ($("#customerPassword").val() != $("#customerPasswordCheck").val()) {
+			alert("비밀번호를 다시 확인해주세요.");
+			return;
+		}
+
+		var sendItems = new Object();
+
+		sendItems.cusId = cusId.cusId;
+		sendItems.name = $("#customerName").val();
+		sendItems.email = $("#customerId").val();
+		sendItems.coName = $("#customerCompanyName").val();
+		sendItems.coBranch = $("#customerCompanyBranch").val();
+		sendItems.password = $("#customerPassword").val();
+		sendItems.passwordCheck = $("#customerPasswordCheck").val();
+
+		if (confirm("저장하시겠습니까?") == true) {
+			instance.post('M001004_REQ_RES', sendItems).then(res => {
+				if (res.data.message == "success") {
+					alert("저장되었습니다.");
+				} else {
+					alert("비밀번호를 다시 확인해주세요.");
+				}
+			});
+		} else {
+			return false;
+		}
+	}
+
+	//고객정보 삭제
+	function deleteCustomerInformation() {
+		if (confirm("삭제하시겠습니까?") == true) {
+			instance.post('M001006_REQ', cusId).then(res => {
+				if (res.data.message == "success") {
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			});
+		} else {
+			return false;
+		}
+	}
+
+	//가족정보 수정
+	function saveFamilyInformation() {
+		if ($("#grade").val() == "") {
+			alert("관계를 입력해주세요.");
+			$("#grade").focus();
+			return;
+		} else if ($("#name").val() == "") {
+			alert("이름을 입력해주세요.");
+			$("#name").focus();
+			return;
+		} else if ($("#birthDate").val() == "") {
+			alert("생년월일을 선택해주세요.");
+			$("#birthDate").focus();
+			return;
+		} else if ($("#phone").val() == "") {
+			alert("연락처를 입력해주세요.");
+			$("#phone").focus();
+			return;
+		} else if (!isPhoneNum($("#phone").val())) {
+			alert("올바른 연락처를 입력해주세요.");
+			$("#phone").focus();
+			return;
+		} else if ($("#zipCode").val() == "" || $("#address").val() == "" || $("#buildingNum").val() == "") {
+			alert("주소를 입력해주세요.");
+			return;
+		} else if ($("#email").val() == "") {
+			alert("이메일을 입력해주세요.");
+			$("#email").focus();
+			return;
+		} else if (!isEmail($("#email").val())) {
+			alert("올바른 이메일를 입력해주세요.");
+			$("#email").focus();
+			return;
+		} else if ($("#supportPercent").val() == "") {
+			alert("지원금 비율을 입력해주세요.");
+			$("#supportPercent").focus();
+			return;
+		} else if ($("#supportPrice").val() == "") {
+			alert("지원금을 입력해주세요.");
+			$("#supportPrice").focus();
+			return;
+		}
+		var sendItems = new Object();
+
+		sendItems.famId = famId;
+		sendItems.grade = $("#grade").val();
+		sendItems.name = $("#name").val();
+		sendItems.sex = booleanData('sex');
+		sendItems.birthDate = $("#birthDate").val();
+		sendItems.zipCode = $("#zipCode").val();
+		sendItems.address = $("#address").val();
+		sendItems.buildingNum = $("#buildingNum").val();
+		sendItems.phone = $("#phone").val();
+		sendItems.email = $("#email").val();
+		sendItems.pcDiscount = booleanData('pcDiscount');
+		sendItems.psInfoCheckDual = booleanData('psInfoCheckDual');
+		sendItems.psInfoCheckHospital = booleanData('psInfoCheckHospital');
+		sendItems.supportPercent = $("#supportPercent").val();
+		sendItems.supportPrice = saveSupportPrice('supportPrice');
+
+		if (confirm("저장하시겠습니까?") == true) {
+			instance.post('M001005_REQ_RES', sendItems).then(res => {
+				if (res.data.message == "success") {
+					alert("저장되었습니다.");
+					for (i = 0; i < familyData.length; i++) {
+						if (famId == familyData[i].famId) {
+							familyData[i] = sendItems;
+						}
+					}
+				}
+			});
+		} else {
+			return false;
+		}
+	}
+
+	//저장할 때 - 금액에서 천단위 , 쉼표 제거
+	function saveSupportPrice(price) {
+		var result = $("#" + price +"").val();
+		var reg = /[,]/gi
+		if (reg.test(result)) {
+			return result.replace(reg, "");
+		} else {
+			return result;
 		}
 	}
 
