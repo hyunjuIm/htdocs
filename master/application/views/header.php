@@ -13,6 +13,8 @@
 					통합관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
+					<a class="dropdown-item" href="/master/customer_list">회원관리</a>
+					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/master/reservation_list">예약관리</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/master/company_list">기업관리</a>
@@ -120,7 +122,7 @@
 
 	const instance = axios.create({
 		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		baseURL: "http://192.168.219.100:8080/master/api/v1/",
+		baseURL: "http://192.168.219.109:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
@@ -128,7 +130,7 @@
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
 		//baseURL: "https://api.dualhealth.kr/",
-		baseURL: "http://192.168.219.100:8080/",
+		baseURL: "http://192.168.219.109:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});

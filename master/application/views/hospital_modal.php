@@ -180,7 +180,7 @@
 							<table class="table" id="HosManagerTable">
 								<tbody>
 								<tr>
-									<th>부서</th>
+									<th>사업장</th>
 									<td id="add-hos-department" contentEditable="true"></td>
 								</tr>
 								<tr>
@@ -600,7 +600,7 @@ require('file_data.php');
 
 		//입력된 정보 검사
 		if (saveItems.department == "") {
-			alert("부서를 입력해주세요.");
+			alert("사업장을 입력해주세요.");
 		} else if (saveItems.email == "") {
 			alert("이메일을 입력해주세요.");
 		} else if (saveItems.password == "") {

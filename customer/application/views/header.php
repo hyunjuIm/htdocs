@@ -22,7 +22,7 @@
 		} else { //세션만료 로그아웃
 			sessionStorage.clear();
 			alert("세션이 만료되었습니다. 로그인 후 이용해주세요.");
-			location.href = "./customer_login";
+			location.href = "/customer/customer_login";
 		}
 	}
 
@@ -30,19 +30,19 @@
 	function customerLogout() {
 		sessionStorage.clear();
 		alert("로그아웃 되었습니다.");
-		location.href = "./customer_login";
+		location.href = "/customer/customer_login";
 	}
 
 	//로그인 안되어있으면 로그인 화면으로
 	var token = sessionStorage.getItem("token");
 	if (token == null) {
-		location.href = "customer/customer_login";
+		location.href = "/customer/customer_login";
 	}
 
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "https://api.dualhealth.kr/permission/",
-		//baseURL: "http://192.168.219.100:8080/permission/",
+		//baseURL: "https://api.dualhealth.kr/permission/",
+		baseURL: "http://192.168.219.109:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -53,15 +53,15 @@
 		if (res.data != "SUCCESS") {
 			sessionStorage.clear();
 			alert("중복로그인이 감지되어 로그아웃 되었습니다.");
-			location.href = "customer/customer_login";
+			location.href = "/customer/customer_login";
 		}
 	}).catch(function (error) {
 		console.log(error);
 	});
 
 	const instance = axios.create({
-		baseURL: "https://api.dualhealth.kr/customer/api/v1/",
-		//baseURL: "http://192.168.219.100:8080/customer/api/v1/",
+		//baseURL: "https://api.dualhealth.kr/customer/api/v1/",
+		baseURL: "http://192.168.219.109:8080/customer/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -71,8 +71,8 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "https://api.dualhealth.kr/",
-		//baseURL: "http://192.168.219.100:8080/",
+		//baseURL: "https://api.dualhealth.kr/",
+		baseURL: "http://192.168.219.109:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
@@ -122,4 +122,3 @@
 		}
 	}
 </script>
-

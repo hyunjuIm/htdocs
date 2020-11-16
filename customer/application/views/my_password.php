@@ -110,7 +110,7 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container"
-					 style="background: #808080; height: 30rem;text-align: center;">
+					 style="background-image: url(../../asset/images/title1.jpg); height: 30rem;text-align: center;">
 					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
 					</div>
 					<div class="row wrap" style="height: 22rem">
@@ -137,7 +137,8 @@
 				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
 					<div class="row" style="padding-top: 3rem">
 						<div style="margin: 0 auto; font-weight: bolder">
-							<p style="font-size: 3.2rem">비밀번호변경</p>
+							<img src="/asset/images/title_bar.png">
+							<p style="font-size: 3.2rem">비밀번호 변경</p>
 							다른 사람이 쉽게 알아낼 수 있는 생일/아이디/전화번호 등 개인정보는 사용하지 않는 것이 좋습니다.
 						</div>
 					</div>
@@ -146,24 +147,24 @@
 							<tr>
 								<th>현재 비밀번호</th>
 								<td>
-									<input type="password" id="nowPassword">
+									<input type="password" id="beforePassword">
 								</td>
 							</tr>
 							<tr>
 								<th>새로운 비밀번호</th>
 								<td>
-									<input type="password" id="changePassword1">
+									<input type="password" id="afterPassword">
 								</td>
 							</tr>
 							<tr>
 								<th>새로운 비밀번호 확인</th>
 								<td>
-									<input type="password" id="changePassword2">
+									<input type="password" id="afterPasswordCheck">
 								</td>
 							</tr>
 						</table>
 						<div class="btn-light-purple-square" style="margin: 3rem 0 6rem 0;float: right"
-						onclick="changePassword(nowPassword.value, changePassword1.value, changePassword2.value)">
+							 onclick="changePassword()">
 							변경
 						</div>
 					</div>
@@ -176,11 +177,43 @@
 </body>
 
 <script>
-	function changePassword(nowPassword, changePassword1, changePassword2) {
-		console.log(changePassword1, changePassword2);
-		if(changePassword1 != changePassword2) {
+	function changePassword() {
+		if ($("#beforePassword").val() == "") {
+			alert("현재 비밀번호를 입력해주세요.");
+			$("#beforePassword").focus();
+			return;
+		} else if ($("#afterPassword").val() == "") {
+			alert("새로운 비밀번호를 입력해주세요.");
+			$("#afterPassword").focus();
+			return;
+		} else if ($("#afterPasswordCheck").val() == "") {
+			alert("새로운 비밀번호 확인을 입력해주세요.");
+			$("#afterPasswordCheck").focus();
+			return;
+		} else if ($("#afterPassword").val() != $("#afterPasswordCheck").val()) {
 			alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
 		}
+
+		var saveItems = new Object();
+
+		saveItems.cusId = sessionStorage.getItem("userCusID");
+		saveItems.beforePassword = $("#beforePassword").val();
+		saveItems.afterPassword = $("#afterPassword").val();
+		saveItems.afterPasswordCheck = $("#afterPasswordCheck").val();
+
+		console.log(saveItems);
+
+		// 내정보
+		instance.post('CU_002_003', saveItems).then(res => {
+			console.log(res.data);
+			if (res.data.message == "success") {
+				sessionStorage.clear();
+				alert("비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+				location.href = "/customer/customer_login";
+			} else {
+				alert("비밀번호를 다시 확인해주세요.");
+			}
+		});
 	}
 
 </script>

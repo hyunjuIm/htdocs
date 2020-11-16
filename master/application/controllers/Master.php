@@ -15,6 +15,12 @@ class master extends CI_Controller
 		$this->load->view('index');
 	}
 
+	//회원관리
+	public function customer_list()
+	{
+		$this->load->view('customer_list');
+	}
+
 	//예약관리
 	public function reservation_list()
 	{

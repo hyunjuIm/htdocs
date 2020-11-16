@@ -22,7 +22,7 @@
 									<td id="cus-companyName"></td>
 								</tr>
 								<tr>
-									<th>부서</th>
+									<th>사업장</th>
 									<td id="cus-companyBranch"></td>
 								</tr>
 								<tr>
