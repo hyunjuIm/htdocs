@@ -283,6 +283,38 @@
 	</div>
 </div>
 
+<!-- 패키지 신규 생성 Modal -->
+<div class="modal fade" id="customerUploadModal" tabindex="-1" aria-labelledby="customerUploadModalLabel"
+	 aria-hidden="true">
+	<div class="modal-dialog " style="max-width: fit-content; min-width: 600px; display: table;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div style="font-size: 22px; display: grid; text-align: center; margin-top: 30px">
+					<img src="/asset/images/bg_h2_tit_top.png" style="margin: auto">
+					<p style="margin: 10px">신규회원 엑셀 업로드</p>
+				</div>
+				<div class="container" style="margin: 40px 0 30px 0">
+					<form method="post" enctype="multipart/form-data" action=""
+						  style="margin: 0 auto; width: fit-content">
+						<span id="filename">엑셀 파일을 선택해주세요.</span>
+						<label for="excelUploadFile">파일선택<input type="file" id="excelUploadFile"></label>
+					</form>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<div class="btn-save-square" style="margin: auto" onclick="uploadCustomerFile()">업로드</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <script>
 	//고객정보상세
 	var cusId = Object();
@@ -305,7 +337,7 @@
 		$("#customerCompanyName").val(data.coName);
 		$("#customerCompanyBranch").val(data.coBranch);
 
-		if(data.familyDTOList.length == 0) {
+		if (data.familyDTOList.length == 0) {
 			$("#customerTab").css("visibility", "hidden");
 		}
 
@@ -406,17 +438,14 @@
 			alert("사업장을 입력해주세요.");
 			$("#customerCompanyBranch").focus();
 			return;
-		} else if ($("#customerPassword").val() == "") {
-			alert("비밀번호를 입력해주세요.");
-			$("#customerPassword").focus();
-			return;
-		} else if ($("#customerPasswordCheck").val() == "") {
-			alert("비밀번호 확인을 입력해주세요.");
-			$("#customerPasswordCheck").focus();
-			return;
 		} else if ($("#customerPassword").val() != $("#customerPasswordCheck").val()) {
 			alert("비밀번호를 다시 확인해주세요.");
 			return;
+		} else if (($("#customerPassword").val()).length > 0 && ($("#customerPasswordCheck").val()).length > 0) {
+			if (($("#customerPassword").val()).length < 8 || ($("#customerPasswordCheck").val()).length < 8) {
+				alert("비밀번호는 8자 이상으로 입력해주세요.");
+				return;
+			}
 		}
 
 		var sendItems = new Object();
@@ -433,7 +462,11 @@
 			instance.post('M001004_REQ_RES', sendItems).then(res => {
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
-				} else {
+				} else if (res.data.message == "companyFailed") {
+					alert("소속과 사업장을 다시 확인해주세요.");
+				} else if (res.data.message == "customerFailed") {
+					alert("이름과 아이디를 다시 확인해주세요.");
+				} else if (res.data.message == "passwordFailed") {
 					alert("비밀번호를 다시 확인해주세요.");
 				}
 			});
@@ -498,6 +531,7 @@
 			$("#supportPrice").focus();
 			return;
 		}
+
 		var sendItems = new Object();
 
 		sendItems.famId = famId;
@@ -516,15 +550,15 @@
 		sendItems.supportPercent = $("#supportPercent").val();
 		sendItems.supportPrice = saveSupportPrice('supportPrice');
 
+		console.log(sendItems);
+
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M001005_REQ_RES', sendItems).then(res => {
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
-					for (i = 0; i < familyData.length; i++) {
-						if (famId == familyData[i].famId) {
-							familyData[i] = sendItems;
-						}
-					}
+					instance.post('M001003_REQ_RES', cusId).then(res => {
+						familyData = res.data.familyDTOList;
+					});
 				}
 			});
 		} else {
@@ -534,7 +568,7 @@
 
 	//저장할 때 - 금액에서 천단위 , 쉼표 제거
 	function saveSupportPrice(price) {
-		var result = $("#" + price +"").val();
+		var result = $("#" + price + "").val();
 		var reg = /[,]/gi
 		if (reg.test(result)) {
 			return result.replace(reg, "");
@@ -543,4 +577,36 @@
 		}
 	}
 
+	//신규 회원 엑셀 업로드
+	function uploadCustomerFile() {
+		var file = document.getElementById('excelUploadFile');
+
+		if (file.files[0] == null) {
+			alert("업로드할 파일이 없습니다.");
+			return false;
+		}
+
+		var params = new FormData();
+		params.append("file", file.files[0]);
+
+		fileURL.post('uploadExcel/inputCustomerList', params, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		}).then(res => {
+			console.log(res.data);
+			alert(res.data);
+			location.reload();
+		});
+	}
+
+	//파일 업로드 이름
+	$('#excelUploadFile').change(function() {
+		var filepath = this.value;
+		var m = filepath.match(/([^\/\\]+)$/);
+		if (m) {
+			var filename = m[1];
+			$('#filename').text(filename);
+		}
+	});
 </script>

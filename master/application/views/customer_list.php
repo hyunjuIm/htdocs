@@ -13,6 +13,32 @@
 			text-align: center;
 			width: 100%;
 		}
+
+		#excelUploadFile {
+			position: absolute;
+			display: none;
+		}
+
+		label[for="excelUploadFile"]{
+			padding:0.5em;
+			display:inline-block;
+			background: #5645ED;
+			color: white;
+			cursor:pointer;
+		}
+
+		label[for="excelUploadFile"]:hover {
+			opacity: 0.9;
+		}
+
+		#filename{
+			padding:0.5em;
+			float:left;
+			width:300px;
+			white-space: nowrap;
+			overflow:hidden;
+			background:whitesmoke;
+		}
 	</style>
 </head>
 
@@ -52,8 +78,13 @@
 						</div>
 					</div>
 					<hr>
-					<div class="btn-save-square" style="float: right;" onclick="searchCustomerData()">
-						검색
+					<div style="float: right">
+						<div class="btn-purple-square" data-toggle="modal" data-target="#customerUploadModal">
+							신규회원 엑셀 업로드
+						</div>
+						<div class="btn-save-square" onclick="searchCustomerData()">
+							검색
+						</div>
 					</div>
 				</ul>
 			</form>
@@ -169,7 +200,6 @@ require('check_data.php');
 		for (i = 0; i < data.pageCount; i += 10) {
 			pageCount++;
 		}
-		console.log(pageCount);
 
 		//로딩 되자마자 초기 셋팅
 		searchCustomerData(0);
@@ -190,8 +220,6 @@ require('check_data.php');
 		searchItems.companyBranch = $("#companyBranch option:selected").val();
 
 		searchItems.searchWord =  $("#searchWord").val();
-
-		console.log(searchItems);
 
 		if (searchItems.companyName == "-전체-") {
 			searchItems.companyName = "all";

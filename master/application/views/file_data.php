@@ -25,7 +25,7 @@
 				'Content-Type': 'multipart/form-data'
 			}
 		}).then(res => {
-			console.log(res.data);
+			console.log(res.data.fileName);
 			alert("저장되었습니다.")
 		});
 	}

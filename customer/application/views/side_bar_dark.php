@@ -190,7 +190,7 @@
 		<ul id="nav">
 			<li class="main-menu"><a class="main-menu-item" href="#">예약서비스</a>
 				<ul>
-					<li class="sub-menu"><a href="#">검진예약</a></li>
+					<li class="sub-menu"><a href="/customer/reservation_step1">검진예약</a></li>
 					<li class="sub-menu"><a href="#">예약현황</a></li>
 				</ul>
 			</li>

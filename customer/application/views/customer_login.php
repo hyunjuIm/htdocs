@@ -195,7 +195,36 @@
 			outline: none;
 		}
 
-		@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+		@media only screen and (max-width: 480px) {
+			html {
+				font-size: 9px;
+				height: 60px;
+			}
+
+			body {
+				background: white;
+				height: fit-content;
+			}
+
+			.container {
+				padding-top: 4rem;
+			}
+
+			#formContent {
+				all: unset;
+
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+				background: #fff;
+				width: 100%;
+				max-width: 45rem;
+				min-width: 45rem;
+				position: relative;
+				text-align: center;
+			}
+		}
+
+		@media only screen and (max-device-width: 480px) {
 			html {
 				font-size: 9px;
 				height: 60px;
@@ -282,8 +311,8 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			baseURL: "https://api.dualhealth.kr/permission/",
-			//baseURL: "http://192.168.219.109:8080/permission/",
+			//baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.104:8080/permission/",
 			timeout: 5000
 		});
 

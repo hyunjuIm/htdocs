@@ -82,7 +82,7 @@
 			}
 		}
 
-		@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+		@media only screen and (max-device-width: 480px) {
 			html {
 				font-size: 7px;
 			}
@@ -122,11 +122,11 @@
 					<div class="row" style="height: 4.5rem">
 						<div style="margin: 0 auto; display: flex">
 							<a href="/customer/my_page">
-								<div class="title-menu">
+								<div class="title-menu" style="border-right: #828282 1px solid">
 									내정보관리
 								</div>
 							</a>
-							<div class="title-menu-select" style="border-right: #828282 1px solid">
+							<div class="title-menu-select">
 								비밀번호변경
 							</div>
 						</div>

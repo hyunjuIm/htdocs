@@ -48,13 +48,14 @@ a:link {
 }
 
 .btn-cancel-square {
-	cursor: pointer;
+	cursor: default;
 	display: inline-block;
-	padding: 0.8rem 2rem;
 	background: white;
+	padding: 0.6rem 2.3rem;
 	text-align: center;
-	color: #383838;
-	font-size: 1.5rem;
+	color: #5849ea;
+	font-size: 1.6rem;
+	border: 1px solid #5849ea;
 	border-radius: 0.5rem;
 	text-decoration: none;
 }
@@ -67,6 +68,7 @@ a:link {
 		text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
 	}
 }
+
 @keyframes text-shadow-drop-center {
 	0% {
 		text-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -82,4 +84,20 @@ a:link {
 .btn-delete-square:hover {
 	color: white;
 	opacity: 0.8;
+}
+
+.search-input {
+	border: 1px solid black;
+	height: 35px;
+	width: 21rem;
+	border-radius: 0;
+}
+
+.search-btn {
+	background: black;
+	width: 35px;
+	height: 35px;
+	border: 1px solid black;
+	text-align: center;
+	line-height: 30px;
 }
