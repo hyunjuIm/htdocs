@@ -87,17 +87,18 @@ a:link {
 }
 
 .search-input {
-	border: 1px solid black;
+	border: 1px solid #464646;
 	height: 35px;
 	width: 21rem;
+	padding: 0.5rem;
 	border-radius: 0;
 }
 
 .search-btn {
-	background: black;
+	background: #464646;
 	width: 35px;
 	height: 35px;
-	border: 1px solid black;
+	border: 1px solid #464646;
 	text-align: center;
 	line-height: 30px;
 }

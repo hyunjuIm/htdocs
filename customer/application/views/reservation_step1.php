@@ -249,10 +249,10 @@ require('check_data.php');
 			var html="";
 			html += '<tbody>' +
 					'<tr>' +
-					'<th class="name" rowspan="4">' + data[i].famName + '<br><span>(' + data[i].grade + ')</span></th>' +
+					'<th class="name" rowspan="4" style="border-bottom: 1px solid black">' + data[i].famName + '<br><span>(' + data[i].grade + ')</span></th>' +
 					'<th>주소</th>' +
 					'<td>(' + data[i].zipcode + ') ' + data[i].address + ' ' + data[i].buildingNum + '</td>' +
-					'<td class="btn-ok" rowspan="3">';
+					'<td class="btn-ok" rowspan="3" style="border-bottom: 1px solid black">';
 
 			if(data[i].reserved) {
 				html += '<div class="btn-light-purple-square" onclick="doReservation(\'' + data[i].famId + '\')"> 예약하기 </div>';
@@ -267,8 +267,8 @@ require('check_data.php');
 					'<td>' + data[i].phone + '</td>' +
 					'</tr>' +
 					'<tr>' +
-					'<th> 이메일</th>' +
-					'<td>' + data[i].email + '</td>' +
+					'<th style="border-bottom: 1px solid black"> 이메일</th>' +
+					'<td style="border-bottom: 1px solid black">' + data[i].email + '</td>' +
 					'</tr>' +
 					'</tbody>';
 			$("#personalInfos").append(html);

@@ -45,83 +45,78 @@
 			background: #5645ED;
 		}
 
-		.personal-info-agree {
-			font-size: 1.4rem;
-			text-align: left;
-			padding: 2rem;
-			background: #f6f6f6;
-			border: 1px solid #d5d5d5;
+		table {
+			max-width: fit-content;
+		}
+
+		table td {
+			padding: 0.7rem;
+		}
+
+		.hos-card {
+			border: 1px solid #a7a7a7;
+			width: 28.9rem;
+			height: fit-content;
+			font-weight: bolder;
+		}
+
+		.hos-card:hover {
+			box-shadow: 0px 0px 10px #bbbbbb;
+		}
+
+		.hos-card-img {
 			width: 100%;
-			height: 25rem;
-			overflow-y: scroll;
+			height: 24rem;
+			position: relative;
 		}
 
-		.form-check {
-			text-align: left;
-		}
-
-		.form-check-label, .form-check-input {
-			width: fit-content;
-		}
-
-		.personal-info-table {
-			width: 100%;
-			border-top: black 2px solid;
-			margin: 0 auto;
-		}
-
-		.personal-info-table tr {
-			border-bottom: 1px solid #a7a7a7;
-		}
-
-		.personal-info-table th {
-			background: #f6f6f6;
-			font-weight: normal !important;
-			width: 16rem;
-			text-align: right;
-			padding: 1.3rem 3rem;
-			vertical-align: middle;
-		}
-
-		.personal-info-table td {
-			padding: 1rem 2rem;
-			text-align: left;
-		}
-
-		.personal-info-table .name {
-			width: 25rem;
+		.hos-card-img:hover {
 			text-align: center;
-			background: #fbfbfb;
-			border-right: 1px solid #a7a7a7;
+			line-height: 24rem;
+			color: white;
+			content: "123";
 		}
 
-		.name {
-			font-size: 3rem;
-			line-height: 2.7rem;
+		.layer {
+			display: none;
+			cursor: pointer;
+			background-color: rgba(0, 0, 0, 0.7);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			line-height: 24rem;
+			color: white;
 		}
 
-		.name span {
+		.hos-card-content {
+			padding: 1.5rem;
 			font-size: 1.6rem;
 		}
 
-		.personal-info-table .btn-ok {
+		.hos-card-btn {
+			cursor: pointer;
+			background: white;
+			padding: 0.2rem 0;
+			margin: 2rem 0 0 15.5rem;
 			text-align: center;
-			border-left: 1px solid #a7a7a7;
-			width: 25rem;
+			color: #5849ea;
+			border: 1px solid #5849ea;
+			border-radius: 3rem;
+			font-weight: 500;
+			text-decoration: none;
 		}
 
-		input {
-			width: 100%;
-			border: 1px solid #d5d5d5;
+		.hos-card-btn:hover {
+			background: #5849ea;
+			color: white;
 		}
 
 		@media only screen and (max-width: 1700px) {
 			html {
 				font-size: 8px;
-			}
-
-			.reservation-order {
-				width: 80%;
 			}
 		}
 
@@ -203,7 +198,7 @@
 						<br>
 						<div>
 							<hr style="height: 0;border: 0; border-top: 2px solid black">
-							<table>
+							<table class="" id="hospitalInfos">
 
 							</table>
 							<hr style="height: 0;border: 0; border-top: 1px solid black">
@@ -233,9 +228,60 @@ require('check_data.php');
 
 	// 병원리스트 받기
 	instance.post('CU_003_002', userData).then(res => {
-		console.log(res.data);
+		setHospitalCard(res.data);
 	});
 
+	function setHospitalCard(data) {
+		console.log(data);
+		$("#hosCount").append(data.length);
+
+		var count = 0;
+		for (i = 0; i < data.length; i++) {
+			var html = "";
+			count += 1;
+			html += '<td>' +
+					'<div class="hos-card">' +
+					'<div class="hos-card-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')"' +
+					' onmouseleave="hospitalCardLeave()" ' +
+					'style="background: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ');' +
+					' background-size: 100% 24rem">' +
+					'<div class="layer">' +
+					'홈페이지 바로가기<br>' +
+					'</div>' +
+					'</div>' +
+					'<div class="hos-card-content">' +
+					'<span style="font-size: 2.2rem">' + data[i].hosName + '</span><br>' + data[i].hosAddress + '<br>' +
+					'<div class="hos-card-btn" onclick="doReservation(\'' + data[i].hosId + '\')">예약하기</div>' +
+					'</div>' +
+					'</div>' +
+					'</td>';
+
+			if (count == 1) {
+				count = 1;
+			}
+
+			$("#hospitalInfos").append(html);
+		}
+	}
+
+	//홈페이지 바로가기 버튼 활성화
+	function hospitalCardHover(layer, url) {
+		console.log();
+		$(layer).children('.layer').css("display", "block");
+		$(layer).click(function () {
+			window.open(url);
+		});
+	}
+
+	//홈페이지 바로가기 버튼 비활성화
+	function hospitalCardLeave() {
+		$('.layer').css("display", "none");
+	}
+
+	//다음 페이지에 가족 id 값, 병원 id 값 넘기기
+	function doReservation(hosId) {
+		location.href = "reservation_step3?famId=" + userData.famId + "?hosId=" + hosId;
+	}
 
 </script>
 
