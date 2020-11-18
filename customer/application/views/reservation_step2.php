@@ -54,9 +54,8 @@
 		}
 
 		.hos-card {
-			border: 1px solid #a7a7a7;
+			border: 1px solid #d5d5d5;
 			width: 28.9rem;
-			height: fit-content;
 			font-weight: bolder;
 		}
 
@@ -94,19 +93,21 @@
 		.hos-card-content {
 			padding: 1.5rem;
 			font-size: 1.6rem;
+			height: 10rem;
 		}
 
 		.hos-card-btn {
 			cursor: pointer;
 			background: white;
 			padding: 0.2rem 0;
-			margin: 2rem 0 0 15.5rem;
+			margin: 1.5rem 1.5rem 1.5rem 18rem;
 			text-align: center;
 			color: #5849ea;
 			border: 1px solid #5849ea;
 			border-radius: 3rem;
 			font-weight: 500;
 			text-decoration: none;
+			float: bottom;
 		}
 
 		.hos-card-btn:hover {
@@ -189,8 +190,8 @@
 								총 <span id="hosCount"></span>개 병원
 							</div>
 							<div style="display: flex; float:right">
-								<input type="text" id="" class="search-input" placeholder="검색어를 입력하세요">
-								<div class="search-btn">
+								<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterKey()">
+								<div class="search-btn" onclick="searchHospital(0)">
 									<img src="/asset/images/icon_search.png">
 								</div>
 							</div>
@@ -204,8 +205,13 @@
 							<hr style="height: 0;border: 0; border-top: 1px solid black">
 						</div>
 					</div>
-					<div class="row" style="margin-top: 8rem">
-
+					<div class="row" style="margin-top: 3rem">
+						<form style="margin: 0 auto; width: 85%; padding: 1rem">
+							<div class="page_wrap">
+								<div class="page_nation" id="paging">
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -220,25 +226,100 @@ require('check_data.php');
 ?>
 
 <script>
+	var pagingNum = 0;
+	var pageCount = 0;
+	var searchWord = "";
+
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	userData.famId = location.href.substr(
 			location.href.lastIndexOf('=') + 1
 	);
+	userData.pagingNum = pagingNum;
+	userData.searchWord = searchWord;
 
-	// 병원리스트 받기
-	instance.post('CU_003_002', userData).then(res => {
-		setHospitalCard(res.data);
-	});
+	searchHospital(0);
 
+	//검색 - 엔터키
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchHospital(0);
+		}
+	}
+
+	//페이징 - 화살표클릭
+	function pmPageNum(val) {//화살표클릭
+		console.log("before: pagingNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
+
+		pagingNum += parseInt(val);
+		if (pagingNum < 0) pagingNum = 0;
+		if (pageCount <= pagingNum) pagingNum = pageCount - 1;
+
+		console.log("after: pageNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
+		searchHospital(pagingNum);
+	}
+
+	//병원 검색
+	function searchHospital(index) {
+		pagingNum = index;
+
+		userData.pagingNum = pagingNum;
+		userData.searchWord = $("#searchWord").val();
+
+		instance.post('CU_003_002', userData).then(res => {
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 8) {
+				pageCount++;
+			}
+			setHospitalCard(res.data.hospitalList);
+		}).catch(function (error) {
+			alert("잘못된 접근입니다.")
+			console.log(error);
+		});
+	}
+
+
+	//병원 카드 셋팅
 	function setHospitalCard(data) {
-		console.log(data);
+		$("#hosCount").empty();
 		$("#hosCount").append(data.length);
+		$("#hospitalInfos").empty();
+		$("#paging").empty();
+
+		var html = "";
+		var pre = pagingNum - 1;
+		if (pre < 0) {
+			pre = 0;
+		}
+		html += '<a class="arrow pprev" onclick= "searchHospital(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
+		$("#paging").append(html);
+
+		for (i = 0; i < pageCount; i++) {
+			var html = '';
+
+			var num = i + 1;
+
+			if (i == pagingNum) {
+				html += '<a onclick= "searchHospital(\'' + i + '\')" class="active">' + num + '</a>';
+			} else {
+				html += '<a onclick= "searchHospital(\'' + i + '\')" href="#">' + num + '</a>';
+			}
+
+			$("#paging").append(html);
+		}
+
+		var html = "";
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchHospital(\'' + (pageCount - 1) + '\')" href="#"></a>'
+		$("#paging").append(html);
 
 		var count = 0;
 		for (i = 0; i < data.length; i++) {
 			var html = "";
 			count += 1;
+
 			html += '<td>' +
 					'<div class="hos-card">' +
 					'<div class="hos-card-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')"' +
@@ -251,16 +332,17 @@ require('check_data.php');
 					'</div>' +
 					'<div class="hos-card-content">' +
 					'<span style="font-size: 2.2rem">' + data[i].hosName + '</span><br>' + data[i].hosAddress + '<br>' +
-					'<div class="hos-card-btn" onclick="doReservation(\'' + data[i].hosId + '\')">예약하기</div>' +
 					'</div>' +
+					'<div class="hos-card-btn" onclick="doReservation(\'' + data[i].hosId + '\')">예약하기</div>' +
 					'</div>' +
 					'</td>';
 
-			if (count == 1) {
-				count = 1;
-			}
-
 			$("#hospitalInfos").append(html);
+
+			if (count == 4 || i == (data.length) - 1) {
+				count = 1;
+				$("#hospitalInfos").append('<tr></tr>');
+			}
 		}
 	}
 
@@ -269,7 +351,7 @@ require('check_data.php');
 		console.log();
 		$(layer).children('.layer').css("display", "block");
 		$(layer).click(function () {
-			window.open(url);
+			window.open(url, "hospital");
 		});
 	}
 

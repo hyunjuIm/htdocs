@@ -92,6 +92,17 @@
 		}
 	}
 
+	//저장할 때 - 금액에서 천단위 , 쉼표 제거
+	function savePrice1(price) {
+		var result = $("#"+price+"").val();
+		var reg = /[,]/gi
+		if (reg.test(result)) {
+			return result.replace(reg, "");
+		} else {
+			return result;
+		}
+	}
+
 	//textarea 줄바꿈 처리
 	function textareaLine(text) {
 		text = text.replace(/(?:\r\n|\r|\n)/g, '<br />');

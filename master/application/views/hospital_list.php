@@ -109,6 +109,7 @@
 					<th>계약유무</th>
 					<th>사업자등록</th>
 					<th>통장사본</th>
+					<th>담당자</th>
 					<th>장비현황</th>
 				</tr>
 				</thead>
@@ -216,7 +217,6 @@ require('check_data.php');
 		console.log(data);
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			var html = '';
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="hospitalCheck" onclick="clickOne(name)"></td>';
 
@@ -242,8 +242,12 @@ require('check_data.php');
 			} else {
 				html += '<td>N</td>';
 			}
-			html += '<td><div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px" ' +
-					'data-toggle="modal" data-target="#hospitalEquipmentModal" onClick="setEquipmentData(\'' + data[i].id + '\')">장비현황</div></td>';
+			//담당자
+			html += '<td><div class="btn btn-info" style="font-size: 13px" ' +
+					'data-toggle="modal" data-target="#hospitalManagerModal" onClick="clickHospitalManagerDetail(\'' + data[i].id + '\')">설정</div></td>';
+			//장비
+			html += '<td><div class="btn btn-dark" style="font-size: 13px" ' +
+					'data-toggle="modal" data-target="#hospitalEquipmentModal" onClick="setEquipmentData(\'' + data[i].id + '\')">설정</div></td>';
 			html += '</tr>';
 
 			$("#hospitalInfo").append(html);

@@ -529,6 +529,7 @@ require('check_data.php');
 		}
 	}
 
+
 	function saveMemo(code, value) {
 		var memo = value.innerHTML;
 

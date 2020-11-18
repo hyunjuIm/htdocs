@@ -8,36 +8,30 @@
 	?>
 
 	<style>
-		.info-input {
-			border:none;
-			text-align: center;
-			width: 100%;
-		}
-
 		#excelUploadFile {
 			position: absolute;
 			display: none;
 		}
 
-		label[for="excelUploadFile"]{
-			padding:0.5em;
-			display:inline-block;
+		label[for="excelUploadFile"] {
+			padding: 0.5em;
+			display: inline-block;
 			background: #5645ED;
 			color: white;
-			cursor:pointer;
+			cursor: pointer;
 		}
 
 		label[for="excelUploadFile"]:hover {
 			opacity: 0.9;
 		}
 
-		#filename{
-			padding:0.5em;
-			float:left;
-			width:300px;
+		#filename {
+			padding: 0.5em;
+			float: left;
+			width: 300px;
 			white-space: nowrap;
-			overflow:hidden;
-			background:whitesmoke;
+			overflow: hidden;
+			background: whitesmoke;
 		}
 	</style>
 </head>
@@ -73,7 +67,7 @@
 								<option selected>-전체-</option>
 							</select>
 							<select id="companyBranch" class="form-control">
-								<option selected>-전체-</option>
+								<option selected>-선택-</option>
 							</select>
 						</div>
 					</div>
@@ -97,7 +91,8 @@
 				<h6>
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
-						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요" onkeyup="enterKey()">
+						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요"
+							   onkeyup="enterKey()">
 						<div class="search-icon" onclick="searchCustomerData()"></div>
 					</div>
 				</h6>
@@ -111,7 +106,8 @@
 			<table id="customerInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th style="width: 3%"><input type="checkbox" id="customerCheck" name="customerCheck" onclick="clickAll(id, name)"></th>
+					<th style="width: 3%"><input type="checkbox" id="customerCheck" name="customerCheck"
+												 onclick="clickAll(id, name)"></th>
 					<th style="width: 5%">NO</th>
 					<th style="width: 8%;color: #3529b1">사번</th>
 					<th style="width: 10%">아이디</th>
@@ -167,6 +163,7 @@ require('check_data.php');
 	var pageNum = 0;
 
 	var companySelect;
+
 	//검색 selector
 	function setCustomerSelectData(data) {
 		//회사
@@ -179,17 +176,17 @@ require('check_data.php');
 			var jbSplit = data.coNameBranch[i].split('-');
 			var companyName = jbSplit[0];
 
-			for(var j=0; j<nameSize; j++) {
-				if(name[j] == companyName) {
+			for (var j = 0; j < nameSize; j++) {
+				if (name[j] == companyName) {
 					check += 1;
 				}
 			}
-			if(check < 1) {
+			if (check < 1) {
 				name[nameSize] = companyName;
 				nameSize += 1;
 			}
 		}
-		for(i=0; i<nameSize; i++) {
+		for (i = 0; i < nameSize; i++) {
 			var html = '';
 			html += '<option value=\'' + name[i] + '\'>' + name[i] + '</option>'
 			$("#companyName").append(html);
@@ -219,14 +216,17 @@ require('check_data.php');
 		searchItems.companyName = $("#companyName option:selected").val();
 		searchItems.companyBranch = $("#companyBranch option:selected").val();
 
-		searchItems.searchWord =  $("#searchWord").val();
+		searchItems.searchWord = $("#searchWord").val();
 
-		if (searchItems.companyName == "-전체-") {
+		if (searchItems.companyName == "-전체-" && searchItems.companyBranch == "-선택-") {
 			searchItems.companyName = "all";
-		}
-		if (searchItems.companyBranch == "-전체-") {
 			searchItems.companyBranch = "all";
+		} else if (searchItems.companyName != "-전체-" && searchItems.companyBranch == "-선택-") {
+			alert("사업장을 선택해주세요.");
+			return;
 		}
+
+		console.log(searchItems);
 
 		instance.post('M001002_REQ_RES', searchItems).then(res => {
 			setCustomerData(res.data, pageNum);
@@ -284,7 +284,7 @@ require('check_data.php');
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="customerCheck" value=\'' + data[i].id + '\' onclick="clickOne(name)"></td>';
 
-			var no = i+1;
+			var no = i + 1;
 			html += '<td>' + no + '</td>';
 			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
 					'data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">' + data[i].id + '</td>';
