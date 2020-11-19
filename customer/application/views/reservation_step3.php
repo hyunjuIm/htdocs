@@ -222,10 +222,9 @@
 									검진일선택
 								</div>
 								<hr>
-								<div>
-									<div class="auto-jsCalendar" id="my-calendar" data-language="ko"
-										 data-min="now+14"
-										 style="width: fit-content; margin: 0 auto"></div>
+								<!--TODO:달력-->
+								<div style="width: fit-content;margin: 0 auto">
+									<div class="material-theme custom-purple" id="my-calendar" data-language="ko"></div>
 								</div>
 								<hr>
 							</div>
@@ -468,6 +467,27 @@ require('check_data.php');
 		$("#step1").show();
 		$("#step2").hide();
 	}
+
+
+	//TODO:달력
+	function getFormatDate(date) {
+		var year = date.getFullYear();              //yyyy
+		var month = (1 + date.getMonth());          //M
+		month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+		var day = date.getDate();                   //d
+		day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+		return day + '/' + month + '/' + year;
+	}
+
+	var today = new Date();
+
+	today.setDate(today.getDate() + 14); //15일 더하여 setting
+	today = getFormatDate(today);
+	console.log(today);
+	var myCalendar = jsCalendar.new("#my-calendar", today);
+	// Limit to only current month
+	myCalendar.min(today);
+	myCalendar.max(today);
 
 </script>
 

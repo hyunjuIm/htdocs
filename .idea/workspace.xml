@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/service_notice_write.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_notice_write.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605689967004</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="-">
+      <created>1605799634735</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605799634735</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,11 +198,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="156" y="18" width="1508" height="1027" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605246782972" />
-    <state x="701" y="119" width="950" height="690" key="find.popup" timestamp="1605798774643">
+    <state x="701" y="119" width="950" height="690" key="find.popup" timestamp="1605801805402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
-    <state x="701" y="119" width="950" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605798774643" />
+    <state x="701" y="119" width="950" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605801805402" />
     <state x="2098" y="65" width="761" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605754118951" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605169203373">
       <screen x="0" y="0" width="1920" height="1040" />
