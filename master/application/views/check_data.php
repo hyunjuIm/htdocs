@@ -153,4 +153,17 @@
 	function cancelBack() {
 		history.back();
 	}
+
+
+	//주소검색
+	function openAddressSearch(zipCode, address, buildingName) {
+		new daum.Postcode({
+			oncomplete: function (data) {
+				$("#" + zipCode + "").val(data.zonecode); // 우편번호 (5자리)
+				$("#" + address + "").val(data.address);
+				$("#" + buildingName + "").val(data.buildingName);
+				$("#" + buildingName + "").focus();
+			}
+		}).open();
+	}
 </script>

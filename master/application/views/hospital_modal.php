@@ -34,7 +34,8 @@
 									<th rowspan="3">주소</th>
 									<td>
 										<input class="info-input" type="text" id="hos-zipCode" readonly
-											   onclick="openAddressSearch()">
+											   style="background: lightgray;border-radius: 5px"
+											   onclick="openAddressSearch('hos-zipCode','hos-address','hos-buildingNum')">
 									</td>
 								</tr>
 								<tr>
@@ -137,25 +138,25 @@
 								<tr>
 									<th>검사항목</th>
 									<td>
-										<input class="info-input-num" type="number" id="hos-onePoint">점
+										<input class="info-input-num" type="number" min="0" max="10" id="hos-onePoint">점
 									</td>
 								</tr>
 								<tr>
 									<th>접근성</th>
 									<td>
-										<input class="info-input-num" type="number" id="hos-twoPoint">점
+										<input class="info-input-num" type="number" min="0" max="10" id="hos-twoPoint">점
 									</td>
 								</tr>
 								<tr>
 									<th>전문성</th>
 									<td>
-										<input class="info-input-num" type="number" id="hos-threePoint">점
+										<input class="info-input-num" type="number" min="0" max="10" id="hos-threePoint">점
 									</td>
 								</tr>
 								<tr>
 									<th>시설</th>
 									<td>
-										<input class="info-input-num" type="number" id="hos-fourPoint">점
+										<input class="info-input-num" type="number" min="0" max="10" id="hos-fourPoint">점
 									</td>
 								</tr>
 								</tbody>
@@ -265,7 +266,7 @@
 <!-- 병원 신규 생성 Modal -->
 <div class="modal fade" id="hospitalCreateModal" tabindex="-1" aria-labelledby="hospitalCreateModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog " style="max-width: fit-content; min-width: 800px; display: table;">
+	<div class="modal-dialog " style="max-width: fit-content; min-width: 1000px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -274,37 +275,61 @@
 			</div>
 			<div class="modal-body">
 				<div class="container hospital" style="margin-top: 30px">
+					<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
+						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
+						병원정보
+					</div>
 					<div class="row">
 						<div class="col">
-							<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
-								<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
-								병원정보
-							</div>
-							<table class="table" id="HosInfoTable1">
+							<table class="table" id="HosInfoTable1" style="margin-bottom: 40px">
 								<tbody>
 								<tr>
 									<th>병원명</th>
-									<td id="create-hos-name" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="create-hos-name">
+									</td>
 								</tr>
 								<tr>
-									<th>주소</th>
-									<td id="create-hos-address" contentEditable="true"></td>
+									<th rowspan="3">주소</th>
+									<td>
+										<input class="info-input" type="text" id="create-hos-zipCode" placeholder="우편 번호 찾기 클릭" readonly
+											   style="background: lightgray;border-radius: 5px"
+											   onclick="openAddressSearch('create-hos-zipCode','create-hos-address','create-hos-buildingNum')">
+									</td>
+								</tr>
+								<tr>
+									<td style="border: none">
+										<input class="info-input" type="text" id="create-hos-address" readonly>
+									</td>
+								</tr>
+								<tr>
+									<td style="border: none">
+										<input class="info-input" type="text" id="create-hos-buildingNum">
+									</td>
 								</tr>
 								<tr>
 									<th>등급</th>
-									<td id="create-hos-grade" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="create-hos-grade">
+									</td>
 								</tr>
 								<tr>
 									<th>대표번호</th>
-									<td id="create-hos-phone" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="create-hos-phone">
+									</td>
 								</tr>
 								<tr>
 									<th>사업자번호</th>
-									<td id="create-hos-licenseNum" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="create-hos-licenseNum">
+									</td>
 								</tr>
 								<tr>
 									<th>URL</th>
-									<td id="create-hos-url" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="create-hos-url">
+									</td>
 								</tr>
 								<tr>
 									<th>공단차감</th>
@@ -325,7 +350,9 @@
 								</tr>
 								<tr>
 									<th>공단금액</th>
-									<td id="create-hos-pcPrice" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="create-hos-pcPrice">
+									</td>
 								</tr>
 								<tr>
 									<th>시스템오픈</th>
@@ -365,80 +392,130 @@
 							</table>
 						</div>
 						<div class="col">
-							<div style="margin-bottom: 40px;">
-								<div class="fileBox" style="margin-bottom: 40px;">
-									<div class="menu-title" style="font-size: 22px;margin-bottom: 20px">
-										<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
-										첨부서식
-									</div>
-									<ul class="img-circle">
-										<form id="ADD-FILE_FORM" method="post" enctype="multipart/form-data" action="">
-											<div style="margin-bottom: 5px">
-												<li style="margin-bottom: 5px">
-													대표이미지
-													<div class="btn-purple-square"
-														 onclick="uploadFile('create-hosImgFile')"
-														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-														업로드
-													</div>
-													<div class="btn-light-purple-square"
-														 onclick="downloadFile('create-hosImgFileName')"
-														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-														다운로드
-													</div>
-												</li>
-												<input type="file" id="create-hosImgFile" name="create-hosImgFile"
-													   onchange="viewFile(this, 'create-hosImgFileName')">
-												<input id="create-hosImgFileName" class="upload-name" value="파일선택"
-													   disabled="disabled">
-												<label for="create-hosImgFile">파일선택</label>
-											</div>
+							<table class="table" id="HosInfoTable2">
+								<tbody>
+								<tr>
+									<th>검사항목</th>
+									<td>
+										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-onePoint">점
+									</td>
+								</tr>
+								<tr>
+									<th>접근성</th>
+									<td>
+										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-twoPoint">점
+									</td>
+								</tr>
+								<tr>
+									<th>전문성</th>
+									<td>
+										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-threePoint">점
+									</td>
+								</tr>
+								<tr>
+									<th>시설</th>
+									<td>
+										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-fourPoint">점
+									</td>
+								</tr>
+								</tbody>
+							</table>
 
-											<div style="margin-bottom: 5px">
-												<li style="margin-bottom: 5px">
-													사업자등록증
-													<div class="btn-purple-square"
-														 onclick="uploadFile('create-hosLicenseFile')"
-														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-														업로드
-													</div>
-													<div class="btn-light-purple-square"
-														 onclick="downloadFile('create-hosLicenseFileName')"
-														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-														다운로드
-													</div>
-												</li>
-												<input type="file" id="create-hosLicenseFile"
-													   name="create-hosLicenseFile"
-													   onchange="viewFile(this, 'create-hosLicenseFileName')">
-												<input id="create-hosLicenseFileName" class="upload-name" value="파일선택"
-													   disabled="disabled">
-												<label for="create-hosLicenseFile">파일선택</label>
-											</div>
-
-											<div>
-												<li style="margin-bottom: 5px">
-													통장사본
-													<div class="btn-purple-square"
-														 onclick="uploadFile('create-hosBankFile')"
-														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-														업로드
-													</div>
-													<div class="btn-light-purple-square"
-														 onclick="downloadFile('create-hosBankFileName')"
-														 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-														다운로드
-													</div>
-												</li>
-												<input type="file" id="create-hosBankFile" name="create-hosBankFile"
-													   onchange="viewFile(this, 'create-hosBankFileName')">
-												<input id="create-hosBankFileName" class="upload-name" value="파일선택"
-													   disabled="disabled">
-												<label for="create-hosBankFile">파일선택</label>
-											</div>
-										</form>
-									</ul>
+							<table class="table" id="HosInfoTable3" style="margin-bottom: 60px">
+								<tbody>
+								<tr>
+									<th>공지사항</th>
+									<td>
+										<input class="info-input" type="text" id="create-hos-notice">
+									</td>
+								</tr>
+								<tr>
+									<th>운영시간</th>
+									<td>
+										<input class="info-input" type="text" id="create-hos-operatingHours">
+									</td>
+								</tr>
+								<tr>
+									<th>기관정보</th>
+									<td>
+										<input class="info-input" type="text" id="create-hos-plusInfo">
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							
+							<div class="fileBox" style="margin-bottom: 40px;">
+								<div class="menu-title" style="font-size: 22px;margin-bottom: 20px">
+									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
+									첨부서식
 								</div>
+								<ul class="img-circle">
+									<form id="ADD-FILE_FORM" method="post" enctype="multipart/form-data" action="">
+										<div style="margin-bottom: 5px">
+											<li style="margin-bottom: 5px">
+												대표이미지
+												<div class="btn-purple-square"
+													 onclick="uploadFile('create-hosImgFile')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+													업로드
+												</div>
+												<div class="btn-light-purple-square"
+													 onclick="downloadFile('create-hosImgFileName')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+													다운로드
+												</div>
+											</li>
+											<input type="file" id="create-hosImgFile" name="create-hosImgFile"
+												   onchange="viewFile(this, 'create-hosImgFileName')">
+											<input id="create-hosImgFileName" class="upload-name" value="파일선택"
+												   disabled="disabled">
+											<label for="create-hosImgFile">파일선택</label>
+										</div>
+
+										<div style="margin-bottom: 5px">
+											<li style="margin-bottom: 5px">
+												사업자등록증
+												<div class="btn-purple-square"
+													 onclick="uploadFile('create-hosLicenseFile')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+													업로드
+												</div>
+												<div class="btn-light-purple-square"
+													 onclick="downloadFile('create-hosLicenseFileName')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+													다운로드
+												</div>
+											</li>
+											<input type="file" id="create-hosLicenseFile"
+												   name="create-hosLicenseFile"
+												   onchange="viewFile(this, 'create-hosLicenseFileName')">
+											<input id="create-hosLicenseFileName" class="upload-name" value="파일선택"
+												   disabled="disabled">
+											<label for="create-hosLicenseFile">파일선택</label>
+										</div>
+
+										<div>
+											<li style="margin-bottom: 5px">
+												통장사본
+												<div class="btn-purple-square"
+													 onclick="uploadFile('create-hosBankFile')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+													업로드
+												</div>
+												<div class="btn-light-purple-square"
+													 onclick="downloadFile('create-hosBankFileName')"
+													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
+													다운로드
+												</div>
+											</li>
+											<input type="file" id="create-hosBankFile" name="create-hosBankFile"
+												   onchange="viewFile(this, 'create-hosBankFileName')">
+											<input id="create-hosBankFileName" class="upload-name" value="파일선택"
+												   disabled="disabled">
+											<label for="create-hosBankFile">파일선택</label>
+										</div>
+									</form>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -615,18 +692,6 @@ require('file_data.php');
 	//병원 정보 상세
 	var hosId = Object();
 
-	//주소검색
-	function openAddressSearch() {
-		new daum.Postcode({
-			oncomplete: function (data) {
-				$("#hos-zipCode").val(data.zonecode); // 우편번호 (5자리)
-				$("#hos-address").val(data.address);
-				$("#hos-buildingNum").val(data.buildingName);
-				$("#hos-buildingNum").focus();
-			}
-		}).open();
-	}
-
 	//클릭시 병원정보
 	function clickHospitalDetail(data) {
 		hosId.hospitalId = data;
@@ -784,7 +849,7 @@ require('file_data.php');
 			$("#HosManagerTable").append(html);
 		}
 	}
-	
+
 	//담당자 추가
 	function addHospitalManagerData() {
 		var saveItems = new Object();
@@ -825,7 +890,7 @@ require('file_data.php');
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						clickHospitalManagerDetail(saveItems.hospitalId);
-						$("#HosManagerAddTable").find('input').each(function(){
+						$("#HosManagerAddTable").find('input').each(function () {
 							this.value = '';
 						});
 					}
@@ -940,26 +1005,38 @@ require('file_data.php');
 	function createHospitalData() {
 		var saveItems = new Object();
 
-		saveItems.name = document.getElementById('create-hos-name').innerText;
-		saveItems.address = document.getElementById('create-hos-address').innerText;
-		saveItems.phone = document.getElementById('create-hos-phone').innerText;
-		saveItems.license_num = document.getElementById('create-hos-licenseNum').innerText;
+		saveItems.name = $("#create-hos-name").val();
+		saveItems.zipCode = $("#create-hos-zipCode").val();
+		saveItems.address = $("#create-hos-address").val();
+		saveItems.buildingNum = $("#create-hos-buildingNum").val();
+		saveItems.phone = $("#create-hos-phone").val();
+		saveItems.license_num = $("#create-hos-licenseNum").val();
 		saveItems.pcDiscount = booleanData('create-hos-pcDiscount');
-		saveItems.pcPrice = savePrice('create-hos-pcPrice');
+		saveItems.pcPrice = savePrice1('create-hos-pcPrice');
 		saveItems.systemOpen = booleanData('create-hos-systemOpen');
 		saveItems.contract = booleanData('create-hos-contract');
-		saveItems.url = document.getElementById('create-hos-url').innerText;
-		saveItems.grade = document.getElementById('create-hos-grade').innerText;
-		saveItems.image = document.getElementById('create-hosImgFileName').value;
-		saveItems.license = document.getElementById('create-hosLicenseFileName').value;
-		saveItems.bankbook = document.getElementById('create-hosBankFileName').value;
+		saveItems.url = $("#create-hos-url").val();
+		saveItems.grade = $("#create-hos-grade").val();
+		saveItems.image = $("#create-hosImgFileName").val();
+		saveItems.license = $("#create-hosLicenseFileName").val();
+		saveItems.bankbook = $("#create-hosBankFileName").val();
+		saveItems.onePoint = $("#create-hos-onePoint").val();
+		saveItems.twoPoint = $("#create-hos-twoPoint").val();
+		saveItems.threePoint = $("#create-hos-threePoint").val();
+		saveItems.fourPoint = $("#create-hos-fourPoint").val();
+		saveItems.notice = $("#create-hos-notice").val();
+		saveItems.operatingHours = $("#create-hos-operatingHours").val();
+		var plusInfo = $("#create-hos-plusInfo").val();
+		var plusInfoArr = new Array();
+		plusInfoArr = plusInfo.split(",");
+		saveItems.plusInfo = plusInfoArr;
 
 		console.log(saveItems);
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
 			alert("병원명을 입력해주세요.");
-		} else if (saveItems.address == "") {
+		} else if (saveItems.zipCode == "" || saveItems.address == "" || saveItems.buildingNum == "") {
 			alert("주소를 입력해주세요.");
 		} else if (saveItems.grade == "") {
 			alert("등급을 입력해주세요.");
@@ -975,10 +1052,12 @@ require('file_data.php');
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005006_REQ', saveItems).then(res => {
 					console.log(res.data.message);
-					alert("저장되었습니다.");
-					setTimeout(function () {
-						location.reload();
-					}, 3000);
+					if(res.data.message == "success"){
+						alert("저장되었습니다.");
+						setTimeout(function () {
+							location.reload();
+						}, 3000);
+					}
 				});
 			} else {
 				return false;

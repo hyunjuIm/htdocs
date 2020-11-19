@@ -257,7 +257,7 @@ require('check_data.php');
 			if(data[i].reserved) {
 				html += '<div class="btn-light-purple-square" onclick="doReservation(\'' + data[i].famId + '\')"> 예약하기 </div>';
 			} else {
-				html += '<div class="btn-cancel-square"> 예약완료 </div>';
+				html += '<div class="btn-cancel-square" style="cursor: default"> 예약완료 </div>';
 			}
 
 			html += '</td>' +

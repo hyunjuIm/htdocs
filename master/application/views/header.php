@@ -120,17 +120,39 @@
 		location.href = "/master/master_login";
 	}
 
+
+	//중복로그인 로그아웃
+	const permissionCheck = axios.create({
+		baseURL: "https://api.dualhealth.kr/permission/",
+		//baseURL: "http://192.168.219.104:8080/permission/",
+		timeout: 5000,
+		headers: {
+			'token': token
+		}
+	});
+	permissionCheck.post('isOk').then(res => {
+		console.log(res.data);
+		if (res.data != "SUCCESS") {
+			sessionStorage.clear();
+			alert("중복로그인이 감지되어 로그아웃 되었습니다.");
+			location.href = "/master/master_login";
+		}
+	}).catch(function (error) {
+		console.log(error);
+	});
+
+
 	const instance = axios.create({
-		//baseURL: "https://api.dualhealth.kr/master/api/v1/",
-		baseURL: "http://192.168.219.104:8080/master/api/v1/",
+		baseURL: "https://api.dualhealth.kr/master/api/v1/",
+		//baseURL: "http://192.168.219.104:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		//baseURL: "https://api.dualhealth.kr/",
-		baseURL: "http://192.168.219.104:8080/",
+		baseURL: "https://api.dualhealth.kr/",
+		//baseURL: "http://192.168.219.104:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
