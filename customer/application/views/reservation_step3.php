@@ -158,51 +158,87 @@
 							<img class="reservation-order" src="/asset/images/img_reservation_order.png">
 						</div>
 					</div>
-					<div class="row" style="margin-top: 3rem">
-						선택한 병원 정보 들어갈 자리
+
+					<!--검진유형선택-->
+					<div class="row" id="step1">
+						<div class="container">
+							<div class="row" style="margin-top: 3rem">
+								선택한 병원 정보 들어갈 자리
+							</div>
+							<div class="row" style="display:block;margin-top: 5rem">
+								<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
+									검진유형
+								</div>
+								<hr>
+								<div id="packageList">
+
+								</div>
+								<hr>
+							</div>
+							<form id="packageForm" style="display: none">
+								<div class="row" style="display:block;margin-top: 5rem">
+									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
+										기본검사
+									</div>
+
+									<ul class="nav" id="injectionBaseList">
+									</ul>
+
+									<div>
+										<table class="table table-bordered" id="baseInjectionTable">
+										</table>
+									</div>
+								</div>
+								<div class="row" style="display:block;margin-top: 5rem">
+									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
+										선택검사
+									</div>
+
+									<div>
+										<table class="table table-bordered table-striped" id="addInjectionTable">
+										</table>
+									</div>
+								</div>
+							</form>
+							<div class="row" style="display:flex;margin-top: 5rem">
+								<div style="margin: 0 auto">
+									<div class="btn-cancel-square" style="font-size: 1.4rem" onclick="cancelBack()">
+										이전단계
+									</div>
+									<div class="btn-light-purple-square" style="font-size: 1.4rem"
+										 onclick="nextStep1()">
+										다음단계
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="row" style="display:block;margin-top: 5rem">
-						<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-							검진유형
-						</div>
-						<hr>
-						<div id="packageList">
 
-						</div>
-						<hr>
-					</div>
-					<form id="packageForm" style="display: none">
-						<div class="row" style="display:block;margin-top: 5rem">
-							<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-								기본검사
-							</div>
-
-							<ul class="nav" id="injectionBaseList">
-							</ul>
-
-							<div>
-								<table class="table table-bordered" id="baseInjectionTable">
-								</table>
-							</div>
-						</div>
-						<div class="row" style="display:block;margin-top: 5rem">
-							<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-								선택검사
+					<!--검진일선택-->
+					<div class="row" id="step2" style="display: none">
+						<div class="container">
+							<div class="row" style="display:block;margin-top: 10rem">
+								<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
+									검진일선택
+								</div>
+								<hr>
+								<div>
+									<div class="auto-jsCalendar" id="my-calendar" data-language="ko"
+										 data-min="now+14"
+										 style="width: fit-content; margin: 0 auto"></div>
+								</div>
+								<hr>
 							</div>
 
-							<div>
-								<table class="table table-bordered table-striped" id="addInjectionTable">
-								</table>
-							</div>
-						</div>
-					</form>
-					<div class="row" style="display:flex;margin-top: 5rem">
-						<div style="margin: 0 auto">
-							<div class="btn-cancel-square" style="font-size: 1.4rem">
-								이전단계
-							</div>
-							<div class="btn-light-purple-square" style="font-size: 1.4rem">
-								다음단계
+							<div class="row" style="display:flex;margin-top: 5rem">
+								<div style="margin: 0 auto">
+									<div class="btn-cancel-square" style="font-size: 1.4rem" onclick="backStep1()">
+										이전단계
+									</div>
+									<div class="btn-light-purple-square" style="font-size: 1.4rem">
+										다음단계
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -316,6 +352,10 @@ require('check_data.php');
 				$("#injection" + i).val(injectionText);
 			}
 		}
+
+		//처음에는 무조건 기본검사 펼치기
+		$("#injection0").addClass('active');
+		setInjectionData('injection0', '기본검사');
 	}
 
 	//기본검사 테이블 출력
@@ -415,6 +455,18 @@ require('check_data.php');
 			alert("최대 선택 개수를 초과하였습니다.");
 			chk.checked = false;
 		}
+	}
+
+	//검진유형 -> 검진일선택 탭전환
+	function nextStep1() {
+		$("#step1").hide();
+		$("#step2").show();
+	}
+
+	//검진일선택 -> 검진유형 탭전환
+	function backStep1() {
+		$("#step1").show();
+		$("#step2").hide();
 	}
 
 </script>
