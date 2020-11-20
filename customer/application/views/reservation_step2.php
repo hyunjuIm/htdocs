@@ -177,7 +177,7 @@
 					<div class="row" style="margin-top: 3rem">
 						<div style="margin: 0 auto; font-weight: 500">
 							<p style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</p>
-							<img class="reservation-order" src="/asset/images/img_reservation_order.png">
+							<img class="reservation-order" src="/asset/images/step1.png">
 						</div>
 					</div>
 					<div class="row" style="display:block;text-align: left;margin-top: 5rem">

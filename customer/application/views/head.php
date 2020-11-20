@@ -16,6 +16,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="/asset/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

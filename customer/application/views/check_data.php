@@ -1,9 +1,10 @@
 <script>
 	//input 엔터키 이벤트 삭제
-	$('input[type="text"]').keydown(function() {
+	$('input[type="text"]').keydown(function () {
 		if (event.keyCode === 13) {
 			event.preventDefault();
-		};
+		}
+		;
 	});
 
 	//검색 - 엔터키
@@ -16,29 +17,27 @@
 
 	//체크박스 전체 선택
 	function clickAll(id, name) {
-		if ($("#"+id+"").is(':checked')) {
-			$("input[name="+name+"]").prop("checked", true);
-		}
-		else {
-			$("input[name="+name+"]").prop("checked", false);
+		if ($("#" + id + "").is(':checked')) {
+			$("input[name=" + name + "]").prop("checked", true);
+		} else {
+			$("input[name=" + name + "]").prop("checked", false);
 		}
 	}
 
 	//체크박스 하나라도 취소되면 전체 선택 해지
 	function clickOne(name) {
-		if($("#"+name+"").is(':checked').length == $("input[id="+ name +"]").length) {
-			$("input[id="+ name +"]").prop("checked", true);
-		}
-		else {
-			$("input[id="+ name +"]").prop("checked", false);
+		if ($("#" + name + "").is(':checked').length == $("input[id=" + name + "]").length) {
+			$("input[id=" + name + "]").prop("checked", true);
+		} else {
+			$("input[id=" + name + "]").prop("checked", false);
 		}
 	}
 
 	//체크박스 하나만 체크 되게
 	function onlyCheck(chk, name) {
 		var obj = document.getElementsByName(name);
-		for(var i=0; i<obj.length; i++){
-			if(obj[i] != chk){
+		for (var i = 0; i < obj.length; i++) {
+			if (obj[i] != chk) {
 				obj[i].checked = false;
 			}
 		}
@@ -48,9 +47,23 @@
 	function booleanData(name) {
 		var size = document.getElementsByName(name).length;
 		var result;
-		for(var i = 0; i < size; i++){
-			if(document.getElementsByName(name)[i].checked == true){
+		for (var i = 0; i < size; i++) {
+			if (document.getElementsByName(name)[i].checked == true) {
 				result = document.getElementsByName(name)[i].value
+			}
+		}
+		return result;
+	}
+
+	//어떤게 체크 됐는지
+	function checkValueData(name) {
+		var size = document.getElementsByName(name).length;
+		var result = new Array();
+		for (var i = 0; i < size; i++) {
+			if (document.getElementsByName(name)[i].checked == true) {
+				if (document.getElementsByName(name)[i].value != 'on') {
+					result.push(document.getElementsByName(name)[i].value);
+				}
 			}
 		}
 		return result;
@@ -106,7 +119,7 @@
 
 		var a = document.createElement('a');
 		a.href = data_type + ',%EF%BB%BF' + table_html;
-		a.download = id+'.xls';
+		a.download = id + '.xls';
 		a.click();
 	}
 
@@ -123,17 +136,17 @@
 			var jbSplit = companySelect[i].split('-');
 			var branchName = jbSplit[jbSplit.length - 1];
 
-			if(selectCompany.value == jbSplit[0]) {
+			if (selectCompany.value == jbSplit[0]) {
 				var html = '';
 				html += '<option>' + branchName + '</option>'
-				$("#"+targetBranch+"").append(html);
+				$("#" + targetBranch + "").append(html);
 			}
 		}
 	}
 
 	//옵션 삭제
-	function removeAll(e){
-		for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
+	function removeAll(e) {
+		for (var i = 0, limit = e.options.length; i < limit - 1; ++i) {
 			e.remove(1);
 		}
 	}

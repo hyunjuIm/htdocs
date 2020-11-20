@@ -26,8 +26,8 @@
 			}
 		}).then(res => {
 			console.log(res.data.fileName);
-			alert("저장되었습니다.")
 		});
+		return true;
 	}
 
 	//파일 다운로드

@@ -150,7 +150,8 @@
 								<tr>
 									<th>전문성</th>
 									<td>
-										<input class="info-input-num" type="number" min="0" max="10" id="hos-threePoint">점
+										<input class="info-input-num" type="number" min="0" max="10"
+											   id="hos-threePoint">점
 									</td>
 								</tr>
 								<tr>
@@ -201,7 +202,7 @@
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">업로드
 												</div>
 												<div class="btn-light-purple-square"
-													 onclick="downloadFile('hosImgFileName', 'hospital', 'image', hosId.hospitalId)"
+													 onclick="downloadFile('hosImgFile', 'hospital', 'image', hosId.hospitalId)"
 													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">다운로드
 												</div>
 											</li>
@@ -292,7 +293,8 @@
 								<tr>
 									<th rowspan="3">주소</th>
 									<td>
-										<input class="info-input" type="text" id="create-hos-zipCode" placeholder="우편 번호 찾기 클릭" readonly
+										<input class="info-input" type="text" id="create-hos-zipCode"
+											   placeholder="우편 번호 찾기 클릭" readonly
 											   style="background: lightgray;border-radius: 5px"
 											   onclick="openAddressSearch('create-hos-zipCode','create-hos-address','create-hos-buildingNum')">
 									</td>
@@ -397,25 +399,29 @@
 								<tr>
 									<th>검사항목</th>
 									<td>
-										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-onePoint">점
+										<input class="info-input-num" type="number" min="0" max="10"
+											   id="create-hos-onePoint">점
 									</td>
 								</tr>
 								<tr>
 									<th>접근성</th>
 									<td>
-										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-twoPoint">점
+										<input class="info-input-num" type="number" min="0" max="10"
+											   id="create-hos-twoPoint">점
 									</td>
 								</tr>
 								<tr>
 									<th>전문성</th>
 									<td>
-										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-threePoint">점
+										<input class="info-input-num" type="number" min="0" max="10"
+											   id="create-hos-threePoint">점
 									</td>
 								</tr>
 								<tr>
 									<th>시설</th>
 									<td>
-										<input class="info-input-num" type="number" min="0" max="10" id="create-hos-fourPoint">점
+										<input class="info-input-num" type="number" min="0" max="10"
+											   id="create-hos-fourPoint">점
 									</td>
 								</tr>
 								</tbody>
@@ -443,7 +449,7 @@
 								</tr>
 								</tbody>
 							</table>
-							
+
 							<div class="fileBox" style="margin-bottom: 40px;">
 								<div class="menu-title" style="font-size: 22px;margin-bottom: 20px">
 									<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
@@ -454,20 +460,10 @@
 										<div style="margin-bottom: 5px">
 											<li style="margin-bottom: 5px">
 												대표이미지
-												<div class="btn-purple-square"
-													 onclick="uploadFile('create-hosImgFile')"
-													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-													업로드
-												</div>
-												<div class="btn-light-purple-square"
-													 onclick="downloadFile('create-hosImgFileName')"
-													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-													다운로드
-												</div>
 											</li>
 											<input type="file" id="create-hosImgFile" name="create-hosImgFile"
 												   onchange="viewFile(this, 'create-hosImgFileName')">
-											<input id="create-hosImgFileName" class="upload-name" value="파일선택"
+											<input id="create-hosImgFileName" class="upload-name" value=""
 												   disabled="disabled">
 											<label for="create-hosImgFile">파일선택</label>
 										</div>
@@ -475,21 +471,11 @@
 										<div style="margin-bottom: 5px">
 											<li style="margin-bottom: 5px">
 												사업자등록증
-												<div class="btn-purple-square"
-													 onclick="uploadFile('create-hosLicenseFile')"
-													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-													업로드
-												</div>
-												<div class="btn-light-purple-square"
-													 onclick="downloadFile('create-hosLicenseFileName')"
-													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-													다운로드
-												</div>
 											</li>
 											<input type="file" id="create-hosLicenseFile"
 												   name="create-hosLicenseFile"
 												   onchange="viewFile(this, 'create-hosLicenseFileName')">
-											<input id="create-hosLicenseFileName" class="upload-name" value="파일선택"
+											<input id="create-hosLicenseFileName" class="upload-name" value=""
 												   disabled="disabled">
 											<label for="create-hosLicenseFile">파일선택</label>
 										</div>
@@ -497,20 +483,10 @@
 										<div>
 											<li style="margin-bottom: 5px">
 												통장사본
-												<div class="btn-purple-square"
-													 onclick="uploadFile('create-hosBankFile')"
-													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-													업로드
-												</div>
-												<div class="btn-light-purple-square"
-													 onclick="downloadFile('create-hosBankFileName')"
-													 style="padding: 2px 6px; font-size: 12px; border-radius: 20px">
-													다운로드
-												</div>
 											</li>
 											<input type="file" id="create-hosBankFile" name="create-hosBankFile"
 												   onchange="viewFile(this, 'create-hosBankFileName')">
-											<input id="create-hosBankFileName" class="upload-name" value="파일선택"
+											<input id="create-hosBankFileName" class="upload-name" value=""
 												   disabled="disabled">
 											<label for="create-hosBankFile">파일선택</label>
 										</div>
@@ -1017,9 +993,6 @@ require('file_data.php');
 		saveItems.contract = booleanData('create-hos-contract');
 		saveItems.url = $("#create-hos-url").val();
 		saveItems.grade = $("#create-hos-grade").val();
-		saveItems.image = $("#create-hosImgFileName").val();
-		saveItems.license = $("#create-hosLicenseFileName").val();
-		saveItems.bankbook = $("#create-hosBankFileName").val();
 		saveItems.onePoint = $("#create-hos-onePoint").val();
 		saveItems.twoPoint = $("#create-hos-twoPoint").val();
 		saveItems.threePoint = $("#create-hos-threePoint").val();
@@ -1052,8 +1025,13 @@ require('file_data.php');
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005006_REQ', saveItems).then(res => {
 					console.log(res.data.message);
-					if(res.data.message == "success"){
+					var id = res.data.message;
+					if (res.data.message != "failed") {
+						uploadFile('create-hosImgFile', 'hospital', 'image', id);
+						uploadFile('create-hosLicenseFile', 'hospital', 'license', id);
+						uploadFile('create-hosBankFile', 'hospital', 'bankbook', id);
 						alert("저장되었습니다.");
+
 						setTimeout(function () {
 							location.reload();
 						}, 3000);
