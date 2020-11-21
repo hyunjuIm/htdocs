@@ -177,10 +177,10 @@
 					<div class="row" style="padding-top: 3rem">
 						<div style="margin: 0 auto; font-weight: bolder">
 							<img src="/asset/images/title_bar.png">
-							<p style="font-size: 3.2rem">예약</p>
+							<div style="font-size: 3.2rem">예약</div>
 						</div>
 					</div>
-					<div class="row" style="padding-top: 2rem">
+					<div class="row" style="margin-top: 4rem">
 						<span style="font-size: 2.4rem;font-weight: bolder;margin-bottom: 2rem">
 							개인정보 수집이용안내
 						</span>
@@ -281,7 +281,7 @@ require('check_data.php');
 
 	function doReservation(famId) {
 		if(booleanData('agree') == null || booleanData('agree') == 'false') {
-			alert("개인정보 수집에 동의 후에 예약이 가능합니다.");
+			alert("개인정보 수집 동의 후, 예약이 가능합니다.");
 			return;
 		}
 

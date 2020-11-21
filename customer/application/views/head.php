@@ -16,7 +16,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="/asset/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,9 +24,5 @@
 
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 
-<!-- jsCalendar style -->
-<link rel="stylesheet" type="text/css" href="/asset/lib/jsCalendar-master/source/jsCalendar.css">
-<!-- jsCalendar script -->
-<script type="text/javascript" src="/asset/lib/jsCalendar-master/source/jsCalendar.js"></script>
-<!-- Load Greek language -->
-<script type="text/javascript" src="/asset/lib/jsCalendar-master/source/jsCalendar.lang.ko.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.7.2/angular-translate.js"></script>

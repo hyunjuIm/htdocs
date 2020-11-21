@@ -7,6 +7,8 @@
 	require('head.php');
 	?>
 
+	<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
+
 	<style>
 		html {
 			font-size: 10px;
@@ -19,7 +21,6 @@
 		.container {
 			width: 100%;
 			max-width: none;
-			font-size: 1.7rem;
 			font-size: 1.7rem;
 			text-align: center;
 		}
@@ -175,7 +176,7 @@
 						<div class="container">
 							<div class="row" style="margin-top: 3rem">
 								<div style="margin: 0 auto; font-weight: 500">
-									<p style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</p>
+									<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
 									<img class="reservation-order" src="/asset/images/step2.png">
 								</div>
 							</div>
@@ -262,7 +263,7 @@
 							<div class="container">
 								<div class="row" style="margin-top: 3rem">
 									<div style="margin: 0 auto; font-weight: 500">
-										<p style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</p>
+										<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
 										<img class="reservation-order" src="/asset/images/step3.png">
 									</div>
 								</div>
@@ -272,52 +273,57 @@
 									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
 										검진일선택
 									</div>
+
 									<hr>
 									<!--TODO:달력-->
-									<div style="width: fit-content;margin: 0 auto;display: flex">
-										<div class="my-calendar clearfix">
-											<div class="clicked-date">
-												<div class="cal-day"></div>
-												<div class="cal-date"></div>
-											</div>
-											<div class="calendar-box">
-												<div class="ctr-box clearfix">
-													<button type="button" title="prev" class="btn-cal prev">
-													</button>
-													<span class="cal-month"></span>
-													<span class="cal-year"></span>
-													<button type="button" title="next" class="btn-cal next">
-													</button>
+									<div style="display: flex; margin: 5rem">
+										<div ng-app="app" style="margin: 0 auto;display: flex">
+											<div style="display: block; margin: 0 5rem">
+												<div style="font-size: 2rem; font-weight: bolder">
+													1차 예약일
 												</div>
-												<table class="cal-table">
-													<thead>
-													<tr>
-														<th>일</th>
-														<th>월</th>
-														<th>화</th>
-														<th>수</th>
-														<th>목</th>
-														<th>금</th>
-														<th>토</th>
-													</tr>
-													</thead>
-													<tbody class="cal-body"></tbody>
-												</table>
+												<div id="firstWishDate" style="font-size: 2.4rem;margin-bottom: 2rem">
+													&nbsp
+												</div>
+												<div ng-controller="MainController">
+													<div class="wrapp">
+														<flex-calendar options="options"></flex-calendar>
+													</div>
+													<br/>
+												</div>
 											</div>
-										<!-- // .my-calendar -->
-									</div>
-									<hr>
-								</div>
 
-								<div class="row" style="display:flex;margin-top: 5rem">
-									<div style="margin: 0 auto">
-										<div class="btn-cancel-square" style="font-size: 1.4rem"
-											 onclick="backStep1()">
-											이전단계
+											<div style="display: block;margin: 0 5rem">
+												<div ng-controller="Sub">
+													<div style="font-size: 2rem; font-weight: bolder">
+														2차 예약일
+													</div>
+													<div id="secondWishDate"
+														 style="font-size: 2.4rem;margin-bottom: 2rem">
+														&nbsp
+													</div>
+													<div class="wrapp">
+														<flex-calendar options="options"></flex-calendar>
+													</div>
+													<br/>
+												</div>
+											</div>
 										</div>
-										<div class="btn-light-purple-square" style="font-size: 1.4rem"
-											 onclick="successRegister()">
-											다음단계
+
+									</div>
+
+									<hr>
+
+									<div class="row" style="display:flex;margin-top: 5rem">
+										<div style="margin: 0 auto">
+											<div class="btn-cancel-square" style="font-size: 1.4rem"
+												 onclick="backStep1()">
+												이전단계
+											</div>
+											<div class="btn-light-purple-square" style="font-size: 1.4rem"
+												 onclick="successRegister()">
+												다음단계
+											</div>
 										</div>
 									</div>
 								</div>
@@ -328,22 +334,25 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 </body>
 
 <?php
 require('check_data.php');
 ?>
+<?php
+require('calendar.php');
+?>
 
 <script>
+	//예약을 위한 id 가져오기
 	var get = location.href.substr(
 			location.href.indexOf('=', 1) + 1
 	);
 	var famId = get.split("?");
 	famId = famId[0];
 
-	//예약을 위한 id 가져오기
+	//넘겨줄 user data 셋팅
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	userData.famId = famId;
@@ -386,10 +395,11 @@ require('check_data.php');
 		pkgId = id;
 
 		instance.post('CU_003_004', sendItems).then(res => {
+			console.log(res.data);
 			setBaseInjectionList(res.data);
 			setChoiceInjectionList(res.data);
 			setAddInjectionList(res.data);
-			$("#packageForm").slideDown(300);
+			$("#packageForm").show();
 		});
 	}
 
@@ -483,6 +493,7 @@ require('check_data.php');
 	//선택검사 테이블 출력
 	function setChoiceInjectionList(data) {
 		$("#choiceInjectionTable").empty();
+		choiceList = [];
 
 		//선택검사 항목 어떤게 있고 몇 개인지
 		for (i = 0; i < data.length; i++) {
@@ -549,7 +560,7 @@ require('check_data.php');
 		}
 	}
 
-	//TODO:추가검사테이블셋팅
+	//추가검사 테이블 셋팅
 	function setAddInjectionList(data) {
 		for (i = 0; i < data.length; i++) {
 			if (data[i].ipClass == '추가') {
@@ -577,7 +588,7 @@ require('check_data.php');
 				pipList.push(data[j]);
 			}
 
-			//선택검사 선택 개수가 부족할 때
+			//선택검사 선택 개수가 부족할 때 알림창
 			if ($('input:checkbox[name=' + choiceList[i].title + ']:checked').length < choiceList[i].count) {
 				var num = parseInt(choiceList[i].count) - $('input:checkbox[name=' + choiceList[i].title + ']:checked').length
 				alert('[' + choiceList[i].title + '] ' + num + '개 추가 선택이 필요합니다.');
@@ -585,6 +596,7 @@ require('check_data.php');
 			}
 		}
 
+		//다음페이지에 체크된 패키지 id 값 넘겨줄 배열
 		var data = checkValueData('addInjectionCheck');
 		for (j = 0; j < data.length; j++) {
 			pipList.push(data[j]);
@@ -601,160 +613,8 @@ require('check_data.php');
 	}
 
 
-	//TODO:달력
-	function formatDate(date, type) {
-		var year = date.getFullYear();              //yyyy
-		var month = (1 + date.getMonth());          //M
-		month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
-		var day = date.getDate();                   //d
-		day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
-		if (type == 'get') {
-			return day + '/' + month + '/' + year;
-		} else if (type == 'set') {
-			return year + '-' + month + '-' + day;
-		}
-	}
-
-	var today = new Date();
-
-	today.setDate(today.getDate() + 14);
-	today = formatDate(today, 'get');
-
-	// ================================
-	// START YOUR APP HERE
-	// ================================
-	const init = {
-		monList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayList: ['일', '월', '화', '수', '목', '금', '토'],
-		today: new Date(),
-		monForChange: new Date().getMonth(),
-		activeDate: new Date(),
-		getFirstDay: (yy, mm) => new Date(yy, mm, 1),
-		getLastDay: (yy, mm) => new Date(yy, mm + 1, 0),
-		nextMonth: function () {
-			let d = new Date();
-			d.setDate(1);
-			d.setMonth(++this.monForChange);
-			this.activeDate = d;
-			return d;
-		},
-		prevMonth: function () {
-			let d = new Date();
-			d.setDate(1);
-			d.setMonth(--this.monForChange);
-			this.activeDate = d;
-			return d;
-		},
-		addZero: (num) => (num < 10) ? '0' + num : num,
-		activeDTag: null,
-		getIndex: function (node) {
-			let index = 0;
-			while (node = node.previousElementSibling) {
-				index++;
-			}
-			return index;
-		}
-	};
-
-	const $calBody = document.querySelector('.cal-body');
-	const $btnNext = document.querySelector('.btn-cal.next');
-	const $btnPrev = document.querySelector('.btn-cal.prev');
-
-	/**
-	 * @param {number} date
-	 * @param {number} dayIn
-	 */
-	function loadDate (date, dayIn) {
-		document.querySelector('.cal-date').textContent = date;
-		document.querySelector('.cal-day').textContent = init.dayList[dayIn];
-	}
-
-	/**
-	 * @param {date} fullDate
-	 */
-	function loadYYMM (fullDate) {
-		let yy = fullDate.getFullYear();
-		let mm = fullDate.getMonth();
-		let firstDay = init.getFirstDay(yy, mm);
-		let lastDay = init.getLastDay(yy, mm);
-		let markToday;  // for marking today date
-
-		if (mm === init.today.getMonth() && yy === init.today.getFullYear()) {
-			markToday = init.today.getDate();
-		}
-
-		document.querySelector('.cal-month').textContent = init.monList[mm];
-		document.querySelector('.cal-year').textContent = yy;
-
-		let trtd = '';
-		let startCount;
-		let countDay = 0;
-		for (let i = 0; i < 6; i++) {
-			trtd += '<tr>';
-			for (let j = 0; j < 7; j++) {
-				if (i === 0 && !startCount && j === firstDay.getDay()) {
-					startCount = 1;
-				}
-				if (!startCount) {
-					trtd += '<td>'
-				} else {
-					let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
-					trtd += '<td class="day';
-					trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
-					trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
-				}
-				trtd += (startCount) ? ++countDay : '';
-				if (countDay === lastDay.getDate()) {
-					startCount = 0;
-				}
-				trtd += '</td>';
-			}
-			trtd += '</tr>';
-		}
-		$calBody.innerHTML = trtd;
-	}
-
-	/**
-	 * @param {string} val
-	 */
-	function createNewList (val) {
-		let id = new Date().getTime() + '';
-		let yy = init.activeDate.getFullYear();
-		let mm = init.activeDate.getMonth() + 1;
-		let dd = init.activeDate.getDate() + 15;
-		const $target = $calBody.querySelector(`.day[data-date="${dd}"]`);
-
-		let date = yy + '.' + init.addZero(mm) + '.' + init.addZero(dd);
-
-		let eventData = {};
-		eventData['date'] = date;
-		eventData['memo'] = val;
-		eventData['complete'] = false;
-		eventData['id'] = id;
-		init.event.push(eventData);
-		$todoList.appendChild(createLi(id, val, date));
-	}
-
-	loadYYMM(init.today);
-	loadDate(init.today.getDate(), init.today.getDay());
-
-	$btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
-	$btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
-
-	$calBody.addEventListener('click', (e) => {
-		if (e.target.classList.contains('day')) {
-			if (init.activeDTag) {
-				init.activeDTag.classList.remove('day-active');
-			}
-			let day = Number(e.target.textContent);
-			loadDate(day, e.target.cellIndex);
-			e.target.classList.add('day-active');
-			init.activeDTag = e.target;
-			init.activeDate.setDate(day);
-			reloadTodo();
-		}
-	});
-
+	var firstWishDate;
+	var secondWishDate;
 
 	//예약완료
 	function successRegister() {
@@ -768,13 +628,19 @@ require('check_data.php');
 
 		console.log(sendItems);
 
-		instance.post('CU_003_005', sendItems).then(res => {
-			alert(res.data.message);
-			console.log(res.data);
-		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
-			console.log(error);
-		});
+		if (confirm("예약하시겠습니까?") == true) {
+			instance.post('CU_003_005', sendItems).then(res => {
+				console.log(res.data);
+				if (res.data.message == "success") {
+					alert("예약되었습니다.");
+				}
+			}).catch(function (error) {
+				alert("잘못된 접근입니다.")
+				console.log(error);
+			});
+		} else {
+			return false;
+		}
 	}
 
 </script>
