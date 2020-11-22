@@ -20,15 +20,118 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/calendar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/reservation_injection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_date.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/cdn-jsdelivr full demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/cdn-jsdelivr minimal demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/cdn-unpkg full demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/cdn-unpkg minimal demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/colorful selects.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/date events.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/date pickers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/experimental loader demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/year calendar dark.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/demos/year calendar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/attribute version.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/calendar creation with selectors.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/calendar creation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/calendar events.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/calendar object get set del.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/calendar options.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/calendar render handlers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/extensions/datepicker-bootstrap.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/extensions/datepicker-element-position-detection.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/extensions/datepicker.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/extensions/eventmarks.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/extensions/example-extension.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/goto a date method.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/language parameter and methods setLanguage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/languages.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/min max parameters and methods.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/next previous methods.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/parameters day format.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/parameters first day of the week.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/parameters month format.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/parameters navigator position.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/parameters navigator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/parameters zero fill.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/refresh method.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/reset method.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/select unselect and clear days methods.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/set date method.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme classic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme clean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme colors all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme colors.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme custom colors.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme darkseries.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme default.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme material.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/examples/theme micro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/extensions/jsCalendar.datepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/extensions/jsCalendar.datepicker.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/extensions/jsCalendar.eventmarks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/extensions/jsCalendar.eventmarks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_main.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_theme_classic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_theme_clean.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_theme_darkseries.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_theme_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_theme_material.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/preview_theme_micro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/preview.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/preview_theme.xcf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/theme.classic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/theme.clean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/theme.darkseries.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/theme.default.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/theme.material.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/themes/theme.micro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/preview/thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.be.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.de.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.gr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.hu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.ja.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.ko.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.nl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.no.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.sk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.sv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.th.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.uk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.lang.zh.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/source/jsCalendar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/themes/jsCalendar.clean.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/themes/jsCalendar.clean.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/themes/jsCalendar.darkseries.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/themes/jsCalendar.darkseries.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/themes/jsCalendar.micro.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/lib/jsCalendar-master/themes/jsCalendar.micro.min.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +156,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/asset/images" />
@@ -82,6 +186,7 @@
       <workItem from="1605089007809" duration="22559000" />
       <workItem from="1605456722158" duration="52000" />
       <workItem from="1605486138661" duration="21886000" />
+      <workItem from="1606051724309" duration="13701000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -139,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605799634735</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="-">
+      <created>1605984776485</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605984776485</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +274,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="-" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="224" y="170" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606051878873">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="224" y="170" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606051878873" />
     <state x="626" y="296" key="EditFileWatcherDialog" timestamp="1605971042625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -174,18 +290,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="838" y="417" key="Github.ShareDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1604997414465" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605689985679">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605984781060">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605456650311" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984781060" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605689985679" />
-    <state x="1955" y="16" width="1490" height="1027" key="dock-window-1" timestamp="1605664910164">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="930" y="-1080" width="1294" height="1047" key="dock-window-1" timestamp="1606052202914">
+      <screen x="-343" y="-1080" width="2560" height="1040" />
     </state>
+    <state x="930" y="-1080" width="1294" height="1047" key="dock-window-1/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606052202914" />
     <state x="1955" y="16" width="1490" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605664910164" />
-    <state x="1920" y="0" width="1490" height="1027" key="dock-window-2" timestamp="1605669031200">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="264" y="553" width="1327" height="1027" key="dock-window-2" timestamp="1606054032728">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="264" y="553" width="1327" height="1027" key="dock-window-2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606054032728" />
     <state x="1920" y="0" width="1490" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605669031200" />
     <state x="635" y="17" width="1191" height="1027" key="dock-window-3" timestamp="1605677261012">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -215,11 +333,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1494" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605849963675" />
-    <state x="426" y="214" width="1292" height="690" key="find.popup" timestamp="1605984449065">
+    <state x="426" y="214" width="1292" height="690" key="find.popup" timestamp="1606056091931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
-    <state x="426" y="214" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984449065" />
+    <state x="426" y="214" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606056091931" />
     <state x="2098" y="65" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605861792469" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1605984377925">
       <screen x="0" y="0" width="1920" height="1040" />

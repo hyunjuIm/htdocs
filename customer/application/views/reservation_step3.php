@@ -172,7 +172,10 @@
 
 				<!-- 컨텐츠내용 -->
 				<div class="container" style="color: black;width: 130rem;padding: 6rem;">
+
+					<!--검진유형선택-->
 					<div class="row" id="step1">
+						<!--검진유형선택-->
 						<div class="container">
 							<div class="row" style="margin-top: 3rem">
 								<div style="margin: 0 auto; font-weight: 500">
@@ -181,12 +184,39 @@
 								</div>
 							</div>
 
-							<!--검진유형선택-->
-
-							<div class="row" style="margin-top: 3rem">
-								선택한 병원 정보 들어갈 자리
+							<!--TODO:선택한 병원정보-->
+							<div class="row" style="margin-top: 7rem;text-align: left">
+								<div style="width: 100%; height: 20rem; background: #F6F6F6; border-radius: 10rem; font-size:1.5rem;display: flex">
+									<div style="float: left;width: 18rem;height: 18rem;border-radius: 70%;overflow: hidden;margin: 1rem">
+										<img class="profile"
+											 src="http://www.dangjinmc.co.kr/ds_imgs/sub04/2019/img1_1.png"
+											 style=" width: 100%;height: 100%;object-fit: cover;">
+									</div>
+									<div style="font-weight: 500;padding: 1.5rem;width: 20%;margin-left: 2rem">
+										<span style="font-size: 2.1rem">병원이름</span><br>
+										<span style="font-weight: 300" id="address">주소</span><br>
+										문의<span style="font-weight: 300" id="phone"></span><br>
+										운영시간<span style="font-weight: 300" id="operatingHours"></span><br>
+									</div>
+									<div style="padding: 1.5rem;width: 15%">
+										<span style="font-size: 1.8rem;font-weight: 500">추천정보</span><br>
+										검사항목 <span id="onePoint"></span>점<br>
+										접근성 <span id="twoPoint"></span>점<br>
+										전문성 <span id="threePoint"></span>점<br>
+										시설 <span id="fourPoint"></span>점<br>
+									</div>
+									<div style="padding: 1.5rem 2rem;width: 25%">
+										<span style="font-size: 1.8rem;font-weight: 500">공지사항</span><br>
+										<span id="notice"></span>
+									</div>
+									<div style="padding: 1.5rem;width: 20%">
+										<span style="font-size: 1.8rem;font-weight: 500">기관정보</span><br>
+										<span id="plusInfo"></span>
+									</div>
+								</div>
 							</div>
-							<div class="row" style="display:block;margin-top: 5rem">
+
+							<div class="row" style="display:block;margin-top: 7rem">
 								<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
 									검진유형
 								</div>
@@ -230,7 +260,8 @@
 											<tr>
 												<th width="5%"><input type="checkbox" id="addInjectionCheck"
 																	  name="addInjectionCheck"
-																	  onclick="clickAll(id, name)"></th>
+																	  onclick="clickAll(id, name);addInjectionAllPrice()">
+												</th>
 												<th width="40%">검사명</th>
 												<th width="15%">추가금</th>
 												<th width="">비고</th>
@@ -239,6 +270,9 @@
 											<tbody>
 											</tbody>
 										</table>
+										<div style="float: right;font-weight: 400">
+											총 추가금액 : <span id="addInjectionPrice" style="color: #5849ea">0</span>원
+										</div>
 									</div>
 								</div>
 
@@ -254,10 +288,10 @@
 									</div>
 								</div>
 							</form>
-
 						</div>
 					</div>
 
+					<!--검진일선택-->
 					<div class="row" id="step2" style="display: none">
 						<div class="container">
 							<div class="container">
@@ -268,14 +302,13 @@
 									</div>
 								</div>
 
-								<!--검진일선택-->
 								<div class="row" style="display:block;margin-top: 10rem">
 									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
 										검진일선택
 									</div>
 
 									<hr>
-									<!--TODO:달력-->
+
 									<div style="display: flex; margin: 5rem">
 										<div ng-app="app" style="margin: 0 auto;display: flex">
 											<div style="display: block; margin: 0 5rem">
@@ -340,10 +373,6 @@
 <?php
 require('check_data.php');
 ?>
-<?php
-require('calendar.php');
-?>
-
 <script>
 	//예약을 위한 id 가져오기
 	var get = location.href.substr(
@@ -359,6 +388,30 @@ require('calendar.php');
 	userData.hosId = location.href.substr(
 			location.href.lastIndexOf('=') + 1
 	);
+
+	//선택한 병원 정보
+	instance.post('CU_003_003_2', userData).then(res => {
+		console.log(res.data)
+		setSelectHospital(res.data);
+	});
+
+	function setSelectHospital(data) {
+		$("#address").text(data.address);
+		$("#operatingHours").text(data.operatingHours);
+		$("#phone").text(data.phone);
+		$("#onePoint").text(data.onePoint);
+		$("#twoPoint").text(data.twoPoint);
+		$("#threePoint").text(data.threePoint);
+		$("#fourPoint").text(data.fourPoint);
+		$("#notice").text(data.notice);
+		var plusInfo = "";
+		for (i = 0; i < data.plusInfo.length; i++) {
+			plusInfo += ' - ' + data.plusInfo[i]+'\n';
+			plusInfo.replace(/\n/g, '<br/>');
+		}
+		$("#plusInfo").text(plusInfo);
+
+	}
 
 	// 패키지 목록 가져오기
 	instance.post('CU_003_003', userData).then(res => {
@@ -403,180 +456,15 @@ require('calendar.php');
 		});
 	}
 
-	var injectionData = new Array();
-
-	//기본검사 항목 테이블
-	function setBaseInjectionList(data) {
-		$("#injectionBaseList").empty();
-
-		injectionData = data;
-		var injectionList = new Array(0, 0, 0, 0);
-
-		//각 카테고리별 개수
-		for (i = 0; i < data.length; i++) {
-			if (data[i].ipClass == '기본') {
-				if (data[i].category == "기본검사") {
-					injectionList[0] += 1;
-				} else if (data[i].category == "혈액검사") {
-					injectionList[1] += 1;
-				} else if (data[i].category == "장비검사") {
-					injectionList[2] += 1;
-				} else if (data[i].category == "기타검사") {
-					injectionList[3] += 1;
-				}
-			}
-		}
-
-		//검사 목록 셋팅
-		for (i = 0; i < 4; i++) {
-			var injectionText;
-			if (injectionList[i] > 0) {
-				var html = "";
-				html += '<li class="nav-item">' +
-						'<a class="nav-link" data-toggle="tab" href="#" id=injection' + i + ' onclick="setInjectionData(id, value)">';
-				if (i == 0) {
-					injectionText = '기본검사';
-				} else if (i == 1) {
-					injectionText = '혈액검사';
-				} else if (i == 2) {
-					injectionText = '장비검사';
-				} else if (i == 3) {
-					injectionText = '기타검사';
-				}
-				html += injectionText + '(' + injectionList[i] + ')' +
-						'</a>' +
-						'</li>';
-
-				$("#injectionBaseList").append(html);
-				$("#injection" + i).val(injectionText);
-			}
-		}
-
-		//처음에는 무조건 기본검사 펼치기
-		$("#injection0").addClass('active');
-		setInjectionData('injection0', '기본검사');
-	}
-
-	//기본검사 테이블 출력
-	function setInjectionData(id, value) {
-		$("#baseInjectionTable").empty();
-
-		$('.nav-item a id').toggleClass('active');
-
-		var count = 0;
-		for (i = 0; i < injectionData.length; i++) {
-			if (injectionData[i].ipClass == '기본' && value == injectionData[i].category) {
-				var html = "";
-				count += 1;
-				html += '<td>' + injectionData[i].inspection + '</td>';
-
-				$("#baseInjectionTable").append(html);
-
-				if (count == 6) {
-					count = 0;
-					$("#baseInjectionTable").append('<tr></tr>');
-				}
-			}
-		}
-
-		if (count != 0 && count < 6) {
-			var index = 6 - count;
-			for (i = 0; i < index; i++) {
-				$("#baseInjectionTable").append('<td>&nbsp</td>');
-			}
-		}
-	}
-
-	//선택검사 항목 리스트
-	var choiceList = new Array();
-
-	//선택검사 테이블 출력
-	function setChoiceInjectionList(data) {
-		$("#choiceInjectionTable").empty();
-		choiceList = [];
-
-		//선택검사 항목 어떤게 있고 몇 개인지
-		for (i = 0; i < data.length; i++) {
-			if ((data[i].ipClass).indexOf("선택") != -1) {
-				var count = 0;
-				for (j = 0; j < choiceList.length; j++) {
-					if (choiceList[j].title == data[i].ipClass) {
-						count += 1;
-					}
-				}
-				if (count == 0) {
-					var ijObject = new Object();
-					ijObject.title = data[i].ipClass;
-					ijObject.count = data[i].choiceLimit;
-					choiceList.push(ijObject);
-					count = 0;
-				}
-			}
-		}
-
-		//선택검사 항목 출력
-		for (i = 0; i < choiceList.length; i++) {
-			var rowSpan = 0;
-			var td1 = "";
-			var td2 = "";
-			for (j = 0; j < data.length; j++) {
-				if (choiceList[i].title == data[j].ipClass) {
-					rowSpan += 1;
-					if (rowSpan == 1) {
-						td1 += '<td>';
-						td1 += '<div class="form-check form-check-inline">' +
-								'<input class="form-check-input" type="checkbox" id=\'' + data[j].ipCode + '\'' +
-								'name=\'' + choiceList[i].title + '\' value=\'' + data[j].id + '\' ' +
-								'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\')">' +
-								'<label class="form-check-label" for=\'' + data[j].ipCode + '\'>&nbsp' + data[j].inspection + '</label>' +
-								'</div>';
-						td1 += '</td>';
-						td1 += '<td class="memo">' + data[j].memo + '</td>'
-					} else {
-						td2 += '<tr><td>' +
-								'<div class="form-check form-check-inline">' +
-								'<input class="form-check-input" type="checkbox" id=\'' + data[j].ipCode + '\'' +
-								'name=\'' + choiceList[i].title + '\' value=\'' + data[j].id + '\' ' +
-								'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\')">' +
-								'<label class="form-check-label" for=\'' + data[j].ipCode + '\'>&nbsp' + data[j].inspection + '</label>' +
-								'</div></td>';
-						td2 += '<td class="memo">' + data[j].memo + '</td></tr>';
-					}
-				}
-			}
-			var html = "";
-			html += '<tbody><tr><td class="name" rowspan=\'' + rowSpan + '\'>' +
-					choiceList[i].title + ' (' + choiceList[i].count + ')' +
-					td1 + '</tr>' + td2 + '</tbody>';
-			$("#choiceInjectionTable").append(html);
-		}
-	}
-
-	//체크박스 선택검사 항목 체크 개수 제한
-	function choiceInjectionCount(chk, name, max) {
-		if ($('input:checkbox[name=' + name + ']:checked').length > max) {
-			alert("최대 선택 개수를 초과하였습니다.");
-			chk.checked = false;
-		}
-	}
-
-	//추가검사 테이블 셋팅
-	function setAddInjectionList(data) {
-		for (i = 0; i < data.length; i++) {
-			if (data[i].ipClass == '추가') {
-				var html = "";
-				html += '<tr>' +
-						'<td><input type="checkbox" name="addInjectionCheck" value=\'' + data[i].id + '\' onclick="clickOne(name)"></td>' +
-						'<td style="text-align: left">' + data[i].inspection + '</td>' +
-						'<td>' + data[i].price + '</td>' +
-						'<td>' + data[i].memo + '</td>' +
-						'</tr>';
-				$("#addInjectionTable").append(html);
-			}
-		}
-	}
+	<?php
+	require('reservation_injection.js');
+	?>
 
 	var pipList = new Array();
+
+	<?php
+	require('reservation_date.js');
+	?>
 
 	//검진유형 -> 검진일선택 탭전환
 	function nextStep1() {
@@ -596,7 +484,7 @@ require('calendar.php');
 			}
 		}
 
-		//다음페이지에 체크된 패키지 id 값 넘겨줄 배열
+		//다음 페이지에 체크된 패키지 id 값 넘겨줄 배열
 		var data = checkValueData('addInjectionCheck');
 		for (j = 0; j < data.length; j++) {
 			pipList.push(data[j]);
@@ -611,7 +499,6 @@ require('calendar.php');
 		$("#step1").show();
 		$("#step2").hide();
 	}
-
 
 	var firstWishDate;
 	var secondWishDate;

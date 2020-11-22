@@ -89,7 +89,7 @@
 		text-align: left;
 	}
 
-	#nav li a:hover {
+	#nav li a:hover, #nav li a:active {
 		color: #5645ED;
 	}
 
@@ -136,7 +136,7 @@
 
 </style>
 
-<div class="col bd-sidebar side" style="padding: 0;" >
+<div class="col bd-sidebar side" style="padding: 0;">
 	<form style="padding: 3.5rem 2.5rem">
 		<div style="margin-bottom: 3rem">
 			<a href="/"> <img class="logo" src="/asset/images/logo_light.png"></a>
@@ -248,6 +248,17 @@
 
 <script>
 	$(document).ready(function () {
+		$('#nav > li > a').click(function () {
+			$(this).next().slideToggle(300);
+			$(this).addClass('active');
+			$(this).css("background", "#f2f2f2");
+			$(this).css("border-left", "7px solid #5849ea");
+
+			$('#nav > li > a').not(this).next().slideUp(300);
+		});
+	});
+
+	$(document).ready(function () {
 		//사이드바 메뉴
 		$('#nav > li > a').hover(function () {
 			$(this).next().slideDown(300);
@@ -259,12 +270,6 @@
 			$('#nav li a').not(this).css("border-left", "none");
 		}, function () {
 			$('.main-menu').css("color", "white");
-			$('.main-menu').hover(function () {
-			}, function () {
-				$('#nav li a').next().slideUp(300);
-				$('#nav li a').not(this).css("background", "none");
-				$('#nav li a').not(this).css("border-left", "none");
-			});
 		});
 	});
 </script>

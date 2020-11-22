@@ -86,7 +86,7 @@
 		text-align: left;
 	}
 
-	#nav li a:hover {
+	#nav li a:hover, #nav li a:active {
 		font-weight: bolder;
 		color: #5645ED;
 	}
@@ -246,6 +246,17 @@
 
 <script>
 	$(document).ready(function () {
+		$('#nav > li > a').click(function () {
+			$(this).next().slideToggle(300);
+			$(this).addClass('active');
+			$(this).css("background", "#1b1a25");
+			$(this).css("border-left", "7px solid #5849ea");
+
+			$('#nav > li > a').not(this).next().slideUp(300);
+		});
+	});
+
+	$(document).ready(function () {
 		//사이드바 메뉴
 		$('#nav > li > a').hover(function () {
 			$(this).next().slideDown(300);
@@ -257,12 +268,6 @@
 			$('#nav li a').not(this).css("border-left", "none");
 		}, function () {
 			$('.main-menu').css("color", "white");
-			$('.main-menu').hover(function () {
-			}, function () {
-				$('#nav li a').next().slideUp(300);
-				$('#nav li a').not(this).css("background", "none");
-				$('#nav li a').not(this).css("border-left", "none");
-			});
 		});
 	});
 </script>
