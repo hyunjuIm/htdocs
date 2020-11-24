@@ -56,4 +56,10 @@ class customer extends CI_Controller
 	{
 		$this->load->view('reservation_list');
 	}
+
+	//병원별 검진 비교
+	public function comparison_hospital()
+	{
+		$this->load->view('comparison_hospital');
+	}
 }

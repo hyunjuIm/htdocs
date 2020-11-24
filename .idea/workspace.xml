@@ -20,22 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/reservation_list.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/reservation_step4.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/star_empty.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/star_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/star_half.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/comparison_hospital.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/Customer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
     </list>
@@ -157,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605984776485</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-">
+      <created>1606176122330</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606176122330</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,11 +195,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="838" y="417" key="Github.ShareDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1604997414465" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605984781060">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606176127475">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984781060" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605689985679" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606176127475" />
     <state x="2014" y="28" width="1317" height="1027" key="dock-window-1" timestamp="1606109494789">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -211,10 +210,10 @@
     </state>
     <state x="264" y="553" width="1327" height="1027" key="dock-window-2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606054032728" />
     <state x="1920" y="0" width="1494" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606112289412" />
-    <state x="635" y="17" width="1191" height="1027" key="dock-window-3" timestamp="1605677261012">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1920" y="0" width="1607" height="1027" key="dock-window-3" timestamp="1606183829410">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="635" y="17" width="1191" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605677261012" />
+    <state x="1920" y="0" width="1607" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606183829410" />
     <state x="2002" y="0" width="1490" height="1027" key="dock-window-4" timestamp="1605748176605">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -239,12 +238,12 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1494" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605849963675" />
-    <state x="2089" y="147" width="1112" height="794" key="find.popup" timestamp="1606120075630">
+    <state x="2089" y="147" width="1112" height="794" key="find.popup" timestamp="1606202556696">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
     <state x="426" y="214" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606056091931" />
-    <state x="2089" y="147" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606120075630" />
+    <state x="2089" y="147" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606202556696" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606113065277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
