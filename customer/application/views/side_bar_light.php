@@ -28,6 +28,7 @@
 		padding: 0.5rem;
 		background: #5849ea;
 		color: #f7f7f7;
+		font-size: 1.5rem;
 		border-top-left-radius: 1rem;
 		border-top-right-radius: 1rem;
 	}
@@ -35,11 +36,11 @@
 	.reservation-card-content {
 		padding: 0.5rem;
 		background: white;
+		font-size: 1.5rem;
 		border-bottom-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
 		height: 10rem;
 		color: black;
-		font-size: 1.5rem;
 		display: table;
 		width: inherit;
 	}
@@ -153,7 +154,7 @@
 			<div class="reservation-card-content">
 				<div id="carouselReservationControls" class="carousel slide" data-ride="carousel"
 					 style="height: inherit; display: table-cell; vertical-align: middle;
-					 color: black; font-size: 1.6rem;">
+					 color: black;">
 					<div id="userScheduleInfos" class="carousel-inner">
 
 					</div>
@@ -193,7 +194,7 @@
 			<li class="main-menu"><a class="main-menu-item" href="#">예약서비스</a>
 				<ul>
 					<li class="sub-menu"><a href="/customer/reservation_step1">검진예약</a></li>
-					<li class="sub-menu"><a href="#">예약현황</a></li>
+					<li class="sub-menu"><a href="/customer/reservation_list">예약현황</a></li>
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
@@ -251,25 +252,25 @@
 		$('#nav > li > a').click(function () {
 			$(this).next().slideToggle(300);
 			$(this).addClass('active');
-			$(this).css("background", "#f2f2f2");
-			$(this).css("border-left", "7px solid #5849ea");
+			// $(this).css("background", "#f2f2f2");
+			// $(this).css("border-left", "7px solid #5849ea");
 
 			$('#nav > li > a').not(this).next().slideUp(300);
 		});
 	});
 
-	$(document).ready(function () {
-		//사이드바 메뉴
-		$('#nav > li > a').hover(function () {
-			$(this).next().slideDown(300);
-			$(this).css("background", "#f2f2f2");
-			$(this).css("border-left", "7px solid #5849ea");
-
-			$('#nav li a').not(this).next().slideUp(300);
-			$('#nav li a').not(this).css("background", "none");
-			$('#nav li a').not(this).css("border-left", "none");
-		}, function () {
-			$('.main-menu').css("color", "white");
-		});
-	});
+	// $(document).ready(function () {
+	// 	//사이드바 메뉴
+	// 	$('#nav > li > a').hover(function () {
+	// 		$(this).next().slideDown(300);
+	// 		$(this).css("background", "#f2f2f2");
+	// 		$(this).css("border-left", "7px solid #5849ea");
+	//
+	// 		$('#nav li a').not(this).next().slideUp(300);
+	// 		$('#nav li a').not(this).css("background", "none");
+	// 		$('#nav li a').not(this).css("border-left", "none");
+	// 	}, function () {
+	// 		$('.main-menu').css("color", "white");
+	// 	});
+	// });
 </script>

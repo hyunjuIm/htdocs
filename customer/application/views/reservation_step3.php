@@ -53,6 +53,38 @@
 			padding: 0.5rem;
 		}
 
+		.select-hos {
+			width: 100%;
+			height: 20rem;
+			background: #F6F6F6;
+			border-radius: 10rem;
+			font-size: 1.5rem;
+			display: flex;
+		}
+
+		.select-hos .cell {
+			padding: 2rem;
+			width: 20%;
+		}
+
+		.select-hos .title {
+			font-size: 1.8rem;
+			font-weight: 500;
+		}
+
+		#hosImg {
+			float: left;
+			width: 18rem;
+			height: 18rem;
+			border-radius: 70%;
+			overflow: hidden;
+			margin: 1rem;
+		}
+
+		.point-table td {
+			padding: 0.3rem 0.7rem;
+		}
+
 		#baseInjectionTable, #choiceInjectionTable, #addInjectionTable {
 			border-top: 2px solid black;
 			width: 100%;
@@ -161,7 +193,7 @@
 							<div class="title-menu-select" style="border-right: #828282 1px solid">
 								검진예약
 							</div>
-							<a href="/customer/">
+							<a href="/customer/reservation_list">
 								<div class="title-menu">
 									예약현황
 								</div>
@@ -173,48 +205,62 @@
 				<!-- 컨텐츠내용 -->
 				<div class="container" style="color: black;width: 130rem;padding: 6rem;">
 
+					<div class="row" style="margin-top: 3rem">
+						<div style="margin: 0 auto; font-weight: 500">
+							<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
+							<img id="step" class="reservation-order" src="/asset/images/step2.png">
+						</div>
+					</div>
+
+					<div class="row" style="margin-top: 7rem;text-align: left">
+						<div class="select-hos">
+							<div id="hosImg"></div>
+							<div class="cell" style="font-weight: 500;margin-left: 2rem">
+								<div style="font-size: 2.1rem" id="name">병원이름</div>
+								<br>
+								<div style="font-weight: 300;word-break:keep-all" id="address">주소</div>
+								<br>
+								문의 <span style="font-weight: 300" id="phone"></span><br>
+								운영시간 <span style="font-weight: 300" id="operatingHours"></span><br>
+							</div>
+							<div class="cell">
+								<div class="title">추천정보</div>
+								<table class="point-table" style="margin-top: 1rem">
+									<tr>
+										<td>검사항목</td>
+										<td id="onePoint">
+										</td>
+									</tr>
+									<tr>
+										<td>접근성</td>
+										<td id="twoPoint"></td>
+									</tr>
+									<tr>
+										<td>전문성</td>
+										<td id="threePoint"></td>
+									</tr>
+									<tr>
+										<td>시설</td>
+										<td id="fourPoint"></td>
+									</tr>
+								</table>
+							</div>
+							<div class="cell">
+								<div class="title">공지사항</div>
+								<div id="notice" style="margin-top: 1rem;color: grey"></div>
+							</div>
+							<div class="cell">
+								<div class="title">기관정보</div>
+								<div id="plusInfo" style="margin-top: 1rem"></div>
+							</div>
+						</div>
+					</div>
+
+
 					<!--검진유형선택-->
 					<div class="row" id="step1">
 						<!--검진유형선택-->
 						<div class="container">
-							<div class="row" style="margin-top: 3rem">
-								<div style="margin: 0 auto; font-weight: 500">
-									<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
-									<img class="reservation-order" src="/asset/images/step2.png">
-								</div>
-							</div>
-
-							<!--TODO:선택한 병원정보-->
-							<div class="row" style="margin-top: 7rem;text-align: left">
-								<div style="width: 100%; height: 20rem; background: #F6F6F6; border-radius: 10rem; font-size:1.5rem;display: flex">
-									<div style="float: left;width: 18rem;height: 18rem;border-radius: 70%;overflow: hidden;margin: 1rem">
-										<img class="profile"
-											 src="http://www.dangjinmc.co.kr/ds_imgs/sub04/2019/img1_1.png"
-											 style=" width: 100%;height: 100%;object-fit: cover;">
-									</div>
-									<div style="font-weight: 500;padding: 1.5rem;width: 20%;margin-left: 2rem">
-										<span style="font-size: 2.1rem">병원이름</span><br>
-										<span style="font-weight: 300" id="address">주소</span><br>
-										문의<span style="font-weight: 300" id="phone"></span><br>
-										운영시간<span style="font-weight: 300" id="operatingHours"></span><br>
-									</div>
-									<div style="padding: 1.5rem;width: 15%">
-										<span style="font-size: 1.8rem;font-weight: 500">추천정보</span><br>
-										검사항목 <span id="onePoint"></span>점<br>
-										접근성 <span id="twoPoint"></span>점<br>
-										전문성 <span id="threePoint"></span>점<br>
-										시설 <span id="fourPoint"></span>점<br>
-									</div>
-									<div style="padding: 1.5rem 2rem;width: 25%">
-										<span style="font-size: 1.8rem;font-weight: 500">공지사항</span><br>
-										<span id="notice"></span>
-									</div>
-									<div style="padding: 1.5rem;width: 20%">
-										<span style="font-size: 1.8rem;font-weight: 500">기관정보</span><br>
-										<span id="plusInfo"></span>
-									</div>
-								</div>
-							</div>
 
 							<div class="row" style="display:block;margin-top: 7rem">
 								<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
@@ -295,12 +341,6 @@
 					<div class="row" id="step2" style="display: none">
 						<div class="container">
 							<div class="container">
-								<div class="row" style="margin-top: 3rem">
-									<div style="margin: 0 auto; font-weight: 500">
-										<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
-										<img class="reservation-order" src="/asset/images/step3.png">
-									</div>
-								</div>
 
 								<div class="row" style="display:block;margin-top: 10rem">
 									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
@@ -396,21 +436,93 @@ require('check_data.php');
 	});
 
 	function setSelectHospital(data) {
-		$("#address").text(data.address);
+		$("#hosImg").append('<img class="profile"' +
+				' src=https://file.dualhealth.kr/images/' + data.fileName + '' +
+				' style=" width: 100%;height: 100%;object-fit: cover;">');
+		$("#name").text(data.name);
+		$("#address").text(data.address + ' ' + data.buildingNum);
 		$("#operatingHours").text(data.operatingHours);
 		$("#phone").text(data.phone);
-		$("#onePoint").text(data.onePoint);
-		$("#twoPoint").text(data.twoPoint);
-		$("#threePoint").text(data.threePoint);
-		$("#fourPoint").text(data.fourPoint);
+		$("#onePoint").append(starPoint(data.onePoint));
+		$("#twoPoint").append(starPoint(data.twoPoint));
+		$("#threePoint").append(starPoint(data.threePoint));
+		$("#fourPoint").append(starPoint(data.fourPoint));
 		$("#notice").text(data.notice);
-		var plusInfo = "";
-		for (i = 0; i < data.plusInfo.length; i++) {
-			plusInfo += ' - ' + data.plusInfo[i]+'\n';
-			plusInfo.replace(/\n/g, '<br/>');
-		}
-		$("#plusInfo").text(plusInfo);
+		$("#plusInfo").text(data.plusInfo);
+	}
 
+	//별 -> 이미지로
+	function starPoint(point) {
+		var star = 0.0;
+		star = point / 2;
+
+		var html = "";
+
+		if (star == 0.0) {
+			for (i = 0; i < 5; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 0.5) {
+			html += '<img src="/asset/images/star_half.png">';
+			for (i = 0; i < 4; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 1.0) {
+			html += '<img src="/asset/images/star_full.png">';
+			for (i = 0; i < 4; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 1.5) {
+			html += '<img src="/asset/images/star_full.png">';
+			html += '<img src="/asset/images/star_half.png">';
+			for (i = 0; i < 3; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 2.0) {
+			for (i = 0; i < 2; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+			for (i = 0; i < 3; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 2.5) {
+			for (i = 0; i < 2; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+			html += '<img src="/asset/images/star_half.png">';
+			for (i = 0; i < 2; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 3.0) {
+			for (i = 0; i < 3; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+			for (i = 0; i < 2; i++) {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
+		} else if (star == 3.5) {
+			for (i = 0; i < 3; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+			html += '<img src="/asset/images/star_half.png">';
+			html += '<img src="/asset/images/star_empty.png">';
+		} else if (star == 4.0) {
+			for (i = 0; i < 4; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+			html += '<img src="/asset/images/star_empty.png">';
+		} else if (star == 4.5) {
+			for (i = 0; i < 4; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+			html += '<img src="/asset/images/star_half.png">';
+		} else if (star == 5.0) {
+			for (i = 0; i < 5; i++) {
+				html += '<img src="/asset/images/star_full.png">';
+			}
+		}
+
+		return html;
 	}
 
 	// 패키지 목록 가져오기
@@ -468,6 +580,8 @@ require('check_data.php');
 
 	//검진유형 -> 검진일선택 탭전환
 	function nextStep1() {
+		$("#step").attr("src", '/asset/images/step3.png');
+
 		pipList = [];
 
 		for (i = 0; i < choiceList.length; i++) {
@@ -496,6 +610,8 @@ require('check_data.php');
 
 	//검진일선택 -> 검진유형 탭전환
 	function backStep1() {
+		$("#step").attr("src", '/asset/images/step2.png');
+
 		$("#step1").show();
 		$("#step2").hide();
 	}
@@ -519,7 +635,7 @@ require('check_data.php');
 			instance.post('CU_003_005', sendItems).then(res => {
 				console.log(res.data);
 				if (res.data.message == "success") {
-					alert("예약되었습니다.");
+					location.href = "reservation_step4?famId=" + famId;
 				}
 			}).catch(function (error) {
 				alert("잘못된 접근입니다.")

@@ -39,9 +39,21 @@ class customer extends CI_Controller
 		$this->load->view('reservation_step2');
 	}
 
-	//검진예약2
+	//검진예약3
 	public function reservation_step3()
 	{
 		$this->load->view('reservation_step3');
+	}
+
+	//검진예약3
+	public function reservation_step4()
+	{
+		$this->load->view('reservation_step4');
+	}
+
+	//예약현황
+	public function reservation_list()
+	{
+		$this->load->view('reservation_list');
 	}
 }

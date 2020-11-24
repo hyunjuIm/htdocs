@@ -163,7 +163,7 @@
 							<div class="title-menu-select" style="border-right: #828282 1px solid">
 								검진예약
 							</div>
-							<a href="/customer/">
+							<a href="/customer/reservation_list">
 								<div class="title-menu">
 									예약현황
 								</div>
