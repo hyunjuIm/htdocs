@@ -62,4 +62,10 @@ class customer extends CI_Controller
 	{
 		$this->load->view('comparison_hospital');
 	}
+
+	//건강검진안내
+	public function health_checkup_guide()
+	{
+		$this->load->view('health_checkup_guide');
+	}
 }
