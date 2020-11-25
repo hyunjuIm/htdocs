@@ -277,10 +277,8 @@
 		var count = 0;
 		for (i = 0; i < data.length; i++) {
 			var tbody = "";
-			count += 1;
-
 			tbody += '<tr>' +
-					'<td>'+ count +'</td>' +
+					'<td>'+ data[i].id +'</td>' +
 					'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">'+ data[i].title +'</td>' +
 					'<td>'+ data[i].author +'</td>' +
 					'<td>'+ data[i].createDate +'</td>' +

@@ -48,25 +48,25 @@
 		}
 
 		.nav-item {
-			width: calc(100%/3);
+			width: calc(100% / 3);
 		}
 
 		.nav-item:hover {
 			border-left: 1px solid black;
 			border-right: 1px solid black;
 			border-top: 2px solid #5645ED;
-			border-bottom:white;
+			border-bottom: white;
 		}
 
 		.nav-item .active {
 			border-left: 1px solid black;
 			border-right: 1px solid black;
 			border-top: 2px solid #5645ED;
-			border-bottom:white;
+			border-bottom: white;
 		}
 
 		.nav-item .active:hover {
-			border : none;
+			border: none;
 		}
 
 		.nav-link {
@@ -124,15 +124,31 @@
 
 		.item-table td {
 			text-align: center;
-			width: calc(120rem/4);
-			height: calc(120rem/4);
+			width: calc(120rem / 4);
+			height: calc(120rem / 4);
 			font-weight: bolder;
 			font-size: 1.7rem;
 		}
 
 		.item {
 			align-items: center;
-			cursor: pointer;
+			cursor: default;
+		}
+
+		.item-hover {
+			display: none;
+			background: white;
+			cursor: default;
+			padding: 2rem;
+			font-size: 1.5rem;
+			font-weight: 300;
+		}
+
+		.item-hover span {
+			font-size: 1.6rem;
+			font-weight: 500;
+			vertical-align: middle;
+			color: #5645ed;
 		}
 
 		.item-content {
@@ -341,7 +357,7 @@
 									<tr>
 										<td colspan="2">
 											<div style="font-size: 2.8rem;line-height: 6rem">검진항목에 대한 안내</div>
-											<div style="color: #666666;">궁금하신 항목을 클릭해주세요.</div>
+											<div style="color: #666666;">궁금하신 항목을 선택해주세요.</div>
 										</td>
 										<td>
 											<div class="item">
@@ -350,12 +366,11 @@
 													기본계측
 												</div>
 											</div>
-											<!--TODO:겹치기-->
-											<div class="item">
-												<img src="/asset/images/icon12.png">
-												<div class="item-content">
-													기본계측
-												</div>
+											<div class="item-hover">
+												<span>(신체계측, 순환기계검사, 안과, 청력, 치과검사, 호흡기계검사)</span><br><br>
+												- 신체계측 : 이를 이용해 비만도와 체질량지수 값을 계산할 수 있습니다.<br>
+												- 순환기계검사 : 혈압, 맥박, 심전도검사<br>
+												- 안과 : 안저, 안압검사를 통해 녹내장, 뇌압 상승 여부, 망막의 이상을 확인합니다.
 											</div>
 										</td>
 										<td>
@@ -364,6 +379,11 @@
 												<div class="item-content">
 													혈액검사
 												</div>
+											</div>
+											<div class="item-hover">
+												<span>(일반혈액검사, 혈액형검사, 빈혈검사, 종양표지자검사)</span><br><br>
+												- 일반혈액검사 : 혈액질환, 빈혈, 적혈구 증가증 등 다양한 질환을 확인합니다.<br>
+												- 종양표지자검사 : 암의 선별, 진단에 이용됩니다.<br>
 											</div>
 										</td>
 									</tr>
@@ -376,6 +396,11 @@
 													성병질환검사
 												</div>
 											</div>
+											<div class="item-hover">
+												<span>(신장기능검사, 요검사, 성병검사, 호르몬검사, 부인과검사)</span><br><br>
+												- 신장기능검사 : 소변을 통해 노폐물을 배출하는 능력 등 신장 기능을 검사합니다.<br>
+												- 부인과검사 : 유방 X-ray, 자궁 세포진 검사 등으로 부인과 질환을 검사합니다.
+											</div>
 										</td>
 										<td>
 											<div class="item">
@@ -383,6 +408,9 @@
 												<div class="item-content">
 													간기능/당뇨검사
 												</div>
+											</div>
+											<div class="item-hover">
+												<span>(간기능검사, 당뇨검사, 간염검사, 췌장기능검사)</span>
 											</div>
 										</td>
 										<td>
@@ -392,6 +420,9 @@
 													심혈관/고지혈증 검사
 												</div>
 											</div>
+											<div class="item-hover">
+												<span>(심혈관계검사, 심전도검사, 지질검사, 전해질검사)</span>
+											</div>
 										</td>
 										<td>
 											<div class="item">
@@ -399,6 +430,11 @@
 												<div class="item-content">
 													갑상선/관절염/통풍
 												</div>
+											</div>
+											<div class="item-hover">
+												<span>(갑상선검사, 통풍 및 류마티스관절염검사, 분변검사)</span><br><br>
+												- 갑상선검사 : free T4, T3, TSH 등 호르몬 검사를 조합하여 진단합니다.<br>
+												- 통풍검사 : 혈중 요산 농도를 측정하여 통풍을 진단합니다.
 											</div>
 										</td>
 									</tr>
@@ -410,6 +446,9 @@
 													방사선검사
 												</div>
 											</div>
+											<div class="item-hover">
+												- 흉부 X-ray : 폐와 심장 계통의 질환을 검사합니다.
+											</div>
 										</td>
 										<td>
 											<div class="item">
@@ -417,6 +456,9 @@
 												<div class="item-content">
 													초음파검사
 												</div>
+											</div>
+											<div class="item-hover">
+												- 상복부 초음파 : 간, 췌장, 담장, 비장 등의 이상 여부를 확인합니다.
 											</div>
 										</td>
 										<td>
@@ -426,6 +468,10 @@
 													소화기계검사
 												</div>
 											</div>
+											<div class="item-hover">
+												<span>(위내시경, 대장내시경)</span><br><br>
+												- 내시경을 통해 위, 대장암 선별과 병변을 확인합니다.
+											</div>
 										</td>
 										<td>
 											<div class="item">
@@ -433,6 +479,9 @@
 												<div class="item-content">
 													기타검사
 												</div>
+											</div>
+											<div class="item-hover">
+												<span>(유전자 검사, MRI)</span>
 											</div>
 										</td>
 									</tr>
@@ -449,6 +498,18 @@
 </body>
 
 <script>
+
+	$(document).ready(function () {
+		$('.item-table td').hover(
+				function () {
+					$(this).children('.item').hide();
+					$(this).children('.item-hover').show();
+				}, function () {
+					$(this).children('.item').show();
+					$(this).children('.item-hover').hide();
+				}
+		);
+	});
 
 </script>
 

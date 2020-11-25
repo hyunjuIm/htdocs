@@ -333,7 +333,6 @@
 
 	var pkgList = new Array();
 	var totalInspectionItems = new Set();
-	var baseInjection = new Set();
 
 	//패키지 검색
 	function setSearchPackage(id) {
@@ -368,7 +367,7 @@
 	function addBaseInjectionData(data, id) {
 		var index = findIndex(id);
 
-		baseInjection = new Set();
+		var baseInjection = new Set();
 		select = new Set();
 		for (i = 0; i < data.length; i++) {
 			if (data[i].ipClass == '기본') {
@@ -386,10 +385,8 @@
 		setBaseInjectionTable();
 	}
 
-	<!--TODO:결과 잘 안나옴-->
 	//기본검사 교집합 배열
 	function resetTotalInspectionItems() {
-		console.log(totalInspectionItems);
 		for (i = 0; i < pkgList.length; i++) {
 			if (pkgList[i] != null) {
 				pkgList[i].forEach((value) => totalInspectionItems.add(value));
@@ -400,7 +397,7 @@
 	//기본검사 테이블 셋팅
 	function setBaseInjectionTable() {
 		$("#baseTable").empty();
-		baseInjection.forEach((value) =>
+		totalInspectionItems.forEach((value) =>
 			setBaseInspectionItems(value)
 		);
 	}

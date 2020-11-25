@@ -178,7 +178,7 @@
 						</div>
 					</div>
 					<div class="row" id="resultTable" style="display: block;padding: 6rem 0">
-
+						
 					</div>
 				</div>
 			</div>
@@ -206,6 +206,16 @@ require('check_data.php');
 
 	function setReservationList(data) {
 		console.log(data);
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<hr>' +
+					'<div style="font-weight: bolder;font-size: 1.7rem;padding: 1.5rem">' +
+					'예약 내역이 없습니다.' +
+					'</div>' +
+					'<hr>';
+			$("#resultTable").append(html);
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = "";
