@@ -77,6 +77,24 @@
 			padding: 0;
 		}
 
+		#choiceTable th, #addTable td {
+			padding: 2rem;
+			vertical-align: top;
+			font-size: 1.8rem;
+		}
+
+		#choiceTable td, #addTable td {
+			padding: 2rem;
+			vertical-align: top;
+			text-align: left;
+			font-weight: 300 !important;
+		}
+
+		.choiceNum {
+			color: #5849ea;
+			font-weight: bolder;
+		}
+
 		.form-control, option {
 			width: 100%;
 			height: 4.5rem;
@@ -138,7 +156,7 @@
 					</div>
 					<div class="row" style="height: 4.5rem">
 						<div style="margin: 0 auto; display: flex">
-							<a href="#">
+							<a href="/customer/notice_list">
 								<div class="title-menu" style="border-right: #828282 1px solid">
 									공지사항
 								</div>
@@ -226,17 +244,6 @@
 								선택검사
 							</div>
 							<table class="compare-table table-bordered" id="choiceTable">
-								<tr>
-									<th rowspan="2"></th>
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
 							</table>
 						</div>
 
@@ -244,7 +251,7 @@
 							<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
 								추가검사
 							</div>
-							<table class="compare-table table-bordered">
+							<table class="compare-table table-bordered" id="addTable">
 
 							</table>
 						</div>
@@ -256,10 +263,6 @@
 </div>
 
 </body>
-
-<?php
-require('check_data.php');
-?>
 
 <script>
 
@@ -323,7 +326,7 @@ require('check_data.php');
 
 	//옵션 삭제
 	function removeAll(e) {
-		for (var i = 0, limit = e.options.length; i < limit - 1; ++i) {
+		for (i = 0, limit = e.options.length; i < limit - 1; ++i) {
 			e.remove(1);
 		}
 	}
@@ -342,12 +345,13 @@ require('check_data.php');
 		instance.post('CU_006_002', sendItems).then(res => {
 			$("#inspectionView").show();
 			addBaseInjectionData(res.data, id);
-			setChoiceInjectionData(res.data, id)
+			setChoiceInjectionData(res.data, id);
+			setAddInjectionTable(res.data, id);
 		});
 	}
 
-	//패키지별 기본 검사항목 세팅
-	function addBaseInjectionData(data, id) {
+	//id -> 인덱스 몇 번인지
+	function findIndex(id) {
 		var index = 0;
 		if (id === "pkg1") {
 			index = 0;
@@ -356,6 +360,13 @@ require('check_data.php');
 		} else if (id === "pkg3") {
 			index = 2;
 		}
+
+		return index;
+	}
+
+	//패키지별 기본 검사항목 세팅
+	function addBaseInjectionData(data, id) {
+		var index = findIndex(id);
 
 		baseInjection = new Set();
 		select = new Set();
@@ -365,6 +376,7 @@ require('check_data.php');
 					baseInjection.add(data[i].inspection[j]);
 				}
 			} else if (data[i].ipClass.indexOf('선택') > -1) {
+
 				select.add(data[i].ipClass);
 			}
 		}
@@ -374,10 +386,14 @@ require('check_data.php');
 		setBaseInjectionTable();
 	}
 
+	<!--TODO:결과 잘 안나옴-->
 	//기본검사 교집합 배열
 	function resetTotalInspectionItems() {
+		console.log(totalInspectionItems);
 		for (i = 0; i < pkgList.length; i++) {
-			pkgList[i].forEach((value) => totalInspectionItems.add(value));
+			if (pkgList[i] != null) {
+				pkgList[i].forEach((value) => totalInspectionItems.add(value));
+			}
 		}
 	}
 
@@ -385,67 +401,114 @@ require('check_data.php');
 	function setBaseInjectionTable() {
 		$("#baseTable").empty();
 		baseInjection.forEach((value) =>
-				setInspectionItems(value)
+			setBaseInspectionItems(value)
 		);
 	}
 
 	//기본검사 테이블 프린트
-	function setInspectionItems(value) {
+	function setBaseInspectionItems(value) {
 		var html = "";
 		var ox = new Array();
 		ox[0] = "";
 		ox[1] = "";
 		ox[2] = "";
-		for (var i = 0; i < pkgList.length; i++) {
-			ox[i] = (pkgList[i].has(value)) ? "O" : "";
-		}
-
-		html += '<tr>' +
-				'<th style="text-align: left">' + value + '</th>' +
-				'<td>' + ox[0] + '</td>' +
-				'<td>' + ox[1] + '</td>' +
-				'<td>' + ox[2] + '</td>' +
-				'</tr>';
-		$("#baseTable").append(html);
-	}
-
-	var select = new Set();
-	var selectInjection = new Set();
-	var choiceInspectionItems = new Array();
-
-	//선택검사 테이블 셋팅
-	function setChoiceInjectionData(data, id) {
-		var index = 0;
-		if (id === "pkg1") {
-			index = 0;
-		} else if (id === "pkg2") {
-			index = 1;
-		} else if (id === "pkg3") {
-			index = 2;
-		}
-
-		selectInjection = new Set();
-
-		setInspectionItem(data, index);
-	}
-
-	//선택검사 각 인덱스에 저장
-	function setInspectionItem(data, index) {
-		var choice = new Array();
-		for (i = 0; i < data.length; i++) {
-			if (data[i].ipClass.indexOf('선택') > -1) {
-				var save = new Object();
-				save.ipClass = data[i].ipClass;
-				save.item = data[i];
-				choice.push(save);
+		for (i = 0; i < pkgList.length; i++) {
+			if (pkgList[i] != null) {
+				ox[i] = (pkgList[i].has(value)) ? "O" : "";
 			}
 		}
 
-		//TODO: 선택검사 작업중
-		choiceInspectionItems[index] = choice;
-		console.log(choiceInspectionItems);
+		html += '<tr>' +
+			'<th style="text-align: left">' + value + '</th>' +
+			'<td style="color: #5849ea">' + ox[0] + '</td>' +
+			'<td style="color: #5849ea">' + ox[1] + '</td>' +
+			'<td style="color: #5849ea">' + ox[2] + '</td>' +
+			'</tr>';
+		$("#baseTable").append(html);
 	}
 
+	var select = new Set(); //선택검사 항목 이름 몇 개 있는지 담는 배열
+	var selectInjection = new Array();
+	var allChoiceInspectionItemList = new Array();
+
+	//선택검사 각 인덱스에 할당
+	function setChoiceInjectionData(data, id) {
+		var index = findIndex(id);
+
+		var idx = 0;
+		var choiceInspectionItems = new Array();
+
+		for (i = 0; i < data.length; i++) {
+			if (data[i].ipClass.indexOf('선택') > -1) {
+				choiceInspectionItems[idx] = data[i];
+				idx++;
+			}
+		}
+		selectInjection[index] = choiceInspectionItems;
+		setChoiceInjectionTable();
+	}
+
+	//선택검사 테이블에 셋팅
+	function setChoiceInjectionTable() {
+		$("#choiceTable").empty();
+		const maxRow = select.size;
+
+		var selectName = [...select];
+
+		for (i = 0; i < maxRow; i++) {
+			var html = '';
+			html += '<tr>' +
+				'<th style="text-align: left">' + selectName[i] + '</th>';
+			for (j = 0; j < 3; j++) {
+				if (selectInjection[j] != null && selectInjection[j][i] != null) {
+					html += '<td>';
+					html += '<div class="choiceNum">선택개수 : ' + selectInjection[j][i].choiceLimit + '</div><br>';
+					for (k = 0; k < selectInjection[j][i].inspection.length; k++) {
+						html += selectInjection[j][i].inspection[k] + '<br>';
+					}
+					html += '</td>';
+				} else {
+					html += '<td>';
+					html += '</td>';
+				}
+			}
+
+			html += '</tr>';
+			$("#choiceTable").append(html);
+		}
+	}
+
+	var addInspection = new Array(3);
+
+	//추가검사
+	function setAddInjectionTable(data, id) {
+		var index = findIndex(id);
+
+		for (i = 0; i < data.length; i++) {
+			if (data[i].ipClass == '추가') {
+				addInspection[index] = data[i].inspection;
+			}
+		}
+
+		$("#addTable").empty();
+
+		var html = '';
+		html += '<tr>' +
+			'<th style="text-align: left">추가검사</th>';
+
+		for (i = 0; i < 3; i++) {
+			html += '<td>'
+			if (addInspection[i] != null) {
+				for (j = 0; j < addInspection[i].length; j++) {
+					html += addInspection[i][j] + '<br>';
+				}
+			}
+			html += '</td>';
+		}
+		html += '</tr>';
+
+		$("#addTable").append(html);
+	}
 
 </script>
 

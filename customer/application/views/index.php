@@ -21,19 +21,19 @@
 		}
 
 		.main-content {
-			width: 53rem;
-			height: 53rem;
-			min-width: 53rem;
-			min-height: 53rem;
+			width: 46rem;
+			height: 46rem;
+			min-width: 46rem;
+			min-height: 46rem;
 			cursor: pointer;
 			padding: 0;
 		}
 
 		.sub-content {
-			width: 26.5rem;
-			height: 26.5rem;
-			min-width: 26.5rem;
-			min-height: 26.5rem;
+			width: 23rem;
+			height: 23rem;
+			min-width: 23rem;
+			min-height: 23rem;
 			color: white;
 			font-size: 1.5rem;
 			font-weight: bolder;
@@ -128,7 +128,7 @@
 			cursor: pointer;
 		}
 
-		#mainNoticeInfos td:hover {
+		#mainNoticeInfos .title:hover {
 			color: #5645ED;
 		}
 
@@ -183,7 +183,7 @@
 			<table style="margin: 0 auto">
 				<tr>
 					<td class="main-content" rowspan="2" colspan="2">
-						<img src="/asset/images/banner1.jpg" style="width: inherit;height: inherit">
+						<img src="/asset/images/banner2.png" style="width: inherit;height: inherit">
 					</td>
 					<td class="sub-content" style="background-color: rgba( 108, 4, 3, 0.8)">
 						<div class="menu1 wrap" style="width: inherit;height: inherit">
@@ -236,14 +236,15 @@
 				<tr>
 					<td colspan="2">
 					</td>
-					<td colspan="2" style="width: inherit;height:inherit;background: white;border: white solid 1px;">
-						<div class="notice-div" style="height: 22rem">
+					<td colspan="2"
+						style="width: inherit;height:inherit;min-height:inherit;max-height:inherit;background: white;border: white solid 1px;">
+						<div class="notice-div" style="max-height:19.5rem">
 							<div class="row"
 								 style="font-size: 1.4rem;color: #5645ED">
 								NOTICE
 							</div>
 							<div class="row"
-								 style="margin-bottom: 2.5rem;font-size: 2rem;color: black">
+								 style="font-size: 2rem;color: black;padding-bottom: 1rem">
 								공지사항
 							</div>
 							<div class="row">
@@ -253,11 +254,9 @@
 								</table>
 							</div>
 						</div>
-						<div style="display: table; float: right;height: 4.5rem">
-							<a style="display: table-cell; vertical-align: bottom">
-								<img src="/asset/images/btn_plus.png" style="cursor: pointer">
-							</a>
-						</div>
+						<a href="/customer/notice_list">
+							<img src="/asset/images/btn_plus.png" style="cursor: pointer;float:right;width: 3.5rem;height: 3.5rem">
+						</a>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)">
 						<div class="menu6 wrap" style="width: inherit;height: inherit">
@@ -265,7 +264,7 @@
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">고객센터<br></span>
 								CUSTOMER CENTER<br>
-								<span style="font-size: 1.7rem;color: #FFBB00">평일 9:00~18:00<br>1661-2654
+								<span style="font-size: 1.7rem;color: #FFBB00">평일 9:00~18:00<br>1661-2645
 						</span>
 							</div>
 						</div>
@@ -291,7 +290,7 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td style="width: 80%">' + "· " + data[i].title + '</td>';
+			html += '<td class="title" style="width: 80%">' + "· " + data[i].title + '</td>';
 			html += '<td class="date">' + data[i].createDate + '</td>';
 			html += '</tr>';
 
@@ -299,6 +298,14 @@
 		}
 	}
 
+</script>
+
+<script
+		botId="B1j0vo"
+		data-name="test_user_NAME"
+		data-user-id="test_user_ID"
+		data-email="test_user_email@TESTADDRESS.GG"
+		src="https://www.closer.ai/js/webchat.min.js">
 </script>
 
 </html>

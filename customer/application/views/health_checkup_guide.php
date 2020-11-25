@@ -96,8 +96,8 @@
 		}
 
 		.order img {
-			width: 15rem;
-			height: 15rem;
+			width: 156px;
+			height: 156px;
 		}
 
 		.order-title {
@@ -106,8 +106,8 @@
 		}
 
 		.order-content {
-			height: 10rem;
-			color: #666666;
+			height: 12rem;
+			color: #444444;
 			font-size: 1.4rem;
 			line-height: 1.7rem;
 		}
@@ -117,13 +117,22 @@
 			margin-top: 6rem;
 		}
 
+		.item-table img {
+			width: 88px;
+			height: 88px;
+		}
+
 		.item-table td {
 			text-align: center;
-			vertical-align: middle;
-			width: calc(130rem/4);
-			height: calc(130rem/4);
+			width: calc(120rem/4);
+			height: calc(120rem/4);
 			font-weight: bolder;
 			font-size: 1.7rem;
+		}
+
+		.item {
+			align-items: center;
+			cursor: pointer;
 		}
 
 		.item-content {
@@ -181,7 +190,7 @@
 					</div>
 					<div class="row" style="height: 4.5rem">
 						<div style="margin: 0 auto; display: flex">
-							<a href="#">
+							<a href="/customer/notice_list">
 								<div class="title-menu" style="border-right: #828282 1px solid">
 									공지사항
 								</div>
@@ -324,7 +333,7 @@
 							</div>
 							<!--주의사항-->
 							<div class="tab-pane fade" id="tab2">
-								<img src="/asset/images/precautions.jpg" style="width: 100%;margin-top: 6rem">
+								<img src="/asset/images/precautions.jpg" style="width: 120rem;margin-top: 6rem">
 							</div>
 							<!--항목안내-->
 							<div class="tab-pane fade" id="tab3">
@@ -335,16 +344,22 @@
 											<div style="color: #666666;">궁금하신 항목을 클릭해주세요.</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon12.png">
 												<div class="item-content">
-													신체계측, 순환기계검사, 안과,<br>
-													청력, 치과 검사, 호흡기계검사
+													기본계측
+												</div>
+											</div>
+											<!--TODO:겹치기-->
+											<div class="item">
+												<img src="/asset/images/icon12.png">
+												<div class="item-content">
+													기본계측
 												</div>
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon13.png">
 												<div class="item-content">
 													혈액검사
@@ -354,7 +369,7 @@
 									</tr>
 									<tr>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon14.png">
 												<div class="item-content">
 													비뇨생식계 및<br>
@@ -363,33 +378,33 @@
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon15.png">
 												<div class="item-content">
-													간기능 / 당뇨검사
+													간기능/당뇨검사
 												</div>
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon16.png">
 												<div class="item-content">
-													심혈관 / 고지혈증 검사
+													심혈관/고지혈증 검사
 												</div>
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon17.png">
 												<div class="item-content">
-													갑상선 / 관절염 / 통풍
+													갑상선/관절염/통풍
 												</div>
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon18.png">
 												<div class="item-content">
 													방사선검사
@@ -397,7 +412,7 @@
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon19.png">
 												<div class="item-content">
 													초음파검사
@@ -405,7 +420,7 @@
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon20.png">
 												<div class="item-content">
 													소화기계검사
@@ -413,7 +428,7 @@
 											</div>
 										</td>
 										<td>
-											<div>
+											<div class="item">
 												<img src="/asset/images/icon21.png">
 												<div class="item-content">
 													기타검사

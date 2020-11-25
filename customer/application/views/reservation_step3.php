@@ -212,14 +212,13 @@
 						</div>
 					</div>
 
+					<!--선택한 병원 상단바-->
 					<div class="row" style="margin-top: 7rem;text-align: left">
 						<div class="select-hos">
 							<div id="hosImg"></div>
 							<div class="cell" style="font-weight: 500;margin-left: 2rem">
 								<div style="font-size: 2.1rem" id="name">병원이름</div>
-								<br>
-								<div style="font-weight: 300;word-break:keep-all" id="address">주소</div>
-								<br>
+								<div style="font-weight: 300;word-break:keep-all;padding: 1.6rem 0" id="address">주소</div>
 								문의 <span style="font-weight: 300" id="phone"></span><br>
 								운영시간 <span style="font-weight: 300" id="operatingHours"></span><br>
 							</div>

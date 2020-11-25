@@ -206,7 +206,7 @@
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">이용안내</a>
 				<ul>
-					<li class="sub-menu"><a href="#">공지사항</a></li>
+					<li class="sub-menu"><a href="/customer/notice_list">공지사항</a></li>
 					<li class="sub-menu"><a href="/customer/comparison_hospital">병원별 검진 항목비교</a></li>
 					<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진안내</a></li>
 				</ul>
