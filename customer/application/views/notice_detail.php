@@ -197,7 +197,7 @@
 		$("#title").text(data.title);
 		$("#author").text(data.author);
 		$("#createDate").text(data.createDate);
-		$("#content").text(data.content);
+		$("#content").html(data.content.replace(/(\n|\r\n)/g, '<br>'));
 	}
 
 	//뒤로가기

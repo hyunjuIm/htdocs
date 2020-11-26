@@ -188,6 +188,10 @@
 </div>
 </body>
 
+<?php
+require('paging.js');
+?>
+
 <script>
 	var pagingNum = 0;
 	var pageCount = 0;
@@ -206,18 +210,6 @@
 			// 엔터키가 눌렸을 때 실행할 내용
 			searchNoticeData(0);
 		}
-	}
-
-	//페이징 - 화살표클릭
-	function pmPageNum(val) {//화살표클릭
-		console.log("before: pagingNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
-
-		pagingNum += parseInt(val);
-		if (pagingNum < 0) pagingNum = 0;
-		if (pageCount <= pagingNum) pagingNum = pageCount - 1;
-
-		console.log("after: pageNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
-		searchNoticeData(pagingNum);
 	}
 
 	//공지 검색
@@ -274,7 +266,6 @@
 		html += '<a class="arrow nnext" onclick= "searchNoticeData(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
 
-		var count = 0;
 		for (i = 0; i < data.length; i++) {
 			var tbody = "";
 			tbody += '<tr>' +

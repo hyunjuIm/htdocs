@@ -35,14 +35,14 @@
 			min-width: 23rem;
 			min-height: 23rem;
 			color: white;
-			font-size: 1.5rem;
+			font-size: 1.3rem;
 			font-weight: bolder;
 			cursor: pointer;
 			border: white solid 1px;
 		}
 
 		.sub-content-title {
-			font-size: 2.2rem;
+			font-size: 2rem;
 		}
 
 		@-webkit-keyframes fade-in-fwd {
@@ -264,7 +264,7 @@
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">고객센터<br></span>
 								CUSTOMER CENTER<br>
-								<span style="font-size: 1.7rem;color: #FFBB00">평일 9:00~18:00<br>1661-2645
+								<span style="font-size: 1.5rem;color: #FFBB00">평일 9:00~18:00<br>1661-2645
 						</span>
 							</div>
 						</div>
