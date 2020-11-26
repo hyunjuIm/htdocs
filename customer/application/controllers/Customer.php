@@ -90,7 +90,7 @@ class customer extends CI_Controller
 	//1:1 문의
 	public function customer_service_one_inquiry()
 	{
-		$this->load->view('customer_service_inquiry');
+		$this->load->view('customer_service_one_inquiry');
 	}
 
 	//내 문의 내역

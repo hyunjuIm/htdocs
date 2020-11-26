@@ -52,6 +52,47 @@
 			border: 1px solid #d5d5d5;
 		}
 
+		.accordion {
+			border-top: 2px solid black;
+		}
+
+		.card-header {
+			background: white;
+			padding: 1rem 3rem;
+		}
+
+		.card-header span {
+			padding-right: 3rem;
+			font-weight: bold;
+			font-size: 2rem;
+		}
+
+		.card-header img {
+			transition: transform 0.3s;
+		}
+
+		.card-body {
+			background: #f6f6f6;
+		}
+
+		.text-left {
+			cursor: pointer;
+		}
+
+		.rotate {
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			transform: rotate(180deg);
+		}
+
+		@keyframes rotate_image{
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
 		@media only screen and (max-width: 1700px) {
 			html {
 				font-size: 8px;
@@ -87,7 +128,7 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container"
-					 style="background-image: url(../../asset/images/title1.jpg); height: 30rem">
+					 style="background-image: url(../../asset/images/title_customer_service.jpg); height: 30rem">
 					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
 					</div>
 					<div class="row wrap" style="height: 22rem">
@@ -128,52 +169,61 @@
 					</div>
 					<div class="row" style="display: block;margin-top: 6rem">
 						<div class="accordion" id="accordionExample">
-							<div class="card">
+							<div>
 								<div class="card-header" id="headingOne">
-									<h2 class="mb-0">
-										<button class="btn btn-link btn-block text-left " type="button"
-												data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-												aria-controls="collapseOne">
-											Collapsible Group Item #1
-										</button>
-									</h2>
+									<div class="text-left"
+										 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+										 aria-controls="collapseOne">
+										<span>Q</span>
+										이것은 자주 묻는 질문 입니다
+										<div style="float:right">
+											<img src="/asset/images/icon_drop_down.png">
+										</div>
+									</div>
 								</div>
 
 								<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
 									 data-parent="#accordionExample">
 									<div class="card-body">
+										그렇지요 (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)
 									</div>
 								</div>
 							</div>
-							<div class="card">
+							<div>
 								<div class="card-header" id="headingTwo">
-									<h2 class="mb-0">
-										<button class="btn btn-link btn-block text-left collapsed" type="button"
-												data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-												aria-controls="collapseTwo">
-											Collapsible Group Item #2
-										</button>
-									</h2>
+									<div class="text-left"
+										 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+										 aria-controls="collapseTwo">
+										<span>Q</span>
+										이것 또한 자주 묻는 질문이지요,,
+										<div style="float:right;">
+											<img src="/asset/images/icon_drop_down.png">
+										</div>
+									</div>
 								</div>
 								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 									 data-parent="#accordionExample">
 									<div class="card-body">
+										╰(*°▽°*)╯╰(*°▽°*)╯
 									</div>
 								</div>
 							</div>
-							<div class="card">
+							<div>
 								<div class="card-header" id="headingThree">
-									<h2 class="mb-0">
-										<button class="btn btn-link btn-block text-left collapsed" type="button"
-												data-toggle="collapse" data-target="#collapseThree"
-												aria-expanded="false" aria-controls="collapseThree">
-											Collapsible Group Item #3
-										</button>
-									</h2>
+									<div class="text-left"
+										 data-toggle="collapse" data-target="#collapseThree"
+										 aria-expanded="false" aria-controls="collapseThree">
+										<span>Q</span>
+										나랑 저스트 댄스 할 사람~?!
+										<div style="float:right;">
+											<img src="/asset/images/icon_drop_down.png">
+										</div>
+									</div>
 								</div>
 								<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
 									 data-parent="#accordionExample">
 									<div class="card-body">
+										아무도 없나요...
 									</div>
 								</div>
 							</div>
@@ -188,7 +238,9 @@
 </body>
 
 <script>
-
+	$('.card-header').click(function() {
+		$(this).find('img').toggleClass('rotate');
+	});
 </script>
 
 </html>

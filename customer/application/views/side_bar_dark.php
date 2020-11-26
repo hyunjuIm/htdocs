@@ -211,9 +211,9 @@
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">고객센터</a>
 				<ul>
-					<li class="sub-menu"><a href="customer_service_faq">자주 묻는 질문</a></li>
-					<li class="sub-menu"><a href="customer_service_inquiry">1:1 문의</a></li>
-					<li class="sub-menu"><a href="customer_service_inquiry_list">내 문의 내역</a></li>
+					<li class="sub-menu"><a href="/customer/customer_service_faq">자주 묻는 질문</a></li>
+					<li class="sub-menu"><a href="/customer/customer_service_one_inquiry">1:1 문의</a></li>
+					<li class="sub-menu"><a href="/customer/customer_service_inquiry_list">내 문의 내역</a></li>
 				</ul>
 			</li>
 		</ul>

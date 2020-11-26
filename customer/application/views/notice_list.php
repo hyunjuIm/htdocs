@@ -113,7 +113,7 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container"
-					 style="background-image: url(../../asset/images/title1.jpg); height: 30rem">
+					 style="background-image: url(../../asset/images/title_guide.jpg); height: 30rem">
 					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
 					</div>
 					<div class="row wrap" style="height: 22rem">

@@ -160,6 +160,20 @@
 			border: 1px solid #d5d5d5;
 		}
 
+		.layer {
+			display: none;
+			cursor: pointer;
+			background-color: rgba(0, 0, 0, 0.7);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			line-height: 24rem;
+			color: white;
+		}
+
 		@media only screen and (max-width: 1700px) {
 			html {
 				font-size: 8px;
@@ -195,7 +209,7 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container"
-					 style="background-image: url(../../asset/images/title1.jpg); height: 30rem">
+					 style="background-image: url(../../asset/images/title_guide.jpg); height: 30rem">
 					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
 					</div>
 					<div class="row wrap" style="height: 22rem">
