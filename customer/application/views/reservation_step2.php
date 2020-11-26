@@ -7,6 +7,8 @@
 	require('head.php');
 	?>
 
+	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+
 	<style>
 		html {
 			font-size: 10px;
@@ -150,7 +152,7 @@
 				<!-- 상단 메뉴 -->
 				<div class="container"
 					 style="background-image: url(../../asset/images/title_reservation_service.jpg); height: 30rem;text-align: center;">
-					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
+					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner" style="margin: 0 auto; ">

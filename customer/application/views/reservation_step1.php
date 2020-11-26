@@ -98,7 +98,7 @@
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title_reservation_service.jpg)">
-					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
+					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner" style="margin: 0 auto; ">
@@ -191,7 +191,7 @@ require('check_data.php');
 	function setPersonalInfo(data) {
 		console.log(data);
 		for (i = 0; i < data.length; i++) {
-			var html="";
+			var html = "";
 			html += '<tbody>' +
 					'<tr>' +
 					'<th class="name" rowspan="4" style="border-bottom: 1px solid black">' + data[i].famName + '<br><span>(' + data[i].grade + ')</span></th>' +
@@ -199,7 +199,7 @@ require('check_data.php');
 					'<td>(' + data[i].zipcode + ') ' + data[i].address + ' ' + data[i].buildingNum + '</td>' +
 					'<td class="btn-ok" rowspan="3" style="border-bottom: 1px solid black">';
 
-			if(data[i].reserved) {
+			if (data[i].reserved) {
 				html += '<div class="btn-light-purple-square" onclick="doReservation(\'' + data[i].famId + '\')"> 예약하기 </div>';
 			} else {
 				html += '<div class="btn-cancel-square" style="cursor: default"> 예약완료 </div>';
@@ -225,7 +225,7 @@ require('check_data.php');
 	}
 
 	function doReservation(famId) {
-		if(booleanData('agree') == null || booleanData('agree') == 'false') {
+		if (booleanData('agree') == null || booleanData('agree') == 'false') {
 			alert("개인정보 수집 동의 후, 예약이 가능합니다.");
 			return;
 		}

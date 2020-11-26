@@ -4,16 +4,17 @@
 		position: sticky;
 		height: 100vh;
 		min-height: 90rem;
-		min-width: 32rem;
-		max-width: 32rem;
+		min-width: 30rem;
+		max-width: 30rem;
 		color: white;
 		text-align: center;
+		font-size: 1.5rem;
 		background-color: rgba(27, 26, 37, 0.95);
 	}
 
 	/*로고*/
 	.logo {
-		width: 80%;
+		width: 85%;
 	}
 
 	/*이름*/
@@ -31,7 +32,7 @@
 	}
 
 	.reservation-card {
-		padding: 0.5rem;
+		padding: 0.3rem;
 		background: white;
 		font-size: 1.5rem;
 		border-bottom-left-radius: 1rem;
@@ -61,7 +62,7 @@
 	.my-info-box {
 		padding: 0.5rem 0;
 		border: #666666 solid 1px;
-		font-size: 1.4rem;
+		font-size: 1.3rem;
 		display: flex;
 	}
 
@@ -136,7 +137,7 @@
 </style>
 
 <div class="col bd-sidebar" style="padding: 0">
-	<form style="padding: 3.5rem 2.5rem">
+	<form style="padding: 3rem 2.5rem">
 		<div style="margin-bottom: 3rem">
 			<a href="/"><img class="logo" src="/asset/images/logo_dark.png"></a>
 		</div>

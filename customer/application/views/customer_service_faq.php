@@ -75,7 +75,7 @@
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title_customer_service.jpg)">
-					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
+					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner" style="margin: 0 auto; ">

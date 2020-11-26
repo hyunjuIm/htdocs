@@ -16,6 +16,12 @@ body {
 	height: 30rem;
 }
 
+.line {
+	min-width: inherit;
+	height: 3.5rem;
+	border-bottom: 1px solid #b3b3b3;
+}
+
 .wrap {
 	display: flex;
 	justify-content: center;

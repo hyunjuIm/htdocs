@@ -92,7 +92,7 @@
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title_reservation_service.jpg)">
-					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
+					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner" style="margin: 0 auto; ">
@@ -121,7 +121,7 @@
 						<div class="sub-title">예약현황</div>
 					</div>
 					<div class="row" id="resultTable" style="display: block;padding: 6rem 0">
-						
+
 					</div>
 				</div>
 			</div>
@@ -150,7 +150,7 @@ require('check_data.php');
 	function setReservationList(data) {
 		console.log(data);
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<hr>' +
 					'<div style="font-weight: bolder;font-size: 1.7rem;padding: 1.5rem">' +
@@ -170,7 +170,8 @@ require('check_data.php');
 			if (data[i].ipDate != null) {
 				html += '<td colspan="4" style="border-left: 1px solid #DEE2E6">' + data[i].ipDate + '</td>' +
 						'<td rowspan="5" class="cancel">' +
-						'<div style="font-size: 1.3rem;font-weight: bolder;color: #DB0000">※ 예약이 확정된 경우, 예약취소는 담당자에게 문의해주세요.</div>'
+						'<div style="font-size: 1.3rem;font-weight: bolder;color: #DB0000">' +
+						'※ 예약일이 확정된 경우, 예약취소는 담당자에게 문의해주세요.</div>'
 			} else {
 				html += '<td class="title">1차</td>' +
 						'<td>' + data[i].firstWishDate + '</td>' +
@@ -205,7 +206,7 @@ require('check_data.php');
 				if (j == data[i].ipiList.length - 1) {
 					html += data[i].ipiList[j];
 				} else {
-					html += data[i].ipiList[j] + ' / ';
+					html += data[i].ipiList[j] + '<br>';
 				}
 			}
 			html += '</td>' +

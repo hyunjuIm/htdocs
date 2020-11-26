@@ -4,18 +4,20 @@
 		position: sticky;
 		height: 100vh;
 		min-height: 90rem;
-		min-width: 32rem;
-		max-width: 32rem;
+		min-width: 30rem;
+		max-width: 30rem;
 		color: black;
 		text-align: center;
 		font-weight: 400;
+		font-size: 1.5rem;
 		background-color: white;
-		box-shadow: 0px 0px 10px #c6c6c6;
+		/*background-image: linear-gradient(to bottom, #dfe2ef 0%, #e0e2ef 1%, #f6ecfa 80%);*/
+		box-shadow: 0px 0px 10px #c1c1c1;
 	}
 
 	/*로고*/
 	.logo {
-		width: 80%;
+		width: 85%;
 	}
 
 	/*이름*/
@@ -34,7 +36,7 @@
 	}
 
 	.reservation-card-content {
-		padding: 0.5rem;
+		padding: 0.3rem;
 		background: white;
 		font-size: 1.5rem;
 		border-bottom-left-radius: 1rem;
@@ -63,8 +65,8 @@
 	/*내정보관리*/
 	.my-info-box {
 		padding: 0.5rem 0;
-		border: #cccccc solid 1px;
-		font-size: 1.4rem;
+		border: #c4c4c4 solid 1px;
+		font-size: 1.3rem;
 		display: flex;
 	}
 
@@ -79,7 +81,7 @@
 	}
 
 	#nav {
-		border-top: 1px solid #cccccc;
+		border-top: 1px solid #c4c4c4;
 	}
 
 	#nav li a {
@@ -99,7 +101,7 @@
 	}
 
 	.main-menu {
-		border-bottom: 1px solid #cccccc;
+		border-bottom: 1px solid #c4c4c4;
 	}
 
 	.sub-menu {
@@ -109,7 +111,8 @@
 	}
 
 	.main-menu a:hover, .sub-menu:hover {
-		background: #f2f2f2;
+		/*background-color: rgba(255, 255, 255, 0.2);*/
+		background-color: whitesmoke;
 	}
 
 	/*푸터 : 회사정보*/
@@ -117,20 +120,19 @@
 		width: 100%;
 		font-size: 1.3rem;
 		text-align: left;
-		color: #828282;
+		color: #808080;
 		position: absolute;
 		bottom: 0px;
-		background: white;
 	}
 
 	.footer-top {
 		display: flex;
-		border-top: 1px solid #cccccc;
+		border-top: 1px solid #c4c4c4;
 		padding: 0.8rem 2.7rem;
 	}
 
 	.footer-middle {
-		border-top: 1px solid #cccccc;
+		border-top: 1px solid #c4c4c4;
 		padding: 1.5rem 2.7rem 2rem;
 		font-size: 1.2rem;
 	}
@@ -138,7 +140,7 @@
 </style>
 
 <div class="col bd-sidebar side" style="padding: 0;">
-	<form style="padding: 3.5rem 2.5rem">
+	<form style="padding: 3rem 2.5rem">
 		<div style="margin-bottom: 3rem">
 			<a href="/"> <img class="logo" src="/asset/images/logo_light.png"></a>
 		</div>
@@ -178,7 +180,7 @@
 					내정보관리
 				</div>
 			</a>
-			<div style="color: #cccccc">
+			<div style="color: #c4c4c4">
 				|
 			</div>
 			<a style="width: 50%;cursor: pointer">
@@ -226,7 +228,7 @@
 			<div>
 				서비스이용약관
 			</div>
-			<div style="padding: 0 1rem; color: #cccccc">
+			<div style="padding: 0 1rem; color: #c4c4c4">
 				|
 			</div>
 			<div>
