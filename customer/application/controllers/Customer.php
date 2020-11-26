@@ -80,4 +80,22 @@ class customer extends CI_Controller
 	{
 		$this->load->view('health_checkup_guide');
 	}
+
+	//자주 묻는 질문
+	public function customer_service_faq()
+	{
+		$this->load->view('customer_service_faq');
+	}
+
+	//1:1 문의
+	public function customer_service_one_inquiry()
+	{
+		$this->load->view('customer_service_inquiry');
+	}
+
+	//내 문의 내역
+	public function customer_service_inquiry_list()
+	{
+		$this->load->view('customer_service_inquiry_list');
+	}
 }

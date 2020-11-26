@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:공지사항</title>
+	<title>듀얼헬스케어:자주 묻는 질문</title>
 
 	<?php
 	require('head.php');
@@ -47,26 +47,9 @@
 			background: #5645ED;
 		}
 
-		.notice-detail-table {
-			text-align: left;
-		}
-
-		.notice-detail-table th {
-			background: #f6f6f6;
-			font-weight: normal !important;
-			width: 17rem;
-			text-align: left;
-			padding: 1.3rem 4rem;
-			vertical-align: middle;
-		}
-
-		.notice-detail-table td {
-			vertical-align: middle;
-			padding: 1.3rem 4rem;
-		}
-
-		.notice-detail-table td div{
-			padding: 0.5rem;
+		input {
+			width: 100%;
+			border: 1px solid #d5d5d5;
 		}
 
 		@media only screen and (max-width: 1700px) {
@@ -109,25 +92,25 @@
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner" style="margin: 0 auto; ">
-							<span style="font-size: 3.2rem">이용안내<br></span>
-							Information on Use
+							<span style="font-size: 3.2rem">고객센터<br></span>
+							Customer Center
 						</div>
 					</div>
 					<div class="row" style="height: 4.5rem">
 						<div style="margin: 0 auto; display: flex">
-							<a href="/customer/notice_list">
+							<a href="#">
 								<div class="title-menu-select" style="border-right: #828282 1px solid">
-									공지사항
+									자주 묻는 질문
 								</div>
 							</a>
-							<a href="/customer/comparison_hospital">
+							<a href="/customer/customer_service_one_inquiry">
 								<div class="title-menu" style="border-right: #828282 1px solid">
-									병원별검진항목비교
+									1:1 문의
 								</div>
 							</a>
-							<a href="/customer/health_checkup_guide">
+							<a href="/customer/customer_service_inquiry_list">
 								<div class="title-menu">
-									건강검진안내
+									내 문의 내역
 								</div>
 							</a>
 						</div>
@@ -140,36 +123,60 @@
 					<div class="row" style="padding-top: 3rem">
 						<div style="margin: 0 auto; font-weight: bolder">
 							<img src="/asset/images/title_bar.png">
-							<p style="font-size: 3.2rem">공지사항</p>
+							<p style="font-size: 3.2rem">자주 묻는 질문</p>
 						</div>
 					</div>
-					<div class="row" style="display: block;margin-top: 5rem">
-						<table class="notice-detail-table table">
-							<tr>
-								<th>제목</th>
-								<td id="title">제목</td>
-							</tr>
-							<tr>
-								<th>작성자</th>
-								<td id="author">제목</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<div style="font-size: 1.4rem">
-										<span style="font-weight: bold">작성일 </span>
-										<span id="createDate"></span>
+					<div class="row" style="display: block;margin-top: 6rem">
+						<div class="accordion" id="accordionExample">
+							<div class="card">
+								<div class="card-header" id="headingOne">
+									<h2 class="mb-0">
+										<button class="btn btn-link btn-block text-left " type="button"
+												data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+												aria-controls="collapseOne">
+											Collapsible Group Item #1
+										</button>
+									</h2>
+								</div>
+
+								<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+									 data-parent="#accordionExample">
+									<div class="card-body">
 									</div>
-									<hr>
-									<div id="content" style="padding-top: 1rem">
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header" id="headingTwo">
+									<h2 class="mb-0">
+										<button class="btn btn-link btn-block text-left collapsed" type="button"
+												data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+												aria-controls="collapseTwo">
+											Collapsible Group Item #2
+										</button>
+									</h2>
+								</div>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+									 data-parent="#accordionExample">
+									<div class="card-body">
 									</div>
-								</td>
-							</tr>
-						</table>
-						<hr>
-					</div>
-					<div class="row" style="margin-top: 5rem;display: block">
-						<div class="btn-cancel-square" onclick="cancelBack()"
-							 style="margin: 0 auto;color: #2f2f2f;border-color: #2F2F2F">목록
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header" id="headingThree">
+									<h2 class="mb-0">
+										<button class="btn btn-link btn-block text-left collapsed" type="button"
+												data-toggle="collapse" data-target="#collapseThree"
+												aria-expanded="false" aria-controls="collapseThree">
+											Collapsible Group Item #3
+										</button>
+									</h2>
+								</div>
+								<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+									 data-parent="#accordionExample">
+									<div class="card-body">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -177,31 +184,11 @@
 		</div>
 	</div>
 </div>
+
 </body>
-</html>
 
 <script>
-	//예약을 위한 id 가져오기
-	var sendItems = new Object();
-	sendItems.noticeId = location.href.substr(
-		location.href.lastIndexOf('=') + 1
-	);
 
-	//선택한 병원 정보
-	instance.post('CU_007_002', sendItems).then(res => {
-		console.log(res.data)
-		setNoticeContent(res.data);
-	});
-
-	function setNoticeContent(data) {
-		$("#title").text(data.title);
-		$("#author").text(data.author);
-		$("#createDate").text(data.createDate);
-		$("#content").text(data.content);
-	}
-
-	//뒤로가기
-	function cancelBack() {
-		history.back();
-	}
 </script>
+
+</html>

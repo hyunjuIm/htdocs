@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:건강검진안내</title>
+	<title>듀얼헬스케어:공지사항</title>
 
 	<?php
 	require('head.php');
