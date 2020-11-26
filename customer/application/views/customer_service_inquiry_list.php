@@ -7,32 +7,9 @@
 	require('head.php');
 	?>
 
+	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+
 	<style>
-		html {
-			font-size: 10px;
-		}
-
-		body {
-			font-size: 1.6rem;
-			word-break: keep-all;
-		}
-
-		.container {
-			width: 100%;
-			max-width: none;
-			text-align: center;
-		}
-
-		.wrap {
-			display: flex;
-			justify-content: center;
-		}
-
-		.inner {
-			align-self: center;
-			padding: 2rem;
-		}
-
 		.inquiry-table {
 			width: 100%;
 			font-size: 1.7rem;
@@ -90,31 +67,8 @@
 			font-size: 5.5rem;
 		}
 
-		.title-menu, .title-menu-select {
-			width: 30rem;
-			height: 4.5rem;
-			background-color: rgba(0, 0, 0, 0.5);
-			color: white;
-			line-height: 4.5rem;
-			cursor: pointer;
-			align-self: flex-end;
-		}
-
-		.title-menu:hover, .title-menu-select {
-			background: #5645ED;
-		}
-
-
-		@media only screen and (max-width: 1700px) {
-			html {
-				font-size: 8px;
-			}
-		}
-
-		@media only screen and (max-device-width: 480px) {
-			html {
-				font-size: 7px;
-			}
+		#question-content, #answer-content {
+			white-space: pre-wrap;
 		}
 	</style>
 
@@ -139,8 +93,8 @@
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
-				<div class="container"
-					 style="background-image: url(../../asset/images/title_customer_service.jpg); height: 30rem">
+				<div class="container top-menu"
+					 style="background-image: url(../../asset/images/title_customer_service.jpg)">
 					<div class="row" style="min-width:inherit; height: 3.5rem;border-bottom:1px solid #9a9a9a">
 					</div>
 					<div class="row wrap" style="height: 22rem">
@@ -174,10 +128,7 @@
 				<!-- 컨텐츠내용 -->
 				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
 					<div class="row" style="padding-top: 3rem">
-						<div style="margin: 0 auto; font-weight: bolder">
-							<img src="/asset/images/title_bar.png">
-							<p style="font-size: 3.2rem">내 문의 내역</p>
-						</div>
+						<div class="sub-title">내 문의 내역</div>
 					</div>
 					<div class="row" style="display: block;margin-top: 6rem">
 						<table class="inquiry-table" id="inquiryTable">

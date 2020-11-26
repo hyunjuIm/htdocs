@@ -186,7 +186,7 @@
 						<img src="/asset/images/banner2.png" style="width: inherit;height: inherit">
 					</td>
 					<td class="sub-content" style="background-color: rgba( 108, 4, 3, 0.8)">
-						<div class="menu1 wrap" style="width: inherit;height: inherit">
+						<div class="menu1 wrap" style="width: inherit;height: inherit" onclick="location.href ='/customer/reservation_list'">
 							<div class="inner">
 								<img src="/asset/images/icon1.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">내예약<br></span>
@@ -194,7 +194,7 @@
 							</div>
 						</div>
 					</td>
-					<td class="sub-content" style="background-color: rgba( 88, 83, 69, 0.7)">
+					<td class="sub-content" style="background-color: rgba( 88, 83, 69, 0.7)" onclick="location.href ='/customer/reservation_step1'">
 						<div class="menu2 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon2.png" style="margin-bottom: 10px"><br>
@@ -214,7 +214,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="sub-content" style="background-color: rgba( 2, 10, 43, 0.85)">
+					<td class="sub-content" style="background-color: rgba( 2, 10, 43, 0.85)" onclick="location.href ='/customer/comparison_hospital'">
 						<div class="menu4 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon4.png" style="margin-bottom: 10px"><br>
@@ -258,7 +258,7 @@
 							<img src="/asset/images/btn_plus.png" style="cursor: pointer;float:right;width: 3.5rem;height: 3.5rem">
 						</a>
 					</td>
-					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)">
+					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)" onclick="location.href ='/customer/customer_service_inquiry_list'">
 						<div class="menu6 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
@@ -290,7 +290,7 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td class="title" style="width: 80%">' + "· " + data[i].title + '</td>';
+			html += '<td class="title" style="width: 80%" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + "· " + data[i].title + '</td>';
 			html += '<td class="date">' + data[i].createDate + '</td>';
 			html += '</tr>';
 
@@ -298,8 +298,13 @@
 		}
 	}
 
+	function moveNoticeDetail(id) {
+		location.href = "/customer/notice_detail?noticeId=" + id;
+	}
+
 </script>
 
+<!--챗봇-->
 <script
 		botId="B1j0vo"
 		data-name="test_user_NAME"

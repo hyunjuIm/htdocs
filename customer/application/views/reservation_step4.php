@@ -214,8 +214,8 @@
 					</div>
 
 					<div class="row" style="margin-top: 5rem;display: block">
-						<div class="btn-cancel-square" id="home"
-							 style="margin: 0 auto;color: black;border-color: black">메인화면으로
+						<div class="btn-cancel-square" onclick="location.href = '/customer/reservation_list';"
+							 style="margin: 0 auto;color: black;border-color: black">예약현황으로
 						</div>
 					</div>
 				</div>
@@ -244,12 +244,6 @@
 			console.log(error);
 		});
 	})
-
-	$(function () {
-		$('#home').click(function () {
-			location.href = '/';
-		});
-	});
 
 	//예약 완료 정보 셋팅
 	function setReservationResult(data) {
