@@ -16,6 +16,11 @@ body {
 	height: 30rem;
 }
 
+.top-menu .title {
+	font-size: 3.8rem;
+	font-weight: 400;
+}
+
 .line {
 	min-width: inherit;
 	height: 3.5rem;
@@ -52,7 +57,7 @@ body {
 	background: #5645ED;
 }
 
-input {
+input[type="text"] {
 	width: 100%;
 	border: 1px solid #d5d5d5;
 }
@@ -60,6 +65,10 @@ input {
 @media only screen and (max-width: 1700px) {
 	html {
 		font-size: 8px;
+	}
+
+	.logo {
+		content: url(../images/s_dual_logo_b.png);
 	}
 }
 

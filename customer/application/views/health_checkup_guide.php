@@ -55,7 +55,7 @@
 		}
 
 		.order {
-			width: 20rem;
+			width: 25rem;
 		}
 
 		.order img {
@@ -65,14 +65,15 @@
 
 		.order-title {
 			font-weight: bolder;
+			font-size: 1.8rem;
 			line-height: 5rem;
 		}
 
 		.order-content {
 			height: 12rem;
 			color: #444444;
-			font-size: 1.4rem;
-			line-height: 1.7rem;
+			font-size: 1.6rem;
+			line-height: 1.9rem;
 		}
 
 		.item-table {
@@ -141,12 +142,12 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
-					 style="background-image: url(../../asset/images/title_guide.jpg)">
+					 style="background-image: url(../../asset/images/title3.jpg)">
 					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span style="font-size: 3.2rem">이용안내<br></span>
+						<div class="inner " style="margin: 0 auto; ">
+							<span class="title">이용안내<br></span>
 							Information on Use
 						</div>
 					</div>
@@ -244,8 +245,9 @@
 											<div class="order">
 												<div class="order-title">준비물 우송 및 예약안내</div>
 												<div class="order-content">
-													검진기관에서 검진 관련 준비물<br>
-													우송 및 안내전화를 드립니다.
+													검진기관에서 검진 관련<br>
+													준비물 우송 및<br>
+													안내전화를 드립니다.
 												</div>
 											</div>
 										</td>

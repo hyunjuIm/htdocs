@@ -7,6 +7,7 @@
 	require('head.php');
 	?>
 
+	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
 	<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
 
 	<style>
@@ -178,13 +179,13 @@
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
-				<div class="container"
-					 style="background-image: url(../../asset/images/title_reservation_service.jpg); height: 30rem">
+				<div class="container top-menu"
+					 style="background-image: url(../../asset/images/title2.jpg); height: 30rem">
 					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span style="font-size: 3.2rem">예약서비스<br></span>
+						<div class="inner " style="margin: 0 auto; ">
+							<span class="title">예약서비스<br></span>
 							Reservation service
 						</div>
 					</div>

@@ -61,8 +61,8 @@
 					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span style="font-size: 3.2rem">내정보관리<br></span>
+						<div class="inner " style="margin: 0 auto; ">
+							<span class="title">내정보관리<br></span>
 							Internal information management
 						</div>
 					</div>

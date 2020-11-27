@@ -30,3 +30,11 @@ td {
 	solid: #efefef;
 	font-size: 15px;
 }
+
+.table {
+	word-break:keep-all;
+}
+
+.table th {
+	font-weight: 500;
+}

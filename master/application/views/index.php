@@ -12,7 +12,7 @@
 			float: right;
 			margin-top: -15px;
 			margin-bottom: 5px;
-			font-weight: bold;
+			font-weight: bolder;
 			font-size: 15px;
 			color: #555555;
 		}

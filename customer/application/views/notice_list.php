@@ -66,12 +66,12 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
-					 style="background-image: url(../../asset/images/title_guide.jpg)">
+					 style="background-image: url(../../asset/images/title3.jpg)">
 					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span style="font-size: 3.2rem">이용안내<br></span>
+						<div class="inner " style="margin: 0 auto; ">
+							<span class="title">이용안내<br></span>
 							Information on Use
 						</div>
 					</div>
@@ -137,10 +137,6 @@
 	</div>
 </div>
 </body>
-
-<?php
-require('paging.js');
-?>
 
 <script>
 	var pagingNum = 0;
@@ -235,6 +231,11 @@ require('paging.js');
 	function detailNoticePage(noticeId) {
 		location.href = "notice_detail?noticeId=" + noticeId;
 	}
+
+	<?php
+	require('paging.js');
+	?>
+
 </script>
 
 </html>

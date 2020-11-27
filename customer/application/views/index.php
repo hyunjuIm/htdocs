@@ -153,6 +153,10 @@
 			html {
 				font-size: 8px;
 			}
+
+			.logo {
+				content: url(../../asset/images/s_dual_logo_w.png);
+			}
 		}
 
 		@media only screen and (max-device-width: 480px) {

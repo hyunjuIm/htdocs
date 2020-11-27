@@ -14,7 +14,12 @@
 
 	/*로고*/
 	.logo {
-		width: 85%;
+		width: fit-content;
+		cursor: pointer;
+	}
+
+	.logo-s {
+		display: none;
 	}
 
 	/*이름*/
@@ -139,7 +144,7 @@
 <div class="col bd-sidebar" style="padding: 0">
 	<form style="padding: 3rem 2.5rem">
 		<div style="margin-bottom: 3rem">
-			<a href="/"><img class="logo" src="/asset/images/logo_dark.png"></a>
+			<img class="logo" src="/asset/images/dual_logo_w.png" onclick="location.href='/'">
 		</div>
 		<div style="margin-bottom: 2rem">
 			<span id="nameView" style="font-weight: bolder"></span>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:자주 묻는 질문</title>
+	<title>듀얼헬스케어:1:1 문의</title>
 
 	<?php
 	require('head.php');
@@ -62,12 +62,12 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
-					 style="background-image: url(../../asset/images/title_customer_service.jpg)">
+					 style="background-image: url(../../asset/images/title4.jpg)">
 					<div class="row line">
 					</div>
 					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span style="font-size: 3.2rem">고객센터<br></span>
+						<div class="inner " style="margin: 0 auto; ">
+							<span class="title">고객센터<br></span>
 							Customer Center
 						</div>
 					</div>
