@@ -212,7 +212,7 @@
 				<ul>
 					<li class="sub-menu"><a href="/customer/notice_list">공지사항</a></li>
 					<li class="sub-menu"><a href="/customer/comparison_hospital">병원별 검진 항목 비교</a></li>
-					<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진안내</a></li>
+					<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진 안내</a></li>
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">고객센터</a>

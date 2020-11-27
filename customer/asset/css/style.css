@@ -99,8 +99,8 @@ a:link {
 .search-btn {
 	cursor: pointer;
 	background: #464646;
-	width: 35px;
-	height: 35px;
+	min-width: 35px;
+	min-height: 35px;
 	border: 1px solid #464646;
 	text-align: center;
 	line-height: 30px;

@@ -75,6 +75,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title1.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>내정보관리</span>
+							<span>｜</span>
+							<span>내정보</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -97,13 +104,16 @@
 				</div>
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="display: block;padding-top: 3rem">
-						<div class="sub-title">내정보</div>
-						<div style="line-height: 3.5rem">주소 및 연락처는 예약확인/준비물 배송 등의 서비스에 이용되므로 정확한 정보를 입력하시길 바랍니다.</div>
-					</div>
-					<div class="row" id="personalInfos" style="display: block;padding: 6rem 0">
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="display: block;padding-top: 3rem">
+							<div class="sub-title">내정보</div>
+							<div style="line-height: 3.5rem">주소 및 연락처는 예약확인/준비물 배송 등의 서비스에 이용되므로 정확한 정보를 입력하시길 바랍니다.
+							</div>
+						</div>
+						<div class="row" id="personalInfos" style="display: block;padding: 6rem 0">
 
+						</div>
 					</div>
 				</div>
 			</div>
@@ -214,7 +224,7 @@ require('check_data.php');
 			alert("올바른 연락처를 입력해주세요.");
 			$("#" + phone + "").focus();
 			return;
-		}  else if ($("#" + email + "").val() == "") {
+		} else if ($("#" + email + "").val() == "") {
 			alert("이메일을 입력해주세요.");
 			$("#" + email + "").focus();
 			return;

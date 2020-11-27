@@ -11,45 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
 
 	<style>
-		html {
-			font-size: 10px;
-		}
-
-		body {
-			font-size: 1.6rem;
-		}
-
-		.container {
-			width: 100%;
-			max-width: none;
-			font-size: 1.7rem;
-			text-align: center;
-		}
-
-		.wrap {
-			display: flex;
-			justify-content: center;
-		}
-
-		.inner {
-			align-self: center;
-			padding: 2rem;
-		}
-
-		.title-menu, .title-menu-select {
-			width: 30rem;
-			height: 4.5rem;
-			background-color: rgba(0, 0, 0, 0.5);
-			color: white;
-			line-height: 4.5rem;
-			cursor: pointer;
-			align-self: flex-end;
-		}
-
-		.title-menu:hover, .title-menu-select {
-			background: #5645ED;
-		}
-
 		.form-check {
 			padding: 0.5rem;
 		}
@@ -182,6 +143,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title2.jpg); height: 30rem">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>예약서비스</span>
+							<span>｜</span>
+							<span>검진예약</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -204,198 +172,204 @@
 				</div>
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="color: black;width: 130rem;padding: 6rem;">
+				<div style="margin:0 10rem">
+					<div class="container content-view" style="color: black;width: 130rem;padding: 6rem;">
 
-					<div class="row" style="margin-top: 3rem">
-						<div style="margin: 0 auto; font-weight: 500">
-							<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
-							<img id="step" class="reservation-order" src="/asset/images/step2.png">
-						</div>
-					</div>
-
-					<!--선택한 병원 상단바-->
-					<div class="row" style="margin-top: 7rem;text-align: left">
-						<div class="select-hos">
-							<div id="hosImg"></div>
-							<div class="cell" style="font-weight: 500;margin-left: 2rem">
-								<div style="font-size: 2.1rem" id="name">병원이름</div>
-								<div style="font-weight: 300;word-break:keep-all;padding: 1.6rem 0" id="address">주소</div>
-								문의 <span style="font-weight: 300" id="phone"></span><br>
-								운영시간 <span style="font-weight: 300" id="operatingHours"></span><br>
-							</div>
-							<div class="cell">
-								<div class="title">추천정보</div>
-								<table class="point-table" style="margin-top: 1rem">
-									<tr>
-										<td>검사항목</td>
-										<td id="onePoint">
-										</td>
-									</tr>
-									<tr>
-										<td>접근성</td>
-										<td id="twoPoint"></td>
-									</tr>
-									<tr>
-										<td>전문성</td>
-										<td id="threePoint"></td>
-									</tr>
-									<tr>
-										<td>시설</td>
-										<td id="fourPoint"></td>
-									</tr>
-								</table>
-							</div>
-							<div class="cell">
-								<div class="title">공지사항</div>
-								<div id="notice" style="margin-top: 1rem;color: grey"></div>
-							</div>
-							<div class="cell">
-								<div class="title">기관정보</div>
-								<div id="plusInfo" style="margin-top: 1rem"></div>
+						<div class="row" style="margin-top: 3rem">
+							<div style="margin: 0 auto; font-weight: 500">
+								<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
+								<img id="step" class="reservation-order" src="/asset/images/step2.png">
 							</div>
 						</div>
-					</div>
+
+						<!--선택한 병원 상단바-->
+						<div class="row" style="margin-top: 7rem;text-align: left">
+							<div class="select-hos">
+								<div id="hosImg"></div>
+								<div class="cell" style="font-weight: 500;margin-left: 2rem">
+									<div style="font-size: 2.1rem" id="name">병원이름</div>
+									<div style="font-weight: 300;word-break:keep-all;padding: 1.6rem 0" id="address">
+										주소
+									</div>
+									문의 <span style="font-weight: 300" id="phone"></span><br>
+									운영시간 <span style="font-weight: 300" id="operatingHours"></span><br>
+								</div>
+								<div class="cell">
+									<div class="title">추천정보</div>
+									<table class="point-table" style="margin-top: 1rem">
+										<tr>
+											<td>검사항목</td>
+											<td id="onePoint">
+											</td>
+										</tr>
+										<tr>
+											<td>접근성</td>
+											<td id="twoPoint"></td>
+										</tr>
+										<tr>
+											<td>전문성</td>
+											<td id="threePoint"></td>
+										</tr>
+										<tr>
+											<td>시설</td>
+											<td id="fourPoint"></td>
+										</tr>
+									</table>
+								</div>
+								<div class="cell">
+									<div class="title">공지사항</div>
+									<div id="notice" style="margin-top: 1rem;color: grey"></div>
+								</div>
+								<div class="cell">
+									<div class="title">기관정보</div>
+									<div id="plusInfo" style="margin-top: 1rem"></div>
+								</div>
+							</div>
+						</div>
 
 
-					<!--검진유형선택-->
-					<div class="row" id="step1">
 						<!--검진유형선택-->
-						<div class="container">
-
-							<div class="row" style="display:block;margin-top: 7rem">
-								<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-									검진유형
-								</div>
-								<hr>
-								<div id="packageList">
-
-								</div>
-								<hr>
-							</div>
-							<form id="packageForm" style="display: none">
-								<div class="row" style="display:block;margin-top: 5rem">
-									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-										기본검사
-									</div>
-
-									<ul class="nav" id="injectionBaseList">
-									</ul>
-
-									<div>
-										<table class="table table-bordered" id="baseInjectionTable">
-										</table>
-									</div>
-								</div>
-								<div class="row" style="display:block;margin-top: 5rem">
-									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-										선택검사
-									</div>
-
-									<div>
-										<table class="table table-bordered table-striped" id="choiceInjectionTable">
-										</table>
-									</div>
-								</div>
-								<div class="row" style="display:block;margin-top: 5rem">
-									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-										추가검사
-									</div>
-									<div>
-										<table class="table table-bordered table-striped" id="addInjectionTable">
-											<thead>
-											<tr>
-												<th width="5%"><input type="checkbox" id="addInjectionCheck"
-																	  name="addInjectionCheck"
-																	  onclick="clickAll(id, name);addInjectionAllPrice()">
-												</th>
-												<th width="40%">검사명</th>
-												<th width="15%">추가금</th>
-												<th width="">비고</th>
-											</tr>
-											</thead>
-											<tbody>
-											</tbody>
-										</table>
-										<div style="float: right;font-weight: 400">
-											총 추가금액 : <span id="addInjectionPrice" style="color: #5849ea">0</span>원
-										</div>
-									</div>
-								</div>
-
-								<div class="row" style="display:flex;margin-top: 5rem">
-									<div style="margin: 0 auto">
-										<div class="btn-cancel-square" style="font-size: 1.4rem" onclick="cancelBack()">
-											이전단계
-										</div>
-										<div class="btn-light-purple-square" style="font-size: 1.4rem"
-											 onclick="nextStep1()">
-											다음단계
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-
-					<!--검진일선택-->
-					<div class="row" id="step2" style="display: none">
-						<div class="container">
+						<div class="row" id="step1">
+							<!--검진유형선택-->
 							<div class="container">
 
-								<div class="row" style="display:block;margin-top: 10rem">
+								<div class="row" style="display:block;margin-top: 7rem">
 									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-										검진일선택
+										검진유형
 									</div>
-
 									<hr>
+									<div id="packageList">
 
-									<div style="display: flex; margin: 5rem">
-										<div ng-app="app" style="margin: 0 auto;display: flex">
-											<div style="display: block; margin: 0 5rem">
-												<div style="font-size: 2rem; font-weight: bolder">
-													1차 예약일
-												</div>
-												<div id="firstWishDate" style="font-size: 2.4rem;margin-bottom: 2rem">
-													&nbsp
-												</div>
-												<div ng-controller="MainController">
-													<div class="wrapp">
-														<flex-calendar options="options"></flex-calendar>
-													</div>
-													<br/>
-												</div>
-											</div>
-
-											<div style="display: block;margin: 0 5rem">
-												<div ng-controller="Sub">
-													<div style="font-size: 2rem; font-weight: bolder">
-														2차 예약일
-													</div>
-													<div id="secondWishDate"
-														 style="font-size: 2.4rem;margin-bottom: 2rem">
-														&nbsp
-													</div>
-													<div class="wrapp">
-														<flex-calendar options="options"></flex-calendar>
-													</div>
-													<br/>
-												</div>
-											</div>
+									</div>
+									<hr>
+								</div>
+								<form id="packageForm" style="display: none">
+									<div class="row" style="display:block;margin-top: 5rem">
+										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
+											기본검사
 										</div>
 
-									</div>
+										<ul class="nav" id="injectionBaseList">
+										</ul>
 
-									<hr>
+										<div>
+											<table class="table table-bordered" id="baseInjectionTable">
+											</table>
+										</div>
+									</div>
+									<div class="row" style="display:block;margin-top: 5rem">
+										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
+											선택검사
+										</div>
+
+										<div>
+											<table class="table table-bordered table-striped" id="choiceInjectionTable">
+											</table>
+										</div>
+									</div>
+									<div class="row" style="display:block;margin-top: 5rem">
+										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
+											추가검사
+										</div>
+										<div>
+											<table class="table table-bordered table-striped" id="addInjectionTable">
+												<thead>
+												<tr>
+													<th width="5%"><input type="checkbox" id="addInjectionCheck"
+																		  name="addInjectionCheck"
+																		  onclick="clickAll(id, name);addInjectionAllPrice()">
+													</th>
+													<th width="40%">검사명</th>
+													<th width="15%">추가금</th>
+													<th width="">비고</th>
+												</tr>
+												</thead>
+												<tbody>
+												</tbody>
+											</table>
+											<div style="float: right;font-weight: 400">
+												총 추가금액 : <span id="addInjectionPrice" style="color: #5849ea">0</span>원
+											</div>
+										</div>
+									</div>
 
 									<div class="row" style="display:flex;margin-top: 5rem">
 										<div style="margin: 0 auto">
 											<div class="btn-cancel-square" style="font-size: 1.4rem"
-												 onclick="backStep1()">
+												 onclick="cancelBack()">
 												이전단계
 											</div>
 											<div class="btn-light-purple-square" style="font-size: 1.4rem"
-												 onclick="successRegister()">
+												 onclick="nextStep1()">
 												다음단계
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<!--검진일선택-->
+						<div class="row" id="step2" style="display: none">
+							<div class="container">
+								<div class="container">
+
+									<div class="row" style="display:block;margin-top: 10rem">
+										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
+											검진일선택
+										</div>
+
+										<hr>
+
+										<div style="display: flex; margin: 5rem">
+											<div ng-app="app" style="margin: 0 auto;display: flex">
+												<div style="display: block; margin: 0 5rem">
+													<div style="font-size: 2rem; font-weight: bolder">
+														1차 예약일
+													</div>
+													<div id="firstWishDate"
+														 style="font-size: 2.4rem;margin-bottom: 2rem">
+														&nbsp
+													</div>
+													<div ng-controller="MainController">
+														<div class="wrapp">
+															<flex-calendar options="options"></flex-calendar>
+														</div>
+														<br/>
+													</div>
+												</div>
+
+												<div style="display: block;margin: 0 5rem">
+													<div ng-controller="Sub">
+														<div style="font-size: 2rem; font-weight: bolder">
+															2차 예약일
+														</div>
+														<div id="secondWishDate"
+															 style="font-size: 2.4rem;margin-bottom: 2rem">
+															&nbsp
+														</div>
+														<div class="wrapp">
+															<flex-calendar options="options"></flex-calendar>
+														</div>
+														<br/>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<hr>
+
+										<div class="row" style="display:flex;margin-top: 5rem">
+											<div style="margin: 0 auto">
+												<div class="btn-cancel-square" style="font-size: 1.4rem"
+													 onclick="backStep1()">
+													이전단계
+												</div>
+												<div class="btn-light-purple-square" style="font-size: 1.4rem"
+													 onclick="successRegister()">
+													다음단계
+												</div>
 											</div>
 										</div>
 									</div>

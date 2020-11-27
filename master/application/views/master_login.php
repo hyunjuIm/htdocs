@@ -88,6 +88,7 @@
 			text-decoration: none;
 			display: inline-block;
 			font-size: 16px;
+			font-weight: 500;
 			margin: 5px;
 			width: 85%;
 			border: 2px solid #f6f6f6;

@@ -59,6 +59,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title1.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>내정보관리</span>
+							<span>｜</span>
+							<span>비밀번호변경</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -81,35 +88,38 @@
 				</div>
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="display: block;padding-top: 3rem">
-						<div class="sub-title">비밀번호 변경</div>
-						<div style="line-height: 3.5rem">다른 사람이 쉽게 알아낼 수 있는 생일/아이디/전화번호 등 개인정보는 사용하지 않는 것이 좋습니다.</div>
-					</div>
-					<div class="row" style="display: block;padding: 6rem 0">
-						<table class="password-table">
-							<tr>
-								<th>현재 비밀번호</th>
-								<td>
-									<input type="password" id="beforePassword">
-								</td>
-							</tr>
-							<tr>
-								<th>새로운 비밀번호</th>
-								<td>
-									<input type="password" id="afterPassword">
-								</td>
-							</tr>
-							<tr>
-								<th>새로운 비밀번호 확인</th>
-								<td>
-									<input type="password" id="afterPasswordCheck">
-								</td>
-							</tr>
-						</table>
-						<div class="btn-light-purple-square" style="margin: 3rem 0 6rem 0;float: right"
-							 onclick="changePassword()">
-							변경
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="display: block;padding-top: 3rem">
+							<div class="sub-title">비밀번호 변경</div>
+							<div style="line-height: 3.5rem">다른 사람이 쉽게 알아낼 수 있는 생일/아이디/전화번호 등 개인정보는 사용하지 않는 것이 좋습니다.
+							</div>
+						</div>
+						<div class="row" style="display: block;padding: 6rem 0">
+							<table class="password-table">
+								<tr>
+									<th>현재 비밀번호</th>
+									<td>
+										<input type="password" id="beforePassword">
+									</td>
+								</tr>
+								<tr>
+									<th>새로운 비밀번호</th>
+									<td>
+										<input type="password" id="afterPassword">
+									</td>
+								</tr>
+								<tr>
+									<th>새로운 비밀번호 확인</th>
+									<td>
+										<input type="password" id="afterPasswordCheck">
+									</td>
+								</tr>
+							</table>
+							<div class="btn-light-purple-square" style="margin: 3rem 0 6rem 0;float: right"
+								 onclick="changePassword()">
+								변경
+							</div>
 						</div>
 					</div>
 				</div>

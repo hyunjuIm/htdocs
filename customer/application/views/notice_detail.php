@@ -28,7 +28,7 @@
 			padding: 1.3rem 4rem;
 		}
 
-		.notice-detail-table td div{
+		.notice-detail-table td div {
 			padding: 0.5rem;
 		}
 
@@ -61,6 +61,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title3.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>이용안내</span>
+							<span>｜</span>
+							<span>공지사항</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -77,12 +84,12 @@
 							</a>
 							<a href="/customer/comparison_hospital">
 								<div class="title-menu" style="border-right: #828282 1px solid">
-									병원별검진항목비교
+									병원별 검진 항목 비교
 								</div>
 							</a>
 							<a href="/customer/health_checkup_guide">
 								<div class="title-menu">
-									건강검진안내
+									건강검진 안내
 								</div>
 							</a>
 						</div>
@@ -91,37 +98,39 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">공지사항</div>
-					</div>
-					<div class="row" style="display: block;margin-top: 5rem">
-						<table class="notice-detail-table table">
-							<tr>
-								<th>제목</th>
-								<td id="title">제목</td>
-							</tr>
-							<tr>
-								<th>작성자</th>
-								<td id="author">제목</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<div style="font-size: 1.4rem">
-										<span style="font-weight: bold">작성일 </span>
-										<span id="createDate"></span>
-									</div>
-									<hr>
-									<div id="content" style="padding-top: 1rem">
-									</div>
-								</td>
-							</tr>
-						</table>
-						<hr>
-					</div>
-					<div class="row" style="margin-top: 5rem;display: block">
-						<div class="btn-cancel-square" onclick="location.href = '/customer/notice_list'"
-							 style="margin: 0 auto;color: #2f2f2f;border-color: #2F2F2F">목록
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">공지사항</div>
+						</div>
+						<div class="row" style="display: block;margin-top: 5rem">
+							<table class="notice-detail-table table">
+								<tr>
+									<th>제목</th>
+									<td id="title">제목</td>
+								</tr>
+								<tr>
+									<th>작성자</th>
+									<td id="author">제목</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div style="font-size: 1.4rem">
+											<span style="font-weight: bold">작성일 </span>
+											<span id="createDate"></span>
+										</div>
+										<hr>
+										<div id="content" style="padding-top: 1rem">
+										</div>
+									</td>
+								</tr>
+							</table>
+							<hr>
+						</div>
+						<div class="row" style="margin-top: 5rem;display: block">
+							<div class="btn-cancel-square" onclick="location.href = '/customer/notice_list'"
+								 style="margin: 0 auto;color: #2f2f2f;border-color: #2F2F2F">목록
+							</div>
 						</div>
 					</div>
 				</div>
@@ -136,7 +145,7 @@
 	//예약을 위한 id 가져오기
 	var sendItems = new Object();
 	sendItems.noticeId = location.href.substr(
-		location.href.lastIndexOf('=') + 1
+			location.href.lastIndexOf('=') + 1
 	);
 
 	//선택한 병원 정보

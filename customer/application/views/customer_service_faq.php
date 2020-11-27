@@ -45,7 +45,7 @@
 			transform: rotate(180deg);
 		}
 
-		@keyframes rotate_image{
+		@keyframes rotate_image {
 			100% {
 				transform: rotate(360deg);
 			}
@@ -76,6 +76,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title4.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>고객센터</span>
+							<span>｜</span>
+							<span>자주 묻는 질문</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -106,67 +113,69 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">자주 묻는 질문</div>
-					</div>
-					<div class="row" style="display: block;margin-top: 6rem">
-						<div class="accordion" id="accordionExample">
-							<div>
-								<div class="card-header" id="headingOne">
-									<div class="text-left"
-										 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-										 aria-controls="collapseOne">
-										<span>Q</span>
-										이것은 자주 묻는 질문 입니다
-										<div style="float:right">
-											<img src="/asset/images/icon_drop_down.png">
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">자주 묻는 질문</div>
+						</div>
+						<div class="row" style="display: block;margin-top: 6rem">
+							<div class="accordion" id="accordionExample">
+								<div>
+									<div class="card-header" id="headingOne">
+										<div class="text-left"
+											 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+											 aria-controls="collapseOne">
+											<span>Q</span>
+											이것은 자주 묻는 질문 입니다
+											<div style="float:right">
+												<img src="/asset/images/icon_drop_down.png">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-									 data-parent="#accordionExample">
-									<div class="card-body">
-										그렇지요 (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)
-									</div>
-								</div>
-							</div>
-							<div>
-								<div class="card-header" id="headingTwo">
-									<div class="text-left"
-										 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-										 aria-controls="collapseTwo">
-										<span>Q</span>
-										이것 또한 자주 묻는 질문이지요,,
-										<div style="float:right;">
-											<img src="/asset/images/icon_drop_down.png">
+									<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+										 data-parent="#accordionExample">
+										<div class="card-body">
+											그렇지요 (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)
 										</div>
 									</div>
 								</div>
-								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-									 data-parent="#accordionExample">
-									<div class="card-body">
-										╰(*°▽°*)╯╰(*°▽°*)╯
+								<div>
+									<div class="card-header" id="headingTwo">
+										<div class="text-left"
+											 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+											 aria-controls="collapseTwo">
+											<span>Q</span>
+											이것 또한 자주 묻는 질문이지요,,
+											<div style="float:right;">
+												<img src="/asset/images/icon_drop_down.png">
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-							<div>
-								<div class="card-header" id="headingThree">
-									<div class="text-left"
-										 data-toggle="collapse" data-target="#collapseThree"
-										 aria-expanded="false" aria-controls="collapseThree">
-										<span>Q</span>
-										나랑 저스트 댄스 할 사람~?!
-										<div style="float:right;">
-											<img src="/asset/images/icon_drop_down.png">
+									<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+										 data-parent="#accordionExample">
+										<div class="card-body">
+											╰(*°▽°*)╯╰(*°▽°*)╯
 										</div>
 									</div>
 								</div>
-								<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-									 data-parent="#accordionExample">
-									<div class="card-body">
-										아무도 없나요...
+								<div>
+									<div class="card-header" id="headingThree">
+										<div class="text-left"
+											 data-toggle="collapse" data-target="#collapseThree"
+											 aria-expanded="false" aria-controls="collapseThree">
+											<span>Q</span>
+											나랑 저스트 댄스 할 사람~?!
+											<div style="float:right;">
+												<img src="/asset/images/icon_drop_down.png">
+											</div>
+										</div>
+									</div>
+									<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+										 data-parent="#accordionExample">
+										<div class="card-body">
+											아무도 없나요...
+										</div>
 									</div>
 								</div>
 							</div>
@@ -181,7 +190,7 @@
 </body>
 
 <script>
-	$('.card-header').click(function() {
+	$('.card-header').click(function () {
 		$(this).find('img').toggleClass('rotate');
 	});
 </script>

@@ -1,3 +1,4 @@
+//날짜포맷 정하기
 function formatDate(date, type) {
 	var year = date.getFullYear();              //yyyy
 	var month = (1 + date.getMonth());          //M
@@ -37,6 +38,7 @@ angular
 			dateClick: function (date) {
 				firstWishDate = formatDate(date.date, 'get');
 				$("#firstWishDate").text(formatDate(date.date, 'set'));
+
 				console.log(date);
 			},
 			changeMonth: function (month, year) {
@@ -141,9 +143,12 @@ angular
 					day: n,
 					date: o,
 					_month: o.getMonth() + 1
-				}, i(t[l]) ? e.mappedEvents && s(t[l]) : t[l].disabled = !0, t[l] && d(t[l]) && (t[l].disabled = !0), (6 === l || n === a) && (e.weeks.push(t), t = void 0)
+				},
+					i(t[l]) ? e.mappedEvents && s(t[l]) : t[l].disabled = !0, t[l] && d(t[l]) && (t[l].disabled = !0), (6 === l || n === a) && (e.weeks.push(t), t = void 0)
 			}
 			e.arrowPrevClass = e.allowedPrevMonth() ? "visible" : "hidden", e.arrowNextClass = e.allowedNextMonth() ? "visible" : "hidden"
+
+			console.log(e);
 		}
 
 		function D() {

@@ -93,6 +93,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title3.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>이용안내</span>
+							<span>｜</span>
+							<span>병원별 검진 항목 비교</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -109,12 +116,12 @@
 							</a>
 							<a href="#">
 								<div class="title-menu-select" style="border-right: #828282 1px solid">
-									병원별검진항목비교
+									병원별 검진 항목 비교
 								</div>
 							</a>
 							<a href="/customer/health_checkup_guide">
 								<div class="title-menu">
-									건강검진안내
+									건강검진 안내
 								</div>
 							</a>
 						</div>
@@ -123,82 +130,84 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">병원별 검진 항목 비교</div>
-					</div>
-					<div class="row" style="display: block;margin-top: 6rem">
-						<table class="compare-table table-bordered">
-							<tr>
-								<td>병원</td>
-								<th class="select">
-									<select id="hos1" class="form-control"
-											onchange="setPackageSelectOption(this, 'pkg1')">
-										<option selected>- 선택 -</option>
-									</select>
-								</th>
-								<th class="select">
-									<select id="hos2" class="form-control"
-											onchange="setPackageSelectOption(this, 'pkg2')">
-										<option selected>- 선택 -</option>
-									</select>
-								</th>
-								<th class="select">
-									<select id="hos3" class="form-control"
-											onchange="setPackageSelectOption(this, 'pkg3')">
-										<option selected>- 선택 -</option>
-									</select>
-								</th>
-							</tr>
-							<tr>
-								<td>패키지</td>
-								<th class="select">
-									<select id="pkg1" class="form-control" onchange="setSearchPackage(id)">
-										<option selected>- 선택 -</option>
-									</select>
-								</th>
-								<th class="select">
-									<select id="pkg2" class="form-control" onchange="setSearchPackage(id)">
-										<option selected>- 선택 -</option>
-									</select>
-								</th>
-								<th class="select">
-									<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">
-										<option selected>- 선택 -</option>
-									</select>
-								</th>
-							</tr>
-						</table>
-					</div>
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">병원별 검진 항목 비교</div>
+						</div>
+						<div class="row" style="display: block;margin-top: 6rem">
+							<table class="compare-table table-bordered">
+								<tr>
+									<td>병원</td>
+									<th class="select">
+										<select id="hos1" class="form-control"
+												onchange="setPackageSelectOption(this, 'pkg1')">
+											<option selected>- 선택 -</option>
+										</select>
+									</th>
+									<th class="select">
+										<select id="hos2" class="form-control"
+												onchange="setPackageSelectOption(this, 'pkg2')">
+											<option selected>- 선택 -</option>
+										</select>
+									</th>
+									<th class="select">
+										<select id="hos3" class="form-control"
+												onchange="setPackageSelectOption(this, 'pkg3')">
+											<option selected>- 선택 -</option>
+										</select>
+									</th>
+								</tr>
+								<tr>
+									<td>패키지</td>
+									<th class="select">
+										<select id="pkg1" class="form-control" onchange="setSearchPackage(id)">
+											<option selected>- 선택 -</option>
+										</select>
+									</th>
+									<th class="select">
+										<select id="pkg2" class="form-control" onchange="setSearchPackage(id)">
+											<option selected>- 선택 -</option>
+										</select>
+									</th>
+									<th class="select">
+										<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">
+											<option selected>- 선택 -</option>
+										</select>
+									</th>
+								</tr>
+							</table>
+						</div>
 
-					<form id="inspectionView" style="display: none">
-						<div class="row" style="display: block;margin-top: 3rem">
-							<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
-								기본검사
+						<form id="inspectionView" style="display: none">
+							<div class="row" style="display: block;margin-top: 3rem">
+								<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
+									기본검사
+								</div>
+								<div style="height: 50rem; overflow-y: scroll">
+									<table class="compare-table table-bordered" id="baseTable">
+									</table>
+								</div>
+
 							</div>
-							<div style="height: 50rem; overflow-y: scroll">
-								<table class="compare-table table-bordered" id="baseTable">
+							<div class="row" style="display: block;margin-top: 3rem">
+								<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
+									선택검사
+								</div>
+								<table class="compare-table table-bordered" id="choiceTable">
 								</table>
 							</div>
 
-						</div>
-						<div class="row" style="display: block;margin-top: 3rem">
-							<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
-								선택검사
-							</div>
-							<table class="compare-table table-bordered" id="choiceTable">
-							</table>
-						</div>
+							<div class="row" style="display: block;margin-top: 3rem">
+								<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
+									추가검사
+								</div>
+								<table class="compare-table table-bordered" id="addTable">
 
-						<div class="row" style="display: block;margin-top: 3rem">
-							<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
-								추가검사
+								</table>
 							</div>
-							<table class="compare-table table-bordered" id="addTable">
-
-							</table>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -341,7 +350,7 @@
 	function setBaseInjectionTable() {
 		$("#baseTable").empty();
 		totalInspectionItems.forEach((value) =>
-			setBaseInspectionItems(value)
+				setBaseInspectionItems(value)
 		);
 	}
 
@@ -359,11 +368,11 @@
 		}
 
 		html += '<tr>' +
-			'<th style="text-align: left">' + value + '</th>' +
-			'<td style="color: #5849ea">' + ox[0] + '</td>' +
-			'<td style="color: #5849ea">' + ox[1] + '</td>' +
-			'<td style="color: #5849ea">' + ox[2] + '</td>' +
-			'</tr>';
+				'<th style="text-align: left">' + value + '</th>' +
+				'<td style="color: #5849ea">' + ox[0] + '</td>' +
+				'<td style="color: #5849ea">' + ox[1] + '</td>' +
+				'<td style="color: #5849ea">' + ox[2] + '</td>' +
+				'</tr>';
 		$("#baseTable").append(html);
 	}
 
@@ -398,7 +407,7 @@
 		for (i = 0; i < maxRow; i++) {
 			var html = '';
 			html += '<tr>' +
-				'<th style="text-align: left">' + selectName[i] + '</th>';
+					'<th style="text-align: left">' + selectName[i] + '</th>';
 			for (j = 0; j < 3; j++) {
 				if (selectInjection[j] != null && selectInjection[j][i] != null) {
 					html += '<td>';
@@ -434,7 +443,7 @@
 
 		var html = '';
 		html += '<tr>' +
-			'<th style="text-align: left">추가검사</th>';
+				'<th style="text-align: left">추가검사</th>';
 
 		for (i = 0; i < 3; i++) {
 			html += '<td>'

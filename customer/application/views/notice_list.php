@@ -68,6 +68,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title3.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>이용안내</span>
+							<span>｜</span>
+							<span>공지사항</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -84,12 +91,12 @@
 							</a>
 							<a href="/customer/comparison_hospital">
 								<div class="title-menu" style="border-right: #828282 1px solid">
-									병원별검진항목비교
+									병원별 검진 항목 비교
 								</div>
 							</a>
 							<a href="/customer/health_checkup_guide">
 								<div class="title-menu">
-									건강검진안내
+									건강검진 안내
 								</div>
 							</a>
 						</div>
@@ -98,38 +105,40 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">공지사항</div>
-					</div>
-					<div class="row" style="display: block;margin-top: 5rem">
-						<div style="display: flex; float:right;margin-bottom: 2rem">
-							<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요"
-								   onkeyup="enterKey()">
-							<div class="search-btn" onclick="searchNoticeData(0)">
-								<img src="/asset/images/icon_search.png">
-							</div>
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">공지사항</div>
 						</div>
-						<table class="notice-table" id="noticeTable">
-							<thead>
-							<tr>
-								<th>NO</th>
-								<th width="50%">제목</th width="50%">
-								<th>작성자</th>
-								<th>작성일</th>
-							</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-					<div class="row" style="margin-top: 5rem">
-						<form style="margin: 0 auto; width: 85%; padding: 1rem">
-							<div class="page_wrap">
-								<div class="page_nation" id="paging">
+						<div class="row" style="display: block;margin-top: 5rem">
+							<div style="display: flex; float:right;margin-bottom: 2rem">
+								<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요"
+									   onkeyup="enterKey()">
+								<div class="search-btn" onclick="searchNoticeData(0)">
+									<img src="/asset/images/icon_search.png">
 								</div>
 							</div>
-						</form>
+							<table class="notice-table" id="noticeTable">
+								<thead>
+								<tr>
+									<th>NO</th>
+									<th width="50%">제목</th width="50%">
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="row" style="margin-top: 5rem">
+							<form style="margin: 0 auto; width: 85%; padding: 1rem">
+								<div class="page_wrap">
+									<div class="page_nation" id="paging">
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -217,10 +226,10 @@
 		for (i = 0; i < data.length; i++) {
 			var tbody = "";
 			tbody += '<tr>' +
-					'<td>'+ data[i].id +'</td>' +
-					'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">'+ data[i].title +'</td>' +
-					'<td>'+ data[i].author +'</td>' +
-					'<td>'+ data[i].createDate +'</td>' +
+					'<td>' + data[i].id + '</td>' +
+					'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>' +
+					'<td>' + data[i].author + '</td>' +
+					'<td>' + data[i].createDate + '</td>' +
 					'<tr>';
 
 			$("#noticeTable").append(tbody);

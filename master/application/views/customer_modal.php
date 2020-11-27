@@ -337,9 +337,7 @@
 		$("#customerCompanyName").val(data.coName);
 		$("#customerCompanyBranch").val(data.coBranch);
 
-		if (data.familyDTOList.length == 0) {
-			$("#customerTab").css("visibility", "hidden");
-		}
+		$("#customerTab").css("visibility", "hidden");
 
 		for (i = 0; i < data.familyDTOList.length; i++) {
 			var html = "";
@@ -601,7 +599,7 @@
 	}
 
 	//파일 업로드 이름
-	$('#excelUploadFile').change(function() {
+	$('#excelUploadFile').change(function () {
 		var filepath = this.value;
 		var m = filepath.match(/([^\/\\]+)$/);
 		if (m) {

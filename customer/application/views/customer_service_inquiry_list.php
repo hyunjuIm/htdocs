@@ -98,6 +98,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title4.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>고객센터</span>
+							<span>｜</span>
+							<span>내 문의 내역</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -128,32 +135,34 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">내 문의 내역</div>
-					</div>
-					<div class="row" style="display: block;margin-top: 6rem">
-						<table class="inquiry-table" id="inquiryTable">
-							<thead>
-							<tr>
-								<th>NO</th>
-								<th width="53%">제목</th width="50%">
-								<th>작성일</th>
-								<th>답변일</th>
-								<th>상태</th>
-							</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-					<div class="row" style="margin-top: 5rem">
-						<form style="margin: 0 auto; width: 85%; padding: 1rem">
-							<div class="page_wrap">
-								<div class="page_nation" id="paging">
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">내 문의 내역</div>
+						</div>
+						<div class="row" style="display: block;margin-top: 6rem">
+							<table class="inquiry-table" id="inquiryTable">
+								<thead>
+								<tr>
+									<th>NO</th>
+									<th width="53%">제목</th width="50%">
+									<th>작성일</th>
+									<th>답변일</th>
+									<th>상태</th>
+								</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="row" style="margin-top: 5rem">
+							<form style="margin: 0 auto; width: 85%; padding: 1rem">
+								<div class="page_wrap">
+									<div class="page_nation" id="paging">
+									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -166,10 +175,6 @@ require('inquiry_modal.php');
 ?>
 
 </body>
-
-<?php
-require('paging.js');
-?>
 
 <script>
 	var pagingNum = 0;
@@ -232,7 +237,7 @@ require('paging.js');
 		html += '<a class="arrow nnext" onclick= "getInquiryList(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var tbody = "";
 			tbody += '<tr><td colspan="5">문의 내역이 없습니다.</td></tr>';
 			$("#inquiryTable").append(tbody);
@@ -255,6 +260,11 @@ require('paging.js');
 			$("#inquiryTable").append(tbody);
 		}
 	}
+
+	<?php
+	require('paging.js');
+	?>
+
 </script>
 
 </html>

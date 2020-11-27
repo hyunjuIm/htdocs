@@ -99,6 +99,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title2.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>예약서비스</span>
+							<span>｜</span>
+							<span>검진예약</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner" style="margin: 0 auto; ">
@@ -121,52 +128,53 @@
 				</div>
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">예약</div>
-					</div>
-					<div class="row" style="margin-top: 4rem">
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">예약</div>
+						</div>
+						<div class="row" style="margin-top: 4rem">
 						<span style="font-size: 2.4rem;font-weight: bolder;margin-bottom: 2rem">
 							개인정보 수집이용안내
 						</span>
-						<br>
-						<div class="personal-info-agree">
-							[필수]개인정보 수집 및 이용에 대한 동의<br><br>
-							1. 개인정보 수집 및 이용의 목적 · 항목 · 보유기간<br>
-							가. 회사는 적법하고 공정한 수단으로서 회원님의 개인정보를 수집하고 있습니다.<br>
-							나. 회사가 수집하는 개인정보는 서비스 제공에 필요한 최소한의 정보만 수집하고 있습니다.<br>
-							다. 회사는 다음과 같은 이용목적을 위하여 개인정보를 수집하고 있으며, 보유기간 만료 시 지체없이 파기합니다.<br>
-							※단, 관계 법령에 따라 보존사유 존재 시 해당기간에 따라 보존<br>
-							라. 회사는 서비스 개선 및 향상된 서비스의 제공을 위해 서비스 이용기록, 접속 빈도 등 비식별화 된 개인정보 또는 비 개인정보를 이용합니다.<br>
-							마. 개인정보를 수집하는 항목과 이용목적, 보유기간은 다음과 같습니다.<br>
-							주소 및 연락처는 예약확인/준비물 배송 등의 서비스에 이용되므로 정확한 정보를 입력하시길 바랍니다.<br>
-						</div>
-						<div style="margin-top: 2rem; width: 100%">
-							<div style="float:left;">
-								위의 개인정보 수집 이용안내에 대하여 동의하십니까?
+							<br>
+							<div class="personal-info-agree">
+								[필수]개인정보 수집 및 이용에 대한 동의<br><br>
+								1. 개인정보 수집 및 이용의 목적 · 항목 · 보유기간<br>
+								가. 회사는 적법하고 공정한 수단으로서 회원님의 개인정보를 수집하고 있습니다.<br>
+								나. 회사가 수집하는 개인정보는 서비스 제공에 필요한 최소한의 정보만 수집하고 있습니다.<br>
+								다. 회사는 다음과 같은 이용목적을 위하여 개인정보를 수집하고 있으며, 보유기간 만료 시 지체없이 파기합니다.<br>
+								※단, 관계 법령에 따라 보존사유 존재 시 해당기간에 따라 보존<br>
+								라. 회사는 서비스 개선 및 향상된 서비스의 제공을 위해 서비스 이용기록, 접속 빈도 등 비식별화 된 개인정보 또는 비 개인정보를 이용합니다.<br>
+								마. 개인정보를 수집하는 항목과 이용목적, 보유기간은 다음과 같습니다.<br>
+								주소 및 연락처는 예약확인/준비물 배송 등의 서비스에 이용되므로 정확한 정보를 입력하시길 바랍니다.<br>
 							</div>
-							<div style="float:right;">
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="agree" id="agreeYes"
-										   value="true">
-									<label class="form-check-label" for="agreeYes">
-										&nbsp동의합니다. &nbsp
-									</label>
+							<div style="margin-top: 2rem; width: 100%">
+								<div style="float:left;">
+									위의 개인정보 수집 이용안내에 대하여 동의하십니까?
 								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="agree" id="agreeNo"
-										   value="false">
-									<label class="form-check-label" for="agreeNo">
-										&nbsp동의하지않습니다.
-									</label>
+								<div style="float:right;">
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="agree" id="agreeYes"
+											   value="true">
+										<label class="form-check-label" for="agreeYes">
+											&nbsp동의합니다. &nbsp
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="agree" id="agreeNo"
+											   value="false">
+										<label class="form-check-label" for="agreeNo">
+											&nbsp동의하지않습니다.
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row" style="margin-top: 8rem">
-						<table class="personal-info-table" id="personalInfos">
-
-						</table>
+						<div class="row" style="margin-top: 8rem">
+							<table class="personal-info-table" id="personalInfos">
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -10,43 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
 
 	<style>
-		html {
-			font-size: 10px;
-		}
-
-		body {
-			font-size: 1.6rem;
-		}
-
-		.container {
-			width: 100%;
-			max-width: none;
-		}
-
-		.wrap {
-			display: flex;
-			justify-content: center;
-		}
-
-		.inner {
-			align-self: center;
-			padding: 2rem;
-		}
-
-		.title-menu, .title-menu-select {
-			width: 30rem;
-			height: 4.5rem;
-			background-color: rgba(0, 0, 0, 0.5);
-			color: white;
-			line-height: 4.5rem;
-			cursor: pointer;
-			align-self: flex-end;
-		}
-
-		.title-menu:hover, .title-menu-select {
-			background: #5645ED;
-		}
-
 		table {
 			max-width: fit-content;
 		}
@@ -57,7 +20,7 @@
 
 		.hos-card {
 			border: 1px solid #d5d5d5;
-			width: 28.9rem;
+			width: calc(120rem/4.1);
 			font-weight: bolder;
 		}
 
@@ -150,9 +113,16 @@
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
-				<div class="container"
+				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title2.jpg); height: 30rem;text-align: center;">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>예약서비스</span>
+							<span>｜</span>
+							<span>검진예약</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -175,45 +145,48 @@
 				</div>
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="margin-top: 3rem">
-						<div style="margin: 0 auto; font-weight: 500">
-							<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
-							<img class="reservation-order" src="/asset/images/step1.png">
-						</div>
-					</div>
-					<div class="row" style="display:block;text-align: left;margin-top: 5rem">
-						<div style="font-size: 2.9rem;font-weight: 500;margin-bottom: 3rem">
-							병원검색
-						</div>
-						<br>
-						<div style="margin-bottom: 1.5rem">
-							<div style="float:left">
-								총 <span id="hosCount"></span>개 병원
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="margin-top: 3rem">
+							<div style="margin: 0 auto; font-weight: 500">
+								<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
+								<img class="reservation-order" src="/asset/images/step1.png">
 							</div>
-							<div style="display: flex; float:right">
-								<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterKey()">
-								<div class="search-btn" onclick="searchHospital(0)">
-									<img src="/asset/images/icon_search.png">
+						</div>
+						<div class="row" style="display:block;text-align: left;margin-top: 5rem">
+							<div style="font-size: 2.9rem;font-weight: 500;margin-bottom: 3rem">
+								병원검색
+							</div>
+							<br>
+							<div style="margin-bottom: 1.5rem">
+								<div style="float:left">
+									총 <span id="hosCount"></span>개 병원
+								</div>
+								<div style="display: flex; float:right">
+									<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요"
+										   onkeyup="enterKey()">
+									<div class="search-btn" onclick="searchHospital(0)">
+										<img src="/asset/images/icon_search.png">
+									</div>
 								</div>
 							</div>
-						</div>
-						<br>
-						<div>
-							<hr style="height: 0;border: 0; border-top: 2px solid black">
-							<table class="" id="hospitalInfos">
+							<br>
+							<div>
+								<hr style="height: 0;border: 0; border-top: 2px solid black">
+								<table class="" id="hospitalInfos">
 
-							</table>
-							<hr style="height: 0;border: 0; border-top: 1px solid black">
-						</div>
-					</div>
-					<div class="row" style="margin-top: 3rem">
-						<form style="margin: 0 auto; width: 85%; padding: 1rem">
-							<div class="page_wrap">
-								<div class="page_nation" id="paging">
-								</div>
+								</table>
+								<hr style="height: 0;border: 0; border-top: 1px solid black">
 							</div>
-						</form>
+						</div>
+						<div class="row" style="margin-top: 3rem">
+							<form style="margin: 0 auto; width: 85%; padding: 1rem">
+								<div class="page_wrap">
+									<div class="page_nation" id="paging">
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

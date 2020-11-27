@@ -93,6 +93,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title2.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>예약서비스</span>
+							<span>｜</span>
+							<span>예약현황</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -116,12 +123,14 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">예약현황</div>
-					</div>
-					<div class="row" id="resultTable" style="display: block;padding: 6rem 0">
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">예약현황</div>
+						</div>
+						<div class="row" id="resultTable" style="display: block;padding: 6rem 0">
 
+						</div>
 					</div>
 				</div>
 			</div>

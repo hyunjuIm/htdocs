@@ -45,7 +45,6 @@ flex-calendar {
 
 }
 
-
 /* Library  */
 .flex-calendar .days .day.selected, .flex-calendar .month {
 	-webkit-box-orient: horizontal;

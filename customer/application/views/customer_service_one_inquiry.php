@@ -64,6 +64,13 @@
 				<div class="container top-menu"
 					 style="background-image: url(../../asset/images/title4.jpg)">
 					<div class="row line">
+						<div class="line-content">
+							<img src="/asset/images/icon_home.png">
+							<span>｜</span>
+							<span>고객센터</span>
+							<span>｜</span>
+							<span>1:1 문의</span>
+						</div>
 					</div>
 					<div class="row wrap" style="height: 22rem">
 						<div class="inner " style="margin: 0 auto; ">
@@ -94,29 +101,31 @@
 
 
 				<!-- 컨텐츠내용 -->
-				<div class="container" style="text-align: center;color: black;width: 130rem;padding: 6rem;">
-					<div class="row" style="padding-top: 3rem">
-						<div class="sub-title">1:1 문의하기</div>
-					</div>
-					<div class="row" style="display: block;margin-top: 6rem">
-						<table>
-							<tr>
-								<th width="18%">제목</th>
-								<td>
-									<input type="text" id="title">
-								</td>
-							</tr>
-							<tr>
-								<th>문의내용</th>
-								<td>
-									<textarea id="question"></textarea>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="row" style="margin-top: 3rem;display: block">
-						<div class="btn-cancel-square" onclick="sendInquiry()"
-							 style="float:right;color: black;border-color: black">저장
+				<div style="margin:0 10rem">
+					<div class="container content-view">
+						<div class="row" style="padding-top: 3rem">
+							<div class="sub-title">1:1 문의하기</div>
+						</div>
+						<div class="row" style="display: block;margin-top: 6rem">
+							<table>
+								<tr>
+									<th width="18%">제목</th>
+									<td>
+										<input type="text" id="title">
+									</td>
+								</tr>
+								<tr>
+									<th>문의내용</th>
+									<td>
+										<textarea id="question"></textarea>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="row" style="margin-top: 3rem;display: block">
+							<div class="btn-cancel-square" onclick="sendInquiry()"
+								 style="float:right;color: black;border-color: black">저장
+							</div>
 						</div>
 					</div>
 				</div>

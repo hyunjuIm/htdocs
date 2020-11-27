@@ -255,7 +255,6 @@ require('check_data.php');
 		if (pre < 0) {
 			pre = 0;
 		}
-		html += '<a class="arrow pprev" onclick= "searchCustomerData(\'' + 0 + '\')" href="#"></a>'
 		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
@@ -275,7 +274,6 @@ require('check_data.php');
 
 		var html = "";
 		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchCustomerData(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
 
 

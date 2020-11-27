@@ -241,8 +241,8 @@
 					<td colspan="2">
 					</td>
 					<td colspan="2"
-						style="width: inherit;height:inherit;min-height:inherit;max-height:inherit;background: white;border: white solid 1px;">
-						<div class="notice-div" style="max-height:19.5rem">
+						style="background: white;border: white solid 1px;height: 100%">
+						<div class="notice-div">
 							<div class="row"
 								 style="font-size: 1.4rem;color: #5645ED">
 								NOTICE
@@ -251,8 +251,8 @@
 								 style="font-size: 2rem;color: black;padding-bottom: 1rem">
 								공지사항
 							</div>
-							<div class="row">
-								<table id="mainNoticeInfos">
+							<div class="row" style="height: 9.3rem">
+								<table id="mainNoticeInfos" style="vertical-align: top">
 									<tbody>
 									</tbody>
 								</table>
@@ -268,8 +268,7 @@
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">고객센터<br></span>
 								CUSTOMER CENTER<br>
-								<span style="font-size: 1.5rem;color: #FFBB00">평일 9:00~18:00<br>1661-2645
-						</span>
+								<span style="font-size: 1.5rem;color: #FFBB00">평일 9:00~18:00<br>1661-2645</span>
 							</div>
 						</div>
 					</td>
