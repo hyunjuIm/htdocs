@@ -5,6 +5,9 @@
 		<span></span>
 		<span></span>
 	</div>
+	<div style="margin: 0 auto">
+		<img src='/asset/images/mobile/m_logo.png' style="width: 50%">
+	</div>
 </div>
 <div id="mobile-nav-menu" ng-show="toggleNav">
 
@@ -129,8 +132,6 @@
 		$('#nav > li > a').click(function () {
 			$(this).next().slideToggle(300);
 			$(this).addClass('active');
-			// $(this).css("background", "#f2f2f2");
-			// $(this).css("border-left", "7px solid #5849ea");
 
 			$('#nav > li > a').not(this).next().slideUp(300);
 		});

@@ -20,23 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/head.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/css/mobile/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/Customer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/check_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/check_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/customer_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_create.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_injection_item.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_injection_item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +60,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/application/views/mobile/common" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/asset/images/mobile" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -82,11 +70,11 @@
       <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images\mobile" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views\mobile\common" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images" />
       <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\images" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views" />
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\css" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -103,7 +91,7 @@
       <workItem from="1605486138661" duration="21886000" />
       <workItem from="1606051724309" duration="13701000" />
       <workItem from="1606381717953" duration="27455000" />
-      <workItem from="1606694157426" duration="22513000" />
+      <workItem from="1606694157426" duration="24478000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -224,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606467542359</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="-">
+      <created>1606726776797</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1606726776797</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,11 +266,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606700950506" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606467546402">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606726782978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984781060" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606467546402" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606726782978" />
     <state x="548" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606715159698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
