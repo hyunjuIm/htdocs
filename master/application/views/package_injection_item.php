@@ -7,6 +7,34 @@
 	require('head.php');
 	?>
 
+	<style>
+		#excelUploadFile {
+			position: absolute;
+			display: none;
+		}
+
+		label[for="excelUploadFile"] {
+			padding: 0.5em;
+			display: inline-block;
+			background: #5645ED;
+			color: white;
+			cursor: pointer;
+		}
+
+		label[for="excelUploadFile"]:hover {
+			opacity: 0.9;
+		}
+
+		#filename {
+			padding: 0.5em;
+			float: left;
+			width: 300px;
+			white-space: nowrap;
+			overflow: hidden;
+			background: whitesmoke;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -23,7 +51,14 @@
 <!--콘텐츠 내용-->
 <div class="container" style="padding-top: 50px; max-width: none">
 	<div class="row">
-		<div class="col-7" style="margin: 0 auto; padding: 20px">
+		<div style="width:100%; padding: 0 30px">
+			<div class="btn-save-square" data-toggle="modal" data-target="#packageUploadModal" style="float: right;">
+				검사항목 엑셀 업로드
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-7" style="margin: 0 auto; ">
 			<form class="table-box">
 				<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
 					<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
@@ -31,25 +66,25 @@
 				</div>
 
 				<ul class="nav nav-tabs package-tabs">
-					<li class="nav-item" id="allPackageTab" >
+					<li class="nav-item" id="allPackageTab">
 						<a class="nav-link active" data-toggle="tab" href="#" onclick="clickPackageTab(0)">전체</a>
 					</li>
-					<li class="nav-item" id="basePackageTab" >
+					<li class="nav-item" id="basePackageTab">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(1)">기본</a>
 					</li>
-					<li class="nav-item" id="addPackageTab" >
+					<li class="nav-item" id="addPackageTab">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(2)">추가</a>
 					</li>
-					<li class="nav-item menu-title" id="selectPackageA" style="display: none" >
+					<li class="nav-item menu-title" id="selectPackageA" style="display: none">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(3)">선택A</a>
 					</li>
-					<li class="nav-item" id="selectPackageB" style="display: none" >
+					<li class="nav-item" id="selectPackageB" style="display: none">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(4)">선택B</a>
 					</li>
-					<li class="nav-item" id="selectPackageC" style="display: none" >
+					<li class="nav-item" id="selectPackageC" style="display: none">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(5)">선택C</a>
 					</li>
-					<li class="nav-item" id="selectPackageD" style="display: none" >
+					<li class="nav-item" id="selectPackageD" style="display: none">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(6)">선택D</a>
 					</li>
 					<li class="nav-item" id="addTab">
@@ -96,7 +131,7 @@
 
 			</form>
 		</div>
-		<div class="col-xs-auto" style="margin-top: 15%">
+		<div class="col-xs-auto" style="margin-top: 13%">
 			<div style="display: grid; justify-content: center; align-items: center">
 				<div class="btn-purple-square" style="font-size: 18px; padding: 5px 10px; margin-bottom: 5px"
 					 onclick="delInjection()"> ▶
@@ -105,7 +140,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col" style="margin: 0 auto; padding: 20px">
+		<div class="col" style="margin: 0 auto">
 			<form class="table-box">
 				<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
 					<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
@@ -168,6 +203,11 @@
 	</div>
 </div>
 <!--콘텐츠 내용-->
+
+<!--Modal-->
+<?php
+require('package_modal.php');
+?>
 
 </body>
 </html>

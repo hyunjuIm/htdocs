@@ -276,6 +276,16 @@
 
 <script>
 
+	// 모바일 여부
+	var isMobile = false;
+
+	// PC 환경
+	var filter = "win16|win32|win64|mac";
+
+	if (navigator.platform) {
+		isMobile = filter.indexOf(navigator.platform.toLowerCase()) < 0;
+	}
+
 	//이미 로그인 되어 있으면 홈으로
 	var token = sessionStorage.getItem("token");
 	if (token != null) {
@@ -312,7 +322,7 @@
 
 		const instance = axios.create({
 			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "http://192.168.219.104:8080/permission/",
+			baseURL: "http://192.168.219.106:8080/permission/",
 			timeout: 5000
 		});
 
@@ -327,7 +337,12 @@
 				sessionStorage.setItem("userCusID", split[1]);
 				console.log(sessionStorage);
 
-				location.href = "./index";
+				//모바일인지 pc인지
+				if(isMobile) {
+					location.href = "/customer/home";
+				} else {
+					location.href = "/customer/index";
+				}
 			}
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")

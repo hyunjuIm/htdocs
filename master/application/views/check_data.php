@@ -121,6 +121,16 @@
 		a.click();
 	}
 
+	//파일 업로드 이름
+	$('#excelUploadFile').change(function () {
+		var filepath = this.value;
+		var m = filepath.match(/([^\/\\]+)$/);
+		if (m) {
+			var filename = m[1];
+			$('#filename').text(filename);
+		}
+	});
+
 	//사업장 리스트 셋팅
 	function setCompanySelectOption(selectCompany, targetBranch) {
 		var branch = document.getElementById(targetBranch);
@@ -153,7 +163,6 @@
 	function cancelBack() {
 		history.back();
 	}
-
 
 	//주소검색
 	function openAddressSearch(zipCode, address, buildingName) {

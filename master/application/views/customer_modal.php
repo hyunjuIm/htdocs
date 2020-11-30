@@ -283,7 +283,7 @@
 	</div>
 </div>
 
-<!-- 패키지 신규 생성 Modal -->
+<!-- 신규회원 엑셀 업로드 Modal -->
 <div class="modal fade" id="customerUploadModal" tabindex="-1" aria-labelledby="customerUploadModalLabel"
 	 aria-hidden="true">
 	<div class="modal-dialog " style="max-width: fit-content; min-width: 600px; display: table;">
@@ -598,13 +598,4 @@
 		});
 	}
 
-	//파일 업로드 이름
-	$('#excelUploadFile').change(function () {
-		var filepath = this.value;
-		var m = filepath.match(/([^\/\\]+)$/);
-		if (m) {
-			var filename = m[1];
-			$('#filename').text(filename);
-		}
-	});
 </script>

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class customer extends CI_Controller
 {
@@ -9,6 +9,9 @@ class customer extends CI_Controller
 		$this->load->view('customer_login');
 	}
 
+	/*
+	PC
+	*/
 	//메인화면
 	public function index()
 	{
@@ -97,5 +100,15 @@ class customer extends CI_Controller
 	public function customer_service_inquiry_list()
 	{
 		$this->load->view('customer_service_inquiry_list');
+	}
+
+
+	/*
+	모바일
+	*/
+	//메인화면
+	public function home()
+	{
+		$this->load->view('mobile/home');
 	}
 }

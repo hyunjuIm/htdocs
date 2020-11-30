@@ -20,38 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/calendar_next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/head.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/css/mobile/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/comparison_hospital.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/comparison_hospital.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_service_faq.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_service_faq.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_service_inquiry_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_service_inquiry_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_service_one_inquiry.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_service_one_inquiry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/health_checkup_guide.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/health_checkup_guide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/inquiry_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/inquiry_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/my_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/my_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/notice_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/notice_detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/notice_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/notice_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_date.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step4.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/sub-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/sub-page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/title1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/title1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/title2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/title2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/title3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/title3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/title4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/title4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/customer_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/check_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/check_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/customer_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/package_create.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/package_injection_item.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_injection_item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/package_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_modal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,21 +72,21 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/asset/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/application/views/mobile/common" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views\mobile\common" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images" />
       <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\images" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views" />
       <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\css" />
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\application\views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -117,7 +102,8 @@
       <workItem from="1605456722158" duration="52000" />
       <workItem from="1605486138661" duration="21886000" />
       <workItem from="1606051724309" duration="13701000" />
-      <workItem from="1606381717953" duration="27372000" />
+      <workItem from="1606381717953" duration="27455000" />
+      <workItem from="1606694157426" duration="22513000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -231,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606444367535</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="-">
+      <created>1606467542359</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1606467542359</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,34 +267,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="838" y="417" key="Github.ShareDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1604997414465" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606444374582">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606700950506">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606700950506" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606467546402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984781060" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606444374582" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606467546402" />
+    <state x="548" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606715159698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="548" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606715159698" />
     <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606350641542">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606312879797" />
     <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606350641542" />
-    <state x="293" y="36" width="1494" height="929" key="dock-window-1" timestamp="1606445910243">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1920" y="0" width="1471" height="1027" key="dock-window-1" timestamp="1606694968625">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="930" y="-1080" width="1294" height="1047" key="dock-window-1/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606052202914" />
-    <state x="293" y="36" width="1494" height="929" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606445910243" />
+    <state x="1920" y="0" width="1471" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606694968625" />
     <state x="1922" y="9" width="1503" height="1027" key="dock-window-10" timestamp="1606435014011">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1922" y="9" width="1503" height="1027" key="dock-window-10/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606435014011" />
-    <state x="1920" y="0" width="1494" height="1027" key="dock-window-2" timestamp="1606112289412">
+    <state x="1920" y="0" width="1471" height="1027" key="dock-window-2" timestamp="1606695627304">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="264" y="553" width="1327" height="1027" key="dock-window-2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606054032728" />
-    <state x="1920" y="0" width="1494" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606112289412" />
-    <state x="1920" y="0" width="1607" height="1027" key="dock-window-3" timestamp="1606183829410">
+    <state x="1920" y="0" width="1471" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606695627304" />
+    <state x="1920" y="0" width="1200" height="1027" key="dock-window-3" timestamp="1606720312885">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="0" width="1607" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606183829410" />
+    <state x="1920" y="0" width="1200" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606720312885" />
     <state x="1913" y="0" width="1483" height="985" key="dock-window-4" timestamp="1606288030904">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -326,22 +327,22 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1503" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606435014011" />
-    <state x="550" y="139" width="1112" height="794" key="find.popup" timestamp="1606454382103">
+    <state x="742" y="142" width="1112" height="794" key="find.popup" timestamp="1606694767568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
     <state x="406" y="91" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606403965332" />
-    <state x="550" y="139" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606454382103" />
+    <state x="742" y="142" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606694767568" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606293690004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605099487813" />
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984377925" />
     <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606293690004" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606281124105">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606725184326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606281124105" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606725184326" />
     <state x="790" y="311" key="svn.repositoryBrowser" timestamp="1604996918615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
