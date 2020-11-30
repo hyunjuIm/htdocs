@@ -1,29 +1,47 @@
-<div class="navbar">
-	<div id="nav-toggle" ng-click="toggleNav = !toggleNav; animate = !animate" ng-class="{'active': animate}">
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
-	<div style="margin: 0 auto">
-		<img src='/asset/images/mobile/m_logo.png' style="width: 50%">
-	</div>
-</div>
-<div id="mobile-nav-menu" ng-show="toggleNav">
+<nav class="navbar">
+    <span class="open-slide">
+	  <a href="#" onclick="openSlideMenu()">
+	    <svg width="20" height="25">
+		  <path d="M0,5 30,5" stroke="black"/>
+		  <path d="M0,12 30,12" stroke="black"/>
+		  <path d="M0,19 30,19" stroke="black"/>
+	    </svg>
+	  </a>
+    </span>
 
-	<form style="padding: 3rem 2.5rem">
-		<div style="margin-bottom: 2rem;text-align: left">
-			<span id="nameView"></span>
-			님 환영합니다.
+	<img src="/asset/images/mobile/m_logo.png" style="height: 50%;margin: 0 auto">
+
+	<span class="open-slide">
+	  <a href="#">
+	    <svg width="20" height="25">
+		  <path d="M0,5 30,5" stroke="black" stroke-width="1"/>
+		  <path d="M0,12 30,12" stroke="black" stroke-width="1"/>
+		  <path d="M0,19 30,19" stroke="black" stroke-width="1"/>
+	    </svg>
+	  </a>
+    </span>
+</nav>
+
+<div id="side-menu" class="side-nav">
+
+	<a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+
+	<form class="my-info">
+		<div style="margin-bottom: 0.5rem;font-size: 2rem;font-weight: bolder;letter-spacing: 0.15rem;text-align: left">
+			DUAL HEALTHCARE
 		</div>
 
-		<div style="width: 100%;margin-bottom: 2rem">
-			<div class="reservation-card-content">
-				<div id="carouselReservationControls" class="carousel slide" data-ride="carousel"
-					 style="height: inherit; display: table-cell; vertical-align: middle;
-					 color: black;">
-					<div id="userScheduleInfos" class="carousel-inner">
+		<div style="margin-bottom: 3rem; letter-spacing: -0.5px;font-weight: bolder;text-align: left;">
+			<span id="nameView"></span> 님 환영합니다.
+		</div>
 
+		<div class="reservation">
+			<div class="reservation-card-top">
+				예약현황
+			</div>
+			<div class="reservation-card-content">
+				<div id="carouselReservationControls" class="carousel slide" data-ride="carousel">
+					<div id="userScheduleInfos" class="carousel-inner">
 					</div>
 					<a class="carousel-control-prev" href="#carouselReservationControls" role="button"
 					   data-slide="prev">
@@ -38,95 +56,75 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="my-info-box">
-			<a href="/customer/my_page" style="width: 50%;cursor: pointer">
-				<div>
-					내정보관리
-				</div>
-			</a>
-			<div style="color: #c4c4c4">
-				|
-			</div>
-			<a style="width: 50%;cursor: pointer">
-				<div onclick="customerLogout()">
-					로그아웃
-				</div>
-			</a>
-		</div>
 	</form>
 
 	<form>
-		<ul id="nav" ng-click="close()">
-			<li class="main-menu"><a class="main-menu-item" href="#">예약서비스</a>
-				<ul>
-					<li class="sub-menu"><a href="#">검진예약</a></li>
-					<li class="sub-menu"><a href="#">예약현황</a></li>
-				</ul>
-			</li>
-			<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
-			</li>
-			<li class="main-menu"><a class="main-menu-item" href="#">건강정보</a>
-				<ul>
-					<li class="sub-menu"><a href="#">질병백과</a></li>
-				</ul>
-			</li>
-			<li class="main-menu"><a class="main-menu-item" href="#">이용안내</a>
-				<ul>
-					<li class="sub-menu"><a href="#">공지사항</a></li>
-					<li class="sub-menu"><a href="#">병원별 검진 항목 비교</a></li>
-					<li class="sub-menu"><a href="#">건강검진 안내</a></li>
-				</ul>
-			</li>
-			<li class="main-menu"><a class="main-menu-item" href="#">고객센터</a>
-				<ul>
-					<li class="sub-menu"><a href="#">자주 묻는 질문</a></li>
-					<li class="sub-menu"><a href="#">1:1 문의</a></li>
-					<li class="sub-menu"><a href="#">내 문의 내역</a></li>
-				</ul>
-			</li>
-		</ul>
-	</form>
-
-	<form class="footer">
-		<div class="footer-top">
-			<div>
-				서비스이용약관
-			</div>
-			<div style="padding: 0 1rem; color: #c4c4c4">
-				|
-			</div>
-			<div>
-				개인정보처리방침
-			</div>
-		</div>
-		<div class="footer-middle">
-			<div style="font-size: 1.4rem; color: black;margin-bottom: 0.3rem;font-weight: 400">
-				(주) 듀얼헬스케어
-			</div>
-			<div>
-				대표자 : 김영이 <br>
-				사업자등록번호 : 111-86-01943 <br>
-				대전광역시 유성구 대덕대로 512번길 20 <br>
-				(도룡동, 2층) <br>
-				copyrightⓒdualhealthcare
-			</div>
-		</div>
+	<ul id="nav">
+		<li class="main-menu">
+			<a class="main-menu-item" href="#">
+				예약서비스
+				<div class="dropdown-img">
+					<img src="/asset/images/icon_drop_down.png">
+				</div>
+			</a>
+			<ul>
+				<li class="sub-menu"><a href="/customer/reservation_step1">검진예약</a></li>
+				<li class="sub-menu"><a href="/customer/reservation_list">예약현황</a></li>
+			</ul>
+		</li>
+		<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
+		</li>
+		<li class="main-menu">
+			<a class="main-menu-item" href="#">
+				건강정보
+				<div class="dropdown-img">
+					<img src="/asset/images/icon_drop_down.png">
+				</div>
+			</a>
+			<ul>
+				<li class="sub-menu"><a href="#">질병백과</a></li>
+			</ul>
+		</li>
+		<li class="main-menu">
+			<a class="main-menu-item" href="#">
+				이용안내
+				<div class="dropdown-img">
+					<img src="/asset/images/icon_drop_down.png">
+				</div>
+			</a>
+			<ul>
+				<li class="sub-menu"><a href="/customer/notice_list">공지사항</a></li>
+				<li class="sub-menu"><a href="/customer/comparison_hospital">병원별 검진 항목 비교</a></li>
+				<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진 안내</a></li>
+			</ul>
+		</li>
+		<li class="main-menu">
+			<a class="main-menu-item" href="#">
+				고객센터
+				<div class="dropdown-img">
+					<img src="/asset/images/icon_drop_down.png">
+				</div>
+			</a>
+			<ul>
+				<li class="sub-menu"><a href="/customer/customer_service_faq">자주 묻는 질문</a></li>
+				<li class="sub-menu"><a href="/customer/customer_service_one_inquiry">1:1 문의</a></li>
+				<li class="sub-menu"><a href="/customer/customer_service_inquiry_list">내 문의 내역</a></li>
+			</ul>
+		</li>
+	</ul>
 	</form>
 </div>
 
 <script>
-	var menu = angular.module("menu", ["ngAnimate"]);
+	function openSlideMenu() {
+		document.getElementById('side-menu').style.width = '100%';
+		document.getElementById('main').style.marginLeft = '100%';
+	}
 
-	menu.controller("mainCtrl", function ($scope) {
-
-		//Mobile menu default = hidden
-		$scope.toggleNav = false;
-
-		//Hamburger icon default
-		$scope.animate = false;
-
-	});
+	function closeSlideMenu() {
+		document.getElementById('side-menu').style.width = '0';
+		document.getElementById('main').style.marginLeft = '0';
+	}
 
 	$(document).ready(function () {
 		$('#nav > li > a').click(function () {
@@ -135,5 +133,9 @@
 
 			$('#nav > li > a').not(this).next().slideUp(300);
 		});
+	});
+
+	$('.dropdown-img').click(function () {
+		$(this).find('img').toggleClass('rotate');
 	});
 </script>

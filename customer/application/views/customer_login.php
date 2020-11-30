@@ -322,7 +322,7 @@
 
 		const instance = axios.create({
 			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "http://192.168.219.106:8080/permission/",
+			baseURL: "https://api.dualhealth.kr/permission/",
 			timeout: 5000
 		});
 

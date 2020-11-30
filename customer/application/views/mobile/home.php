@@ -19,7 +19,7 @@
 	</style>
 
 </head>
-<body ng-app="menu" ng-controller="mainCtrl" ng-mouseup="elsewhrClicks($event)" class="ng-cloak">
+<body>
 
 <header>
 	<?php
@@ -29,8 +29,11 @@
 	<?php
 	require('menu/side.php');
 	?>
-
 </header>
+
+<div id="main">
+
+</div>
 
 </body>
 

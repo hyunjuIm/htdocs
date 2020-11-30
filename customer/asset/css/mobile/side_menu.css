@@ -1,192 +1,70 @@
-[ng\:cloak],
-[ng-cloak],
-[data-ng-cloak],
-[x-ng-cloak],
-.ng-cloak,
-.x-ng-cloak {
-	display: none !important;
-}
-
-a {
-	text-decoration: none;
-}
-
-.content {
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-}
+/* top navigation */
 
 .navbar {
-	background: white;
-	width: 100%;
 	height: 50px;
-	position: absolute;
+	background-color: #F9F9F9;
+	overflow: hidden;
+	padding: 0 20px;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: #404040;
+	text-align: center;
+	text-decoration: none;
+	transition: .5s;
+}
+
+.navbar ul {
+	list-style: none;
+}
+
+.navbar a:hover {
+	background-color: #ccc;
+	border-radius: 100%;
+	color: #404040;
+}
+
+.navbar-nav {
+	display: none;
+}
+
+
+/* side navigation */
+
+
+.side-nav {
+	height: 100%;
+	width: 0;
+	position: fixed;
 	top: 0;
 	left: 0;
-	border-bottom: 1px solid #eaeaea;
+	background-color: #F9F9F9;
+	padding-top: 30px;
+	overflow-x: hidden;
+	z-index: 1;
+	transition: .5s;
+	font-size: 1.9rem;
 }
 
-/*Mobile Menu*/
-.mobile {
-	color: white;
-	float: left;
-	width: 30px;
-	height: 36px;
-	margin-top: 0px;
-	margin-left: 0;
-}
-
-#nav-toggle {
-	width: 30px;
-	height: 25px;
-	margin-left: 5px;
-	top: 15px;
-	float: left;
-	position: absolute;
+.side-nav a {
+	text-decoration: none;
+	color: #404040;
 	display: block;
-	padding-top: 20px;
-	cursor: pointer;
-	-webkit-transition: 0.2s ease-in-out;
-	-moz-transition: 0.2s ease-in-out;
-	transition: 0.2s ease-in-out;
+	transition: .3s;
 }
-#nav-toggle span {
-	cursor: pointer;
-	border-radius: 1px;
-	height: 2px;
-	width: 20px;
-	background: #404040;
+
+.side-nav a:hover {
+	color: #5645ED;
+}
+
+.side-nav .btn-close {
 	position: absolute;
-	display: block;
-	opacity: 1;
-	-webkit-transition: 0.2s ease-in-out;
-	-moz-transition: 0.2s ease-in-out;
-	transition: 0.2s ease-in-out;
-}
-#nav-toggle span:nth-child(1) {
-	top: 1px;
-}
-#nav-toggle span:nth-child(2),
-#nav-toggle span:nth-child(3) {
-	top: 9px;
-}
-#nav-toggle span:nth-child(4) {
-	top: 17px;
-}
-#nav-toggle.active span:nth-child(1) {
-	top: 9px;
-	opacity: 0;
-	height: 0;
-}
-#nav-toggle.active span:nth-child(2) {
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-#nav-toggle.active span:nth-child(3) {
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-}
-#nav-toggle.active span:nth-child(4) {
-	top: 10px;
-	opacity: 0;
-	height: 0;
-}
-
-#mobile-nav-menu {
-	float: left;
-	width: 100%;
-	background: #fafafa;
-	height: calc(100% - 60px);
-	margin-top: 60px;
-	padding: 0;
-	position: absolute;
-	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-	cursor: pointer;
-	overflow-y: scroll;
-	text-align: center;
-}
-
-.ng-hide-remove {
-	-webkit-animation: 0.5s slideIn ease;
-	-moz-animation: 0.5s slideIn ease;
-	animation: 0.5s slideIn ease;
-}
-
-.ng-hide-add {
-	-webkit-animation: 0.5s slideOut ease;
-	-moz-animation: 0.5s slideOut ease;
-	animation: 0.5s slideOut ease;
-	display: block !important;
-}
-
-@keyframes slideIn {
-	0% {
-		left: -270px;
-	}
-	100% {
-		left: 0px;
-	}
-}
-@keyframes slideOut {
-	0% {
-		left: 0px;
-	}
-	100% {
-		left: -270px;
-	}
-}
-
-/*이름*/
-#nameView {
-	font-size: 2rem;
-	font-weight: 500;
-}
-
-/*예약현황*/
-.reservation-card-content {
-	padding: 0.3rem;
-	background: white;
-	font-size: 1.5rem;
-	height: 10rem;
-	color: black;
-	display: table;
-	width: inherit;
-}
-
-.slick-prev:before, .slick-next:before {
-	font-size: 4rem;
-	line-height: 1;
-	color: gray;
-	opacity: 0.8;
-}
-
-.slick-prev:before {
-	content: "‹";
-}
-
-.slick-next:before {
-	content: "›";
-}
-
-/*내정보관리*/
-.my-info-box {
-	padding: 0.5rem 0;
-	border: #c4c4c4 solid 1px;
-	font-size: 1.3rem;
-	display: flex;
-}
-
-.my-info-box a {
-	color: black;
+	top: 0;
+	right: 10px;
+	padding: 10px;
+	font-size: 20px;
 }
 
 /*사이드 메뉴*/
@@ -196,14 +74,15 @@ ul, li {
 }
 
 #nav {
-	border-top: 1px solid #c4c4c4;
+	margin: 40px 0;
+	border-top: 1px solid #eaeaea;
 }
 
 #nav li a {
 	display: block;
-	padding: 1.1rem 3rem;
+	padding: 1.1rem 4rem;
 	text-decoration: none;
-	color: black;
+	color: #404040;
 	text-align: left;
 }
 
@@ -216,38 +95,110 @@ ul, li {
 }
 
 .main-menu {
-	border-bottom: 1px solid #c4c4c4;
+	border-bottom: 1px solid #eaeaea;
 }
 
 .sub-menu {
+	padding-left: 3rem;
 	border-bottom: none;
 	color: #5645ED;
-	padding-left: 2rem;
 }
 
 .main-menu a:hover, .sub-menu:hover {
-	/*background-color: rgba(255, 255, 255, 0.2);*/
-	background-color: whitesmoke;
+	background: #ececec;
 }
 
+.side-nav .dropdown-img {
+	float: right;
+	width: fit-content;
+}
 
-/*푸터 : 회사정보*/
-.footer {
+.dropdown-img img {
+	width: 13px;
+	transition: transform 0.3s;
+}
+
+.rotate {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+@keyframes rotate_image {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.my-info {
+	font-size: 1.7rem;
+	text-align: center;
+	margin: 0 2rem;
+	padding: 0 2rem;
+	color: #404040;
+}
+
+/*로고*/
+.logo {
+	width: 50%;
+	cursor: pointer;
+}
+
+/*이름*/
+#nameView {
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+/*예약현황*/
+.reservation {
 	width: 100%;
-	font-size: 1.3rem;
-	text-align: left;
-	color: #808080;
-	float: bottom;
+	font-weight: 300;
+	border-radius: 1rem;
 }
 
-.footer-top {
-	display: flex;
-	border-top: 1px solid #c4c4c4;
-	padding: 0.8rem 2.7rem;
+.reservation-card-top {
+	padding: 0.7rem;
+	background: #5849ea;
+	color: #f7f7f7;
+	font-size: 1.6rem;
 }
 
-.footer-middle {
-	border-top: 1px solid #c4c4c4;
-	padding: 1.5rem 2.7rem 2rem;
-	font-size: 1.2rem;
+.reservation-card-content {
+	background: white;
+	font-size: 1.5rem;
+	height: 10rem;
+	color: #404040;
+	display: table;
+	width: inherit;
+}
+
+#carouselReservationControls {
+	height: inherit;
+	display: table-cell;
+	vertical-align: middle;
+	color: black;
+}
+
+.slick-prev:before, .slick-next:before {
+	font-size: 4rem;
+	color: gray;
+	opacity: 0.8;
+}
+
+.slick-prev:before {
+	content: "‹";
+}
+
+.slick-next:before {
+	content: "›";
+}
+
+#main {
+	transition: margin-left .5s;
+	padding: 20px;
+	overflow: hidden;
+	width: 100%;
 }
