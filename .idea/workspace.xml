@@ -20,17 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_main.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_main_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/wow.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

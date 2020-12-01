@@ -1,22 +1,13 @@
 <nav class="navbar">
-    <span class="open-slide">
+
+	<img src="/asset/images/mobile/m_logo.png" class="logo">
+
+	<span class="open-slide">
 	  <a href="#" onclick="openSlideMenu()">
 	    <svg width="20" height="25">
 		  <path d="M0,5 30,5" stroke="black"/>
 		  <path d="M0,12 30,12" stroke="black"/>
 		  <path d="M0,19 30,19" stroke="black"/>
-	    </svg>
-	  </a>
-    </span>
-
-	<img src="/asset/images/mobile/m_logo.png" style="height: 50%;margin: 0 auto">
-
-	<span class="open-slide">
-	  <a href="#">
-	    <svg width="20" height="25">
-		  <path d="M0,5 30,5" stroke="black" stroke-width="1"/>
-		  <path d="M0,12 30,12" stroke="black" stroke-width="1"/>
-		  <path d="M0,19 30,19" stroke="black" stroke-width="1"/>
 	    </svg>
 	  </a>
     </span>
@@ -118,12 +109,12 @@
 <script>
 	function openSlideMenu() {
 		document.getElementById('side-menu').style.width = '100%';
-		document.getElementById('main').style.marginLeft = '100%';
+		document.getElementById('main').style.marginRight = '100%';
 	}
 
 	function closeSlideMenu() {
 		document.getElementById('side-menu').style.width = '0';
-		document.getElementById('main').style.marginLeft = '0';
+		document.getElementById('main').style.marginRight = '0';
 	}
 
 	$(document).ready(function () {

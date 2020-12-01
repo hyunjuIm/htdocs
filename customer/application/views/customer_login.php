@@ -338,7 +338,7 @@
 				console.log(sessionStorage);
 
 				//모바일인지 pc인지
-				if(!isMobile) {
+				if(isMobile) {
 					location.href = "/customer/home";
 				} else {
 					location.href = "/customer/index";

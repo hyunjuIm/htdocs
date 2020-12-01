@@ -32,6 +32,7 @@
 </header>
 
 <div id="main">
+	<div style="background: url(../../../asset/images/mobile/bg_main.jpg);height: 590px;"></div>
 
 </div>
 
