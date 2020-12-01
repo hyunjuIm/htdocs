@@ -5,9 +5,9 @@
 	<span class="open-slide">
 	  <a href="#" onclick="openSlideMenu()">
 	    <svg width="20" height="25">
-		  <path d="M0,5 30,5" stroke="black"/>
-		  <path d="M0,12 30,12" stroke="black"/>
-		  <path d="M0,19 30,19" stroke="black"/>
+		  <path d="M0,5 30,5" stroke="white"/>
+		  <path d="M0,12 30,12" stroke="white"/>
+		  <path d="M0,19 30,19" stroke="white"/>
 	    </svg>
 	  </a>
     </span>
@@ -18,7 +18,7 @@
 	<a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
 
 	<form class="my-info">
-		<div style="margin-bottom: 0.5rem;font-size: 2rem;font-weight: bolder;letter-spacing: 0.15rem;text-align: left">
+		<div class="title-text">
 			DUAL HEALTHCARE
 		</div>
 
@@ -47,66 +47,94 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="my-info-box">
+			<a href="/customer/my_page" style="width: 50%;cursor: pointer">
+				<div>
+					내정보관리
+				</div>
+			</a>
+			<div style="color: #e5e5e5">
+				｜
+			</div>
+			<a style="width: 50%;cursor: pointer">
+				<div onclick="customerLogout()">
+					로그아웃
+				</div>
+			</a>
+		</div>
 	</form>
 
 	<form>
-	<ul id="nav">
-		<li class="main-menu">
-			<a class="main-menu-item" href="#">
-				예약서비스
-				<div class="dropdown-img">
-					<img src="/asset/images/icon_drop_down.png">
-				</div>
-			</a>
-			<ul>
-				<li class="sub-menu"><a href="/customer/reservation_step1">검진예약</a></li>
-				<li class="sub-menu"><a href="/customer/reservation_list">예약현황</a></li>
-			</ul>
-		</li>
-		<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
-		</li>
-		<li class="main-menu">
-			<a class="main-menu-item" href="#">
-				건강정보
-				<div class="dropdown-img">
-					<img src="/asset/images/icon_drop_down.png">
-				</div>
-			</a>
-			<ul>
-				<li class="sub-menu"><a href="#">질병백과</a></li>
-			</ul>
-		</li>
-		<li class="main-menu">
-			<a class="main-menu-item" href="#">
-				이용안내
-				<div class="dropdown-img">
-					<img src="/asset/images/icon_drop_down.png">
-				</div>
-			</a>
-			<ul>
-				<li class="sub-menu"><a href="/customer/notice_list">공지사항</a></li>
-				<li class="sub-menu"><a href="/customer/comparison_hospital">병원별 검진 항목 비교</a></li>
-				<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진 안내</a></li>
-			</ul>
-		</li>
-		<li class="main-menu">
-			<a class="main-menu-item" href="#">
-				고객센터
-				<div class="dropdown-img">
-					<img src="/asset/images/icon_drop_down.png">
-				</div>
-			</a>
-			<ul>
-				<li class="sub-menu"><a href="/customer/customer_service_faq">자주 묻는 질문</a></li>
-				<li class="sub-menu"><a href="/customer/customer_service_one_inquiry">1:1 문의</a></li>
-				<li class="sub-menu"><a href="/customer/customer_service_inquiry_list">내 문의 내역</a></li>
-			</ul>
-		</li>
-	</ul>
+		<ul id="nav">
+			<li class="main-menu">
+				<a class="main-menu-item" href="#">
+					예약서비스
+					<div class="dropdown-img">
+						<img src="/asset/images/icon_drop_down.png">
+					</div>
+				</a>
+				<ul>
+					<li class="sub-menu"><a href="/customer/reservation_step1">검진예약</a></li>
+					<li class="sub-menu"><a href="/customer/reservation_list">예약현황</a></li>
+				</ul>
+			</li>
+			<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
+			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="#">
+					건강정보
+					<div class="dropdown-img">
+						<img src="/asset/images/icon_drop_down.png">
+					</div>
+				</a>
+				<ul>
+					<li class="sub-menu"><a href="#">질병백과</a></li>
+				</ul>
+			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="#">
+					이용안내
+					<div class="dropdown-img">
+						<img src="/asset/images/icon_drop_down.png">
+					</div>
+				</a>
+				<ul>
+					<li class="sub-menu"><a href="/customer/notice_list">공지사항</a></li>
+					<li class="sub-menu"><a href="/customer/comparison_hospital">병원별 검진 항목 비교</a></li>
+					<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진 안내</a></li>
+				</ul>
+			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="#">
+					고객센터
+					<div class="dropdown-img">
+						<img src="/asset/images/icon_drop_down.png">
+					</div>
+				</a>
+				<ul>
+					<li class="sub-menu"><a href="/customer/customer_service_faq">자주 묻는 질문</a></li>
+					<li class="sub-menu"><a href="/customer/customer_service_one_inquiry">1:1 문의</a></li>
+					<li class="sub-menu"><a href="/customer/customer_service_inquiry_list">내 문의 내역</a></li>
+				</ul>
+			</li>
+		</ul>
 	</form>
 </div>
 
 <script>
+
+	$('body').scroll(function () {
+		if ($(this).scrollTop() > 0) {
+			$('.navbar').css("background-color", "white");
+			$('path').css("stroke", "black");
+		} else {
+			$('.navbar').css("background-color", "rgba(255, 255, 255, 0.5)");
+			$('path').css("stroke", "white");
+		}
+	});
+
+
 	function openSlideMenu() {
 		document.getElementById('side-menu').style.width = '100%';
 		document.getElementById('main').style.marginRight = '100%';

@@ -33,18 +33,14 @@
 	display: none;
 }
 
-
 /* side navigation */
-
-#side-menu {
-}
 
 .side-nav {
 	height: 100%;
 	width: 0;
 	position: fixed;
 	top: 0;
-	left: 0;
+	right: 0;
 	background-color: #F9F9F9;
 	padding-top: 30px;
 	overflow-x: hidden;
@@ -145,6 +141,14 @@ ul, li {
 	color: #404040;
 }
 
+.title-text {
+	margin-bottom: 0.5rem;
+	font-size: 2rem;
+	font-weight: bolder;
+	letter-spacing: 0.15rem;
+	text-align: left
+}
+
 /*로고*/
 .logo {
 	cursor: pointer;
@@ -204,8 +208,16 @@ ul, li {
 	content: "›";
 }
 
-#main {
-	transition: margin-right .5s;
-	padding: 0;
+/*내정보관리*/
+.my-info-box {
+	margin-top: 2rem;
+	padding: 0.5rem 0;
+	border: #e5e5e5 solid 1px;
+	font-size: 1.3rem;
+	display: flex;
 }
 
+#main {
+	transition: margin-right .5s;
+	width: 100%;
+}

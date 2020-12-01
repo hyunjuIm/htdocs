@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_main.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_main_b.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/wow.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
@@ -266,9 +264,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="838" y="417" key="Github.ShareDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1604997414465" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606700950506">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606841741253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606841741253" />
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606700950506" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606726782978">
       <screen x="0" y="0" width="1920" height="1040" />
