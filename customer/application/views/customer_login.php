@@ -339,7 +339,7 @@
 
 				//모바일인지 pc인지
 				if(!isMobile) {
-					location.href = "/customer/home";
+					location.href = "/m/home";
 				} else {
 					location.href = "/customer/index";
 				}

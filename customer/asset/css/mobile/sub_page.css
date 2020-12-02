@@ -1,0 +1,76 @@
+.container {
+	padding: 20px;
+	height: 90vh;
+}
+
+.row {
+	width: 100%;
+	text-align: center;
+}
+
+.sub-title {
+	width: 100%;
+	height: 255px;
+	padding: 70px 0;
+	color: white;
+	font-weight: 300;
+	font-size: 1.5rem;
+}
+
+.sub-title-name {
+	font-size: 3.5rem;
+	line-height: 7rem;
+	width: 100%;
+	font-weight: bolder;
+}
+
+table {
+	width: 100%;
+}
+
+
+/* Drop Down Styles
+================================ */
+nav {
+	width: 50%;
+	text-align: left;
+	font-size: 1.4rem;
+}
+
+nav .drop-down {
+	width: 100%;
+	list-style: none;
+	height: 252px;
+	overflow: hidden; /* When ul height is reduced, ensure overflowing li are not shown */
+	background-color: #2e2392;
+	margin: 0 auto;
+	padding: 0;
+	-webkit-transition: height 0.3s ease;
+	transition: height 0.3s ease;
+}
+
+nav .drop-down.closed {
+	/*  When toggled via jQuery this class will reduce the height of the ul which inconjuction
+		with overflow: hidden set on the ul will hide all list items apart from the first */
+	/* current li height 38px + 5px border */
+	height: 41px;
+}
+
+nav .drop-down li {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav .drop-down li a {
+	display: block;
+	color: #ecf0f1;
+	text-decoration: none;
+	padding: 10px 20px; /* Larger touch target area */
+}
+
+nav .drop-down li:first-child a:after {
+	content: "\25BC";
+	float: right;
+	vertical-align: middle;
+	font-size: 1rem;
+	padding: 3px;
+}

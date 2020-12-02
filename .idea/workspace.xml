@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/controllers/M.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_password.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/Customer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
@@ -264,11 +268,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="838" y="417" key="Github.ShareDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1604997414465" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606841741253">
+    <state x="640" y="240" key="NewPhpClassDialog" timestamp="1606871151248">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="240" key="NewPhpClassDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606871151248" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1606871696617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606841741253" />
-    <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606700950506" />
+    <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606871696617" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606726782978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -325,19 +333,19 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1503" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606435014011" />
-    <state x="283" y="129" width="1292" height="690" key="find.popup" timestamp="1606743179688">
+    <state x="742" y="142" width="1112" height="794" key="find.popup" timestamp="1606892136157">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
     <state x="386" y="69" width="1483" height="794" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@-343.-1080.2560.1040" timestamp="1606731051333" />
     <state x="283" y="129" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606743179688" />
-    <state x="742" y="142" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606694767568" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1606293690004">
+    <state x="742" y="142" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606892136157" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606871173695">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605099487813" />
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984377925" />
-    <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606293690004" />
+    <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606871173695" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606725184326">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

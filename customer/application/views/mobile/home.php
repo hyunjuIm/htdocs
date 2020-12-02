@@ -38,7 +38,7 @@
 
 		.notice-box {
 			width: 100%;
-			padding: 15px;
+			padding: 20px;
 		}
 
 		#mainNoticeInfos {
@@ -54,9 +54,13 @@
 		}
 
 		#mainNoticeInfos .title {
-			width: 60%;
+			display:inline-block;
+			width: 75%;
 			font-size: 1.5rem;
 			cursor: pointer;
+			white-space:nowrap;
+			overflow:hidden;
+			text-overflow: ellipsis;
 		}
 
 		#mainNoticeInfos .title:hover {
@@ -64,6 +68,8 @@
 		}
 
 		#mainNoticeInfos .date {
+			width: 25%;
+			display:inline-block;
 			font-size: 1.3rem;
 			color: #adadad;
 			text-align: right;
@@ -143,7 +149,7 @@
 					</div>
 				</div>
 				<div class="row" style="display: block">
-					<div style="float: right">
+					<div style="float: right;margin-right: -0.5px">
 						<img src="/asset/images/btn_plus.png"
 							 onclick="location.href='/customer/notice_list'">
 					</div>
