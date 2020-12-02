@@ -5,7 +5,7 @@
 		font-size: 1.3rem;
 		text-align: left;
 		color: #adadad;
-		margin-top: 30px;
+		margin-top: 70px;
 		background: #22212f;
 		padding: 30px;
 	}
@@ -20,7 +20,7 @@
 	}
 </style>
 
-<form class="footer">
+<div class="footer">
 	<div class="footer-top">
 		<div>
 			서비스이용약관
@@ -43,4 +43,4 @@
 			copyrightⓒdualhealthcare
 		</div>
 	</div>
-</form>
+</div>

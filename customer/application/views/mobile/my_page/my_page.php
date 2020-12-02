@@ -11,24 +11,50 @@
 	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css"/>
 
 	<style>
-		/*select, option {*/
-		/*	width: 100%;*/
-		/*	border: none;*/
-		/*	padding: 8px 20px !important;*/
-		/*	border-radius: 0;*/
-		/*	font-size: 1.4rem;*/
-		/*	background: none;*/
-		/*	color: white;*/
-		/*	font-weight: 200;*/
-		/*}*/
+		.sub-top-item {
+			background: #2e2392;
+			font-size: 1.4rem;
+			color: white;
+		}
 
-		/*option {*/
-		/*	background: #3529b1;*/
-		/*}*/
+		.sub-top-item td {
+			width: 50%;
+			padding: 10px 20px;
+		}
 
-		/*option:active, option:hover {*/
-		/*	background-color: #5849ea;*/
-		/*}*/
+		.sub-top-item td:hover {
+			background: #5645ED;
+		}
+
+		.personal-info-table {
+			margin-top: 50px;
+			text-align: left;
+			font-size: 1.4rem;
+		}
+
+		.personal-info-table tr {
+			border-bottom: 1px solid #e5e5e5;
+		}
+
+		.personal-info-table td {
+			padding: 8px 15px;
+			vertical-align: middle;
+		}
+
+		.personal-info-table .name {
+			font-size: 2.2rem;
+			text-align: center;
+			font-weight: bolder;
+		}
+
+		.personal-info-table .name span {
+			font-size: 1.4rem;
+		}
+
+		.personal-info-table .title {
+			width: 22%;
+			background: #f6f6f6;
+		}
 
 	</style>
 
@@ -61,25 +87,19 @@
 			</div>
 
 			<div class="row">
-				<nav id="menu1">
-					<ul class="drop-down closed" style="border-right: 1px solid rgba(255, 255, 255, 0.1)">
-						<li><a href="#" class="nav-button">/</a></li>
-						<li><a href="#">예약서비스</a></li>
-						<li><a href="#">검진결과</a></li>
-						<li><a href="#">건강정보</a></li>
-						<li><a href="#">이용안내</a></li>
-						<li><a href="#">고객센터</a></li>
-					</ul>
-				</nav>
-				<nav id="menu2">
-					<ul class="drop-down closed">
-						<li><a href="#" class="nav-button">/</a></li>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Library</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</nav>
+				<table class="sub-top-item">
+					<tr>
+						<td style="background: #5645ED">
+							내정보관리
+						</td>
+						<td onclick="location.href='/m/my_password'">
+							비밀번호변경
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="row" id="personalInfos" style="display: block">
 
 			</div>
 
@@ -94,39 +114,149 @@
 
 </div>
 
+<?php
+$parentDir = dirname(__DIR__ . '..');
+require($parentDir . '/common/check_data.php');
+?>
 
 </body>
 
 <script>
-	//서브메뉴 셀렉터
-	$(function () {
-		$(".nav-button").click(function () {
-			$(this).parent().parent().toggleClass("closed");
-		});
+	$('#menu1 .nav-button').text('고객센터');
+	$('#menu2 .nav-button').text('자주 묻는 질문');
 
-		$("#menu1 .drop-down li a").not('.nav-button').click(function () {
-			$('#menu1 .nav-button').text($(this).text());
-			$(this).css("background-color", "#5645ED");
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/sub_drop_down.js');
+	?>
 
-			$('#menu1 .drop-down li a').not(this).css("background-color", "#2e2392");
-
-			$('#menu2 ul').empty();
-			if($('.nav-button').text() == '예약서비스') {
-				var option = '';
-				option += '<li><a href="#" class="nav-button">검진예약</a></li>' +
-						'<li><a href="#">검진예약</a></li>' +
-						'<li><a href="#">검진현황</a></li>';
-				$('#menu2 ul').append(option);
-			}
-		});
-
-		$("#menu2 .drop-down li a").not('.nav-button').click(function () {
-			$('#menu2 .nav-button').text($(this).text());
-			$(this).css("background-color", "#5645ED");
-
-			$('#menu2 .drop-down li a').not(this).css("background-color", "#2e2392");
-		});
+	var userData = new Object();
+	userData.cusId = sessionStorage.getItem("userCusID");
+	// 내정보
+	instance.post('CU_002_001', userData).then(res => {
+		setPersonalInfo(res.data)
 	});
+
+	// 내정보 테이블 셋팅
+	function setPersonalInfo(data) {
+		console.log(data);
+
+		for (i = 0; i < data.length; i++) {
+			var html = '';
+			html += '<table class="personal-info-table">' +
+					'<tr>' +
+					'<td colspan="2" class="name">' + data[i].famName + '<span>(' + data[i].grade + ')</span></td>' +
+					'</tr>' +
+					'<tr>' +
+					'<td class="title">생년월일</td>' +
+					'<td>' + data[i].birthDate + '</td>' +
+					'</tr>' +
+					'<tr>' +
+					'<td class="title">성별</td>';
+			if (data[i].sex) {
+				html += '<td>남성</td>';
+			} else {
+				html += '<td>여성</td>';
+			}
+
+			//주소
+			var zonecode = i + 'zonecode';
+			var address = i + 'address';
+			var buildingName = i + 'buildingName';
+			//연락처
+			var phone = i + 'phone';
+			//이메일
+			var email = i + 'email';
+
+			html += '</tr>' +
+					'<tr>' +
+					'<td class="title">주소</td>' +
+					'<td>' +
+					'<div style="display: flex">' +
+					'<input type="text" id=\'' + zonecode + '\' value=\'' + data[i].zipcode + '\' placeholder="우편번호" readonly>' +
+					'<button type="button" class="btn btn-dark" style="width: 30%;margin-left: 3px;" ' +
+					'onclick="openAddressSearch(\'' + zonecode + '\', \'' + address + '\', \'' + buildingName + '\')">주소검색' +
+					'</button>' +
+					'</div>' +
+					'<input type="text" style="margin-top: 5px" id=\'' + address + '\' value=\'' + data[i].address + '\' readonly/>' +
+					'<input type="text" style="margin-top: 5px" id=\'' + buildingName + '\' value=\'' + data[i].buildingNum + '\' placeholder="상세주소"/>' +
+					'</td>' +
+					'</tr>' +
+					'<tr>' +
+					'<td class="title">연락처</td>' +
+					'<td><input type="text" id=\'' + phone + '\' value="' + data[i].phone + '"></td>' +
+					'</tr>' +
+					'<tr>' +
+					'<td class="title">이메일</td>' +
+					'<td><input type="email" id=\'' + email + '\' value="' + data[i].email + '"></td>' +
+					'</tr>' +
+					'</table>'+
+					'<div class="btn-light-purple-square" style="margin: 10px 0 30px 0;float: right"' +
+					'onclick="savePersonalInfo(\'' + data[i].famId + '\', \'' + zonecode + '\', \'' + address + '\', \'' + buildingName + '\', \'' + phone + '\', \'' + email + '\')">' +
+					'저장' +
+					'</div>';
+			$("#personalInfos").append(html);
+		}
+	}
+
+	//주소검색
+	function openAddressSearch(zonecode, address, buildingName) {
+		new daum.Postcode({
+			oncomplete: function (data) {
+				$("#" + zonecode + "").val(data.zonecode); // 우편번호 (5자리)
+				$("#" + address + "").val(data.address);
+				$("#" + buildingName + "").val(data.buildingName);
+				$("#" + buildingName + "").focus();
+			}
+		}).open();
+	}
+
+	//고객 정보 수정 저장
+	function savePersonalInfo(famId, zonecode, address, buildingName, phone, email) {
+		if ($("#" + buildingName + "").val() == "") {
+			alert("상세주소를 입력해주세요.");
+			$("#" + buildingName + "").focus();
+			return;
+		} else if ($("#" + phone + "").val() == "") {
+			alert("연락처를 입력해주세요.");
+			$("#" + phone + "").focus();
+			return;
+		} else if (!isPhoneNum($("#" + phone + "").val())) {
+			alert("올바른 연락처를 입력해주세요.");
+			$("#" + phone + "").focus();
+			return;
+		} else if ($("#" + email + "").val() == "") {
+			alert("이메일을 입력해주세요.");
+			$("#" + email + "").focus();
+			return;
+		} else if (!isEmail($("#" + email + "").val())) {
+			alert("올바른 이메일를 입력해주세요.");
+			$("#" + email + "").focus();
+			return;
+		}
+
+		var saveItems = new Object();
+
+		saveItems.famId = famId;
+		saveItems.zipcode = $("#" + zonecode + "").val();
+		saveItems.address = $("#" + address + "").val();
+		saveItems.buildingNum = $("#" + buildingName + "").val();
+		saveItems.phone = $("#" + phone + "").val();
+		saveItems.email = $("#" + email + "").val();
+		console.log(saveItems);
+
+		if (confirm("수정하시겠습니까?") == true) {
+			instance.post('CU_002_002', saveItems).then(res => {
+				console.log(res.data);
+				if (res.data.message == "success") {
+					alert("저장되었습니다.");
+					location.reload();
+				}
+			});
+		} else {
+			return false;
+		}
+	}
 </script>
 
 </html>

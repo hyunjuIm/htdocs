@@ -1,6 +1,6 @@
 .container {
 	padding: 20px;
-	height: 90vh;
+	min-height: 90vh;
 }
 
 .row {
@@ -40,20 +40,17 @@ nav {
 nav .drop-down {
 	width: 100%;
 	list-style: none;
-	height: 252px;
+	height: fit-content;
 	overflow: hidden; /* When ul height is reduced, ensure overflowing li are not shown */
 	background-color: #2e2392;
 	margin: 0 auto;
 	padding: 0;
-	-webkit-transition: height 0.3s ease;
-	transition: height 0.3s ease;
+	-webkit-transition: height 0.3s;
+	transition: height 0.3s;
 }
 
 nav .drop-down.closed {
-	/*  When toggled via jQuery this class will reduce the height of the ul which inconjuction
-		with overflow: hidden set on the ul will hide all list items apart from the first */
-	/* current li height 38px + 5px border */
-	height: 41px;
+	height: 42px;
 }
 
 nav .drop-down li {
@@ -73,4 +70,8 @@ nav .drop-down li:first-child a:after {
 	vertical-align: middle;
 	font-size: 1rem;
 	padding: 3px;
+}
+
+nav .drop-down li a:hover {
+	background-color: #5645ED;
 }
