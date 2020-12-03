@@ -57,7 +57,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	background: #5849ea;
 	padding: 5px 20px;
 	color: #fff;
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	border-radius: 0.5rem;
 	text-decoration: none;
 }
@@ -78,10 +78,10 @@ input[type="text"], input[type="email"], input[type="password"] {
 	cursor: pointer;
 	display: inline-block;
 	background: white;
-	padding: 0.7rem 2.5rem;
+	padding: 5px 20px;
 	text-align: center;
 	color: #5849ea;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	border: 1px solid #5849ea;
 	border-radius: 0.5rem;
 	text-decoration: none;
@@ -111,4 +111,86 @@ input[type="text"], input[type="email"], input[type="password"] {
 .btn-delete-square:hover {
 	color: white;
 	opacity: 0.95;
+}
+
+
+.search-input {
+	width: 100%;
+	height: 30px;
+	padding: 0.5rem;
+	border-radius: 0 !important;
+	font-size: 1.2rem;
+	border: 1px solid #464646;
+}
+
+.search-btn {
+	cursor: pointer;
+	background: #464646;
+	min-width: 30px;
+	min-height: 30px;
+	border: 1px solid #464646;
+	text-align: center;
+	line-height: 25px;
+}
+
+.search-btn:hover {
+	opacity: 0.95;
+}
+
+.page_wrap {
+	text-align: center;
+	font-size: 0;
+}
+
+.page_nation {
+	display: inline-block;
+}
+
+.page_nation .none {
+	display: none;
+}
+
+.page_nation a {
+	display: block;
+	margin: 0 3px;
+	float: left;
+	border: 1px solid #e6e6e6;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	background-color: #fff;
+	font-size: 15px;
+	color: #999999;
+	text-decoration: none;
+}
+
+.page_nation .arrow {
+	border: 1px solid #ccc;
+}
+
+.page_nation .pprev {
+	background: #f8f8f8 url('../../images/page_pprev.png') no-repeat center center;
+	margin-left: 0;
+}
+
+.page_nation .prev {
+	background: #f8f8f8 url('../../images/page_prev.png') no-repeat center center;
+	margin-right: 7px;
+}
+
+.page_nation .next {
+	background: #f8f8f8 url('../../images/page_next.png') no-repeat center center;
+	margin-left: 7px;
+}
+
+.page_nation .nnext {
+	background: #f8f8f8 url('../../images/page_nnext.png') no-repeat center center;
+	margin-right: 0;
+}
+
+.page_nation a.active {
+	background-color: #5645ed;
+	color: #fff;
+	border: 1px solid #3529b1;
 }

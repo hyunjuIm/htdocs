@@ -1,16 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어</title>
+	<title>듀얼헬스케어:내정보관리</title>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/head.php');
 	?>
 
-	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css"/>
+	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
+		.sub-title {
+			padding: 72px 0;
+			font-weight: 300;
+			font-size: 1.3rem;
+		}
+
+		.sub-title-name {
+			line-height: 6rem;
+		}
+
 		.sub-top-item {
 			background: #2e2392;
 			font-size: 1.4rem;
@@ -42,13 +52,14 @@
 		}
 
 		.personal-info-table .name {
-			font-size: 2.3rem;
-			font-weight: bolder;
-			padding: 5px 0;
+			font-size: 2.8rem;
+			font-weight: 500;
+			padding: 5px 3px;
 		}
 
 		.personal-info-table .name span {
 			font-size: 1.4rem;
+			font-weight: 300;
 		}
 
 		.personal-info-table .title {
@@ -74,15 +85,14 @@
 </header>
 
 <div id="main">
-	<div style="background: url(../../../../asset/images/title1.jpg);height: 300px;">
+	<div class="sub-title-height" style="background: url(../../../../asset/images/title1.jpg)">
 		<div class="container">
 
 			<div class="row sub-title">
 				<div style="margin: 0 auto">
 					<span class="sub-title-name">내정보</span><br>
 					주소 및 연락처는 예약확인 / 준비물 배송 등의<br>
-					서비스에 이용되므로 정확한 정보를<br>
-					입력하시길 바랍니다.
+					서비스에 이용되므로 정확한 정보를 입력하시길 바랍니다.
 				</div>
 			</div>
 
@@ -122,14 +132,6 @@ require($parentDir . '/common/check_data.php');
 </body>
 
 <script>
-	$('#menu1 .nav-button').text('고객센터');
-	$('#menu2 .nav-button').text('자주 묻는 질문');
-
-	<?php
-	$parentDir = dirname(__DIR__ . '..');
-	require($parentDir . '/common/sub_drop_down.js');
-	?>
-
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	// 내정보

@@ -129,7 +129,7 @@
 						</div>
 						<div class="row" style="margin-top: 5rem;display: block">
 							<div class="btn-cancel-square" onclick="location.href = '/customer/notice_list'"
-								 style="margin: 0 auto;color: #2f2f2f;border-color: #2F2F2F">목록
+								 style="margin: 0 auto;color: #2f2f2f;border-color: #2F2F2F">목록으로
 							</div>
 						</div>
 					</div>

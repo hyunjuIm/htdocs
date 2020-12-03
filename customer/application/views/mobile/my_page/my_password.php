@@ -1,16 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어</title>
+	<title>듀얼헬스케어:비밀번호변경</title>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/head.php');
 	?>
 
-	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css"/>
+	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
+		.sub-title {
+			padding: 65px 0;
+			font-weight: 300;
+			font-size: 1.3rem;
+		}
+
+		.sub-title-name {
+			line-height: 6rem;
+		}
+
 		.sub-top-item {
 			background: #2e2392;
 			font-size: 1.4rem;
@@ -29,7 +39,6 @@
 		.password-table {
 			border-top: black 2px solid;
 			margin: 50px 0 30px 0;
-			font-size: 1.4rem;
 			text-align: left;
 		}
 
@@ -70,7 +79,7 @@
 </header>
 
 <div id="main">
-	<div style="background: url(../../../../asset/images/title1.jpg);height: 300px;">
+	<div class="sub-title-height" style="background: url(../../../../asset/images/title1.jpg)">
 		<div class="container">
 
 			<div class="row sub-title">

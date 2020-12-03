@@ -8,6 +8,7 @@
 		margin-top: 50px;
 		background: #22212f;
 		padding: 30px;
+		display: inline-block;
 	}
 
 	.footer-top {
