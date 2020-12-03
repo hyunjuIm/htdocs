@@ -36,15 +36,15 @@
 			border-bottom: 1px solid #e5e5e5;
 		}
 
-		.personal-info-table td {
+		.personal-info-table td:not(.name) {
 			padding: 8px 15px;
 			vertical-align: middle;
 		}
 
 		.personal-info-table .name {
-			font-size: 2.2rem;
-			text-align: center;
+			font-size: 2.3rem;
 			font-weight: bolder;
+			padding: 5px 0;
 		}
 
 		.personal-info-table .name span {
@@ -89,11 +89,11 @@
 			<div class="row">
 				<table class="sub-top-item">
 					<tr>
-						<td style="background: #5645ED">
+						<td style="background: #5645ED" onclick="location.href='/m/my_page'">
 							내정보관리
 						</td>
 						<td onclick="location.href='/m/my_password'">
-							비밀번호변경
+							비밀번호 변경
 						</td>
 					</tr>
 				</table>
@@ -145,7 +145,7 @@ require($parentDir . '/common/check_data.php');
 			var html = '';
 			html += '<table class="personal-info-table">' +
 					'<tr>' +
-					'<td colspan="2" class="name">' + data[i].famName + '<span>(' + data[i].grade + ')</span></td>' +
+					'<td colspan="2" class="name">' + data[i].famName + '<span> (' + data[i].grade + ')</span></td>' +
 					'</tr>' +
 					'<tr>' +
 					'<td class="title">생년월일</td>' +

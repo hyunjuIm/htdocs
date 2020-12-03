@@ -5,7 +5,7 @@
 		font-size: 1.3rem;
 		text-align: left;
 		color: #adadad;
-		margin-top: 70px;
+		margin-top: 50px;
 		background: #22212f;
 		padding: 30px;
 	}

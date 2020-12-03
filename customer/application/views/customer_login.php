@@ -321,8 +321,8 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "https://api.dualhealth.kr/permission/",
+			//baseURL: "http://192.168.219.107:8080/permission/",
+			baseURL: "http://192.168.219.107:8080/permission/",
 			timeout: 5000
 		});
 
@@ -338,7 +338,7 @@
 				console.log(sessionStorage);
 
 				//모바일인지 pc인지
-				if(!isMobile) {
+				if(isMobile) {
 					location.href = "/m/home";
 				} else {
 					location.href = "/customer/index";

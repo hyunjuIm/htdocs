@@ -244,8 +244,8 @@
 		requestMember.level = "MASTER";
 
 		const instance = axios.create({
-			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "https://api.dualhealth.kr/permission/",
+			//baseURL: "http://192.168.219.107:8080/permission/",
+			baseURL: "http://192.168.219.107:8080/permission/",
 			timeout: 5000
 		});
 
