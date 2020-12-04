@@ -20,30 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/result_final.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/result_main.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_prev.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/controllers/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/sub_drop_down.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/sub_drop_down.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/health_checkup_guide.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/health_checkup_guide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_dark.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/side_bar_light.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/side_menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon1.png" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon2.png" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon3.png" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon4.png" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon5.png" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon6.png" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/images/mobile/m_icon6.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606726776797</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="-">
+      <created>1607071947937</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607071947937</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,11 +275,11 @@
     </state>
     <state x="820" y="390" key="NewPhpFileDialog/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1606921211205" />
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606871696617" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606726782978">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607071952307">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1605984781060" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606726782978" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607071952307" />
     <state x="548" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607049207873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -88,8 +88,6 @@
 
 		.item-table td {
 			text-align: center;
-			width: calc(120rem / 4);
-			height: calc(120rem / 4);
 			font-weight: bolder;
 			font-size: 1.7rem;
 		}
@@ -280,6 +278,8 @@
 									<div style="font-size: 2.8rem;line-height: 6rem">검진항목에 대한 안내</div>
 									<div style="color: #666666;">궁금하신 항목을 선택해주세요.</div>
 								</td>
+							</tr>
+							<tr>
 								<td>
 									<div class="item">
 										<img src="/asset/images/icon12.png">
@@ -334,6 +334,8 @@
 										<span>간기능검사, 당뇨검사, 간염검사, 췌장기능검사</span>
 									</div>
 								</td>
+							</tr>
+							<tr>
 								<td>
 									<div class="item">
 										<img src="/asset/images/icon16.png">
@@ -384,6 +386,8 @@
 										- 상복부 초음파 : 간, 췌장, 담장, 비장 등의 이상 여부를 확인합니다.
 									</div>
 								</td>
+							</tr>
+							<tr>
 								<td>
 									<div class="item">
 										<img src="/asset/images/icon20.png">
@@ -441,6 +445,9 @@ require($parentDir . '/common/check_data.php');
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
+
+	$(".item-table td").width(100%/2);
+	$(".item-table td").height($(".item-table td").width());
 
 	$(document).ready(function () {
 		$('.item-table td').hover(
