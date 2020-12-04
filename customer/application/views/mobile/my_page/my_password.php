@@ -11,16 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
-		.sub-title {
-			padding: 65px 0;
-			font-weight: 300;
-			font-size: 1.3rem;
-		}
-
-		.sub-title-name {
-			line-height: 6rem;
-		}
-
 		.sub-top-item {
 			background: #2e2392;
 			font-size: 1.4rem;

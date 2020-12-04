@@ -202,6 +202,10 @@
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
+				<ul>
+					<li class="sub-menu"><a href="/customer/result_final">종합결과</a></li>
+					<li class="sub-menu"><a href="/customer/result_main">주요결과</a></li>
+				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">건강정보</a>
 				<ul>

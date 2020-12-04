@@ -79,7 +79,17 @@
 					<li class="sub-menu"><a href="/m/reservation_list">예약현황</a></li>
 				</ul>
 			</li>
-			<li class="main-menu"><a class="main-menu-item" href="#">검진결과</a>
+			<li class="main-menu">
+				<a class="main-menu-item" href="#">
+					검진결과
+					<div class="dropdown-img">
+						<img src="/asset/images/icon_drop_down.png">
+					</div>
+				</a>
+				<ul>
+					<li class="sub-menu"><a href="/m/result_final">종합결과</a></li>
+					<li class="sub-menu"><a href="/m/result_main">주요결과</a></li>
+				</ul>
 			</li>
 			<li class="main-menu">
 				<a class="main-menu-item" href="#">

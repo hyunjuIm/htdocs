@@ -11,29 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
-		.notice-detail-table {
-			text-align: left;
-		}
-
-		.notice-detail-table th {
-			background: #f6f6f6;
-			font-weight: normal !important;
-			width: 25%;
-			text-align: left;
-			padding: 1rem 2rem;
-			vertical-align: middle;
-		}
-
-		.notice-detail-table td {
-			vertical-align: middle;
-			padding: 1rem 2rem;
-		}
-
-		.notice-detail-table td div {
-			padding: 0.5rem;
-		}
-
 		#content {
+			text-align: left;
 			white-space: pre-wrap;
 		}
 	</style>
@@ -60,7 +39,8 @@
 			<div class="row sub-title">
 				<div style="margin: 0 auto">
 					<span class="sub-title-name">공지사항</span><br>
-					Information on Use
+					편리한 이용을 위해<br>
+					듀얼헬스케어의 정보를 확인해주세요.
 				</div>
 			</div>
 
@@ -75,7 +55,7 @@
 				<div id="title" style="font-size: 2rem;color:#3529b1;font-weight: 500;line-height: 3.5rem"></div>
 				<div id="createDate" style="color:grey;margin-bottom: 2rem"></div>
 
-				<div id="content" style="padding: 3rem 0;border-top: 2px solid black">
+				<div id="content" style="padding: 3rem;border-top: 2px solid black">
 				</div>
 
 				<hr>
@@ -105,7 +85,7 @@ require($parentDir . '/common/check_data.php');
 
 <script>
 	$('#menu1 .nav-button').text('이용안내');
-	$('#menu2 .nav-button').text('공지사항');
+	var menu2 = '공지사항';
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');

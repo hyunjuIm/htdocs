@@ -61,6 +61,18 @@ class customer extends CI_Controller
 		$this->load->view('reservation_list');
 	}
 
+	//종합결과
+	public function result_final()
+	{
+		$this->load->view('result_final');
+	}
+
+	//주요결과
+	public function result_main()
+	{
+		$this->load->view('result_main');
+	}
+
 	//공지사항
 	public function notice_list()
 	{

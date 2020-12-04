@@ -70,7 +70,8 @@
 			<div class="row sub-title">
 				<div style="margin: 0 auto">
 					<span class="sub-title-name">공지사항</span><br>
-					Information on Use
+					편리한 이용을 위해<br>
+					듀얼헬스케어의 정보를 확인해주세요.
 				</div>
 			</div>
 
@@ -134,7 +135,7 @@ require($parentDir . '/common/check_data.php');
 
 <script>
 	$('#menu1 .nav-button').text('이용안내');
-	$('#menu2 .nav-button').text('공지사항');
+	var menu2 = '공지사항';
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');

@@ -17,15 +17,15 @@
 .sub-title {
 	width: 100%;
 	height: 220px;
-	padding: 90px 0;
+	padding: 72px 0;
 	color: white;
 	font-weight: 300;
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 }
 
 .sub-title-name {
 	font-size: 3.2rem;
-	line-height: 5rem;
+	line-height: 6rem;
 	width: 100%;
 	font-weight: bolder;
 }
@@ -51,8 +51,6 @@ nav .drop-down {
 	background-color: #2e2392;
 	margin: 0 auto;
 	padding: 0;
-	-webkit-transition: height 0.3s;
-	transition: height 0.3s;
 }
 
 nav .drop-down.closed {

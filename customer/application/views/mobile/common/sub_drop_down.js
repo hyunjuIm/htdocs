@@ -24,7 +24,7 @@ if ($('#menu1 .nav-button').text() == '예약서비스') {
 	var option = '';
 	option += '<li><a href="#" class="nav-button">공지사항</a></li>' +
 		'<li><a href="#">공지사항</a></li>' +
-		'<li><a href="#">병원별 검진 항목 비교</a></li>' +
+		'<li><a href="#">병원별검진항목비교</a></li>' +
 		'<li><a href="#">건강검진 안내</a></li>';
 	$('#menu2 ul').append(option);
 } else if ($('#menu1 .nav-button').text() == '고객센터') {
@@ -35,6 +35,8 @@ if ($('#menu1 .nav-button').text() == '예약서비스') {
 		'<li><a href="#">내 문의 내역</a></li>';
 	$('#menu2 ul').append(option);
 }
+
+$('#menu2 .nav-button').text(menu2);
 
 //선택된 드롭다운 메뉴 배경색 변경
 $('#menu1 .drop-down li a').not('.nav-button').each(function () {

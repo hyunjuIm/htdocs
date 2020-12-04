@@ -81,6 +81,47 @@
 			color: #adadad;
 			text-align: right;
 		}
+
+		.home-text {
+			-webkit-animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+			animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		}
+
+		@-webkit-keyframes focus-in-expand-fwd {
+			0% {
+				letter-spacing: -0.5em;
+				-webkit-transform: translateZ(-800px);
+				transform: translateZ(-800px);
+				-webkit-filter: blur(12px);
+				filter: blur(12px);
+				opacity: 0;
+			}
+			100% {
+				-webkit-transform: translateZ(0);
+				transform: translateZ(0);
+				-webkit-filter: blur(0);
+				filter: blur(0);
+				opacity: 1;
+			}
+		}
+		@keyframes focus-in-expand-fwd {
+			0% {
+				letter-spacing: -0.5em;
+				-webkit-transform: translateZ(-800px);
+				transform: translateZ(-800px);
+				-webkit-filter: blur(12px);
+				filter: blur(12px);
+				opacity: 0;
+			}
+			100% {
+				-webkit-transform: translateZ(0);
+				transform: translateZ(0);
+				-webkit-filter: blur(0);
+				filter: blur(0);
+				opacity: 1;
+			}
+		}
+
 	</style>
 
 </head>
@@ -99,8 +140,8 @@
 <div id="main">
 	<div style="background: url(../../../asset/images/mobile/bg_main.jpg);height: 500px;background-size: 100%">
 		<div class="container">
-			<div class="row" style="display: table;height: 400px;font-weight: 300;color: white">
-				<div style="display: table-cell; vertical-align: middle">
+			<div class="row" style="display: table;margin: 150px 0;font-weight: 300;color: white">
+				<div class="home-text" style="display: table-cell; vertical-align: middle">
 					<div style="font-size: 3.5rem;margin-bottom: 1rem;font-weight: bolder">건강관리서비스</div>
 					활기차고 건강한 삶을 위해<br>
 					듀얼헬스케어는 항상 곁에 있겠습니다.
@@ -115,14 +156,14 @@
 								<span class="menu">내예약</span><br>
 								MY RESERVATION
 							</div>
-							<img src="../../../asset/images/mobile/icon_main1.png" width="50%">
+							<img src="../../../asset/images/mobile/m_icon1.png" width="50%">
 						</td>
 						<td style="background: url(../../../asset/images/mobile/main2.jpg);background-size: 100%">
 							<div>
 								<span class="menu">검진예약</span><br>
 								RESERVATION
 							</div>
-							<img src="../../../asset/images/icon2.png" width="50%">
+							<img src="../../../asset/images/mobile/m_icon2.png" width="50%">
 						</td>
 					</tr>
 					<tr>
@@ -131,14 +172,14 @@
 								<span class="menu">검진결과</span><br>
 								RESULT
 							</div>
-							<img src="../../../asset/images/icon3.png" width="50%">
+							<img src="../../../asset/images/mobile/m_icon3.png" width="50%">
 						</td>
 						<td style="background: url(../../../asset/images/mobile/main4.jpg);background-size: 100%">
 							<div>
 								<span class="menu">병원별비교</span><br>
 								COMPARE HOSPITALS
 							</div>
-								<img src="../../../asset/images/icon4.png" width="50%" style="padding-right: 10px">
+								<img src="../../../asset/images/mobile/m_icon4.png" width="50%" style="padding-right: 10px">
 						</td>
 					</tr>
 					<tr>
@@ -147,14 +188,14 @@
 								<span class="menu">건강컨텐츠</span><br>
 								HEALTH CONTENTS
 							</div>
-							<img src="../../../asset/images/icon5.png" width="50%">
+							<img src="../../../asset/images/mobile/m_icon5.png" width="50%">
 						</td>
 						<td style="background: url(../../../asset/images/mobile/main6.jpg);background-size: 100%">
 							<div>
 								<span class="menu">고객센터</span><br>
 								CUSTOMER CENTER
 							</div>
-							<img src="../../../asset/images/icon6.png" width="50%">
+							<img src="../../../asset/images/mobile/m_icon6.png" width="50%">
 						</td>
 					</tr>
 				</table>
@@ -163,12 +204,12 @@
 			<div class="row" style="margin-top: 50px;">
 				<div class="notice-box">
 					<div class="row" style="display: block;font-weight: bolder">
-						<div style="font-size: 1.4rem;color: #5645ED;margin: 0 auto"
-							 onclick="location.href='/customer/notice_list'">NOTICE
+						<div style="font-size: 1.6rem;color: #5645ED;margin: 0 auto"
+							 onclick="location.href='/m/notice_list'">NOTICE
 						</div>
-						<div style="font-size: 2rem;color: black;padding-bottom: 1rem;margin: 0 auto">공지사항</div>
+						<div style="font-size: 2.3rem;color: black;padding-bottom: 1rem;margin: 0 auto">공지사항</div>
 					</div>
-					<div class="row" style="margin-top: 5px;border: 1px solid #e3e3e3;padding: 20px;">
+					<div class="row" style="margin-top: 5px;border: 1px solid #e3e3e3;padding: 3rem 2rem;">
 						<table id="mainNoticeInfos">
 						</table>
 					</div>
