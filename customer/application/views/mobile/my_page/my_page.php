@@ -114,11 +114,6 @@
 
 </div>
 
-<?php
-$parentDir = dirname(__DIR__ . '..');
-require($parentDir . '/common/check_data.php');
-?>
-
 </body>
 
 <script>
@@ -128,6 +123,11 @@ require($parentDir . '/common/check_data.php');
 	instance.post('CU_002_001', userData).then(res => {
 		setPersonalInfo(res.data)
 	});
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/check_data.js');
+	?>
 
 	// 내정보 테이블 셋팅
 	function setPersonalInfo(data) {

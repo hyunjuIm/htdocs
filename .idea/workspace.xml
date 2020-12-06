@@ -21,7 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/check_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/check_data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/health_checkup_guide.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/health_checkup_guide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,12 +342,12 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1503" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607068034927" />
-    <state x="2029" y="90" width="1112" height="794" key="find.popup" timestamp="1607065846587">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="283" y="129" width="1292" height="690" key="find.popup" timestamp="1607225073666">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1011" y="291" width="584" height="536" key="find.popup/-343.-1080.2560.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1605104930556" />
     <state x="386" y="69" width="1483" height="794" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@-343.-1080.2560.1040" timestamp="1606731051333" />
-    <state x="283" y="129" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1607013164486" />
+    <state x="283" y="129" width="1292" height="690" key="find.popup/0.0.1920.1040/-343.-1080.2560.1040@0.0.1920.1040" timestamp="1607225073666" />
     <state x="2029" y="90" width="1112" height="794" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607065846587" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606871173695">
       <screen x="0" y="0" width="1920" height="1040" />

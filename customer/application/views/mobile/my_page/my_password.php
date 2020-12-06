@@ -132,14 +132,14 @@
 
 </div>
 
-<?php
-$parentDir = dirname(__DIR__ . '..');
-require($parentDir . '/common/check_data.php');
-?>
-
 </body>
 
 <script>
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/check_data.js');
+	?>
+
 	function changePassword() {
 		if ($("#beforePassword").val() == "") {
 			alert("현재 비밀번호를 입력해주세요.");

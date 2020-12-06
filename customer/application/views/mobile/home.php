@@ -82,44 +82,101 @@
 			text-align: right;
 		}
 
-		.home-text {
-			-webkit-animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-			animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		/* ANIMATIONS */
+		/* Simple CSS3 Fade-in-down Animation */
+		.fadeInDown {
+			-webkit-animation-name: fadeInDown;
+			animation-name: fadeInDown;
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
 		}
 
-		@-webkit-keyframes focus-in-expand-fwd {
+		@-webkit-keyframes fadeInDown {
 			0% {
-				letter-spacing: -0.5em;
-				-webkit-transform: translateZ(-800px);
-				transform: translateZ(-800px);
-				-webkit-filter: blur(12px);
-				filter: blur(12px);
 				opacity: 0;
+				-webkit-transform: translate3d(0, -100%, 0);
+				transform: translate3d(0, -100%, 0);
 			}
 			100% {
-				-webkit-transform: translateZ(0);
-				transform: translateZ(0);
-				-webkit-filter: blur(0);
-				filter: blur(0);
+				opacity: 1;
+				-webkit-transform: none;
+				transform: none;
+			}
+		}
+
+		@keyframes fadeInDown {
+			0% {
+				opacity: 0;
+				-webkit-transform: translate3d(0, -100%, 0);
+				transform: translate3d(0, -100%, 0);
+			}
+			100% {
+				opacity: 1;
+				-webkit-transform: none;
+				transform: none;
+			}
+		}
+
+		/* Simple CSS3 Fade-in Animation */
+		@-webkit-keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
 				opacity: 1;
 			}
 		}
-		@keyframes focus-in-expand-fwd {
-			0% {
-				letter-spacing: -0.5em;
-				-webkit-transform: translateZ(-800px);
-				transform: translateZ(-800px);
-				-webkit-filter: blur(12px);
-				filter: blur(12px);
+
+		@-moz-keyframes fadeIn {
+			from {
 				opacity: 0;
 			}
-			100% {
-				-webkit-transform: translateZ(0);
-				transform: translateZ(0);
-				-webkit-filter: blur(0);
-				filter: blur(0);
+			to {
 				opacity: 1;
 			}
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		.fadeIn {
+			opacity: 0;
+			-webkit-animation: fadeIn ease-in 1;
+			-moz-animation: fadeIn ease-in 1;
+			animation: fadeIn ease-in 1;
+
+			-webkit-animation-fill-mode: forwards;
+			-moz-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+
+			-webkit-animation-duration: 1s;
+			-moz-animation-duration: 1s;
+			animation-duration: 1s;
+		}
+
+		.fadeIn.second {
+			-webkit-animation-delay: 0.6s;
+			-moz-animation-delay: 0.6s;
+			animation-delay: 0.6s;
+		}
+
+		.fadeIn.third {
+			-webkit-animation-delay: 0.8s;
+			-moz-animation-delay: 0.8s;
+			animation-delay: 0.8s;
+		}
+
+		/* OTHERS */
+		*:focus {
+			outline: none;
 		}
 
 	</style>
@@ -141,10 +198,14 @@
 	<div style="background: url(../../../asset/images/mobile/bg_main.jpg);height: 500px;background-size: 100%">
 		<div class="container">
 			<div class="row" style="display: table;margin: 150px 0;font-weight: 300;color: white">
-				<div class="home-text" style="display: table-cell; vertical-align: middle">
-					<div style="font-size: 3.5rem;margin-bottom: 1rem;font-weight: bolder">건강관리서비스</div>
-					활기차고 건강한 삶을 위해<br>
-					듀얼헬스케어는 항상 곁에 있겠습니다.
+				<div class="fadeInDown" style="display: table-cell; vertical-align: middle">
+					<div class="fadeIn second" style="font-size: 3.5rem;margin-bottom: 1rem;font-weight: bolder">
+						건강관리서비스
+					</div>
+					<div class="fadeIn third">
+						활기차고 건강한 삶을 위해<br>
+						듀얼헬스케어는 항상 곁에 있겠습니다.
+					</div>
 				</div>
 			</div>
 
@@ -179,7 +240,7 @@
 								<span class="menu">병원별비교</span><br>
 								COMPARE HOSPITALS
 							</div>
-								<img src="../../../asset/images/mobile/m_icon4.png" width="50%" style="padding-right: 10px">
+							<img src="../../../asset/images/mobile/m_icon4.png" width="50%" style="padding-right: 10px">
 						</td>
 					</tr>
 					<tr>

@@ -126,16 +126,16 @@
 
 </div>
 
-<?php
-$parentDir = dirname(__DIR__ . '..');
-require($parentDir . '/common/check_data.php');
-?>
-
 </body>
 
 <script>
 	$('#menu1 .nav-button').text('이용안내');
 	var menu2 = '공지사항';
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/check_data.js');
+	?>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
