@@ -80,11 +80,13 @@ function setInjectionData(id, value) {
 
 //선택검사 항목 리스트
 var choiceList = new Array();
+var choiceAllList = new Array();
 
 //선택검사 테이블 출력
 function setChoiceInjectionList(data) {
 	$("#accordionExample").empty();
 	choiceList = [];
+	choiceAllList = data;
 
 	//선택검사 항목 어떤게 있고 몇 개인지
 	for (i = 0; i < data.length; i++) {
@@ -107,40 +109,41 @@ function setChoiceInjectionList(data) {
 
 	//선택검사 항목 출력
 	for (i = 0; i < choiceList.length; i++) {
-		console.log(choiceList[i].title[2]);
 		var html = '';
 		html += '<div class="card-set">' +
-				'<div class="card-header" id=\'' + choiceList[i].title[2] + '\'>' +
-				'<div class="text-left"' +
-				' data-toggle="collapse" data-target=\'' + '#' + choiceList[i].title[2] + 'col' + '\'' +
-				' aria-expanded="false"' +
-				' aria-controls=\'' + choiceList[i].title[2] + 'col' + '\'>' +
-				choiceList[i].title + '<span class="injection-count"> (택' + choiceList[i].count + ')</span>' +
-				'<div style="float:right">' +
-				'<img src="/asset/images/icon_drop_down.png">' +
-				'</div>' +
-				'</div>' +
-				'</div>' +
-				'<div id=\'' + choiceList[i].title[2] + 'col' + '\' class="collapse" aria-labelledby=\'' + choiceList[i].title[2] + '\'' +
-				' data-parent="#accordionExample">' +
-				'<div class="card-body">';
-
+			'<div class="card-header" id=\'' + choiceList[i].title[2] + '\'>' +
+			'<div class="text-left"' +
+			' data-toggle="collapse" data-target=\'' + '#' + choiceList[i].title[2] + 'col' + '\'' +
+			' aria-expanded="false"' +
+			' aria-controls=\'' + choiceList[i].title[2] + 'col' + '\'>' +
+			choiceList[i].title + '<span class="injection-count"> (택' + choiceList[i].count + ')</span>' +
+			'<div style="float:right">' +
+			'<img src="/asset/images/icon_drop_down.png">' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'<div id=\'' + choiceList[i].title[2] + 'List' + '\'>' +
+			'</div>'+
+			'<div id=\'' + choiceList[i].title[2] + 'col' + '\' class="collapse" aria-labelledby=\'' + choiceList[i].title[2] + '\'' +
+			' data-parent="#accordionExample">' +
+			'<div class="card-body">';
 
 		for (j = 0; j < data.length; j++) {
 			if (choiceList[i].title == data[j].ipClass) {
 				html += '<div class="injection-content">' +
-					'<div class="form-check form-check-inline">'+
+					'<div class="form-check form-check-inline">' +
 					'<input class="form-check-input" type="checkbox" id=\'' + data[j].ipCode + '\'' +
 					'name=\'' + choiceList[i].title + '\' value=\'' + data[j].id + '\' ' +
-					'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\')">' +
+					'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\');' +
+					'choiceInjection(name, choiceAllList, \'' + choiceList[i].title[2] + 'List' + '\')">' +
 					'<label class="form-check-label" for=\'' + data[j].ipCode + '\'>&nbsp&nbsp' + data[j].inspection + '</label>' +
 					'</div><span class="injection-memo">' + data[j].memo + '</span></div>';
 			}
 		}
 
 		html += '</div>' +
-				'</div>' +
-				'</div>';
+			'</div>' +
+			'</div>';
 
 		$("#accordionExample").append(html);
 	}
@@ -154,10 +157,7 @@ function choiceInjectionCount(chk, name, max) {
 	}
 }
 
-//선택한 항목 보이기
-function choiceInjection() {
-
-}
+var addIjList = new Array();
 
 //추가검사 테이블 셋팅
 function setAddInjectionList(data) {
@@ -168,11 +168,13 @@ function setAddInjectionList(data) {
 			var html = "";
 
 			html += '<div class="injection-content">' +
-				'<div class="form-check form-check-inline">'+
-				'<input class="form-check-input" type="checkbox" name="addInjectionCheck" value=\'' + data[i].id + '\' id=\'' + data[i].ipCode + '\'' +
-				'onclick="clickOne(name);addInjectionPrice(this, \'' + data[i].price + '\')">' +
+				'<div class="form-check form-check-inline">' +
+				'<input class="form-check-input" type="checkbox" name="addInjectionCheck" ' +
+				'value=\'' + data[i].id + '\' id=\'' + data[i].ipCode + '\'' +
+				'onclick="clickOne(name);addInjectionPrice(this, \'' + data[i].price + '\');' +
+				'choiceInjection(name, addIjList, ' + "'addInjectionList'" + ')">' +
 				'<label class="form-check-label" for=\'' + data[i].ipCode + '\'>&nbsp&nbsp' + data[i].inspection + '</label>' +
-				'</div><span class="injection-price">'+ data[i].price.toLocaleString() +
+				'</div><span class="injection-price">' + data[i].price.toLocaleString() +
 				'원 </span> <span class="injection-memo">&nbsp' + data[i].memo + '</span></div>';
 
 			$("#addInjection").append(html);
@@ -197,19 +199,32 @@ function addInjectionPrice(add, price) {
 	$("#addInjectionPrice").text(sum.toLocaleString());
 }
 
-//추가금액 전체 계산
-function addInjectionAllPrice() {
-	sum = 0;
+//선택한 항목 보이기
+function choiceInjection(name, list, chList) {
+	$("#"+chList+"").empty();
 
-	if ($("input:checkbox[name=addInjectionCheck]").is(":checked")) {
-		for (i = 0; i < injectionData.length; i++) {
-			if (injectionData[i].ipClass == '추가') {
-				sum += injectionData[i].price;
+	var html = '';
+	var count = 1;
+
+	$('input:checkbox[name=' + name + ']').each(function () {
+		if(this.checked){
+			var item = this.value;
+
+			for (i = 0; i < list.length; i++) {
+				if (item == list[i].id) {
+					html += '<div class="injection-choice">' +
+						count + '. ' + list[i].inspection;
+					if(list.name == addIjList) {
+						html += '&nbsp<span class="injection-price">' +
+							list[i].price.toLocaleString()  + '원</span>';
+					}
+					html += '</div>';
+
+					count += 1;
+				}
 			}
 		}
-	} else {
-		sum = 0;
-	}
+	});
 
-	$("#addInjectionPrice").text(sum.toLocaleString());
+	$("#"+chList+"").append(html);
 }

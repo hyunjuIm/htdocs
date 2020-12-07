@@ -157,19 +157,17 @@
 
 		var html = "";
 
+		var count = 5;
 		var num1 = star % 1;//소수점 아래
 		var num2 = star - num1;//소수점 위
-		for(j = 0; j < num2; j++){
-			html += '<img src="/asset/images/star_full.png">';
-		}
-		if(num1 != 0){
-			html += '<img src="/asset/images/star_half.png">';
-		}
-		else {
-			html += '<img src="/asset/images/star_empty.png">';
-		}
-		for(j = 0; j < 4-num2; j++){
-			html += '<img src="/asset/images/star_empty.png">';
+		while(count-- > 0){
+			if(num2-- > 0){
+				html += '<img src="/asset/images/star_full.png">';
+			}else if(num1-- > 0){
+				html += '<img src="/asset/images/star_half.png">';
+			}else {
+				html += '<img src="/asset/images/star_empty.png">';
+			}
 		}
 
 		return html;

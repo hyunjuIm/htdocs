@@ -15,6 +15,18 @@ function formatDate(date, type) {
 	}
 }
 
+function filtering(date){
+	alert(date);
+	if(date.getDay() % 6 === 0){//0또는 6
+		return false;
+	}
+	if(date > defaultDate){
+		return false;
+	}
+
+	return true;
+}
+
 var defaultDate = new Date();
 defaultDate.setDate(defaultDate.getDate() + 14);
 defaultDate = formatDate(defaultDate, 'get');
@@ -36,10 +48,15 @@ angular
 				console.log(date);
 			},
 			dateClick: function (date) {
-				firstWishDate = formatDate(date.date, 'get');
-				$("#firstWishDate").text(formatDate(date.date, 'set'));
-
+				if(filtering(date.date)){
+					firstWishDate = formatDate(date.date, 'get');
+					$("#firstWishDate").text(formatDate(date.date, 'set'));
+				}
+				else {
+					alert("똑바로해 임마");
+				}
 				console.log(date);
+
 			},
 			changeMonth: function (month, year) {
 				console.log(month, year);

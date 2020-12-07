@@ -22,7 +22,6 @@
 		#hospitalInfos .hos-img {
 			width: 80%;
 			height: 18.5rem;
-			background-size: 100%;
 			position: relative;
 		}
 
@@ -298,12 +297,12 @@ require('check_data.php');
 			html += '<td>' +
 					'<div class="hos-card">' +
 					'<div class="hos-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')" onmouseleave="hospitalCardLeave()"' +
-					'style="background: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ')">' +
+					'style="background: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ');background-size: 100% 100%;">' +
 					'<div class="layer">홈페이지 바로가기<br></div></div>' +
 					'<div class="hos-content">' +
 					'<div style="height: 78%">' +
 					'<div class="hos-name">' + data[i].hosName + '</div>' + data[i].hosAddress + '<br>' +
-					'<div class="hos-point">' + data[i].totalPoint;
+					'<div class="hos-point">' + data[i].totalPoint + '<span style="font-size: 1.5rem">/10 &nbsp</span>';
 			html += starPoint(data[i].totalPoint);
 			html += '</div>' +
 					'</div>' +

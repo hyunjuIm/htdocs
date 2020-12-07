@@ -8,9 +8,12 @@
 	?>
 
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
-	<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
 
 	<style>
+		.fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
+
+		.fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
+
 		.form-check {
 			padding: 0.5rem;
 		}
@@ -75,19 +78,26 @@
 
 		.card-body {
 			padding: 0;
+			height: 30rem;
+			overflow-y: scroll;
 		}
 
 		.injection-count {
 			font-size: 1.5rem;
 		}
 
-		.injection-content {
+		.injection-content, .injection-choice {
 			width: 100%;
 			margin: 0;
 			border: 1px solid #c6c6c6;
 			border-top: none;
 			padding: 1rem 3rem;
 			text-align: left;
+		}
+
+		.injection-choice {
+			padding: 1.5rem 3rem;
+			background: #f9f9ff;
 		}
 
 		.injection-memo {
@@ -111,6 +121,11 @@
 			vertical-align: middle;
 		}
 
+		#addInjectionPrice {
+			font-size: 2rem;
+			color: #5849ea;
+		}
+
 		.nav-item {
 			font-weight: bolder;
 			padding: 1rem 2rem 1rem 0;
@@ -125,6 +140,131 @@
 		.nav-item a:hover, .nav-item > .active {
 			color: #5645ED;
 			border-bottom: 2px solid #5645ED;
+		}
+
+		.ui-widget{
+			width:321px; height:auto;
+			margin:30px auto;
+			font:12px/1 Arial;
+			box-shadow:
+					0 0 10px 5px #1A1414,
+					0 2px 2px -1px grey;
+			border-radius:10px;
+			position:relative;
+			z-index:10;
+		}
+		.ui-widget:before, .ui-widget:after{
+			content:"";
+			display:block;
+			height:100%;
+			position:absolute;
+			box-shadow:0 1px 2px 1px rgba(3,3,3,0.4);
+			background:#B4AE9F;
+			border-radius:10px;
+		}
+		.ui-widget:before{
+			width:98%;
+			top:5px; left:3px;
+			z-index:-10;
+		}
+		.ui-widget:after{
+			width:96%;
+			top:10px; left:6px;
+			z-index:-20;
+		}
+		.ui-widget a {
+			text-decoration: none;
+			font-size:14px;
+		}
+		.ui-datepicker table{
+			width:100%;
+		}
+		.ui-datepicker-header{
+			width:100%;
+			height:50px;
+			background: url("https://media-cache-ec4.pinterest.com/upload/276830708316411236_yZqe68ac.jpg");
+			background-size:cover;
+			border-radius: 7px 7px 0 0;
+			box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.4), inset 0 -5px 10px -5px #571711;
+			color:#EFDEB7;
+			overflow:hidden;
+		}
+		.ui-datepicker-title {
+			text-align:center;
+			font: 20px/1 "Ultra";
+			text-shadow:1px -1px #31241C;
+			margin-top:15px;
+		}
+		.ui-datepicker-year{
+			color:#C59070;
+		}
+		.ui-datepicker-prev, .ui-datepicker-next {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			cursor: pointer;
+			margin-top:20px;
+
+		}
+		.ui-icon{
+			display:none;
+		}
+		.ui-datepicker-prev {
+			float: left;
+			margin-left:15px;
+		}
+		.ui-datepicker-next {
+			float:right;
+			margin-right:15px;
+		}
+		.ui-datepicker-next:before{
+			content:"►"; color:#440B05;font-size:16px;
+		}
+		.ui-datepicker-prev:before{
+			content:"◄"; color:#440B05;font-size:16px;
+		}
+		thead{
+			background: linear-gradient(#D2D2D2,#868686);
+			height:30px;
+			box-shadow: 0 1px 2px 1px #6F6961;
+		}
+		thead  th{
+			text-transform:uppercase;
+			color:#535252;
+			font-size:11px;
+			text-shadow:0 1px rgba(255,255,255,0.4);
+			border-bottom: 1px solid #6F6961;
+			border-top:1px solid rgba(255,255,255,0.6);
+			border-left:1px solid grey;
+		}
+
+		.ui-datepicker-calendar{
+			background: url("https://media-cache-ec2.pinterest.com/upload/276830708316411241_WVs774Pa.jpg")0 30px repeat;
+			background-size:100%;
+			border-radius: 0 0 10px 10px;
+			border-collapse: collapse;/*removes default spacing between cells*/
+			font-weight:bold;
+
+		}
+		td a.ui-state-default{
+			color:#655B4A;
+		}
+		.ui-state-disabled{
+			color:#A89F90 !important;
+		}
+		a.ui-state-active{
+			line-height:40px;
+			display:block;
+			background:
+					url('https://media-cache-lt0.pinterest.com/upload/276830708316411244_RMB1iYCw.jpg')
+					right center no-repeat;
+			color:#AE7514 !important;
+		}
+		table.ui-datepicker-calendar tbody td.highlight > a {
+			line-height:40px;
+			display:block;
+			background: url("https://media-cache-ec4.pinterest.com/upload/276830708316411430_2hONwsBf.jpg") 10px 28px no-repeat;
 		}
 	</style>
 
@@ -290,6 +430,9 @@
 													</div>
 												</div>
 											</div>
+											<div id="addInjectionList">
+
+											</div>
 											<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
 												 data-parent="#accordionExample">
 												<div class="card-body" id="addInjection">
@@ -297,8 +440,8 @@
 												</div>
 											</div>
 										</div>
-										<div style="float: right;font-weight: 400">
-											총 추가금액 : <span id="addInjectionPrice" style="color: #5849ea">0</span>원
+										<div style="float: right;font-weight: 400;margin-top: 1rem">
+											총 추가금액 : <span id="addInjectionPrice">0</span>원
 										</div>
 									</div>
 
@@ -331,7 +474,7 @@
 										<hr>
 
 										<div style="display: flex; margin: 5rem">
-											<div ng-app="app" style="margin: 0 auto;display: flex">
+											<div style="margin: 0 auto;display: flex">
 												<div style="display: block; margin: 0 5rem">
 													<div style="font-size: 2rem; font-weight: bolder">
 														1차 예약일
@@ -340,28 +483,21 @@
 														 style="font-size: 2.4rem;margin-bottom: 2rem">
 														&nbsp
 													</div>
-													<div ng-controller="MainController">
-														<div class="wrapp">
-															<flex-calendar options="options"></flex-calendar>
-														</div>
-														<br/>
-													</div>
+
+													<div id='calendar_1'></div>
+
 												</div>
 
 												<div style="display: block;margin: 0 5rem">
-													<div ng-controller="Sub">
-														<div style="font-size: 2rem; font-weight: bolder">
-															2차 예약일
-														</div>
-														<div id="secondWishDate"
-															 style="font-size: 2.4rem;margin-bottom: 2rem">
-															&nbsp
-														</div>
-														<div class="wrapp">
-															<flex-calendar options="options"></flex-calendar>
-														</div>
-														<br/>
+													<div style="font-size: 2rem; font-weight: bolder">
+														2차 예약일
 													</div>
+													<div id="secondWishDate"
+														 style="font-size: 2.4rem;margin-bottom: 2rem">
+														&nbsp
+													</div>
+
+													<div id='calendar_2'></div>
 												</div>
 											</div>
 
@@ -483,6 +619,48 @@ require('check_data.php');
 
 	var pipList = new Array();
 
+	var events = [
+		{ Title: "Breakfast with Mom", Date: new Date("11/13/2012") },
+		{ Title: "Rachel's Birthday", Date: new Date("11/25/2012") },
+		{ Title: "Meeting with Client", Date: new Date("12/02/2012") }
+	];
+
+
+	$('#datepicker').datepicker({
+		inline: true,
+		showOtherMonths: true,
+		dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		beforeShowDay: function(date) {
+			var result = [true, '', null];
+			var matching = $.grep(events,     function(event) {
+				return event.Date.valueOf() === date.valueOf();
+			});
+
+			if (matching.length) {
+				result = [true, 'highlight', null];
+			}
+			return result;
+		},
+		onSelect: function(dateText) {
+			var date,
+					selectedDate = new Date(dateText),
+					i = 0,
+					event = null;
+
+			while (i < events.length && !event) {
+				date = events[i].Date;
+
+				if (selectedDate.valueOf() === date.valueOf()) {
+					event = events[i];
+				}
+				i++;
+			}
+			if (event) {
+				alert(event.Title);
+			}
+		}
+	});
+
 	<?php
 	require('reservation_date.js');
 	?>
@@ -554,7 +732,6 @@ require('check_data.php');
 			return false;
 		}
 	}
-
 </script>
 
 </html>
