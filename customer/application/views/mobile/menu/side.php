@@ -111,7 +111,7 @@
 				</a>
 				<ul>
 					<li class="sub-menu"><a href="/m/notice_list">공지사항</a></li>
-					<li class="sub-menu"><a href="/m/comparison_hospital">병원별 검진 항목 비교</a></li>
+					<li class="sub-menu"><a onclick=window.open("/customer/comparison_hospital")>병원별 검진 항목 비교</a></li>
 					<li class="sub-menu"><a href="/m/health_checkup_guide">건강검진 안내</a></li>
 				</ul>
 			</li>

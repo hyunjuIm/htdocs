@@ -11,38 +11,43 @@
 	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
-		.nav-item {
-			width: calc(100% / 3);
+		.nav {
+			width: 100%;
+			height: 100%;
+			display: table;
 		}
 
-		.nav-item:hover {
-			border-left: 1px solid black;
-			border-right: 1px solid black;
-			border-top: 2px solid #5645ED;
-			border-bottom: white;
+		.nav-item {
+			width: calc(100% / 3);
+			display: table-cell;
+			vertical-align: middle;
+			border-top: 1px solid #d5d5d5;
+			border-left: 1px solid #d5d5d5;
+			border-right: 1px solid #d5d5d5;
+			border-top-left-radius: 7px;
+			border-top-right-radius: 7px;
 		}
 
 		.nav-item .active {
-			border-left: 1px solid black;
-			border-right: 1px solid black;
-			border-top: 2px solid #5645ED;
-			border-bottom: white;
-		}
-
-		.nav-item .active:hover {
-			border: none;
+			font-weight: 500;
+			font-size: 1.6rem;
+			color: #3529b1;
 		}
 
 		.nav-link {
 			color: black;
-			padding: 1rem;
-			border-bottom: 1px solid black;
 		}
 
 		.nav-link:hover, .nav-link .active {
-			font-weight: bolder;
-			color: black;
-			border-bottom: none;
+			font-weight: 500;
+		}
+
+		table {
+			text-align: left;
+		}
+
+		td {
+			vertical-align: middle !important;
 		}
 
 		.order-table {
@@ -50,30 +55,27 @@
 		}
 
 		.order-table td {
-			width: fit-content;
-			vertical-align: middle;
-			padding: 0 2rem;
+			padding: 2rem 0;
 		}
 
-		.order {
-			width: 25rem;
+		.order-next {
+			-ms-transform: rotate(90deg); /* IE 9 */
+			-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+			transform: rotate(90deg);
 		}
 
-		.order img {
-			width: 156px;
-			height: 156px;
+		.order-img {
+			text-align: right;
 		}
 
 		.order-title {
-			font-weight: bolder;
 			font-size: 1.8rem;
-			line-height: 5rem;
+			font-weight: bolder;
+			padding: 0 1.5rem;
 		}
 
 		.order-content {
-			height: 12rem;
-			color: #444444;
-			line-height: 1.9rem;
+			padding: 0.5rem 1.5rem;
 		}
 
 		.item-table {
@@ -96,6 +98,11 @@
 			font-size: 1.5rem;
 		}
 
+		.item img {
+			width: 70px;
+			height: 70px;
+		}
+
 		.item-hover {
 			background: white;
 			cursor: default;
@@ -112,6 +119,7 @@
 		}
 
 		.item-content {
+			font-weight: bolder;
 			margin-top: 2rem;
 		}
 	</style>
@@ -155,7 +163,9 @@
 						<a class="nav-link active" data-toggle="tab" href="#tab1">검사진행안내</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#tab2">주의사항<br>(전날/당일)</a>
+						<a class="nav-link" data-toggle="tab" href="#tab2">
+							주의사항<br>(전날/당일)
+						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" data-toggle="tab" href="#tab3">항목안내</a>
@@ -166,100 +176,80 @@
 					<div class="tab-pane fade show active" id="tab1">
 						<table class="order-table">
 							<tr>
-								<td>
-									<div class="order">
-										<img src="/asset/images/icon7.png">
-									</div>
+								<td class="order-img">
+									<img src="/asset/images/icon7.png" width="130px">
 								</td>
-								<td>
-									<img src="/asset/images/next_button.png">
-								</td>
-								<td>
-									<div class="order">
-										<img src="/asset/images/icon8.png">
-									</div>
-								</td>
-								<td>
-									<img src="/asset/images/next_button.png">
-								</td>
-								<td>
-									<div class="order">
-										<img src="/asset/images/icon9.png">
+								<td width="60%">
+									<div class="order-title">검진예약</div>
+									<div class="order-content">
+										인터넷, 전화를 통해 실시간 예약이 가능합니다.
+										추가 검사는 사전에 검진기관에서 별도 예약하셔야 합니다.
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<div class="order">
-										<div class="order-title">검진예약</div>
-										<div class="order-content">
-											인터넷, 전화를 통해<br>
-											실시간 예약이 가능합니다.<br>
-											추가 검사는 사전에 검진기관에서<br>
-											별도 예약하셔야 합니다.
-										</div>
-									</div>
+								<td colspan="2" style="text-align: center;">
+									<img src="/asset/images/next_button.png" class="order-next">
 								</td>
-								<td></td>
-								<td>
-									<div class="order">
-										<div class="order-title">예약일자확정</div>
-										<div class="order-content">
-											검진 신청 후 3일 이내에<br>
-											검진기관에서 확정일자를<br>
-											통보합니다.
-										</div>
-									</div>
+							</tr>
+							<tr>
+								<td class="order-img">
+									<img src="/asset/images/icon8.png" width="130px">
 								</td>
-								<td></td>
-								<td>
-									<div class="order">
-										<div class="order-title">준비물 우송 및 예약안내</div>
-										<div class="order-content">
-											검진기관에서 검진 관련<br>
-											준비물 우송 및<br>
-											안내전화를 드립니다.
-										</div>
+								<td width="60%">
+									<div class="order-title">예약일자확정</div>
+									<div class="order-content">
+										검진 신청 후 3일 이내에 검진기관에서 확정일자를 통보합니다.
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<div class="order">
-										<img src="/asset/images/icon10.png">
-									</div>
+								<td colspan="2" style="text-align: center;">
+									<img src="/asset/images/next_button.png" class="order-next">
 								</td>
-								<td>
-									<img src="/asset/images/next_button.png">
-								</td>
-								<td>
-									<div class="order">
-										<img src="/asset/images/icon11.png">
-									</div>
-								</td>
-								<td colspan="2"></td>
 							</tr>
 							<tr>
-								<td>
-									<div class="order">
-										<div class="order-title">검강검진시행</div>
-										<div class="order-content">
-											정해진 병원에서<br>
-											건강검진을 시행합니다.
-										</div>
+								<td class="order-img">
+									<img src="/asset/images/icon9.png" width="130px">
+								</td>
+								<td width="60%">
+									<div class="order-title">준비물 우송 및 예약안내</div>
+									<div class="order-content">
+										검진기관에서 검진 관련 준비물 우송 및 안내전화를 드립니다.
 									</div>
 								</td>
-								<td></td>
-								<td>
-									<div class="order">
-										<div class="order-title">결과상담</div>
-										<div class="order-content">
-											건강검진 종료 후 결과를<br>
-											바탕으로 상담을 진행합니다.
-										</div>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center;">
+									<img src="/asset/images/next_button.png" class="order-next">
+								</td>
+							</tr>
+							<tr>
+								<td class="order-img">
+									<img src="/asset/images/icon10.png" width="130px">
+								</td>
+								<td width="60%">
+									<div class="order-title">검강검진시행</div>
+									<div class="order-content">
+										정해진 병원에서 건강검진을 시행합니다.
 									</div>
 								</td>
-								<td colspan="2"></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center;">
+									<img src="/asset/images/next_button.png" class="order-next">
+								</td>
+							</tr>
+							<tr>
+								<td class="order-img">
+									<img src="/asset/images/icon11.png" width="130px">
+								</td>
+								<td width="60%">
+									<div class="order-title">결과상담</div>
+									<div class="order-content">
+										건강검진 종료 후 결과를 바탕으로 상담을 진행합니다.
+									</div>
+								</td>
 							</tr>
 						</table>
 					</div>
@@ -382,7 +372,8 @@
 		</div>
 
 		<!-- Modal -->
-		<div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel" aria-hidden="true">
+		<div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel"
+			 aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -427,33 +418,33 @@
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
 
-	$(".item-table td").width($('.tab-content').width() /2);
+	$(".item-table td").width($('.tab-content').width() / 2);
 	$(".item-table td").height($(".item-table td").width());
-	
+
 	function setItemContent(name) {
 		$('#itemContent').empty();
 		$('#inspectionModalLabel').text(name);
 
-		if(name == '기본계측검사') {
+		if (name == '기본계측검사') {
 			$('#itemContent').append(
 					'<span>신체계측, 순환기계검사, 안과, 청력, 치과검사, 호흡기계검사</span><br><br>' +
 					'- 신체계측 : 이를 이용해 비만도와 체질량지수 값을 계산할 수 있습니다.<br>' +
 					'- 순환기계검사 : 혈압, 맥박, 심전도검사<br>' +
 					'- 안과 : 안저, 안압검사를 통해 녹내장, 뇌압 상승 여부, 망막의 이상을 확인합니다.'
 			);
-		} else if(name == '혈액검사') {
+		} else if (name == '혈액검사') {
 			$('#itemContent').append(
 					'<span>일반혈액검사, 혈액형검사, 빈혈검사, 종양표지자검사</span><br><br>' +
 					'- 일반혈액검사 : 혈액질환, 빈혈, 적혈구 증가증 등 다양한 질환을 확인합니다.<br>' +
 					'- 종양표지자검사 : 암의 선별, 진단에 이용됩니다.<br>'
 			);
-		} else if(name == '비뇨생식계 및 성병질환검사') {
+		} else if (name == '비뇨생식계 및 성병질환검사') {
 			$('#itemContent').append(
 					'<span>신장기능검사, 요검사, 성병검사, 호르몬검사, 부인과검사</span><br><br>' +
 					'- 신장기능검사 : 소변을 통해 노폐물을 배출하는 능력 등 신장 기능을 검사합니다.<br>' +
 					'- 부인과검사 : 유방 X-ray, 자궁 세포진 검사 등으로 부인과 질환을 검사합니다.'
 			);
-		} else if(name == '간기능/당뇨검사') {
+		} else if (name == '간기능/당뇨검사') {
 			$('#itemContent').append(
 					'<span>간기능검사, 당뇨검사, 간염검사, 췌장기능검사</span>'
 			);
@@ -461,28 +452,28 @@
 			$('#itemContent').append(
 					'<span>심혈관계검사, 심전도검사, 지질검사, 전해질검사</span>'
 			);
-		} else if (name  == '갑상선/관절염/통풍') {
+		} else if (name == '갑상선/관절염/통풍') {
 			$('#itemContent').append(
 					'<span>갑상선검사, 통풍 및 류마티스관절염검사, 분변검사</span><br><br>' +
 					'- 갑상선검사 : free T4, T3, TSH 등 호르몬 검사를 조합하여 진단합니다.<br>' +
 					'- 통풍검사 : 혈중 요산 농도를 측정하여 통풍을 진단합니다.'
 			);
-		} else if(name == '방사선검사') {
+		} else if (name == '방사선검사') {
 			$('#itemContent').append(
 					'<span>방사선검사</span><br><br>' +
 					'- 흉부 X-ray : 폐와 심장 계통의 질환을 검사합니다.'
 			);
-		} else if(name == '초음파검사') {
+		} else if (name == '초음파검사') {
 			$('#itemContent').append(
 					'<span>초음파검사</span><br><br>' +
 					'- 상복부 초음파 : 간, 췌장, 담장, 비장 등의 이상 여부를 확인합니다.'
 			);
-		} else if(name == '소화기계검사') {
+		} else if (name == '소화기계검사') {
 			$('#itemContent').append(
 					'<span>위내시경, 대장내시경</span><br><br>' +
 					'- 내시경을 통해 위, 대장암 선별과 병변을 확인합니다.'
 			);
-		} else if(name == '기타검사') {
+		} else if (name == '기타검사') {
 			$('#itemContent').append(
 					'<span>유전자검사, MRI</span>'
 			);

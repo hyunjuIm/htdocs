@@ -3,8 +3,7 @@
 	$('input[type="text"]').keydown(function () {
 		if (event.keyCode === 13) {
 			event.preventDefault();
-		}
-		;
+		};
 	});
 
 	//검색 - 엔터키
@@ -149,6 +148,31 @@
 		for (var i = 0, limit = e.options.length; i < limit - 1; ++i) {
 			e.remove(1);
 		}
+	}
+
+	//별 -> 이미지로
+	function starPoint(point) {
+		var star = 0.0;
+		star = point / 2;
+
+		var html = "";
+
+		var num1 = star % 1;//소수점 아래
+		var num2 = star - num1;//소수점 위
+		for(j = 0; j < num2; j++){
+			html += '<img src="/asset/images/star_full.png">';
+		}
+		if(num1 != 0){
+			html += '<img src="/asset/images/star_half.png">';
+		}
+		else {
+			html += '<img src="/asset/images/star_empty.png">';
+		}
+		for(j = 0; j < 4-num2; j++){
+			html += '<img src="/asset/images/star_empty.png">';
+		}
+
+		return html;
 	}
 
 	//뒤로가기

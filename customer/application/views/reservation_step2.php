@@ -10,87 +10,82 @@
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
 
 	<style>
-		table {
-			max-width: fit-content;
+		#hospitalInfos {
+			width: 100%;
 		}
 
-		table td {
-			padding: 0.7rem;
+		#hospitalInfos td {
+			width: 50%;
+			padding: 0.5rem;
+		}
+
+		#hospitalInfos .hos-img {
+			width: 80%;
+			height: 18.5rem;
+			background-size: 100%;
+			position: relative;
+		}
+
+		.layer {
+			display: none;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			cursor: pointer;
+			color: white;
+			text-align: center;
+			line-height: 18.5rem;
+			background: rgba(0, 0, 0, 0.4);
+		}
+
+		#hospitalInfos .hos-content {
+			width: 100%;
+			padding: 1rem 1rem 1rem 2rem;
+			display: block;
+			height: 18.5rem;
+		}
+
+		#hospitalInfos .hos-content .hos-name {
+			font-size: 2.3rem;
+			margin-bottom: 0.5rem;
+			font-weight: bolder;
+		}
+
+		#hospitalInfos .hos-content .hos-point {
+			font-size: 2.3rem;
+			margin-top: 1rem;
+			font-weight: bolder;
+		}
+
+		.hos-btn {
+			float: right;
+			vertical-align: bottom;
+			padding: 0.6rem 2.2rem;
+			cursor: pointer;
+			display: inline-block;
+			background: white;
+			text-align: center;
+			border: 1px solid #383838;
+			color: #383838;
+			font-size: 1.5rem;
+			text-decoration: none;
+			font-weight: bolder;
+		}
+
+		.hos-btn:hover {
+			background: #383838;
+			color: #fff;
 		}
 
 		.hos-card {
 			border: 1px solid #d5d5d5;
-			width: calc(120rem/4.1);
-			font-weight: bolder;
+			display: flex;
 		}
 
 		.hos-card:hover {
 			box-shadow: 0px 0px 10px #bbbbbb;
 		}
 
-		.hos-card-img {
-			width: 100%;
-			height: 24rem;
-			position: relative;
-		}
-
-		.hos-card-img:hover {
-			text-align: center;
-			line-height: 24rem;
-			color: white;
-			content: "123";
-		}
-
-		.layer {
-			display: none;
-			cursor: pointer;
-			background-color: rgba(0, 0, 0, 0.7);
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			text-align: center;
-			line-height: 24rem;
-			color: white;
-		}
-
-		.hos-card-content {
-			padding: 1.5rem;
-			font-size: 1.6rem;
-			height: 10rem;
-		}
-
-		.hos-card-btn {
-			cursor: pointer;
-			background: white;
-			padding: 0.2rem 0;
-			margin: 1.5rem 1.5rem 1.5rem 18rem;
-			text-align: center;
-			color: #5849ea;
-			border: 1px solid #5849ea;
-			border-radius: 3rem;
-			font-weight: 500;
-			text-decoration: none;
-			float: bottom;
-		}
-
-		.hos-card-btn:hover {
-			background: #5849ea;
-			color: white;
-		}
-
-		@media only screen and (max-width: 1700px) {
-			html {
-				font-size: 8px;
-			}
-		}
-
-		@media only screen and (max-device-width: 480px) {
-			html {
-				font-size: 7px;
-			}
-		}
 	</style>
 
 </head>
@@ -173,7 +168,7 @@
 							<br>
 							<div>
 								<hr style="height: 0;border: 0; border-top: 2px solid black">
-								<table class="" id="hospitalInfos">
+								<table id="hospitalInfos">
 
 								</table>
 								<hr style="height: 0;border: 0; border-top: 1px solid black">
@@ -248,6 +243,8 @@ require('check_data.php');
 				pageCount++;
 			}
 			setHospitalCard(res.data.hospitalList);
+
+			console.log(res.data);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
 			console.log(error);
@@ -291,34 +288,46 @@ require('check_data.php');
 		$("#paging").append(html);
 
 		var count = 0;
-		for (i = 0; i < data.length; i++) {
-			var html = "";
-			count += 1;
+		var html = "";
 
+		for (i = 0; i < data.length; i++) {
+			count += 1;
+			if (count == 1) {
+				html += '<tr>';
+			}
 			html += '<td>' +
 					'<div class="hos-card">' +
-					'<div class="hos-card-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')"' +
-					' onmouseleave="hospitalCardLeave()" ' +
-					'style="background: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ');' +
-					' background-size: 100% 24rem">' +
-					'<div class="layer">' +
-					'홈페이지 바로가기<br>' +
+					'<div class="hos-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')" onmouseleave="hospitalCardLeave()"' +
+					'style="background: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ')">' +
+					'<div class="layer">홈페이지 바로가기<br></div></div>' +
+					'<div class="hos-content">' +
+					'<div style="height: 78%">' +
+					'<div class="hos-name">' + data[i].hosName + '</div>' + data[i].hosAddress + '<br>' +
+					'<div class="hos-point">' + data[i].totalPoint;
+			html += starPoint(data[i].totalPoint);
+			html += '</div>' +
+					'</div>' +
+					'<div>' +
+					'<div class="hos-btn" onclick="doReservation(\'' + data[i].hosId + '\')">예약하기' +
 					'</div>' +
 					'</div>' +
-					'<div class="hos-card-content">' +
-					'<span style="font-size: 2.2rem">' + data[i].hosName + '</span><br>' + data[i].hosAddress + '<br>' +
 					'</div>' +
-					'<div class="hos-card-btn" onclick="doReservation(\'' + data[i].hosId + '\')">예약하기</div>' +
 					'</div>' +
 					'</td>';
 
-			$("#hospitalInfos").append(html);
-
-			if (count == 4 || i == (data.length) - 1) {
-				count = 1;
-				$("#hospitalInfos").append('<tr></tr>');
+			if (count == 2) {
+				count = 0;
+				html += '</tr>';
 			}
 		}
+
+		if (count == 1) {
+			html += '<td></td>';
+			html += '</tr>';
+		}
+
+		$("#hospitalInfos").append(html);
+
 	}
 
 	//홈페이지 바로가기 버튼 활성화

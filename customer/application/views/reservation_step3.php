@@ -57,27 +57,47 @@
 			max-width: calc(100% / 6);
 			min-width: calc(100% / 6);
 			vertical-align: middle;
+			font-size: 1.5rem;
 		}
 
-		#choiceInjectionTable .name {
-			width: 30%;
+		.card-set {
+			margin-bottom: 3rem;
+		}
+
+		.card-header {
+			border: 1px solid grey;
 			background: white;
-			text-align: center;
-			vertical-align: middle;
+			font-size: 1.9rem;
 			font-weight: bolder;
+			padding: 1.5rem 3rem;
+			cursor: pointer;
 		}
 
-		#choiceInjectionTable .memo {
-			width: 40%;
-			text-align: center;
-			vertical-align: middle;
-			font-weight: bolder;
+		.card-body {
+			padding: 0;
 		}
 
-		#choiceInjectionTable td {
+		.injection-count {
+			font-size: 1.5rem;
+		}
+
+		.injection-content {
+			width: 100%;
+			margin: 0;
+			border: 1px solid #c6c6c6;
+			border-top: none;
+			padding: 1rem 3rem;
 			text-align: left;
-			padding-left: 2rem;
-			vertical-align: middle;
+		}
+
+		.injection-memo {
+			font-size: 1.5rem;
+			color: grey;
+			font-weight: bolder;
+		}
+
+		.injection-price {
+			font-weight: bolder;
 		}
 
 		#addInjectionTable th {
@@ -105,18 +125,6 @@
 		.nav-item a:hover, .nav-item > .active {
 			color: #5645ED;
 			border-bottom: 2px solid #5645ED;
-		}
-
-		@media only screen and (max-width: 1700px) {
-			html {
-				font-size: 8px;
-			}
-		}
-
-		@media only screen and (max-device-width: 480px) {
-			html {
-				font-size: 7px;
-			}
 		}
 	</style>
 
@@ -262,34 +270,35 @@
 											선택검사
 										</div>
 
-										<div>
-											<table class="table table-bordered table-striped" id="choiceInjectionTable">
-											</table>
+										<div class="accordion" id="accordionExample">
+
 										</div>
 									</div>
 									<div class="row" style="display:block;margin-top: 5rem">
 										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
 											추가검사
 										</div>
-										<div>
-											<table class="table table-bordered table-striped" id="addInjectionTable">
-												<thead>
-												<tr>
-													<th width="5%"><input type="checkbox" id="addInjectionCheck"
-																		  name="addInjectionCheck"
-																		  onclick="clickAll(id, name);addInjectionAllPrice()">
-													</th>
-													<th width="40%">검사명</th>
-													<th width="15%">추가금</th>
-													<th width="">비고</th>
-												</tr>
-												</thead>
-												<tbody>
-												</tbody>
-											</table>
-											<div style="float: right;font-weight: 400">
-												총 추가금액 : <span id="addInjectionPrice" style="color: #5849ea">0</span>원
+										<div class="accordion" id="accordionExample">
+											<div class="card-header" id="headingOne">
+												<div class="text-left"
+													 data-toggle="collapse" data-target="#collapseOne"
+													 aria-expanded="false"
+													 aria-controls="collapseOne">
+													추가검사
+													<div style="float:right">
+														<img src="/asset/images/icon_drop_down.png">
+													</div>
+												</div>
 											</div>
+											<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+												 data-parent="#accordionExample">
+												<div class="card-body" id="addInjection">
+
+												</div>
+											</div>
+										</div>
+										<div style="float: right;font-weight: 400">
+											총 추가금액 : <span id="addInjectionPrice" style="color: #5849ea">0</span>원
 										</div>
 									</div>
 
@@ -423,80 +432,6 @@ require('check_data.php');
 		$("#fourPoint").append(starPoint(data.fourPoint));
 		$("#notice").text(data.notice);
 		$("#plusInfo").text(data.plusInfo);
-	}
-
-	//별 -> 이미지로
-	function starPoint(point) {
-		var star = 0.0;
-		star = point / 2;
-
-		var html = "";
-
-		if (star == 0.0) {
-			for (i = 0; i < 5; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 0.5) {
-			html += '<img src="/asset/images/star_half.png">';
-			for (i = 0; i < 4; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 1.0) {
-			html += '<img src="/asset/images/star_full.png">';
-			for (i = 0; i < 4; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 1.5) {
-			html += '<img src="/asset/images/star_full.png">';
-			html += '<img src="/asset/images/star_half.png">';
-			for (i = 0; i < 3; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 2.0) {
-			for (i = 0; i < 2; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-			for (i = 0; i < 3; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 2.5) {
-			for (i = 0; i < 2; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-			html += '<img src="/asset/images/star_half.png">';
-			for (i = 0; i < 2; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 3.0) {
-			for (i = 0; i < 3; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-			for (i = 0; i < 2; i++) {
-				html += '<img src="/asset/images/star_empty.png">';
-			}
-		} else if (star == 3.5) {
-			for (i = 0; i < 3; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-			html += '<img src="/asset/images/star_half.png">';
-			html += '<img src="/asset/images/star_empty.png">';
-		} else if (star == 4.0) {
-			for (i = 0; i < 4; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-			html += '<img src="/asset/images/star_empty.png">';
-		} else if (star == 4.5) {
-			for (i = 0; i < 4; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-			html += '<img src="/asset/images/star_half.png">';
-		} else if (star == 5.0) {
-			for (i = 0; i < 5; i++) {
-				html += '<img src="/asset/images/star_full.png">';
-			}
-		}
-
-		return html;
 	}
 
 	// 패키지 목록 가져오기

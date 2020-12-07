@@ -67,12 +67,6 @@ class m extends CI_Controller
 		$this->load->view('mobile/guide/notice_detail');
 	}
 
-	//병원별 검진 비교
-	public function comparison_hospital()
-	{
-		$this->load->view('mobile/guide/comparison_hospital');
-	}
-
 	//건강검진 안내
 	public function health_checkup_guide()
 	{

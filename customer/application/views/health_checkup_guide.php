@@ -14,14 +14,7 @@
 			width: calc(100% / 3);
 		}
 
-		.nav-item:hover {
-			border-left: 1px solid black;
-			border-right: 1px solid black;
-			border-top: 2px solid #5645ED;
-			border-bottom: white;
-		}
-
-		.nav-item .active {
+		.nav-item:hover, .nav-item .active {
 			border-left: 1px solid black;
 			border-right: 1px solid black;
 			border-top: 2px solid #5645ED;
