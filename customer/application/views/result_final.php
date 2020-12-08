@@ -10,6 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
 
 	<style>
+		h1 {
+			text-align: left;
+			margin-bottom: 1rem;
+		}
+
 		.result-table {
 			width: 100%;
 			border-top: black 2px solid;
@@ -44,8 +49,8 @@
 		}
 
 		.item-table img {
-			width: 88px;
-			height: 88px;
+			width: 72px;
+			height: 72px
 		}
 
 		.item-table td {
@@ -59,16 +64,7 @@
 		.item {
 			align-items: center;
 			cursor: default;
-			font-size: 1.6rem;
-		}
-
-		.item-hover {
-			display: none;
-			background: white;
-			cursor: pointer;
-			padding: 2rem;
 			font-size: 1.5rem;
-			font-weight: 300;
 		}
 
 		.item-hover span {
@@ -79,7 +75,7 @@
 		}
 
 		.item-content {
-			margin-top: 2rem;
+			margin-top: 1rem;
 		}
 
 		#resultCarousel .carousel-control-prev,
@@ -94,6 +90,26 @@
 			width: 15rem;
 			padding: 0 0.5rem;
 			border-color: #d5d5d5;
+		}
+
+		.mainInspectionTable {
+			width: 100%;
+		}
+
+		.mainInspectionTable thead {
+			border-top: 2px solid black;
+			border-bottom: 1px solid black;
+		}
+
+		.mainInspectionTable th {
+			padding: 1.5rem;
+			font-size: 1.8rem;
+			font-weight: 500;
+		}
+
+		.mainInspectionTable td {
+			padding: 1.3rem;
+			border-bottom: 1px solid #DCDCDC;
 		}
 	</style>
 
@@ -205,134 +221,28 @@
 									</a>
 								</div>
 
-								<!--TODO:검진결과 종합결과 타입별로 셋팅-->
 								<div class="carousel-inner">
 									<div class="carousel-item active">
-										<table class="table-bordered item-table">
-											<tr>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon12.png">
-														<div class="item-content">
-															기본계측검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>신체계측, 순환기계검사, 안과, 청력, 치과검사, 호흡기계검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon13.png">
-														<div class="item-content">
-															혈액검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>일반혈액검사, 혈액형검사, 빈혈검사, 종양표지자검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon14.png">
-														<div class="item-content" style="margin-top: 0.5rem;">
-															비뇨생식계 및<br>
-															성병질환검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>신장기능검사, 요검사, 성병검사, 호르몬검사, 부인과검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon15.png">
-														<div class="item-content">
-															간기능/당뇨검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>간기능검사, 당뇨검사, 간염검사, 췌장기능검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon16.png">
-														<div class="item-content">
-															심혈관/고지혈증 검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>심혈관계검사, 심전도검사, 지질검사, 전해질검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon17.png">
-														<div class="item-content">
-															갑상선/관절염/통풍
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>갑상선검사, 통풍 및 류마티스관절염검사, 분변검사</span>
-													</div>
-												</td>
+										<table class="table-bordered item-table" id="inspectionItemTable">
+											<tr id="categoryTable_1">
+
 											</tr>
 										</table>
 									</div>
 									<div class="carousel-item">
 										<table class="table-bordered item-table">
-											<tr>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon18.png">
-														<div class="item-content">
-															방사선검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>방사선검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon19.png">
-														<div class="item-content">
-															초음파검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>초음파검사</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon20.png">
-														<div class="item-content">
-															소화기계검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>위내시경, 대장내시경</span>
-													</div>
-												</td>
-												<td>
-													<div class="item">
-														<img src="/asset/images/icon21.png">
-														<div class="item-content">
-															기타검사
-														</div>
-													</div>
-													<div class="item-hover">
-														<span>유전자검사, MRI</span>
-													</div>
-												</td>
-												<td></td>
-												<td></td>
+											<tr id="categoryTable_2">
+
 											</tr>
 										</table>
 									</div>
 								</div>
+							</div>
+						</div>
+
+						<div class="row" style="display:block; margin-top: 2rem">
+							<div id="resultTable">
+
 							</div>
 						</div>
 					</div>
@@ -354,19 +264,6 @@ require('check_data.php');
 	// 결과 업로드 된 가족 목록
 	instance.post('CU_005_001', userData).then(res => {
 		setFamilySelectOption(res.data);
-	});
-
-	$(document).ready(function () {
-		$('.item-table td').hover(
-				function () {
-					$(this).children('.item').hide();
-					$(this).children('.item-hover').show();
-				}, function () {
-					$(this).children('.item').show();
-					$(this).children('.item-hover').hide();
-				}
-		);
-
 	});
 
 	//수검자 이름 셀렉트 셋팅
@@ -419,15 +316,168 @@ require('check_data.php');
 				$("#hospitalName").html(resultData[i].hospitalName);
 				$("#year").html(resultData[i].year);
 				$("#totalResult").html(resultData[i].totalResult);
+				result = setCategory(resultData[i].resultItemList);
+				setInspectionItemTable();
+				console.log(result);
 			}
 		}
 	}
 
-	function setResultTable(type) {
+	let categoryList = [];
+
+	let baseCategory = ['기본검사', '신장검사', '일반혈액검사', '심혈관계검사', '간기능/간염검사'
+		, '당뇨/췌장/빈혈검사', '갑상선/류마티스/통풍검사', '종양검사'
+		, '비뇨생식계 및 성별 질환', '장비검사', '기타검사'];
+
+	let result = new Array();
+
+	//검사결과 카테고리 디스플레이
+	function setInspectionItemTable() {
+		$("#categoryTable_1").empty();
+		$("#categoryTable_2").empty();
+		let cnt = 0;
+		for (let i = 0; i < categoryList.length; i++) {
+			let imgIdx = baseCategory.indexOf(categoryList[i]) + 1;
+			let html =
+					'<td>' +
+					'<div class="item" onclick="categoryClick(\'' + i + '\')">' +
+					'<img src="/asset/images/icon_inspection' + imgIdx + '_1.png">' +
+					'<div class="item-content">' +
+					categoryList[i] +
+					'</div>' +
+					'</div>' +
+					'</td>';
+			console.log(html);
+			categoryADraw(i, html)
+			cnt = i;
+		}
+
+		for (let i = cnt; i < baseCategory.length; i++) {
+			let html = '<td></td>';
+			categoryADraw(i, html)
+		}
+	}
+
+	function categoryClick(idx) {
+		$("#resultTable").empty();
+		let tableHead =
+				'<tr>' +
+				'<th style="color: #5849ea">검사항목</th>' +
+				'<th>기준수치</th>' +
+				'<th>결과수치</th>' +
+				'<th>검사결과</th>' +
+				'</tr>';
+
+		let html ="";
+		let categoryList = result[idx].list;
+		console.log(categoryList);
+		for (let i = 0; i < categoryList.length; i++) {
+			html +=
+					'<h1>' + categoryList[i].category + '</h1>' +
+					'<table class="mainInspectionTable table-striped">' +
+					'<thead>' +
+					tableHead +
+					'</thead>' +
+					'<tbody>';
+			let categoryListB = categoryList[i].list;
+			for (let j = 0; j < categoryListB.length; j++) {
+
+				html += '<tr>' +
+						'<td>'+categoryListB[j].inspection+'</td>' +
+						'<td>-</td>' +
+						'<td>'+categoryListB[j].result+'</td>' +
+						'<td width="25%">' +
+						'<img src="/asset/images/img_grade_arrow.png">' +
+						'<img src="/asset/images/img_grade_bar.png">' +
+						'</td>' +
+						'</tr>';
+			}
+
+			html +=
+					'</tbody>' +
+					'</table><br>';
+		}
+
+
+		$("#resultTable").append(html);
 
 	}
 
+	function categoryADraw(i, html) {
+		if (i < 6) {
+			$("#categoryTable_1").append(html);
+		} else {
+			$("#categoryTable_2").append(html);
+		}
+	}
 
+	//어떤 카테고리를 노출시킬지 세팅하는 함수
+	function setCategory(data) {
+		/*카테고리 A 세팅*/
+		let categoryASet = new Set();
+		//해당되는 카테고리 생성
+		for (let i = 0; i < data.length; i++) {
+			if (data[i].categoryA.length > 0) {
+				categoryASet.add(data[i].categoryA);
+			}
+		}
+		//set -> array 자료형 변환
+		let categoryAList = Array.from(categoryASet);
+
+		//array를 baseCategory 순서에 맞게 정렬
+		categoryAList.sort(function (a, b) {
+			if (baseCategory.indexOf(a) > baseCategory.indexOf(b)) return 1;
+			else if (baseCategory.indexOf(a) === baseCategory.indexOf(b)) return 0;
+			else if (baseCategory.indexOf(a) < baseCategory.indexOf(b)) return -1;
+		});
+		categoryList = categoryAList
+		/*카테고리 A 세팅*/
+		//결과물, A 카테고리를 담은 배열: categoryAList
+
+
+		/*카테고리 B 세팅*/
+		let categoryABList = new Array();
+		for (let i = 0; i < categoryAList.length; i++) {
+			let categoryBSet = new Set();
+			for (let j = 0; j < data.length; j++) {
+				if (data[j].categoryA === categoryAList[i]) {
+					categoryBSet.add(data[j].categoryB);
+
+				}
+			}
+			categoryABList.push(Array.from(categoryBSet));
+		}
+		/*카테고리 B 세팅*/
+		//결과물, A, B 카테고리를 담은 배열: categoryABList
+
+		let result = new Array();
+		/*검사결과 세팅*/
+		for (let i = 0; i < categoryABList.length; i++) {
+			let resultA = new Object();
+			let categoryA = new Array();
+			for (let j = 0; j < categoryABList[i].length; j++) {
+				let resultB = new Object();
+				let categoryB = new Array();
+				for (let k = 0; k < data.length; k++) {
+					if (data[k].categoryA === categoryAList[i] && data[k].categoryB === categoryABList[i][j]) {
+						let inspectionResult = new Object();
+						inspectionResult.inspection = data[k].inspection;
+						inspectionResult.result = data[k].result;
+						categoryB.push(inspectionResult);
+					}
+				}
+				resultB.category = categoryABList[i][j];
+				resultB.list = categoryB;
+				categoryA.push(resultB);
+			}
+			resultA.category = categoryAList[i];
+			resultA.list = categoryA;
+			result.push(resultA);
+		}
+		/*검사결과 세팅*/
+
+		return result;
+	}
 </script>
 
 </html>

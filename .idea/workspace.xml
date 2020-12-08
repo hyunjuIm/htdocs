@@ -20,17 +20,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection10_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection10_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection11_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection11_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection1_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection1_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection2_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection2_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection3_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection3_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection4_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection4_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection5_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection5_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection6_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection6_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection7_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection7_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection8_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection8_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection9_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/icon_inspection9_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/img_grade_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/asset/images/img_grade_bar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/check_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/check_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/health_checkup_guide.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/health_checkup_guide.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_date.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_date.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_date.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_injection.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_injection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/calendar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/result_final.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/result_final.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/result_main.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/result_main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/asset/images/icon21.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,16 +107,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.13-0\apache2\htdocs\customer\asset\fullcalendar" />
+      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images\mobile" />
       <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\application\views\mobile\common" />
       <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\application\views\mobile\guide" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views\mobile\common" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Bitnami\wampstack-7.4.13-0\apache2\htdocs\customer\asset\fullcalendar" />
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -256,5 +290,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-" />
     <option name="LAST_COMMIT_MESSAGE" value="-" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="229" y="92" width="1464" height="948" key="dock-window-3" timestamp="1607385445706">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="229" y="92" width="1464" height="948" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607385445706" />
+    <state x="1933" y="136" width="929" height="854" key="find.popup" timestamp="1607416054017">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1933" y="136" width="929" height="854" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607416054017" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1607417812877">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607417812877" />
   </component>
 </project>

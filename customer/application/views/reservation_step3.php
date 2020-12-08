@@ -7,12 +7,11 @@
 	require('head.php');
 	?>
 
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
 
 	<style>
-		.fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
-
-		.fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
 
 		.form-check {
 			padding: 0.5rem;
@@ -142,130 +141,121 @@
 			border-bottom: 2px solid #5645ED;
 		}
 
-		.ui-widget{
-			width:321px; height:auto;
-			margin:30px auto;
-			font:12px/1 Arial;
-			box-shadow:
-					0 0 10px 5px #1A1414,
-					0 2px 2px -1px grey;
-			border-radius:10px;
-			position:relative;
-			z-index:10;
-		}
-		.ui-widget:before, .ui-widget:after{
-			content:"";
-			display:block;
-			height:100%;
-			position:absolute;
-			box-shadow:0 1px 2px 1px rgba(3,3,3,0.4);
-			background:#B4AE9F;
-			border-radius:10px;
-		}
-		.ui-widget:before{
-			width:98%;
-			top:5px; left:3px;
-			z-index:-10;
-		}
-		.ui-widget:after{
-			width:96%;
-			top:10px; left:6px;
-			z-index:-20;
-		}
-		.ui-widget a {
-			text-decoration: none;
-			font-size:14px;
-		}
-		.ui-datepicker table{
-			width:100%;
-		}
-		.ui-datepicker-header{
-			width:100%;
-			height:50px;
-			background: url("https://media-cache-ec4.pinterest.com/upload/276830708316411236_yZqe68ac.jpg");
-			background-size:cover;
-			border-radius: 7px 7px 0 0;
-			box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.4), inset 0 -5px 10px -5px #571711;
-			color:#EFDEB7;
-			overflow:hidden;
-		}
-		.ui-datepicker-title {
-			text-align:center;
-			font: 20px/1 "Ultra";
-			text-shadow:1px -1px #31241C;
-			margin-top:15px;
-		}
-		.ui-datepicker-year{
-			color:#C59070;
-		}
-		.ui-datepicker-prev, .ui-datepicker-next {
-			display: inline-block;
-			width: 30px;
-			height: 30px;
+		.date-view {
+			width: 50% !important;
+			border: none !important;
+			border-bottom: 2px solid black !important;
+			font-size: 2.5rem;
 			text-align: center;
-			cursor: pointer;
-			margin-top:20px;
-
-		}
-		.ui-icon{
-			display:none;
-		}
-		.ui-datepicker-prev {
-			float: left;
-			margin-left:15px;
-		}
-		.ui-datepicker-next {
-			float:right;
-			margin-right:15px;
-		}
-		.ui-datepicker-next:before{
-			content:"►"; color:#440B05;font-size:16px;
-		}
-		.ui-datepicker-prev:before{
-			content:"◄"; color:#440B05;font-size:16px;
-		}
-		thead{
-			background: linear-gradient(#D2D2D2,#868686);
-			height:30px;
-			box-shadow: 0 1px 2px 1px #6F6961;
-		}
-		thead  th{
-			text-transform:uppercase;
-			color:#535252;
-			font-size:11px;
-			text-shadow:0 1px rgba(255,255,255,0.4);
-			border-bottom: 1px solid #6F6961;
-			border-top:1px solid rgba(255,255,255,0.6);
-			border-left:1px solid grey;
+			cursor: default;
+			margin: 0 auto;
 		}
 
-		.ui-datepicker-calendar{
-			background: url("https://media-cache-ec2.pinterest.com/upload/276830708316411241_WVs774Pa.jpg")0 30px repeat;
-			background-size:100%;
-			border-radius: 0 0 10px 10px;
-			border-collapse: collapse;/*removes default spacing between cells*/
-			font-weight:bold;
+		.ui-datepicker {
+			margin: 0 auto;
+		}
 
+		.ui-datepicker-prev, .ui-corner-all {
+			border: none !important;
 		}
-		td a.ui-state-default{
-			color:#655B4A;
+
+		.ui-widget-content,
+		.ui-widget-content,
+		.ui-datepicker .ui-datepicker-header,
+		.ui-datepicker .ui-datepicker-title,
+		.ui-datepicker .ui-datepicker-title,
+		.ui-datepicker .ui-datepicker-prev,
+		.ui-datepicker .ui-datepicker-next,
+		.ui-datepicker table,
+		.ui-state-default,
+		.ui-widget-content .ui-state-default,
+		.ui-widget-header .ui-state-default,
+		.ui-state-default {
+			background: ghostwhite;
 		}
-		.ui-state-disabled{
-			color:#A89F90 !important;
+
+		.ui-datepicker-inline {
+			padding: 0 15px;
 		}
-		a.ui-state-active{
-			line-height:40px;
-			display:block;
-			background:
-					url('https://media-cache-lt0.pinterest.com/upload/276830708316411244_RMB1iYCw.jpg')
-					right center no-repeat;
-			color:#AE7514 !important;
+
+		.ui-widget-header {
+			border: none;
 		}
-		table.ui-datepicker-calendar tbody td.highlight > a {
-			line-height:40px;
-			display:block;
-			background: url("https://media-cache-ec4.pinterest.com/upload/276830708316411430_2hONwsBf.jpg") 10px 28px no-repeat;
+
+		.ui-datepicker-title {
+			font-size: 25px;
 		}
+
+		.ui-datepicker .ui-datepicker-header {
+			padding: 20px 0;
+		}
+
+		.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+			top: 25px;
+		}
+
+		.ui-state-hover, .ui-datepicker-prev, .ui-datepicker-prev-hover, .ui-datepicker-prev-focus {
+			border: none;
+		}
+
+		.ui-icon,
+		.ui-datepicker-month,
+		.ui-datepicker-year {
+			color: black;
+		}
+
+		a.ui-state-default,
+		.ui-datepicker th {
+			color: black !important;
+			border: none !important;
+			text-align: center !important;
+		}
+
+		.ui-datepicker {
+			width: 450px;
+			text-transform: uppercase;
+		}
+
+		.ui-datepicker td {
+			width: 50px;
+			padding: 15px 5px;
+			border: none !important;
+		}
+
+		.ui-state-default {
+			text-align: center !important;
+			border: none !important;
+		}
+
+		.ui-state-active,
+		.ui-widget-content .ui-state-active,
+		.ui-widget-header .ui-state-active {
+			background-color: #5849ea;
+			color: white !important;
+			font-weight: bold;
+		}
+
+		.ui-state-highlight,
+		.ui-widget-content .ui-state-highlight,
+		.ui-widget-header .ui-state-highlight {
+			background-color: #ffe800;
+			color: #484848 !important;
+		}
+
+		.ui-widget {
+			font-family: Verdana, Arial, sans-serif;
+			font-size: 19px;
+		}
+
+		.ui-datepicker td span, .ui-datepicker td a {
+			padding: 10px 0;
+		}
+
+		.ui-datepicker-calendar > tbody td.ui-datepicker-week-end:first-child > .ui-state-default,
+		.ui-datepicker-calendar > thead th.ui-datepicker-week-end:first-child {
+			color: red !important;
+		}
+
 	</style>
 
 </head>
@@ -464,57 +454,47 @@
 						<!--검진일선택-->
 						<div class="row" id="step2" style="display: none">
 							<div class="container">
-								<div class="container">
+								<div class="row" style="display:block;margin-top: 10rem">
+									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
+										검진일선택
+									</div>
 
-									<div class="row" style="display:block;margin-top: 10rem">
-										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-											검진일선택
-										</div>
+									<hr>
 
-										<hr>
-
-										<div style="display: flex; margin: 5rem">
-											<div style="margin: 0 auto;display: flex">
-												<div style="display: block; margin: 0 5rem">
-													<div style="font-size: 2rem; font-weight: bolder">
-														1차 예약일
-													</div>
-													<div id="firstWishDate"
-														 style="font-size: 2.4rem;margin-bottom: 2rem">
-														&nbsp
-													</div>
-
-													<div id='calendar_1'></div>
-
+									<div class="container">
+										<div class="row">
+											<div class="col" style="padding: 3rem 0">
+												<div style="font-size: 2rem; font-weight: bolder">
+													1차 예약일
 												</div>
-
-												<div style="display: block;margin: 0 5rem">
-													<div style="font-size: 2rem; font-weight: bolder">
-														2차 예약일
-													</div>
-													<div id="secondWishDate"
-														 style="font-size: 2.4rem;margin-bottom: 2rem">
-														&nbsp
-													</div>
-
-													<div id='calendar_2'></div>
+												<div id="firstWishDate" class="date-view">
+													&nbsp
 												</div>
+												<div id="firstDatepicker" style="margin-top: 3rem"></div>
 											</div>
-
+											<div class="col" style="padding: 3rem 0">
+												<div style="font-size: 2rem; font-weight: bolder">
+													2차 예약일
+												</div>
+												<div id="secondWishDate" class="date-view">
+													&nbsp
+												</div>
+												<div id="secondDatepicker" style="margin-top: 3rem"></div>
+											</div>
 										</div>
+									</div>
 
-										<hr>
+									<hr>
 
-										<div class="row" style="display:flex;margin-top: 5rem">
-											<div style="margin: 0 auto">
-												<div class="btn-cancel-square" style="font-size: 1.4rem"
-													 onclick="backStep1()">
-													이전단계
-												</div>
-												<div class="btn-light-purple-square" style="font-size: 1.4rem"
-													 onclick="successRegister()">
-													다음단계
-												</div>
+									<div class="row" style="display:flex;margin-top: 5rem">
+										<div style="margin: 0 auto">
+											<div class="btn-cancel-square" style="font-size: 1.4rem"
+												 onclick="backStep1()">
+												이전단계
+											</div>
+											<div class="btn-light-purple-square" style="font-size: 1.4rem"
+												 onclick="successRegister()">
+												다음단계
 											</div>
 										</div>
 									</div>
@@ -550,7 +530,6 @@ require('check_data.php');
 
 	//선택한 병원 정보
 	instance.post('CU_003_003_2', userData).then(res => {
-		console.log(res.data)
 		setSelectHospital(res.data);
 	});
 
@@ -575,7 +554,6 @@ require('check_data.php');
 		setPackageList(res.data)
 	}).catch(function (error) {
 		alert("잘못된 접근입니다.")
-		console.log(error);
 	});
 
 	//패키지 목록
@@ -605,7 +583,6 @@ require('check_data.php');
 		pkgId = id;
 
 		instance.post('CU_003_004', sendItems).then(res => {
-			console.log(res.data);
 			setBaseInjectionList(res.data);
 			setChoiceInjectionList(res.data);
 			setAddInjectionList(res.data);
@@ -618,52 +595,6 @@ require('check_data.php');
 	?>
 
 	var pipList = new Array();
-
-	var events = [
-		{ Title: "Breakfast with Mom", Date: new Date("11/13/2012") },
-		{ Title: "Rachel's Birthday", Date: new Date("11/25/2012") },
-		{ Title: "Meeting with Client", Date: new Date("12/02/2012") }
-	];
-
-
-	$('#datepicker').datepicker({
-		inline: true,
-		showOtherMonths: true,
-		dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-		beforeShowDay: function(date) {
-			var result = [true, '', null];
-			var matching = $.grep(events,     function(event) {
-				return event.Date.valueOf() === date.valueOf();
-			});
-
-			if (matching.length) {
-				result = [true, 'highlight', null];
-			}
-			return result;
-		},
-		onSelect: function(dateText) {
-			var date,
-					selectedDate = new Date(dateText),
-					i = 0,
-					event = null;
-
-			while (i < events.length && !event) {
-				date = events[i].Date;
-
-				if (selectedDate.valueOf() === date.valueOf()) {
-					event = events[i];
-				}
-				i++;
-			}
-			if (event) {
-				alert(event.Title);
-			}
-		}
-	});
-
-	<?php
-	require('reservation_date.js');
-	?>
 
 	//검진유형 -> 검진일선택 탭전환
 	function nextStep1() {
@@ -706,6 +637,70 @@ require('check_data.php');
 	var firstWishDate;
 	var secondWishDate;
 
+	$.datepicker.setDefaults({
+		dateFormat: 'yy-mm-dd',
+		prevText: '이전 달',
+		nextText: '다음 달',
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		showMonthAfterYear: true,
+		yearSuffix: '년',
+		minDate: 14,
+		maxDate: '+2m',
+		//일요일 선택 불가
+		beforeShowDay: function (date) {
+			var day = date.getDay();
+			return [(day != 0)];
+		}
+	});
+
+	$(function () {
+		$("#firstDatepicker").datepicker({
+			onSelect: function (d) {
+				//요일 가져오기
+				//데이터를 먼저 가져오고 (숫자로 넘어옴)
+				var date = new Date($("#firstDatepicker").datepicker({dateFormat: "yy-mm-dd"}).val());
+
+				firstWishDate = d;
+
+				var arr = d.split("-");
+				var year = arr[0];
+				var month = arr[1];
+				var day = arr[2];
+
+				var week = new Array("일", "월", "화", "수", "목", "금", "토");
+
+				var html = year + '.' + month + '.' + day + '(' + week[date.getDay()] + ')';
+				console.log(html);
+				$("#firstWishDate").text(html);
+			}
+		});
+
+		$("#secondDatepicker").datepicker({
+			onSelect: function (d) {
+				//요일 가져오기
+				//데이터를 먼저 가져오고 (숫자로 넘어옴)
+				var date = new Date($("#secondDatepicker").datepicker({dateFormat: "yy-mm-dd"}).val());
+
+				secondWishDate = d;
+
+				var arr = d.split("-");
+				var year = arr[0];
+				var month = arr[1];
+				var day = arr[2];
+
+				var week = new Array("일", "월", "화", "수", "목", "금", "토");
+
+				var html = year + '.' + month + '.' + day + '(' + week[date.getDay()] + ')';
+				console.log(html);
+				$("#secondWishDate").text(html);
+			}
+		});
+	});
+
 	//예약완료
 	function successRegister() {
 		var sendItems = new Object();
@@ -715,8 +710,6 @@ require('check_data.php');
 		sendItems.pipList = pipList;
 		sendItems.firstWishDate = firstWishDate;
 		sendItems.secondWishDate = secondWishDate;
-
-		console.log(sendItems);
 
 		if (confirm("예약하시겠습니까?") == true) {
 			instance.post('CU_003_005', sendItems).then(res => {

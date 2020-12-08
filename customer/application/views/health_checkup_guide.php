@@ -302,9 +302,23 @@
 								<div class="tab-pane fade" id="tab3">
 									<table class="table-bordered item-table">
 										<tr>
-											<td colspan="2">
-												<div style="font-size: 2.8rem;line-height: 6rem">검진항목에 대한 안내</div>
-												<div style="color: #666666;">궁금하신 항목을 선택해주세요.</div>
+											<td>
+												<div style="font-size: 2.5rem;line-height: 4rem">검진항목에 대한 안내</div>
+												<div style="font-size: 1.5rem;color: #666666;">궁금하신 항목을 선택해주세요.</div>
+											</td>
+											<td>
+												<div class="item">
+													<img src="/asset/images/icon12.png">
+													<div class="item-content">
+														기본계측검사
+													</div>
+												</div>
+												<div class="item-hover">
+													<span>신체계측, 순환기계검사, 안과, 청력, 치과검사, 호흡기계검사</span><br><br>
+													- 신체계측 : 이를 이용해 비만도와 체질량지수 값을 계산할 수 있습니다.<br>
+													- 순환기계검사 : 혈압, 맥박, 심전도검사<br>
+													- 안과 : 안저, 안압검사를 통해 녹내장, 뇌압 상승 여부, 망막의 이상을 확인합니다.
+												</div>
 											</td>
 											<td>
 												<div class="item">
