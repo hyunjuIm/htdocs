@@ -10,11 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
 
 	<style>
-		h1 {
-			text-align: left;
-			margin-bottom: 1rem;
-		}
-
 		.result-table {
 			width: 100%;
 			border-top: black 2px solid;
@@ -46,6 +41,7 @@
 		.item-table {
 			width: 100%;
 			margin-top: 1rem;
+			border: none;
 		}
 
 		.item-table img {
@@ -59,19 +55,22 @@
 			height: calc(120rem / 6);
 			font-weight: bolder;
 			font-size: 1.7rem;
+			cursor: pointer;
+			border: 1px solid #DCDCDC;
 		}
 
-		.item {
+		.item-table .active, .item-table td:hover {
+			box-shadow: 0 0 0 2px #3529b1 inset;
+		}
+
+		.item, .item-hover {
 			align-items: center;
-			cursor: default;
 			font-size: 1.5rem;
+			cursor: pointer;
 		}
 
-		.item-hover span {
-			font-size: 1.6rem;
-			font-weight: 500;
-			vertical-align: middle;
-			color: #5645ed;
+		.item-hover {
+			display: none;
 		}
 
 		.item-content {
@@ -108,8 +107,11 @@
 		}
 
 		.mainInspectionTable td {
-			padding: 1.3rem;
 			border-bottom: 1px solid #DCDCDC;
+		}
+
+		.mainInspectionTable td:not(:last-child) {
+			padding: 1.3rem;
 		}
 	</style>
 
@@ -240,7 +242,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="display:block; margin-top: 2rem">
+						<div class="row" style="display:block; margin-top: 4rem">
 							<div id="resultTable">
 
 							</div>
@@ -339,15 +341,20 @@ require('check_data.php');
 		for (let i = 0; i < categoryList.length; i++) {
 			let imgIdx = baseCategory.indexOf(categoryList[i]) + 1;
 			let html =
-					'<td>' +
-					'<div class="item" onclick="categoryClick(\'' + i + '\')">' +
+					'<td onclick="categoryClick(this, \'' + i + '\')">' +
+					'<div class="item">' +
+					'<img src="/asset/images/icon_inspection' + imgIdx + '_2.png">' +
+					'<div class="item-content">' +
+					categoryList[i] +
+					'</div>' +
+					'</div>' +
+					'<div class="item-hover">' +
 					'<img src="/asset/images/icon_inspection' + imgIdx + '_1.png">' +
 					'<div class="item-content">' +
 					categoryList[i] +
 					'</div>' +
 					'</div>' +
 					'</td>';
-			console.log(html);
 			categoryADraw(i, html)
 			cnt = i;
 		}
@@ -358,22 +365,38 @@ require('check_data.php');
 		}
 	}
 
-	function categoryClick(idx) {
+	//카테고리 클릭 테이블 뷰 셋팅
+	function categoryClick(item,idx) {
+		$(item).children('.item').hide();
+		$(item).children('.item-hover').show();
+		$(item).addClass('active');
+
+		$('.item-table td').not(item).children('.item').show();
+		$('.item-table td').not(item).children('.item-hover').hide();
+		$('.item-table td').not(item).removeClass('active');
+
 		$("#resultTable").empty();
+
 		let tableHead =
 				'<tr>' +
-				'<th style="color: #5849ea">검사항목</th>' +
+				'<th>검사항목</th>' +
 				'<th>기준수치</th>' +
 				'<th>결과수치</th>' +
 				'<th>검사결과</th>' +
 				'</tr>';
 
-		let html ="";
+		let html = "";
 		let categoryList = result[idx].list;
 		console.log(categoryList);
 		for (let i = 0; i < categoryList.length; i++) {
-			html +=
-					'<h1>' + categoryList[i].category + '</h1>' +
+			html += '<div style="width: 100%;height: 4rem">'+
+					'<div style="float: left"><h1>' + categoryList[i].category + '</h1></div>' +
+					'<div style="display:table;float: right;height: 100%">' +
+					'<div style="display:table-cell;vertical-align: bottom; color: grey;font-size: 1.5rem">' +
+					'<span style="color: #FB9501">▲ </span> 주의 필요함' +
+					'</div>' +
+					'</div>' +
+					'</div>'+
 					'<table class="mainInspectionTable table-striped">' +
 					'<thead>' +
 					tableHead +
@@ -383,12 +406,19 @@ require('check_data.php');
 			for (let j = 0; j < categoryListB.length; j++) {
 
 				html += '<tr>' +
-						'<td>'+categoryListB[j].inspection+'</td>' +
+						'<td width="33%">' + categoryListB[j].inspection + '</td>' +
 						'<td>-</td>' +
-						'<td>'+categoryListB[j].result+'</td>' +
-						'<td width="25%">' +
-						'<img src="/asset/images/img_grade_arrow.png">' +
+						'<td>' + categoryListB[j].result + '</td>' +
+						'<td width="30%">' +
+						'<div>' +
+						'<div style="height:5px;margin: 0">' +
+						//TODO:margin-left으로 결과수치 셋팅
+						'<img src="/asset/images/img_grade_arrow.png" style="margin-left: 0;margin-top: -20px; ">' +
+						'</div>' +
+						'<div style="width:fit-content;margin: 0 auto">' +
 						'<img src="/asset/images/img_grade_bar.png">' +
+						'</div>' +
+						'</div>' +
 						'</td>' +
 						'</tr>';
 			}
@@ -397,10 +427,7 @@ require('check_data.php');
 					'</tbody>' +
 					'</table><br>';
 		}
-
-
 		$("#resultTable").append(html);
-
 	}
 
 	function categoryADraw(i, html) {
@@ -478,6 +505,7 @@ require('check_data.php');
 
 		return result;
 	}
+
 </script>
 
 </html>

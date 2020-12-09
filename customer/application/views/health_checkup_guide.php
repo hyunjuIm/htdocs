@@ -75,8 +75,8 @@
 		}
 
 		.item-table img {
-			width: 88px;
-			height: 88px;
+			width: 72px;
+			height: 72px;
 		}
 
 		.item-table td {
@@ -90,7 +90,7 @@
 		.item {
 			align-items: center;
 			cursor: default;
-			font-size: 1.8rem;
+			font-size: 1.6rem;
 		}
 
 		.item-hover {
@@ -136,7 +136,7 @@
 			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
-					 style="background-image: url(../../asset/images/title3.jpg)">
+					 style="background-image: url(../../asset/images/title4.jpg)">
 					<div class="row line">
 						<div class="line-content">
 							<img src="/asset/images/icon_home.png">
@@ -308,9 +308,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon12.png">
+													<img src="/asset/images/icon_inspection1_1.png">
 													<div class="item-content">
-														기본계측검사
+														기본검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -322,9 +322,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon12.png">
+													<img src="/asset/images/icon_inspection2_1.png">
 													<div class="item-content">
-														기본계측검사
+														신장검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -336,9 +336,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon13.png">
+													<img src="/asset/images/icon_inspection3_1.png">
 													<div class="item-content">
-														혈액검사
+														일반혈액검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -351,10 +351,9 @@
 										<tr>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon14.png">
+													<img src="/asset/images/icon_inspection4_1.png">
 													<div class="item-content">
-														비뇨생식계 및<br>
-														성병질환검사
+														심혈관계검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -365,9 +364,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon15.png">
+													<img src="/asset/images/icon_inspection5_1.png">
 													<div class="item-content">
-														간기능/당뇨검사
+														간기능/간염검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -376,9 +375,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon16.png">
+													<img src="/asset/images/icon_inspection6_1.png">
 													<div class="item-content">
-														심혈관/고지혈증 검사
+														당뇨/췌장/빈혈검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -387,9 +386,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon17.png">
+													<img src="/asset/images/icon_inspection7_1.png">
 													<div class="item-content">
-														갑상선/관절염/통풍
+														갑상선/류마티스/통풍검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -402,9 +401,9 @@
 										<tr>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon18.png">
+													<img src="/asset/images/icon_inspection8_1.png">
 													<div class="item-content">
-														방사선검사
+														종양검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -414,9 +413,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon19.png">
+													<img src="/asset/images/icon_inspection9_1.png">
 													<div class="item-content">
-														초음파검사
+														비뇨생식계 및 성별 질환
 													</div>
 												</div>
 												<div class="item-hover">
@@ -426,9 +425,9 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon20.png">
+													<img src="/asset/images/icon_inspection10_1.png">
 													<div class="item-content">
-														소화기계검사
+														장비검사
 													</div>
 												</div>
 												<div class="item-hover">
@@ -438,7 +437,7 @@
 											</td>
 											<td>
 												<div class="item">
-													<img src="/asset/images/icon21.png">
+													<img src="/asset/images/icon_inspection11_1.png">
 													<div class="item-content">
 														기타검사
 													</div>

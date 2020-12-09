@@ -33,7 +33,7 @@
 </header>
 
 <div id="main">
-	<div class="sub-title-height" style="background: url(../../../../asset/images/title3.jpg)">
+	<div class="sub-title-height" style="background: url(../../../../asset/images/title4.jpg)">
 		<div class="container">
 
 			<div class="row sub-title">
