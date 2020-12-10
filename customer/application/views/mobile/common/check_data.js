@@ -150,6 +150,29 @@ function removeAll(e) {
 	}
 }
 
+//별 -> 이미지로
+function starPoint(point) {
+	var star = 0.0;
+	star = point / 2;
+
+	var html = "";
+
+	var count = 5;
+	var num1 = star % 1;//소수점 아래
+	var num2 = star - num1;//소수점 위
+	while(count-- > 0){
+		if(num2-- > 0){
+			html += '<img src="/asset/images/star_full.png">';
+		}else if(num1-- > 0){
+			html += '<img src="/asset/images/star_half.png">';
+		}else {
+			html += '<img src="/asset/images/star_empty.png">';
+		}
+	}
+
+	return html;
+}
+
 //뒤로가기
 function cancelBack() {
 	history.back();

@@ -99,8 +99,8 @@
 		}
 
 		.item img {
-			width: 70px;
-			height: 70px;
+			width: fit-content;
+			height: fit-content;
 		}
 
 		.item-hover {
@@ -139,22 +139,30 @@
 </header>
 
 <div id="main">
-	<div class="sub-title-height" style="background: url(../../../../asset/images/title4.jpg)">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub4.jpg);
+		 background-size: 100%;background-position: center">
 		<div class="container">
 
 			<div class="row sub-title">
 				<div style="margin: 0 auto">
-					<span class="sub-title-name">건강검진 안내</span><br>
+					<span class="sub-title-name">이용안내</span><br>
 					편리한 이용을 위해<br>
 					듀얼헬스케어의 정보를 확인해주세요.
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row" style="position: relative">
 				<?php
 				$parentDir = dirname(__DIR__ . '..');
 				require($parentDir . '/common/sub_drop_down.php');
 				?>
+			</div>
+
+			<!--본문-->
+			<div class="row" style="display: block;margin-top: 9rem">
+				<img src="/asset/images/mobile/icon_sub_title_bar.png">
+				<h1>건강검진 안내</h1>
 			</div>
 
 			<div class="row" style="display: block;margin-top: 5rem">
@@ -269,18 +277,18 @@
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('기본계측검사')">
-										<img src="/asset/images/icon12.png">
+										<img src="/asset/images/icon_inspection1_1.png">
 										<div class="item-content">
-											기본계측검사
+											기본검사
 										</div>
 									</div>
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('혈액검사')">
-										<img src="/asset/images/icon13.png">
+										<img src="/asset/images/icon_inspection2_1.png">
 										<div class="item-content">
-											혈액검사
+											신장검사
 										</div>
 									</div>
 								</td>
@@ -289,18 +297,18 @@
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('비뇨생식계 및 성병질환검사')">
-										<img src="/asset/images/icon14.png">
+										<img src="/asset/images/icon_inspection3_1.png">
 										<div class="item-content">
-											비뇨생식계 및 <br>성병질환검사
+											일반혈액검사
 										</div>
 									</div>
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('간기능/당뇨검사')">
-										<img src="/asset/images/icon15.png">
+										<img src="/asset/images/icon_inspection4_1.png">
 										<div class="item-content">
-											간기능/당뇨검사
+											심혈관계검사
 										</div>
 									</div>
 								</td>
@@ -309,18 +317,18 @@
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('심혈관/고지혈증검사')">
-										<img src="/asset/images/icon16.png">
+										<img src="/asset/images/icon_inspection5_1.png">
 										<div class="item-content">
-											심혈관/고지혈증검사
+											간기능/간염검사
 										</div>
 									</div>
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('갑상선/관절염/통풍')">
-										<img src="/asset/images/icon17.png">
+										<img src="/asset/images/icon_inspection6_1.png">
 										<div class="item-content">
-											갑상선/관절염/통풍
+											당뇨/췌장/빈혈검사
 										</div>
 									</div>
 								</td>
@@ -329,18 +337,18 @@
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('방사선검사')">
-										<img src="/asset/images/icon18.png">
+										<img src="/asset/images/icon_inspection7_1.png">
 										<div class="item-content">
-											방사선검사
+											갑상선/류마티스/통풍검사
 										</div>
 									</div>
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('초음파검사')">
-										<img src="/asset/images/icon19.png">
+										<img src="/asset/images/icon_inspection8_1.png">
 										<div class="item-content">
-											초음파검사
+											종양검사
 										</div>
 									</div>
 								</td>
@@ -349,20 +357,40 @@
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('소화기계검사')">
-										<img src="/asset/images/icon20.png">
+										<img src="/asset/images/icon_inspection9_1.png">
 										<div class="item-content">
-											소화기계검사
+											비뇨생식계 및 성별 질환
 										</div>
 									</div>
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
 										 onclick="setItemContent('기타검사')">
-										<img src="/asset/images/icon21.png">
+										<img src="/asset/images/icon_inspection10_1.png">
+										<div class="item-content">
+											장비검사
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="item" data-toggle="modal" data-target="#inspectionModal"
+										 onclick="setItemContent('소화기계검사')">
+										<img src="/asset/images/icon_inspection11_1.png">
 										<div class="item-content">
 											기타검사
 										</div>
 									</div>
+								</td>
+								<td>
+<!--									<div class="item" data-toggle="modal" data-target="#inspectionModal"-->
+<!--										 onclick="setItemContent('기타검사')">-->
+<!--										<img src="/asset/images/icon21.png">-->
+<!--										<div class="item-content">-->
+<!--											장비검사-->
+<!--										</div>-->
+<!--									</div>-->
 								</td>
 							</tr>
 						</table>

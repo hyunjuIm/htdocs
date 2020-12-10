@@ -1,6 +1,6 @@
 <nav class="navbar">
 
-	<img src="/asset/images/mobile/m_logo.png" class="logo" onclick="location.href='/m/home'">
+	<img src="/asset/images/mobile/m_logo.png" class="logo" onclick="location.href='/m/'">
 
 	<span class="open-slide">
 	  <a href="#" onclick="openSlideMenu()">

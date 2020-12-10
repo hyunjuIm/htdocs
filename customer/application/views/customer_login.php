@@ -339,9 +339,9 @@
 
 				//모바일인지 pc인지
 				if(isMobile) {
-					location.href = "/m/home";
+					location.href = "/m/";
 				} else {
-					location.href = "/customer/index";
+					location.href = "/customer/";
 				}
 			}
 		}).catch(function (error) {

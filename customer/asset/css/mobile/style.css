@@ -48,6 +48,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	color: #fff;
 	font-size: 15px;
 	text-decoration: none;
+	font-weight: 300;
 }
 
 .btn-light-purple-square {
@@ -60,6 +61,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	font-size: 1.4rem;
 	border-radius: 0.5rem;
 	text-decoration: none;
+	font-weight: 300;
 }
 
 .btn-save-square {
@@ -72,6 +74,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	font-size: 1.5rem;
 	border-radius: 0.5rem;
 	text-decoration: none;
+	font-weight: 300;
 }
 
 .btn-cancel-square {
@@ -85,6 +88,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	border: 1px solid #5849ea;
 	border-radius: 0.5rem;
 	text-decoration: none;
+	font-weight: 300;
 }
 
 @-webkit-keyframes text-shadow-drop-center {

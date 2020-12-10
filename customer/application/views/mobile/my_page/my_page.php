@@ -75,7 +75,9 @@
 </header>
 
 <div id="main">
-	<div class="sub-title-height" style="background: url(../../../../asset/images/mobile/bg_sub1.jpg);background-size: 100%;background-position: center">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub1.jpg);
+		 background-size: 100%;background-position: center">
 		<div class="container">
 
 			<div class="row sub-title">
@@ -109,9 +111,8 @@
 		$parentDir = dirname(__DIR__ . '..');
 		require($parentDir . '/common/footer.php');
 		?>
+
 	</div>
-
-
 </div>
 
 </body>

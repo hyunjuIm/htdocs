@@ -15,9 +15,12 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../asset/css/mobile/style.css"/>
-<link rel="stylesheet" type="text/css" href="../asset/css/mobile/side_menu.css"/>
+<link rel="stylesheet" type="text/css" href="../asset/css/mobile/style.css?ver=1.1"/>
+<link rel="stylesheet" type="text/css" href="../asset/css/mobile/side_menu.css?ver=1.1"/>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!--모바일로 연락처 번호 안눌리게 설정-->
+<meta name="format-detection" content="telephone=no, address=no, email=no"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="yes" name="apple-mobile-web-app-capable"/>

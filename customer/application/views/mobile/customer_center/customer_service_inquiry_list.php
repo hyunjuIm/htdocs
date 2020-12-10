@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:공지사항</title>
+	<title>듀얼헬스케어:내 문의 내역</title>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
@@ -11,40 +11,74 @@
 	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
-		.notice-table {
+		.inquiry-table {
 			width: 100%;
 			border-top: 2px black solid;
 		}
 
-		.notice-table th {
+		.inquiry-table th {
 			padding: 1.3rem;
 			font-weight: 500;
 		}
 
-		.notice-table tbody {
+		.inquiry-table tbody {
 			border-top: 1px black solid;
 		}
 
-		.notice-table tbody tr {
+		.inquiry-table tbody tr {
 			border-bottom: 1px solid #a7a7a7;
 		}
 
-		.notice-table tbody tr:hover {
+		.inquiry-table tbody tr:hover {
 			background: #f1f1f1;
 		}
 
-		.notice-table td {
+		.inquiry-table td {
 			padding: 1.3rem;
 			vertical-align: middle;
 		}
 
-		.notice-table .title {
+		.inquiry-table td:last-child {
+			font-weight: bold;
+		}
+
+		.inquiry-table .title {
 			display: block;
 			width: 170px;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			text-align: left;
+		}
+
+		.modal-body {
+			font-size: 1.5rem !important;
+			padding: 2rem;
+		}
+
+		.qna-table {
+			text-align: left;
+			font-size: 1.6rem;
+		}
+
+		.qna-table td {
+			height: fit-content;
+			padding: 0.1rem;
+		}
+
+		.qna-table .title {
+			width: 7%;
+			text-align: center;
+			vertical-align: top;
+			font-weight: bold;
+			line-height: 4rem;
+			padding: 0 1rem;
+			color: #3529b1;
+			font-size: 5.5rem;
+		}
+
+		#question-content, #answer-content {
+			white-space: pre-wrap;
 		}
 	</style>
 
@@ -65,44 +99,48 @@
 
 <div id="main">
 	<div class="sub-title-height"
-		 style="background-image: url(../../../../asset/images/mobile/bg_sub4.jpg);
-		 background-size: 100%;background-position: center">
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub5.jpg);
+		 background-size: 100%;">
 		<div class="container">
 
 			<div class="row sub-title">
 				<div style="margin: 0 auto">
-					<span class="sub-title-name">이용안내</span><br>
-					편리한 이용을 위해<br>
-					듀얼헬스케어의 정보를 확인해주세요.
+					<span class="sub-title-name">고객센터</span><br>
+					듀얼헬스케어는 항상<br>
+					고객의 소리에 귀 기울이겠습니다.
 				</div>
 			</div>
 
 			<div class="row" style="position: relative">
-					<?php
-					$parentDir = dirname(__DIR__ . '..');
-					require($parentDir . '/common/sub_drop_down.php');
-					?>
+				<?php
+				$parentDir = dirname(__DIR__ . '..');
+				require($parentDir . '/common/sub_drop_down.php');
+				?>
 			</div>
 
 			<!--본문-->
 			<div class="row" style="display: block;margin-top: 9rem">
 				<img src="/asset/images/mobile/icon_sub_title_bar.png">
-				<h1>공지사항</h1>
+				<h1>내 문의 내역</h1>
 			</div>
-			
+
 			<div class="row" style="display: block;margin-top: 5rem">
-				<table class="notice-table" id="noticeTable">
+				<table class="inquiry-table" id="inquiryTable">
 					<thead>
 					<tr>
-						<th width="10px">NO</th>
 						<th>제목</th>
 						<th>작성일</th>
+						<th>상태</th>
 					</tr>
 					</thead>
 					<tbody>
 					</tbody>
 				</table>
 			</div>
+
+			<?php
+			require('inquiry_modal.php');
+			?>
 
 			<div class="row" style="margin: 3rem 0">
 				<form style="margin: 0 auto; width: 85%; padding: 1rem">
@@ -112,38 +150,20 @@
 					</div>
 				</form>
 			</div>
-
-			<hr>
-
-			<div class="row" style="margin-top: 3rem">
-				<div style="display: flex; margin: 0 auto;width: 80%">
-					<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요"
-						   onkeyup="enterKey()">
-					<div class="search-btn" onclick="searchNoticeData(0)">
-						<img src="/asset/images/icon_search.png" width="50%">
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<?php
 		$parentDir = dirname(__DIR__ . '..');
 		require($parentDir . '/common/footer.php');
 		?>
-	</div>
 
-</div>
+	</div>
 
 </body>
 
 <script>
-	$('#menu1 .nav-button').text('이용안내');
-	var menu2 = '공지사항';
-
-	<?php
-	$parentDir = dirname(__DIR__ . '..');
-	require($parentDir . '/common/check_data.js');
-	?>
+	$('#menu1 .nav-button').text('고객센터');
+	var menu2 = '내 문의 내역';
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
@@ -152,57 +172,42 @@
 
 	var pagingNum = 0;
 	var pageCount = 0;
-	var searchWord = "";
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	userData.pagingNum = pagingNum;
-	userData.searchWord = searchWord;
 
-	searchNoticeData(0);
+	getInquiryList(0);
 
-	//검색 - 엔터키
-	function enterKey() {
-		if (window.event.keyCode == 13) {
-			// 엔터키가 눌렸을 때 실행할 내용
-			searchNoticeData(0);
-		}
-	}
-
-	//공지 검색
-	function searchNoticeData(index) {
+	//문의 내역 가져오기
+	function getInquiryList(index) {
 		pagingNum = index;
-
 		userData.pagingNum = pagingNum;
-		userData.searchWord = $("#searchWord").val();
 
-		console.log(userData);
-
-		instance.post('CU_007_001', userData).then(res => {
+		instance.post('CU_008_001', userData).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-			setNoticeList(res.data.noticeList);
+			setInquiryList(res.data.qnADTOList);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
 			console.log(error);
 		});
 	}
 
-	//공지 테이블 셋팅
-	function setNoticeList(data) {
+	function setInquiryList(data) {
 		console.log(data);
 
 		$("#paging").empty();
-		$("#noticeTable > tbody").empty();
+		$("#inquiryTable > tbody").empty();
 
 		var html = "";
 		var pre = pagingNum - 1;
 		if (pre < 0) {
 			pre = 0;
 		}
-		html += '<a class="arrow pprev" onclick= "searchNoticeData(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow pprev" onclick= "getInquiryList(\'' + 0 + '\')" href="#"></a>'
 		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
@@ -212,9 +217,9 @@
 			var num = i + 1;
 
 			if (i == pagingNum) {
-				html += '<a onclick= "searchNoticeData(\'' + i + '\')" class="active">' + num + '</a>';
+				html += '<a onclick= "getInquiryList(\'' + i + '\')" class="active">' + num + '</a>';
 			} else {
-				html += '<a onclick= "searchNoticeData(\'' + i + '\')" href="#">' + num + '</a>';
+				html += '<a onclick= "getInquiryList(\'' + i + '\')" href="#">' + num + '</a>';
 			}
 
 			$("#paging").append(html);
@@ -222,27 +227,29 @@
 
 		var html = "";
 		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchNoticeData(\'' + (pageCount - 1) + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "getInquiryList(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
+
+		if (data.length == 0) {
+			var tbody = "";
+			tbody += '<tr><td colspan="5">문의 내역이 없습니다.</td></tr>';
+			$("#inquiryTable").append(tbody);
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var tbody = "";
 			tbody += '<tr>' +
-					'<td>' + data[i].id + '</td>' +
-					'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>' +
-					'<td>' + data[i].createDate + '</td>' +
-					'<tr>';
+					'<td class="title" data-toggle="modal" data-target="#inquiryDetailModal" onclick="detailInquiryPage(\'' + data[i].qnaId + '\', \'' + data[i].status + '\')">' + data[i].title + '</td>' +
+					'<td>' + data[i].createDate + '</td>';
+			if (data[i].status) {
+				tbody += '<td style="color: #5849ea">답변완료</td>';
+			} else {
+				tbody += '<td style="color: grey">답변대기</td>';
+			}
+			tbody += '<tr>';
 
-			$("#noticeTable").append(tbody);
+			$("#inquiryTable").append(tbody);
 		}
-
-		//테이블 제목 가로 사이즈 계산
-		$('.notice-table .title').css('width', $('.notice-table').width() - $('.notice-table .title').width() - 10);
-	}
-
-	//다음 페이지에 공지 id 값 넘기기
-	function detailNoticePage(noticeId) {
-		location.href = "notice_detail?noticeId=" + noticeId;
 	}
 
 	<?php

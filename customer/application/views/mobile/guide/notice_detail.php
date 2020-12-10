@@ -33,25 +33,28 @@
 </header>
 
 <div id="main">
-	<div class="sub-title-height" style="background: url(../../../../asset/images/title4.jpg)">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub4.jpg);
+		 background-size: 100%;background-position: center">
 		<div class="container">
 
 			<div class="row sub-title">
 				<div style="margin: 0 auto">
-					<span class="sub-title-name">공지사항</span><br>
+					<span class="sub-title-name">이용안내</span><br>
 					편리한 이용을 위해<br>
 					듀얼헬스케어의 정보를 확인해주세요.
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row" style="position: relative">
 				<?php
 				$parentDir = dirname(__DIR__ . '..');
 				require($parentDir . '/common/sub_drop_down.php');
 				?>
 			</div>
 
-			<div class="row" style="display: block;margin-top: 5rem">
+			<!--본문-->
+			<div class="row" style="display: block;margin-top: 9rem">
 				<div id="title" style="font-size: 2rem;color:#3529b1;font-weight: 500;line-height: 3.5rem"></div>
 				<div id="createDate" style="color:grey;margin-bottom: 2rem"></div>
 

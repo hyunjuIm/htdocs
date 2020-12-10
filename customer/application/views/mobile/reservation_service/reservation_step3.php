@@ -4,12 +4,13 @@
 	<title>듀얼헬스케어:검진예약</title>
 
 	<?php
-	require('head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
 		.form-check {
@@ -18,34 +19,42 @@
 
 		.select-hos {
 			width: 100%;
-			height: 20rem;
+			height: fit-content;
 			background: #F6F6F6;
-			border-radius: 10rem;
-			font-size: 1.5rem;
-			display: flex;
+			border-radius: 1.5rem;
+			padding: 2rem;
 		}
 
-		.select-hos .cell {
-			padding: 2rem;
-			width: 20%;
+		.select-hos .cell:not(:first-child) {
+			margin-top: 1.5rem;
+			/*padding: 1.5rem;*/
+		}
+
+		.select-hos #name {
+			font-size: 1.6rem;
 		}
 
 		.select-hos .title {
-			font-size: 1.8rem;
 			font-weight: 500;
+		}
+
+		.select-hos .content {
+			margin-top: 0.3rem;
+			margin-left: 1rem;
+			font-size: 1.3rem;
 		}
 
 		#hosImg {
 			float: left;
-			width: 18rem;
-			height: 18rem;
+			width: 10rem;
+			height: 10rem;
 			border-radius: 70%;
 			overflow: hidden;
 			margin: 1rem;
 		}
 
-		.point-table td {
-			padding: 0.3rem 0.7rem;
+		.point-table img {
+			width: 12px;
 		}
 
 		#baseInjectionTable, #choiceInjectionTable, #addInjectionTable {
@@ -62,16 +71,16 @@
 		}
 
 		.card-set {
-			margin-bottom: 3rem;
 		}
 
 		.card-header {
 			border: 1px solid grey;
 			background: white;
-			font-size: 1.9rem;
 			font-weight: bolder;
-			padding: 1.5rem 3rem;
+			padding: 1rem 3rem;
+			font-size: 1.6rem;
 			cursor: pointer;
+			margin-top: 1.5rem;
 		}
 
 		.card-body {
@@ -126,13 +135,13 @@
 
 		.nav-item {
 			font-weight: bolder;
-			padding: 1rem 2rem 1rem 0;
+			padding: 1rem 0.5rem 1rem 0;
 			border: none;
 		}
 
 		.nav-item a {
 			color: black;
-			margin-bottom: 1.4rem;
+			/*margin-bottom: 1.4rem;*/
 		}
 
 		.nav-item a:hover, .nav-item > .active {
@@ -262,241 +271,220 @@
 
 <header>
 	<?php
-	require('header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
+	?>
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/menu/side.php');
 	?>
 </header>
 
-<div class="container-fluid">
-	<div class="row" style="display: table">
-		<!-- 좌측 사이드바 -->
-		<?php
-		require('side_bar_light.php');
-		?>
-		<!-- 우측 컨텐츠 -->
-		<div class="col"
-			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
-				<!-- 상단 메뉴 -->
-				<div class="container top-menu"
-					 style="background-image: url(../../asset/images/title3.jpg); height: 30rem">
-					<div class="row line">
-						<div class="line-content">
-							<img src="/asset/images/icon_home.png">
-							<span>｜</span>
-							<span>예약서비스</span>
-							<span>｜</span>
-							<span>검진예약</span>
-						</div>
-					</div>
-					<div class="row wrap" style="height: 22rem">
-						<div class="inner " style="margin: 0 auto; ">
-							<span class="title">예약서비스<br></span>
-							Reservation service
-						</div>
-					</div>
-					<div class="row" style="height: 4.5rem">
-						<div style="margin: 0 auto; display: flex">
-							<div class="title-menu-select" style="border-right: #828282 1px solid">
-								검진예약
-							</div>
-							<a href="/customer/reservation_list">
-								<div class="title-menu">
-									예약현황
-								</div>
-							</a>
-						</div>
-					</div>
+<div id="main">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub2.jpg);
+		 background-size: 100%;background-position: center">
+		<div class="container">
+
+			<div class="row sub-title">
+				<div style="margin: 0 auto">
+					<span class="sub-title-name">예약서비스</span><br>
+					원하시는 검진 프로그램을<br>
+					편리하게 예약하실 수 있습니다.
 				</div>
+			</div>
 
-				<!-- 컨텐츠내용 -->
-				<div style="margin:0 10rem">
-					<div class="container content-view" style="color: black;width: 130rem;padding: 6rem;">
+			<div class="row" style="position: relative">
+				<?php
+				$parentDir = dirname(__DIR__ . '..');
+				require($parentDir . '/common/sub_drop_down.php');
+				?>
+			</div>
 
-						<div class="row" style="margin-top: 3rem">
-							<div style="margin: 0 auto; font-weight: 500">
-								<div style="font-size: 2.3rem;margin-bottom: 4rem">검진예약절차</div>
-								<img id="step" class="reservation-order" src="/asset/images/step2.png">
-							</div>
-						</div>
-
-						<!--선택한 병원 상단바-->
-						<div class="row" style="margin-top: 7rem;text-align: left">
-							<div class="select-hos">
-								<div id="hosImg"></div>
-								<div class="cell" style="font-weight: 500;margin-left: 2rem">
-									<div style="font-size: 2.1rem" id="name">병원이름</div>
-									<div style="font-weight: 300;word-break:keep-all;padding: 1.6rem 0" id="address">
+			<!--본문-->
+			<div class="row" style="margin-top: 9rem">
+				<div style="margin: 0 auto">
+					<h2>검진예약절차</h2><br>
+					<img class="reservation-order" src="/asset/images/step3.png"
+						 style="width: 90%;max-width: fit-content">
+				</div>
+			</div>
+			<!--선택한 병원 상단바-->
+			<div class="row" style="margin-top: 7rem;text-align: left">
+				<div class="select-hos">
+					<div class="cell" style="font-weight: 500;font-size: 1.3rem">
+						<table>
+							<tr>
+								<td width="30%">
+									<div id="hosImg"></div>
+								</td>
+								<td>
+									<div style="" id="name">병원이름</div>
+									<div style="font-weight: 300;word-break:keep-all;padding: 0.5rem 0" id="address">
 										주소
 									</div>
-									문의 <span style="font-weight: 300" id="phone"></span><br>
-									운영시간 <span style="font-weight: 300" id="operatingHours"></span><br>
-								</div>
-								<div class="cell">
-									<div class="title">추천정보</div>
-									<table class="point-table" style="margin-top: 1rem">
-										<tr>
-											<td>검사항목</td>
-											<td id="onePoint">
-											</td>
-										</tr>
-										<tr>
-											<td>접근성</td>
-											<td id="twoPoint"></td>
-										</tr>
-										<tr>
-											<td>전문성</td>
-											<td id="threePoint"></td>
-										</tr>
-										<tr>
-											<td>시설</td>
-											<td id="fourPoint"></td>
-										</tr>
-									</table>
-								</div>
-								<div class="cell">
+									문의&nbsp&nbsp<span style="font-weight: 300" id="phone"></span><br>
+									운영시간&nbsp&nbsp<span style="font-weight: 300" id="operatingHours"></span><br>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<hr>
+					<div class="cell">
+						<div class="title">추천정보</div>
+						<table class="point-table content">
+							<tr>
+								<td width="20%">검사항목</td>
+								<td id="onePoint"></td>
+								<td width="20%">접근성</td>
+								<td id="twoPoint"></td>
+							</tr>
+							<tr>
+								<td>전문성</td>
+								<td id="threePoint"></td>
+								<td>시설</td>
+								<td id="fourPoint"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="cell">
+						<table>
+							<tr>
+								<td width="50%" style="vertical-align: top">
 									<div class="title">공지사항</div>
-									<div id="notice" style="margin-top: 1rem;color: grey"></div>
-								</div>
-								<div class="cell">
+									<div class="content" id="notice" style="color: grey"></div>
+								</td>
+								<td style="vertical-align: top">
 									<div class="title">기관정보</div>
-									<div id="plusInfo" style="margin-top: 1rem"></div>
+									<div class="content" id="plusInfo"></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!--검진유형선택-->
+			<div class="row" id="step1">
+				<!--검진유형선택-->
+				<div class="container" style="padding: 0">
+					<div class="row" style="display:block;margin-top: 3rem">
+						<h2>검진유형</h2>
+						<hr>
+						<div id="packageList">
+
+						</div>
+						<hr>
+					</div>
+					<form id="packageForm" style="display: none">
+						<div class="row" style="display:block;margin-top: 5rem">
+							<h2 style="text-align: left">기본검사</h2>
+
+							<ul class="nav" id="injectionBaseList">
+							</ul>
+
+							<div>
+								<table class="table table-bordered" id="baseInjectionTable">
+								</table>
+							</div>
+						</div>
+						<div class="row" style="display:block;margin-top: 5rem">
+							<h2 style="text-align: left">선택검사</h2>
+
+							<div class="accordion" id="accordionExample">
+
+							</div>
+						</div>
+						<div class="row" style="display:block;margin-top: 5rem">
+							<h2 style="text-align: left">추가검사</h2>
+							<div class="accordion" id="accordionExample">
+								<div class="card-header" id="headingOne">
+									<div class="text-left"
+										 data-toggle="collapse" data-target="#collapseOne"
+										 aria-expanded="false"
+										 aria-controls="collapseOne">
+										추가검사
+										<div style="float:right">
+											<img src="/asset/images/icon_drop_down.png">
+										</div>
+									</div>
+								</div>
+								<div id="addInjectionList">
+
+								</div>
+								<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+									 data-parent="#accordionExample">
+									<div class="card-body" id="addInjection">
+
+									</div>
+								</div>
+							</div>
+							<div style="float: right;font-weight: 400;margin-top: 1rem">
+								총 추가금액 : <span id="addInjectionPrice">0</span>원
+							</div>
+						</div>
+
+						<div class="row" style="display:flex;margin-top: 5rem">
+							<div style="margin: 0 auto">
+								<div class="btn-cancel-square" style="font-size: 1.4rem"
+									 onclick="cancelBack()">
+									이전단계
+								</div>
+								<div class="btn-light-purple-square" style="font-size: 1.4rem"
+									 onclick="nextStep1()">
+									다음단계
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!--검진일선택-->
+			<div class="row" id="step2" style="display: none">
+				<div class="container">
+					<div class="row" style="display:block;margin-top: 10rem">
+						<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
+							검진일선택
+						</div>
+
+						<hr>
+
+						<div class="container">
+							<div class="row">
+								<div class="col" style="padding: 3rem 0">
+									<div style="font-size: 2rem; font-weight: bolder">
+										1차 예약일
+									</div>
+									<div id="firstWishDate" class="date-view">
+										&nbsp
+									</div>
+									<div id="firstDatepicker" style="margin-top: 3rem"></div>
+								</div>
+								<div class="col" style="padding: 3rem 0">
+									<div style="font-size: 2rem; font-weight: bolder">
+										2차 예약일
+									</div>
+									<div id="secondWishDate" class="date-view">
+										&nbsp
+									</div>
+									<div id="secondDatepicker" style="margin-top: 3rem"></div>
 								</div>
 							</div>
 						</div>
 
+						<hr>
 
-						<!--검진유형선택-->
-						<div class="row" id="step1">
-							<!--검진유형선택-->
-							<div class="container">
-
-								<div class="row" style="display:block;margin-top: 7rem">
-									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-										검진유형
-									</div>
-									<hr>
-									<div id="packageList">
-
-									</div>
-									<hr>
+						<div class="row" style="display:flex;margin-top: 5rem">
+							<div style="margin: 0 auto">
+								<div class="btn-cancel-square" style="font-size: 1.4rem"
+									 onclick="backStep1()">
+									이전단계
 								</div>
-								<form id="packageForm" style="display: none">
-									<div class="row" style="display:block;margin-top: 5rem">
-										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-											기본검사
-										</div>
-
-										<ul class="nav" id="injectionBaseList">
-										</ul>
-
-										<div>
-											<table class="table table-bordered" id="baseInjectionTable">
-											</table>
-										</div>
-									</div>
-									<div class="row" style="display:block;margin-top: 5rem">
-										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-											선택검사
-										</div>
-
-										<div class="accordion" id="accordionExample">
-
-										</div>
-									</div>
-									<div class="row" style="display:block;margin-top: 5rem">
-										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
-											추가검사
-										</div>
-										<div class="accordion" id="accordionExample">
-											<div class="card-header" id="headingOne">
-												<div class="text-left"
-													 data-toggle="collapse" data-target="#collapseOne"
-													 aria-expanded="false"
-													 aria-controls="collapseOne">
-													추가검사
-													<div style="float:right">
-														<img src="/asset/images/icon_drop_down.png">
-													</div>
-												</div>
-											</div>
-											<div id="addInjectionList">
-
-											</div>
-											<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-												 data-parent="#accordionExample">
-												<div class="card-body" id="addInjection">
-
-												</div>
-											</div>
-										</div>
-										<div style="float: right;font-weight: 400;margin-top: 1rem">
-											총 추가금액 : <span id="addInjectionPrice">0</span>원
-										</div>
-									</div>
-
-									<div class="row" style="display:flex;margin-top: 5rem">
-										<div style="margin: 0 auto">
-											<div class="btn-cancel-square" style="font-size: 1.4rem"
-												 onclick="cancelBack()">
-												이전단계
-											</div>
-											<div class="btn-light-purple-square" style="font-size: 1.4rem"
-												 onclick="nextStep1()">
-												다음단계
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-
-						<!--검진일선택-->
-						<div class="row" id="step2" style="display: none">
-							<div class="container">
-								<div class="row" style="display:block;margin-top: 10rem">
-									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-										검진일선택
-									</div>
-
-									<hr>
-
-									<div class="container">
-										<div class="row">
-											<div class="col" style="padding: 3rem 0">
-												<div style="font-size: 2rem; font-weight: bolder">
-													1차 예약일
-												</div>
-												<div id="firstWishDate" class="date-view">
-													&nbsp
-												</div>
-												<div id="firstDatepicker" style="margin-top: 3rem"></div>
-											</div>
-											<div class="col" style="padding: 3rem 0">
-												<div style="font-size: 2rem; font-weight: bolder">
-													2차 예약일
-												</div>
-												<div id="secondWishDate" class="date-view">
-													&nbsp
-												</div>
-												<div id="secondDatepicker" style="margin-top: 3rem"></div>
-											</div>
-										</div>
-									</div>
-
-									<hr>
-
-									<div class="row" style="display:flex;margin-top: 5rem">
-										<div style="margin: 0 auto">
-											<div class="btn-cancel-square" style="font-size: 1.4rem"
-												 onclick="backStep1()">
-												이전단계
-											</div>
-											<div class="btn-light-purple-square" style="font-size: 1.4rem"
-												 onclick="successRegister()">
-												다음단계
-											</div>
-										</div>
-									</div>
+								<div class="btn-light-purple-square" style="font-size: 1.4rem"
+									 onclick="successRegister()">
+									다음단계
 								</div>
 							</div>
 						</div>
@@ -504,14 +492,31 @@
 				</div>
 			</div>
 		</div>
+
+		<?php
+		$parentDir = dirname(__DIR__ . '..');
+		require($parentDir . '/common/footer.php');
+		?>
 	</div>
+
+</div>
 
 </body>
 
-<?php
-require('check_data.php');
-?>
 <script>
+	$('#menu1 .nav-button').text('예약서비스');
+	var menu2 = '검진예약';
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/check_data.js');
+	?>
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/sub_drop_down.js');
+	?>
+
 	//예약을 위한 id 가져오기
 	var get = location.href.substr(
 			location.href.indexOf('=', 1) + 1
