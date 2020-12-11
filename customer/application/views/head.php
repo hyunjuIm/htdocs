@@ -20,7 +20,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="yes" name="apple-mobile-web-app-capable"/>
-<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes, name="viewport"/>
 
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 

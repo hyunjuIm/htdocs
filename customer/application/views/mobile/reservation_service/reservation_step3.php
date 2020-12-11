@@ -63,14 +63,12 @@
 		}
 
 		#baseInjectionTable td {
-			width: calc(100% / 6);
-			max-width: calc(100% / 6);
-			min-width: calc(100% / 6);
+			width: calc(100% / 3);
+			max-width: calc(100% / 3);
+			min-width: calc(100% / 3);
 			vertical-align: middle;
-			font-size: 1.5rem;
-		}
-
-		.card-set {
+			font-size: 1.2rem;
+			word-break: break-all;
 		}
 
 		.card-header {
@@ -108,7 +106,7 @@
 		}
 
 		.injection-memo {
-			font-size: 1.5rem;
+			font-size: 1.3rem;
 			color: grey;
 			font-weight: bolder;
 		}
@@ -141,6 +139,7 @@
 
 		.nav-item a {
 			color: black;
+			font-size: 1.3rem;
 			/*margin-bottom: 1.4rem;*/
 		}
 
@@ -150,10 +149,10 @@
 		}
 
 		.date-view {
-			width: 50% !important;
+			width: 19rem !important;
 			border: none !important;
 			border-bottom: 2px solid black !important;
-			font-size: 2.5rem;
+			font-size: 2rem;
 			text-align: center;
 			cursor: default;
 			margin: 0 auto;
@@ -191,7 +190,7 @@
 		}
 
 		.ui-datepicker-title {
-			font-size: 25px;
+			font-size: 2rem;
 		}
 
 		.ui-datepicker .ui-datepicker-header {
@@ -199,7 +198,7 @@
 		}
 
 		.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
-			top: 25px;
+			top: 20px;
 		}
 
 		.ui-state-hover, .ui-datepicker-prev, .ui-datepicker-prev-hover, .ui-datepicker-prev-focus {
@@ -220,13 +219,13 @@
 		}
 
 		.ui-datepicker {
-			width: 450px;
+			width: 100%;
 			text-transform: uppercase;
 		}
 
 		.ui-datepicker td {
 			width: 50px;
-			padding: 15px 5px;
+			padding: 10px 5px;
 			border: none !important;
 		}
 
@@ -252,16 +251,42 @@
 
 		.ui-widget {
 			font-family: Verdana, Arial, sans-serif;
-			font-size: 19px;
+			font-size: 1.7rem;
 		}
 
 		.ui-datepicker td span, .ui-datepicker td a {
-			padding: 10px 0;
+			padding: 8px 0;
 		}
 
 		.ui-datepicker-calendar > tbody td.ui-datepicker-week-end:first-child > .ui-state-default,
 		.ui-datepicker-calendar > thead th.ui-datepicker-week-end:first-child {
 			color: red !important;
+		}
+
+		.btn-cancel-square, .btn-light-purple-square {
+			font-size: 1.3rem !important;
+		}
+
+		.btn-light-purple-square {
+			border: 1px solid #5849ea;
+		}
+
+		@media (min-width: 768px) and (max-width: 1024px) {
+			.ui-datepicker {
+				width: 50%;
+			}
+		}
+
+		@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+			.ui-datepicker {
+				width: 50%;
+			}
+		}
+
+		@media (min-width: 481px) and (max-width: 767px) {
+			.ui-datepicker {
+				width: 80%;
+			}
 		}
 
 	</style>
@@ -316,7 +341,7 @@
 					<div class="cell" style="font-weight: 500;font-size: 1.3rem">
 						<table>
 							<tr>
-								<td width="30%">
+								<td width="10%">
 									<div id="hosImg"></div>
 								</td>
 								<td>
@@ -369,7 +394,7 @@
 			<div class="row" id="step1">
 				<!--검진유형선택-->
 				<div class="container" style="padding: 0">
-					<div class="row" style="display:block;margin-top: 3rem">
+					<div class="row" style="display:block;margin-top: 5rem">
 						<h2>검진유형</h2>
 						<hr>
 						<div id="packageList">
@@ -389,6 +414,7 @@
 								</table>
 							</div>
 						</div>
+
 						<div class="row" style="display:block;margin-top: 5rem">
 							<h2 style="text-align: left">선택검사</h2>
 
@@ -396,6 +422,7 @@
 
 							</div>
 						</div>
+
 						<div class="row" style="display:block;margin-top: 5rem">
 							<h2 style="text-align: left">추가검사</h2>
 							<div class="accordion" id="accordionExample">
@@ -419,20 +446,22 @@
 
 									</div>
 								</div>
+
+								<div id="choiceAddView">
+
+								</div>
 							</div>
 							<div style="float: right;font-weight: 400;margin-top: 1rem">
 								총 추가금액 : <span id="addInjectionPrice">0</span>원
 							</div>
 						</div>
 
-						<div class="row" style="display:flex;margin-top: 5rem">
+						<div class="row" style="display:flex;margin-top: 9rem">
 							<div style="margin: 0 auto">
-								<div class="btn-cancel-square" style="font-size: 1.4rem"
-									 onclick="cancelBack()">
+								<div class="btn-cancel-square" onclick="cancelBack()">
 									이전단계
 								</div>
-								<div class="btn-light-purple-square" style="font-size: 1.4rem"
-									 onclick="nextStep1()">
+								<div class="btn-light-purple-square btn-scroll" onclick="nextStep1()">
 									다음단계
 								</div>
 							</div>
@@ -443,49 +472,34 @@
 
 			<!--검진일선택-->
 			<div class="row" id="step2" style="display: none">
-				<div class="container">
-					<div class="row" style="display:block;margin-top: 10rem">
-						<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
-							검진일선택
+				<div class="row" style="display:block;margin-top: 5rem">
+					<h2>검진일선택</h2>
+					<hr>
+
+					<div style="margin-top: 3rem">
+						<h3>1차 예약일</h3>
+						<div id="firstWishDate" class="date-view">
+							&nbsp
 						</div>
+						<div id="firstDatepicker" style="margin-top: 1.5rem"></div>
+					</div>
+					<div style="margin: 5rem 0 3rem 0">
+						<h3>2차 예약일</h3>
+						<div id="secondWishDate" class="date-view">
+							&nbsp
+						</div>
+						<div id="secondDatepicker" style="margin-top: 1.5rem"></div>
+					</div>
 
-						<hr>
+					<hr>
 
-						<div class="container">
-							<div class="row">
-								<div class="col" style="padding: 3rem 0">
-									<div style="font-size: 2rem; font-weight: bolder">
-										1차 예약일
-									</div>
-									<div id="firstWishDate" class="date-view">
-										&nbsp
-									</div>
-									<div id="firstDatepicker" style="margin-top: 3rem"></div>
-								</div>
-								<div class="col" style="padding: 3rem 0">
-									<div style="font-size: 2rem; font-weight: bolder">
-										2차 예약일
-									</div>
-									<div id="secondWishDate" class="date-view">
-										&nbsp
-									</div>
-									<div id="secondDatepicker" style="margin-top: 3rem"></div>
-								</div>
+					<div class="row" style="display:flex;margin-top: 5rem">
+						<div style="margin: 0 auto">
+							<div class="btn-cancel-square btn-scroll" onclick="backStep1()">
+								이전단계
 							</div>
-						</div>
-
-						<hr>
-
-						<div class="row" style="display:flex;margin-top: 5rem">
-							<div style="margin: 0 auto">
-								<div class="btn-cancel-square" style="font-size: 1.4rem"
-									 onclick="backStep1()">
-									이전단계
-								</div>
-								<div class="btn-light-purple-square" style="font-size: 1.4rem"
-									 onclick="successRegister()">
-									다음단계
-								</div>
+							<div class="btn-light-purple-square" onclick="successRegister()">
+								다음단계
 							</div>
 						</div>
 					</div>
@@ -516,6 +530,11 @@
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
+
+	$('.btn-scroll').on('click',function(e){
+		e.preventDefault();
+		$('html,body').animate({scrollTop:750},200);
+	});
 
 	//예약을 위한 id 가져오기
 	var get = location.href.substr(

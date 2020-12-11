@@ -8,7 +8,6 @@
 	?>
 
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
-	<link rel="stylesheet" type="text/css" href="/asset/css/calendar.css"/>
 
 	<style>
 		html {

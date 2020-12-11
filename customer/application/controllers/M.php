@@ -73,6 +73,12 @@ class m extends CI_Controller
 		$this->load->view('mobile/guide/health_checkup_guide');
 	}
 
+	//병원별 검진 비교
+	public function comparison_hospital()
+	{
+		$this->load->view('mobile/guide/comparison_hospital');
+	}
+
 	//자주 묻는 질문
 	public function customer_service_faq()
 	{

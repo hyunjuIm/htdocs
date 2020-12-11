@@ -30,6 +30,7 @@
 			text-align: left;
 			vertical-align: top;
 			font-weight: bolder;
+			cursor: pointer;
 		}
 
 		.home-menu td div {
@@ -212,14 +213,16 @@
 			<div class="row">
 				<table class="home-menu">
 					<tr>
-						<td style="background: url(../../../asset/images/mobile/main1.jpg);background-size: 100%">
+						<td style="background: url(../../../asset/images/mobile/main1.jpg);background-size: 100%"
+							onclick="location.href='/m/reservation_list'">
 							<div>
 								<span class="menu">내예약</span><br>
 								MY RESERVATION
 							</div>
 							<img src="../../../asset/images/mobile/m_icon1.png" width="50%">
 						</td>
-						<td style="background: url(../../../asset/images/mobile/main2.jpg);background-size: 100%">
+						<td style="background: url(../../../asset/images/mobile/main2.jpg);background-size: 100%"
+							onclick="location.href='/m/reservation_step1'">
 							<div>
 								<span class="menu">검진예약</span><br>
 								RESERVATION
@@ -228,14 +231,16 @@
 						</td>
 					</tr>
 					<tr>
-						<td style="background: url(../../../asset/images/mobile/main3.jpg);background-size: 100%">
+						<td style="background: url(../../../asset/images/mobile/main3.jpg);background-size: 100%"
+							onclick="location.href='/m/result_final'">
 							<div>
 								<span class="menu">검진결과</span><br>
 								RESULT
 							</div>
 							<img src="../../../asset/images/mobile/m_icon3.png" width="50%">
 						</td>
-						<td style="background: url(../../../asset/images/mobile/main4.jpg);background-size: 100%">
+						<td style="background: url(../../../asset/images/mobile/main4.jpg);background-size: 100%"
+							onclick=window.open("/customer/comparison_hospital")>
 							<div>
 								<span class="menu">병원별비교</span><br>
 								COMPARE HOSPITALS
@@ -244,14 +249,16 @@
 						</td>
 					</tr>
 					<tr>
-						<td style="background: url(../../../asset/images/mobile/main5.jpg);background-size: 100%">
+						<td style="background: url(../../../asset/images/mobile/main5.jpg);background-size: 100%"
+							onclick="alert('서비스 준비중입니다.')">
 							<div>
 								<span class="menu">건강컨텐츠</span><br>
 								HEALTH CONTENTS
 							</div>
 							<img src="../../../asset/images/mobile/m_icon5.png" width="50%">
 						</td>
-						<td style="background: url(../../../asset/images/mobile/main6.jpg);background-size: 100%">
+						<td style="background: url(../../../asset/images/mobile/main6.jpg);background-size: 100%"
+							onclick="location.href='/m/customer_service_faq'">
 							<div>
 								<span class="menu">고객센터</span><br>
 								CUSTOMER CENTER

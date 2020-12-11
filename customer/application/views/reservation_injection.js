@@ -228,7 +228,7 @@ function choiceInjection(name, list, chList) {
 				if (item == list[i].id) {
 					html += '<div class="injection-choice">' +
 						count + '. ' + list[i].inspection;
-					if (list.name == addIjList) {
+					if (list[i].ipClass == '추가') {
 						html += '&nbsp<span class="injection-price">' +
 							list[i].price.toLocaleString() + '원</span>';
 					}

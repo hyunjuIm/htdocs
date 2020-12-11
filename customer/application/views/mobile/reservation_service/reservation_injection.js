@@ -30,13 +30,13 @@ function setBaseInjectionList(data) {
 			html += '<li class="nav-item">' +
 				'<a class="nav-link" data-toggle="tab" href="#" id=injection' + i + ' onclick="setInjectionData(id, value)">';
 			if (i == 0) {
-				injectionText = '기본검사';
+				injectionText = '기본';
 			} else if (i == 1) {
-				injectionText = '혈액검사';
+				injectionText = '혈액';
 			} else if (i == 2) {
-				injectionText = '장비검사';
+				injectionText = '장비';
 			} else if (i == 3) {
-				injectionText = '기타검사';
+				injectionText = '기타';
 			}
 			html += injectionText + '(' + injectionList[i] + ')' +
 				'</a>' +
@@ -52,10 +52,13 @@ function setBaseInjectionList(data) {
 function setInjectionData(id, value) {
 	$("#baseInjectionTable").empty();
 
+	value = value+'검사';
+
 	$('.nav-item a id').toggleClass('active');
 
 	var count = 0;
 	for (i = 0; i < injectionData.length; i++) {
+		console.log(injectionData[i].category);
 		if (injectionData[i].ipClass == '기본' && value == injectionData[i].category) {
 			var html = "";
 			count += 1;
@@ -63,15 +66,15 @@ function setInjectionData(id, value) {
 
 			$("#baseInjectionTable").append(html);
 
-			if (count == 6) {
+			if (count == 3) {
 				count = 0;
 				$("#baseInjectionTable").append('<tr></tr>');
 			}
 		}
 	}
 
-	if (count != 0 && count < 6) {
-		var index = 6 - count;
+	if (count != 0 && count < 3) {
+		var index = 3 - count;
 		for (i = 0; i < index; i++) {
 			$("#baseInjectionTable").append('<td>&nbsp</td>');
 		}
@@ -142,6 +145,8 @@ function setChoiceInjectionList(data) {
 			' data-parent="#accordionExample">' +
 			'<div class="card-body">';
 
+		var chId = choiceList[i].title[2] + 'Ch';
+
 		for (j = 0; j < data.length; j++) {
 			if (choiceList[i].title == data[j].ipClass) {
 				html += '<div class="injection-content">' +
@@ -149,7 +154,7 @@ function setChoiceInjectionList(data) {
 					'<input class="form-check-input" type="checkbox" id=\'' + data[j].ipCode + '\'' +
 					'name=\'' + choiceList[i].title + '\' value=\'' + data[j].id + '\' ' +
 					'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\');' +
-					'choiceInjection(name, choiceAllList, \'' + choiceList[i].title[2] + 'List' + '\')">' +
+					'choiceInjection(name, choiceAllList, \'' + chId + '\')">' +
 					'<label class="form-check-label" for=\'' + data[j].ipCode + '\'>&nbsp&nbsp' + data[j].inspection +
 					'<span class="injection-memo">&nbsp&nbsp' + data[j].memo + '</span></label></div></div>';
 			}
@@ -157,6 +162,7 @@ function setChoiceInjectionList(data) {
 
 		html += '</div>' +
 			'</div>' +
+			'<div id=\'' + chId + '\'></div>' +
 			'</div>';
 
 		$("#accordionExample").append(html);
@@ -186,7 +192,7 @@ function setAddInjectionList(data) {
 				'<input class="form-check-input" type="checkbox" name="addInjectionCheck" ' +
 				'value=\'' + data[i].id + '\' id=\'' + data[i].ipCode + '\'' +
 				'onclick="clickOne(name);addInjectionPrice(this, \'' + data[i].price + '\');' +
-				'choiceInjection(name, addIjList, ' + "'addInjectionList'" + ')">' +
+				'choiceInjection(name, addIjList, ' + "'choiceAddView'" + ')">' +
 				'<label class="form-check-label" for=\'' + data[i].ipCode + '\'>&nbsp&nbsp' + data[i].inspection +
 				'<span class="injection-price">&nbsp&nbsp' + data[i].price.toLocaleString() +
 				'원 </span> <span class="injection-memo">&nbsp' + data[i].memo + '</span></label></div></div>';
@@ -228,7 +234,7 @@ function choiceInjection(name, list, chList) {
 				if (item == list[i].id) {
 					html += '<div class="injection-choice">' +
 						count + '. ' + list[i].inspection;
-					if (list.name == addIjList) {
+					if (list[i].ipClass == '추가') {
 						html += '&nbsp<span class="injection-price">' +
 							list[i].price.toLocaleString() + '원</span>';
 					}

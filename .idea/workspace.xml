@@ -20,36 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/customer_center/customer_service_faq.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/customer_center/customer_service_inquiry_list.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/customer_center/customer_service_one_inquiry.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/customer_center/inquiry_modal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_injection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step1.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_sub2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_sub3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_sub4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/bg_sub5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/asset/images/mobile/icon_sub_title_bar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/comparison_hospital.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_list.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step4.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/controllers/M.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/controllers/M.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/check_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/check_data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/sub_drop_down.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/sub_drop_down.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/sub_drop_down.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/sub_drop_down.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/health_checkup_guide.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/health_checkup_guide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/guide/notice_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/menu/side.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/my_page/my_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/customer/asset/css/mobile/sub_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/asset/images/mobile/icon_main1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/asset/images/link_all_more.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_injection.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_injection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_injection.js" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_injection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step4.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,18 +76,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/application/views/mobile/reservation_service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/application/views/mobile/guide" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views\mobile\guide" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views\mobile\reservation_service" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\application\views\mobile\customer_center" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images\mobile" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\customer\asset\images" />
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\application\views\mobile\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Bitnami\wampstack-7.4.13-0\apache2\htdocs\customer\asset\fullcalendar" />
@@ -120,7 +110,7 @@
       <workItem from="1606381717953" duration="27455000" />
       <workItem from="1606694157426" duration="24478000" />
       <workItem from="1607333729323" duration="22299000" />
-      <workItem from="1607558590414" duration="26382000" />
+      <workItem from="1607558590414" duration="55170000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -262,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607418000420</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="-">
+      <created>1607590904518</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1607590904518</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,10 +290,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607563301742" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607418005593">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607590910482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607418005593" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607590910482" />
     <state x="1920" y="0" width="1507" height="1027" key="dock-window-1" timestamp="1607562736466">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -313,14 +310,22 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2288" y="30" width="761" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607581030368" />
-    <state x="1920" y="0" width="1515" height="1027" key="dock-window-5" timestamp="1607502562877">
+    <state x="1952" y="11" width="1539" height="1027" key="dock-window-5" timestamp="1607661641665">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="0" width="1515" height="1027" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607502562877" />
-    <state x="614" y="121" width="929" height="854" key="find.popup" timestamp="1607587589552">
+    <state x="1952" y="11" width="1539" height="1027" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607661641665" />
+    <state x="304" y="0" width="751" height="1027" key="dock-window-6" timestamp="1607669883206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="121" width="929" height="854" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607587589552" />
+    <state x="304" y="0" width="751" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607669883206" />
+    <state x="2017" y="0" width="1293" height="1027" key="dock-window-7" timestamp="1607674541352">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2017" y="0" width="1293" height="1027" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607674541352" />
+    <state x="878" y="125" width="929" height="854" key="find.popup" timestamp="1607673300899">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="878" y="125" width="929" height="854" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607673300899" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1607558981632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
