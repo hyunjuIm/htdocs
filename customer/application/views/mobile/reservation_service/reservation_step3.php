@@ -331,7 +331,7 @@
 			<div class="row" style="margin-top: 9rem">
 				<div style="margin: 0 auto">
 					<h2>검진예약절차</h2><br>
-					<img class="reservation-order" src="/asset/images/step3.png"
+					<img class="reservation-order" id="step" src="/asset/images/step2.png"
 						 style="width: 90%;max-width: fit-content">
 				</div>
 			</div>
@@ -474,6 +474,9 @@
 			<div class="row" id="step2" style="display: none">
 				<div class="row" style="display:block;margin-top: 5rem">
 					<h2>검진일선택</h2>
+					<div style="font-size: 1.1rem;color: #5849ea; font-weight: bolder" >
+						※ 검진일은 현재 날짜 기준, 2주 후 날짜부터 선택이 가능합니다.
+					</div>
 					<hr>
 
 					<div style="margin-top: 3rem">
@@ -655,6 +658,7 @@
 
 		$("#step1").show();
 		$("#step2").hide();
+
 	}
 
 	var firstWishDate;
@@ -742,7 +746,7 @@
 				}
 			}).catch(function (error) {
 				alert("잘못된 접근입니다.")
-				console.log(error);
+
 			});
 		} else {
 			return false;

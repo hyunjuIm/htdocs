@@ -232,7 +232,7 @@
 					</tr>
 					<tr>
 						<td style="background: url(../../../asset/images/mobile/main3.jpg);background-size: 100%"
-							onclick="location.href='/m/result_final'">
+							onclick="alert('서비스 준비중입니다.')">
 							<div>
 								<span class="menu">검진결과</span><br>
 								RESULT
@@ -315,7 +315,7 @@
 	});
 
 	function setMainNotice(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

@@ -244,8 +244,7 @@
 		requestMember.level = "MASTER";
 
 		const instance = axios.create({
-			//baseURL: "https://api.dualhealth.kr/permission/",
-			baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.108:8080/permission/",
 			timeout: 5000
 		});
 
@@ -262,7 +261,7 @@
 			}
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
-			console.log(error);
+
 		});
 	}
 

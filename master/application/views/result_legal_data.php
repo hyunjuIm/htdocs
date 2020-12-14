@@ -74,7 +74,7 @@ require('check_data.php');
 
 	//법적자료 테이블
 	function setLegalData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

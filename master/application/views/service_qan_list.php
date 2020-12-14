@@ -166,7 +166,7 @@ require('check_data.php');
 
 	//QnA 리스트 테이블
 	function setQnAListData(data, index) {
-		console.log(data);
+
 
 		$("#QnAInfos > tbody").empty();
 		$("#paging").empty();

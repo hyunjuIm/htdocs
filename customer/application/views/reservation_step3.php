@@ -454,8 +454,11 @@
 						<div class="row" id="step2" style="display: none">
 							<div class="container">
 								<div class="row" style="display:block;margin-top: 10rem">
-									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
+									<div style="font-size: 2.6rem;font-weight: 500;line-height: 4.5rem">
 										검진일선택
+									</div>
+									<div style="font-size: 1.5rem;margin-bottom: 2.5rem;color: #5849ea; font-weight: bolder" >
+										※ 검진일은 현재 날짜 기준, 2주 후 날짜부터 선택이 가능합니다.
 									</div>
 
 									<hr>
@@ -718,7 +721,7 @@ require('check_data.php');
 				}
 			}).catch(function (error) {
 				alert("잘못된 접근입니다.")
-				console.log(error);
+
 			});
 		} else {
 			return false;

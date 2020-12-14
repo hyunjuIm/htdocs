@@ -250,13 +250,13 @@
 			setReservationResult(res.data);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
-			console.log(error);
+
 		});
 	})
 
 	//예약 완료 정보 셋팅
 	function setReservationResult(data) {
-		console.log(data);
+
 		$("#hosName").text(data.hosName);
 		$("#hosAddress").text('(' + data.hosZipCode + ')' + data.hosAddress + ' ' + data.hosBuildingNum);
 		$("#hosPhone").text(data.hosPhone);

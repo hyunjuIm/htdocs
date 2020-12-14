@@ -635,7 +635,7 @@
 
 	//클릭시 기업정보
 	function setDetailCompanyData(data) {
-		console.log(data);
+
 
 		//ComInfoTable1 기업정보
 		document.getElementById('com-companyName').innerHTML = data.companyName;

@@ -181,7 +181,7 @@ require('check_data.php');
 
 	//검색 selector
 	function setHospitalSelectData(data) {
-		console.log(data);
+
 		//사업연도
 		for (i = 0; i < data.year.length; i++) {
 			var html = '';
@@ -214,7 +214,7 @@ require('check_data.php');
 
 	//병원관리 테이블
 	function setHospitalData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

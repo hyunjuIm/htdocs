@@ -166,7 +166,7 @@ require('check_data.php');
 
 	//검색 selector
 	function setBillSelectData(data) {
-		console.log(data);
+
 		//회사
 		var name = [];
 		var nameSize = 0;
@@ -218,7 +218,7 @@ require('check_data.php');
 
 	//패키지 생성 테이블
 	function setBillData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>"';

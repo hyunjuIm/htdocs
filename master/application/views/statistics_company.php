@@ -234,7 +234,7 @@ require('check_data.php');
 
 	//기업 통계 테이블
 	function setStaticsCompanyData(data) {
-		console.log(data);
+
 
 		$('#statisticsCompanyInfos > tbody > tr > td').remove();
 

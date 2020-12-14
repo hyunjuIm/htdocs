@@ -197,7 +197,7 @@ require('check_data.php');
 	});
 
 	function setPersonalInfo(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = "";
 			html += '<tbody>' +

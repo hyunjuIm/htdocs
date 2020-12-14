@@ -341,7 +341,7 @@ require('check_data.php');
 
 	//패키지 생성 테이블
 	function setPackageCreateData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

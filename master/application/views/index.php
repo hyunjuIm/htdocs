@@ -173,7 +173,7 @@
 
 	//검진현황판
 	function setStateData(data) {
-		console.log(data);
+
 
 		$("#newReservationNum").append(data.newReservationNum + "명");
 		$("#servedReservationNum").append(data.servedReservationNum + "명");

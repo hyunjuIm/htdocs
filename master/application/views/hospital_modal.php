@@ -678,7 +678,7 @@ require('file_data.php');
 
 	//클릭시 병원정보
 	function setDetailHospitalData(data) {
-		console.log(data);
+
 
 		//HosInfoTable1 병원정보
 		$("#hos-name").val(data.name);
@@ -804,7 +804,7 @@ require('file_data.php');
 
 	//클릭시 담당자정보
 	function setHospitalManagerData(data) {
-		console.log(data);
+
 		$("#HosManagerTable tbody").empty();
 
 		for (i = 0; i < data.length; i++) {

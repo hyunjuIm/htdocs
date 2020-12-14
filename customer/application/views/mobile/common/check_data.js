@@ -112,7 +112,6 @@ function textareaLine(text) {
 
 //엑셀 다운로드
 function excelDownload(id) {
-	console.log("엑셀 다운로드");
 	var data_type = 'data:application/vnd.ms-excel;charset=utf-8';
 	var table_html = encodeURIComponent(document.getElementById(id).outerHTML);
 

@@ -88,7 +88,7 @@
 	<h1>병원별 검진 항목 비교</h1>
 </div>
 
-<div class="btn-light-purple-square" style="float:right;font-size: 1.2rem;margin-bottom: 1rem"
+<div class="btn-light-purple-square" style="float:right;font-size: 1.1rem;margin-bottom: 1rem"
 	 onclick="fnExcelReport('inspectionView','병원비교');">엑셀 다운로드</div>
 
 <div class="row" style="display: block;margin-top: 3rem">

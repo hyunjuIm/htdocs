@@ -104,7 +104,7 @@ require('check_data.php');
 	})
 
 	function setNoticeDetailData(data){
-		console.log(data);
+
 
 		document.getElementById('ntTitle').innerHTML = data.title;
 		document.getElementById('ntAuthor').innerHTML = data.author;

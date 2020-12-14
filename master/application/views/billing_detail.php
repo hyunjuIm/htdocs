@@ -83,7 +83,7 @@ require('check_data.php');
 
 	//청구관리 테이블
 	function setBillDetailData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

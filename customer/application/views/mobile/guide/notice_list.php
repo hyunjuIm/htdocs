@@ -186,13 +186,13 @@
 			setNoticeList(res.data.noticeList);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
-			console.log(error);
+
 		});
 	}
 
 	//공지 테이블 셋팅
 	function setNoticeList(data) {
-		console.log(data);
+
 
 		$("#paging").empty();
 		$("#noticeTable > tbody").empty();

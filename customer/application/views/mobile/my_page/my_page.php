@@ -132,7 +132,7 @@
 
 	// 내정보 테이블 셋팅
 	function setPersonalInfo(data) {
-		console.log(data);
+
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';

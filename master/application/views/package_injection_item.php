@@ -364,7 +364,7 @@ require('check_data.php');
 
 	//패키지구성 초기 셋팅
 	function setPackageTabData(data) {
-		console.log(data);
+
 		var package0 = new Array();
 		var package1 = new Array();
 		var package2 = new Array();

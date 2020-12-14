@@ -278,7 +278,7 @@ require('check_data.php');
 
 	//패키지 테이블
 	function setPackageData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

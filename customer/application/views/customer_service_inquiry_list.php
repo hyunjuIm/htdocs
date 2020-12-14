@@ -199,13 +199,10 @@ require('inquiry_modal.php');
 			setInquiryList(res.data.qnADTOList);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
-			console.log(error);
 		});
 	}
 
 	function setInquiryList(data) {
-		console.log(data);
-
 		$("#paging").empty();
 		$("#inquiryTable > tbody").empty();
 

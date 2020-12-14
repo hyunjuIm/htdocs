@@ -252,7 +252,7 @@
 
 	//클릭시 고객정보
 	function setDetailCustomerData(data) {
-		console.log(data);
+
 
 		$("#info6").empty();
 

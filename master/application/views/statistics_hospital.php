@@ -210,7 +210,7 @@ require('check_data.php');
 
 	//검색 selector
 	function setStaticsHospitalOption(data) {
-		console.log(data);
+
 
 		//병원명
 		for (i = 0; i < data.hoName.length; i++) {
@@ -267,7 +267,7 @@ require('check_data.php');
 
 	//병원 통계 테이블
 	function setStaticsHospitalData(data) {
-		console.log(data);
+
 
 		$('#statisticsHospitalInfos > tbody > tr > td').remove();
 

@@ -183,7 +183,7 @@
 
 	//검색 selector
 	function setPackageModalSelectData(data) {
-		console.log(data);
+
 		var name = [];
 		var nameSize = 0;
 
@@ -282,7 +282,7 @@
 
 	//지역 selector
 	function setPlaceModalSelectData(data) {
-		console.log(data);
+
 
 		for (i = 0; i < data.placeList.length; i++) {
 			var html = '';
@@ -322,7 +322,7 @@
 
 	//패키지 병원 할당 테이블
 	function setHospitalPackageData(data) {
-		console.log(data);
+
 		$("input[name=hospitalNo]").prop("checked", false);
 
 		for (i = 0; i < data.length; i++) {
@@ -353,7 +353,7 @@
 
 	//병원 미할당 패키지 테이블
 	function setPackageData(data) {
-		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
