@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html, body {
+	width: 100%;
+	height: 100vh;
+	background-color: #f6f6f6;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 300;
+	word-break: keep-all;
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	font-size: 1.6rem;
+}
+
+.container {
+	max-width: none;
+}
+
+.main {
+	width: 100%;
+	min-width: 150rem;
+	padding: 7rem 2rem;
+}
+
+.btn-light-purple-square {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.5rem 2rem;
+	background: #5645ED;
+	border: 1px solid #5645ED;
+	text-align: center;
+	color: #fff;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.btn-light-grey-square {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.5rem 2rem;
+	background: #383838;
+	border: 1px solid #383838;
+	text-align: center;
+	color: #fff;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.btn-light-purple-square:hover, .btn-light-grey-square:hover {
+	opacity: 0.9;
+}
+
+/*기본 테이블 양식*/
+.basic-table {
+	width: 100%;
+	text-align: center;
+	border-top: 1px solid #5645ED;
+}
+
+.basic-table thead {
+	background: #EDEDED;
+}
+
+.basic-table tr {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.basic-table th, .basic-table td {
+	padding: 1rem;
+}
+
+.basic-table th {
+	font-weight: 400;
+}
+
+/*박스 스타일 - 흰배경 검은그림자*/
+.box {
+	height: 100%;
+	background: white;
+	padding: 3rem;
+	box-shadow: 0 0 10px #d7d7d7;
+}
+
+.box-title {
+	display: flex;
+	margin-bottom: 3rem;
+}
+
+.box-title h2 {
+	font-weight: 400;
+	line-height: 19px;
+	margin-left: 10px;
+}
+
+/*datepicker*/
+
