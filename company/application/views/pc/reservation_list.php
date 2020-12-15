@@ -290,7 +290,7 @@
 			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].grade + '</td>';
-			html += '<td></td>';
+			html += '<td>' + data[i].supportPercent + '</td>';
 			html += '<td>' + data[i].reservedDate + '</td>';
 			html += '<td>' + data[i].hospitalName + '</td>';
 			html += '<td>' + data[i].status + '</td>';
