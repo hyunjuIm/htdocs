@@ -20,24 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/company/application/controllers/Company.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/login/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/common/check_data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/common/head.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/common/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/main.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/asset/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/asset/images/bg_login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/asset/images/dual_logo_b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/asset/images/dual_logo_b_s.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/asset/images/icon_dot_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/asset/images/icon_title.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/application/controllers/Welcome.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/application/views/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/application/views/welcome_message.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +96,7 @@
       <workItem from="1607558590414" duration="55219000" />
       <workItem from="1607903884460" duration="6752000" />
       <workItem from="1607914409009" duration="40257000" />
-      <workItem from="1608004824619" duration="18409000" />
+      <workItem from="1608004824619" duration="19137000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -275,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607914042129</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="-">
+      <created>1608023665508</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1608023665508</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,10 +301,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607563301742" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607914047864">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1608023673551">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607677895703" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608023673551" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1607914047864" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608006438328">
       <screen x="0" y="0" width="1920" height="1040" />

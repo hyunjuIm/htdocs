@@ -81,7 +81,6 @@
 <!--콘텐츠 내용-->
 
 <div class="main">
-
 	<div class="container" style="width: 110rem;margin: 0 auto">
 		<div class="row">
 			<div class="box-title">
@@ -175,7 +174,7 @@
 		<table class="basic-table" id="reservationTable">
 			<thead>
 			<th width="4%"><input type="checkbox" id="reservationCheck" name="reservationCheck" onclick="clickAll(id, name)"></th>
-			<th width="4%">순번</th>
+			<th width="4%">NO</th>
 			<th>아이디</th>
 			<th>이름</th>
 			<th>주민번호</th>
@@ -205,14 +204,11 @@
 	coIdObj.coId = sessionStorage.getItem("userCoID");
 
 	instance.post('C0201', coIdObj).then(res => {
-		console.log(res.data);
 		setReservationSelectData(res.data);
 	});
 
 	//검색 selector
 	function setReservationSelectData(data) {
-		console.log("11!11");
-		console.log(data);
 		//수검연도
 		for (i = 0; i < data.servedYear.length; i++) {
 			var html = '';
@@ -255,8 +251,6 @@
 		searchItems.searchWord = '';
 		searchItems.pagingNum = 0;
 
-		console.log(searchItems);
-
 		if (searchItems.servedYear == "- 전체 -") {
 			searchItems.servedYear = "all";
 		} if (searchItems.hospitalName == "- 전체 -") {
@@ -270,7 +264,9 @@
 		} if (searchItems.supportPercent == "- 전체 -") {
 			searchItems.supportPercent = "all";
 		}
+
 		console.log(searchItems);
+
 		instance.post('C0202', searchItems).then(res => {
 			console.log(res.data);
 			setReservationTable(res.data.reservationDTOList);
