@@ -190,8 +190,6 @@
 
 	//공지 테이블 셋팅
 	function setNoticeList(data) {
-
-
 		$("#paging").empty();
 		$("#noticeTable > tbody").empty();
 

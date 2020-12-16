@@ -12,61 +12,6 @@
 			width: 100%;
 			display: block;
 		}
-
-		.select-list {
-			display: flex;
-		}
-
-		.select-list .select-label {
-			line-height: 3rem;
-			font-size: 1.8rem;
-			width: 15rem;
-		}
-
-		.select-list .select-label img {
-			line-height: 3rem;
-			padding: 0 1rem;
-		}
-
-		.select-list .select-content {
-			display: flex;
-			line-height: 3rem;
-			width: 35rem;
-			max-width: 35rem;
-		}
-
-		.select-list select {
-			width: 100%;
-			height: 100%;
-			padding: 0.2rem 1rem;
-			border-color: #cccccc;
-			outline: none;
-			font-weight: 300;
-			font-size: 1.6rem;
-		}
-
-		.select-list option {
-			font-weight: 300;
-		}
-
-		.select-list input {
-			height: 100%;
-			border: 1px solid #cccccc;
-			padding: 0 1rem;
-			outline: none;
-			font-weight: 300;
-			font-size: 1.6rem !important;
-			cursor: default;
-		}
-
-		.select-form {
-			width: 100%;
-		}
-
-		.select-form td {
-			padding: 0.7rem 0;
-		}
-
 	</style>
 </head>
 <body>
@@ -170,10 +115,19 @@
 		</div>
 	</div>
 
-	<div class="row" style="margin-top: 15rem;padding: 4rem">
-		<table class="basic-table" id="reservationTable">
+	<div class="row" style="margin-top: 10rem;padding: 4rem">
+		<div class="search-form">
+			<span>통합검색</span>
+			<div class="input-text">
+				<input type="text" placeholder="사원번호, 이름으로 검색하세요." id="searchWord" onkeyup="enterKey()">
+				<img src="/asset/images/icon_search.png" onclick="searchInformation(0)">
+			</div>
+		</div>
+
+		<table class="basic-table" id="reservationTable" style="margin-top: 5rem">
 			<thead>
-			<th width="4%"><input type="checkbox" id="reservationCheck" name="reservationCheck" onclick="clickAll(id, name)"></th>
+			<th width="4%"><input type="checkbox" id="reservationCheck" name="reservationCheck"
+								  onclick="clickAll(id, name)"></th>
 			<th width="4%">NO</th>
 			<th>아이디</th>
 			<th>이름</th>
@@ -187,6 +141,14 @@
 		</table>
 	</div>
 
+	<div class="row" style="margin-top: 5rem">
+		<form style="margin: 0 auto; width: 85%; padding: 1rem">
+			<div class="page_wrap">
+				<div class="page_nation" id="paging">
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 </body>
 </html>
@@ -199,6 +161,13 @@
 	<?php
 	require('common/check_data.js');
 	?>
+	<?php
+	require('common/paging.js');
+	?>
+
+	var pagingNum = 0;
+	var pageCount = 0;
+	var searchWord = "";
 
 	var coIdObj = new Object();
 	coIdObj.coId = sessionStorage.getItem("userCoID");
@@ -235,7 +204,10 @@
 		}
 	}
 
-	function searchInformation() {
+	searchInformation(0);
+
+	//검색
+	function searchInformation(index) {
 		var searchItems = new Object();
 
 		$('#reservationInfos > tbody').empty();
@@ -248,7 +220,7 @@
 		searchItems.serviceName = $("#serviceName option:selected").val();
 		searchItems.supportPercent = $("#supportPercent option:selected").val();
 
-		searchItems.searchWord = '';
+		searchItems.searchWord = $("#searchWord").val();
 		searchItems.pagingNum = 0;
 
 		if (searchItems.servedYear == "- 전체 -") {
@@ -269,12 +241,20 @@
 
 		instance.post('C0202', searchItems).then(res => {
 			console.log(res.data);
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
 			setReservationTable(res.data.reservationDTOList);
 		});
 	}
 
 	//예약관리 테이블 셋팅
 	function setReservationTable(data) {
+		//페이징
+		setPaging();
+		
+		//테이블 셋팅
 		$("#reservationTable tbody").empty();
 
 		var html = '<tbody>';
@@ -283,14 +263,14 @@
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="reservationCheck" value=\'' + data[i].rsvId + '\' onclick="clickOne(name)"></td>';
 
-			var no = i+1;
+			var no = i + 1;
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].email + '</td>';
 			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].grade + '</td>';
-			html += '<td>' + data[i].supportPercent + '</td>';
+			html += '<td>' + data[i].supportPercent + ' %</td>';
 			html += '<td>' + data[i].reservedDate + '</td>';
 			html += '<td>' + data[i].hospitalName + '</td>';
 			html += '<td>' + data[i].status + '</td>';

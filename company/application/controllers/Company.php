@@ -15,9 +15,15 @@ class Company extends CI_Controller
 		$this->load->view('pc/main');
 	}
 
-	//메인화면
+	//예약관리
 	public function reservation_list()
 	{
 		$this->load->view('pc/reservation_list');
+	}
+
+	//직원관리
+	public function employee_manage()
+	{
+		$this->load->view('pc/employee_manage');
 	}
 }

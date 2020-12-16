@@ -106,9 +106,9 @@
 		<li><a id="topMenu1" href="/company/reservation_list">
 				<div class="menu-hover-line"></div>
 				예약관리</a></li>
-		<li><a id="topMenu2" href="#">
+		<li><a id="topMenu2" href="/company/employee_manage">
 				<div class="menu-hover-line"></div>
-				직원등록관리</a></li>
+				직원관리</a></li>
 		<li><a id="topMenu3" href="#">
 				<div class="menu-hover-line"></div>
 				통계관리</a></li>

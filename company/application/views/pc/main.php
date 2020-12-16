@@ -11,6 +11,8 @@
 		.row {
 			width: 100%;
 			height: 35rem;
+			padding: 0;
+			margin: 0;
 		}
 
 		.col {
@@ -19,8 +21,8 @@
 
 		.doughnuts {
 			position: relative;
-			width: 170px;
-			height: 170px;
+			width: 17rem;
+			height: 17rem;
 		}
 
 		.doughnut1 {
@@ -36,7 +38,7 @@
 			width: 100%;
 			margin: 0 auto;
 			color: white;
-			font-size: 12px;
+			font-size: 1.2rem;
 			position: absolute;
 			z-index: 5;
 		}
@@ -46,12 +48,13 @@
 		}
 
 		.chart-text2 {
-			bottom: 18px;
+			bottom: 1.8rem;
 			color: #29af8f;
+			text-shadow: 1px 1px white;
 		}
 
 		.chart-text3 {
-			bottom: 70px;
+			bottom: 7rem;
 			color: #914cbd;
 		}
 	</style>
@@ -91,7 +94,7 @@
 						</div>
 						<div style="width: 50%;text-align: center;font-weight: 400">
 							<!--예약현황판 도넛 그래프-->
-							<div id="graphView" style="display: flex;width: fit-content;margin: 0 auto" >
+							<div id="graphView" style="display: flex;width: fit-content;margin: 0 auto">
 
 							</div>
 						</div>
@@ -185,13 +188,6 @@
 			html += '<td>' + data[i].completeNum.toLocaleString() + '명</td>';
 			html += '</tr>';
 
-			$('#chart1').text(data[i].targetNum.toLocaleString() + '명');
-			chart1.push(data[i].targetNum);
-			$('#chart2').text(data[i].reservedNum.toLocaleString() + '명');
-			chart2.push(data[i].reservedNum);
-			$('#chart3').text(data[i].completeNum.toLocaleString() + '명');
-			chart3.push(data[i].completeNum);
-
 			$('#graphView').append('<div class="doughnuts">' +
 					'<canvas id="doughnut1" class="doughnut1" width="170" height="170"></canvas>' +
 					'<canvas id="doughnut2" class="doughnut2" width="170" height="170"></canvas>' +
@@ -199,7 +195,7 @@
 					'<div class="chart-text1" id="chart1"></div>' +
 					'<div class="chart-text2" id="chart2"></div>' +
 					'<div class="chart-text3" id="chart3"></div>' +
-					'<div style="line-height: 4rem">'+data[i].service+'</div>' +
+					'<div style="line-height: 4rem">' + data[i].service + '</div>' +
 					'</div>' +
 					'<div style="font-size: 1.3rem; padding:6.5rem 2rem">' +
 					'<div style="color: #4564b1">● 대상자</div>' +
@@ -207,17 +203,23 @@
 					'<div style="color: #914cbd">● 완료자</div>' +
 					'</div>');
 
+			$('#chart1').text(data[i].targetNum.toLocaleString() + '명');
+			chart1.push(data[i].targetNum);
+			$('#chart2').text(data[i].reservedNum.toLocaleString() + '명');
+			chart2.push(data[i].reservedNum);
+			$('#chart3').text(data[i].completeNum.toLocaleString() + '명');
+			chart3.push(data[i].completeNum);
 		}
 		html += '</tbody>'
 
 		$("#reservationTable").append(html);
 
 		chart1.push(0);
-		chart2.push(chart1[0]-chart2[0]);
-		if(chart2[1]<chart2[0]) {
+		chart2.push(chart1[0] - chart2[0]);
+		if (chart2[1] < chart2[0]/3) {
 			$('#chart2').css('color', 'white');
 		}
-		chart3.push(chart1[0]-chart3[0]);
+		chart3.push(chart1[0] - chart3[0]);
 
 		console.log(chart1, chart2, chart3);
 
