@@ -98,6 +98,7 @@
 	}
 
 	var fileName;
+
 	//게시물 view
 	function setEmployeeManageView(data) {
 		console.log(data);
@@ -152,8 +153,6 @@
 			link.download = fileName;
 			link.click();
 		})
-
 	}
-
 
 </script>
