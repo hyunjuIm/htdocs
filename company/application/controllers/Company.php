@@ -21,9 +21,20 @@ class Company extends CI_Controller
 		$this->load->view('pc/reservation_list');
 	}
 
-	//직원관리
+	//직원관리 리스트
 	public function employee_manage()
 	{
 		$this->load->view('pc/employee_manage');
+	}
+
+	//직원관리 글쓰기
+	public function employee_manage_write()
+	{
+		$this->load->view('pc/employee_manage_write');
+	}
+	
+	//통계관리
+	public function statistics_manage() {
+		$this->load->view('pc/statistics_manage');
 	}
 }

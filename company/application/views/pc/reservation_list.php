@@ -221,7 +221,7 @@
 		searchItems.supportPercent = $("#supportPercent option:selected").val();
 
 		searchItems.searchWord = $("#searchWord").val();
-		searchItems.pagingNum = 0;
+		searchItems.pagingNum = index;
 
 		if (searchItems.servedYear == "- 전체 -") {
 			searchItems.servedYear = "all";
@@ -263,7 +263,7 @@
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="reservationCheck" value=\'' + data[i].rsvId + '\' onclick="clickOne(name)"></td>';
 
-			var no = i + 1;
+			var no = data[i].rsvId.substr(4, data[i].rsvId[data[i].rsvId.length]);
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].email + '</td>';

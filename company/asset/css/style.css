@@ -69,8 +69,24 @@ body {
 	text-decoration: none;
 }
 
+.btn-white-square {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.5rem 2rem;
+	background: white;
+	border: 1px solid #383838;
+	text-align: center;
+	color: #383838;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
 .btn-light-purple-square:hover, .btn-light-grey-square:hover {
 	opacity: 0.9;
+}
+
+.btn-white-square:hover {
+	background: #f8f8f8;
 }
 
 /*기본 테이블 양식*/

@@ -109,7 +109,7 @@
 		<li><a id="topMenu2" href="/company/employee_manage">
 				<div class="menu-hover-line"></div>
 				직원관리</a></li>
-		<li><a id="topMenu3" href="#">
+		<li><a id="topMenu3" href="/company/statistics_manage">
 				<div class="menu-hover-line"></div>
 				통계관리</a></li>
 		<li><a id="topMenu4" href="#">
@@ -177,7 +177,7 @@
 
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.108:8080/permission/",
+		baseURL: "http://192.168.219.113:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -194,7 +194,7 @@
 	});
 
 	const instance = axios.create({
-		baseURL: "http://192.168.219.108:8080/company/api/v1/",
+		baseURL: "http://192.168.219.113:8080/company/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -204,8 +204,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		//baseURL: "http://192.168.219.108:8080/",
-		baseURL: "http://192.168.219.108:8080/",
+		baseURL: "http://192.168.219.113:8080/",
 		timeout: 20000,
 		headers: {'token': token}
 	});

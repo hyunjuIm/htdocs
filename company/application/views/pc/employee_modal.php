@@ -15,14 +15,15 @@
 		color: grey;
 	}
 
-	#answerView {
-		background: whitesmoke
-	}
-
 	.state {
 		display: block;
 		font-size: 1.5rem;
-		padding: 0 1rem 2rem 1rem;
+		padding: 0 1rem 1rem 1rem;
+	}
+
+	#status {
+		font-weight: 400;
+		font-size: 1.9rem;
 	}
 
 	#content, #answer {
@@ -37,13 +38,15 @@
 	}
 
 	#answer {
-		padding: 3rem
+		padding: 3rem;
+		background: whitesmoke;
 	}
 
 	.btn {
 		display: none;
 		margin-left: 0.5rem;
 		font-size: 1.2rem;
+		padding: 0.2rem 0.5rem;
 	}
 </style>
 
@@ -69,11 +72,11 @@
 					<hr>
 					<div style="width: 100%;height: fit-content;text-align: left;padding: 0 2rem;display: flex">
 						첨부파일 :&nbsp;<span id="fileName"></span>
-						<div class="btn btn-outline-secondary" onclick="downloadFile()">다운로드</div>
+						<div class="btn btn-secondary" onclick="downloadFile()">다운로드</div>
 					</div>
 					<hr>
-					<div style="text-align: left;padding: 1rem;font-weight: 400">처리결과</div>
 					<div id="answerView">
+						<div style="text-align: left;padding: 1rem;font-weight: 400">처리결과</div>
 						<div id="answer"></div>
 					</div>
 				</form>
@@ -128,6 +131,7 @@
 			fileName = data.fileName;
 			$('.btn').show();
 		} else {
+			$("#fileName").html('&nbsp;');
 			$('.btn').hide();
 		}
 

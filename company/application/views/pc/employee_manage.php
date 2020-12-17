@@ -39,21 +39,33 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" style="display: block">
 			<table class="basic-table">
 				<thead>
 				<tr>
-					<th width="8%">NO</th>
-					<th width="60%">제목</th>
+					<th width="7%">NO</th>
+					<th width="12%">구분</th>
+					<th width="50%">제목</th>
 					<th>작성자</th>
 					<th>처리상태</th>
-					<th>작성일</th>
+					<th width="12%">작성일</th>
 				</tr>
 				</thead>
 				<tbody id="employeeManageTable">
 
 				</tbody>
 			</table>
+			<br>
+			<div class="btn-light-grey-square" style="float:right;" onclick="location.href='/company/employee_manage_write'">글쓰기</div>
+		</div>
+
+		<div class="row" style="margin-top: 5rem">
+			<form style="margin: 0 auto; width: 85%; padding: 1rem">
+				<div class="page_wrap">
+					<div class="page_nation" id="paging">
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>
@@ -68,23 +80,28 @@ require('employee_modal.php');
 	$('#topMenu2').addClass('active');
 	$('#topMenu2').before('<div class="menu-select-line"></div>');
 
-	var pagingNum = 0;
-	var pageCount = 0;
+	var choiceNum = 0;
+	var maxVal = 1;
 
 	setEmployeeManageListData(0);
 
-	function setEmployeeManageListData(index) {
+	//회사 아이디 페이지 번호 보내서 페이지 갯수, 데이터 가져오기
+	function setEmployeeManageListData(idx) {
+		var index = parseInt(idx)
+		choiceNum = pmPageNum(index);
+		var pageCount = 0;
 		var sendItems = new Object();
 
 		sendItems.coId = sessionStorage.getItem("userCoID");
-		sendItems.pagingNum = index;
-
+		sendItems.pagingNum = choiceNum;
 		instance.post('C0303', sendItems).then(res => {
 			console.log(res.data);
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
+			maxVal = pageCount;
+			setPaging(pageCount);
 			setEmployeeManageTable(res.data.helpdeskDTOList);
 		});
 	}
@@ -92,15 +109,17 @@ require('employee_modal.php');
 	//직원관리 리스트 셋팅
 	function setEmployeeManageTable(data) {
 		//페이징
-		setPaging();
-
 		$("#employeeManageTable").empty();
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			var no = i+1;
+
+			var no = data[i].id.substr(5, data[i].id[data[i].id.length]);
+
+
 			html += '<td>' + no + '</td>';
+			html += '<td>' + data[i].division + '</td>';
 
 			html += '<td class="title" data-toggle="modal" data-target="#employeeManageDetailModal"' +
 					'onClick="clickEmployeeManageDetail(\'' + data[i].id + '\')">' + data[i].title + '</td>';
@@ -109,9 +128,9 @@ require('employee_modal.php');
 			if(data[i].status == '처리이전') {
 				html += '<td style="color: grey">' + data[i].status + '</td>';
 			} else if (data[i].status == '처리완료') {
-				html += '<td style="font-weight: 400;color: #0A5FAF">' + data[i].status + '</td>';
+				html += '<td style="color: #0A5FAF">' + data[i].status + '</td>';
 			} else if (data[i].status == '거절') {
-				html += '<td style="font-weight: 400;color: #d70e24">' + data[i].status + '</td>';
+				html += '<td style="color: #d70e24">' + data[i].status + '</td>';
 			}
 
 			html += '<td>' + data[i].createDate + '</td>';
@@ -122,25 +141,21 @@ require('employee_modal.php');
 
 	//페이징 - 화살표클릭
 	function pmPageNum(val) {//화살표클릭
-		pagingNum += parseInt(val);
-		if (pagingNum < 0) pagingNum = 0;
-		if (pageCount <= pagingNum) pagingNum = pageCount - 1;
-
-		searchInformation(pagingNum);
+		if (val < 0) return 0;
+		else if (maxVal <= val) {
+			return maxVal-1;
+		}
+		return val;
 	}
 
 	//페이징 셋팅
-	function setPaging() {
+	function setPaging(pageCount) {
 		$("#paging").empty();
 
 		var html = '';
 
-		var pre = pagingNum - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
 		html += '<a class="arrow pprev" onclick= "setEmployeeManageListData(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "setEmployeeManageListData(\'' + (choiceNum-1) + '\')" href="#"></a>'
 		$("#paging").append(html);
 
 		for (i = 0; i < pageCount; i++) {
@@ -148,7 +163,7 @@ require('employee_modal.php');
 
 			var num = i + 1;
 
-			if (i == pagingNum) {
+			if (i == choiceNum) {
 				html += '<a onclick= "setEmployeeManageListData(\'' + i + '\')" class="active">' + num + '</a>';
 			} else {
 				html += '<a onclick= "setEmployeeManageListData(\'' + i + '\')" href="#">' + num + '</a>';
@@ -158,7 +173,7 @@ require('employee_modal.php');
 		}
 
 		var html = '';
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
+		html += '<a class="arrow next" onclick= "setEmployeeManageListData(\'' + (choiceNum+1) + '\')" href="#"></a>'
 		html += '<a class="arrow nnext" onclick= "setEmployeeManageListData(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
 	}
