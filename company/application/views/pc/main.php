@@ -167,7 +167,7 @@
 
 	instance.post('C0101', coIdObj).then(res => {
 		console.log(res.data);
-		setReservationData(res.data.reservationInfoDTOList);
+		setReservationData(res.data.reservationInfoDTOList, 1, 2, 3);
 		setExaminationData(res.data.examinationInfoDTOList);
 		setNoticeData(res.data.noticeDTOList);
 	});
@@ -177,10 +177,15 @@
 	var chart3 = new Array();
 
 	//예약현황판
-	function setReservationData(data) {
+	function setReservationData(data, idx1, idx2, idx3) {
+		let id1 = 'doughnut' +idx1;
+		let id2 = 'doughnut' +idx2;
+		let id3 = 'doughnut' +idx3;
+
 		var html = '';
 		html += '<tbody>'
 		for (i = 0; i < data.length; i++) {
+
 			html += '<tr>';
 			html += '<td>' + data[i].service + '</td>';
 			html += '<td>' + data[i].targetNum.toLocaleString() + '명</td>';
@@ -188,10 +193,11 @@
 			html += '<td>' + data[i].completeNum.toLocaleString() + '명</td>';
 			html += '</tr>';
 
-			$('#graphView').append('<div class="doughnuts">' +
-					'<canvas id="doughnut1" class="doughnut1" width="170" height="170"></canvas>' +
-					'<canvas id="doughnut2" class="doughnut2" width="170" height="170"></canvas>' +
-					'<canvas id="doughnut3" class="doughnut3" width="170" height="170"></canvas>' +
+			$('#graphView').append(
+					'<div class="doughnuts">' +
+					'<canvas id=\'' + id1 + '\' class="doughnut1" width="170" height="170"></canvas>' +
+					'<canvas id=\'' + id2 + '\' class="doughnut2" width="170" height="170"></canvas>' +
+					'<canvas id=\'' + id3 + '\' class="doughnut3" width="170" height="170"></canvas>' +
 					'<div class="chart-text1" id="chart1"></div>' +
 					'<div class="chart-text2" id="chart2"></div>' +
 					'<div class="chart-text3" id="chart3"></div>' +
