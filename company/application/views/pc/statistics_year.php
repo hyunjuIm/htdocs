@@ -1,4 +1,4 @@
-<div class="row" style="display: block;padding: 4rem 0">
+<div class="row" id="yearChartView" style="display: block;padding-top: 4rem">
 	<table class="statistics-table" id="chart">
 		<tr style="font-size: 1.6rem;font-weight: 400">
 			<td>
@@ -118,7 +118,7 @@
 	</table>
 </div>
 
-<div class="row" style="display: block">
+<div class="row" style="display: block;margin-top: 4rem">
 	<div style="display: flex">
 		<div class="btn btn-outline-dark" onclick="searchYearStatisticsDate(2020)">2020년</div>
 		<div class="btn btn-outline-dark" onclick="searchYearStatisticsDate(2019)">2019년</div>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 
-	<table class="basic-table" style="margin-top: 1rem">
+	<table class="basic-table" id="yearTableView" style="margin-top: 1rem">
 		<thead>
 		<tr>
 			<th colspan="5" class="title division-line">전체</th>
@@ -176,6 +176,9 @@
 </div>
 
 <script>
+	$('#yearChartView').hide();
+	$('#yearTableView').hide();
+
 	//날짜검색
 	function searchYearStatisticsDate(type) {
 		var sendItems = new Object();
@@ -206,6 +209,9 @@
 	//통계 표 셋팅
 	function setYearStatisticsData(data) {
 		$('#yearStatisticsTable').empty();
+
+		$('#yearChartView').show();
+		$('#yearTableView').show();
 
 		var html = '<tr>';
 
@@ -279,10 +285,13 @@
 			data: data,
 			options: {
 				maintainAspectRatio: false,
+				legend: {
+					display: false
+				},
 				events: [],
 				cutoutPercentage: 30,
 				scales: {
-					display: false,
+					display: false
 				}
 			}
 		});
@@ -304,6 +313,10 @@
 			options: {
 				maintainAspectRatio: false,
 				legend: {
+					display: false
+				},
+				events: [],
+				scales: {
 					display: false
 				}
 			}

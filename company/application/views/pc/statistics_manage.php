@@ -91,6 +91,13 @@
 			padding: 1rem;
 		}
 
+		.area-title {
+			font-size: 2.2rem;
+			text-align: left;
+			font-weight: 400;
+			padding: 2rem 0;
+		}
+
 		canvas {
 			width: 15rem;
 			height: 15rem;

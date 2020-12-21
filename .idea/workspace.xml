@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_area.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_hospital.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_year.php" afterDir="false" />
+    <list default="true" id="6d931473-2b8e-4fdd-a9bf-b0494273f30e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/htdocs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/htdocs.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/login/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/common/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/application/views/pc/employee_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/employee_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/statistics_area.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_area.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/statistics_hospital.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_hospital.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/statistics_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/statistics_year.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_year.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
@@ -39,371 +21,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/master/composer.json</pharConfigPath>
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="CSS File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1k4uwSwsOIsGXevYawjhcLv5AYh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1lxwsgIQBl1oehH4zNYzcB5MY8Q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/company/asset/images" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc\common" />
-      <recent name="C:\Bitnami\wampstack-7.4.13-0\apache2\htdocs\customer\asset\fullcalendar" />
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\asset\images" />
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc\common" />
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\asset\css" />
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc" />
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\controllers" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="" />
-      <created>1604972422998</created>
+      <changelist id="6d931473-2b8e-4fdd-a9bf-b0494273f30e" name="Default Changelist" comment="" />
+      <created>1608552258502</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1604972422998</updated>
-      <workItem from="1604972424036" duration="39385000" />
-      <workItem from="1605089007809" duration="22559000" />
-      <workItem from="1605456722158" duration="52000" />
-      <workItem from="1605486138661" duration="21886000" />
-      <workItem from="1606051724309" duration="13701000" />
-      <workItem from="1606381717953" duration="27455000" />
-      <workItem from="1606694157426" duration="24478000" />
-      <workItem from="1607333729323" duration="22299000" />
-      <workItem from="1607558590414" duration="55219000" />
-      <workItem from="1607903884460" duration="6752000" />
-      <workItem from="1607914409009" duration="40257000" />
-      <workItem from="1608004824619" duration="26069000" />
-      <workItem from="1608083506479" duration="67865000" />
-      <workItem from="1608512264811" duration="26821000" />
+      <updated>1608552258502</updated>
+      <workItem from="1608552259580" duration="43000" />
+      <workItem from="1608552303449" duration="8119000" />
+      <workItem from="1608566406540" duration="1028000" />
     </task>
-    <task id="LOCAL-00001" summary="-">
-      <created>1604997252993</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1604997252993</updated>
-    </task>
-    <task id="LOCAL-00002" summary="-">
-      <created>1604997444783</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1604997444783</updated>
-    </task>
-    <task id="LOCAL-00003" summary="-">
-      <created>1604998858811</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1604998858811</updated>
-    </task>
-    <task id="LOCAL-00004" summary="-">
-      <created>1605171653224</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1605171653224</updated>
-    </task>
-    <task id="LOCAL-00005" summary="-">
-      <created>1605171708652</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1605171708652</updated>
-    </task>
-    <task id="LOCAL-00006" summary="-">
-      <created>1605456645107</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1605456645107</updated>
-    </task>
-    <task id="LOCAL-00007" summary="-">
-      <created>1605689967004</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1605689967004</updated>
-    </task>
-    <task id="LOCAL-00008" summary="-">
-      <created>1605799634735</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1605799634735</updated>
-    </task>
-    <task id="LOCAL-00009" summary="-">
-      <created>1605984776485</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1605984776485</updated>
-    </task>
-    <task id="LOCAL-00010" summary="-">
-      <created>1606176122330</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1606176122330</updated>
-    </task>
-    <task id="LOCAL-00011" summary="-">
-      <created>1606295054940</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1606295054940</updated>
-    </task>
-    <task id="LOCAL-00012" summary="-">
-      <created>1606350650050</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1606350650050</updated>
-    </task>
-    <task id="LOCAL-00013" summary="-">
-      <created>1606357555583</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1606357555583</updated>
-    </task>
-    <task id="LOCAL-00014" summary="-">
-      <created>1606373093578</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1606373093578</updated>
-    </task>
-    <task id="LOCAL-00015" summary="-">
-      <created>1606381737236</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1606381737236</updated>
-    </task>
-    <task id="LOCAL-00016" summary="-">
-      <created>1606444367535</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1606444367535</updated>
-    </task>
-    <task id="LOCAL-00017" summary="-">
-      <created>1606467542359</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1606467542359</updated>
-    </task>
-    <task id="LOCAL-00018" summary="-">
-      <created>1606726776797</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1606726776797</updated>
-    </task>
-    <task id="LOCAL-00019" summary="-">
-      <created>1607071947937</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1607071947937</updated>
-    </task>
-    <task id="LOCAL-00020" summary="-">
-      <created>1607418000420</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1607418000420</updated>
-    </task>
-    <task id="LOCAL-00021" summary="-">
-      <created>1607590904518</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1607590904518</updated>
-    </task>
-    <task id="LOCAL-00022" summary="-">
-      <created>1607677890480</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1607677890480</updated>
-    </task>
-    <task id="LOCAL-00023" summary="-">
-      <created>1607914042129</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1607914042129</updated>
-    </task>
-    <task id="LOCAL-00024" summary="-">
-      <created>1608023665508</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1608023665508</updated>
-    </task>
-    <task id="LOCAL-00025" summary="-">
-      <created>1608024583387</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1608024583387</updated>
-    </task>
-    <task id="LOCAL-00026" summary="-">
-      <created>1608025358913</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1608025358913</updated>
-    </task>
-    <task id="LOCAL-00027" summary="-">
-      <created>1608109108830</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1608109108830</updated>
-    </task>
-    <task id="LOCAL-00028" summary="-">
-      <created>1608109335345</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1608109335345</updated>
-    </task>
-    <task id="LOCAL-00029" summary="-">
-      <created>1608195587865</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1608195587865</updated>
-    </task>
-    <task id="LOCAL-00030" summary="-">
-      <created>1608282039667</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1608282039667</updated>
-    </task>
-    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="-" />
-    <option name="LAST_COMMIT_MESSAGE" value="-" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608107411733">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608107411733" />
-    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1608000991636">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="261" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608000991636" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1607563301742">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607563301742" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1608282045417">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608282045417" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1607914047864" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608006438328">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608006438328" />
-    <state x="2494" y="23" width="1205" height="1027" key="dock-window-1" timestamp="1608514666428">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2494" y="23" width="1205" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608514666428" />
-    <state x="2010" y="0" width="1095" height="1027" key="dock-window-2" timestamp="1608528316998">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2010" y="0" width="1095" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608528316998" />
-    <state x="1920" y="0" width="1502" height="1027" key="dock-window-3" timestamp="1608528378125">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1502" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608528378125" />
-    <state x="1920" y="0" width="1502" height="1027" key="dock-window-4" timestamp="1608528551454">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1502" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608528551454" />
-    <state x="1920" y="0" width="1502" height="1027" key="dock-window-5" timestamp="1608541767368">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1502" height="1027" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608541767368" />
-    <state x="1920" y="0" width="1893" height="1027" key="dock-window-6" timestamp="1608537477791">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1893" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608537477791" />
-    <state x="2017" y="0" width="1293" height="1027" key="dock-window-7" timestamp="1607674541352">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2017" y="0" width="1293" height="1027" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607674541352" />
-    <state x="707" y="89" width="929" height="854" key="find.popup" timestamp="1608512413489">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="707" y="89" width="929" height="854" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608512413489" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1607998312562">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607998312562" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608186195111">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608186195111" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-<div class="row" style="display: block; margin-top: 2rem">
+<div class="row" style="display: block; margin-top: 4rem">
 	<div style="display: flex">
 		<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2020)">2020년</div>
 		<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2019)">2019년</div>
@@ -18,11 +18,11 @@
 	</div>
 </div>
 
-<div class="row" style="display: block">
+<div class="row" style="display: block" id="hosTableView">
 	<div style="float:right;font-size: 1.4rem;color: #5645ed;font-weight: 400">
 		※ 본인-예약자를 클릭하면 오름차순 또는 내림차순으로 자동 정렬됩니다.
 	</div>
-	
+
 	<table class="basic-table">
 		<thead>
 		<tr>
@@ -47,6 +47,8 @@
 </div>
 
 <script>
+	$('#hosTableView').hide();
+
 	//날짜검색
 	function searchHospitalStatisticsDate(type) {
 		var sendItems = new Object();
@@ -78,37 +80,39 @@
 	var tableData = new Array();
 	var tag = true;
 
-	function displayTable(){
+	function displayTable() {
 		sortByReservation();
 		setHospitalStatisticsData();
 	}
 
 	function setHospitalStatisticsData() {
 		$('#hosStatisticsTable').empty();
-		console.log(tableData);
+		$('#hosTableView').show();
+
 		for (i = 0; i < tableData.length; i++) {
 			var html = '';
 			var no = i + 1;
 
-			html += '<tr>'+
+			html += '<tr>' +
 					'<td>' + no + '</td>' +
 					'<td>' + tableData[i].hosName + '</td>' +
 					'<td>' + tableData[i].region + '</td>';
 
 			html += '<td>' + tableData[i].customerStatistics.numOfReservation + '</td>' +
 					'<td>' + tableData[i].customerStatistics.numOfInspection + '</td>' +
-					'<td>' + tableData[i].customerStatistics.percentOfInspection + '%</td>';
+					'<td>' + Math.floor(tableData[i].customerStatistics.percentOfInspection) + '%</td>';
 
 			html += '<td>' + tableData[i].familyStatistics.numOfReservation + '</td>' +
 					'<td>' + tableData[i].familyStatistics.numOfInspection + '</td>' +
-					'<td>' + tableData[i].familyStatistics.percentOfInspection + '%</td>'+
+					'<td>' + Math.floor(tableData[i].familyStatistics.percentOfInspection) + '%</td>' +
 					'</tr>';
 			$('#hosStatisticsTable').append(html);
 		}
 	}
-	function sortByReservation(){
-		if(tag){
-			tableData = tableData.sort(function(a, b) {
+
+	function sortByReservation() {
+		if (tag) {
+			tableData = tableData.sort(function (a, b) {
 				var nameA = a.customerStatistics.numOfInspection; // ignore upper and lowercase
 				var nameB = b.customerStatistics.numOfInspection; // ignore upper and lowercase
 				if (nameA < nameB) {
@@ -120,8 +124,8 @@
 
 				return 0;
 			});
-		}else {
-			tableData = tableData.sort(function(a, b) {
+		} else {
+			tableData = tableData.sort(function (a, b) {
 				var nameA = a.customerStatistics.numOfInspection; // ignore upper and lowercase
 				var nameB = b.customerStatistics.numOfInspection; // ignore upper and lowercase
 				if (nameA > nameB) {
@@ -135,7 +139,8 @@
 			});
 		}
 	}
-	function switchTag(){
+
+	function switchTag() {
 		tag = !tag;
 		displayTable();
 	}

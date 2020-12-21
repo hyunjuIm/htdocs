@@ -1,17 +1,21 @@
-<div class="row" style="display: block; margin: 5rem 0 8rem 0">
-	<table class="statistics-table" style="width: 90%">
+<div class="row" style="display: block; margin: 5rem 0 8rem 0" id="areaChartView">
+	<table class="statistics-table" style="width: 90%;color: black">
 		<tr>
 			<td style="width:50%">
-				<canvas id="bar"></canvas>
+				<div class="area-title">지역별</div>
+				<div id="area-bar-content">
+				</div>
 			</td>
 			<td style="width:50%">
+				<div class="area-title">병원별</div>
+				<div>
+				</div>
 			</td>
 		</tr>
 	</table>
-
 </div>
 
-<div class="row" style="display: block">
+<div class="row" style="display: block;margin-top: 4rem">
 	<div style="display: flex">
 		<div class="btn btn-outline-dark" onclick="searchAreaStatisticsDate(2020)">2020년</div>
 		<div class="btn btn-outline-dark" onclick="searchAreaStatisticsDate(2019)">2019년</div>
@@ -61,6 +65,8 @@
 </div>
 
 <script>
+	$('#areaChartView').hide();
+
 	//날짜검색
 	function searchAreaStatisticsDate(type) {
 		var sendItems = new Object();
@@ -88,12 +94,13 @@
 		}
 	}
 
-
 	var regionDataArr = [];
 	var regionData = [];
 
 	function setAreaStatisticsData(data) {
 		$('#areaStatisticsTable').empty();
+		$('#areaChartView').show();
+
 		console.log(data);
 
 		for (i = 0; i < data.length; i++) {
@@ -176,6 +183,7 @@
 
 
 	function drawBarChart() {
+		console.log(regionDataArr);
 		console.log(regionDataArr.length);
 		var labels = [];
 		var datasets = [];
@@ -184,6 +192,13 @@
 			labels.push(regionDataArr[i][0]);
 			console.log(regionDataArr[i]);
 		}
+
+		if (regionDataArr.length > 7) {
+			$('#area-bar-content').height('100rem');
+		} else {
+			$('#area-bar-content').height('40rem');
+		}
+		$('#area-bar-content').html('<canvas id="areaBar"></canvas>');
 
 		for (var z = 6; z < 10; z++) {
 			var label = (z === 6) ? "예약자(본인)" : (z === 7) ? "수검자(본인)" : (z === 8) ? "예약자(가족)" : "수검자(가족)";
@@ -199,19 +214,14 @@
 			};
 			datasets.push(datasetObj);
 		}
-		let dataBar1 = {labels, datasets};
-		console.log(dataBar1)
+		var dataBar1 = {labels, datasets};
 
-
-
-		var cnvs = document.getElementById('bar');
-		// context
-		var Context = cnvs.getContext('2d');
-
-		var BarChart = new Chart(Context, {
+		var areaBar = document.getElementById('areaBar').getContext('2d');
+		var areaChart = new Chart(areaBar, {
 			type: "horizontalBar",
 			data: dataBar1,
 			options: {
+				maintainAspectRatio: false,
 				elements: {
 					rectangle: {
 						borderWidth: 2
@@ -221,48 +231,21 @@
 				legend: {
 					position: "bottom"
 				},
-				title: {
-					display: true,
-					text: "지역별",
-					fontSize: 25,
-					fontStyle: 300
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
 				}
 			}
 		});
+
+		regionDataArr = [];
 	}
 
 	function drawSelectedChart() {
 
 	}
-
-
-	var dataBar = {
-		labels: [
-			"서울", "전북", "경기"
-		],
-		datasets: [
-			{
-				label: "1",
-				data: [100, 75, 70],
-				backgroundColor: "#8064a2"
-			},
-			{
-				label: "2",
-				data: [80, 44, 80],
-				backgroundColor: "#9bbb59"
-			},
-			{
-				label: "3",
-				data: [50, 70, 80],
-				backgroundColor: "#c0504d"
-			},
-			{
-				label: "4",
-				data: [100, 90, 80],
-				backgroundColor: "#4f81bd"
-			}
-		]
-	};
-
 
 </script>
