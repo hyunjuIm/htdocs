@@ -53,7 +53,7 @@
 <!-- Modal -->
 <div class="modal fade" id="employeeManageDetailModal" tabindex="-1" aria-labelledby="employeeManageDetailModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog" style="max-width: fit-content; min-width: 90rem; display: table;">
+	<div class="modal-dialog" style="max-width: fit-content; min-width: 100rem; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">

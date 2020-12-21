@@ -20,9 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21794093-cdcc-46f7-8e59-b71b256a264e" name="Default Changelist" comment="-">
+      <change afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_area.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_hospital.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_year.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/company/application/views/pc/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/common/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/employee_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/employee_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/statistics_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,17 +75,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc\common" />
+      <recent name="C:\Bitnami\wampstack-7.4.13-0\apache2\htdocs\customer\asset\fullcalendar" />
+      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\asset\images" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc\common" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\asset\css" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc" />
       <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\controllers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Bitnami\wampstack-7.4.12-0\apache2\htdocs\company\application\views\pc\common" />
-      <recent name="C:\Bitnami\wampstack-7.4.13-0\apache2\htdocs\customer\asset\fullcalendar" />
-      <recent name="C:\Bitnami\wampstack-7.4.8-0\apache2\htdocs\customer\asset\lib" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -98,7 +108,8 @@
       <workItem from="1607903884460" duration="6752000" />
       <workItem from="1607914409009" duration="40257000" />
       <workItem from="1608004824619" duration="26069000" />
-      <workItem from="1608083506479" duration="67743000" />
+      <workItem from="1608083506479" duration="67865000" />
+      <workItem from="1608512264811" duration="26821000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1604997252993</created>
@@ -303,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608195587865</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="-">
+      <created>1608282039667</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1608282039667</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,47 +356,47 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607563301742" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1608195592708">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1608282045417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608195592708" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608282045417" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1607914047864" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608006438328">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608006438328" />
-    <state x="1920" y="0" width="882" height="1027" key="dock-window-1" timestamp="1608100021885">
+    <state x="2494" y="23" width="1205" height="1027" key="dock-window-1" timestamp="1608514666428">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="0" width="882" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608100021885" />
-    <state x="287" y="7" width="1521" height="1027" key="dock-window-2" timestamp="1608272825029">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="287" y="7" width="1521" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608272825029" />
-    <state x="132" y="89" width="1459" height="1027" key="dock-window-3" timestamp="1608272825029">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="132" y="89" width="1459" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608272825029" />
-    <state x="1920" y="0" width="1537" height="1027" key="dock-window-4" timestamp="1608273324196">
+    <state x="2494" y="23" width="1205" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608514666428" />
+    <state x="2010" y="0" width="1095" height="1027" key="dock-window-2" timestamp="1608528316998">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="0" width="1537" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608273324196" />
-    <state x="1952" y="11" width="1539" height="1027" key="dock-window-5" timestamp="1607661641665">
+    <state x="2010" y="0" width="1095" height="1027" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608528316998" />
+    <state x="1920" y="0" width="1502" height="1027" key="dock-window-3" timestamp="1608528378125">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1952" y="11" width="1539" height="1027" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607661641665" />
-    <state x="304" y="0" width="751" height="1027" key="dock-window-6" timestamp="1607904357043">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1920" y="0" width="1502" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608528378125" />
+    <state x="1920" y="0" width="1502" height="1027" key="dock-window-4" timestamp="1608528551454">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="304" y="0" width="751" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607904357043" />
+    <state x="1920" y="0" width="1502" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608528551454" />
+    <state x="1920" y="0" width="1502" height="1027" key="dock-window-5" timestamp="1608541767368">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1502" height="1027" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608541767368" />
+    <state x="1920" y="0" width="1893" height="1027" key="dock-window-6" timestamp="1608537477791">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1893" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608537477791" />
     <state x="2017" y="0" width="1293" height="1027" key="dock-window-7" timestamp="1607674541352">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2017" y="0" width="1293" height="1027" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607674541352" />
-    <state x="809" y="139" width="929" height="854" key="find.popup" timestamp="1608258339597">
+    <state x="707" y="89" width="929" height="854" key="find.popup" timestamp="1608512413489">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="809" y="139" width="929" height="854" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608258339597" />
+    <state x="707" y="89" width="929" height="854" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608512413489" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1607998312562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
