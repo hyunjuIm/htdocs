@@ -37,4 +37,9 @@ class Company extends CI_Controller
 	public function statistics_manage() {
 		$this->load->view('pc/statistics_manage');
 	}
+
+	//청구관리
+	public function bill_manage() {
+		$this->load->view('pc/bill_manage');
+	}
 }

@@ -47,7 +47,7 @@
 </div>
 
 <script>
-	$('#hosTableView').hide();
+	$('#hosTableView').css('visibility', 'hidden');
 
 	//날짜검색
 	function searchHospitalStatisticsDate(type) {
@@ -87,7 +87,14 @@
 
 	function setHospitalStatisticsData() {
 		$('#hosStatisticsTable').empty();
-		$('#hosTableView').show();
+		$('#hosTableView').css('visibility', 'visible');
+
+		if (tableData.length > 0) {
+			$('#hosTableView').css('visibility', 'visible');
+		} else {
+			$('#hosTableView').css('visibility', 'hidden');
+			alert('해당기간 자료가 없습니다.');
+		}
 
 		for (i = 0; i < tableData.length; i++) {
 			var html = '';

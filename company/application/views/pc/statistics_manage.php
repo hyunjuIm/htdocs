@@ -73,6 +73,17 @@
 			background: #CCCCCC;
 		}
 
+		.basic-table .choice {
+			font-weight: 500;
+			cursor: pointer;
+			color: #3529b1;
+			background: whitesmoke;
+		}
+
+		.basic-table .choice:hover {
+			background: #f1f1f1;
+		}
+
 		.statistics-table {
 			width: 80%;
 			margin: 0 auto;
@@ -95,7 +106,19 @@
 			font-size: 2.2rem;
 			text-align: left;
 			font-weight: 400;
-			padding: 2rem 0;
+			padding: 3rem 0 1rem 0;
+		}
+
+		.empty-data {
+			display: none;
+			line-height: 10rem;
+			background: rgba(0, 0, 0, 0.2);
+			width: 100%;
+			height: 10rem;
+			text-align: center;
+			font-size: 1.8rem;
+			font-weight: 400;
+			margin-top: 3rem;
 		}
 
 		canvas {
@@ -137,6 +160,11 @@
 					<a class="nav-link" data-toggle="tab" href="#area">지역별</a>
 				</li>
 			</ul>
+
+<!--			<div id="emptyData" class="empty-data">-->
+<!--				해당 기간의 자료가 없습니다.-->
+<!--			</div>-->
+
 			<div class="tab-content">
 				<div class="tab-pane fade show active" id="year">
 					<?php

@@ -176,8 +176,8 @@
 </div>
 
 <script>
-	$('#yearChartView').hide();
-	$('#yearTableView').hide();
+	$('#yearChartView').css('visibility', 'hidden');
+	$('#yearTableView').css('visibility', 'hidden');
 
 	//날짜검색
 	function searchYearStatisticsDate(type) {
@@ -210,8 +210,8 @@
 	function setYearStatisticsData(data) {
 		$('#yearStatisticsTable').empty();
 
-		$('#yearChartView').show();
-		$('#yearTableView').show();
+		$('#yearChartView').css('visibility', 'visible');
+		$('#yearTableView').css('visibility', 'visible');
 
 		var html = '<tr>';
 

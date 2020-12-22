@@ -40,7 +40,7 @@
 						<div class="select-list" style="float:left;">
 							<div class="select-label">
 								<img src="/asset/images/icon_dot_menu.png">
-								사업년도
+								사업연도
 							</div>
 							<div class="select-content">
 								<select id="servedYear">

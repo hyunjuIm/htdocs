@@ -1,18 +1,18 @@
-<div class="row" style="display: block; margin: 5rem 0 8rem 0" id="areaChartView">
-	<table class="statistics-table" style="width: 90%;color: black">
-		<tr>
-			<td style="width:50%">
+<div class="row" style="display: block;" id="areaChartView">
+	<div class="container">
+		<div class="row">
+			<div class="col">
 				<div class="area-title">지역별</div>
-				<div id="area-bar-content">
+				<div id="areaBarContent" style="height: 40rem">
 				</div>
-			</td>
-			<td style="width:50%">
-				<div class="area-title">병원별</div>
-				<div>
+			</div>
+			<div class="col">
+				<div class="area-title" id="areaHosTitle">병원별</div>
+				<div id="hosBarContent" style="height: 40rem">
 				</div>
-			</td>
-		</tr>
-	</table>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="row" style="display: block;margin-top: 4rem">
@@ -35,7 +35,11 @@
 	</div>
 </div>
 
-<div class="row" style="display: block; margin-top: 2rem">
+<div class="row" id="areaTableView" style="display: block">
+	<div style="float:right;font-size: 1.4rem;color: #5645ed;font-weight: 400">
+		※ 지역명을 누르면 해당 지역의 병원별 그래프를 확인하실 수 있습니다.
+	</div>
+
 	<table class="basic-table">
 		<thead>
 		<tr>
@@ -65,7 +69,8 @@
 </div>
 
 <script>
-	$('#areaChartView').hide();
+	$('#areaChartView').css('visibility', 'hidden');
+	$('#areaTableView').css('visibility', 'hidden');
 
 	//날짜검색
 	function searchAreaStatisticsDate(type) {
@@ -94,14 +99,24 @@
 		}
 	}
 
+	let allData = {};
 	var regionDataArr = [];
-	var regionData = [];
+	var regionArr = [];
 
 	function setAreaStatisticsData(data) {
+		var regionData = [];
+		regionArr = [];
 		$('#areaStatisticsTable').empty();
-		$('#areaChartView').show();
+		allData = data;
 
-		console.log(data);
+		if (data.length > 0) {
+			$('#areaChartView').css('visibility', 'visible');
+			$('#areaTableView').css('visibility', 'visible');
+		} else {
+			$('#areaChartView').css('visibility', 'hidden');
+			$('#areaTableView').css('visibility', 'hidden');
+			alert('해당기간 자료가 없습니다.');
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var countOfHos1 = 0;
@@ -118,7 +133,8 @@
 			var perOfFamilyInspection = 0.0;
 
 			var html = '<tr>';
-			html += '<td>' + data[i].region + '</td>'
+			html += '<td class="choice" onclick="drawSelectedChart(\'' + data[i].region + '\')">' + data[i].region + '</td>'
+			regionArr.push(data[i].region);
 			for (j = 0; j < data[i].countByGradeListDTOS.length; j++) {
 				let grade = data[i].countByGradeListDTOS[j].grade;
 				let gradeCount = data[i].countByGradeListDTOS[j].gradeCount;
@@ -179,26 +195,23 @@
 			$('#areaStatisticsTable').append(html);
 		}
 		drawBarChart();
+		if (data.length > 0) drawSelectedChart(data[0].region)
 	}
 
-
 	function drawBarChart() {
-		console.log(regionDataArr);
-		console.log(regionDataArr.length);
 		var labels = [];
 		var datasets = [];
 
 		for (var i = 0; i < regionDataArr.length; i++) {
 			labels.push(regionDataArr[i][0]);
-			console.log(regionDataArr[i]);
 		}
 
 		if (regionDataArr.length > 7) {
-			$('#area-bar-content').height('100rem');
+			$('#areaBarContent').height('100rem');
 		} else {
-			$('#area-bar-content').height('40rem');
+			$('#areaBarContent').height('40rem');
 		}
-		$('#area-bar-content').html('<canvas id="areaBar"></canvas>');
+		$('#areaBarContent').html('<canvas id="areaBar"></canvas>');
 
 		for (var z = 6; z < 10; z++) {
 			var label = (z === 6) ? "예약자(본인)" : (z === 7) ? "수검자(본인)" : (z === 8) ? "예약자(가족)" : "수검자(가족)";
@@ -217,10 +230,18 @@
 		var dataBar1 = {labels, datasets};
 
 		var areaBar = document.getElementById('areaBar').getContext('2d');
-		var areaChart = new Chart(areaBar, {
+		new Chart(areaBar, {
 			type: "horizontalBar",
 			data: dataBar1,
 			options: {
+				scales: {
+					xAxes: [{
+						ticks: {
+							beginAtZero: true,
+							min: 0
+						}
+					}]
+				},
 				maintainAspectRatio: false,
 				elements: {
 					rectangle: {
@@ -230,13 +251,6 @@
 				responsive: true,
 				legend: {
 					position: "bottom"
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
 				}
 			}
 		});
@@ -244,8 +258,74 @@
 		regionDataArr = [];
 	}
 
-	function drawSelectedChart() {
 
+	function drawSelectedChart(region) {
+		let index = regionArr.indexOf(region);
+		let selectedData = allData[index].countByGradeListDTOS;
+
+		$('#areaHosTitle').html('병원별 <span style="color: #3529b1;font-size: 1.9rem;font-weight: bold">(' + region + ')</span>');
+
+		var labels = [];
+		var datasets = [];
+
+		for (var i = 0; i < selectedData.length; i++) {
+			labels.push(selectedData[i].grade);
+		}
+
+		if (selectedData.length > 7) {
+			$('#hosBarContent').height('100rem');
+		} else {
+			$('#hosBarContent').height('40rem');
+		}
+		$('#hosBarContent').html('<canvas id="hosBar"></canvas>');
+
+		for (var z = 0; z < 4; z++) {
+			var label = (z === 0) ? "예약자(본인)" : (z === 1) ? "수검자(본인)" : (z === 2) ? "예약자(가족)" : "수검자(가족)";
+			var data = [];
+			for (var i = 0; i < selectedData.length; i++) {
+				let cuStat = selectedData[i].numOfCustomerStatisticsDTO;
+				let faStat = selectedData[i].numOfFamilyStatisticsDTO;
+				let d = (z === 0) ? cuStat.numOfReservation : (z === 1) ? cuStat.numOfInspection : (z === 2) ? faStat.numOfReservation : faStat.numOfInspection;
+				data.push(d)
+			}
+			var backgroundColor = (z === 0) ? "#8064a2" : (z === 1) ? "#9bbb59" : (z === 2) ? "#c0504d" : "#4f81bd";
+			var datasetObj = {
+				label: label,
+				data: data,
+				backgroundColor: backgroundColor,
+			};
+			datasets.push(datasetObj);
+
+		}
+
+		var dataBar1 = {labels, datasets};
+
+		var hosBar = document.getElementById('hosBar').getContext("2d");
+		new Chart(hosBar, {
+			type: "horizontalBar",
+			data: dataBar1,
+			options: {
+				scales: {
+					xAxes: [{
+						ticks: {
+							beginAtZero: true,
+							min: 0
+						}
+					}]
+				},
+				maintainAspectRatio: false,
+				elements: {
+					rectangle: {
+						borderWidth: 2
+					}
+				},
+				responsive: true,
+				legend: {
+					position: "bottom"
+				}
+			}
+		});
 	}
+
 
 </script>

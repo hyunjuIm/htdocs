@@ -109,9 +109,9 @@
 					<th style="width: 3%"><input type="checkbox" id="customerCheck" name="customerCheck"
 												 onclick="clickAll(id, name)"></th>
 					<th style="width: 5%">NO</th>
-					<th style="width: 8%;color: #3529b1">사번</th>
+					<th style="width: 8%">사번</th>
 					<th style="width: 10%">아이디</th>
-					<th style="width: 8%">이름</th>
+					<th style="width: 8%;color: #3529b1">이름</th>
 					<th>소속</th>
 					<th>생년월일</th>
 					<th>연락처</th>
@@ -212,7 +212,7 @@ require('check_data.php');
 		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
-		searchItems.pagingNum = pageNum;
+		searchItems.pageNum = pageNum;
 		searchItems.companyName = $("#companyName option:selected").val();
 		searchItems.companyBranch = $("#companyBranch option:selected").val();
 
@@ -229,7 +229,8 @@ require('check_data.php');
 		console.log(searchItems);
 
 		instance.post('M001002_REQ_RES', searchItems).then(res => {
-			setCustomerData(res.data, pageNum);
+			console.log(res.data);
+			setCustomerData(res.data.customerDTOList, pageNum);
 		});
 	}
 
@@ -247,6 +248,8 @@ require('check_data.php');
 
 	//회원관리 테이블
 	function setCustomerData(data, index) {
+		console.log(data);
+
 		$('#customerInfos > tbody').empty();
 		$("#paging").empty();
 
@@ -284,15 +287,19 @@ require('check_data.php');
 
 			var no = i + 1;
 			html += '<td>' + no + '</td>';
-			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
-					'data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">' + data[i].id + '</td>';
+			html += '<td>' + data[i].id + '</td>';
 			html += '<td>' + data[i].email + '</td>';
-			html += '<td>' + data[i].name + '</td>';
+			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
+					'data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
 			html += '<td>' + data[i].companyName + '-' + data[i].companyBranch + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].phone + '</td>';
 			html += '<td>' + data[i].createDate + '</td>';
-			html += '<td>' + data[i].lastSignInTime + '</td>';
+			if(data[i].lastSignInTime == null || data[i].lastSignInTime == '') {
+				html += '<td></td>';
+			} else {
+				html += '<td>' + data[i].lastSignInTime + '</td>';
+			}
 			html += '</tr>';
 
 			$("#customerInfos").append(html);
