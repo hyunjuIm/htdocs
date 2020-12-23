@@ -129,6 +129,10 @@ require('bill_modal.php');
 		searchItems.coId = coIdObj.coId;
 		searchItems.year = $("#servedYear option:selected").val();
 
+		if(searchItems.year == '선택') {
+			return false;
+		}
+
 		instance.post('C0501', searchItems).then(res => {
 			$('#billAllTable > tbody').empty();
 			$('#billMonthTable > tbody').empty();
