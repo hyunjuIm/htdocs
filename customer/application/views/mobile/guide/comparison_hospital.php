@@ -10,17 +10,10 @@
 
 	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
-	<!-- "excel download" -->
-	<script src="xlsx.core.min.js"></script>
-	<script src="FileSaver.min.js"></script>
-	<script src="tableexport.js"></script>
-	<script src="saveexcel.js"></script>
-
 	<style>
 		.compare-table {
 			width: 100%;
 			border-top: black 2px solid;
-			margin-bottom: 5rem;
 			font-size: 1.3rem;
 			word-break: break-all;
 		}
@@ -71,6 +64,9 @@
 			background: white;
 		}
 
+		.btn {
+			height: 2.7rem;
+		}
 	</style>
 
 </head>
@@ -88,81 +84,62 @@
 	<h1>병원별 검진 항목 비교</h1>
 </div>
 
-<div class="btn-light-purple-square" style="float:right;font-size: 1.1rem;margin-bottom: 1rem"
-	 onclick="fnExcelReport('inspectionView','병원비교');">엑셀 다운로드</div>
-
 <div class="row" style="display: block;margin-top: 3rem">
 	<table id="pdf" class="compare-table table-bordered">
 		<tr>
-			<td width="10%">병원</td>
-			<td width="30%" class="select">
+			<td width="16%">병원</td>
+			<td width="42%" class="select">
 				<select id="hos1" class="form-control"
 						onchange="setPackageSelectOption(this, 'pkg1')">
 					<option selected>- 선택 -</option>
 				</select>
 			</td>
-			<td width="30%" class="select">
+			<td width="42%" class="select">
 				<select id="hos2" class="form-control"
 						onchange="setPackageSelectOption(this, 'pkg2')">
 					<option selected>- 선택 -</option>
 				</select>
 			</td>
-			<td width="30%" class="select">
-				<select id="hos3" class="form-control"
-						onchange="setPackageSelectOption(this, 'pkg3')">
-					<option selected>- 선택 -</option>
-				</select>
-			</td>
+			<!--			<td width="30%" class="select">-->
+			<!--				<select id="hos3" class="form-control"-->
+			<!--						onchange="setPackageSelectOption(this, 'pkg3')">-->
+			<!--					<option selected>- 선택 -</option>-->
+			<!--				</select>-->
+			<!--			</td>-->
 		</tr>
 		<tr>
-			<td width="10%">패키지</td>
-			<td width="30%" class="select">
+			<td width="16%">패키지</td>
+			<td width="42%" class="select">
 				<select id="pkg1" class="form-control" onchange="setSearchPackage(id)">
 					<option selected>- 선택 -</option>
 				</select>
 			</td>
-			<td width="30%" class="select">
+			<td width="42%" class="select">
 				<select id="pkg2" class="form-control" onchange="setSearchPackage(id)">
 					<option selected>- 선택 -</option>
 				</select>
 			</td>
-			<td width="30%" class="select">
-				<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">
-					<option selected>- 선택 -</option>
-				</select>
-			</td>
+			<!--			<td width="30%" class="select">-->
+			<!--				<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">-->
+			<!--					<option selected>- 선택 -</option>-->
+			<!--				</select>-->
+			<!--			</td>-->
 		</tr>
 	</table>
 </div>
 
-<div class="row" id="inspectionView" style="display: none">
-	<table class="compare-table table-bordered" id="nameTable" >
-		<tr>
-			<td width="30%">병원</td>
-			<td width="20%" id="hosName1"></td>
-			<td width="20%" id="hosName2"></td>
-			<td width="20%" id="hosName3"></td>
-		</tr>
-		<tr>
-			<td width="30%">패키지</td>
-			<td width="20%" id="pacName1"></td>
-			<td width="20%" id="pacName2"></td>
-			<td width="20%" id="pacName3"></td>
-		</tr>
-	</table>
-
-	<div class="row" style="display: block">
-		<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
-			기본검사
+<div class="row" style="font-size: 1.3rem;font-weight: 400;height: 2.7rem;width: 100%;padding: 1rem 0">
+	<div style="margin: 0 auto;width: 100%">
+		<div style="line-height: 2.7rem">
+			※ 자세한 항목은 pc버전에서 확인해주세요.&nbsp;
+			<div class="btn btn-secondary" onclick=window.open("/customer/comparison_hospital")>pc버전</div>
 		</div>
-		<div style="height: 30rem; overflow-y: scroll">
-			<table class="compare-table table-bordered" id="baseTable">
-			</table>
-		</div>
-
 	</div>
-	<div class="row" style="display: block;margin-top: 2rem">
-		<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
+</div>
+
+<div class="row" id="inspectionView" style="display: none">
+	<div class="row" style="display: block">
+		<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem;margin-top: 5rem">
 			선택검사
 		</div>
 		<table class="compare-table table-bordered" id="choiceTable">
@@ -174,7 +151,6 @@
 			추가검사
 		</div>
 		<table class="compare-table table-bordered" id="addTable">
-
 		</table>
 	</div>
 </div>
@@ -266,18 +242,7 @@
 			addBaseInjectionData(res.data, id);
 			setChoiceInjectionData(res.data, id);
 			setAddInjectionTable(res.data, id);
-			setName();
 		});
-	}
-
-	function setName() {
-		$('#hosName1').text($('#hos1 option:selected').val());
-		$('#hosName2').text($('#hos2 option:selected').val());
-		$('#hosName3').text($('#hos3 option:selected').val());
-
-		$('#pacName1').text($('#pkg1 option:selected').text());
-		$('#pacName2').text($('#pkg2 option:selected').text());
-		$('#pacName3').text($('#pkg3 option:selected').text());
 	}
 
 	//id -> 인덱스 몇 번인지
@@ -386,17 +351,17 @@
 		for (i = 0; i < maxRow; i++) {
 			var html = '';
 			html += '<tr>' +
-					'<th width="10%" style="text-align: left">' + selectName[i] + '</th>';
-			for (j = 0; j < 3; j++) {
+					'<th width="16%" style="text-align: left">' + selectName[i] + '</th>';
+			for (j = 0; j < 2; j++) {
 				if (selectInjection[j] != null && selectInjection[j][i] != null) {
-					html += '<td width="30%">';
+					html += '<td width="42%">';
 					html += '<div class="choiceNum">선택개수 : ' + selectInjection[j][i].choiceLimit + '</div><br>';
 					for (k = 0; k < selectInjection[j][i].inspection.length; k++) {
 						html += selectInjection[j][i].inspection[k] + '<br>';
 					}
 					html += '</td>';
 				} else {
-					html += '<td>';
+					html += '<td width="42%">';
 					html += '</td>';
 				}
 			}
@@ -422,10 +387,10 @@
 
 		var html = '';
 		html += '<tr>' +
-				'<th width="10%" style="text-align: left">추가검사</th>';
+				'<th width="16%" style="text-align: left">추가 검사</th>';
 
-		for (i = 0; i < 3; i++) {
-			html += '<td width="30%">'
+		for (i = 0; i < 2; i++) {
+			html += '<td width="42%">'
 			if (addInspection[i] != null) {
 				for (j = 0; j < addInspection[i].length; j++) {
 					html += addInspection[i][j] + '<br>';
@@ -439,46 +404,4 @@
 	}
 
 </script>
-
-<!--엑셀다운로드-->
-<script>
-	function fnExcelReport(id, title) {
-		var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
-		tab_text = tab_text + '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
-		tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
-		tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
-		tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
-		tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
-		tab_text = tab_text + "<table border='1px'>";
-		var exportTable = $('#' + id).clone();
-		exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
-		tab_text = tab_text + exportTable.html();
-		tab_text = tab_text + '</table></body></html>';
-		var data_type = 'data:application/vnd.ms-excel';
-		var ua = window.navigator.userAgent;
-		var msie = ua.indexOf("MSIE ");
-		var fileName = title + '.xls';
-//Explorer 환경에서 다운로드
-		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-			if (window.navigator.msSaveBlob) {
-				var blob = new Blob([tab_text], {
-					type: "application/csv;charset=utf-8;"
-				});
-				navigator.msSaveBlob(blob, fileName);
-			}
-		} else {
-			var blob2 = new Blob([tab_text], {
-				type: "application/csv;charset=utf-8;"
-			});
-			var filename = fileName;
-			var elem = window.document.createElement('a');
-			elem.href = window.URL.createObjectURL(blob2);
-			elem.download = filename;
-			document.body.appendChild(elem);
-			elem.click();
-			document.body.removeChild(elem);
-		}
-	}
-</script>
-
 </html>
