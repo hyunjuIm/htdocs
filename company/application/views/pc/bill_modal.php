@@ -1,40 +1,72 @@
 <!-- Modal -->
 <div class="modal fade" id="billDetailModal" tabindex="-1" aria-labelledby="billDetailModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog" style="max-width: fit-content; min-width: 100rem; display: table;">
+	<div class="modal-dialog" style="max-width: fit-content; min-width: 130rem; display: table">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<form style="text-align: center">
-					<div id="title"></div>
-					<div id="createDate" style="color:grey;"></div>
-					<div class="state">
-						<div style="float:left">처리상태: <span id="status"></span></div>
-						<div style="float:right">작성자: <span id="author"></span></div>
-					</div>
-					<div id="content"></div>
-					<hr>
-					<div style="width: 100%;height: fit-content;text-align: left;padding: 0 2rem;display: flex">
-						첨부파일 :&nbsp;<span id="fileName"></span>
-						<div class="btn btn-secondary" onclick="downloadFile()">다운로드</div>
-					</div>
-					<hr>
-					<div id="answerView">
-						<div style="text-align: left;padding: 1rem;font-weight: 400">처리결과</div>
-						<div id="answer"></div>
-					</div>
-				</form>
+			<div class="modal-body" style="padding: 5rem">
+				<div class="box-title">
+					<img src="/asset/images/icon_title.png">
+					<h2 style="font-weight: 300;font-size: 2.3rem">청구상세내역</h2>
+				</div>
+				<table class="basic-table" id="billDetailTable">
+					<thead>
+					<th>NO</th>
+					<th>상태</th>
+					<th>고객사</th>
+					<th>사업장</th>
+					<th>아이디(사번)</th>
+					<th>성명</th>
+					<th>관계</th>
+					<th>검진완료일</th>
+					<th>기업청구금</th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 </div>
 
 <script>
-	function clickBillDetail(id) {
+	function clickBillDetail(billingId, hosId) {
+		$('#billDetailTable > tbody').empty();
 
+		var searchItems = new Object();
+
+		searchItems.billingId = billingId;
+		searchItems.hosId = hosId;
+
+		console.log(searchItems)
+
+		instance.post('C0503', searchItems).then(res => {
+			console.log(res.data);
+			setBillDetailData(res.data);
+		});
+	}
+
+	function setBillDetailData(data) {
+		var html = '';
+
+		for (i = 0; i < data.length; i++) {
+			var no = i + 1;
+			html += '<tr>' +
+					'<td>' + no + '</td>' +
+					'<td>' + data[i].status + '</td>' +
+					'<td>' + data[i].coName + '</td>' +
+					'<td>' + data[i].coBranch + '</td>' +
+					'<td>' + data[i].cuId + '</td>' +
+					'<td>' + data[i].famName + '</td>' +
+					'<td>' + data[i].famGrade + '</td>' +
+					'<td>' + data[i].ipDate + '</td>' +
+					'<td>' + data[i].coCharge.toLocaleString() + '</td>' +
+					'</tr>';
+		}
+		$("#billDetailTable > tbody").append(html);
 	}
 </script>

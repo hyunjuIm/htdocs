@@ -113,7 +113,7 @@ body {
 	font-weight: 400;
 }
 
-.basic-table td {
+.basic-table tbody tr {
 	background-color: white;
 }
 

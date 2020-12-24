@@ -111,7 +111,7 @@
 			</table>
 		</div>
 		<div class="row" style="margin-top: 1rem">
-			<div class="btn-light-grey-square" style="float: right" onclick="searchInformation()">검색</div>
+			<div class="btn-light-grey-square" style="float: right" onclick="searchInformation(0, 'select')">검색</div>
 		</div>
 	</div>
 
@@ -207,7 +207,7 @@
 	searchInformation(0);
 
 	//검색
-	function searchInformation(index) {
+	function searchInformation(index, type) {
 		var searchItems = new Object();
 
 		$('#reservationInfos > tbody').empty();
@@ -220,7 +220,11 @@
 		searchItems.serviceName = $("#serviceName option:selected").val();
 		searchItems.supportPercent = $("#supportPercent option:selected").val();
 
-		searchItems.searchWord = $("#searchWord").val();
+		if(type == 'select') {
+			searchItems.searchWord = '';
+		} else {
+			searchItems.searchWord = $("#searchWord").val();
+		}
 		searchItems.pagingNum = index;
 
 		if (searchItems.servedYear == "- 전체 -") {

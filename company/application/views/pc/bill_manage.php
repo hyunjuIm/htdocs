@@ -17,8 +17,12 @@
 			color: white;
 		}
 
-		#billAllTable th {
-			/*width: calc(100% / 6);*/
+		#billAllTable tbody tr {
+			cursor: pointer;
+		}
+
+		#billAllTable tbody tr:hover {
+			background: whitesmoke;
 		}
 	</style>
 </head>
@@ -55,7 +59,7 @@
 				</select>
 			</div>
 
-			<table class="basic-table" id="billAllTable" style="margin-top: 1rem">
+			<table class="basic-table" id="billAllTable" style="margin-top: 1rem;display: none">
 				<thead>
 				<tr>
 					<th>기업 ID</th>
@@ -71,38 +75,30 @@
 			</table>
 		</div>
 
-		<div class="row" style="display: block;margin-top: 3rem">
+		<div class="row" id="billMonthView" style="display: none;margin-top: 3rem">
 			<div>월별청구리스트</div>
 
 			<table class="basic-table" id="billMonthTable" style="margin-top: 1rem">
 				<thead>
 				<tr>
-					<th width="7%">순번</th>
-					<th width="10%">병원 ID</th>
-					<th width="12%">병원</th>
-					<th width="5%">인원</th>
-					<th width="12%">검진비용 총합</th>
-					<th width="11%" style="line-height: 1.5rem">
+					<th>NO</th>
+					<th>병원 ID</th>
+					<th>병원</th>
+					<th>인원</th>
+					<th>검진비용 총합</th>
+					<th style="line-height: 1.5rem">
 						청구금액<br>
 						<span style="font-size: 1.3rem">(급여+기업+포인트<br>선택검사회사분)</span>
 					</th>
-					<th width="12%">계산서금액</th>
-					<th width="12%">정보이용료</th>
-					<th width="5%">수신여부</th>
-					<th width="14%">청구리스트</th>
+					<th>계산서금액</th>
+					<th>정보이용료</th>
+					<th>병원확인</th>
+					<th>기업확인</th>
+					<th>청구리스트</th>
+					<th>청구승인</th>
 				</tr>
 				</thead>
 				<tbody>
-				<tr class="sum">
-					<td colspan="2"></td>
-					<td>계</td>
-					<td>187</td>
-					<td>56,230,000</td>
-					<td>51,464,400</td>
-					<td>42,884,400</td>
-					<td>42,884,400</td>
-					<td colspan="2"></td>
-				</tr>
 				</tbody>
 			</table>
 		</div>
@@ -129,7 +125,7 @@ require('bill_modal.php');
 		searchItems.coId = coIdObj.coId;
 		searchItems.year = $("#servedYear option:selected").val();
 
-		if(searchItems.year == '선택') {
+		if (searchItems.year == '선택') {
 			return false;
 		}
 
@@ -143,6 +139,12 @@ require('bill_modal.php');
 
 	//전체 청구데이터 셋팅
 	function setBillAllTable(data) {
+		if (data.length > 0) {
+			$('#billAllTable').show();
+		} else {
+			$('#billAllTable').hide();
+		}
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr onClick="clickBillMonthData(\'' + data[i].billingId + '\')">' +
@@ -158,6 +160,7 @@ require('bill_modal.php');
 		}
 	}
 
+	//해당 기업 클릭 -> 월별청구리스트
 	function clickBillMonthData(id) {
 		var searchItems = new Object();
 
@@ -165,33 +168,121 @@ require('bill_modal.php');
 		searchItems.billingId = id;
 
 		instance.post('C0502', searchItems).then(res => {
-			console.log(res.data);
-			setBillMonthData(res.data);
+			setBillMonthData(res.data, searchItems.billingId);
 		});
 	}
 
-	function setBillMonthData(data) {
+	//월별청구리스트 셋팅
+	function setBillMonthData(data, billingId) {
+		$('#billMonthTable > tbody').empty();
+
+		if (data.length > 0) {
+			$('#billMonthView').show();
+		} else {
+			$('#billMonthView').hide();
+		}
+
+		var countTotal = 0;
+		var inspectionTotal = 0;
+		var billingTotal = 0;
+		var calculateTotal = 0;
+		var rebateTotal = 0;
+
 		for (i = 0; i < data.length; i++) {
-			var no = i+1;
+			var no = i + 1;
 			var html = '';
+			countTotal += data[i].countOfReservation;
+			inspectionTotal += data[i].priceOfTotalInspection;
+			billingTotal += data[i].priceOfBilling;
+			calculateTotal += data[i].priceOfCalculate;
+			rebateTotal += data[i].priceOfRebate;
 			html += '<tr>' +
 				'<td>' + no + '</td>' +
 				'<td>' + data[i].hosId + '</td>' +
 				'<td>' + data[i].hosName + '</td>' +
 				'<td>' + data[i].countOfReservation + '</td>' +
-				'<td>' + data[i].priceOfTotalInspection + '</td>' +
-				'<td>' + data[i].priceOfBilling + '</td>' +
-				'<td>' + data[i].priceOfCalculate + '</td>' +
-				'<td>' + data[i].hospitalConfirm + '</td>' +
-				'<td>' + data[i].companyConfirm + '</td>' +
-				'<td>' +
-					'<div class="btn btn-secondary" data-toggle="modal" data-target="#billDetailModal"' +
-					'onClick="clickBillDetail(\'' + data[i].billingId + '\')" >보기</div>' +
-				'</td>' +
-				'</tr>';
+				'<td>' + data[i].priceOfTotalInspection.toLocaleString() + '</td>' +
+				'<td>' + data[i].priceOfBilling.toLocaleString() + '</td>' +
+				'<td>' + data[i].priceOfCalculate.toLocaleString() + '</td>' +
+				'<td>' + data[i].priceOfRebate.toLocaleString() + '</td>';
+			if (data[i].hospitalConfirm) {
+				html += '<td>Y</td>';
+			} else {
+				html += '<td>N</td>';
+			}
+			if (data[i].companyConfirm) {
+				html += '<td>Y</td>';
+			} else {
+				html += '<td>N</td>';
+			}
+			html += '<td>' +
+				'<div class="btn btn-secondary" data-toggle="modal" data-target="#billDetailModal"' +
+				'onClick="clickBillDetail(\'' + billingId + '\', \'' + data[i].hosId + '\')" >보기</div>' +
+				'</td>';
+			html += '<td class="btn-bill">';
+			if (data[i].companyConfirm) {
+				html += '<div class="btn btn-danger" onClick="companyConfirm(\'' + billingId + '\', \'' + false + '\')" >취소</div>'
+			} else {
+				html += '<div class="btn btn-primary" onClick="companyConfirm(\'' + billingId + '\', \'' + true + '\')" >승인</div>'
+			}
 
+			html += '</td>' + '</tr>';
 			$("#billMonthTable > tbody").append(html);
 		}
+		setTotal(countTotal.toLocaleString(), inspectionTotal.toLocaleString(), billingTotal.toLocaleString(), calculateTotal.toLocaleString(), rebateTotal.toLocaleString());
+	}
+
+	function setTotal(countTotal, inspectionTotal, billingTotal, calculateTotal, rebateTotal) {
+		let html = '' +
+			'<tr class="sum">' +
+			'<td colspan="2"></td>' +
+			'<td>계</td>' +
+			'<td>' + countTotal + '</td>' +
+			'<td>' + inspectionTotal + '</td>' +
+			'<td>' + billingTotal + '</td>' +
+			'<td>' + calculateTotal + '</td>' +
+			'<td>' + rebateTotal + '</td>' +
+			'<td colspan="4"></td>' +
+			'</tr>'
+		$("#billMonthTable > tbody").append(html);
+	}
+
+	function companyConfirm(billingId, value) {
+		var searchItems = new Object();
+
+		searchItems.billingId = billingId;
+		searchItems.confirm = value;
+
+		if (searchItems.confirm === 'true') {
+			if (confirm("승인하시겠습니까?") == true) {
+				instance.post('C0504', searchItems).then(res => {
+					console.log(res.data.message);
+					if (res.data.message == "success") {
+						alert("승인되었습니다.");
+						$('.btn-bill').html('<div class="btn btn-danger" onClick="companyConfirm(\'' + billingId + '\', \'' + false + '\')" >취소</div>');
+					}
+				}).catch(function (error) {
+					alert("잘못된 접근입니다.")
+				});
+			} else {
+				return false;
+			}
+		} else {
+			if (confirm("취소하시겠습니까?") == true) {
+				instance.post('C0504', searchItems).then(res => {
+					console.log(res.data.message);
+					if (res.data.message == "success") {
+						alert("취소되었습니다.");
+						$('.btn-bill').html('<div class="btn btn-primary" onClick="companyConfirm(\'' + billingId + '\', \'' + true + '\')" >승인</div>');
+					}
+				}).catch(function (error) {
+					alert("잘못된 접근입니다.")
+				});
+			} else {
+				return false;
+			}
+		}
+
 	}
 </script>
 
