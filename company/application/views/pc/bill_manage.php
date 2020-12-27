@@ -143,6 +143,7 @@ require('bill_modal.php');
 			$('#billAllTable').show();
 		} else {
 			$('#billAllTable').hide();
+			alert('해당기간 자료가 없습니다.')
 		}
 
 		for (i = 0; i < data.length; i++) {
