@@ -1,141 +1,297 @@
 <style>
-	nav {
+	/* top navigation */
+
+	.navbar {
+		z-index: 888;
+		height: 60px;
+		background-color: white;
+		overflow: hidden;
+		padding: 0 10px;
 		width: 100%;
-		min-width: 150rem;
-		height: 7rem;
-		padding: 0 4rem;
-		display: flex;
-		position: relative;
-		background: white;
 		box-shadow: 0 0 10px #d7d7d7;
+		position: fixed;
 	}
 
-	ul, li {
-		margin: 0;
-		padding: 0;
+	.navbar a {
+		float: left;
+		display: block;
+		color: #404040;
+		text-align: center;
+		text-decoration: none;
+		transition: .5s;
+	}
+
+	.navbar ul {
 		list-style: none;
 	}
 
-	a {
-		text-decoration: none !important;
-		color: black;
+	.navbar a:hover {
+		background-color: #ccc;
+		border-radius: 100%;
+		color: #404040;
 	}
 
-	a:hover {
-		color: #5645ED;
-		font-weight: bolder !important;
+	.navbar-nav {
+		display: none;
 	}
 
-	#main-menu {
-		margin: 0 auto;
+	path {
+		stroke: black;
 	}
 
-	#main-menu > li {
-		float: left;
-		position: relative;
+	.open-slide {
+		padding-right: 10px;
 	}
 
-	#main-menu > li > a {
-		color: black;
-		text-align: center;
+	/* side navigation */
+
+	.side-nav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: white;
+		padding-top: 30px;
+		overflow-x: hidden;
+		z-index: 999;
+		transition: .5s;
+		font-size: 19px;
+	}
+
+	.side-nav a {
 		text-decoration: none;
+		color: #404040;
 		display: block;
-		font-size: 1.7rem;
-		line-height: 7rem;
-		width: 13rem;
+		transition: .3s;
 	}
 
-	#main-menu > li > a:hover,
-	#main-menu .active {
-		font-weight: bolder;
+	.side-nav a:hover {
 		color: #5645ED;
 	}
 
-	.menu-hover-line {
+	.side-nav .btn-close {
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		top: 0;
+		right: 10px;
+		padding: 10px;
+		font-size: 20px;
 	}
 
-	.menu-select-line {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		border-bottom: 5px solid #5645ED;
+	/*사이드 메뉴*/
+	ul, li {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	#nav {
+		margin: 40px 0;
+		border-top: 1px solid #eaeaea;
+	}
+
+	#nav li a {
+		display: block;
+		padding: 1.1rem 4rem;
+		text-decoration: none;
+		color: #404040;
+		text-align: left;
+	}
+
+	#nav li a:hover, #nav li a:active {
+		color: #5645ED;
+	}
+
+	#nav li ul {
+		display: none;
+	}
+
+	.main-menu {
+		border-bottom: 1px solid #eaeaea;
 	}
 
 	.sub-menu {
-		position: absolute;
-		background: white;
-		opacity: 0;
-		visibility: hidden;
-		transition: all 0.15s ease-in;
+		padding-left: 3rem;
+		border-bottom: none;
+		color: #5645ED;
 	}
 
-	.sub-menu > li {
-		width: 13rem;
-		line-height: 4.5rem;
+	.main-menu a:hover, .sub-menu:hover {
+		background: #ececec;
+	}
+
+	.side-nav .dropdown-img {
+		float: right;
+		width: fit-content;
+	}
+
+	.dropdown-img img {
+		width: 13px;
+		transition: transform 0.3s;
+	}
+
+	.rotate {
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+
+	@keyframes rotate_image {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.my-info {
+		font-size: 17px;
 		text-align: center;
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		margin: 0 2rem;
+		padding: 0 2rem;
+		color: #404040;
 	}
 
-	#main-menu > li:hover .sub-menu {
-		opacity: 1;
-		visibility: visible;
-		color: #5645ED;
-	}
-
-	.sub-menu > li:hover {
-		background: #f0edf6;
-	}
-
-	.sub-menu > li > a:hover {
-		text-decoration: none;
-		color: #5645ED;
+	.title-text {
+		margin-bottom: 0.5rem;
+		font-size: 2rem;
 		font-weight: bolder;
+		letter-spacing: 0.15rem;
+		text-align: left
+	}
+
+	/*로고*/
+	.logo {
+		cursor: pointer;
+		height: 45%;
+		float: left;
+		padding-left: 10px;
+	}
+
+	/*이름*/
+	#nameView {
+		font-size: 2rem;
+		font-weight: 500;
+	}
+
+	/*내정보관리*/
+	.my-info-box {
+		margin-top: 2rem;
+		padding: 0.5rem 0;
+		border: #e5e5e5 solid 1px;
+		font-size: 1.3rem;
+		display: flex;
+	}
+
+	#main {
+		padding: 110px 12px 30px 12px;
+		transition: margin-right .5s;
+		width: 100%;
 	}
 
 </style>
 
-<!--타이틀 메뉴-->
-<nav role="navigation">
-	<div style="float:left; width: 22rem;line-height: 7rem">
-		<a href="/"><img src="/asset/images/dual_logo_b_s.png"></a>
-	</div>
-	<ul id="main-menu">
-		<li><a id="topMenu1" href="/company/reservation_list">
-				<div class="menu-hover-line"></div>
-				예약관리</a></li>
-		<li><a id="topMenu2" href="/company/employee_manage">
-				<div class="menu-hover-line"></div>
-				직원관리</a></li>
-		<li><a id="topMenu3" href="/company/statistics_manage">
-				<div class="menu-hover-line"></div>
-				통계관리</a></li>
-		<li><a id="topMenu4" href="/company/bill_manage">
-				<div class="menu-hover-line"></div>
-				청구관리</a></li>
-		<!--		<li><a href="#"><div class="menu-hover-line"></div>통계관리</a>-->
-		<!--			<ul class="sub-menu">-->
-		<!--				<li><a href="#" aria-label="subemnu">연도별</a></li>-->
-		<!--				<li><a href="#" aria-label="subemnu">병원별</a></li>-->
-		<!--				<li><a href="#" aria-label="subemnu">지역별</a></li>-->
-		<!--			</ul>-->
-		<!--		</li>-->
-	</ul>
-	<div style="float:right;width: 22rem;line-height: 7rem;font-size: 1.4rem">
-		<div style="float:right">
-			<a href="#">관리자정보</a>
-			<span>｜</span>
-			<a href="#" onclick="companyLogout()">로그아웃</a>
-		</div>
-	</div>
+<nav class="navbar">
+	<img src="/asset/images/dual_logo_b.png" class="logo" onclick="location.href='/m/'">
+
+	<span class="open-slide">
+	  <a href="#" onclick="openSlideMenu()">
+	    <svg width="20" height="25">
+		  <path d="M0,5 30,5" stroke="white" stroke-width="2"/>
+		  <path d="M0,12 30,12" stroke="white" stroke-width="2"/>
+		  <path d="M0,19 30,19" stroke="white" stroke-width="2"/>
+	    </svg>
+	  </a>
+    </span>
 </nav>
+
+<div id="side-menu" class="side-nav">
+
+	<a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+
+	<form class="my-info">
+		<div class="title-text">
+			DUAL HEALTHCARE
+		</div>
+
+		<div style="margin-bottom: 3rem; letter-spacing: -0.5px;font-weight: bolder;text-align: left;">
+			<span id="nameView"></span> 님 환영합니다.
+		</div>
+
+		<div class="my-info-box">
+			<a href="" style="width: 50%;cursor: pointer">
+				<div>
+					내정보관리
+				</div>
+			</a>
+			<div style="color: #e5e5e5">
+				｜
+			</div>
+			<a style="width: 50%;cursor: pointer">
+				<div onclick="companyLogout()">
+					로그아웃
+				</div>
+			</a>
+		</div>
+	</form>
+
+	<form>
+		<ul id="nav">
+			<li class="main-menu">
+				<a class="main-menu-item" href="/m/reservation_list">
+					예약관리
+				</a>
+			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="/m/employee_manage">
+					직원관리
+				</a>
+			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="/m/statistics_manage">
+					통계관리
+				</a>
+			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="/m/bill_manage">
+					청구관리
+				</a>
+			</li>
+		</ul>
+	</form>
+</div>
+
+<script>
+	//사이드바 사용자 정보
+	var userName = sessionStorage.getItem("userName");
+	console.log(sessionStorage);
+	$('#nameView').text(userName);
+
+	$(document).ready(function () {
+		$('#nav > li > a').click(function () {
+			$(this).next().slideToggle(300);
+			$(this).addClass('active');
+
+			$('#nav > li > a').not(this).next().slideUp(300);
+		});
+	});
+
+	function openSlideMenu() {
+		document.getElementById('side-menu').style.width = '100%';
+		document.getElementById('main').style.marginRight = '100%';
+	}
+
+	function closeSlideMenu() {
+		document.getElementById('side-menu').style.width = '0';
+		document.getElementById('main').style.marginRight = '0';
+	}
+
+	$('.dropdown-img').click(function () {
+		$(this).find('img').toggleClass('rotate');
+	});
+</script>
 
 <!--로그인 세션 관리-->
 <script>
-	console.log(sessionStorage);
-
 	var initMinute;  // 최초 설정할 시간(min)
 	var remainSecond;  // 남은시간(sec)
 
@@ -177,7 +333,7 @@
 
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "https://api.dualhealth.kr/permission/",
+		baseURL: "http://192.168.219.108:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -194,7 +350,7 @@
 	});
 
 	const instance = axios.create({
-		baseURL: "https://api.dualhealth.kr/company/api/v1/",
+		baseURL: "http://192.168.219.108:8080/company/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -204,44 +360,8 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "https://api.dualhealth.kr/",
+		baseURL: "http://192.168.219.108:8080/",
 		timeout: 20000,
 		headers: {'token': token}
 	});
 </script>
-
-<script>
-	(function ($) {
-		$(function () {
-			var line;
-			$('.menu-hover-line').hover(
-					function () {
-						line = this;
-						$(this).css('border-bottom', '5px solid #5645ED');
-						$('.menu-hover-line').not(this).css('border-bottom', 'none');
-					}, function () {
-						$('.sub-menu').hover(function () {
-							$(line).css('border-bottom', '5px solid #5645ED');
-						}, function () {
-							$('.menu-hover-line').css('border-bottom', 'none');
-						});
-						$('.menu-hover-line').css('border-bottom', 'none');
-					}
-			);
-			// If a link has a dropdown, add sub menu toggle.
-			// $('nav ul li a:not(:only-child)').click(function (e) {
-			// 	$(this).siblings('.navbar-dropdown').slideToggle("slow");
-			//
-			// 	// Close dropdown when select another dropdown
-			// 	$('.navbar-dropdown').not($(this).siblings()).hide("slow");
-			// 	e.stopPropagation();
-			// });
-			//
-			// // Click outside the dropdown will remove the dropdown class
-			// $('html').click(function () {
-			// 	$('.navbar-dropdown').hide();
-			// });
-		});
-	})(jQuery);
-</script>
-

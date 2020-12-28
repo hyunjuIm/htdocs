@@ -1,0 +1,185 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 300;
+	word-break: keep-all;
+	overflow-x: hidden;
+	padding: 0;
+	margin: 0;
+	background-color: whitesmoke;
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	font-size: 1.6rem;
+}
+
+.container {
+	width: 100%;
+	text-align: center;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.row {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/*박스 스타일 - 흰배경 검은그림자*/
+.box {
+	width: 100%;
+	height: 100%;
+	background: white;
+	padding: 20px;
+	box-shadow: 0 0 10px #d7d7d7;
+	border-radius: 7px;
+}
+
+.box-title {
+	display: flex;
+	margin-bottom: 2rem;
+}
+
+.box-title h2 {
+	font-weight: 400;
+	line-height: 19px;
+	margin-left: 7px;
+}
+
+/*기본 테이블 양식*/
+.basic-table {
+	width: 100%;
+	text-align: center;
+	border-top: 1px solid #5645ED;
+	font-size: 1.2rem;
+}
+
+.basic-table thead {
+	background: #EDEDED;
+}
+
+.basic-table tr {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.basic-table th, .basic-table td {
+	padding: 10px 5px;
+}
+
+.basic-table th {
+	font-weight: 400;
+}
+
+.basic-table tbody tr {
+	background-color: white;
+}
+
+
+/*검색 폼*/
+.search-form {
+	margin: 0 auto;
+	display: flex;
+	width: 100%;
+}
+
+.search-form span {
+	line-height: 30px;
+	padding: 3px 0;
+	margin-right: 10px;
+	font-weight: 400;
+}
+
+.search-form .input-text {
+	width: 100%;
+	padding: 3px;
+	border-radius: 3px;
+	border: 1px solid #bbbbbb;
+	background-color: white;
+	display: block;
+}
+
+.search-form input {
+	border: none;
+	line-height: 30px;
+	outline: none;
+	font-size: 1.3rem;
+	font-weight: 300;
+	padding: 0 10px;
+	float: left;
+}
+
+.search-form img {
+	height: fit-content;
+	line-height: 30px;
+	cursor: pointer;
+	float: right;
+}
+
+/*페이징*/
+
+.page_wrap {
+	text-align: center;
+	font-size: 0;
+}
+
+.page_nation {
+	display: inline-block;
+}
+
+.page_nation .none {
+	display: none;
+}
+
+.page_nation a {
+	display: block;
+	margin: 0 3px;
+	float: left;
+	border: 1px solid #e6e6e6;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	background-color: #fff;
+	font-size: 1.3rem;
+	color: #999999;
+	text-decoration: none;
+}
+
+.page_nation .arrow {
+	border: 1px solid #ccc;
+}
+
+.page_nation .pprev {
+	background: #f8f8f8 url('../../images/page_pprev.png') no-repeat center center;
+	margin-left: 0;
+}
+
+.page_nation .prev {
+	background: #f8f8f8 url('../../images/page_prev.png') no-repeat center center;
+	margin-right: 7px;
+}
+
+.page_nation .next {
+	background: #f8f8f8 url('../../images/page_next.png') no-repeat center center;
+	margin-left: 7px;
+}
+
+.page_nation .nnext {
+	background: #f8f8f8 url('../../images/page_nnext.png') no-repeat center center;
+	margin-right: 0;
+}
+
+.page_nation a.active {
+	background-color: #5645ed;
+	color: #fff;
+	border: 1px solid #3529b1;
+}
+

@@ -209,6 +209,8 @@ require('check_data.php');
 			html += '<option>' + data.month[i] + '</option>'
 			$("#billMonth").append(html);
 		}
+
+		console.log(data);
 	}
 
 	//세부항목 설정에 bID 값 던지기

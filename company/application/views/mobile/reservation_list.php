@@ -8,114 +8,111 @@
 	?>
 
 	<style>
-		.row {
-			width: 100%;
-			display: block;
+		.line {
+			border-top: 1px solid #DCDCDC;
+			border-bottom: 1px solid #DCDCDC;
+			padding: 1rem;
 		}
+
+		/*셀렉트 테이블*/
+		.select-table {
+			width: 100%;
+		}
+
+		.select-table th, .select-table td {
+			padding: 5px 0;
+			font-weight: 300;
+		}
+
+		.select-table th {
+			width: 20%;
+		}
+
+		select, input[type="date"] {
+			border: 1px solid #cccccc;
+			outline: none;
+			padding: 2px 10px;
+			font-weight: 300;
+			width: 100%;
+		}
+
+		option {
+			font-weight: 300;
+		}
+
+		input[type="date"] {
+			font-size: 1.3rem;
+			padding: 5px 10px;
+		}
+
 	</style>
 </head>
 <body>
 
-<!--상단 메뉴-->
 <header>
 	<?php
 	require('common/header.php');
 	?>
 </header>
 
-<!--콘텐츠 내용-->
-
-<div class="main">
-	<div class="container" style="width: 110rem;margin: 0 auto">
-		<div class="row">
-			<div class="box-title">
-				<img src="/asset/images/icon_title.png">
-				<h2 style="font-weight: 300;font-size: 2.3rem">예약관리</h2>
-			</div>
-		</div>
-		<div class="row" style="border-top: 1px solid #DCDCDC;border-bottom: 1px solid #DCDCDC;padding: 1rem">
-			<table class="select-form">
-				<tr>
-					<td>
-						<div class="select-list" style="float:left;">
-							<div class="select-label">
-								<img src="/asset/images/icon_dot_menu.png">
-								사업연도
-							</div>
-							<div class="select-content">
-								<select id="servedYear">
-									<option selected>- 전체 -</option>
-								</select>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="select-list" style="float:right;">
-							<div class="select-label">
-								<img src="/asset/images/icon_dot_menu.png">
-								검진병원
-							</div>
-							<div class="select-content">
-								<select id="hospitalName">
-									<option selected>- 전체 -</option>
-								</select>
-							</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="select-list" style="float:left;">
-							<div class="select-label">
-								<img src="/asset/images/icon_dot_menu.png">
-								예약기간
-							</div>
-							<div class="select-content">
-								<input type="date" id="reservationStartDate" placeholder="날짜선택"
-									   style="width: 45%;line-height: 3rem;">
-								<span style="width: 10%;text-align: center">~</span>
-								<input type="date" id="reservationEndDate" placeholder="날짜선택"
-									   style="width: 45%;line-height: 3rem;">
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="select-list" style="float:right;">
-							<div class="select-label">
-								<img src="/asset/images/icon_dot_menu.png">
-								서비스
-							</div>
-							<div class="select-content">
-								<select id="serviceName">
-									<option selected>- 전체 -</option>
-								</select>
-							</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="select-list" style="float:left;">
-							<div class="select-label">
-								<img src="/asset/images/icon_dot_menu.png">
-								지원율
-							</div>
-							<div class="select-content">
-								<select id="supportPercent">
-									<option selected>- 전체 -</option>
-								</select>
-							</div>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="row" style="margin-top: 1rem">
-			<div class="btn-light-grey-square" style="float: right" onclick="searchInformation(0, 'select')">검색</div>
+<div id="main">
+	<div class="row">
+		<div class="box-title">
+			<img src="/asset/images/icon_title.png">
+			<h2>예약관리</h2>
 		</div>
 	</div>
 
-	<div class="row" style="margin-top: 10rem;padding: 4rem">
+	<div class="row line">
+		<table class="select-table">
+			<tr>
+				<th>사업년도</th>
+				<td>
+					<select id="servedYear">
+						<option selected>- 전체 -</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>검진병원</th>
+				<td>
+					<select id="hospitalName">
+						<option selected>- 전체 -</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>예약기간</th>
+				<td>
+					<div style="display: block;width: 100%">
+						<input type="date" id="reservationStartDate" placeholder="날짜선택"
+							   style="width: 45%;display:inline-block;float: left">
+						<span style="width: 10%;display:inline-block;text-align: center">~</span>
+						<input type="date" id="reservationEndDate" placeholder="날짜선택"
+							   style="width: 45%;display:inline-block;float: right">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>서비스</th>
+				<td>
+					<select id="serviceName">
+						<option selected>- 전체 -</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>지원율</th>
+				<td>
+					<select id="supportPercent">
+						<option selected>- 전체 -</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="row" style="margin-top: 20px">
 		<div class="search-form">
 			<span>통합검색</span>
 			<div class="input-text">
@@ -123,23 +120,25 @@
 				<img src="/asset/images/icon_search.png" onclick="searchInformation(0)">
 			</div>
 		</div>
+	</div>
 
-		<table class="basic-table" id="reservationTable" style="margin-top: 5rem">
+	<div class="row" style="margin-top: 50px">
+		<table class="basic-table">
 			<thead>
-			<th>NO</th>
-			<th>아이디</th>
-			<th>이름</th>
-			<th>주민번호</th>
-			<th>가족관계</th>
-			<th>지원율</th>
-			<th>예약일</th>
-			<th>예약병원</th>
-			<th>예약상태</th>
+			<tr>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>예약일</th>
+				<th>예약병원</th>
+				<th>예약상태</th>
+			</tr>
 			</thead>
+			<tbody id="reservationTable">
+			</tbody>
 		</table>
 	</div>
 
-	<div class="row" style="margin-top: 5rem">
+	<div class="row" style="margin-top: 20px">
 		<form style="margin: 0 auto; width: 85%; padding: 1rem">
 			<div class="page_wrap">
 				<div class="page_nation" id="paging">
@@ -148,14 +147,11 @@
 		</form>
 	</div>
 </div>
+
 </body>
 </html>
 
 <script>
-	//상단바 선택된 메뉴
-	$('#topMenu1').addClass('active');
-	$('#topMenu1').before('<div class="menu-select-line"></div>');
-
 	<?php
 	require('common/check_data.js');
 	?>
@@ -255,30 +251,23 @@
 	function setReservationTable(data) {
 		//페이징
 		setPaging();
-		
-		//테이블 셋팅
-		$("#reservationTable tbody").empty();
 
-		var html = '<tbody>';
+		//테이블 셋팅
+		$("#reservationTable").empty();
+
+		var html = '';
 
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>';
-			var no = data[i].rsvId.substr(4, data[i].rsvId[data[i].rsvId.length]);
-			html += '<td>' + no + '</td>';
-			html += '<td>' + data[i].email + '</td>';
+			html += '<td>' + data[i].rsvId + '</td>';
 			html += '<td>' + data[i].name + '</td>';
-			html += '<td>' + data[i].birthDate + '</td>';
-			html += '<td>' + data[i].grade + '</td>';
-			html += '<td>' + data[i].supportPercent + ' %</td>';
-			html += '<td>' + data[i].reservedDate + '</td>';
+			var reservedDate = data[i].reservedDate.replace(/-/gi, '.');
+			html += '<td>' + reservedDate + '</td>';
 			html += '<td>' + data[i].hospitalName + '</td>';
 			html += '<td>' + data[i].status + '</td>';
-
 			html += '</tr>';
 		}
 
-		html += '</tbody>';
 		$("#reservationTable").append(html);
 	}
 </script>
-
