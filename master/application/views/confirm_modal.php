@@ -165,7 +165,11 @@
 			$('#btnFile').hide();
 		}
 
-		$("#answer").html(data.answer);
+		if(data.answer == null) {
+			$("#answer").html('');
+		} else {
+			$("#answer").html(data.answer);
+		}
 	}
 
 	//파일 다운로드
