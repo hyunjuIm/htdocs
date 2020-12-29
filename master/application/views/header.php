@@ -7,6 +7,7 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mx-auto main-item">
+
 			<li class="nav-item dropdown">
 				<a id="combineManage" class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,6 +23,7 @@
 					<a class="dropdown-item" href="/master/hospital_list">병원관리</a>
 				</div>
 			</li>
+
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,9 +35,23 @@
 					<a class="dropdown-item" href="/master/package_create">패키지생성</a>
 				</div>
 			</li>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
+				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					승인관리
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
+					<a class="dropdown-item" href="/master/confirm_employee">직원등록</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/master/confirm_package">패키지등록</a>
+				</div>
+			</li>
+
 			<li class="nav-item ">
 				<a class="nav-link" href="/master/billing_list">청구관리</a>
 			</li>
+
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,6 +63,7 @@
 					<a class="dropdown-item" href="/master/result_legal_data">법적자료</a>
 				</div>
 			</li>
+
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,6 +75,7 @@
 					<a class="dropdown-item" href="/master/statistics_hospital">병원통계</a>
 				</div>
 			</li>
+
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_menu_1" role="button"
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

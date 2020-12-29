@@ -1,4 +1,4 @@
-<div class="row" style="display: block; margin-top: 4rem">
+<div class="row" style="display: block; margin-top: 40px">
 	<div style="display: flex">
 		<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2020)">2020년</div>
 		<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2019)">2019년</div>
@@ -7,22 +7,24 @@
 
 	<hr>
 
-	<div style="padding-top: 1rem">
-		<span style="margin-right: 0.5rem;line-height: 3.5rem">예약기간</span>
-		<input type="date" id="reservationHosStartDate">
-		<span style="line-height: 3.5rem">~</span>
-		<input type="date" id="reservationHosEndDate">
-		<div class="btn-light-grey-square" style="height: 3.5rem"
-			 onclick="searchHospitalStatisticsDate(0)">검색
+	<div style="padding-top: 10px;font-size: 1.4rem">
+		<div style="font-weight: 400;padding: 2px">예약기간</div>
+		<div style="width: 100%;display: block">
+			<input type="date" id="reservationHosStartDate">
+			<span>&nbsp;~&nbsp;</span>
+			<input type="date" id="reservationHosEndDate">
+			<div class="btn btn-dark" onclick="searchHospitalStatisticsDate(0)"
+			style="margin-left: 4px">검색</div>
 		</div>
 	</div>
 </div>
 
-<div class="row" style="display: block" id="hosTableView">
-	<div style="float:right;font-size: 1.4rem;color: #5645ed;font-weight: 400">
+<div class="row" style="display: block;margin-top: 30px" id="hosTableView">
+	<div style="font-size: 1.2rem;color: #5645ed;font-weight: 400">
 		※ 본인-예약자를 클릭하면 오름차순 또는 내림차순으로 정렬됩니다.
 	</div>
 
+	<div style="width:100%; overflow:auto">
 	<table class="basic-table">
 		<thead>
 		<tr>
@@ -33,7 +35,7 @@
 			<th colspan="3">가족</th>
 		</tr>
 		<tr>
-			<th width="10%" class="order" onclick="switchTag()">예약자<span style="letter-spacing: -1rem;">↓↑</span></th>
+			<th width="10%" class="order" onclick="switchTag()">예약자</span></th>
 			<th width="10%">수검자</th>
 			<th width="10%">수검률</th>
 			<th width="10%">예약자</th>
@@ -44,6 +46,7 @@
 		<tbody id="hosStatisticsTable">
 		</tbody>
 	</table>
+	</div>
 </div>
 
 <script>
@@ -65,7 +68,7 @@
 		}
 
 		if (sendItems.reservationStartDate == null || sendItems.reservationEndDate == null ||
-				sendItems.reservationStartDate == '' || sendItems.reservationEndDate == '') {
+			sendItems.reservationStartDate == '' || sendItems.reservationEndDate == '') {
 			alert('예약기간을 선택해주세요.')
 			return false;
 		} else {
@@ -101,18 +104,18 @@
 			var no = i + 1;
 
 			html += '<tr>' +
-					'<td>' + no + '</td>' +
-					'<td>' + tableData[i].hosName + '</td>' +
-					'<td>' + tableData[i].region + '</td>';
+				'<td>' + no + '</td>' +
+				'<td>' + tableData[i].hosName + '</td>' +
+				'<td>' + tableData[i].region + '</td>';
 
 			html += '<td>' + tableData[i].customerStatistics.numOfReservation + '</td>' +
-					'<td>' + tableData[i].customerStatistics.numOfInspection + '</td>' +
-					'<td>' + Math.floor(tableData[i].customerStatistics.percentOfInspection) + '%</td>';
+				'<td>' + tableData[i].customerStatistics.numOfInspection + '</td>' +
+				'<td>' + Math.floor(tableData[i].customerStatistics.percentOfInspection) + '%</td>';
 
 			html += '<td>' + tableData[i].familyStatistics.numOfReservation + '</td>' +
-					'<td>' + tableData[i].familyStatistics.numOfInspection + '</td>' +
-					'<td>' + Math.floor(tableData[i].familyStatistics.percentOfInspection) + '%</td>' +
-					'</tr>';
+				'<td>' + tableData[i].familyStatistics.numOfInspection + '</td>' +
+				'<td>' + Math.floor(tableData[i].familyStatistics.percentOfInspection) + '%</td>' +
+				'</tr>';
 			$('#hosStatisticsTable').append(html);
 		}
 	}

@@ -8,27 +8,7 @@
 	?>
 
 	<style>
-		.line {
-			border-top: 1px solid #DCDCDC;
-			border-bottom: 1px solid #DCDCDC;
-			padding: 1rem;
-		}
-
-		/*셀렉트 테이블*/
-		.select-table {
-			width: 100%;
-		}
-
-		.select-table th, .select-table td {
-			padding: 5px 0;
-			font-weight: 300;
-		}
-
-		.select-table th {
-			width: 20%;
-		}
-
-		select, input[type="date"] {
+		select {
 			border: 1px solid #cccccc;
 			outline: none;
 			padding: 2px 10px;
@@ -39,12 +19,6 @@
 		option {
 			font-weight: 300;
 		}
-
-		input[type="date"] {
-			font-size: 1.3rem;
-			padding: 5px 10px;
-		}
-
 	</style>
 </head>
 <body>
@@ -97,11 +71,11 @@
 		<table class="basic-table" id="billMonthTable" style="margin-top: 1rem">
 			<thead>
 			<tr>
-				<th>병원</th>
-				<th>인원</th>
-				<th>청구금액</th>
-				<th>정보이용료</th>
-				<th>수신여부</th>
+				<th width="30%">병원</th>
+				<th width="15%">인원</th>
+				<th width="20%">청구금액</th>
+				<th width="20%">정보이용료</th>
+				<th width="15%">수신여부</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -111,6 +85,13 @@
 </div>
 
 </body>
+
+<footer>
+	<?php
+	require('common/footer.php');
+	?>
+</footer>
+
 </html>
 
 <script>

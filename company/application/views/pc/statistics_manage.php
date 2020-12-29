@@ -160,11 +160,6 @@
 					<a class="nav-link" data-toggle="tab" href="#area">지역별</a>
 				</li>
 			</ul>
-
-<!--			<div id="emptyData" class="empty-data">-->
-<!--				해당 기간의 자료가 없습니다.-->
-<!--			</div>-->
-
 			<div class="tab-content">
 				<div class="tab-pane fade show active" id="year">
 					<?php

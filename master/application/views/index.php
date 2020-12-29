@@ -24,6 +24,10 @@
 		.table-box {
 			min-height: 340px;
 		}
+
+		#noticeTable .title {
+			text-align: left;
+		}
 	</style>
 </head>
 <body>
@@ -190,7 +194,7 @@
 			var html = '';
 			html += '<tr>';
 			html += '<td style="width: 10%">' + data[i].id + '</td>';
-			html += '<td>' + data[i].title + '</td>';
+			html += '<td class="title">' + data[i].title + '</td>';
 			html += '<td style="width: 20%">' + data[i].author + '</td>';
 			html += '<td style="width: 20%">' + data[i].createDate + '</td>';
 			html += '</tr>';

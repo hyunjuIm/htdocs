@@ -149,6 +149,13 @@
 </div>
 
 </body>
+
+<footer>
+	<?php
+	require('common/footer.php');
+	?>
+</footer>
+
 </html>
 
 <script>

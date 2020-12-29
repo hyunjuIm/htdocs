@@ -57,6 +57,18 @@ class master extends CI_Controller
 		$this->load->view('package_injection_item');
 	}
 
+	//직원관리
+	public function confirm_employee()
+	{
+		$this->load->view('confirm_employee');
+	}
+
+	//패키지등록관리
+	public function confirm_package()
+	{
+		$this->load->view('confirm_package');
+	}
+
 	//청구관리
 	public function billing_list()
 	{

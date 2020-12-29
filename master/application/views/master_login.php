@@ -8,27 +8,16 @@
 	?>
 
 	<style>
-		/* BASIC */
-		body {
-			font-family: "Poppins", sans-serif;
-			height: 100vh;
+		html {
+			font-size: 10px;
+			background: white;
 		}
 
-		a {
-			color: #5645ED;
-			display:inline-block;
-			text-decoration: none;
-			font-weight: 400;
-		}
-
-		h2 {
+		p {
 			text-align: center;
-			font-size: 16px;
-			font-weight: 600;
-			text-transform: uppercase;
-			display:inline-block;
-			margin: 40px 8px 10px 8px;
-			color: #cccccc;
+			color: #3529b1;
+			font-size: 6rem;
+			font-weight: bold;
 		}
 
 		/* STRUCTURE */
@@ -42,22 +31,22 @@
 		}
 
 		#formContent {
-			-webkit-border-radius: 10px 10px 10px 10px;
-			border-radius: 10px 10px 10px 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
 			background: #fff;
-			padding: 30px;
-			width: 90%;
-			max-width: 600px;
+			padding: 3rem;
+			width: 100%;
+			max-width: 45rem;
 			position: relative;
-			padding: 0px;
-			-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-			box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+			-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+			box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 			text-align: center;
+			vertical-align: middle;
 		}
 
 		/* FORM TYPOGRAPHY*/
 
-		input[type=button], input[type=submit], input[type=reset]  {
+		input[type=button], input[type=submit], input[type=reset] {
 			background-color: #5645ED;
 			border: none;
 			color: white;
@@ -66,9 +55,9 @@
 			text-decoration: none;
 			display: inline-block;
 			text-transform: uppercase;
-			font-size: 13px;
-			-webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-			box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+			font-size: 1.3rem;
+			-webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+			box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
 			-webkit-border-radius: 5px 5px 5px 5px;
 			border-radius: 5px 5px 5px 5px;
 			margin: 5px 20px 40px 20px;
@@ -81,14 +70,12 @@
 
 		input[type=text], input[type=password] {
 			background-color: #f6f6f6;
-			border: none;
 			color: #0d0d0d;
 			padding: 15px 32px;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
-			font-size: 16px;
-			font-weight: 500;
+			font-size: 1.6rem;
 			margin: 5px;
 			width: 85%;
 			border: 2px solid #f6f6f6;
@@ -107,7 +94,6 @@
 		}
 
 		/* ANIMATIONS */
-
 		/* Simple CSS3 Fade-in-down Animation */
 		.fadeInDown {
 			-webkit-animation-name: fadeInDown;
@@ -145,23 +131,46 @@
 		}
 
 		/* Simple CSS3 Fade-in Animation */
-		@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-		@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-		@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+		@-webkit-keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@-moz-keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
 
 		.fadeIn {
-			opacity:0;
-			-webkit-animation:fadeIn ease-in 1;
-			-moz-animation:fadeIn ease-in 1;
-			animation:fadeIn ease-in 1;
+			opacity: 0;
+			-webkit-animation: fadeIn ease-in 1;
+			-moz-animation: fadeIn ease-in 1;
+			animation: fadeIn ease-in 1;
 
-			-webkit-animation-fill-mode:forwards;
-			-moz-animation-fill-mode:forwards;
-			animation-fill-mode:forwards;
+			-webkit-animation-fill-mode: forwards;
+			-moz-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
 
-			-webkit-animation-duration:1s;
-			-moz-animation-duration:1s;
-			animation-duration:1s;
+			-webkit-animation-duration: 1s;
+			-moz-animation-duration: 1s;
+			animation-duration: 1s;
 		}
 
 		.fadeIn.second {
@@ -186,25 +195,85 @@
 		*:focus {
 			outline: none;
 		}
+
+		@media only screen and (max-width: 480px) {
+			html {
+				font-size: 9px;
+				height: 60px;
+			}
+
+			body {
+				background: white;
+				height: fit-content;
+			}
+
+			.container {
+				padding-top: 4rem;
+			}
+
+			#formContent {
+				all: unset;
+
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+				background: #fff;
+				width: 100%;
+				max-width: 45rem;
+				min-width: 45rem;
+				position: relative;
+				text-align: center;
+			}
+		}
+
+		@media only screen and (max-device-width: 480px) {
+			html {
+				font-size: 9px;
+				height: 60px;
+			}
+
+			body {
+				background: white;
+				height: fit-content;
+			}
+
+			.container {
+				padding-top: 4rem;
+			}
+
+			#formContent {
+				all: unset;
+
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+				background: #fff;
+				width: 100%;
+				max-width: 45rem;
+				position: relative;
+				text-align: center;
+			}
+		}
 	</style>
 
 </head>
 
-<body background="../../asset/images/bg_login.png">
-<div style="height: 100%; float: right; vertical-align: middle; background: mediumpurple; padding: 0 4%">
-	<div class="wrapper fadeInDown">
-		<form id="formContent"  style="padding: 50px">
-			<p style="text-align: center; color: #3529b1; font-size: 400%; font-weight: bold">MASTER</p>
+<body background="../../asset/images/bg_login.jpg">
+<div class="container" style="height: inherit">
+	<div class="col-sm wrapper fadeInDown">
+		<form id="formContent">
+			<p>MASTER</p>
 			<input type="text" id="login" class="fadeIn second" name="login" placeholder="ID"
-				   style="margin-bottom: 10px; text-align: left" onkeyup="enterKey();" onkeydown="onlyAlphabet(this)">
+				   style="margin-bottom: 10px; text-align: left" onkeyup="enterKey();"
+				   onkeydown="onlyAlphabet(this)">
 			<input type="password" id="password" class="fadeIn third" name="login" placeholder="PASSWORD"
 				   style="margin-bottom: 30px; text-align: left" onkeyup="enterKey();">
 			<div class="fadeIn fourth btn-light-purple-square"
-				 style="font-size: 20px;font-weight: bold;width: 90%; border-radius: 30px; padding: 12px 20px;"
-				 value="Log In" onclick="masterLogin()">LOGIN</div>
+				 style="font-size: 2rem;font-weight: bold;width: 90%; border-radius: 3rem; padding: 1.2rem 2rem;"
+				 value="Log In" onclick="masterLogin()">LOGIN
+			</div>
 		</form>
 	</div>
 </div>
+
 </body>
 </html>
 

@@ -186,6 +186,7 @@
 		padding: 110px 12px 30px 12px;
 		transition: margin-right .5s;
 		width: 100%;
+		min-height: 70vh;
 	}
 
 </style>
@@ -239,11 +240,6 @@
 			<li class="main-menu">
 				<a class="main-menu-item" href="/m/reservation_list">
 					예약관리
-				</a>
-			</li>
-			<li class="main-menu">
-				<a class="main-menu-item" href="/m/employee_manage">
-					직원관리
 				</a>
 			</li>
 			<li class="main-menu">

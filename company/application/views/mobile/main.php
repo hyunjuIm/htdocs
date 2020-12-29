@@ -71,18 +71,18 @@
 			padding: 5px 0;
 		}
 
-		.simple-table3 td {
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-
 		.simple-table3 .title {
-			display: block;
-			width: 90%;
+			width: 70%;
 			text-align: left;
 			color: black;
 			font-size: 1.4rem;
+		}
+
+		.simple-table3 .title div {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.simple-table3 .date {
@@ -255,6 +255,15 @@
 </div>
 
 </body>
+
+
+<footer>
+	<?php
+	require('common/footer.php');
+	?>
+</footer>
+
+
 </html>
 
 <script>
@@ -314,9 +323,9 @@
 					'<td>' + data[i].completeNum.toLocaleString() + '명</td>' +
 					'</tr>'
 
-			$('#targetNum').text(data[i].targetNum.toLocaleString()+'명');
-			$('#reservedNum').text(data[i].reservedNum.toLocaleString()+'명');
-			$('#completeNum').text(data[i].completeNum.toLocaleString()+'명');
+			$('#targetNum').text(data[i].targetNum.toLocaleString() + '명');
+			$('#reservedNum').text(data[i].reservedNum.toLocaleString() + '명');
+			$('#completeNum').text(data[i].completeNum.toLocaleString() + '명');
 
 			drawDoughnutChart('reservationStatistics', data[i]);
 		}
@@ -364,10 +373,13 @@
 		var html = '';
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>';
-			html += '<td class="title">' + data[i].title + '</td>';
+			html += '<td class="title"><div>' + data[i].title + '</div></td>';
 			html += '<td class="date">' + data[i].createDate + '</td>';
 			html += '</tr>';
 		}
 		$("#noticeTable").append(html);
+
+		var width = $('.simple-table3').width() * 0.7;
+		$('.simple-table3 .title div').width(width);
 	}
 </script>
