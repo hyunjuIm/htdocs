@@ -128,9 +128,9 @@ require('employee_modal.php');
 			if(data[i].status == '처리이전') {
 				html += '<td style="color: grey">' + data[i].status + '</td>';
 			} else if (data[i].status == '처리완료') {
-				html += '<td style="color: #0A5FAF">' + data[i].status + '</td>';
+				html += '<td style="color: #004386;font-weight: 500">' + data[i].status + '</td>';
 			} else if (data[i].status == '거절') {
-				html += '<td style="color: #d70e24">' + data[i].status + '</td>';
+				html += '<td style="color: #d70e24;font-weight: 500">' + data[i].status + '</td>';
 			}
 
 			html += '<td>' + data[i].createDate + '</td>';

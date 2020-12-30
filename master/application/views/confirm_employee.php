@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:직원등록</title>
+	<title>듀얼헬스케어:직원관리</title>
 
 	<?php
 	require('head.php');
@@ -27,7 +27,7 @@
 				<ul class="img-circle">
 					<div class="menu-title" style="font-size: 22px">
 						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
-						직원등록
+						직원관리
 					</div>
 					<hr>
 					<div class="form-row row" style="padding: 0 10rem">
@@ -111,22 +111,12 @@ require('check_data.php');
 		setEmployeeManageOptionData(res.data);
 	});
 
-	//검색 - 엔터키
-	function enterKey() {
-		if (window.event.keyCode == 13) {
-			// 엔터키가 눌렸을 때 실행할 내용
-			searchEmployeeManageInformation(0);
-		}
-	}
-
 	searchEmployeeManageInformation(0);
 
 	//검색
 	function searchEmployeeManageInformation(index) {
 		pagingNum = index;
 		var searchItems = new Object();
-
-		$('#employeeManageInfos > tbody').empty();
 
 		searchItems.coName = $("#companyName option:selected").val();
 		searchItems.coBranch = $("#companyBranch option:selected").val();
@@ -146,7 +136,7 @@ require('check_data.php');
 			console.log(res.data);
 
 			pageCount = 0;
-			for (i = 0; i < res.data.count; i += 8) {
+			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
 			setEmployeeManageData(res.data.helpdeskDTOList);
@@ -200,6 +190,7 @@ require('check_data.php');
 
 	//패키지 생성 테이블
 	function setEmployeeManageData(data) {
+		$('#employeeManageInfos > tbody').empty();
 		$("#paging").empty();
 
 		var html = "";
@@ -246,9 +237,9 @@ require('check_data.php');
 			if(data[i].status == '처리이전') {
 				html += '<td style="color: grey">' + data[i].status + '</td>';
 			} else if (data[i].status == '처리완료') {
-				html += '<td style="color: #0A5FAF">' + data[i].status + '</td>';
+				html += '<td style="color: #004386;font-weight: 500">' + data[i].status + '</td>';
 			} else if (data[i].status == '거절') {
-				html += '<td style="color: #d70e24">' + data[i].status + '</td>';
+				html += '<td style="color: #d70e24;font-weight: 500">' + data[i].status + '</td>';
 			}
 
 			html += '<td>' + data[i].createDate + '</td>';

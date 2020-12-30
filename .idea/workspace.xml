@@ -20,7 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d931473-2b8e-4fdd-a9bf-b0494273f30e" name="Default Changelist" comment="-">
+      <change afterPath="$PROJECT_DIR$/master/application/views/confirm_package_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/employee_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/employee_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/controllers/Master.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/controllers/Master.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/confirm_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/confirm_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/confirm_package.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_package.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/package_injection_item.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_injection_item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/asset/css/table_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/master/asset/css/table_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609236040037</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="-">
+      <created>1609236245069</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609236245069</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +134,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1037" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609126357369" />
+    <state x="1944" y="2" width="1538" height="1027" key="dock-window-10" timestamp="1609320677638">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1944" y="2" width="1538" height="1027" key="dock-window-10/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609320677638" />
     <state x="1944" y="7" width="1091" height="1027" key="dock-window-2" timestamp="1609143447609">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -138,9 +158,21 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1951" y="8" width="1538" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609231944662" />
-    <state x="1052" y="191" width="654" height="660" key="find.popup" timestamp="1609235588971">
+    <state x="304" y="21" width="1538" height="959" key="dock-window-7" timestamp="1609298754209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1052" y="191" width="654" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609235588971" />
+    <state x="304" y="21" width="1538" height="959" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609298754209" />
+    <state x="1920" y="0" width="1538" height="959" key="dock-window-8" timestamp="1609295132150">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1538" height="959" key="dock-window-8/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609295132150" />
+    <state x="1913" y="0" width="1552" height="1027" key="dock-window-9" timestamp="1609320677638">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1913" y="0" width="1552" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609320677638" />
+    <state x="486" y="71" width="1120" height="660" key="find.popup" timestamp="1609320179128">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="486" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609320179128" />
   </component>
 </project>

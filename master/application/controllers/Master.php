@@ -63,10 +63,16 @@ class master extends CI_Controller
 		$this->load->view('confirm_employee');
 	}
 
-	//패키지등록관리
+	//패키지승인
 	public function confirm_package()
 	{
 		$this->load->view('confirm_package');
+	}
+
+	//패키지승인
+	public function confirm_package_detail()
+	{
+		$this->load->view('confirm_package_detail');
 	}
 
 	//청구관리

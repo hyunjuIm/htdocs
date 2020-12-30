@@ -200,6 +200,11 @@
 		saveItems.answer = $('#answer').val();
 		saveItems.status = $("#resultStatus option:selected").val();
 
+		if(saveItems.answer == '' || saveItems.answer == null) {
+			alert('처리결과를 입력해주세요.');
+			return false;
+		}
+
 		console.log(saveItems);
 
 		if (confirm("저장하시겠습니까?") == true) {

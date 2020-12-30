@@ -42,9 +42,9 @@
 					승인관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
-					<a class="dropdown-item" href="/master/confirm_employee">직원등록</a>
+					<a class="dropdown-item" href="/master/confirm_employee">직원관리</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/master/confirm_package">패키지등록</a>
+					<a class="dropdown-item" href="/master/confirm_package">패키지승인</a>
 				</div>
 			</li>
 

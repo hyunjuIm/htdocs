@@ -99,11 +99,12 @@
 							<tbody>
 							<tr>
 								<th>최대선택개수</th>
-								<td><input type="number" class="form-control" id="choiceLimit" placeholder=""
+								<td><input type="number" class="form-control" id="choiceLimit"
+										   min="1" max="10" placeholder=""
 										   style="width: 100px"></td>
 								<td>
 									<div class="btn-save-square" style="padding: 2px 15px; font-size: 13px"
-										 onclick="setChoiceNum()">저장
+										 onclick="setChoiceNum()">설정
 									</div>
 								</td>
 							</tr>
@@ -364,6 +365,7 @@ require('check_data.php');
 
 	//패키지구성 초기 셋팅
 	function setPackageTabData(data) {
+		console.log(data);
 
 		var package0 = new Array();
 		var package1 = new Array();
@@ -372,6 +374,19 @@ require('check_data.php');
 		var package4 = new Array();
 		var package5 = new Array();
 		var package6 = new Array();
+
+		// 선택검사 알파벳순 정렬
+		data.sort(function (a, b) {
+			const titleA = a.ipClass.toUpperCase(); // ignore upper and lowercase
+			const titleB = b.ipClass.toUpperCase(); // ignore upper and lowercase
+			if (titleA < titleB) {
+				return -1;
+			}
+			if (titleA > titleB) {
+				return 1;
+			}
+			return 0;
+		});
 
 		for (i = 0; i < data.length; i++) {
 
@@ -475,6 +490,9 @@ require('check_data.php');
 			html += '</tr>';
 
 			$("#packageTable").append(html);
+
+			choiceLimitArr[id] = packageTabItems[id][i].choiceLimit;
+			console.log(packageTabItems[id][i].choiceLimit);
 		}
 	}
 
@@ -520,6 +538,8 @@ require('check_data.php');
 		}
 
 		packageTabItems[0][index].ipClass = value;
+		packageTabItems[0][index].choiceLimit = choiceLimitArr[beforeIdx];
+		console.log(packageTabItems[0][index]);
 	}
 
 	//패키지구성에서 성별 셀렉터 선택
@@ -590,10 +610,16 @@ require('check_data.php');
 
 	//패키지구성 선택항목 최대선택개수
 	function setChoiceNum() {
-		choiceLimitArr[tabId] = $("#choiceLimit").val();
-		for (i = 0; i < packageTabItems[tabId].length; i++) {
-			packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
+		if($("#choiceLimit").val() < 0 || $("#choiceLimit").val() >10) {
+			alert('설정값을 초과하였습니다. 다시 설정해주세요.');
+		} else {
+			choiceLimitArr[tabId] = $("#choiceLimit").val();
+			for (i = 0; i < packageTabItems[tabId].length; i++) {
+				packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
+			}
+			alert('설정되었습니다.');
 		}
+
 	}
 
 	//검사항목 추가
@@ -678,6 +704,7 @@ require('check_data.php');
 					console.log(res.data.message);
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
+						location.reload();
 					}
 				});
 			} else {

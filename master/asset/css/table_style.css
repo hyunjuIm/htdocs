@@ -18,6 +18,7 @@ th {
 	width: 130px;
 	background: #E6E6E6;
 	color: #444444;
+	font-weight: 400;
 }
 
 tr {
@@ -29,6 +30,7 @@ td {
 	border: 1px;
 	solid: #efefef;
 	font-size: 15px;
+	font-weight: 300;
 }
 
 .table {
