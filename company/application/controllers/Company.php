@@ -32,6 +32,18 @@ class Company extends CI_Controller
 	{
 		$this->load->view('pc/employee_manage_write');
 	}
+
+	//패키지관리 리스트
+	public function confirm_package()
+	{
+		$this->load->view('pc/confirm_package');
+	}
+
+	//패기지관리 상세보기
+	public function confirm_package_detail()
+	{
+		$this->load->view('pc/confirm_package_detail');
+	}
 	
 	//통계관리
 	public function statistics_manage() {

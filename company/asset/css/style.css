@@ -117,6 +117,10 @@ body {
 	background-color: white;
 }
 
+.basic-table tbody tr:hover {
+	background-color: whitesmoke;
+}
+
 /*박스 스타일 - 흰배경 검은그림자*/
 .box {
 	height: 100%;

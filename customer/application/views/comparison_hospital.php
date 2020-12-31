@@ -184,7 +184,7 @@
 								<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
 									기본검사
 								</div>
-								<div style="height: 50rem; overflow-y: scroll">
+								<div style="height:fit-content; max-height: 50rem; overflow-y: scroll">
 									<table class="compare-table table-bordered" id="baseTable">
 									</table>
 								</div>

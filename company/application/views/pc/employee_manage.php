@@ -116,9 +116,8 @@ require('employee_modal.php');
 			html += '<tr>';
 
 			var no = data[i].id.substr(5, data[i].id[data[i].id.length]);
-
-
 			html += '<td>' + no + '</td>';
+
 			html += '<td>' + data[i].division + '</td>';
 
 			html += '<td class="title" data-toggle="modal" data-target="#employeeManageDetailModal"' +

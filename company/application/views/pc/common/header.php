@@ -70,23 +70,24 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.15s ease-in;
+		z-index: 999;
 	}
 
 	.sub-menu > li {
 		width: 13rem;
 		line-height: 4.5rem;
 		text-align: center;
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		border: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	.sub-menu > li:last-child {
+		border-top :none;
 	}
 
 	#main-menu > li:hover .sub-menu {
 		opacity: 1;
 		visibility: visible;
 		color: #5645ED;
-	}
-
-	.sub-menu > li:hover {
-		background: #f0edf6;
 	}
 
 	.sub-menu > li > a:hover {
@@ -106,22 +107,24 @@
 		<li><a id="topMenu1" href="/company/reservation_list">
 				<div class="menu-hover-line"></div>
 				예약관리</a></li>
-		<li><a id="topMenu2" href="/company/employee_manage">
+		<li><a id="topMenu2" href="#">
 				<div class="menu-hover-line"></div>
-				직원관리</a></li>
+				승인관리</a>
+			<ul class="sub-menu">
+				<li><a href="/company/employee_manage" aria-label="subemnu">직원관리</a></li>
+				<li><a href="/company/confirm_package" aria-label="subemnu">패키지관리</a></li>
+			</ul>
+		</li>
 		<li><a id="topMenu3" href="/company/statistics_manage">
 				<div class="menu-hover-line"></div>
 				통계관리</a></li>
 		<li><a id="topMenu4" href="/company/bill_manage">
 				<div class="menu-hover-line"></div>
 				청구관리</a></li>
-		<!--		<li><a href="#"><div class="menu-hover-line"></div>통계관리</a>-->
-		<!--			<ul class="sub-menu">-->
-		<!--				<li><a href="#" aria-label="subemnu">연도별</a></li>-->
-		<!--				<li><a href="#" aria-label="subemnu">병원별</a></li>-->
-		<!--				<li><a href="#" aria-label="subemnu">지역별</a></li>-->
-		<!--			</ul>-->
-		<!--		</li>-->
+		<li><a id="noticeMenu" href="#">
+				<div class="menu-hover-line"></div>
+				공지사항</a></li>
+		</li>
 	</ul>
 	<div style="float:right;width: 22rem;line-height: 7rem;font-size: 1.4rem">
 		<div style="float:right">

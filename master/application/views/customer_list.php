@@ -76,7 +76,7 @@
 						<div class="btn-purple-square" data-toggle="modal" data-target="#customerUploadModal">
 							신규회원 엑셀 업로드
 						</div>
-						<div class="btn-save-square" onclick="searchCustomerData()">
+						<div class="btn-save-square" onclick="searchCustomerData(0)">
 							검색
 						</div>
 					</div>
@@ -164,6 +164,13 @@ require('check_data.php');
 
 	var companySelect;
 
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchCustomerData(0);
+		}
+	}
+
 	//검색 selector
 	function setCustomerSelectData(data) {
 		//회사
@@ -193,11 +200,6 @@ require('check_data.php');
 		}
 		companySelect = data.coNameBranch;
 
-		pageCount = 0;
-		for (i = 0; i < data.pageCount; i += 10) {
-			pageCount++;
-		}
-
 		//로딩 되자마자 초기 셋팅
 		searchCustomerData(0);
 	}
@@ -226,66 +228,79 @@ require('check_data.php');
 			return;
 		}
 
-		console.log(searchItems);
-
 		instance.post('M001002_REQ_RES', searchItems).then(res => {
-			console.log(res.data);
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
 			setCustomerData(res.data.customerDTOList, pageNum);
+			console.log(res.data);
 		});
 	}
 
 	//페이징-화살표클릭
 	function pmPageNum(val) {//화살표클릭
-		console.log("before: pageNum: " + pageNum + ", pageCount: " + pageCount + ", val: " + val);
-
-		pageNum += parseInt(val);
+		pageNum = Math.floor(parseInt(val) / 10) * 10;
 		if (pageNum < 0) pageNum = 0;
 		if (pageCount <= pageNum) pageNum = pageCount - 1;
-
-		console.log("after: pageNum: " + pageNum + ", pageCount: " + pageCount + ", val: " + val);
 		drawTable();
 	}
 
 	//회원관리 테이블
 	function setCustomerData(data, index) {
-		console.log(data);
-
 		$('#customerInfos > tbody').empty();
 		$("#paging").empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#customerInfos").append(html);
+			return false;
+		}
 
 		var html = "";
 		var pre = parseInt(index) - 1;
 		if (pre < 0) {
 			pre = 0;
 		}
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
+		html += '<a class="arrow pprev" onclick= "searchCustomerData(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
-		for (i = 0; i < pageCount; i++) {
+		var start = index - Math.floor((index % 10)) + 1;
+
+		for (i = start; i < (start + 10); i++) {
 			var html = '';
 
-			var num = i + 1;
-
-			if (i == index) {
-				html += '<a onclick= "searchCustomerData(\'' + i + '\')" class="active">' + num + '</a>';
-			} else {
-				html += '<a onclick= "searchCustomerData(\'' + i + '\')" href="#">' + num + '</a>';
+			if ((i - 1) < pageCount) {
+				if (i == index + 1) {
+					html += '<a onclick= "searchCustomerData(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+				} else {
+					html += '<a onclick= "searchCustomerData(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+				}
 			}
 
 			$("#paging").append(html);
 		}
 
 		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchCustomerData(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
-
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="customerCheck" value=\'' + data[i].id + '\' onclick="clickOne(name)"></td>';
 
-			var no = i + 1;
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
 			html += '<td>' + no + '</td>';
 			html += '<td>' + data[i].id + '</td>';
 			html += '<td>' + data[i].email + '</td>';
@@ -295,7 +310,7 @@ require('check_data.php');
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].phone + '</td>';
 			html += '<td>' + data[i].createDate + '</td>';
-			if(data[i].lastSignInTime == null || data[i].lastSignInTime == '') {
+			if (data[i].lastSignInTime == null || data[i].lastSignInTime == '') {
 				html += '<td></td>';
 			} else {
 				html += '<td>' + data[i].lastSignInTime + '</td>';
