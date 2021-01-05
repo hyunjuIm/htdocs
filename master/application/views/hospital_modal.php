@@ -1,7 +1,7 @@
 <!-- 병원 상세 정보 Modal -->
 <div class="modal fade" id="hospitalDetailModal" tabindex="-1" aria-labelledby="hospitalDetailModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog " style="max-width: fit-content; min-width: 1000px; display: table;">
+	<div class="modal-dialog " style="max-width: fit-content; min-width: fit-content; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -9,7 +9,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div class="container" style="margin-top: 20px">
+				<div class="container" style="margin-top: 20px;width: 900px">
 					<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
 						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
 						병원정보
@@ -31,20 +31,11 @@
 									</td>
 								</tr>
 								<tr>
-									<th rowspan="3">주소</th>
+									<th>주소</th>
 									<td>
-										<input class="info-input" type="text" id="hos-zipCode" readonly
-											   style="background: lightgray;border-radius: 5px"
+										<input class="info-input zip-code" type="text" id="hos-zipCode" readonly
 											   onclick="openAddressSearch('hos-zipCode','hos-address','hos-buildingNum')">
-									</td>
-								</tr>
-								<tr>
-									<td style="border: none">
 										<input class="info-input" type="text" id="hos-address" readonly>
-									</td>
-								</tr>
-								<tr>
-									<td style="border: none">
 										<input class="info-input" type="text" id="hos-buildingNum">
 									</td>
 								</tr>
@@ -68,8 +59,8 @@
 								</tr>
 								<tr>
 									<th>URL</th>
-									<td>
-										<input class="info-input" type="text" id="hos-url">
+									<td style="font-size: 12px">
+										<textarea class="info-input" type="text" id="hos-url"></textarea>
 									</td>
 								</tr>
 								<tr>
@@ -267,7 +258,7 @@
 <!-- 병원 신규 생성 Modal -->
 <div class="modal fade" id="hospitalCreateModal" tabindex="-1" aria-labelledby="hospitalCreateModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog " style="max-width: fit-content; min-width: 1000px; display: table;">
+	<div class="modal-dialog " style="max-width: fit-content; min-width:fit-content; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -275,7 +266,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div class="container hospital" style="margin-top: 30px">
+				<div class="container hospital" style="margin-top: 30px; width: 900px">
 					<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
 						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
 						병원정보
@@ -291,22 +282,13 @@
 									</td>
 								</tr>
 								<tr>
-									<th rowspan="3">주소</th>
+									<th>주소</th>
 									<td>
-										<input class="info-input" type="text" id="create-hos-zipCode"
-											   placeholder="우편 번호 찾기 클릭" readonly
-											   style="background: lightgray;border-radius: 5px"
+										<input class="info-input zip-code" type="text" id="create-hos-zipCode"
+											   placeholder="우편번호 찾기" readonly
 											   onclick="openAddressSearch('create-hos-zipCode','create-hos-address','create-hos-buildingNum')">
-									</td>
-								</tr>
-								<tr>
-									<td style="border: none">
 										<input class="info-input" type="text" id="create-hos-address" readonly>
-									</td>
-								</tr>
-								<tr>
-									<td style="border: none">
-										<input class="info-input" type="text" id="create-hos-buildingNum">
+										<input class="info-input" type="text" id="create-hos-buildingNum" placeholder="상세주소를 입력해주세요.">
 									</td>
 								</tr>
 								<tr>
@@ -329,8 +311,8 @@
 								</tr>
 								<tr>
 									<th>URL</th>
-									<td>
-										<input class="info-input" type="text" id="create-hos-url">
+									<td style="font-size: 12px">
+										<textarea class="info-input" type="text" id="create-hos-url"></textarea>
 									</td>
 								</tr>
 								<tr>
@@ -526,13 +508,13 @@
 							<table id="HosManagerTable" class="table table-hover">
 								<thead>
 								<tr>
-									<th style="width: 15%">담당자 정보</th>
-									<th style="">이름</th>
-									<th style="">직함</th>
-									<th style="width: 18%">직통번호</th>
-									<th style="width: 18%">연락처</th>
-									<th style="width: 18%">이메일</th>
-									<th style="width: 11%">SMS수신</th>
+									<th >이름</th>
+									<th >직함</th>
+									<th >직통번호</th>
+									<th >연락처</th>
+									<th >이메일</th>
+									<th >담당업무</th>
+									<th >SMS수신</th>
 								</tr>
 								</thead>
 								<tbody>
@@ -558,7 +540,7 @@
 								</td>
 								<th>직통번호</th>
 								<td>
-									<input class="info-input" type="text" id="add-hos-phone">
+									<input class="info-input" type="text" id="add-hos-directPhone">
 								</td>
 							</tr>
 							<tr>
@@ -568,7 +550,7 @@
 								</td>
 								<th>개인연락처</th>
 								<td>
-									<input class="info-input" type="text" id="add-hos-directPhone">
+									<input class="info-input" type="text" id="add-hos-phone">
 								</td>
 							</tr>
 							<tr>
@@ -678,8 +660,6 @@ require('file_data.php');
 
 	//클릭시 병원정보
 	function setDetailHospitalData(data) {
-
-
 		//HosInfoTable1 병원정보
 		$("#hos-name").val(data.name);
 		$("#hos-region").val(data.region);
@@ -781,6 +761,14 @@ require('file_data.php');
 			alert("URL을 입력해주세요.");
 		} else if (saveItems.pcPrice == "") {
 			alert("공단금액을 입력해주세요.");
+		} else if (saveItems.onePoint < 0 || saveItems.onePoint > 10) {
+			alert("검사항목 - 올바른 점수를 입력해주세요.");
+		} else if (saveItems.twoPoint < 0 || saveItems.twoPoint > 10) {
+			alert("접근성 - 올바른 점수를 입력해주세요.");
+		} else if (saveItems.threePoint < 0 || saveItems.threePoint > 10) {
+			alert("전문성 - 올바른 점수를 입력해주세요.");
+		} else if (saveItems.fourPoint < 0 || saveItems.fourPoint > 10) {
+			alert("시설 - 올바른 점수를 입력해주세요.");
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005005_REQ', saveItems).then(res => {
@@ -804,18 +792,17 @@ require('file_data.php');
 
 	//클릭시 담당자정보
 	function setHospitalManagerData(data) {
-
 		$("#HosManagerTable tbody").empty();
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td>' + data[i].department + '</td>';
 			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].position + '</td>';
 			html += '<td>' + data[i].directPhone + '</td>';
 			html += '<td>' + data[i].phone + '</td>';
 			html += '<td>' + data[i].email + '</td>';
+			html += '<td>' + data[i].department + '</td>';
 			if (data[i].receiveSMS) {
 				html += '<td>Y</td>';
 			} else {
@@ -831,7 +818,7 @@ require('file_data.php');
 		var saveItems = new Object();
 
 		saveItems.hospitalId = hosId.hospitalId;
-		saveItems.department = $("#add-hos-name").val();
+		saveItems.department = $("#add-hos-department").val();
 		saveItems.email = $("#add-hos-email").val();
 		saveItems.password = $("#add-hos-password").val();
 		saveItems.name = $("#add-hos-name").val();
@@ -857,7 +844,7 @@ require('file_data.php');
 			alert("직함을 입력해주세요.");
 		} else if (!isEmail(saveItems.email)) {
 			alert("올바른 이메일을 입력해주세요.");
-		} else if (!isPhoneNum(saveItems.directPhone)) {
+		} else if (!isPhoneNum(saveItems.phone)) {
 			alert("올바른 연락처를 입력해주세요.");
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
@@ -896,10 +883,8 @@ require('file_data.php');
 			html += '<td contentEditable="true">' + data[i].modelCode + '</td>';
 			html += '<td contentEditable="true">' + data[i].uses + '</td>';
 			html += '<td contentEditable="true">' + data[i].count + '</td>';
-			html += '<td contentEditable="true">' + data[i].introductionYear;
-			+'</td>';
-			html += '<td contentEditable="true">' + data[i].memo;
-			+'</td>';
+			html += '<td contentEditable="true">' + data[i].introductionYear +'</td>';
+			html += '<td contentEditable="true">' + data[i].memo +'</td>';
 			html += '<td><div class="btn-save-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px" onclick="delHospitalEquipment(this)">삭제</div></td>'
 			html += '</tr>';
 
@@ -1021,6 +1006,14 @@ require('file_data.php');
 			alert("URL을 입력해주세요.");
 		} else if (saveItems.pcPrice == "") {
 			alert("공단금액을 입력해주세요.");
+		}  else if (saveItems.onePoint < 0 || saveItems.onePoint > 10) {
+			alert("검사항목 - 올바른 점수를 입력해주세요.");
+		} else if (saveItems.twoPoint < 0 || saveItems.twoPoint > 10) {
+			alert("접근성 - 올바른 점수를 입력해주세요.");
+		} else if (saveItems.threePoint < 0 || saveItems.threePoint > 10) {
+			alert("전문성 - 올바른 점수를 입력해주세요.");
+		} else if (saveItems.fourPoint < 0 || saveItems.fourPoint > 10) {
+			alert("시설 - 올바른 점수를 입력해주세요.");
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005006_REQ', saveItems).then(res => {
@@ -1042,6 +1035,5 @@ require('file_data.php');
 			}
 		}
 	}
-
 
 </script>

@@ -32,21 +32,7 @@
 								<tr>
 									<th>생년월일</th>
 									<td>
-										<input type="text" id="cus-familyBirthDate" placeholder="" style="border:none;text-align: center">
-										<script>
-											$(function () {
-												$("#cus-familyBirthDate").datepicker({
-													changeMonth: true,
-													changeYear: true,
-													maxDate: 0,
-													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-													monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-													monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-													dateFormat: "yy-mm-dd",
-												});
-											});
-										</script>
+										<input type="date" id="cus-familyBirthDate">
 									</td>
 								</tr>
 								<tr>
@@ -123,20 +109,7 @@
 								<tr>
 									<th>1차 예약일</th>
 									<td>
-										<input type="text" id="cus-reservationFirstWishDate" placeholder="" style="width: 100px ;border:none;text-align: center">
-										<script>
-											$(function () {
-												$("#cus-reservationFirstWishDate").datepicker({
-													changeMonth: true,
-													changeYear: true,
-													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-													monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-													monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-													dateFormat: "yy-mm-dd",
-												});
-											});
-										</script>
+										<input type="date" id="cus-reservationFirstWishDate">
 									</td>
 									<td style="width: 60px">
 										<div
@@ -149,20 +122,7 @@
 								<tr>
 									<th>2차 예약일</th>
 									<td>
-										<input type="text" id="cus-reservationSecondWishDate" placeholder="" style="width: 100px ;border:none;text-align: center">
-										<script>
-											$(function () {
-												$("#cus-reservationSecondWishDate").datepicker({
-													changeMonth: true,
-													changeYear: true,
-													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-													monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-													monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-													dateFormat: "yy-mm-dd",
-												});
-											});
-										</script>
+										<input type="date" id="cus-reservationSecondWishDate">
 									</td>
 									</td>
 									<td style="width: 60px">
@@ -175,7 +135,9 @@
 								</tr>
 								<tr>
 									<th>예약 확정일</th>
-									<td colspan="2" id="cus-ipDate"></td>
+									<td colspan="2">
+										<input type="date" id="cus-ipDate">
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -252,15 +214,13 @@
 
 	//클릭시 고객정보
 	function setDetailCustomerData(data) {
-
-
 		$("#info6").empty();
 
 		//info1 고객세부정보
 		document.getElementById('cus-companyName').innerHTML = data.companyName;
 		document.getElementById('cus-companyBranch').innerHTML = data.companyBranch;
 		document.getElementById('cus-familyName').innerHTML = data.familyName;
-		document.getElementById('cus-familyBirthDate').value = data.familyBirthDate;
+		$('#cus-familyBirthDate').val(data.familyBirthDate);
 		document.getElementById('cus-familyPhone').innerHTML = data.familyPhone;
 		document.getElementById('cus-familyAddress').innerHTML = data.familyAddress;
 		document.getElementById('cus-familyEmail').innerHTML = data.familyEmail;
@@ -292,9 +252,9 @@
 				= "예약기간 : " + data.packageReservationStartDate + " ~ " + data.packageReservationEndDate;
 		document.getElementById('cus-packageInspection').innerHTML
 				= "검진기간 : " + data.packageInspectionStartDate + " ~ " + data.packageInspectionEndDate;
-		document.getElementById('cus-reservationFirstWishDate').value = data.reservationFirstWishDate;
-		document.getElementById('cus-reservationSecondWishDate').value = data.reservationSecondWishDate;
-		document.getElementById('cus-ipDate').innerHTML = data.ipDate;
+		$('#cus-reservationFirstWishDate').val(data.reservationFirstWishDate);
+		$('#cus-reservationSecondWishDate').val(data.reservationSecondWishDate);
+		$('#cus-ipDate').val(data.ipDate);
 
 		//info3 패키지 및 병원
 		document.getElementById('cus-packageServiceName').innerHTML = data.packageServiceName;
@@ -335,7 +295,7 @@
 
 		saveItems.reservationId = rsvId.reservationId;
 		saveItems.familyName = document.getElementById('cus-familyName').innerText;
-		saveItems.familyBirthDate = document.getElementById('cus-familyBirthDate').value;
+		saveItems.familyBirthDate = $('#cus-familyBirthDate').val();
 		saveItems.familyPhone = document.getElementById('cus-familyPhone').innerText;
 		saveItems.familyAddress = document.getElementById('cus-familyAddress').innerText;
 		saveItems.familyEmail = document.getElementById('cus-familyEmail').innerText;
@@ -344,9 +304,9 @@
 		saveItems.familyPsInfoDual = booleanData("cus-familyPsInfoDual");
 		saveItems.familyPsInfoHos = booleanData("cus-familyPsInfoHos");
 
-		saveItems.reservationFirstWishDate = document.getElementById('cus-reservationFirstWishDate').value;
-		saveItems.reservationSecondWishDate = document.getElementById('cus-reservationSecondWishDate').value;
-		saveItems.ipDate = document.getElementById('cus-ipDate').innerText;
+		saveItems.reservationFirstWishDate = $('#cus-reservationFirstWishDate').val();
+		saveItems.reservationSecondWishDate = $('#cus-reservationSecondWishDate').val();
+		saveItems.ipDate = $('#cus-ipDate').val();
 		saveItems.companySupportPrice = savePrice('cus-companySupportPrice');
 		saveItems.memo = document.getElementById('cus-memo').innerText;
 

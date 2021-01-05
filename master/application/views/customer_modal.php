@@ -75,7 +75,7 @@
 							<ul class="nav nav-tabs" id="customerTabMenu">
 							</ul>
 
-							<div class="tab-content" style="border: 1px solid #E6E6E6">
+							<div class="tab-content" style="border-left: 1px solid #E6E6E6;border-right: 1px solid #E6E6E6;border-bottom: 1px solid #E6E6E6">
 								<div class="tab-pane fade show active">
 									<div class="container" id="customerTab"
 										 style="margin-top: 20px;font-size: 15px;visibility: hidden">
@@ -121,22 +121,7 @@
 													<tr>
 														<th>생년월일</th>
 														<td>
-															<input class="info-input" type="text"
-																   id="birthDate" readonly>
-															<script>
-																$(function () {
-																	$("#birthDate").datepicker({
-																		changeMonth: true,
-																		changeYear: true,
-																		maxDate: 0,
-																		dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-																		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-																		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-																		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-																		dateFormat: "yy-mm-dd",
-																	});
-																});
-															</script>
+															<input type="date" id="birthDate">
 														</td>
 													</tr>
 													<tr>
@@ -147,22 +132,14 @@
 														</td>
 													</tr>
 													<tr>
-														<th rowspan="3">주소</th>
+														<th>주소</th>
 														<td>
-															<input class="info-input" type="text"
+															<input class="info-input zip-code" type="text"
 																   id="zipCode" placeholder="우편번호"
 																   onclick="openAddressSearch()" readonly>
-														</td>
-													</tr>
-													<tr>
-														<td>
 															<input class="info-input" type="text"
 																   id="address"
 																   readonly>
-														</td>
-													</tr>
-													<tr>
-														<td>
 															<input class="info-input" type="text"
 																   id="buildingNum" placeholder="상세주소">
 														</td>
@@ -341,13 +318,21 @@
 
 		for (i = 0; i < data.familyDTOList.length; i++) {
 			var html = "";
-			html += '<li class="nav-item">' +
-					'<a class="nav-link" data-toggle="tab" href="#" onclick="clickFamilyTab(\'' + data.familyDTOList[i].famId + '\')">' +
-					data.familyDTOList[i].grade + '</a>' + '</li>';
+			if(i == 0) {
+				html += '<li class="nav-item">' +
+						'<a class="nav-link active" data-toggle="tab" href="#" onclick="clickFamilyTab(\'' + data.familyDTOList[i].famId + '\')">' +
+						data.familyDTOList[i].grade + '</a>' + '</li>';
+			} else {
+				html += '<li class="nav-item">' +
+						'<a class="nav-link" data-toggle="tab" href="#" onclick="clickFamilyTab(\'' + data.familyDTOList[i].famId + '\')">' +
+						data.familyDTOList[i].grade + '</a>' + '</li>';
+			}
 			$("#customerTabMenu").append(html);
 		}
 
 		familyData = data.familyDTOList;
+
+		clickFamilyTab(data.familyDTOList[0].famId);
 	}
 
 	var famId;
@@ -460,6 +445,7 @@
 			instance.post('M001004_REQ_RES', sendItems).then(res => {
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
+					searchCustomerData(pageNum);
 				} else if (res.data.message == "companyFailed") {
 					alert("소속과 사업장을 다시 확인해주세요.");
 				} else if (res.data.message == "customerFailed") {

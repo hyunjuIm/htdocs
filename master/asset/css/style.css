@@ -16,6 +16,10 @@ html, body {
 	font-weight: 300;
 }
 
+ul {
+	list-style: none;
+}
+
 a:link {
 	text-decoration: none;
 	cursor: pointer;
@@ -23,6 +27,25 @@ a:link {
 
 input {
 	font-weight: 300;
+}
+
+input[type=date] {
+	width: fit-content;
+	border: none;
+	text-align: center;
+	outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	padding: 0;
+	margin-left: 3px;
+}
+
+.zip-code {
+	background: #dce6ee;
+	width: 150px !important;
+	cursor: pointer;
+	outline: none;
 }
 
 select, option {

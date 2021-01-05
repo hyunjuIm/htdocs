@@ -7,6 +7,25 @@
 	require('head.php');
 	?>
 
+	<style>
+		#companyInfo tbody tr {
+			cursor: pointer;
+		}
+
+		input[type=date] {
+			width: 90px;
+			border: none;
+			text-align: center;
+			font-size: 13px;
+			outline: none;
+		}
+
+		input[type="date"]::-webkit-calendar-picker-indicator {
+			padding: 0;
+			margin-left: 3px;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -72,7 +91,7 @@
 						<div class="btn-purple-square" data-toggle="modal" data-target="#companyCreateModal">
 							기업신규등록
 						</div>
-						<div class="btn-save-square"  onclick="searchInformation()">
+						<div class="btn-save-square" onclick="searchInformation(0)">
 							검색
 						</div>
 					</div>
@@ -87,8 +106,9 @@
 				<h6>
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
-						<input type="text" id="searchWord" class="search-input" placeholder="회사명으로 검색하세요" onkeyup="enterKey()">
-						<div class="search-icon" onclick="searchInformation()"></div>
+						<input type="text" id="searchWord" class="search-input" placeholder="회사명으로 검색하세요"
+							   onkeyup="enterKey()">
+						<div class="search-icon" onclick="searchInformation(0)"></div>
 					</div>
 				</h6>
 			</div>
@@ -102,14 +122,15 @@
 			<table id="companyInfo" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th style="width: 4%"><input type="checkbox" id="companyCheck" name="companyCheck" onclick="clickAll(id, name)"></th>
+					<th style="width: 4%"><input type="checkbox" id="companyCheck" name="companyCheck"
+												 onclick="clickAll(id, name)"></th>
 					<th style="width: 4%">NO</th>
-					<th style="width: 12%; color: #3529b1">고객사</th>
+					<th style="width: 12%">고객사</th>
 					<th>사업장</th>
 					<th style="width: 12%">서비스</th>
 					<th>계약유무</th>
 					<th>직원 수</th>
-					<th>진행현황</th>
+					<th>진행상태</th>
 					<th style="width: 15%">예약기간</th>
 					<th style="width: 15%">검진기간</th>
 					<th>사업자등록</th>
@@ -119,7 +140,16 @@
 				</tbody>
 			</table>
 		</form>
+	</div>
 
+	<!--페이징-->
+	<div class="row">
+		<form style="margin: 0 auto; width: 85%; padding: 10px">
+			<div class="page_wrap">
+				<div class="page_nation" id="paging">
+				</div>
+			</div>
+		</form>
 	</div>
 
 </div>
@@ -139,26 +169,81 @@ require('check_data.php');
 ?>
 
 <script type="text/javascript">
+	var pageCount = 0;
+	var pageNum = 0;
 
 	//검색항목리스트
 	instance.post('M004001_RES').then(res => {
 		setCompanySelectData(res.data);
 	});
 
-	searchInformation();
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchInformation(0);
+		}
+	}
 
-	//검색
-	function searchInformation() {
+	//검색 selector
+	function setCompanySelectData(data) {
+		//사업연도
+		for (i = 0; i < data.year.length; i++) {
+			var html = '';
+			html += '<option>' + data.year[i] + '</option>'
+			$("#year").append(html);
+		}
+		//서비스
+		for (i = 0; i < data.service.length; i++) {
+			var html = '';
+			html += '<option>' + data.service[i] + '</option>'
+			$("#service").append(html);
+		}
+		//진행상태
+		for (i = 0; i < data.status.length; i++) {
+			var html = '';
+			if (data.status[i] == "true") {
+				html += '<option value="true">Y</option>'
+			} else {
+				html += '<option value="false">N</option>'
+			}
+			$("#status").append(html);
+		}
+		//계약유무
+		for (i = 0; i < data.contract.length; i++) {
+			var html = '';
+			if (data.contract[i] == "true") {
+				html += '<option value="true">Y</option>'
+			} else {
+				html += '<option value="false">N</option>'
+			}
+			$("#contract").append(html);
+		}
+
+		//로딩 되자마자 초기 셋팅
+		searchInformation(0);
+	}
+
+
+	//페이징-숫자클릭
+	function searchInformation(index) {//숫자클릭
+		if($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
+		}
+
+		pageNum = index;
+		drawTable();
+	}
+
+	function drawTable() {
 		var searchItems = new Object();
-
-		$('#companyInfo > tbody').empty();
 
 		searchItems.year = $("#year option:selected").val();
 		searchItems.service = $("#service option:selected").val();
 		searchItems.status = $("#status option:selected").val();
 		searchItems.contract = $("#contract option:selected").val();
 
-		searchItems.searchWord =  $("#searchWord").val();
+		searchItems.searchWord = $("#searchWord").val();
 
 		if (searchItems.year == "-전체-") {
 			searchItems.year = "all";
@@ -176,61 +261,82 @@ require('check_data.php');
 		console.log(searchItems);
 
 		instance.post('M004002_REQ_RES', searchItems).then(res => {
-			setCompanyData(res.data);
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
+
+			console.log(res.data);
+			setCompanyData(res.data.companyDTOList, pageNum);
 		});
 	}
 
-	//검색 selector
-	function setCompanySelectData(data) {
+	//페이징-화살표클릭
+	function pmPageNum(val) {//화살표클릭
+		pageNum = Math.floor(parseInt(val) / 10) * 10;
+		if (pageNum < 0) pageNum = 0;
+		if (pageCount <= pageNum) pageNum = pageCount - 1;
+		drawTable();
+	}
 
-		//사업연도
-		for (i = 0; i < data.year.length; i++) {
-			var html = '';
-			html += '<option>' + data.year[i] + '</option>'
-			$("#year").append(html);
+	//페이징
+	function setPaging(index) {
+		$("#paging").empty();
+
+		var html = "";
+		var pre = parseInt(index) - 1;
+		if (pre < 0) {
+			pre = 0;
 		}
-		//서비스
-		for (i = 0; i < data.service.length; i++) {
-			var html = '';
-			html += '<option>' + data.service[i] + '</option>'
-			$("#service").append(html);
-		}
-		//진행상태
-		for (i = 0; i < data.status.length; i++) {
-			var html = '';
-			if(data.status[i] == "true") {
-				html += '<option value="true">진행중</option>'
-			} else {
-				html += '<option value="false">종료</option>'
+		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
+		var start = index - Math.floor((index % 10)) + 1;
+
+		for (i = start; i < (start + 10); i++) {
+			if ((i - 1) < pageCount) {
+				if (i == index + 1) {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+				} else {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+				}
 			}
-			$("#status").append(html);
 		}
-		//계약유무
-		for (i = 0; i < data.contract.length; i++) {
-			var html = '';
-			if(data.contract[i] == "true") {
-				html += '<option value="true">Y</option>'
-			} else {
-				html += '<option value="false">N</option>'
-			}
-			$("#contract").append(html);
-		}
+
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
+
+		$("#paging").append(html);
 	}
 
 	//기업관리 테이블
-	function setCompanyData(data) {
+	function setCompanyData(data, index) {
+		setPaging(index);
+
+		$('#companyInfo > tbody').empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="11">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#companyInfo").append(html);
+			return false;
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			html += '<tr>"';
+			html += '<tr data-toggle="modal" data-target="#companyDetailModal" onClick="clickCompanyDetail(\'' + data[i].id + '\')">"';
 			html += '<td><input type="checkbox" name="companyCheck" onclick="clickOne(name)"></td>';
 
-			var no = i+1;
-			html += '<td>' + no + '</td>';
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
 
-			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer" ' +
-					'data-toggle="modal" data-target="#companyDetailModal" ' +
-					'onClick="clickCompanyDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
+			html += '<td>' + no + '</td>';
+			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].branch + '</td>';
 			html += '<td>' + regExp(data[i].services) + '</td>';
 

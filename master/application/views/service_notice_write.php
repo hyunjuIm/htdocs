@@ -17,6 +17,35 @@
 			width: 200px;
 			background: #f1f1f1;
 		}
+
+		#file-upload {
+			position: absolute;
+			left: -9999px;
+		}
+
+		label[for="file-upload"] {
+			padding: 2px 10px;
+			font-size: 13px;
+			margin: 0 0 0 3px !important;
+			display: inline-block;
+			background: #DCDCDC;
+			border: 1px solid #888888;
+			color: #444444;
+			cursor: pointer;
+			border-radius: 3px;
+		}
+
+		label[for="file-upload"]:hover {
+			background: #e0e0e0;
+		}
+
+		#filename {
+			padding: 3px 10px;
+			font-size: 13px;
+			float: left;
+			white-space: nowrap;
+			overflow: hidden;
+		}
 	</style>
 </head>
 
@@ -50,12 +79,18 @@
 				<tr>
 					<th>파일</th>
 					<td>
-						<input type="file" class="form-control-file" id="ntFile">
+						<span id="filename">&nbsp;</span>
+						<label for="file-upload">파일찾기<input type="file" id="file-upload"></label>
 					</td>
 				</tr>
 				<tr>
 					<th style="height: 65px">읽기대상</th>
 					<td>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" id="ntTargetAll"
+								   name="ntTarget" value="전체" onclick="onlyCheck(this, name); targetCheck(id);">
+							<label class="form-check-label" for="ntTargetAll">전체&nbsp</label>
+						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox" id="ntTargetCus"
 								   name="ntTarget" value="고객" onclick="onlyCheck(this, name); targetCheck(id);">
@@ -72,7 +107,9 @@
 								   name="ntTarget" value="병원" onclick="onlyCheck(this, name); targetCheck(id);">
 							<label class="form-check-label" for="ntTargetHos">병원&nbsp</label>
 						</div>
-						<div class="form-check form-check-inline" id="target" style="width: 350px"></div>
+						<div class="form-check form-check-inline" id="target" style="width: 350px">
+
+						</div>
 					</td>
 				</tr>
 				<tr>
@@ -111,24 +148,24 @@ require('check_data.php');
 </html>
 
 <script>
-
 	function targetCheck(id) {
 		$("#target").empty();
+
 		if ($("#" + id + "").is(':checked')) {
 			if (id == 'ntTargetCus' || id == 'ntTargetCom') {
-				$("#target").append(
+				$("#target").html(
 						'<select id="ntComName" class="form-control" style="margin-right: 10px"' +
 						'onchange="setCompanySelectOption(this,\'' + 'ntComBranch' + '\')">' +
-						'<option selected>-선택-</option>' +
+						'<option selected value="all">-전체-</option>' +
 						'</select>' +
 						'<select id="ntComBranch" class="form-control">' +
 						'<option selected>-선택-</option>' +
 						'</select>'
 				);
 			} else if (id == 'ntTargetHos') {
-				$("#target").append(
+				$("#target").html(
 						'<select id="ntHosName" class="form-control" style="margin-right: 10px">' +
-						'<option selected>-선택-</option>' +
+						'<option selected value="all">-전체-</option>' +
 						'</select>'
 				);
 			}
@@ -190,7 +227,6 @@ require('check_data.php');
 		var saveItems = new Object();
 
 		saveItems.title = document.getElementById('ntTitle').value;
-		saveItems.fileName = "파일이름";
 		saveItems.author = "관리자";
 		saveItems.content = document.getElementById('ntContent').value;
 
@@ -203,34 +239,74 @@ require('check_data.php');
 		}
 
 		var name = "";
-		if (saveItems.target == "고객" || saveItems.target == "기업") {
-			name += $("#ntComName option:selected").val();
-			name += "-";
-			name += $("#ntComBranch option:selected").val();
+		if (saveItems.target == "전체") {
+			name = 'all';
+		} else if (saveItems.target == "고객" || saveItems.target == "기업") {
+			if ($("#ntComName option:selected").val() == 'all') {
+				name = 'all';
+			} else {
+				name += $("#ntComName option:selected").val();
+				name += "-";
+				name += $("#ntComBranch option:selected").val();
+			}
 		} else if (saveItems.target == "병원") {
-			name += $("#ntHosName option:selected").val();
+			name = $("#ntHosName option:selected").val();
 		}
 		saveItems.targetName = name;
 
 		console.log(saveItems);
 
-		if(saveItems.title == "") {
+		if (saveItems.title == "") {
 			alert("제목을 입력해주세요.")
 		} else if (saveItems.content == "") {
 			alert("내용을 입력해주세요.")
 		} else if (saveItems.target == "" || saveItems.target == null || saveItems.target.indexOf("-선택-") > -1) {
-			alert("읽기대상을 선택해주세요." + saveItems.target.indexOf("-선택-"));
+			alert("읽기대상을 선택해주세요.");
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M013004_REQ', saveItems).then(res => {
-					if (res.data.message == "success") {
-						alert("저장되었습니다.");
-						history.back();
+					if (res.data.message != "FAILED") {
+						console.log(res.data);
+						uploadFile(res.data.message);
 					}
 				});
 			} else {
 				return false;
 			}
 		}
+	}
+
+	//파일 업로드명 셋팅
+	$('#file-upload').change(function () {
+		var filepath = this.value;
+		var m = filepath.match(/([^\/\\]+)$/);
+		var filename = m[1];
+		$('#filename').text(filename);
+	});
+
+	//파일 업로드
+	function uploadFile(id) {
+		var file = document.getElementById('file-upload');
+
+		if (file.files[0] == null) {
+			alert('저장되었습니다');
+			location.href = '/master/service_notice';
+		}
+
+		var params = new FormData();
+		params.append("file", file.files[0]);
+		params.append('fileName', $('#filename').text());
+		params.append('noticeId', id);
+		console.log(params);
+
+		instance.post('M01300402', params, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		}).then(res => {
+			alert('저장되었습니다');
+			location.href = '/master/service_notice';
+		});
+		return true;
 	}
 </script>

@@ -7,6 +7,12 @@
 	require('head.php');
 	?>
 
+	<style>
+		#billInfos tbody tr {
+			cursor: pointer;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -98,7 +104,6 @@
 					<th>개인부담금</th>
 					<th>계산일자</th>
 					<th style="width: 15%">청구기간</th>
-					<th style="width: 7%"></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -166,7 +171,6 @@ require('check_data.php');
 
 	//검색 selector
 	function setBillSelectData(data) {
-
 		//회사
 		var name = [];
 		var nameSize = 0;
@@ -223,8 +227,7 @@ require('check_data.php');
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			html += '<tr>"';
-			html += '<tr>';
+			html += '<tr onclick="sendBillID(\'' + data[i].bid + '\')">';
 			html += '<td><input type="checkbox" name="billingCheck" onclick="clickOne(name)"></td>';
 
 			var no = i+1;
@@ -232,15 +235,13 @@ require('check_data.php');
 
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
-			html += '<td>' + data[i].ipCount + '</td>';
-			html += '<td>' + data[i].billCount + '</td>';
-			html += '<td>' + data[i].coCharge + '</td>';
-			html += '<td>' + data[i].pcCharge + '</td>';
-			html += '<td>' + data[i].psnCharge + '</td>';
+			html += '<td>' + data[i].ipCount.toLocaleString() + '</td>';
+			html += '<td>' + data[i].billCount.toLocaleString() + '</td>';
+			html += '<td>' + data[i].coCharge.toLocaleString() + '</td>';
+			html += '<td>' + data[i].pcCharge.toLocaleString() + '</td>';
+			html += '<td>' + data[i].psnCharge.toLocaleString() + '</td>';
 			html += '<td>' + data[i].calculateDate + '</td>';
 			html += '<td>' + data[i].calculateStartDate + "~" +  data[i].calculateEndDate+'</td>';
-			html += '<td> <a style="color: white" onclick="sendBillID(\'' + data[i].bid + '\')">' +
-					'<div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">상세보기</div></a></td>';
 			html += '</tr>';
 
 			$("#billInfos").append(html);

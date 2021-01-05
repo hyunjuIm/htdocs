@@ -36,7 +36,7 @@
 			</div>
 
 			<div style="float:right; display: flex; flex-direction: row; align-items: center;margin-bottom: 10px">
-				<select id="ntYear" class="form-control" style="width: 100px"></select>
+				<select id="ntYear" class="form-control" style="width: 100px; margin-right: 3px"></select>
 				<div class="search">
 					<input type="text" id="searchNoticeWord" class="search-input" placeholder="제목으로 검색하세요">
 					<div class="search-icon" onclick="searchNoticeData()"></div>

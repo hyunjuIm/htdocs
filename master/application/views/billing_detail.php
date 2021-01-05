@@ -31,10 +31,10 @@
 				<thead>
 				<tr>
 					<th style="width: 4%"><input type="checkbox" id="billingDetailCheck" name="billingDetailCheck" onclick="clickAll(id, name)"></th>
-					<th style="width: 4%;color: #3529b1; font-weight: bold">NO</th>
+					<th style="width: 4%">NO</th>
 					<th style="width: 13%">고객사명</th>
 					<th style="width: 13%">사업장명</th>
-					<th style="width: 13%">병원명</th>
+					<th style="width: 13%;color: #3529b1; font-weight: bold">병원명</th>
 					<th style="width: 13%">서비스명</th>
 					<th>기업부담금</th>
 					<th>공단부담금</th>
@@ -90,17 +90,17 @@ require('check_data.php');
 			html += '<td><input type="checkbox" name="billingDetailCheck" onclick="clickOne(name)"></td>';
 
 			var no = i+1;
-			html += '<td data-toggle="modal" data-target="#billingDetailModal" ' +
-					'style="cursor: pointer; color: #3529b1; font-weight: bold" '+
-					'onClick="clickBillingDetail(\'' + bId.bId + '\', \'' + data[i].hosId + '\')">' + no + '</td>';
+			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
-			html += '<td>' + data[i].hosName + '</td>';
+			html += '<td data-toggle="modal" data-target="#billingDetailModal" ' +
+					'style="cursor: pointer; color: #3529b1; font-weight: bold" '+
+					'onClick="clickBillingDetail(\'' + bId.bId + '\', \'' + data[i].hosId + '\')">' + data[i].hosName + '</td>';
 			html += '<td>' + data[i].serviceName + '</td>';
-			html += '<td>' + data[i].coCharge + '</td>';
-			html += '<td>' + data[i].pcCharge + '</td>';
-			html += '<td>' + data[i].psnCharge + '</td>';
+			html += '<td>' + data[i].coCharge.toLocaleString() + '</td>';
+			html += '<td>' + data[i].pcCharge.toLocaleString() + '</td>';
+			html += '<td>' + data[i].psnCharge.toLocaleString() + '</td>';
 
 			//계산서
 			if (data[i].showBill) {

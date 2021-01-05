@@ -245,8 +245,13 @@ require('inquiry_modal.php');
 			tbody += '<tr>' +
 					'<td>' + data[i].qnaId + '</td>' +
 					'<td class="title" data-toggle="modal" data-target="#inquiryDetailModal" onclick="detailInquiryPage(\'' + data[i].qnaId + '\', \'' + data[i].status + '\')">' + data[i].title + '</td>' +
-					'<td>' + data[i].createDate + '</td>' +
-					'<td>' + data[i].answeredDate + '</td>';
+					'<td>' + data[i].createDate + '</td>';
+
+			if(data[i].answeredDate == null || data[i].answeredDate == '') {
+				tbody += '<td>&nbsp;</td>';
+			} else {
+				tbody += '<td>' + data[i].answeredDate + '</td>';
+			}
 			if (data[i].status) {
 				tbody += '<td style="color: #5849ea">답변완료</td>';
 			} else {

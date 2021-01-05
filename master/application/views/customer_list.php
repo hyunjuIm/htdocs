@@ -8,30 +8,20 @@
 	?>
 
 	<style>
-		#excelUploadFile {
-			position: absolute;
-			display: none;
-		}
-
-		label[for="excelUploadFile"] {
-			padding: 0.5em;
-			display: inline-block;
-			background: #5645ED;
-			color: white;
+		#customerInfos tbody tr{
 			cursor: pointer;
 		}
 
-		label[for="excelUploadFile"]:hover {
-			opacity: 0.9;
+		input[type=date] {
+			width: 120px;
+			border: none;
+			text-align: center;
+			outline: none;
 		}
 
-		#filename {
-			padding: 0.5em;
-			float: left;
-			width: 300px;
-			white-space: nowrap;
-			overflow: hidden;
-			background: whitesmoke;
+		input[type="date"]::-webkit-calendar-picker-indicator {
+			padding: 0;
+			margin-left: 3px;
 		}
 	</style>
 </head>
@@ -76,7 +66,7 @@
 						<div class="btn-purple-square" data-toggle="modal" data-target="#customerUploadModal">
 							신규회원 엑셀 업로드
 						</div>
-						<div class="btn-save-square" onclick="searchCustomerData(0)">
+						<div class="btn-save-square" onclick="searchInformation(0)">
 							검색
 						</div>
 					</div>
@@ -93,7 +83,7 @@
 					<div class="search">
 						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요"
 							   onkeyup="enterKey()">
-						<div class="search-icon" onclick="searchCustomerData()"></div>
+						<div class="search-icon" onclick="searchInformation()"></div>
 					</div>
 				</h6>
 			</div>
@@ -111,7 +101,7 @@
 					<th style="width: 5%">NO</th>
 					<th style="width: 8%">사번</th>
 					<th style="width: 10%">아이디</th>
-					<th style="width: 8%;color: #3529b1">이름</th>
+					<th>이름</th>
 					<th>소속</th>
 					<th>생년월일</th>
 					<th>연락처</th>
@@ -154,23 +144,22 @@ require('check_data.php');
 
 
 <script type="text/javascript">
+	var pageCount = 0;
+	var pageNum = 0;
+
 	//검색항목리스트
 	instance.post('M001001_RES').then(res => {
 		setCustomerSelectData(res.data);
 	});
 
-	var pageCount = 0;
-	var pageNum = 0;
-
-	var companySelect;
-
 	function enterKey() {
 		if (window.event.keyCode == 13) {
 			// 엔터키가 눌렸을 때 실행할 내용
-			searchCustomerData(0);
+			searchInformation(0);
 		}
 	}
 
+	var companySelect;
 	//검색 selector
 	function setCustomerSelectData(data) {
 		//회사
@@ -201,11 +190,16 @@ require('check_data.php');
 		companySelect = data.coNameBranch;
 
 		//로딩 되자마자 초기 셋팅
-		searchCustomerData(0);
+		searchInformation(0);
 	}
 
 	//페이징-숫자클릭
-	function searchCustomerData(index) {//숫자클릭
+	function searchInformation(index) {
+		if($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
+		}
+
 		pageNum = index;
 		drawTable();
 	}
@@ -225,7 +219,7 @@ require('check_data.php');
 			searchItems.companyBranch = "all";
 		} else if (searchItems.companyName != "-전체-" && searchItems.companyBranch == "-선택-") {
 			alert("사업장을 선택해주세요.");
-			return;
+			return false;
 		}
 
 		instance.post('M001002_REQ_RES', searchItems).then(res => {
@@ -246,26 +240,16 @@ require('check_data.php');
 		drawTable();
 	}
 
-	//회원관리 테이블
-	function setCustomerData(data, index) {
-		$('#customerInfos > tbody').empty();
+	//페이징
+	function setPaging(index) {
 		$("#paging").empty();
-
-		if(data.length == 0) {
-			var html = '';
-			html += '<tr>';
-			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
-			html += '</tr>';
-			$("#customerInfos").append(html);
-			return false;
-		}
 
 		var html = "";
 		var pre = parseInt(index) - 1;
 		if (pre < 0) {
 			pre = 0;
 		}
-		html += '<a class="arrow pprev" onclick= "searchCustomerData(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
 		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
@@ -276,9 +260,9 @@ require('check_data.php');
 
 			if ((i - 1) < pageCount) {
 				if (i == index + 1) {
-					html += '<a onclick= "searchCustomerData(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
 				} else {
-					html += '<a onclick= "searchCustomerData(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
 				}
 			}
 
@@ -287,12 +271,28 @@ require('check_data.php');
 
 		var html = "";
 		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchCustomerData(\'' + (pageCount - 1) + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
+	}
+
+	//회원관리 테이블
+	function setCustomerData(data, index) {
+		setPaging(index);
+		
+		$('#customerInfos > tbody').empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#customerInfos").append(html);
+			return false;
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
-			html += '<tr>';
+			html += '<tr data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">';
 			html += '<td><input type="checkbox" name="customerCheck" value=\'' + data[i].id + '\' onclick="clickOne(name)"></td>';
 
 			var no = 0;
@@ -302,10 +302,10 @@ require('check_data.php');
 				no = index * 10 + (i+1);
 			}
 			html += '<td>' + no + '</td>';
+
 			html += '<td>' + data[i].id + '</td>';
 			html += '<td>' + data[i].email + '</td>';
-			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
-					'data-toggle="modal" data-target="#customerModal" onClick="clickDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
+			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].companyName + '-' + data[i].companyBranch + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].phone + '</td>';

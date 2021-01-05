@@ -300,7 +300,6 @@
 		sendID.bId = bId;
 		sendID.hosId = hosId;
 
-
 		instance.post('M009008_REQ_RES', sendID).then(res => {
 			setBillingModalDetailData(res.data);
 		});
@@ -325,9 +324,9 @@
 			html += '<td>' + data[i].famName + '</td>';
 			html += '<td>' + data[i].famGrade + '</td>';
 			html += '<td>' + data[i].ipDate + '</td>';
-			html += '<td>' + data[i].coCharge + '</td>';
-			html += '<td>' + data[i].pcCharge + '</td>';
-			html += '<td>' + data[i].psnCharge + '</td>';
+			html += '<td>' + data[i].coCharge.toLocaleString() + '</td>';
+			html += '<td>' + data[i].pcCharge.toLocaleString() + '</td>';
+			html += '<td>' + data[i].psnCharge.toLocaleString() + '</td>';
 			html += '</tr>';
 
 			$("#billDetailModalInfos").append(html);

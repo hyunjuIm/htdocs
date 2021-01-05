@@ -18,6 +18,14 @@
 			width: 200px;
 			background: #f1f1f1;
 		}
+
+		.btn {
+			width: fit-content;
+			display: none;
+			font-size: 12px;
+			margin-left: 5px;
+			padding: 5px 10px;
+		}
 	</style>
 </head>
 
@@ -52,7 +60,12 @@
 				</tr>
 				<tr>
 					<th>파일</th>
-					<td id="ntFile"></td>
+					<td>
+						<div style="display: flex">
+							<div id="ntFile"></div>
+							<div class="btn btn-secondary" id="BtnNtFile" onclick="downloadFile()">다운로드</div>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<th>읽기대상</th>
@@ -96,21 +109,46 @@ require('check_data.php');
 			location.href.lastIndexOf('=') + 1
 		);
 		nId.id = val;
-		nId.dummy = "123";
 
 		instance.post('M013003_REQ_RES', nId).then(res => {
 			setNoticeDetailData(res.data);
 		});
 	})
 
+	var fileName;
 	function setNoticeDetailData(data){
-
-
 		document.getElementById('ntTitle').innerHTML = data.title;
 		document.getElementById('ntAuthor').innerHTML = data.author;
-		document.getElementById('ntFile').innerHTML = data.fileName;
+		if(data.fileName != '' && data.fileName != null) {
+			$('#BtnNtFile').show();
+			document.getElementById('ntFile').innerHTML = data.fileName;
+			fileName = data.fileName;
+		} else {
+			$('#BtnNtFile').hide();
+		}
 		document.getElementById('ntTarget').innerHTML = data.target+ " ) " +data.targetName;
 		document.getElementById('ntContent').innerHTML = textareaLine(data.content);
+	}
+
+	//파일 다운로드
+	function downloadFile() {
+		var sendItems = new Object();
+		sendItems.id = nId.id;
+
+		instance.post('M01300403', sendItems,{
+			responseType: 'arraybuffer',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(response => {
+			console.log(response);
+			const type = response.headers['content-type'];
+			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
+			const link = document.createElement('a');
+			link.href = window.URL.createObjectURL(blob);
+			link.download = fileName;
+			link.click();
+		})
 	}
 
 	//공지 수정에 값 던지기
