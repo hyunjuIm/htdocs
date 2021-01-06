@@ -85,7 +85,7 @@
 	<div class="row">
 	<form style="margin: 0 auto; width: 70%">
 		<div style="float:right">
-			<div class="btn-cancel-square" onclick="cancelBack()">목록</div>
+			<div class="btn-cancel-square" onclick="location.href='/master/service_notice'">목록</div>
 			<div class="btn-purple-square" onclick="sendNoticeID()"> 수정 </div>
 			<div class="btn-light-purple-square" onclick="deleteNotice()"> 삭제 </div>
 		</div>

@@ -12,8 +12,29 @@
 			cursor: pointer;
 		}
 
-		input[type=date] {
+		table input[type=text] {
+			width: 100%;
+			background: none;
+			outline: none;
+			border: none;
+			text-align: center;
+		}
+
+		table input[type=date] {
 			width: 110px;
+		}
+
+		table textarea {
+			width: 100%;
+			height: 150px;
+			background: none;
+			outline: none;
+			border: none;
+			font-weight: 300;
+		}
+
+		#info6 th{
+			vertical-align: top !important;
 		}
 	</style>
 
@@ -271,6 +292,7 @@ require('check_data.php');
 	}
 
 	function drawTable() {
+		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
 		searchItems.servedYear = $("#servedYear option:selected").val();
@@ -280,6 +302,7 @@ require('check_data.php');
 		searchItems.reservationStatus = $("#reservationStatus option:selected").val();
 		searchItems.hospitalName = $("#hospitalName option:selected").val();
 
+		searchItems.pageNum = pageNum;
 		searchItems.searchWord =  $("#searchWord").val();
 
 		if (searchItems.servedYear == "-전체-") {

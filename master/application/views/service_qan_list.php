@@ -40,7 +40,6 @@
 				고객센터
 			</div>
 
-
 			<div class="menu-title" style="float:right">
 				<ul class="img-circle">
 					<div style="display: flex">
@@ -52,8 +51,8 @@
 						</select>
 						<div>
 							<div class="search">
-								<input type="text" id="searchQnAWord" class="search-input" placeholder="제목으로 검색하세요">
-								<div class="search-icon" onclick="searchQnAData()"></div>
+								<input type="text" id="searchWord" class="search-input" placeholder="제목으로 검색하세요" onkeyup="enterKey();">
+								<div class="search-icon" onclick="searchInformation(0)"></div>
 							</div>
 						</div>
 					</div>
@@ -101,15 +100,21 @@ require('check_data.php');
 </html>
 
 <script>
+	var pageCount = 0;
+	var pageNum = 0;
 
 	//검색항목리스트
 	instance.post('M014001_RES').then(res => {
 		setQnAOption(res.data);
 	});
 
-	var pageCount = 0;
-	var pageNum = 0;
-
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchInformation(0);
+		}
+	}
+	
 	//검색 selector
 	function setQnAOption(data) {
 		//회사
@@ -118,87 +123,115 @@ require('check_data.php');
 			html += '<option>' + data.coNameBranch[i] + '</option>'
 			$("#qnaCoNameBranch").append(html);
 		}
-		
-		pageCount = 0;
-		for (i = 0; i < data.count; i += 10) {
-			pageCount++;
-		}
-		console.log(pageCount);
 
 		//로딩 되자마자 초기 셋팅
-		searchQnAData(0);
+		searchInformation(0);
+	}
+
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		if($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
+		}
+
+		pageNum = index;
+		drawTable();
 	}
 
 	function drawTable() {
 		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
-		searchItems.pagingNum = pageNum;
+		searchItems.pageNum = pageNum;
 		if($("#qnaCoNameBranch option:selected").val() == "-전체-") {
 			searchItems.coNameBranch = "all";
 		} else {
 			searchItems.coNameBranch = $("#qnaCoNameBranch option:selected").val();
 		}
-		searchItems.searchWord = $("#searchQnAWord").val();
+		searchItems.searchWord = $("#searchWord").val();
 
 		instance.post('M014002_REQ_RES', searchItems).then(res => {
-			setQnAListData(res.data, pageNum);
-		});
-	}
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
 
-	//페이징-숫자클릭
-	function searchQnAData(index) {//숫자클릭
-		pageNum = index;
-		drawTable();
+			setQnAListData(res.data.qnADTOList, pageNum);
+			console.log(res.data);
+		});
 	}
 
 	//페이징-화살표클릭
 	function pmPageNum(val) {//화살표클릭
-		console.log("before: pageNum: " + pageNum + ", pageCount: " + pageCount + ", val: " + val);
-
-		pageNum += parseInt(val);
+		pageNum = Math.floor(parseInt(val) / 10) * 10;
 		if (pageNum < 0) pageNum = 0;
 		if (pageCount <= pageNum) pageNum = pageCount - 1;
-
-		console.log("after: pageNum: " + pageNum + ", pageCount: " + pageCount + ", val: " + val);
 		drawTable();
 	}
 
-	//QnA 리스트 테이블
-	function setQnAListData(data, index) {
-
-
-		$("#QnAInfos > tbody").empty();
+	//페이징
+	function setPaging(index) {
 		$("#paging").empty();
 
 		var html = "";
-		html += '<a class="arrow pprev" onclick= "searchQnAData(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
+		var pre = parseInt(index) - 1;
+		if (pre < 0) {
+			pre = 0;
+		}
+		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
-		for (i = 0; i < pageCount; i++) {
+		var start = index - Math.floor((index % 10)) + 1;
+
+		for (i = start; i < (start + 10); i++) {
 			var html = '';
 
-			var num = i + 1;
-
-			if (i == index) {
-				html += '<a onclick= "searchQnAData(\'' + i + '\')" class="active">' + num + '</a>';
-			} else {
-				html += '<a onclick= "searchQnAData(\'' + i + '\')" href="#">' + num + '</a>';
+			if ((i - 1) < pageCount) {
+				if (i == index + 1) {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+				} else {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+				}
 			}
 
 			$("#paging").append(html);
 		}
 
 		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchQnAData(\'' + (pageCount - 1) + '\')" href="#"></a>'
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
+	}
+
+	//QnA 리스트 테이블
+	function setQnAListData(data, index) {
+		setPaging(index);
+
+		$("#QnAInfos > tbody").empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="6">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#QnAInfos").append(html);
+			return false;
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td>' + data[i].id + '</td>';
+
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
+			html += '<td>' + no + '</td>';
+
 			html += '<td>' + data[i].coNameBranch + '</td>';
 			html += '<td>' + data[i].cuName + '</td>';
 			html += '<td class="title" data-toggle="modal" data-target="#qnaModal" onclick="sendQnAID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
@@ -219,9 +252,7 @@ require('check_data.php');
 	function sendQnAID(index) {
 		var sendID = new Object();
 		sendID.id = index;
-
 		qnaID = index;
-
 		instance.post('M014003_REQ_RES', sendID).then(res => {
 			setQnADetailData(res.data);
 		});

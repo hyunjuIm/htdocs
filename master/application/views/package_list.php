@@ -7,6 +7,16 @@
 	require('head.php');
 	?>
 
+	<style>
+		table input[type=text] {
+			width: 100%;
+			background: none;
+			outline: none;
+			border: none;
+			text-align: center;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -140,6 +150,16 @@
 		</form>
 	</div>
 
+	<!--페이징-->
+	<div class="row">
+		<form style="margin: 0 auto; width: 85%; padding: 10px">
+			<div class="page_wrap">
+				<div class="page_nation" id="paging">
+				</div>
+			</div>
+		</form>
+	</div>
+
 </div>
 <!--콘텐츠 내용-->
 
@@ -159,58 +179,22 @@ require('check_data.php');
 </html>
 
 <script type="text/javascript">
+	var pageCount = 0;
+	var pageNum = 0;
+
 	//검색항목리스트
 	instance.post('M006001_RES').then(res => {
 		setPackageSelectData(res.data);
 	});
 
-	searchInformation();
-
-	//검색
-	function searchInformation() {
-		var searchItems = new Object();
-
-		$('#packageInfos > tbody').empty();
-
-		searchItems.year = $("#year option:selected").val();
-		searchItems.price = $("#price option:selected").val();
-		searchItems.coName = $("#coName option:selected").val();
-		searchItems.coBranch = $("#coBranch option:selected").val();
-		searchItems.service = $("#service option:selected").val();
-		searchItems.hoName = $("#hoName option:selected").val();
-		searchItems.status = $("#status option:selected").val();
-
-		searchItems.searchWord =  $("#searchWord").val();
-		console.log(searchItems);
-
-		if (searchItems.year == "-전체-") {
-			searchItems.year = "all";
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchInformation(0);
 		}
-		if (searchItems.price == "-전체-") {
-			searchItems.price = "all";
-		}
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-		}
-		if (searchItems.coBranch == "-전체-") {
-			searchItems.coBranch = "all";
-		}
-		if (searchItems.service == "-전체-") {
-			searchItems.service = "all";
-		}
-		if (searchItems.hoName == "-전체-") {
-			searchItems.hoName = "all";
-		}
-		if (searchItems.status == "-전체-") {
-			searchItems.status = "all";
-		}
-
-		instance.post('M006002_REQ_RES', searchItems).then(res => {
-			console.log(searchItems);
-			setPackageData(res.data);
-		});
 	}
 
+	var companySelect;
 	//검색 selector
 	function setPackageSelectData(data) {
 		//수검연도
@@ -274,17 +258,135 @@ require('check_data.php');
 			}
 			$("#status").append(html);
 		}
+
+		//로딩 되자마자 초기 셋팅
+		searchInformation(0);
+	}
+
+	//페이징-숫자클릭
+	function searchInformation(index) {//숫자클릭
+		if($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
+		}
+
+		pageNum = index;
+		drawTable();
+	}
+
+	function drawTable() {
+		pageNum = parseInt(pageNum);
+		var searchItems = new Object();
+
+		searchItems.year = $("#year option:selected").val();
+		searchItems.price = $("#price option:selected").val();
+		searchItems.coName = $("#coName option:selected").val();
+		searchItems.coBranch = $("#coBranch option:selected").val();
+		searchItems.service = $("#service option:selected").val();
+		searchItems.hoName = $("#hoName option:selected").val();
+		searchItems.status = $("#status option:selected").val();
+
+		searchItems.searchWord =  $("#searchWord").val();
+		searchItems.pageNum = pageNum;
+
+		console.log(searchItems);
+
+		if (searchItems.year == "-전체-") {
+			searchItems.year = "all";
+		}
+		if (searchItems.price == "-전체-") {
+			searchItems.price = "all";
+		}
+		if (searchItems.coName == "-전체-") {
+			searchItems.coName = "all";
+		}
+		if (searchItems.coBranch == "-전체-") {
+			searchItems.coBranch = "all";
+		}
+		if (searchItems.service == "-전체-") {
+			searchItems.service = "all";
+		}
+		if (searchItems.hoName == "-전체-") {
+			searchItems.hoName = "all";
+		}
+		if (searchItems.status == "-전체-") {
+			searchItems.status = "all";
+		}
+
+		instance.post('M006002_REQ_RES', searchItems).then(res => {
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
+
+			console.log(searchItems);
+			setPackageData(res.data.packageDTOList, pageNum);
+		});
+	}
+
+	//페이징-화살표클릭
+	function pmPageNum(val) {//화살표클릭
+		pageNum = Math.floor(parseInt(val) / 10) * 10;
+		if (pageNum < 0) pageNum = 0;
+		if (pageCount <= pageNum) pageNum = pageCount - 1;
+		drawTable();
+	}
+
+	//페이징
+	function setPaging(index) {
+		$("#paging").empty();
+
+		var html = "";
+		var pre = parseInt(index) - 1;
+		if (pre < 0) {
+			pre = 0;
+		}
+		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
+		var start = index - Math.floor((index % 10)) + 1;
+
+		for (i = start; i < (start + 10); i++) {
+			if ((i - 1) < pageCount) {
+				if (i == index + 1) {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+				} else {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+				}
+			}
+		}
+
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
+
+		$("#paging").append(html);
 	}
 
 	//패키지 테이블
-	function setPackageData(data) {
+	function setPackageData(data, index) {
+		setPaging(index);
+
+		$('#packageInfos > tbody').empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="14">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#packageInfos").append(html);
+			return false;
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="packageCheck" onclick="clickOne(name)"></td>';
 
-			var no = i+1;
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].coName + '</td>';

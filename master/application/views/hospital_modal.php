@@ -1,3 +1,13 @@
+<style>
+	table textarea {
+		width: 100%;
+		background: none;
+		outline: none;
+		border: none;
+		font-weight: 300;
+	}
+</style>
+
 <!-- 병원 상세 정보 Modal -->
 <div class="modal fade" id="hospitalDetailModal" tabindex="-1" aria-labelledby="hospitalDetailModalLabel"
 	 aria-hidden="true">
@@ -59,7 +69,7 @@
 								</tr>
 								<tr>
 									<th>URL</th>
-									<td style="font-size: 12px">
+									<td>
 										<textarea class="info-input" type="text" id="hos-url"></textarea>
 									</td>
 								</tr>
@@ -311,7 +321,7 @@
 								</tr>
 								<tr>
 									<th>URL</th>
-									<td style="font-size: 12px">
+									<td>
 										<textarea class="info-input" type="text" id="create-hos-url"></textarea>
 									</td>
 								</tr>

@@ -1,3 +1,31 @@
+<style>
+	#excelUploadFile {
+		position: absolute;
+		display: none;
+	}
+
+	label[for="excelUploadFile"] {
+		padding: 0.5em;
+		display: inline-block;
+		background: #5645ED;
+		color: white;
+		cursor: pointer;
+	}
+
+	label[for="excelUploadFile"]:hover {
+		opacity: 0.9;
+	}
+
+	#filename {
+		padding: 0.5em;
+		float: left;
+		width: 300px;
+		white-space: nowrap;
+		overflow: hidden;
+		background: whitesmoke;
+	}
+</style>
+
 <!-- 고객 상세 정보 Modal -->
 <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
 	<div class="modal-dialog " style="max-width: 100%; min-width: auto; display: table;">

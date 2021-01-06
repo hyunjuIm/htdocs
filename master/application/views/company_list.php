@@ -11,19 +11,6 @@
 		#companyInfo tbody tr {
 			cursor: pointer;
 		}
-
-		input[type=date] {
-			width: 90px;
-			border: none;
-			text-align: center;
-			font-size: 13px;
-			outline: none;
-		}
-
-		input[type="date"]::-webkit-calendar-picker-indicator {
-			padding: 0;
-			margin-left: 3px;
-		}
 	</style>
 
 </head>
@@ -236,6 +223,7 @@ require('check_data.php');
 	}
 
 	function drawTable() {
+		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
 		searchItems.year = $("#year option:selected").val();
@@ -243,6 +231,7 @@ require('check_data.php');
 		searchItems.status = $("#status option:selected").val();
 		searchItems.contract = $("#contract option:selected").val();
 
+		searchItems.pageNum = pageNum;
 		searchItems.searchWord = $("#searchWord").val();
 
 		if (searchItems.year == "-전체-") {

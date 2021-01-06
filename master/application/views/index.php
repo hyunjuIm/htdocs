@@ -27,6 +27,7 @@
 
 		#noticeTable .title {
 			text-align: left;
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -177,8 +178,6 @@
 
 	//검진현황판
 	function setStateData(data) {
-
-
 		$("#newReservationNum").append(data.newReservationNum + "명");
 		$("#servedReservationNum").append(data.servedReservationNum + "명");
 		$("#completeNum").append(data.completeNum + "명");
@@ -194,13 +193,18 @@
 			var html = '';
 			html += '<tr>';
 			html += '<td style="width: 10%">' + data[i].id + '</td>';
-			html += '<td class="title">' + data[i].title + '</td>';
+			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			html += '<td style="width: 20%">' + data[i].author + '</td>';
 			html += '<td style="width: 20%">' + data[i].createDate + '</td>';
 			html += '</tr>';
 
 			$("#noticeTable").append(html);
 		}
+	}
+
+	//공지 게시글 디테일에 값 던지기
+	function sendNoticeID(index) {
+		location.href = "/master/service_notice_detail?id=" + index;
 	}
 
 	//담당자정보

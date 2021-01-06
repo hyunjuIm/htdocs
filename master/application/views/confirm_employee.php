@@ -46,7 +46,7 @@
 					</div>
 					<hr>
 					<div style="float: right">
-						<div class="btn-save-square" onclick="searchEmployeeManageInformation(0)">
+						<div class="btn-save-square" onclick="searchInformation(0)">
 							검색
 						</div>
 					</div>
@@ -54,7 +54,6 @@
 			</form>
 		</div>
 	</div>
-
 
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
@@ -103,46 +102,15 @@ require('check_data.php');
 </html>
 
 <script type="text/javascript">
-	var pagingNum = 0;
 	var pageCount = 0;
+	var pageNum = 0;
 
 	//검색항목리스트
 	instance.post('M015001').then(res => {
 		setEmployeeManageOptionData(res.data);
 	});
 
-	searchEmployeeManageInformation(0);
-
-	//검색
-	function searchEmployeeManageInformation(index) {
-		pagingNum = index;
-		var searchItems = new Object();
-
-		searchItems.coName = $("#companyName option:selected").val();
-		searchItems.coBranch = $("#companyBranch option:selected").val();
-		searchItems.pagingNum = pagingNum;
-
-
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-		} else if (searchItems.coBranch == "-선택-") {
-			alert('사업장을 선택해주세요.');
-			return false;
-		}
-
-		console.log(searchItems);
-
-		instance.post('M015002', searchItems).then(res => {
-			console.log(res.data);
-
-			pageCount = 0;
-			for (i = 0; i < res.data.count; i += 10) {
-				pageCount++;
-			}
-			setEmployeeManageData(res.data.helpdeskDTOList);
-		});
-	}
-
+	var companySelect;
 	//검색 selector
 	function setEmployeeManageOptionData(data) {
 		//회사
@@ -174,58 +142,112 @@ require('check_data.php');
 		}
 
 		companySelect = data.coNameBranch;
+
+		//로딩 되자마자 초기 셋팅
+		searchInformation(0);
 	}
 
-	//페이징 - 화살표클릭
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		pageNum = index;
+		drawTable();
+	}
+
+	//검색
+	function drawTable() {
+		pageNum = parseInt(pageNum);
+		var searchItems = new Object();
+
+		searchItems.coName = $("#companyName option:selected").val();
+		searchItems.coBranch = $("#companyBranch option:selected").val();
+
+		searchItems.pageNum = pageNum;
+
+		if (searchItems.coName == "-전체-") {
+			searchItems.coName = "all";
+		} else if (searchItems.coBranch == "-선택-") {
+			alert('사업장을 선택해주세요.');
+			return false;
+		}
+
+		instance.post('M015002', searchItems).then(res => {
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
+			setEmployeeManageData(res.data.helpdeskDTOList, pageNum);
+			console.log(res.data);
+		});
+	}
+
+	//페이징-화살표클릭
 	function pmPageNum(val) {//화살표클릭
-		console.log("before: pagingNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
-
-		pagingNum += parseInt(val);
-		if (pagingNum < 0) pagingNum = 0;
-		if (pageCount <= pagingNum) pagingNum = pageCount - 1;
-
-		console.log("after: pageNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
-		searchEmployeeManageInformation(pagingNum);
+		pageNum = Math.floor(parseInt(val) / 10) * 10;
+		if (pageNum < 0) pageNum = 0;
+		if (pageCount <= pageNum) pageNum = pageCount - 1;
+		drawTable();
 	}
 
-	//패키지 생성 테이블
-	function setEmployeeManageData(data) {
-		$('#employeeManageInfos > tbody').empty();
+	//페이징
+	function setPaging(index) {
 		$("#paging").empty();
 
 		var html = "";
-		var pre = pagingNum - 1;
+		var pre = parseInt(index) - 1;
 		if (pre < 0) {
 			pre = 0;
 		}
-		html += '<a class="arrow pprev" onclick= "searchEmployeeManageInformation(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
+		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
 		$("#paging").append(html);
 
-		for (i = 0; i < pageCount; i++) {
+		var start = index - Math.floor((index % 10)) + 1;
+
+		for (i = start; i < (start + 10); i++) {
 			var html = '';
 
-			var num = i + 1;
-
-			if (i == pagingNum) {
-				html += '<a onclick= "searchEmployeeManageInformation(\'' + i + '\')" class="active">' + num + '</a>';
-			} else {
-				html += '<a onclick= "searchEmployeeManageInformation(\'' + i + '\')" href="#">' + num + '</a>';
+			if ((i - 1) < pageCount) {
+				if (i == index + 1) {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+				} else {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+				}
 			}
 
 			$("#paging").append(html);
 		}
 
 		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchEmployeeManageInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
 		$("#paging").append(html);
+	}
+
+	//패키지 생성 테이블
+	function setEmployeeManageData(data, index) {
+		setPaging(index);
+
+		$('#employeeManageInfos > tbody').empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#employeeManageInfos").append(html);
+			return false;
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
 
-			var no = data[i].id.substr(5, data[i].id[data[i].id.length]);
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].division + '</td>';

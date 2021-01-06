@@ -13,6 +13,10 @@
 			background: white;
 		}
 
+		body {
+			height: 100%;
+		}
+
 		p {
 			text-align: center;
 			color: #3529b1;

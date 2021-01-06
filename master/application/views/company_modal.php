@@ -1,3 +1,18 @@
+<style>
+	table input[type=date] {
+		width: 90px;
+		border: none;
+		text-align: center;
+		font-size: 13px;
+		outline: none;
+	}
+
+	table input[type="date"]::-webkit-calendar-picker-indicator {
+		padding: 0;
+		margin-left: 3px;
+	}
+</style>
+
 <!-- 기업 상세 정보 Modal -->
 <div class="modal fade" id="companyDetailModal" tabindex="-1" aria-labelledby="companyDetailModalLabel"
 	 aria-hidden="true">
@@ -147,10 +162,6 @@
 									<tr>
 										<th>이메일</th>
 										<td id="com-email" contentEditable="true"></td>
-									</tr>
-									<tr>
-										<th>비밀번호</th>
-										<td id="com-password" contentEditable="true"></td>
 									</tr>
 									<tr>
 										<th>이름</th>
@@ -640,7 +651,6 @@
 
 		//담당자 추가 입력폼 초기화
 		document.getElementById('com-email').innerHTML = "";
-		document.getElementById('com-password').innerHTML = "";
 		document.getElementById('com-name').innerHTML = "";
 		document.getElementById('com-phone').innerHTML = "";
 
@@ -671,7 +681,6 @@
 
 		saveItems.companyId = cmnId.companyId;
 		saveItems.email = document.getElementById('com-email').innerText;
-		saveItems.password = document.getElementById('com-password').innerText;
 		saveItems.name = document.getElementById('com-name').innerText;
 		saveItems.phone = document.getElementById('com-phone').innerText;
 
@@ -680,8 +689,6 @@
 		//입력된 정보 검사
 		if (saveItems.email == "") {
 			alert("이메일을 입력해주세요.");
-		} else if (saveItems.password == "") {
-			alert("비밀번호을 입력해주세요.");
 		} else if (saveItems.name == "") {
 			alert("이름을 입력해주세요.");
 		} else if (saveItems.phone == "") {
@@ -698,7 +705,6 @@
 						alert("저장되었습니다.");
 						clickCompanyDetail(saveItems.companyId);
 						document.getElementById('com-email').innerHTML = "";
-						document.getElementById('com-password').innerHTML = "";
 						document.getElementById('com-name').innerHTML = "";
 						document.getElementById('com-phone').innerHTML = "";
 					}

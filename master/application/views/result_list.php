@@ -97,7 +97,7 @@
 					</div>
 					<hr>
 					<div style="float: right">
-						<div class="btn-save-square"  onclick="searchResultInformation()">
+						<div class="btn-save-square"  onclick="searchInformation(0)">
 							검색
 						</div>
 					</div>
@@ -133,6 +133,16 @@
 		</form>
 	</div>
 
+	<!--페이징-->
+	<div class="row">
+		<form style="margin: 0 auto; width: 85%; padding: 10px">
+			<div class="page_wrap">
+				<div class="page_nation" id="paging">
+				</div>
+			</div>
+		</form>
+	</div>
+
 </div>
 <!--콘텐츠 내용-->
 
@@ -149,52 +159,19 @@ require('check_data.php');
 </html>
 
 <script type="text/javascript">
+	var pageCount = 0;
+	var pageNum = 0;
 
 	//검색항목리스트
 	instance.post('M010003_RES').then(res => {
 		setResultOptionData(res.data);
 	});
 
-	searchResultInformation();
-
-	//검색
-	function searchResultInformation() {
-		var searchItems = new Object();
-
-		$('#resultInfos > tbody').empty();
-
-		searchItems.coName = $("#resComName option:selected").val();
-		searchItems.coBranch = $("#resComBranch option:selected").val();
-		searchItems.hoName = $("#hosName option:selected").val();
-		searchItems.resultUpload = $("#resultUpload option:selected").val();
-		searchItems.ipStartDate = $("#ipStartDate").val();
-		searchItems.ipEndDate = $("#ipEndDate").val();
-
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
+	function enterKey() {
+		if (window.event.keyCode == 13) {
+			// 엔터키가 눌렸을 때 실행할 내용
+			searchInformation(0);
 		}
-		if (searchItems.coBranch == "-전체-") {
-			searchItems.coBranch = "all";
-		}
-		if (searchItems.hoName == "-전체-") {
-			searchItems.hoName = "all";
-		}
-		if (searchItems.resultUpload == "-전체-") {
-			searchItems.resultUpload = "all";
-		}
-		//TODO: 수검일 데이터 넣기
-		if (searchItems.ipStartDate == "") {
-			searchItems.ipStartDate = "2020-01-01";
-		}
-		if (searchItems.ipEndDate == "") {
-			searchItems.ipEndDate = "2025-01-01";
-		}
-
-		console.log(searchItems);
-
-		instance.post('M010004_REQ_RES', searchItems).then(res => {
-			setResultData(res.data);
-		});
 	}
 
 	//검색 selector
@@ -246,18 +223,131 @@ require('check_data.php');
 			$("#resultUpload").append(html);
 		}
 
+		//로딩 되자마자 초기 셋팅
+		searchInformation(0);
+	}
+
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		pageNum = index;
+		drawTable();
+	}
+
+	//검색
+	function drawTable() {
+		pageNum = parseInt(pageNum);
+		var searchItems = new Object();
+
+		searchItems.coName = $("#resComName option:selected").val();
+		searchItems.coBranch = $("#resComBranch option:selected").val();
+		searchItems.hoName = $("#hosName option:selected").val();
+		searchItems.resultUpload = $("#resultUpload option:selected").val();
+		searchItems.ipStartDate = $("#ipStartDate").val();
+		searchItems.ipEndDate = $("#ipEndDate").val();
+
+		searchItems.pageNum = pageNum;
+
+		if (searchItems.coName == "-전체-") {
+			searchItems.coName = "all";
+		}
+		if (searchItems.coBranch == "-전체-") {
+			searchItems.coBranch = "all";
+		}
+		if (searchItems.hoName == "-전체-") {
+			searchItems.hoName = "all";
+		}
+		if (searchItems.resultUpload == "-전체-") {
+			searchItems.resultUpload = "all";
+		}
+		//TODO: 수검일 데이터 넣기
+		if (searchItems.ipStartDate == "") {
+			searchItems.ipStartDate = "2020-01-01";
+		}
+		if (searchItems.ipEndDate == "") {
+			searchItems.ipEndDate = "2025-01-01";
+		}
+
+		console.log(searchItems);
+
+		instance.post('M010004_REQ_RES', searchItems).then(res => {
+			pageCount = 0;
+			for (i = 0; i < res.data.count; i += 10) {
+				pageCount++;
+			}
+			setResultData(res.data.reservationDTOList, pageNum);
+			console.log(res.data);
+		});
+	}
+
+	//페이징-화살표클릭
+	function pmPageNum(val) {//화살표클릭
+		pageNum = Math.floor(parseInt(val) / 10) * 10;
+		if (pageNum < 0) pageNum = 0;
+		if (pageCount <= pageNum) pageNum = pageCount - 1;
+		drawTable();
+	}
+
+	//페이징
+	function setPaging(index) {
+		$("#paging").empty();
+
+		var html = "";
+		var pre = parseInt(index) - 1;
+		if (pre < 0) {
+			pre = 0;
+		}
+		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
+		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
+		$("#paging").append(html);
+
+		var start = index - Math.floor((index % 10)) + 1;
+
+		for (i = start; i < (start + 10); i++) {
+			var html = '';
+
+			if ((i - 1) < pageCount) {
+				if (i == index + 1) {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+				} else {
+					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+				}
+			}
+
+			$("#paging").append(html);
+		}
+
+		var html = "";
+		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
+		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
+		$("#paging").append(html);
 	}
 
 	//패키지 생성 테이블
-	function setResultData(data) {
+	function setResultData(data, index) {
+		setPaging(index);
 
+		$('#resultInfos > tbody').empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="11">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#resultInfos").append(html);
+			return false;
+		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="resultCheck" onclick="clickOne(name)"></td>';
 
-			var no = i+1;
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].hoName + '</td>';

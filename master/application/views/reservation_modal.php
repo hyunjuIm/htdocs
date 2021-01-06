@@ -27,7 +27,9 @@
 								</tr>
 								<tr>
 									<th>성명</th>
-									<td id="cus-familyName" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-familyName">
+									</td>
 								</tr>
 								<tr>
 									<th>생년월일</th>
@@ -37,15 +39,19 @@
 								</tr>
 								<tr>
 									<th>연락처</th>
-									<td id="cus-familyPhone" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-familyPhone">
+									</td>
 								</tr>
 								<tr>
 									<th>주소</th>
-									<td id="cus-familyAddress" contentEditable="true"></td>
+									<td id="cus-familyAddress"></td>
 								</tr>
 								<tr>
 									<th>이메일</th>
-									<td id="cus-familyEmail" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-familyEmail">
+									</td>
 								</tr>
 								<tr>
 									<th>공단대상</th>
@@ -173,7 +179,9 @@
 								</tr>
 								<tr>
 									<th>회사지원금</th>
-									<td id="cus-companySupportPrice" contentEditable="true"></td>
+									<td>
+										<input type="text" id="cus-companySupportPrice">
+									</td>
 								</tr>
 								<tr>
 									<th>본인부담금</th>
@@ -185,7 +193,9 @@
 								<tbody>
 								<tr>
 									<th>메모</th>
-									<td id="cus-memo" contentEditable="true"></td>
+									<td>
+										<textarea id="cus-memo"></textarea>
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -214,15 +224,16 @@
 
 	//클릭시 고객정보
 	function setDetailCustomerData(data) {
-		$("#info6").empty();
+		console.log(data);
 
 		//info1 고객세부정보
 		document.getElementById('cus-companyName').innerHTML = data.companyName;
 		document.getElementById('cus-companyBranch').innerHTML = data.companyBranch;
-		document.getElementById('cus-familyName').innerHTML = data.familyName;
+		$('#cus-familyName').val(data.familyName);
 		$('#cus-familyBirthDate').val(data.familyBirthDate);
-		document.getElementById('cus-familyPhone').innerHTML = data.familyPhone;
+		$('#cus-familyPhone').val(data.familyPhone);
 		document.getElementById('cus-familyAddress').innerHTML = data.familyAddress;
+		$('#cus-familyEmail').val(data.familyEmail);
 		document.getElementById('cus-familyEmail').innerHTML = data.familyEmail;
 
 		if (data.familyPcDiscount) {
@@ -262,22 +273,28 @@
 		document.getElementById('cus-packageName').innerHTML = data.packageName;
 
 		//info6 선택한 패키지 검사 항목
-		for (i = 0; i < data.piiList.length; i++) {
+		$("#info6").empty();
+		data.piiClassList.sort();
+		for (i = 0; i < data.piiClassList.length; i++) {
 			var html = "";
 			html += '<tr>';
-			html += '<th>' + data.piiList[i].ipClass + '</th>';
-			html += '<td>' + data.piiList[i].ipName + '</td>';
-			html += '</tr>'
+			html += '<th>' + data.piiClassList[i] + '</th><td>';
+			for (j = 0; j < data.piiList.length; j++) {
+				if (data.piiClassList[i] == data.piiList[j].ipClass) {
+					html += data.piiList[j].ipName + '<br>';
+				}
+			}
+			html += '</td></tr>'
 			$("#info6").append(html);
 		}
 
 		//info4 금액정보
 		document.getElementById('cus-packagePrice').innerHTML = data.packagePrice.toLocaleString();
-		document.getElementById('cus-companySupportPrice').innerHTML = data.companySupportPrice.toLocaleString();
+		$('#cus-companySupportPrice').val(data.companySupportPrice.toLocaleString());
 		document.getElementById('cus-customerPayedPrice').innerHTML = data.customerPayedPrice.toLocaleString();
 
 		//info5 메모
-		document.getElementById('cus-memo').innerHTML = data.memo;
+		$('#cus-memo').html(data.memo);
 	}
 
 	//예약확정일
@@ -294,11 +311,11 @@
 		var saveItems = new Object();
 
 		saveItems.reservationId = rsvId.reservationId;
-		saveItems.familyName = document.getElementById('cus-familyName').innerText;
+		saveItems.familyName = $('#cus-familyName').val();
 		saveItems.familyBirthDate = $('#cus-familyBirthDate').val();
-		saveItems.familyPhone = document.getElementById('cus-familyPhone').innerText;
+		saveItems.familyPhone = $('#cus-familyPhone').val();
 		saveItems.familyAddress = document.getElementById('cus-familyAddress').innerText;
-		saveItems.familyEmail = document.getElementById('cus-familyEmail').innerText;
+		saveItems.familyEmail = $('#cus-familyEmail').val();
 
 		saveItems.familyPcDiscount = booleanData("cus-familyPcDiscount");
 		saveItems.familyPsInfoDual = booleanData("cus-familyPsInfoDual");
@@ -307,8 +324,8 @@
 		saveItems.reservationFirstWishDate = $('#cus-reservationFirstWishDate').val();
 		saveItems.reservationSecondWishDate = $('#cus-reservationSecondWishDate').val();
 		saveItems.ipDate = $('#cus-ipDate').val();
-		saveItems.companySupportPrice = savePrice('cus-companySupportPrice');
-		saveItems.memo = document.getElementById('cus-memo').innerText;
+		saveItems.companySupportPrice = savePrice1('cus-companySupportPrice');
+		saveItems.memo = $('#cus-memo').val();
 
 		console.log(saveItems);
 
@@ -337,6 +354,7 @@
 					console.log(res.data.message);
 					alert("저장되었습니다.");
 					clickDetail(saveItems.reservationId);
+					searchInformation(pageNum);
 				});
 			} else {
 				return false;

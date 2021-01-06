@@ -8,30 +8,10 @@
 	?>
 
 	<style>
-		#excelUploadFile {
-			position: absolute;
-			display: none;
-		}
-
-		label[for="excelUploadFile"] {
-			padding: 0.5em;
-			display: inline-block;
-			background: #5645ED;
-			color: white;
-			cursor: pointer;
-		}
-
-		label[for="excelUploadFile"]:hover {
-			opacity: 0.9;
-		}
-
-		#filename {
-			padding: 0.5em;
-			float: left;
-			width: 300px;
-			white-space: nowrap;
-			overflow: hidden;
-			background: whitesmoke;
+		#selectNumTable {
+			border: none;
+			margin: 5px;
+			float: right;
 		}
 	</style>
 
@@ -98,10 +78,10 @@
 						<table id="selectNumTable" style="display: none; font-size: 15px; width: fit-content">
 							<tbody>
 							<tr>
-								<th>최대선택개수</th>
+								<td style="font-weight: 400; padding-right: 5px">최대선택개수</td>
 								<td><input type="number" class="form-control" id="choiceLimit"
 										   min="1" max="10" placeholder=""
-										   style="width: 100px"></td>
+										   style="width: 70px"></td>
 								<td>
 									<div class="btn-save-square" style="padding: 2px 15px; font-size: 13px"
 										 onclick="setChoiceNum()">설정
@@ -117,9 +97,9 @@
 								<th style="width: 5%"><input type="checkbox" id="packageCheck" name="packageCheck"
 															 onclick="clickAll(id, name)"></th>
 								<th>세부항목</th>
-								<th>검사명</th>
-								<th>구분</th>
-								<th>성별</th>
+								<th style="width: 30%">검사명</th>
+								<th style="width: 10%">구분</th>
+								<th style="width: 10%">성별</th>
 								<th>추가금</th>
 								<th>비고</th>
 							</tr>
@@ -365,8 +345,6 @@ require('check_data.php');
 
 	//패키지구성 초기 셋팅
 	function setPackageTabData(data) {
-		console.log(data);
-
 		var package0 = new Array();
 		var package1 = new Array();
 		var package2 = new Array();
@@ -389,7 +367,6 @@ require('check_data.php');
 		});
 
 		for (i = 0; i < data.length; i++) {
-
 			package0.push(data[i])
 			if (data[i].ipClass == "기본") {
 				package1.push(data[i]);
@@ -447,7 +424,6 @@ require('check_data.php');
 					'id = \'' + packageTabItems[id][i].id + '\'' +
 					'value = \'' + packageTabItems[id][i].id + '\'></td>';
 
-
 			for (j = 0; j < injectionItems[0].length; j++) {
 				if (packageTabItems[id][i].ipCode == injectionItems[0][j].code) {
 					html += '<td>' + injectionItems[0][j].details + '</td>';
@@ -492,7 +468,6 @@ require('check_data.php');
 			$("#packageTable").append(html);
 
 			choiceLimitArr[id] = packageTabItems[id][i].choiceLimit;
-			console.log(packageTabItems[id][i].choiceLimit);
 		}
 	}
 
@@ -500,7 +475,9 @@ require('check_data.php');
 	function clickPackageTab(id) {
 		tabId = id;
 		leftTableRefresh(id);
+		console.log('tabId : ', tabId);
 
+		//선택검사 - 최대 선택개수
 		$("#choiceLimit").val(choiceLimitArr[id]);
 		if (id > 2) {
 			$("#selectNumTable").show();
@@ -539,7 +516,6 @@ require('check_data.php');
 
 		packageTabItems[0][index].ipClass = value;
 		packageTabItems[0][index].choiceLimit = choiceLimitArr[beforeIdx];
-		console.log(packageTabItems[0][index]);
 	}
 
 	//패키지구성에서 성별 셀렉터 선택
@@ -589,7 +565,6 @@ require('check_data.php');
 		}
 	}
 
-
 	function saveMemo(code, value) {
 		var memo = value.innerHTML;
 
@@ -610,7 +585,7 @@ require('check_data.php');
 
 	//패키지구성 선택항목 최대선택개수
 	function setChoiceNum() {
-		if($("#choiceLimit").val() < 0 || $("#choiceLimit").val() >10) {
+		if ($("#choiceLimit").val() < 1 || $("#choiceLimit").val() > 10) {
 			alert('설정값을 초과하였습니다. 다시 설정해주세요.');
 		} else {
 			choiceLimitArr[tabId] = $("#choiceLimit").val();
@@ -619,7 +594,6 @@ require('check_data.php');
 			}
 			alert('설정되었습니다.');
 		}
-
 	}
 
 	//검사항목 추가
@@ -640,7 +614,7 @@ require('check_data.php');
 
 				//중복 아닌 검사항목만 추가
 				if (check == 0) {
-					//검사항목 추가 임시 배열
+					//검사항목 추가 임시 배열 (전체)
 					var add = new Object();
 					add.inspection = values[0];
 					add.detail = values[1];
@@ -651,6 +625,11 @@ require('check_data.php');
 					add.memo = "";
 					add.choiceLimit = 0;
 					packageTabItems[0].push(add);
+					
+					//검사항목 추가 임시 배열 (해당탭)
+					add.ipClass = tabItems[tabId];
+					add.choiceLimit = choiceLimitArr[tabId];
+					packageTabItems[tabId].push(add);
 				}
 
 				$("input:checkbox[name=injectionCheck]:checked").prop("checked", false);
@@ -688,16 +667,21 @@ require('check_data.php');
 		for (i = 0; i < packageTabItems[0].length; i++) {
 			if (packageTabItems[0][i].ipClass == "전체") {
 				text += packageTabItems[0][i].detail + "\n"
-				console.log(i + ": " + packageTabItems[0][i]);
+			}
+
+			if(packageTabItems[0][i].ipClass.indexOf('선택') != -1) {
+				if(packageTabItems[0][i].choiceLimit < 1) {
+					alert(packageTabItems[0][i].ipClass + ': 최대선택개수를 설정해주세요.');
+					return false;
+				}
 			}
 		}
+
 		if (text != "") {
 			alert(text + "\n구분 변경 후, 저장하세요.");
 		} else {
 			sendItems.pkgId = pkgId.pkgId;
 			sendItems.ispList = packageTabItems[0];
-			console.log("===============");
-			console.log(sendItems);
 
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M008002_REQ', sendItems).then(res => {

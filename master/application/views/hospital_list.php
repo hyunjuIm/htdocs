@@ -167,7 +167,6 @@ require('check_data.php');
 
 	//검색 selector
 	function setHospitalSelectData(data) {
-
 		//사업연도
 		for (i = 0; i < data.year.length; i++) {
 			var html = '';
@@ -213,6 +212,7 @@ require('check_data.php');
 	}
 
 	function drawTable() {
+		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
 		searchItems.year = $("#year option:selected").val();
@@ -220,6 +220,7 @@ require('check_data.php');
 		searchItems.place = $("#place option:selected").val();
 		searchItems.contract = $("#contract option:selected").val();
 
+		searchItems.pageNum = pageNum;
 		searchItems.searchWord = $("#searchWord").val();
 
 		if (searchItems.year == "-전체-") {

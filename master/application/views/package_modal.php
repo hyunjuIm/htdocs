@@ -1,3 +1,31 @@
+<style>
+	#excelUploadFile {
+		position: absolute;
+		display: none;
+	}
+
+	label[for="excelUploadFile"] {
+		padding: 0.5em;
+		display: inline-block;
+		background: #5645ED;
+		color: white;
+		cursor: pointer;
+	}
+
+	label[for="excelUploadFile"]:hover {
+		opacity: 0.9;
+	}
+
+	#filename {
+		padding: 0.5em;
+		float: left;
+		width: 300px;
+		white-space: nowrap;
+		overflow: hidden;
+		background: whitesmoke;
+	}
+</style>
+
 <!-- 병원 전송 Modal -->
 <div class="modal fade" id="hospitalSendModal" tabindex="-1" aria-labelledby="hospitalSendModalLabel"
 	 aria-hidden="true">
