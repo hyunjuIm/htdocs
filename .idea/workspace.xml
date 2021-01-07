@@ -20,28 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d931473-2b8e-4fdd-a9bf-b0494273f30e" name="Default Changelist" comment="-">
+      <change afterPath="$PROJECT_DIR$/master/application/views/paging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/billing_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/billing_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/common/paging.js" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/common/paging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/confirm_package.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/confirm_package.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/employee_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/employee_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_service_inquiry_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_service_inquiry_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/check_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/check_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/company_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/company_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/company_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/company_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/confirm_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/confirm_package.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/customer_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/confirm_package_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_package_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/customer_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/hospital_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/hospital_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/hospital_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/hospital_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/master_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/master_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/package_create.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_create.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/package_injection_item.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_injection_item.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/package_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/package_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/reservation_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/reservation_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/reservation_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/result_legal_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/result_legal_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/result_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/result_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/service_notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_notice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/service_notice_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_notice_detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/service_qan_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_qan_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/master/asset/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +101,7 @@
       <workItem from="1608566406540" duration="1028000" />
       <workItem from="1609376320852" duration="22821000" />
       <workItem from="1609808377246" duration="29457000" />
-      <workItem from="1609895096269" duration="21976000" />
+      <workItem from="1609895096269" duration="45558000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1609152198297</created>
@@ -137,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609843214033</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-">
+      <created>1609927311637</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609927311637</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,10 +183,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1398" y="257" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609919613237" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1609843218676">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1609927316239">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609843218676" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1609927316239" />
     <state x="1920" y="0" width="1520" height="1027" key="dock-window-1" timestamp="1609899308174">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -188,33 +204,34 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1956" y="6" width="1538" height="1027" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609918343030" />
-    <state x="1920" y="0" width="1117" height="1027" key="dock-window-4" timestamp="1609828665394">
+    <state x="2104" y="22" width="1538" height="1027" key="dock-window-4" timestamp="1609988961940">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="0" width="1117" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609828665394" />
-    <state x="2038" y="18" width="1538" height="1022" key="dock-window-5" timestamp="1609895428682">
+    <state x="2104" y="22" width="1538" height="1027" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609988961940" />
+    <state x="1943" y="0" width="1538" height="1027" key="dock-window-5" timestamp="1610003157244">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2038" y="18" width="1538" height="1022" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609895428682" />
-    <state x="1951" y="8" width="1538" height="1027" key="dock-window-6" timestamp="1609231944662">
+    <state x="1943" y="0" width="1538" height="1027" key="dock-window-5/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610003157244" />
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-6" timestamp="1610003736809">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1951" y="8" width="1538" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609231944662" />
-    <state x="304" y="21" width="1538" height="959" key="dock-window-7" timestamp="1609298754209">
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-6/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610003736809" />
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-7" timestamp="1610003907280">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610003907280" />
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-8" timestamp="1610004683367">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-8/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610004683367" />
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-9" timestamp="1610005075899">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1538" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610005075899" />
+    <state x="486" y="71" width="1120" height="660" key="find.popup" timestamp="1610004820492">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="304" y="21" width="1538" height="959" key="dock-window-7/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609298754209" />
-    <state x="1920" y="0" width="1538" height="959" key="dock-window-8" timestamp="1609295132150">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1538" height="959" key="dock-window-8/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609295132150" />
-    <state x="1913" y="0" width="1552" height="1027" key="dock-window-9" timestamp="1609320677638">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1913" y="0" width="1552" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609320677638" />
-    <state x="486" y="71" width="1120" height="660" key="find.popup" timestamp="1609917374644">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="486" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609917374644" />
+    <state x="486" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610004820492" />
+    <state x="2406" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1609991082400" />
   </component>
 </project>

@@ -57,20 +57,20 @@
 		<table class="table table-bordered" style="width: 500px;margin: 0 auto;">
 			<tr>
 				<td>
-					<h5>기업승인:&nbsp;<span id="companyState">승인</span></h5>
-					<select id="companySelect">
-						<option value=true>승인</option>
-						<option value=false>취소</option>
-					</select>
-					<button type="button" class="btn btn-dark" onclick="setConfirm('company')">확인</button>
-				</td>
-				<td>
 					<h5>듀얼승인:&nbsp;<span id="dualState">취소</span></h5>
 					<select id="dualSelect">
 						<option value=true>승인</option>
 						<option value=false>취소</option>
 					</select>
 					<button type="button" class="btn btn-dark" onclick="setConfirm('dual')">확인</button>
+				</td>
+				<td>
+					<h5>기업승인:&nbsp;<span id="companyState">승인</span></h5>
+					<select id="companySelect">
+						<option value=true>승인</option>
+						<option value=false>취소</option>
+					</select>
+					<button type="button" class="btn btn-dark" onclick="setConfirm('company')">확인</button>
 				</td>
 			</tr>
 		</table>
@@ -138,14 +138,14 @@ require('check_data.php');
 		var state = location.href.substr(
 				location.href.lastIndexOf('=') + 1
 		);
-		var company = state[0];
-		var dual = state[1];
+		var dual = state[0];
+		var company = state[1];
 
 		//검사항목 리스트 맨 처음 불러와서 셋팅
 		instance.post('M016003', pkgId).then(res => {
 			packageItemList = res.data;
 			setCategoryData();
-			setConfirmData(company, dual);
+			setConfirmData(dual, company);
 		});
 	})
 
@@ -175,17 +175,7 @@ require('check_data.php');
 	}
 
 	//승인 여부 셋팅
-	function setConfirmData(company, dual) {
-		if(company == 'Y') {
-			$("#companySelect").val('true');
-			$('#companyState').text('승인');
-			$('#companyState').css('color', 'red');
-		} else {
-			$("#companySelect").val('false');
-			$('#companyState').text('미승인');
-			$('#companyState').css('color', 'grey');
-		}
-
+	function setConfirmData(dual, company) {
 		if(dual == 'Y') {
 			$("#dualSelect").val('true');
 			$('#dualState').text('승인');
@@ -194,6 +184,16 @@ require('check_data.php');
 			$("#dualSelect").val('false');
 			$('#dualState').text('미승인');
 			$('#dualState').css('color', 'grey');
+		}
+
+		if(company == 'Y') {
+			$("#companySelect").val('true');
+			$('#companyState').text('승인');
+			$('#companyState').css('color', 'red');
+		} else {
+			$("#companySelect").val('false');
+			$('#companyState').text('미승인');
+			$('#companyState').css('color', 'grey');
 		}
 	}
 
@@ -253,7 +253,7 @@ require('check_data.php');
 			sendItems.status =$("#companySelect option:selected").val();
 
 			if (confirm("승인 상태를 변경하시겠습니까?") == true) {
-				instance.post('M016004', sendItems).then(res => {
+				instance.post('M016005', sendItems).then(res => {
 					console.log(res.data.message);
 					if (res.data.message == "success") {
 						alert("변경되었습니다.");
@@ -273,7 +273,7 @@ require('check_data.php');
 			sendItems.status =$("#dualSelect option:selected").val();
 
 			if (confirm("승인 상태를 변경하시겠습니까?") == true) {
-				instance.post('M016005', sendItems).then(res => {
+				instance.post('M016004', sendItems).then(res => {
 					console.log(res.data.message);
 					if (res.data.message == "success") {
 						alert("변경되었습니다.");

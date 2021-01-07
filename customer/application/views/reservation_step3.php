@@ -95,7 +95,7 @@
 
 		.injection-choice {
 			padding: 1.5rem 3rem;
-			background: #f9f9ff;
+			background: #DDDDDD;
 		}
 
 		.injection-memo {
@@ -332,6 +332,10 @@
 									운영시간 <span style="font-weight: 300" id="operatingHours"></span><br>
 								</div>
 								<div class="cell">
+									<div class="title">안내사항</div>
+									<div id="notice" style="margin-top: 1rem;color: grey"></div>
+								</div>
+								<div class="cell">
 									<div class="title">추천정보</div>
 									<table class="point-table" style="margin-top: 1rem">
 										<tr>
@@ -352,10 +356,6 @@
 											<td id="fourPoint"></td>
 										</tr>
 									</table>
-								</div>
-								<div class="cell">
-									<div class="title">공지사항</div>
-									<div id="notice" style="margin-top: 1rem;color: grey"></div>
 								</div>
 								<div class="cell">
 									<div class="title">기관정보</div>
@@ -470,7 +470,7 @@
 													1차 예약일
 												</div>
 												<div id="firstWishDate" class="date-view">
-													&nbsp
+													&nbsp;
 												</div>
 												<div id="firstDatepicker" style="margin-top: 3rem"></div>
 											</div>
@@ -479,7 +479,7 @@
 													2차 예약일
 												</div>
 												<div id="secondWishDate" class="date-view">
-													&nbsp
+													&nbsp;
 												</div>
 												<div id="secondDatepicker" style="margin-top: 3rem"></div>
 											</div>
@@ -712,6 +712,19 @@ require('check_data.php');
 		sendItems.pipList = pipList;
 		sendItems.firstWishDate = firstWishDate;
 		sendItems.secondWishDate = secondWishDate;
+
+		console.log(sendItems);
+
+		if (firstWishDate == null || firstWishDate == '') {
+			alert('1차 예약일을 선택해주세요.');
+			return false;
+		} else if (secondWishDate == null || secondWishDate == ''){
+			alert('2차 예약일을 선택해주세요.');
+			return false;
+		} else if(firstWishDate == secondWishDate) {
+			alert('1차, 2차 동일한 날짜로 예약하실 수 없습니다. 다시 설정해주세요.');
+			return false;
+		}
 
 		if (confirm("예약하시겠습니까?") == true) {
 			instance.post('CU_003_005', sendItems).then(res => {

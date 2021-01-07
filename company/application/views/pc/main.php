@@ -329,7 +329,7 @@
 		html += '<tbody>'
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>';
-			html += '<td style="width: 10%">' + data[i].no + '</td>';
+			html += '<td style="width: 10%">' + (i+1) + '</td>';
 			html += '<td style="text-align: left">' + data[i].title + '</td>';
 			html += '<td style="width: 20%">' + data[i].author + '</td>';
 			html += '<td style="width: 20%">' + data[i].createDate + '</td>';

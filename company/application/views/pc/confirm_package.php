@@ -72,7 +72,7 @@
 			</table>
 		</div>
 		<div class="row" style="margin-top: 1rem">
-			<div class="btn-light-grey-square" style="float: right" onclick="searchPackageConfirm(0)">검색</div>
+			<div class="btn-light-grey-square" style="float: right" onclick="searchInformation(0)">검색</div>
 		</div>
 	</div>
 
@@ -112,8 +112,8 @@
 	$('#topMenu2').addClass('active');
 	$('#topMenu2').before('<div class="menu-select-line"></div>');
 
-	var pagingNum = 0;
 	var pageCount = 0;
+	var pageNum = 0;
 
 	var coIdObj = new Object();
 	coIdObj.coId = sessionStorage.getItem("userCoID");
@@ -130,19 +130,26 @@
 			html += '<option>' + data.hoName[i] + '</option>'
 			$("#hoName").append(html);
 		}
+
+		//로딩 되자마자 초기 셋팅
+		searchInformation(0);
 	}
 
-	searchPackageConfirm(0);
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		pageNum = index;
+		drawTable();
+	}
 
 	//검색
-	function searchPackageConfirm(index) {
-		pagingNum = index;
+	function drawTable() {
+		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
 		searchItems.coId = coIdObj.coId;
 		searchItems.hoName = $("#hoName option:selected").val();
 		searchItems.coApproval= $("#coApproval option:selected").val();
-		searchItems.pagingNum = pagingNum;
+		searchItems.pagingNum = pageNum;
 
 		if (searchItems.hoName == "-전체-") {
 			searchItems.hoName = "all";
@@ -158,62 +165,30 @@
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-
-			setPackageConfirmData(res.data.packageListDTOList);
+			setPackageConfirmData(res.data.packageListDTOList, pageNum);
+			console.log(res.data);
 		});
 	}
 
-	//페이징-화살표클릭
-	function pmPageNum(val) {//화살표클릭
-		pageNum = Math.floor(parseInt(val) / 10) * 10;
-		if (pageNum < 0) pageNum = 0;
-		if (pageCount <= pageNum) pageNum = pageCount - 1;
-		searchPackageConfirm(pagingNum);
-	}
+	<?php
+	require('common/paging.js');
+	?>
 
 	//패키지 생성 테이블
-	function setPackageConfirmData(data) {
+	function setPackageConfirmData(data, index) {
+		setPaging(index);
+
 		$('#packageConfirmInfos').empty();
-		$("#paging").empty();
 
 		if(data.length == 0) {
 			var html = '';
 			html += '<tr>';
-			html += '<td colspan="9">해당하는 검색 결과가 없습니다.</td>';
+			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
 			html += '</tr>';
 			$("#packageConfirmInfos").append(html);
+			$("#paging").empty();
 			return false;
 		}
-
-		var html = "";
-		var pre = pagingNum - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
-		html += '<a class="arrow pprev" onclick= "searchPackageConfirm(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
-		$("#paging").append(html);
-
-		var start = pagingNum - Math.floor((pagingNum % 10)) + 1;
-
-		for (i = start; i < (start + 10); i++) {
-			var html = '';
-
-			if ((i - 1) < pageCount) {
-				if (i == pagingNum + 1) {
-					html += '<a onclick= "searchCustomerData(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
-				} else {
-					html += '<a onclick= "searchCustomerData(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
-				}
-			}
-
-			$("#paging").append(html);
-		}
-
-		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchPackageConfirm(\'' + (pageCount - 1) + '\')" href="#"></a>'
-		$("#paging").append(html);
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
@@ -223,8 +198,12 @@
 
 			html += '<tr onclick="sendPackageID(\'' + data[i].pkgId + '\', \'' + company + '\', \'' + dual + '\')">';
 
-			var no = data[i].pkgId.substr(4, data[i].pkgId[data[i].pkgId.length]);
-			console.log(data[i].pkgId);
+			var no = 0;
+			if (index == 0) {
+				no = (index + 1) + i;
+			} else {
+				no = index * 10 + (i+1);
+			}
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].hoName + '</td>';

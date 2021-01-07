@@ -105,6 +105,9 @@
 				html += '<div class="carousel-item">';
 			}
 			html += data[i].name + '(' + data[i].grade + ')' + '<br>';
+			if(data[i].newBadge){
+				html += '<span class="badge bg-warning text-dark">New</span>';
+			}
 			if (data[i].hospital != 'none') {
 				html += '예약병원 : ' + data[i].hospital + '<br>';
 			}

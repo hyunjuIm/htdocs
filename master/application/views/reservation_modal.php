@@ -300,9 +300,9 @@
 	//예약확정일
 	function setIpDate(num) {
 		if (num == 1) {
-			document.getElementById('cus-ipDate').innerHTML = document.getElementById('cus-reservationFirstWishDate').value;
+			$('#cus-ipDate').val($('#cus-reservationFirstWishDate').val());
 		} else if (num == 2) {
-			document.getElementById('cus-ipDate').innerHTML = document.getElementById('cus-reservationSecondWishDate').value;
+			$('#cus-ipDate').val($('#cus-reservationSecondWishDate').val());
 		}
 	}
 

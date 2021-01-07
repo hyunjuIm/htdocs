@@ -381,7 +381,6 @@
 
 	//병원 미할당 패키지 테이블
 	function setPackageData(data) {
-
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';

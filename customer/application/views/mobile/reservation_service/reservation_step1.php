@@ -130,13 +130,13 @@
 								&nbsp동의합니다. &nbsp
 							</label>
 						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="agree" id="agreeNo"
-								   value="false">
-							<label class="form-check-label" for="agreeNo">
-								&nbsp동의하지않습니다.
-							</label>
-						</div>
+<!--						<div class="form-check form-check-inline">-->
+<!--							<input class="form-check-input" type="radio" name="agree" id="agreeNo"-->
+<!--								   value="false">-->
+<!--							<label class="form-check-label" for="agreeNo">-->
+<!--								&nbsp동의하지않습니다.-->
+<!--							</label>-->
+<!--						</div>-->
 					</div>
 				</div>
 			</div>

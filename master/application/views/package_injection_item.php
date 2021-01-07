@@ -13,6 +13,10 @@
 			margin: 5px;
 			float: right;
 		}
+
+		select {
+			font-size: 15px !important;
+		}
 	</style>
 
 </head>

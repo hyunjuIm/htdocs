@@ -83,7 +83,7 @@
 					</div>
 					<hr>
 					<div style="float: right">
-						<div class="btn-save-square" onclick="searchInformation()">
+						<div class="btn-save-square" onclick="searchInformation(0)">
 							검색
 						</div>
 					</div>
@@ -102,9 +102,9 @@
 					<th>병원</th>
 					<th>고객사</th>
 					<th >사업장</th>
-					<th >병원제안</th>
-					<th >듀얼승인</th>
-					<th >기업승인</th>
+					<th style="width: 10%">병원제안</th>
+					<th style="width: 10%">듀얼승인</th>
+					<th style="width: 10%">기업승인</th>
 					<th >단가</th>
 					<th style="width: 15%">운영기간</th>
 				</tr>
@@ -145,13 +145,6 @@ require('check_data.php');
 	instance.post('M016001').then(res => {
 		setPackageConfirmSelectData(res.data);
 	});
-
-	function enterKey() {
-		if (window.event.keyCode == 13) {
-			// 엔터키가 눌렸을 때 실행할 내용
-			searchInformation(0);
-		}
-	}
 
 	var companySelect;
 	//검색 selector
@@ -245,48 +238,9 @@ require('check_data.php');
 		});
 	}
 
-	//페이징-화살표클릭
-	function pmPageNum(val) {//화살표클릭
-		pageNum = Math.floor(parseInt(val) / 10) * 10;
-		if (pageNum < 0) pageNum = 0;
-		if (pageCount <= pageNum) pageNum = pageCount - 1;
-		drawTable();
-	}
-
-	//페이징
-	function setPaging(index) {
-		$("#paging").empty();
-
-		var html = "";
-		var pre = parseInt(index) - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
-		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
-		$("#paging").append(html);
-
-		var start = index - Math.floor((index % 10)) + 1;
-
-		for (i = start; i < (start + 10); i++) {
-			var html = '';
-
-			if ((i - 1) < pageCount) {
-				if (i == index + 1) {
-					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
-				} else {
-					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
-				}
-			}
-
-			$("#paging").append(html);
-		}
-
-		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
-		$("#paging").append(html);
-	}
+	<?php
+	require('paging.js');
+	?>
 
 	//패키지 생성 테이블
 	function setPackageConfirmData(data, index) {
@@ -300,16 +254,17 @@ require('check_data.php');
 			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
 			html += '</tr>';
 			$("#packageConfirmInfos").append(html);
+			$("#paging").empty();
 			return false;
 		}
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 
-			var company = data[i].dualApproval ? 'Y' : 'N';
-			var dual = data[i].coApproval ? 'Y' : 'N';
+			var dual = data[i].dualApproval ? 'Y' : 'N';
+			var company = data[i].coApproval ? 'Y' : 'N';
 
-			html += '<tr onclick="sendPackageID(\'' + data[i].pkgId + '\', \'' + company + '\', \'' + dual + '\')">';
+			html += '<tr onclick="sendPackageID(\'' + data[i].pkgId + '\', \'' + dual + '\', \'' + company + '\')">';
 
 			var no = 0;
 			if (index == 0) {
@@ -329,8 +284,8 @@ require('check_data.php');
 				html += '<td>N</td>';
 			}
 
-			html += '<td>' + company + '</td>';
 			html += '<td>' + dual + '</td>';
+			html += '<td>' + company + '</td>';
 			html += '<td>' + data[i].price.toLocaleString() + '</td>';
 			html += '<td>' + data[i].reservationStartDate + " ~ " + data[i].reservationEndDate + '</td>';
 			html += '</tr>';
@@ -340,10 +295,10 @@ require('check_data.php');
 	}
 
 	//세부항목 설정에 pkgID 값 던지기
-	function sendPackageID(index, company, dual) {
+	function sendPackageID(index, dual, company) {
 		var state = '';
-		state += company;
 		state += dual;
+		state += company;
 
 		location.href = "confirm_package_detail?pkgID=" + index + "?state=" + state;
 	}

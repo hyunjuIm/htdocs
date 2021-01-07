@@ -29,6 +29,10 @@
 			text-align: left;
 			cursor: pointer;
 		}
+
+		.state-1 {
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -63,12 +67,6 @@
 								<span id="servedReservationNum"></span>
 							</div>
 						</td>
-						<td rowspan="3">
-							<div class="state-2">
-								<span style="margin-right: 5px">정산완료</span>
-								<span id="completeNum"></span>
-							</div>
-						</td>
 					</tr>
 					<tr>
 						<td>
@@ -89,16 +87,16 @@
 					<tr>
 						<td>
 							<div class="state-1">
-								<img src="/asset/images/ico_master_dash_list05.png" style="margin-right: 10px">
-								<span style="margin-right: 5px">업무이슈</span>
-								<span id="issueNum"></span>
+								<img src="/asset/images/ico_master_dash_list06.png" style="margin-right: 10px">
+								<span style="margin-right: 5px">문의사항</span>
+								<span id="questionNum"></span>
 							</div>
 						</td>
 						<td>
 							<div class="state-1">
-								<img src="/asset/images/ico_master_dash_list06.png" style="margin-right: 10px">
-								<span style="margin-right: 5px">문의사항</span>
-								<span id="questionNum"></span>
+								<img src="/asset/images/ico_master_dash_list05.png" style="margin-right: 10px">
+								<span style="margin-right: 5px">정산완료</span>
+								<span id="completeNum"></span>
 							</div>
 						</td>
 					</tr>
@@ -192,7 +190,7 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td style="width: 10%">' + data[i].id + '</td>';
+			html += '<td style="width: 10%">' + (i+1) + '</td>';
 			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			html += '<td style="width: 20%">' + data[i].author + '</td>';
 			html += '<td style="width: 20%">' + data[i].createDate + '</td>';

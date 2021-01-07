@@ -289,7 +289,7 @@
 	});
 
 	function setMainNotice(data) {
-		for (i = 0; i < data.length; i++) {
+		for (i = 0; i < 3; i++) {
 			var html = '';
 			html += '<tr>';
 			html += '<td class="title" style="width: 80%" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + "· " + data[i].title + '</td>';

@@ -102,7 +102,7 @@
 
 		.injection-choice {
 			padding: 1.5rem 3rem;
-			background: #f9f9ff;
+			background: #DDDDDD;
 		}
 
 		.injection-memo {
@@ -377,7 +377,7 @@
 						<table>
 							<tr>
 								<td width="50%" style="vertical-align: top">
-									<div class="title">공지사항</div>
+									<div class="title">안내사항</div>
 									<div class="content" id="notice" style="color: grey"></div>
 								</td>
 								<td style="vertical-align: top">
@@ -737,6 +737,19 @@
 		sendItems.pipList = pipList;
 		sendItems.firstWishDate = firstWishDate;
 		sendItems.secondWishDate = secondWishDate;
+
+		console.log(sendItems);
+
+		if (firstWishDate == null || firstWishDate == '') {
+			alert('1차 예약일을 선택해주세요.');
+			return false;
+		} else if (secondWishDate == null || secondWishDate == ''){
+			alert('2차 예약일을 선택해주세요.');
+			return false;
+		} else if(firstWishDate == secondWishDate) {
+			alert('1차, 2차 동일한 날짜로 예약하실 수 없습니다. 다시 설정해주세요.');
+			return false;
+		}
 
 		if (confirm("예약하시겠습니까?") == true) {
 			instance.post('CU_003_005', sendItems).then(res => {
