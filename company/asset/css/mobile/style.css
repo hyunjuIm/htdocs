@@ -33,6 +33,63 @@ body {
 	margin: 0;
 }
 
+
+/*항목선택폼*/
+.select-list {
+	display: flex;
+}
+
+.select-list .select-label {
+	line-height: 3rem;
+	font-size: 1.8rem;
+	width: 15rem;
+}
+
+.select-list .select-label img {
+	line-height: 3rem;
+	padding: 0 1rem;
+}
+
+.select-list .select-content {
+	display: flex;
+	line-height: 3rem;
+	width: 35rem;
+	max-width: 35rem;
+}
+
+.select-list select {
+	width: 100%;
+	height: 100%;
+	padding: 0.2rem 1rem;
+	border-color: #cccccc;
+	outline: none;
+	font-weight: 300;
+	font-size: 1.6rem;
+}
+
+.select-list option {
+	font-weight: 300;
+}
+
+.select-list input {
+	height: 100%;
+	border: 1px solid #cccccc;
+	padding: 0 1rem;
+	outline: none;
+	font-weight: 300;
+	font-size: 1.6rem !important;
+	cursor: default;
+}
+
+.select-form {
+	width: 100%;
+}
+
+.select-form td {
+	padding: 0.7rem 0;
+}
+
+
 /*박스 스타일 - 흰배경 검은그림자*/
 .box {
 	width: 100%;

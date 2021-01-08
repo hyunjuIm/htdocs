@@ -136,6 +136,9 @@
 			<th>예약병원</th>
 			<th>예약상태</th>
 			</thead>
+			<tbody>
+
+			</tbody>
 		</table>
 	</div>
 
@@ -269,7 +272,7 @@
 			html += '<tr>';
 			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
 			html += '</tr>';
-			$("#reservationTable").append(html);
+			$("#reservationTable > tbody").append(html);
 			$("#paging").empty();
 			return false;
 		}
@@ -296,7 +299,7 @@
 			html += '<td>' + data[i].status + '</td>';
 			html += '</tr>';
 
-			$("#reservationTable").append(html);
+			$("#reservationTable > tbody").append(html);
 		}
 	}
 </script>

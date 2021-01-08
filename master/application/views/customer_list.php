@@ -102,7 +102,8 @@
 					<th style="width: 8%">사번</th>
 					<th style="width: 10%">아이디</th>
 					<th>이름</th>
-					<th>소속</th>
+					<th>고객사</th>
+					<th>사업장</th>
 					<th>생년월일</th>
 					<th>연락처</th>
 					<th>생성일</th>
@@ -261,7 +262,8 @@ require('check_data.php');
 			html += '<td>' + data[i].id + '</td>';
 			html += '<td>' + data[i].email + '</td>';
 			html += '<td>' + data[i].name + '</td>';
-			html += '<td>' + data[i].companyName + '-' + data[i].companyBranch + '</td>';
+			html += '<td>' + data[i].companyName  + '</td>';
+			html += '<td>' + data[i].companyBranch + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].phone + '</td>';
 			html += '<td>' + data[i].createDate + '</td>';

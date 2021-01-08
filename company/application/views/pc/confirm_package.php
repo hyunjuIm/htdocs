@@ -193,10 +193,10 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 
-			var company = data[i].dualApproval ? 'Y' : 'N';
-			var dual = data[i].coApproval ? 'Y' : 'N';
+			var dual = data[i].dualApproval ? 'Y' : 'N';
+			var company = data[i].coApproval ? 'Y' : 'N';
 
-			html += '<tr onclick="sendPackageID(\'' + data[i].pkgId + '\', \'' + company + '\', \'' + dual + '\')">';
+			html += '<tr onclick="sendPackageID(\'' + data[i].pkgId + '\', \'' + company + '\')">';
 
 			var no = 0;
 			if (index == 0) {
@@ -216,8 +216,8 @@
 				html += '<td>N</td>';
 			}
 
-			html += '<td>' + company + '</td>';
 			html += '<td>' + dual + '</td>';
+			html += '<td>' + company + '</td>';
 			html += '<td>' + data[i].price.toLocaleString() + '</td>';
 			html += '<td>' + data[i].reservationStartDate + " ~ " + data[i].reservationEndDate + '</td>';
 			html += '</tr>';
@@ -227,12 +227,8 @@
 	}
 
 	//세부항목 설정에 pkgID 값 던지기
-	function sendPackageID(index, company, dual) {
-		var state = '';
-		state += company;
-		state += dual;
-
-		location.href = "confirm_package_detail?pkgID=" + index + "?state=" + state;
+	function sendPackageID(index, company) {
+		location.href = "confirm_package_detail?pkgID=" + index + "?state=" + company;
 	}
 </script>
 

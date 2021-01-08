@@ -8,11 +8,15 @@
 	?>
 
 	<style>
-		.row {
+		.main-row {
 			width: 100%;
 			height: 35rem;
 			padding: 0;
 			margin: 0;
+		}
+
+		.row {
+			width: 100%;
 		}
 
 		.col {
@@ -57,6 +61,21 @@
 			bottom: 7rem;
 			color: #914cbd;
 		}
+
+		#noticeTable .title {
+			cursor: pointer;
+			text-align: left;
+		}
+
+		.all-menu {
+			float: right;
+			margin-bottom: 0.5rem;
+			cursor: pointer;
+		}
+
+		.all-menu:hover {
+			color: #5645ed;
+		}
 	</style>
 </head>
 <body>
@@ -72,7 +91,7 @@
 
 <div class="main">
 	<div class="container">
-		<div class="row">
+		<div class="row main-row">
 			<div class="col">
 				<div class="box">
 					<div class="box-title">
@@ -103,43 +122,57 @@
 			</div>
 			<div class="col">
 				<div class="box">
-					<div class="box-title">
+					<div class="box-title" style="margin-bottom: 0">
 						<img src="/asset/images/icon_title.png">
 						<h2>운영정보</h2>
 					</div>
-					<table id="examinationTable" class="basic-table table-hover">
-						<thead>
-						<tr>
-							<th>서비스</th>
-							<th>오픈일</th>
-							<th>예약종료일</th>
-							<th>사업종료일</th>
-							<th>병원수</th>
-							<th>정산주기</th>
-							<th>최근정산일</th>
-						</tr>
-						</thead>
-					</table>
+					<div class="row" style="display: block;">
+						<div class="all-menu" onclick="location.href='/company/confirm_package'">
+							전체보기
+						</div>
+					</div>
+					<div class="row">
+						<table id="examinationTable" class="basic-table table-hover">
+							<thead>
+							<tr>
+								<th>서비스</th>
+								<th>오픈일</th>
+								<th>예약종료일</th>
+								<th>사업종료일</th>
+								<th>병원수</th>
+								<th>정산주기</th>
+								<th>최근정산일</th>
+							</tr>
+							</thead>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row main-row">
 			<div class="col">
 				<div class="box">
-					<div class="box-title">
+					<div class="box-title" style="margin-bottom: 0">
 						<img src="/asset/images/icon_title.png">
 						<h2>공지사항</h2>
 					</div>
-					<table id="noticeTable" class="basic-table table-hover">
-						<thead>
-						<tr>
-							<th style="width: 10%">NO</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>등록일</th>
-						</tr>
-						</thead>
-					</table>
+					<div class="row" style="display: block;">
+						<div class="all-menu" onclick="location.href='/company/notice_list'">
+							전체보기
+						</div>
+					</div>
+					<div class="row">
+						<table id="noticeTable" class="basic-table table-hover">
+							<thead>
+							<tr>
+								<th style="width: 10%">NO</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>등록일</th>
+							</tr>
+							</thead>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="col">
@@ -179,9 +212,9 @@
 
 	//예약현황판
 	function setReservationData(data, idx1, idx2, idx3) {
-		let id1 = 'doughnut' +idx1;
-		let id2 = 'doughnut' +idx2;
-		let id3 = 'doughnut' +idx3;
+		let id1 = 'doughnut' + idx1;
+		let id2 = 'doughnut' + idx2;
+		let id3 = 'doughnut' + idx3;
 
 		var html = '';
 		html += '<tbody>'
@@ -223,7 +256,7 @@
 
 		chart1.push(0);
 		chart2.push(chart1[0] - chart2[0]);
-		if (chart2[1] < chart2[0]/3) {
+		if (chart2[1] < chart2[0] / 3) {
 			$('#chart2').css('color', 'white');
 		}
 		chart3.push(chart1[0] - chart3[0]);
@@ -329,8 +362,8 @@
 		html += '<tbody>'
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>';
-			html += '<td style="width: 10%">' + (i+1) + '</td>';
-			html += '<td style="text-align: left">' + data[i].title + '</td>';
+			html += '<td style="width: 10%">' + (i + 1) + '</td>';
+			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].no + '\')">' + data[i].title + '</td>';
 			html += '<td style="width: 20%">' + data[i].author + '</td>';
 			html += '<td style="width: 20%">' + data[i].createDate + '</td>';
 			html += '</tr>';
@@ -338,5 +371,10 @@
 
 		html += '</tbody>'
 		$("#noticeTable").append(html);
+	}
+
+	//공지 게시글 디테일에 값 던지기
+	function sendNoticeID(index) {
+		location.href = "/company/notice_detail?id=" + index;
 	}
 </script>

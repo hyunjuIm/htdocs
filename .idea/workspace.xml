@@ -20,36 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d931473-2b8e-4fdd-a9bf-b0494273f30e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/master/application/views/paging.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/application/views/mobile/notice_detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/application/views/mobile/notice_list.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/application/views/pc/notice_detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/company/application/views/pc/notice_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/controllers/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/controllers/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/controllers/M.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/controllers/M.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/mobile/bill_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/mobile/bill_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/mobile/common/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/mobile/common/paging.js" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/mobile/common/paging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/mobile/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/mobile/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/mobile/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/mobile/reservation_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/bill_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/bill_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/common/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/common/paging.js" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/common/paging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/confirm_package.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/confirm_package.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/confirm_package_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/confirm_package_detail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/employee_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/employee_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/employee_manage_write.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/employee_manage_write.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/reservation_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/customer_service_inquiry_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/customer_service_inquiry_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/common/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/mobile/reservation_service/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/application/views/reservation_step3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/check_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/check_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/company_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/company_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/confirm_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/confirm_package.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/confirm_package_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/confirm_package_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/application/views/pc/statistics_manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/company/application/views/pc/statistics_manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/company/asset/css/mobile/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/company/asset/css/mobile/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/application/views/customer_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/customer_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/hospital_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/hospital_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_create.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_injection_item.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_injection_item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/package_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/package_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/reservation_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/reservation_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/application/views/reservation_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/reservation_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/master/asset/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/service_notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_notice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/service_notice_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_notice_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/application/views/service_qan_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/master/application/views/service_qan_list.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +75,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/application/views/mobile/reservation_service" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -101,7 +100,7 @@
       <workItem from="1608566406540" duration="1028000" />
       <workItem from="1609376320852" duration="22821000" />
       <workItem from="1609808377246" duration="29457000" />
-      <workItem from="1609895096269" duration="45558000" />
+      <workItem from="1609895096269" duration="68434000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1609152198297</created>
@@ -152,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609927311637</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="-">
+      <created>1610013243988</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1610013243988</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,11 +189,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1398" y="257" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609919613237" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1609927316239">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1610013247593">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1609843218676" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1609927316239" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1610013247593" />
+    <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610087009463">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610087009463" />
     <state x="1920" y="0" width="1520" height="1027" key="dock-window-1" timestamp="1609899308174">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -228,10 +238,14 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1538" height="1027" key="dock-window-9/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610005075899" />
-    <state x="486" y="71" width="1120" height="660" key="find.popup" timestamp="1610004820492">
+    <state x="486" y="71" width="1120" height="660" key="find.popup" timestamp="1610088605709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="486" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610004820492" />
+    <state x="486" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610088605709" />
     <state x="2406" y="71" width="1120" height="660" key="find.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1609991082400" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1610081221394">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1610081221394" />
   </component>
 </project>

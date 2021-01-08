@@ -8,6 +8,14 @@
 	?>
 
 	<style>
+		.basic-table th {
+			background: #f3f3f3;
+		}
+
+		.basic-table tr:hover{
+			background: white;
+		}
+
 		input[type=text] {
 			width: 85%;
 			outline: none;
@@ -176,6 +184,8 @@
 	//상단바 선택된 메뉴
 	$('#topMenu2').addClass('active');
 	$('#topMenu2').before('<div class="menu-select-line"></div>');
+
+	$('#loading').hide();
 
 	//파일 업로드명 셋팅
 	$('#file-upload').change(function () {

@@ -80,9 +80,6 @@
 	</div>
 
 	<div class="row">
-	</div>
-
-	<div class="row">
 	<form style="margin: 0 auto; width: 70%">
 		<div style="float:right">
 			<div class="btn-cancel-square" onclick="location.href='/master/service_notice'">목록</div>
@@ -117,6 +114,8 @@ require('check_data.php');
 
 	var fileName;
 	function setNoticeDetailData(data){
+		console.log(data);
+
 		document.getElementById('ntTitle').innerHTML = data.title;
 		document.getElementById('ntAuthor').innerHTML = data.author;
 		if(data.fileName != '' && data.fileName != null) {

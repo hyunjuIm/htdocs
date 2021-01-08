@@ -159,16 +159,8 @@
 </html>
 
 <script>
-	<?php
-	require('common/check_data.js');
-	?>
-	<?php
-	require('common/paging.js');
-	?>
-
-	var pagingNum = 0;
 	var pageCount = 0;
-	var searchWord = "";
+	var pageNum = 0;
 
 	var coIdObj = new Object();
 	coIdObj.coId = sessionStorage.getItem("userCoID");
@@ -203,30 +195,37 @@
 			html += '<option value=\'' + data.supportPercent[i] + '\'>' + data.supportPercent[i] + '%</option>'
 			$("#supportPercent").append(html);
 		}
+
+		//로딩 되자마자 초기 셋팅
+		searchInformation(0);
 	}
 
-	searchInformation(0);
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		if($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
+		}
+
+		pageNum = index;
+		drawTable();
+	}
 
 	//검색
-	function searchInformation(index, type) {
+	function drawTable() {
+		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
-		$('#reservationInfos > tbody').empty();
-
 		searchItems.coId = coIdObj.coId;
+		searchItems.searchWord = $("#searchWord").val();
+		searchItems.pagingNum = pageNum;
+
 		searchItems.servedYear = $("#servedYear option:selected").val();
 		searchItems.hospitalName = $("#hospitalName option:selected").val();
 		searchItems.reservationStartDate = $("#reservationStartDate").val();
 		searchItems.reservationEndDate = $("#reservationEndDate").val();
 		searchItems.serviceName = $("#serviceName option:selected").val();
 		searchItems.supportPercent = $("#supportPercent option:selected").val();
-
-		if(type == 'select') {
-			searchItems.searchWord = '';
-		} else {
-			searchItems.searchWord = $("#searchWord").val();
-		}
-		searchItems.pagingNum = index;
 
 		if (searchItems.servedYear == "- 전체 -") {
 			searchItems.servedYear = "all";
@@ -242,25 +241,35 @@
 			searchItems.supportPercent = "all";
 		}
 
-		console.log(searchItems);
-
 		instance.post('C0202', searchItems).then(res => {
-			console.log(res.data);
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-			setReservationTable(res.data.reservationDTOList);
+			setReservationTable(res.data.reservationDTOList, pageNum);
+			console.log(res.data);
 		});
 	}
 
-	//예약관리 테이블 셋팅
-	function setReservationTable(data) {
-		//페이징
-		setPaging();
+	<?php
+	require('common/paging.js');
+	?>
 
-		//테이블 셋팅
+	//예약관리 테이블 셋팅
+	function setReservationTable(data, index) {
+		setPaging(index);
+
 		$("#reservationTable").empty();
+
+		if(data.length == 0) {
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="5">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#reservationTable").append(html);
+			$("#paging").empty();
+			return false;
+		}
 
 		var html = '';
 

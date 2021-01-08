@@ -228,7 +228,7 @@
 					<h2>공지사항</h2>
 				</div>
 			</div>
-			<div class="plus" style="float:right;">
+			<div class="plus" style="float:right;" onclick="location.href='/m/notice_list'">
 				+
 			</div>
 		</div>
@@ -373,7 +373,7 @@
 		var html = '';
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>';
-			html += '<td class="title"><div>' + data[i].title + '</div></td>';
+			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].no + '\')"><div>' + data[i].title + '</div></td>';
 			html += '<td class="date">' + data[i].createDate + '</td>';
 			html += '</tr>';
 		}
@@ -381,5 +381,10 @@
 
 		var width = $('.simple-table3').width() * 0.7;
 		$('.simple-table3 .title div').width(width);
+	}
+
+	//공지 게시글 디테일에 값 던지기
+	function sendNoticeID(index) {
+		location.href = "notice_detail?id=" + index;
 	}
 </script>

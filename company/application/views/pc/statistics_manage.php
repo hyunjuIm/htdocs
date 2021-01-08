@@ -187,5 +187,6 @@
 	$('#topMenu3').addClass('active');
 	$('#topMenu3').before('<div class="menu-select-line"></div>');
 
+	$('#loading').hide();
 </script>
 

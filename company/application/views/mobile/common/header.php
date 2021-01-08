@@ -252,6 +252,11 @@
 					청구관리
 				</a>
 			</li>
+			<li class="main-menu">
+				<a class="main-menu-item" href="/m/notice_list">
+					공지사항
+				</a>
+			</li>
 		</ul>
 	</form>
 </div>

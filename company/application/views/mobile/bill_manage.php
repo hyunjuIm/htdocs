@@ -43,7 +43,7 @@
 				사업연도
 			</div>
 			<select id="servedYear" onchange="searchInformation()">
-				<option selected>선택</option>
+				<option selected>2021</option>
 				<option>2020</option>
 				<option>2019</option>
 				<option>2018</option>
@@ -97,6 +97,8 @@
 <script>
 	var coIdObj = new Object();
 	coIdObj.coId = sessionStorage.getItem("userCoID");
+
+	searchInformation();
 
 	//검색
 	function searchInformation() {

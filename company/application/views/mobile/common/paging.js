@@ -1,42 +1,39 @@
-//페이징 - 화살표클릭
-function pmPageNum(val) {//화살표클릭
-	pagingNum += parseInt(val);
-	if (pagingNum < 0) pagingNum = 0;
-	if (pageCount <= pagingNum) pagingNum = pageCount - 1;
-
-	searchInformation(pagingNum);
+function enterKey() {
+	if (window.event.keyCode == 13) {
+		// 엔터키가 눌렸을 때 실행할 내용
+		searchInformation(0);
+	}
 }
 
-//페이징 셋팅
-function setPaging() {
+//페이징-화살표클릭
+function pmPageNum(val) {//화살표클릭
+	pageNum = Math.floor(parseInt(val) / 10) * 10;
+	if (pageNum < 0) pageNum = 0;
+	if (pageCount <= pageNum) pageNum = pageCount - 1;
+	drawTable();
+}
+
+//페이징
+function setPaging(index) {
 	$("#paging").empty();
 
-	var html = '';
-
-	var pre = pagingNum - 1;
-	if (pre < 0) {
-		pre = 0;
-	}
+	var html = "";
 	html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
-	html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
-	$("#paging").append(html);
+	html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
 
-	for (i = 0; i < pageCount; i++) {
-		var html = '';
+	var start = index - Math.floor((index % 10)) + 1;
 
-		var num = i + 1;
-
-		if (i == pagingNum) {
-			html += '<a onclick= "searchInformation(\'' + i + '\')" class="active">' + num + '</a>';
-		} else {
-			html += '<a onclick= "searchInformation(\'' + i + '\')" href="#">' + num + '</a>';
+	for (i = start; i < (start + 10); i++) {
+		if ((i - 1) < pageCount) {
+			if (i == index + 1) {
+				html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
+			} else {
+				html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
+			}
 		}
-
-		$("#paging").append(html);
 	}
 
-	var html = '';
-	html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
+	html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
 	html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
 	$("#paging").append(html);
 }

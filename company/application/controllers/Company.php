@@ -54,4 +54,14 @@ class Company extends CI_Controller
 	public function bill_manage() {
 		$this->load->view('pc/bill_manage');
 	}
+
+	//공지사항
+	public function notice_list() {
+		$this->load->view('pc/notice_list');
+	}
+
+	//공지사항 상세보기
+	public function notice_detail() {
+		$this->load->view('pc/notice_detail');
+	}
 }

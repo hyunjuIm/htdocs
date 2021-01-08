@@ -36,4 +36,14 @@ class M extends CI_Controller
 	public function bill_manage() {
 		$this->load->view('mobile/bill_manage');
 	}
+
+	//공지사항
+	public function notice_list() {
+		$this->load->view('mobile/notice_list');
+	}
+
+	//공지사항 상세보기
+	public function notice_detail() {
+		$this->load->view('mobile/notice_detail');
+	}
 }
