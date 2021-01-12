@@ -46,7 +46,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="year" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -54,7 +54,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="price" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -65,10 +65,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="coName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'coBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="coBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -76,7 +76,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="service" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -86,7 +86,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="hoName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -94,7 +94,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="status" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 20px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
-					class="btn-default-small excel" style="float: right"></div>
+					class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="packageInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -282,29 +282,9 @@ require('check_data.php');
 		searchItems.searchWord =  $("#searchWord").val();
 		searchItems.pageNum = pageNum;
 
-		console.log(searchItems);
-
-		if (searchItems.year == "-전체-") {
-			searchItems.year = "all";
-		}
-		if (searchItems.price == "-전체-") {
-			searchItems.price = "all";
-		}
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-			searchItems.coBranch = "all";
-		} else if (searchItems.coBranch == "-선택-") {
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
 			alert("사업장을 선택해주세요.");
 			return false;
-		}
-		if (searchItems.service == "-전체-") {
-			searchItems.service = "all";
-		}
-		if (searchItems.hoName == "-전체-") {
-			searchItems.hoName = "all";
-		}
-		if (searchItems.status == "-전체-") {
-			searchItems.status = "all";
 		}
 
 		instance.post('M006002_REQ_RES', searchItems).then(res => {
@@ -360,27 +340,13 @@ require('check_data.php');
 			html += '<td style="font-weight: bold; color: #3529b1;cursor: pointer"' +
 					'data-toggle="modal" data-target="#hospitalDetailModal" ' +
 					'onClick="clickHospitalDetail(\'' + data[i].hoId + '\')">' + data[i].hoName + '</td>';
-
-			if (data[i].coContract) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
+			html += '<td>' + (data[i].coContract ? 'Y' : 'N') + '</td>';
 			html += '<td>' + data[i].price.toLocaleString() + '</td>';
-			html += '<td>' + data[i].customers + '</td>';
+			html += '<td>' + data[i].customers.toLocaleString() + '</td>';
 			html += '<td>' + data[i].reStartDate + " ~ " + data[i].reEndDate + '</td>';
 			html += '<td>' + data[i].ipStartDate + " ~ " + data[i].ipEndDate + '</td>';
-			if (data[i].status) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-			if (data[i].hoContract) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
+			html += '<td>' + (data[i].status ? 'Y' : 'N') + '</td>';
+			html += '<td>' + (data[i].hoContract ? 'Y' : 'N') + '</td>';
 
 			html += '</tr>';
 
@@ -388,4 +354,97 @@ require('check_data.php');
 		}
 	}
 
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.year = $("#year option:selected").val();
+		searchItems.price = $("#price option:selected").val();
+		searchItems.coName = $("#coName option:selected").val();
+		searchItems.coBranch = $("#coBranch option:selected").val();
+		searchItems.service = $("#service option:selected").val();
+		searchItems.hoName = $("#hoName option:selected").val();
+		searchItems.status = $("#status option:selected").val();
+
+		searchItems.searchWord =  $("#searchWord").val();
+		searchItems.pageNum = pageNum;
+
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		}
+
+		fileURL.post('downloadExcel/M0602', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 패키지목록.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("고객사명");
+				tt.push("사업장명");
+				tt.push("서비스");
+				tt.push("지역");
+				tt.push("병원명");
+				tt.push("고객사계약");
+				tt.push("단가");
+				tt.push("직원수");
+				tt.push("예약기간");
+				tt.push("검진기간");
+				tt.push("사업현황");
+				tt.push("병원계약");
+
+				table.push(tt);
+
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].coName);
+					td.push(data[i].coBranch);
+					td.push(data[i].service);
+					td.push(data[i].place);
+					td.push(data[i].hoName);
+					td.push(data[i].coContract ? 'Y' : 'N');
+					td.push(data[i].price.toLocaleString());
+					td.push(data[i].customers.toLocaleString());
+					td.push(data[i].reStartDate + " ~ " + data[i].reEndDate);
+					td.push(data[i].ipStartDate + " ~ " + data[i].ipStartDate);
+					td.push(data[i].status ? 'Y' : 'N');
+					td.push(data[i].hoContract ? 'Y' : 'N');
+
+					table.push(td);
+				}
+				
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	}
 </script>

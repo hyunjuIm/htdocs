@@ -43,7 +43,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="year" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -51,7 +51,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="service" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="status" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -69,7 +69,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="contract" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -105,7 +105,7 @@
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 20px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
-					class="btn-default-small excel" style="float: right"></div>
+					class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="companyInfo" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -205,7 +205,7 @@ require('check_data.php');
 
 	//페이징-숫자클릭
 	function searchInformation(index) {//숫자클릭
-		if($("#searchWord").val().length == 1) {
+		if ($("#searchWord").val().length == 1) {
 			alert('두 글자 이상 검색어로 입력주세요.');
 			return false;
 		}
@@ -225,19 +225,6 @@ require('check_data.php');
 
 		searchItems.pageNum = pageNum;
 		searchItems.searchWord = $("#searchWord").val();
-
-		if (searchItems.year == "-전체-") {
-			searchItems.year = "all";
-		}
-		if (searchItems.service == "-전체-") {
-			searchItems.service = "all";
-		}
-		if (searchItems.status == "-전체-") {
-			searchItems.status = "all";
-		}
-		if (searchItems.contract == "-전체-") {
-			searchItems.contract = "all";
-		}
 
 		console.log(searchItems);
 
@@ -262,7 +249,7 @@ require('check_data.php');
 
 		$('#companyInfo > tbody').empty();
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
 			html += '<td colspan="11">해당하는 검색 결과가 없습니다.</td>';
@@ -281,40 +268,134 @@ require('check_data.php');
 			if (index == 0) {
 				no = (index + 1) + i;
 			} else {
-				no = index * 10 + (i+1);
+				no = index * 10 + (i + 1);
 			}
 
 			html += '<td>' + no + '</td>';
 			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].branch + '</td>';
 			html += '<td>' + regExp(data[i].services) + '</td>';
-
-			if (data[i].contract) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
-			html += '<td>' + data[i].customers + '</td>';
-
-			if (data[i].status) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
+			html += '<td>' + (data[i].contract ? 'Y' : 'N') + '</td>';
+			html += '<td>' + data[i].customers.toLocaleString() + '</td>';
+			html += '<td>' + (data[i].status ? 'Y' : 'N') + '</td>';
 			html += '<td>' + data[i].reservationStartDate + " ~ " + data[i].reservationEndDate + '</td>';
 			html += '<td>' + data[i].inspectionStartDate + " ~ " + data[i].inspectionEndDate + '</td>';
-
-			if (data[i].license) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
+			html += '<td>' + (data[i].license ? 'Y' : 'N') + '</td>';
 			html += '</tr>';
 
 			$("#companyInfo").append(html);
 		}
+	}
+
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.year = $("#year option:selected").val();
+		searchItems.service = $("#service option:selected").val();
+		searchItems.status = $("#status option:selected").val();
+		searchItems.contract = $("#contract option:selected").val();
+
+		searchItems.pageNum = pageNum;
+		searchItems.searchWord = $("#searchWord").val();
+
+		fileURL.post('downloadExcel/M0402', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 기업목록.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("기업명");
+				tt.push("사업장명");
+				tt.push("시스템오픈");
+				tt.push("서비스");
+				tt.push("계약유무");
+				tt.push("예약기간");
+				tt.push("검진기간");
+				tt.push("서비스이용료");
+				tt.push("패키지");
+				tt.push("지원금");
+				tt.push("공단대상");
+				tt.push("가족지원");
+
+				var max = 0;
+				for (var i = 0; i < data.length; i++) {
+					max = (data[i].companyManagerDTOList.length > max) ? data[i].companyManagerDTOList.length : max;
+				}
+				for (var i = 0; i < max; i++) {
+					tt.push("담당자" + (i + 1) + " 이름");
+					tt.push("담당자" + (i + 1) + " 연락처");
+					tt.push("담당자" + (i + 1) + " 이메일");
+				}
+
+				table.push(tt);
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].companyName);
+					td.push(data[i].companyBranch);
+					td.push(data[i].systemOpen ? 'Y' : 'N');
+					td.push(regExp(data[i].serviceName));
+					td.push(data[i].contract ? 'Y' : 'N');
+					td.push(data[i].reservationStartDate + '~' + data[i].reservationEndDate);
+					td.push(data[i].inspectionStartDate + '~' + data[i].inspectionEndDate);
+					td.push(data[i].rebatePrice.toLocaleString());
+
+					var packagePriceList = Array();
+					for (var j = 0; j < data[i].packagePriceList.length; j++) {
+						packagePriceList[j] = parseInt(data[i].packagePriceList[j]).toLocaleString();
+					}
+					td.push(packagePriceList.join("/"));
+
+					var supportPriceList = Array();
+					for (var j = 0; j < data[i].supportPriceList.length; j++) {
+						supportPriceList[j] = parseInt(data[i].supportPriceList[j]).toLocaleString();
+					}
+					td.push(supportPriceList.join("/"));
+
+					td.push(data[i].pcDiscount ? 'Y' : 'N');
+					td.push(data[i].familySupport ? 'Y' : 'N');
+
+					for (var j = 0; j < data[i].companyManagerDTOList.length; j++) {
+						td.push(data[i].companyManagerDTOList[j].name);
+						td.push(data[i].companyManagerDTOList[j].phone);
+						td.push(data[i].companyManagerDTOList[j].email);
+					}
+
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
 	}
 </script>

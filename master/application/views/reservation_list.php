@@ -33,7 +33,7 @@
 			font-weight: 300;
 		}
 
-		#info6 th{
+		#info6 th {
 			vertical-align: top !important;
 		}
 	</style>
@@ -67,7 +67,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="servedYear" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -75,7 +75,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="reservationServiceName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -86,10 +86,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="companyName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'companyBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="companyBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 
@@ -98,7 +98,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="hospitalName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -108,7 +108,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="reservationStatus" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -131,7 +131,8 @@
 				<h6>
 					<div style="margin-right: 15px">통합검색</div>
 					<div class="search">
-						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요" onkeyup="enterKey()">
+						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요"
+							   onkeyup="enterKey()">
 						<div class="search-icon" onclick="searchInformation(0)"></div>
 					</div>
 				</h6>
@@ -141,11 +142,12 @@
 
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 20px">
 		<form class="table-responsive" style="margin: 0 auto">
-			<div class="btn-default-small excel" style="float: right" onclick="excelTable('reservationInfos', '예약관리')"></div>
+			<div class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="reservationInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th style="width: 3%"><input type="checkbox" id="reservationCheck" name="reservationCheck" onclick="clickAll(id, name)"></th>
+					<th style="width: 3%"><input type="checkbox" id="reservationCheck" name="reservationCheck"
+												 onclick="clickAll(id, name)"></th>
 					<th style="width: 3%">NO</th>
 					<th>서비스</th>
 					<th>고객사</th>
@@ -210,6 +212,7 @@ require('check_data.php');
 	});
 
 	var companySelect;
+
 	//검색 selector
 	function setReservationSelectData(data) {
 		//수검연도
@@ -235,17 +238,17 @@ require('check_data.php');
 			var jbSplit = data.companyName[i].split('-');
 			var companyName = jbSplit[0];
 
-			for(var j=0; j<nameSize; j++) {
-				if(name[j] == companyName) {
+			for (var j = 0; j < nameSize; j++) {
+				if (name[j] == companyName) {
 					check += 1;
 				}
 			}
-			if(check < 1) {
+			if (check < 1) {
 				name[nameSize] = companyName;
 				nameSize += 1;
 			}
 		}
-		for(i=0; i<nameSize; i++) {
+		for (i = 0; i < nameSize; i++) {
 			var html = '';
 			html += '<option value=\'' + name[i] + '\'>' + name[i] + '</option>'
 			$("#companyName").append(html);
@@ -255,7 +258,7 @@ require('check_data.php');
 		//진행상태
 		for (i = 0; i < data.reservationStatus.length; i++) {
 			var html = '';
-			if(data.reservationStatus[i] == "true") {
+			if (data.reservationStatus[i] == "true") {
 				html += '<option value="true">수검완료</option>'
 			} else {
 				html += '<option value="false">예약신청</option>'
@@ -275,7 +278,7 @@ require('check_data.php');
 
 	//페이징-숫자클릭
 	function searchInformation(index) {//숫자클릭
-		if($("#searchWord").val().length == 1) {
+		if ($("#searchWord").val().length == 1) {
 			alert('두 글자 이상 검색어로 입력주세요.');
 			return false;
 		}
@@ -296,26 +299,11 @@ require('check_data.php');
 		searchItems.hospitalName = $("#hospitalName option:selected").val();
 
 		searchItems.pageNum = pageNum;
-		searchItems.searchWord =  $("#searchWord").val();
+		searchItems.searchWord = $("#searchWord").val();
 
-		if (searchItems.servedYear == "-전체-") {
-			searchItems.servedYear = "all";
-		}
-		if (searchItems.reservationServiceName == "-전체-") {
-			searchItems.reservationServiceName = "all";
-		}
-		if (searchItems.companyName == "-전체-") {
-			searchItems.companyName = "all";
-			searchItems.companyBranch = "all";
-		} else if (searchItems.companyBranch == "-선택-") {
+		if (searchItems.companyName != 'all' && searchItems.companyBranch == 'all') {
 			alert("사업장을 선택해주세요.");
 			return false;
-		}
-		if (searchItems.reservationStatus == "-전체-") {
-			searchItems.reservationStatus = "all";
-		}
-		if (searchItems.hospitalName == "-전체-") {
-			searchItems.hospitalName = "all";
 		}
 
 		instance.post('M003002_REQ_RES', searchItems).then(res => {
@@ -339,7 +327,7 @@ require('check_data.php');
 
 		$("#reservationInfos > tbody").empty();
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
 			html += '<td colspan="19">해당하는 검색 결과가 없습니다.</td>';
@@ -358,7 +346,7 @@ require('check_data.php');
 			if (index == 0) {
 				no = (index + 1) + i;
 			} else {
-				no = index * 10 + (i+1);
+				no = index * 10 + (i + 1);
 			}
 			html += '<td>' + no + '</td>';
 
@@ -373,38 +361,116 @@ require('check_data.php');
 			html += '<td style="font-size: 14px">' + data[i].familyPhone;
 			html += '<td style="font-size: 14px">1차 ' + data[i].firstWishDate;
 			html += '<br>2차 ' + data[i].secondWishDate + '</td>';
-
-			if (data[i].ipCheck) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
+			html += '<td>' + (data[i].ipCheck ? 'Y' : 'N') + '</td>';
 			html += '<td>' + data[i].packageName + '</td>';
 			html += '<td>' + data[i].packagePrice.toLocaleString() + '</td>';
 			html += '<td>' + data[i].companySupportPrice.toLocaleString() + '</td>';
-
-			if (data[i].familyPsInfoCheckDual) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
-			if (data[i].familyPsInfoCheckHos) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
-			if (data[i].familyPcDiscount) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
+			html += '<td>' + (data[i].familyPsInfoCheckDual ? 'Y' : 'N') + '</td>';
+			html += '<td>' + (data[i].familyPsInfoCheckHos ? 'Y' : 'N') + '</td>';
+			html += '<td>' + (data[i].familyPcDiscount ? 'Y' : 'N') + '</td>';
 			html += '</tr>';
 
 			$("#reservationInfos").append(html);
 		}
+	}
+
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.servedYear = $("#servedYear option:selected").val();
+		searchItems.reservationServiceName = $("#reservationServiceName option:selected").val();
+		searchItems.companyName = $("#companyName option:selected").val();
+		searchItems.companyBranch = $("#companyBranch option:selected").val();
+		searchItems.reservationStatus = $("#reservationStatus option:selected").val();
+		searchItems.hospitalName = $("#hospitalName option:selected").val();
+
+		searchItems.pageNum = pageNum;
+		searchItems.searchWord = $("#searchWord").val();
+
+		if (searchItems.companyName != 'all' && searchItems.companyBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		}
+
+		fileURL.post('downloadExcel/M0302', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 예약목록.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("서비스");
+				tt.push("고객사");
+				tt.push("사업장");
+				tt.push("아이디");
+				tt.push("성명");
+				tt.push("관계");
+				tt.push("생년월일");
+				tt.push("검진병원");
+				tt.push("연락처");
+				tt.push("예약일");
+				tt.push("수검상태");
+				tt.push("패키지");
+				tt.push("패키지금액");
+				tt.push("지원금");
+				tt.push("개인정보동의(듀얼)");
+				tt.push("개인정보동의(병원)");
+				tt.push("공단대상");
+				table.push(tt);
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].serviceName);
+					td.push(data[i].companyName);
+					td.push(data[i].companyBranch);
+					td.push(data[i].familyId);
+					td.push(data[i].familyName);
+					td.push(data[i].familyGrade);
+					td.push(data[i].familyBirthDate);
+					td.push(data[i].hospitalName);
+					td.push(data[i].familyPhone);
+					td.push("1차 예약일: " + data[i].firstWishDate + " | 2차 예약일: " + data[i].secondWishDate);
+					td.push(data[i].ipCheck ? 'Y' : 'N');
+					td.push(data[i].packageName);
+					td.push(data[i].packagePrice.toLocaleString());
+					td.push(data[i].companySupportPrice.toLocaleString());
+					td.push(data[i].familyPsInfoCheckDual ? 'Y' : 'N');
+					td.push(data[i].familyPsInfoCheckHos ? 'Y' : 'N');
+					td.push(data[i].familyPcDiscount ? 'Y' : 'N');
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
 	}
 </script>

@@ -164,7 +164,7 @@
 														<td>
 															<input class="info-input zip-code" type="text"
 																   id="zipCode" placeholder="우편번호"
-																   onclick="openAddressSearch()" readonly>
+																   onclick="openAddressSearch('zipCode','address','buildingNum')" readonly>
 															<input class="info-input" type="text"
 																   id="address"
 																   readonly>
@@ -417,18 +417,6 @@
 				$("#supportPrice").val(familyData[i].supportPrice.toLocaleString());
 			}
 		}
-	}
-
-	//주소검색
-	function openAddressSearch() {
-		new daum.Postcode({
-			oncomplete: function (data) {
-				$("#zipCode").val(data.zonecode); // 우편번호 (5자리)
-				$("#address").val(data.address);
-				$("#buildingNum").val(data.buildingName);
-				$("#buildingNum").focus();
-			}
-		}).open();
 	}
 
 	//고객정보 수정

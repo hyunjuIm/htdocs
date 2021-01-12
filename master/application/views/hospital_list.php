@@ -39,7 +39,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="year" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -47,7 +47,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="service" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="place" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -65,7 +65,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="contract" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -100,7 +100,7 @@
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 20px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
-					class="btn-default-small excel" style="float: right"></div>
+					class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="hospitalInfo" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -216,19 +216,6 @@ require('check_data.php');
 		searchItems.pageNum = pageNum;
 		searchItems.searchWord = $("#searchWord").val();
 
-		if (searchItems.year == "-전체-") {
-			searchItems.year = "all";
-		}
-		if (searchItems.service == "-전체-") {
-			searchItems.service = "all";
-		}
-		if (searchItems.place == "-전체-") {
-			searchItems.place = "all";
-		}
-		if (searchItems.contract == "-전체-") {
-			searchItems.contract = "all";
-		}
-
 		console.log(searchItems);
 
 		instance.post('M005002_REQ_RES', searchItems).then(res => {
@@ -280,21 +267,10 @@ require('check_data.php');
 					'onClick="clickHospitalDetail(\'' + data[i].id + '\')">' + data[i].name + '</td>';
 			html += '<td>' + data[i].place + '</td>';
 			html += '<td>' + regExp(data[i].services) + '</td>';
-			if (data[i].contract) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-			if (data[i].license) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-			if (data[i].bankbook) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
+			html += '<td>' + (data[i].contract ? 'Y' : 'N') + '</td>';
+			html += '<td>' + (data[i].license ? 'Y' : 'N') + '</td>';
+			html += '<td>' + (data[i].bankbook ? 'Y' : 'N') + '</td>';
+
 			//담당자
 			html += '<td><div class="btn btn-info" style="font-size: 13px" ' +
 					'data-toggle="modal" data-target="#hospitalManagerModal" onClick="clickHospitalManagerDetail(\'' + data[i].id + '\')">설정</div></td>';
@@ -307,4 +283,127 @@ require('check_data.php');
 		}
 	}
 
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.year = $("#year option:selected").val();
+		searchItems.service = $("#service option:selected").val();
+		searchItems.place = $("#place option:selected").val();
+		searchItems.contract = $("#contract option:selected").val();
+
+		searchItems.pageNum = pageNum;
+		searchItems.searchWord = $("#searchWord").val();
+
+		fileURL.post('downloadExcel/M0502', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 병원목록.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("병원명");
+				tt.push("지역");
+				tt.push("주소");
+				tt.push("등급");
+				tt.push("대표번호");
+				tt.push("사업자번호");
+				tt.push("URL");
+				tt.push("공단대상");
+				tt.push("공단금액");
+				tt.push("시스템오픈");
+				tt.push("가능서비스");
+				tt.push("계약유무");
+
+				tt.push("검사항목");
+				tt.push("접근성");
+				tt.push("전문성");
+				tt.push("시설");
+
+				tt.push("안내사항");
+				tt.push("운영시간");
+				tt.push("기관정보");
+
+				var max = 0;
+				for (var i = 0; i < data.length; i++) {
+					max = (data[i].hospitalManagerDTOList.length > max) ? data[i].hospitalManagerDTOList.length : max;
+				}
+				for (var i = 0; i < max; i++) {
+					tt.push("담당자" + (i + 1) + " 이름");
+					tt.push("담당자" + (i + 1) + " 직통번호");
+					tt.push("담당자" + (i + 1) + " 연락처");
+					tt.push("담당자" + (i + 1) + " 이메일");
+					tt.push("담당자" + (i + 1) + " 담당업무");
+				}
+
+				table.push(tt);
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].hospitalDetailDTO.serviceYear);
+					td.push(data[i].hospitalDetailDTO.name);
+					td.push(data[i].hospitalDetailDTO.region);
+					td.push('[' + data[i].hospitalDetailDTO.zipCode + '] ' + data[i].hospitalDetailDTO.address + ' ' + data[i].hospitalDetailDTO.buildingNum);
+					td.push(data[i].hospitalDetailDTO.grade);
+					td.push(data[i].hospitalDetailDTO.phone);
+					td.push(data[i].hospitalDetailDTO.licenseNum);
+					td.push(data[i].hospitalDetailDTO.url);
+					td.push(data[i].hospitalDetailDTO.pcDiscount ? 'Y' : 'N');
+					td.push(data[i].hospitalDetailDTO.pcPrice.toLocaleString());
+					td.push(data[i].hospitalDetailDTO.systemOpen ? 'Y' : 'N');
+					td.push(regExp(data[i].hospitalDetailDTO.services));
+					td.push(data[i].hospitalDetailDTO.contract ? 'Y' : 'N');
+
+					td.push(data[i].hospitalDetailDTO.onePoint);
+					td.push(data[i].hospitalDetailDTO.twoPoint);
+					td.push(data[i].hospitalDetailDTO.threePoint);
+					td.push(data[i].hospitalDetailDTO.fourPoint);
+
+					td.push(data[i].hospitalDetailDTO.notice);
+					td.push(data[i].hospitalDetailDTO.operatingHours);
+					td.push(data[i].hospitalDetailDTO.plusInfo.toString());
+					
+
+					for (var j = 0; j < data[i].hospitalManagerDTOList.length; j++) {
+						td.push(data[i].hospitalManagerDTOList[j].name);
+						td.push(data[i].hospitalManagerDTOList[j].directPhone);
+						td.push(data[i].hospitalManagerDTOList[j].phone);
+						td.push(data[i].hospitalManagerDTOList[j].email);
+						td.push(data[i].hospitalManagerDTOList[j].department);
+					}
+
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	}
 </script>

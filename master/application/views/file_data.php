@@ -53,6 +53,5 @@
 
 			console.log(response);
 		})
-
 	}
 </script>

@@ -281,6 +281,8 @@
 
 	});
 
+	$('#loading').hide();
+
 	const instance = axios.create({
 		baseURL: "http://192.168.219.112:8080/master/api/v1/",
 		timeout: 5000,

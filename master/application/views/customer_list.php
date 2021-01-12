@@ -8,7 +8,7 @@
 	?>
 
 	<style>
-		#customerInfos tbody tr{
+		#customerInfos tbody tr {
 			cursor: pointer;
 		}
 
@@ -54,10 +54,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="companyName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'companyBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="companyBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 					</div>
@@ -83,7 +83,7 @@
 					<div class="search">
 						<input type="text" class="search-input" id="searchWord" placeholder="사원번호, 이름으로 검색하세요"
 							   onkeyup="enterKey()">
-						<div class="search-icon" onclick="searchInformation()"></div>
+						<div class="search-icon" onclick="searchInformation(0)"></div>
 					</div>
 				</h6>
 			</div>
@@ -92,7 +92,7 @@
 
 	<div class="row" style="margin-left: 30px; margin-right: 30px; margin-top: 20px">
 		<form class="table-responsive" style="margin: 0 auto">
-			<div class="btn-default-small excel" style="float: right"></div>
+			<div class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="customerInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -154,6 +154,7 @@ require('check_data.php');
 	});
 
 	var companySelect;
+
 	//검색 selector
 	function setCustomerSelectData(data) {
 		//회사
@@ -189,7 +190,7 @@ require('check_data.php');
 
 	//페이징-숫자클릭
 	function searchInformation(index) {
-		if($("#searchWord").val().length == 1) {
+		if ($("#searchWord").val().length == 1) {
 			alert('두 글자 이상 검색어로 입력주세요.');
 			return false;
 		}
@@ -208,10 +209,7 @@ require('check_data.php');
 
 		searchItems.searchWord = $("#searchWord").val();
 
-		if (searchItems.companyName == "-전체-") {
-			searchItems.companyName = "all";
-			searchItems.companyBranch = "all";
-		} else if (searchItems.companyBranch == "-선택-") {
+		if (searchItems.companyName != 'all' && searchItems.companyBranch == 'all') {
 			alert("사업장을 선택해주세요.");
 			return false;
 		}
@@ -222,7 +220,6 @@ require('check_data.php');
 				pageCount++;
 			}
 			setCustomerData(res.data.customerDTOList, pageNum);
-			console.log(res.data);
 		});
 	}
 
@@ -233,10 +230,10 @@ require('check_data.php');
 	//회원관리 테이블
 	function setCustomerData(data, index) {
 		setPaging(index);
-		
+
 		$('#customerInfos > tbody').empty();
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
 			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
@@ -255,14 +252,14 @@ require('check_data.php');
 			if (index == 0) {
 				no = (index + 1) + i;
 			} else {
-				no = index * 10 + (i+1);
+				no = index * 10 + (i + 1);
 			}
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].id + '</td>';
 			html += '<td>' + data[i].email + '</td>';
 			html += '<td>' + data[i].name + '</td>';
-			html += '<td>' + data[i].companyName  + '</td>';
+			html += '<td>' + data[i].companyName + '</td>';
 			html += '<td>' + data[i].companyBranch + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].phone + '</td>';
@@ -276,6 +273,85 @@ require('check_data.php');
 
 			$("#customerInfos").append(html);
 		}
+	}
+
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.pageNum = pageNum;
+		searchItems.companyName = $("#companyName option:selected").val();
+		searchItems.companyBranch = $("#companyBranch option:selected").val();
+
+		searchItems.searchWord = $("#searchWord").val();
+
+		if (searchItems.companyName != 'all' && searchItems.companyBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		}
+
+		fileURL.post('downloadExcel/M0102', searchItems).then(res => {
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 회원목록.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("아이디");
+				tt.push("이메일");
+				tt.push("이름");
+				tt.push("고객사");
+				tt.push("사업장");
+				tt.push("생년월일");
+				tt.push("연락처");
+				tt.push("생성일");
+				tt.push("최종로그인일");
+				table.push(tt);
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].id);
+					td.push(data[i].email);
+					td.push(data[i].name);
+					td.push(data[i].companyName);
+					td.push(data[i].companyBranch);
+					td.push(data[i].birthDate);
+					td.push(data[i].phone);
+					td.push(data[i].createDate);
+					td.push(data[i].lastSignInTime);
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
 	}
 
 </script>

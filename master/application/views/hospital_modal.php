@@ -172,7 +172,7 @@
 							<table class="table" id="HosInfoTable3" style="margin-bottom: 60px">
 								<tbody>
 								<tr>
-									<th>공지사항</th>
+									<th>안내사항</th>
 									<td>
 										<input class="info-input" type="text" id="hos-notice">
 									</td>
@@ -428,7 +428,7 @@
 							<table class="table" id="HosInfoTable3" style="margin-bottom: 60px">
 								<tbody>
 								<tr>
-									<th>공지사항</th>
+									<th>안내사항</th>
 									<td>
 										<input class="info-input" type="text" id="create-hos-notice">
 									</td>
@@ -830,11 +830,7 @@ require('file_data.php');
 			html += '<td>' + data[i].phone + '</td>';
 			html += '<td>' + data[i].email + '</td>';
 			html += '<td>' + data[i].department + '</td>';
-			if (data[i].receiveSMS) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
+			html += '<td>' + (data[i].receiveSMS ? 'Y' : 'N') + '</td>';
 			html += '<td>' +
 					'<div class="btn btn-dark" onclick="updateSetHospitalManagerData(\'' + i + '\')">수정</div>' +
 					'<div class="btn btn-danger" onclick="deleteHospitalManagerData(\'' + data[i].id + '\')">삭제</div>' +
