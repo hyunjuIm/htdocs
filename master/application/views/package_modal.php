@@ -74,7 +74,7 @@
 									<th style="width: 10%">NO</th>
 									<th style="width: 40%">병원명</th>
 									<th style="width: 20%">등급</th>
-									<th>공단차감유무</th>
+									<th>공단대상유무</th>
 								</tr>
 								</thead>
 								<tbody>
@@ -93,7 +93,7 @@
 									<th>고객사명</th>
 									<th>사업장명</th>
 									<th style="width: 15%">직원수</th>
-									<th>공단차감유무</th>
+									<th>공단대상유무</th>
 								</tr>
 								</thead>
 								<tbody>

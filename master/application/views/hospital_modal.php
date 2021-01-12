@@ -6,6 +6,11 @@
 		border: none;
 		font-weight: 300;
 	}
+
+	.btn {
+		font-size: 12px;
+		margin: 0 1px;
+	}
 </style>
 
 <!-- 병원 상세 정보 Modal -->
@@ -74,7 +79,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th>공단차감</th>
+									<th>공단대상</th>
 									<td id="hos-pcDiscount">
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="pcDiscountYes">YES&nbsp</label>
@@ -298,7 +303,8 @@
 											   placeholder="우편번호 찾기" readonly
 											   onclick="openAddressSearch('create-hos-zipCode','create-hos-address','create-hos-buildingNum')">
 										<input class="info-input" type="text" id="create-hos-address" readonly>
-										<input class="info-input" type="text" id="create-hos-buildingNum" placeholder="상세주소를 입력해주세요.">
+										<input class="info-input" type="text" id="create-hos-buildingNum"
+											   placeholder="상세주소를 입력해주세요.">
 									</td>
 								</tr>
 								<tr>
@@ -326,7 +332,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th>공단차감</th>
+									<th>공단대상</th>
 									<td id="create-hos-pcDiscount">
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="pcDiscountYes">YES&nbsp</label>
@@ -499,7 +505,7 @@
 <!-- 병원 담당자 정보 Modal -->
 <div class="modal fade" id="hospitalManagerModal" tabindex="-1" aria-labelledby="hospitalManagerModalLabel"
 	 aria-hidden="true">
-	<div class="modal-dialog " style="max-width: fit-content; min-width: 1100px; display: table;">
+	<div class="modal-dialog " style="max-width: fit-content; min-width: 1200px; display: table;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -518,13 +524,14 @@
 							<table id="HosManagerTable" class="table table-hover">
 								<thead>
 								<tr>
-									<th >이름</th>
-									<th >직함</th>
-									<th >직통번호</th>
-									<th >연락처</th>
-									<th >이메일</th>
-									<th >담당업무</th>
-									<th >SMS수신</th>
+									<th>이름</th>
+									<th>직함</th>
+									<th>직통번호</th>
+									<th>연락처</th>
+									<th>이메일</th>
+									<th>담당업무</th>
+									<th>SMS수신</th>
+									<th>수정/삭제</th>
 								</tr>
 								</thead>
 								<tbody>
@@ -535,10 +542,14 @@
 					<div class="row">
 						<div class="menu-title" style="font-size: 22px; margin-bottom: 20px">
 							<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
-							담당자추가
-							<div class="btn-save-square"
+							담당자입력
+							<div class="btn-save-square" id="addHosManager"
 								 style="padding: 2px 6px; font-size: 13px; margin-left: 10px"
-								 onclick="addHospitalManagerData()">저장
+								 onclick="addHospitalManagerData()">추가
+							</div>
+							<div class="btn-save-square" id="updateHosManager"
+								 style="padding: 2px 6px; font-size: 13px; margin-left: 10px"
+								 onclick="updateHospitalManagerData()">수정
 							</div>
 						</div>
 						<table class="table" id="HosManagerAddTable" style="margin-bottom: 30px">
@@ -800,9 +811,15 @@ require('file_data.php');
 		});
 	}
 
+	var hospitalManager;
+	$('#updateHosManager').hide();
+	$('#addHosManager').show();
+
 	//클릭시 담당자정보
 	function setHospitalManagerData(data) {
 		$("#HosManagerTable tbody").empty();
+
+		hospitalManager = data;
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
@@ -818,6 +835,11 @@ require('file_data.php');
 			} else {
 				html += '<td>N</td>';
 			}
+			html += '<td>' +
+					'<div class="btn btn-dark" onclick="updateSetHospitalManagerData(\'' + i + '\')">수정</div>' +
+					'<div class="btn btn-danger" onclick="deleteHospitalManagerData(\'' + data[i].id + '\')">삭제</div>' +
+					'</td>';
+
 			html += '</tr>';
 			$("#HosManagerTable").append(html);
 		}
@@ -866,11 +888,112 @@ require('file_data.php');
 						$("#HosManagerAddTable").find('input').each(function () {
 							this.value = '';
 						});
+						$("input:checkbox[id='receiveSMSYes']").prop("checked", false);
+						$("input:checkbox[id='receiveSMSNo']").prop("checked", false);
 					}
 				});
 			} else {
 				return false;
 			}
+		}
+	}
+
+	var updateManagerId;
+	//담당자 수정 셋팅
+	function updateSetHospitalManagerData(index) {
+		$('#updateHosManager').show();
+		$('#addHosManager').hide();
+
+		var data = hospitalManager[index];
+		$("#add-hos-department").val(data.department);
+		$("#add-hos-email").val(data.email);
+		$("#add-hos-password").val();
+		$("#add-hos-name").val(data.name);
+		$("#add-hos-phone").val(data.phone);
+		$("#add-hos-directPhone").val(data.directPhone);
+		$("#add-hos-position").val(data.position);
+		if (data.receiveSMS) {
+			$("input:checkbox[id='receiveSMSYes']").prop("checked", true);
+			$("input:checkbox[id='receiveSMSNo']").prop("checked", false);
+		} else {
+			$("input:checkbox[id='receiveSMSYes']").prop("checked", false);
+			$("input:checkbox[id='receiveSMSNo']").prop("checked", true);
+		}
+
+		updateManagerId = data.id;
+	}
+
+	//담당자 수정
+	function updateHospitalManagerData() {
+		var saveItems = new Object();
+
+		saveItems.id = updateManagerId;
+		saveItems.department = $("#add-hos-department").val();
+		saveItems.email = $("#add-hos-email").val();
+		saveItems.name = $("#add-hos-name").val();
+		saveItems.phone = $("#add-hos-phone").val();
+		saveItems.directPhone = $("#add-hos-directPhone").val();
+		saveItems.position = $("#add-hos-position").val();
+		saveItems.receiveSMS = booleanData('add-hos-receiveSMS');
+
+		if($("#add-hos-password").val() != '') {
+			saveItems.password = $("#add-hos-password").val();
+		}
+
+		//입력된 정보 검사
+		if (saveItems.department == "") {
+			alert("사업장을 입력해주세요.");
+		} else if (saveItems.email == "") {
+			alert("이메일을 입력해주세요.");
+		} else if (saveItems.name == "") {
+			alert("이름을 입력해주세요.");
+		} else if (saveItems.phone == "") {
+			alert("직통번호를 입력해주세요.");
+		} else if (saveItems.directPhone == "") {
+			alert("개인연락처를 입력해주세요.");
+		} else if (saveItems.position == "") {
+			alert("직함을 입력해주세요.");
+		} else if (!isEmail(saveItems.email)) {
+			alert("올바른 이메일을 입력해주세요.");
+		} else if (!isPhoneNum(saveItems.phone)) {
+			alert("올바른 연락처를 입력해주세요.");
+		} else {
+			if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
+				instance.post('M0509', saveItems).then(res => {
+					console.log(res.data.message);
+					if (res.data.message == "success") {
+						alert("저장되었습니다.");
+						clickHospitalManagerDetail(hosId.hospitalId);
+						$('#updateHosManager').hide();
+						$('#addHosManager').show();
+						$("#HosManagerAddTable").find('input').each(function () {
+							this.value = '';
+						});
+						$("input:checkbox[id='receiveSMSYes']").prop("checked", false);
+						$("input:checkbox[id='receiveSMSNo']").prop("checked", false);
+					}
+				});
+			} else {
+				return false;
+			}
+		}
+	}
+
+	//담당자 삭제
+	function deleteHospitalManagerData(id) {
+		var sendItems = new Object();
+		sendItems.id = id;
+
+		if (confirm("삭제하시겠습니까?") == true) {
+			instance.post('M0510', sendItems).then(res => {
+				console.log(res.data.message);
+				if (res.data.message == "success") {
+					alert("삭제되었습니다.");
+					clickHospitalManagerDetail(hosId.hospitalId);
+				}
+			});
+		} else {
+			return false;
 		}
 	}
 
@@ -893,8 +1016,8 @@ require('file_data.php');
 			html += '<td contentEditable="true">' + data[i].modelCode + '</td>';
 			html += '<td contentEditable="true">' + data[i].uses + '</td>';
 			html += '<td contentEditable="true">' + data[i].count + '</td>';
-			html += '<td contentEditable="true">' + data[i].introductionYear +'</td>';
-			html += '<td contentEditable="true">' + data[i].memo +'</td>';
+			html += '<td contentEditable="true">' + data[i].introductionYear + '</td>';
+			html += '<td contentEditable="true">' + data[i].memo + '</td>';
 			html += '<td><div class="btn-save-square" style="padding: 0 6px; font-size: 13px; margin-left: 10px" onclick="delHospitalEquipment(this)">삭제</div></td>'
 			html += '</tr>';
 
@@ -1016,7 +1139,7 @@ require('file_data.php');
 			alert("URL을 입력해주세요.");
 		} else if (saveItems.pcPrice == "") {
 			alert("공단금액을 입력해주세요.");
-		}  else if (saveItems.onePoint < 0 || saveItems.onePoint > 10) {
+		} else if (saveItems.onePoint < 0 || saveItems.onePoint > 10) {
 			alert("검사항목 - 올바른 점수를 입력해주세요.");
 		} else if (saveItems.twoPoint < 0 || saveItems.twoPoint > 10) {
 			alert("접근성 - 올바른 점수를 입력해주세요.");

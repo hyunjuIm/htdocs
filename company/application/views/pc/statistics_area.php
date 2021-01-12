@@ -17,9 +17,9 @@
 
 <div class="row" style="display: block;margin-top: 4rem">
 	<div style="display: flex">
+		<div class="btn btn-outline-dark" onclick="searchAreaStatisticsDate(2021)">2021년</div>
 		<div class="btn btn-outline-dark" onclick="searchAreaStatisticsDate(2020)">2020년</div>
 		<div class="btn btn-outline-dark" onclick="searchAreaStatisticsDate(2019)">2019년</div>
-		<div class="btn btn-outline-dark" onclick="searchAreaStatisticsDate(2018)">2018년</div>
 	</div>
 
 	<hr>

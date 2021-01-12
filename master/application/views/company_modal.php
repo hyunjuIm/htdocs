@@ -11,6 +11,20 @@
 		padding: 0;
 		margin-left: 3px;
 	}
+
+	.manage-head {
+		padding: 3px 0 0 0 !important;
+		border: none !important;
+	}
+
+	.manage-head:not(:first-child) {
+		padding-top: 10px !important;
+	}
+
+	.btn {
+		font-size: 12px;
+		margin-left: 2px;
+	}
 </style>
 
 <!-- 기업 상세 정보 Modal -->
@@ -105,7 +119,7 @@
 									<td id="com-supportPriceList"></td>
 								</tr>
 								<tr>
-									<th>공단차감</th>
+									<th>공단대상</th>
 									<td id="com-pcDiscount">
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="pcDiscountYes">YES&nbsp</label>
@@ -387,7 +401,7 @@
 									<td id="add-com-rebatePrice" contentEditable="true"></td>
 								</tr>
 								<tr>
-									<th>공단차감</th>
+									<th>공단대상</th>
 									<td id="add-com-pcDiscount">
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="add-pcDiscountYes">YES&nbsp</label>
@@ -657,18 +671,36 @@
 		//ComManagerTable 담당자정보
 		$("#ComManagerTable").empty();
 		for (i = 0; i < data.companyManagerDTOList.length; i++) {
+			var id = data.companyManagerDTOList[i].id.replace('#', '');
+
 			var html = '';
+			html += '<tr>';
+			html += '<td class="manage-head">' +
+					'<div style="float: left"><h2>' + (i + 1) + '</h2></div>' +
+					'</td>' +
+					'<td class="manage-head">' +
+					'<div style="display: block;float: right;vertical-align: bottom">' +
+					'<div class="btn btn-dark" onclick="updateCompanyManagerData(\'' + data.companyManagerDTOList[i].id + '\')">수정</div>' +
+					'<div class="btn btn-danger" onclick="deleteCompanyManagerData(\'' + data.companyManagerDTOList[i].id + '\')">삭제</div>' +
+					'</div></td>';
+			html += '</tr>';
 			html += '<tr style="border-top: 2px solid #424242">';
 			html += '<th>이름</th>';
-			html += '<td>' + data.companyManagerDTOList[i].name + '</td>';
+			html += '<td>' +
+					'<input type="text" id=\'' + id + 'Name' +'\' value=\'' + data.companyManagerDTOList[i].name + '\'>' +
+					'</td>';
 			html += '</tr>';
 			html += '<tr>';
 			html += '<th>연락처</th>';
-			html += '<td>' + data.companyManagerDTOList[i].phone + '</td>';
+			html += '<td>' +
+					'<input type="text" id=\'' + id  + 'Phone' + '\' value=\'' + data.companyManagerDTOList[i].phone + '\'>' +
+					'</td>';
 			html += '</tr>';
-			html += '<tr>';
+			html += '<tr style="border-bottom: 1px solid #DCDCDC">';
 			html += '<th>이메일</th>';
-			html += '<td>' + data.companyManagerDTOList[i].email + '</td>';
+			html += '<td>' +
+					'<input type="text" id=\'' + id  + 'Email' + '\' value=\'' + data.companyManagerDTOList[i].email + '\'>' +
+					'</td>';
 			html += '</tr>';
 
 			$("#ComManagerTable").append(html);
@@ -712,6 +744,49 @@
 			} else {
 				return false;
 			}
+		}
+	}
+
+	//담당자 수정
+	function updateCompanyManagerData(id) {
+		var saveItems = new Object();
+		saveItems.id = id;
+
+		id = id.replace('#', '');
+		saveItems.name = $('#'+id+'Name').val();
+		saveItems.email = $('#'+id+'Email').val();
+		saveItems.phone = $('#'+id+'Phone').val();
+
+		console.log(saveItems);
+
+		if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
+			instance.post('M0407', saveItems).then(res => {
+				console.log(res.data.message);
+				if (res.data.message == "success") {
+					alert("저장되었습니다.");
+					clickCompanyDetail(cmnId.companyId);
+				}
+			});
+		} else {
+			return false;
+		}
+	}
+
+	//담당자 삭제
+	function deleteCompanyManagerData(id) {
+		var sendItems = new Object();
+		sendItems.id = id;
+
+		if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
+			instance.post('M0408', sendItems).then(res => {
+				console.log(res.data.message);
+				if (res.data.message == "success") {
+					alert("삭제되었습니다.");
+					clickCompanyDetail(cmnId.companyId);
+				}
+			});
+		} else {
+			return false;
 		}
 	}
 

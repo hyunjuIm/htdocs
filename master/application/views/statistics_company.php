@@ -193,6 +193,7 @@ require('check_data.php');
 
 	//검색 selector
 	function setStaticsCompanyOption(data) {
+		console.log(data);
 		//회사
 		var name = [];
 		var nameSize = 0;
