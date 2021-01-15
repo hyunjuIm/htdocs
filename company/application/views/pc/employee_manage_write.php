@@ -163,7 +163,7 @@
 								<label for="file-upload">파일찾기<input type="file" id="file-upload"></label>
 							</form>
 							<div class="btn-red" onclick="deleteFile()">삭제</div>
-							<div class="btn-white" onclick="downloadBasicSheet()">양식다운로드</div>
+							<div class="btn-white" onclick="downloadBasicSheet('customer', '회사명_사업장명_날짜_직원입력 양식.xlsx')">양식다운로드</div>
 						</div>
 					</td>
 				</tr>
@@ -280,26 +280,9 @@
 		return true;
 	}
 
-	//양식 다운로드
-	function downloadBasicSheet(){
-		var params = new FormData();
-		params.append('tag', 'customer');
-		
-		fileURL.post('downloadBaseSheetExcel', params,{
-			responseType: 'arraybuffer',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}).then(response => {
-			const type = response.headers['content-type'];
-			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
-			const link = document.createElement('a');
-			link.href = window.URL.createObjectURL(blob);
-			link.download = '회사명_사업장명_날짜_직원입력 양식.xlsx';
-			link.click();
+	<?php
+	require('common/file_data.js');
+	?>
 
-			console.log(response);
-		})
-	}
 </script>
 

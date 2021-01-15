@@ -68,20 +68,29 @@
 										<input class="info-input" type="text" id="customerCompanyBranch">
 									</td>
 								</tr>
-								<tr>
-									<th>비밀번호</th>
-									<td>
-										<input class="info-input" type="password" id="customerPassword">
-									</td>
-								</tr>
-								<tr>
-									<th>비밀번호 확인</th>
-									<td>
-										<input class="info-input" type="password" id="customerPasswordCheck">
-									</td>
-								</tr>
 								</tbody>
 							</table>
+
+                            <div>
+                                <div class="btn btn-secondary" onclick="resetPassword()" style="float:right;font-size: 13px">비밀번호 초기화</div>
+                            </div>
+
+                            <table class="table table-bordered" style="margin-top: 5px;font-size: 15px">
+                                <tbody>
+                                <tr>
+                                    <th>비밀번호</th>
+                                    <td>
+                                        <input class="info-input" type="password" id="customerPassword">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>비밀번호 확인</th>
+                                    <td>
+                                        <input class="info-input" type="password" id="customerPasswordCheck">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 							<div style="width: 100%">
 								<div class="btn btn-dark" style="margin: 30px auto 0 auto"
 									 onclick="saveCustomerInformation()">
@@ -457,11 +466,13 @@
 		sendItems.password = $("#customerPassword").val();
 		sendItems.passwordCheck = $("#customerPasswordCheck").val();
 
+		console.log(sendItems);
+
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M001004_REQ_RES', sendItems).then(res => {
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
-					searchCustomerData(pageNum);
+					searchInformation(pageNum);
 				} else if (res.data.message == "companyFailed") {
 					alert("소속과 사업장을 다시 확인해주세요.");
 				} else if (res.data.message == "customerFailed") {
@@ -488,6 +499,19 @@
 			return false;
 		}
 	}
+
+	//비밀번호 초기화
+	function resetPassword() {
+        if (confirm("비밀번호를 초기화하시겠습니까??") == true) {
+            instance.post('M0107', cusId).then(res => {
+                if (res.data.message == "success") {
+                    alert("비밀번호가 초기화되었습니다.");
+                }
+            });
+        } else {
+            return false;
+        }
+    }
 
 	//가족정보 수정
 	function saveFamilyInformation() {

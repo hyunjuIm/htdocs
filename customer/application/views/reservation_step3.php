@@ -654,8 +654,7 @@ require('check_data.php');
 		maxDate: '+2m',
 		//일요일 선택 불가
 		beforeShowDay: function (date) {
-			var day = date.getDay();
-			return [(day != 0)];
+			return [date.getDay() != 0, ''];
 		}
 	});
 

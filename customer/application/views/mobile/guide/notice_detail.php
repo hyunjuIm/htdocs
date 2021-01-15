@@ -15,6 +15,15 @@
 			text-align: left;
 			white-space: pre-wrap;
 		}
+
+		#fileName {
+			cursor: pointer;
+		}
+
+		#fileName:hover {
+			color: #5645ed;
+			text-decoration: underline;
+		}
 	</style>
 
 </head>
@@ -59,6 +68,13 @@
 				<div id="createDate" style="color:grey;margin-bottom: 2rem"></div>
 
 				<div id="content" style="padding: 3rem;border-top: 2px solid black">
+				</div>
+
+				<hr>
+
+				<div style="text-align: left;padding: 0 3rem;">
+					<span style="font-weight: 400">첨부파일 : </span>
+					<span id="fileName" onclick="downloadFile()"></span>
 				</div>
 
 				<hr>
@@ -110,14 +126,36 @@
 	function setNoticeContent(data) {
 		$("#title").text(data.title);
 		$("#author").text(data.author);
-		$("#createDate").text(data.createDate);
+		if(data.createDate.indexOf('9999') != -1) {
+			$("#createDate").text('2020-12-22');
+		} else {
+			$("#createDate").text(data.createDate);
+		}
 		$("#content").html(data.content);
+		$("#fileName").text(data.fileName);
 	}
 
-	//뒤로가기
-	function cancelBack() {
-		history.back();
+	//파일 다운로드
+	function downloadFile() {
+		var saveItems = new Object();
+		saveItems.id = sendItems.noticeId;
+
+		instance.post('CU_007_003', saveItems,{
+			responseType: 'arraybuffer',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(response => {
+			console.log(response);
+			const type = response.headers['content-type'];
+			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
+			const link = document.createElement('a');
+			link.href = window.URL.createObjectURL(blob);
+			link.download = $("#fileName").text();
+			link.click();
+		})
 	}
+	
 </script>
 
 </html>

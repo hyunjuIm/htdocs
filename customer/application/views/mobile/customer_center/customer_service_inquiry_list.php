@@ -169,77 +169,63 @@
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
+	?>
 
-	var pagingNum = 0;
+	var pageNum = 0;
 	var pageCount = 0;
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
-	userData.pagingNum = pagingNum;
+	userData.pagingNum = pageNum;
 
-	getInquiryList(0);
+	searchInformation(0);
+
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		pageNum = index;
+		drawTable();
+	}
 
 	//문의 내역 가져오기
-	function getInquiryList(index) {
-		pagingNum = index;
-		userData.pagingNum = pagingNum;
+	function drawTable() {
+		pageNum = parseInt(pageNum);
+		userData.pagingNum = pageNum;
 
 		instance.post('CU_008_001', userData).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-			setInquiryList(res.data.qnADTOList);
+			setInquiryList(res.data.qnADTOList, pageNum);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
 		});
 	}
 
-	function setInquiryList(data) {
+	function setInquiryList(data, index) {
+		setPaging(index);
 
-
-		$("#paging").empty();
 		$("#inquiryTable > tbody").empty();
 
-		var html = "";
-		var pre = pagingNum - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
-		html += '<a class="arrow pprev" onclick= "getInquiryList(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
-		$("#paging").append(html);
-
-		for (i = 0; i < pageCount; i++) {
-			var html = '';
-
-			var num = i + 1;
-
-			if (i == pagingNum) {
-				html += '<a onclick= "getInquiryList(\'' + i + '\')" class="active">' + num + '</a>';
-			} else {
-				html += '<a onclick= "getInquiryList(\'' + i + '\')" href="#">' + num + '</a>';
-			}
-
-			$("#paging").append(html);
-		}
-
-		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "getInquiryList(\'' + (pageCount - 1) + '\')" href="#"></a>'
-		$("#paging").append(html);
-
 		if (data.length == 0) {
-			var tbody = "";
-			tbody += '<tr><td colspan="5">문의 내역이 없습니다.</td></tr>';
-			$("#inquiryTable").append(tbody);
+			var html = '';
+			html += '<tr>';
+			html += '<td colspan="3">문의 내역이 없습니다.</td>';
+			html += '</tr>';
+			$("#inquiryTable > tbody").append(html);
+			$("#paging").empty();
+			return false;
 		}
 
 		for (i = 0; i < data.length; i++) {
 			var tbody = "";
 			tbody += '<tr>' +
-					'<td class="title" data-toggle="modal" data-target="#inquiryDetailModal" onclick="detailInquiryPage(\'' + data[i].qnaId + '\', \'' + data[i].status + '\')">' + data[i].title + '</td>' +
-					'<td>' + data[i].createDate + '</td>';
+					'<td class="title" data-toggle="modal" data-target="#inquiryDetailModal"' +
+					' onclick="detailInquiryPage(\'' + data[i].qnaId + '\', \'' + data[i].status + '\')">' + data[i].title + '</td>' +
+					'<td>' + data[i].createDate.replaceAll('-','.') + '</td>';
 			if (data[i].status) {
 				tbody += '<td style="color: #5849ea">답변완료</td>';
 			} else {

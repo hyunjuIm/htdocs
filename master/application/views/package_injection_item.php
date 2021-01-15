@@ -36,8 +36,11 @@
 <div class="container" style="padding-top: 50px; max-width: none">
 	<div class="row">
 		<div style="width:100%; padding: 0 30px">
-			<div class="btn-save-square" data-toggle="modal" data-target="#packageUploadModal" style="float: right;">
-				검사항목 엑셀 업로드
+			<div class="btn-purple-square" data-toggle="modal" data-target="#packageUploadModal">
+				패키지구성항목 엑셀 업로드
+			</div>
+			<div class="btn-save-square" onclick="downloadBasicSheet('inspection', '회사명_사업장명_날짜_패키지구성항목 양식.xlsx')">
+				패키지구성항목 양식 다운로드
 			</div>
 		</div>
 	</div>

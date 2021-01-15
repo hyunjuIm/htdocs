@@ -37,10 +37,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="companyName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'companyBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="companyBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 					</div>
@@ -57,8 +57,6 @@
 
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
-			<div
-					class="btn-default-small excel" style="float: right"></div>
 			<table id="employeeManageInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -163,10 +161,8 @@ require('check_data.php');
 
 		searchItems.pageNum = pageNum;
 
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-		} else if (searchItems.coBranch == "-선택-") {
-			alert('사업장을 선택해주세요.');
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
 			return false;
 		}
 

@@ -77,89 +77,130 @@
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/header.php');
 	?>
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/menu/side.php');
+	?>
 </header>
 
-<div class="row" style="display: block">
-	<img src="/asset/images/mobile/icon_sub_title_bar.png">
-	<h1>병원별 검진 항목 비교</h1>
-</div>
+<div id="main">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub4.jpg);
+		 background-size: 100%;background-position: center">
+		<div class="container">
 
-<div class="row" style="display: block;margin-top: 3rem">
-	<table id="pdf" class="compare-table table-bordered">
-		<tr>
-			<td width="16%">병원</td>
-			<td width="42%" class="select">
-				<select id="hos1" class="form-control"
-						onchange="setPackageSelectOption(this, 'pkg1')">
-					<option selected>- 선택 -</option>
-				</select>
-			</td>
-			<td width="42%" class="select">
-				<select id="hos2" class="form-control"
-						onchange="setPackageSelectOption(this, 'pkg2')">
-					<option selected>- 선택 -</option>
-				</select>
-			</td>
-			<!--			<td width="30%" class="select">-->
-			<!--				<select id="hos3" class="form-control"-->
-			<!--						onchange="setPackageSelectOption(this, 'pkg3')">-->
-			<!--					<option selected>- 선택 -</option>-->
-			<!--				</select>-->
-			<!--			</td>-->
-		</tr>
-		<tr>
-			<td width="16%">패키지</td>
-			<td width="42%" class="select">
-				<select id="pkg1" class="form-control" onchange="setSearchPackage(id)">
-					<option selected>- 선택 -</option>
-				</select>
-			</td>
-			<td width="42%" class="select">
-				<select id="pkg2" class="form-control" onchange="setSearchPackage(id)">
-					<option selected>- 선택 -</option>
-				</select>
-			</td>
-			<!--			<td width="30%" class="select">-->
-			<!--				<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">-->
-			<!--					<option selected>- 선택 -</option>-->
-			<!--				</select>-->
-			<!--			</td>-->
-		</tr>
-	</table>
-</div>
+			<div class="row sub-title">
+				<div style="margin: 0 auto">
+					<span class="sub-title-name">이용안내</span><br>
+					편리한 이용을 위해<br>
+					듀얼헬스케어의 정보를 확인해주세요.
+				</div>
+			</div>
 
-<div class="row" style="font-size: 1.3rem;font-weight: 400;height: 2.7rem;width: 100%;padding: 1rem 0">
-	<div style="margin: 0 auto;width: 100%">
-		<div style="line-height: 2.7rem">
-			※ 자세한 항목은 pc버전에서 확인해주세요.&nbsp;
-			<div class="btn btn-secondary" onclick=window.open("/customer/comparison_hospital")>pc버전</div>
+			<div class="row" style="position: relative">
+				<?php
+				$parentDir = dirname(__DIR__ . '..');
+				require($parentDir . '/common/sub_drop_down.php');
+				?>
+			</div>
+
+			<div class="row" style="display: block;margin-top: 9rem">
+				<img src="/asset/images/mobile/icon_sub_title_bar.png">
+				<h1>병원별 검진 항목 비교</h1>
+			</div>
+
+			<div class="row" style="display: block;margin-top: 3rem">
+				<table id="pdf" class="compare-table table-bordered">
+					<tr>
+						<td width="16%">병원</td>
+						<td width="42%" class="select">
+							<select id="hos1" class="form-control"
+									onchange="setPackageSelectOption(this, 'pkg1')">
+								<option selected>- 선택 -</option>
+							</select>
+						</td>
+						<td width="42%" class="select">
+							<select id="hos2" class="form-control"
+									onchange="setPackageSelectOption(this, 'pkg2')">
+								<option selected>- 선택 -</option>
+							</select>
+						</td>
+						<!--			<td width="30%" class="select">-->
+						<!--				<select id="hos3" class="form-control"-->
+						<!--						onchange="setPackageSelectOption(this, 'pkg3')">-->
+						<!--					<option selected>- 선택 -</option>-->
+						<!--				</select>-->
+						<!--			</td>-->
+					</tr>
+					<tr>
+						<td width="16%">패키지</td>
+						<td width="42%" class="select">
+							<select id="pkg1" class="form-control" onchange="setSearchPackage(id)">
+								<option selected>- 선택 -</option>
+							</select>
+						</td>
+						<td width="42%" class="select">
+							<select id="pkg2" class="form-control" onchange="setSearchPackage(id)">
+								<option selected>- 선택 -</option>
+							</select>
+						</td>
+						<!--			<td width="30%" class="select">-->
+						<!--				<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">-->
+						<!--					<option selected>- 선택 -</option>-->
+						<!--				</select>-->
+						<!--			</td>-->
+					</tr>
+				</table>
+			</div>
+
+			<div class="row" style="font-size: 1.3rem;font-weight: 400;height: 2.7rem;width: 100%;padding: 1rem 0">
+				<div style="margin: 0 auto;width: 100%">
+					<div style="line-height: 2.7rem">
+						※ 자세한 항목은 pc버전에서 확인해주세요.&nbsp;
+						<div class="btn btn-secondary" onclick=window.open("/customer/comparison_hospital")>pc버전</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" id="inspectionView" style="display: none">
+				<div class="row" style="display: block">
+					<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem;margin-top: 5rem">
+						선택검사
+					</div>
+					<table class="compare-table table-bordered" id="choiceTable">
+					</table>
+				</div>
+
+				<div class="row" style="display: block;margin-top: 2rem">
+					<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
+						추가검사
+					</div>
+					<table class="compare-table table-bordered" id="addTable">
+					</table>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-
-<div class="row" id="inspectionView" style="display: none">
-	<div class="row" style="display: block">
-		<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem;margin-top: 5rem">
-			선택검사
-		</div>
-		<table class="compare-table table-bordered" id="choiceTable">
-		</table>
-	</div>
-
-	<div class="row" style="display: block;margin-top: 2rem">
-		<div style="text-align: left; font-size: 2rem; font-weight: bolder;line-height: 5rem">
-			추가검사
-		</div>
-		<table class="compare-table table-bordered" id="addTable">
-		</table>
+		<?php
+		$parentDir = dirname(__DIR__ . '..');
+		require($parentDir . '/common/footer.php');
+		?>
 	</div>
 </div>
 </body>
 
 <script>
+	$('#menu1 .nav-button').text('이용안내');
+	var menu2 = '건강검진 안내';
+
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/check_data.js');
+	?>
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/sub_drop_down.js');
 	?>
 
 	var userData = new Object();

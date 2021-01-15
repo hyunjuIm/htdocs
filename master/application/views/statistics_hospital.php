@@ -111,15 +111,17 @@
 	</div>
 
 	<div class="row" style="margin: 0 auto; width: 95%;">
-		<div class="row" style="display: block">
-			<div style="display: flex">
+		<div class="row" style="display: block; border-bottom: 1px solid #DCDCDC;padding: 10px 0">
+			<div style="float: left">
 				<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2021)">2021년</div>
 				<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2020)">2020년</div>
 				<div class="btn btn-outline-dark" onclick="searchHospitalStatisticsDate(2019)">2019년</div>
 			</div>
 
-			<hr>
+			<div class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
+		</div>
 
+		<div class="row" style="display: block">
 			<div style="padding-top: 10px;display: table">
 				<div style="display: table-cell; vertical-align: middle">
 					<span style="margin-right: 5px;line-height: 35px">예약기간</span>
@@ -140,7 +142,7 @@
 				※ 본인-예약자를 클릭하면 오름차순 또는 내림차순으로 정렬됩니다.
 			</div>
 
-			<table class="table table-bordered">
+			<table class="table table-bordered" id="hosStatisticsTable">
 				<thead>
 				<tr>
 					<th rowspan="2" width="10%">NO</th>
@@ -160,7 +162,7 @@
 					<th width="10%">수검률</th>
 				</tr>
 				</thead>
-				<tbody id="hosStatisticsTable">
+				<tbody>
 				</tbody>
 			</table>
 		</div>
@@ -236,16 +238,19 @@ require('check_data.php');
 		if (searchItems.reservationStartDate == null || searchItems.reservationEndDate == null ||
 				searchItems.reservationStartDate == '' || searchItems.reservationEndDate == '') {
 			alert('예약기간을 선택해주세요.');
+			return false;
 		} else if (searchItems.coName == "choice") {
 			alert("고객사명을 선택해주세요.");
+			return false;
 		} else if (searchItems.coBranch == "choice") {
 			alert("사업장명을 선택해주세요.");
-		} else {
-			instance.post('M1203', searchItems).then(res => {
-				tableData = res.data.statisticsList;
-				displayTable();
-			});
+			return false;
 		}
+
+		instance.post('M1203', searchItems).then(res => {
+			tableData = res.data.statisticsList;
+			displayTable();
+		});
 	}
 
 	var tableData = new Array();
@@ -257,7 +262,7 @@ require('check_data.php');
 	}
 
 	function setHospitalStatisticsData() {
-		$('#hosStatisticsTable').empty();
+		$('#hosStatisticsTable > tbody').empty();
 		$('#hosTableView').css('visibility', 'visible');
 
 		if (tableData.length > 0) {
@@ -284,7 +289,7 @@ require('check_data.php');
 					'<td>' + tableData[i].familyStatistics.numOfInspection + '</td>' +
 					'<td>' + Math.floor(tableData[i].familyStatistics.percentOfInspection) + '%</td>' +
 					'</tr>';
-			$('#hosStatisticsTable').append(html);
+			$('#hosStatisticsTable > tbody').append(html);
 		}
 	}
 
@@ -323,4 +328,61 @@ require('check_data.php');
 		displayTable();
 	}
 
+	function tableExcelDownload() {
+		var searchItems = new Object();
+		var searchItems = new Object();
+		searchItems.coName = $("#stComName option:selected").val();
+		searchItems.coBranch = $("#stComBranch option:selected").val();
+		searchItems.reservationStartDate = $('#reservationHosStartDate').val();
+		searchItems.reservationEndDate = $('#reservationHosEndDate').val();
+			
+		if (searchItems.reservationStartDate == null || searchItems.reservationEndDate == null ||
+				searchItems.reservationStartDate == '' || searchItems.reservationEndDate == '') {
+			alert('예약기간을 선택해주세요.');
+			return false;
+		} else if (searchItems.coName == "choice") {
+			alert("고객사명을 선택해주세요.");
+			return false;
+		} else if (searchItems.coBranch == "choice") {
+			alert("사업장명을 선택해주세요.");
+			return false;
+		}
+
+		fileURL.post('downloadExcel/M1203', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 병원통계.xlsx';
+			},
+			getSheetName: function () {
+				return data.serviceYear;
+			},
+			getExcelData: function () {
+				return document.getElementById('hosStatisticsTable');
+			},
+			getWorksheet: function () {
+				return XLSX.utils.table_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	}
 </script>

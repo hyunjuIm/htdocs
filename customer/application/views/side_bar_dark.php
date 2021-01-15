@@ -209,7 +209,7 @@
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">건강정보</a>
 				<ul>
-					<li class="sub-menu"><a href="#">질병백과</a></li>
+					<li class="sub-menu"><a href="/customer/health_encyclopedia_list">질병백과</a></li>
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">이용안내</a>

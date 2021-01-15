@@ -29,10 +29,6 @@
 			text-align: left;
 			cursor: pointer;
 		}
-
-		.state-1 {
-			cursor: pointer;
-		}
 	</style>
 </head>
 <body>

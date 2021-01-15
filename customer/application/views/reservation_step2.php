@@ -157,9 +157,12 @@
 									총 <span id="hosCount"></span>개 병원
 								</div>
 								<div style="display: flex; float:right">
+									<select id="searchWordSelect" class="search-input" style="margin-right: 3px">
+										<option value="all" selected>지역 전체</option>
+									</select>
 									<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요"
 										   onkeyup="enterKey()">
-									<div class="search-btn" onclick="searchHospital(0)">
+									<div class="search-btn" onclick="searchInformation(0)">
 										<img src="/asset/images/icon_search.png">
 									</div>
 								</div>
@@ -195,96 +198,87 @@ require('check_data.php');
 ?>
 
 <script>
-	var pagingNum = 0;
 	var pageCount = 0;
-	var searchWord = "";
+	var pageNum = 0;
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	userData.famId = location.href.substr(
 			location.href.lastIndexOf('=') + 1
 	);
-	userData.pagingNum = pagingNum;
-	userData.searchWord = searchWord;
+	userData.pageNum = pageNum;
 
-	searchHospital(0);
+	searchInformation(0);
 
-	//검색 - 엔터키
-	function enterKey() {
-		if (window.event.keyCode == 13) {
-			// 엔터키가 눌렸을 때 실행할 내용
-			searchHospital(0);
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		if ($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
 		}
-	}
 
-	//페이징 - 화살표클릭
-	function pmPageNum(val) {//화살표클릭
-		console.log("before: pagingNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
-
-		pagingNum += parseInt(val);
-		if (pagingNum < 0) pagingNum = 0;
-		if (pageCount <= pagingNum) pagingNum = pageCount - 1;
-
-		console.log("after: pageNum: " + pagingNum + ", pageCount: " + pageCount + ", val: " + val);
-		searchHospital(pagingNum);
+		pageNum = index;
+		drawTable();
 	}
 
 	//병원 검색
-	function searchHospital(index) {
-		pagingNum = index;
+	function drawTable() {
+		pageNum = parseInt(pageNum);
 
-		userData.pagingNum = pagingNum;
+		userData.pageNum = pageNum;
+		userData.region = $("#searchWordSelect").val();
 		userData.searchWord = $("#searchWord").val();
+
+		console.log(userData);
 
 		instance.post('CU_003_002', userData).then(res => {
 			pageCount = 0;
-			for (i = 0; i < res.data.count; i += 8) {
+			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-			setHospitalCard(res.data.hospitalList);
+
+			addSelectOption(res.data.regionList);
+			setHospitalCard(res.data.hospitalList, pageNum);
 
 			console.log(res.data);
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
-
+			alert("잘못된 접근입니다.");
+			console.log(error);
 		});
 	}
 
+	//셀렉터 옵션 추가
+	function addSelectOption(regionList) {
+		$("#searchWordSelect").empty();
+		var html = '';
+		html += '<option value="all">지역 전체</option>';
+		for (let i = 0; i < regionList.length; i++) {
+			html += '<option value=\'' + regionList[i] + '\'>' + regionList[i] + '</option>';
+		}
+		$("#searchWordSelect").append(html);
+	}
+
+	<?php
+	require('paging.js');
+	?>
 
 	//병원 카드 셋팅
-	function setHospitalCard(data) {
+	function setHospitalCard(data, index) {
+		setPaging(index);
+
 		$("#hosCount").empty();
 		$("#hosCount").append(data.length);
 		$("#hospitalInfos").empty();
-		$("#paging").empty();
 
-		var html = "";
-		var pre = pagingNum - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
-		html += '<a class="arrow pprev" onclick= "searchHospital(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
-		$("#paging").append(html);
-
-		for (i = 0; i < pageCount; i++) {
+		if (data.length == 0) {
 			var html = '';
-
-			var num = i + 1;
-
-			if (i == pagingNum) {
-				html += '<a onclick= "searchHospital(\'' + i + '\')" class="active">' + num + '</a>';
-			} else {
-				html += '<a onclick= "searchHospital(\'' + i + '\')" href="#">' + num + '</a>';
-			}
-
-			$("#paging").append(html);
+			html += '<tr>';
+			html += '<td colspan="2" style="text-align: center">해당하는 병원이 없습니다.</td>';
+			html += '</tr>';
+			$("#hospitalInfos").append(html);
+			$("#paging").empty();
+			return false;
 		}
-
-		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchHospital(\'' + (pageCount - 1) + '\')" href="#"></a>'
-		$("#paging").append(html);
 
 		var count = 0;
 		var html = "";

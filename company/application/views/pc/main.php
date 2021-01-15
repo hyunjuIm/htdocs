@@ -76,6 +76,12 @@
 		.all-menu:hover {
 			color: #5645ed;
 		}
+
+		.down-btn {
+			width: 28rem;
+			height: 13rem;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -176,16 +182,30 @@
 				</div>
 			</div>
 			<div class="col">
-				<div class="box">
+				<div class="box" style="height: fit-content !important;">
 					<div class="box-title">
 						<img src="/asset/images/icon_title.png">
 						<h2>(주)듀얼헬스케어 고객센터</h2>
 					</div>
 					<div>
-						담당자 : 김듀얼<br>
-						이메일 : kimdd.dualhealth@gmail.com<br>
-						전화 : 1661-2645
+						<div>
+							<img src="/asset/images/main_list_ico01.png">
+							담당자 : 김듀얼
+						</div>
+						<div style="padding: 0.5rem 0">
+							<img src="/asset/images/main_list_ico02.png">
+							이메일 : kimdd.dualhealth@gmail.com
+						</div>
+						<div>
+							<img src="/asset/images/main_list_ico03.png">
+							전화 : 1661-2645
+						</div>
 					</div>
+				</div>
+				<div style="padding-top: 3rem">
+					<div class="down-btn"
+						 style="background-image: url(../../../asset/images/btn_manual.png);background-size: 100% 100%;"
+						 onclick="downloadBasicSheet('company_manual', '매뉴얼.pptx')"></div>
 				</div>
 			</div>
 		</div>
@@ -377,4 +397,8 @@
 	function sendNoticeID(index) {
 		location.href = "/company/notice_detail?id=" + index;
 	}
+
+	<?php
+	require('common/file_data.js');
+	?>
 </script>

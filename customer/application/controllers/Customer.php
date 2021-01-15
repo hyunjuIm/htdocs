@@ -9,10 +9,6 @@ class customer extends CI_Controller
 		$this->load->view('customer_login');
 	}
 
-	/*
-	PC
-	*/
-
 	//메인화면
 	public function index()
 	{
@@ -71,6 +67,18 @@ class customer extends CI_Controller
 	public function result_main()
 	{
 		$this->load->view('result_main');
+	}
+
+	//질병백과 - 전체 리스트
+	public function health_encyclopedia_list()
+	{
+		$this->load->view('health_encyclopedia_list');
+	}
+
+	//질병백과 - 글보기
+	public function health_encyclopedia_detail()
+	{
+		$this->load->view('health_encyclopedia_detail');
 	}
 
 	//공지사항

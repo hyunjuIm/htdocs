@@ -46,6 +46,12 @@
 			text-overflow: ellipsis;
 			text-align: left;
 		}
+
+		.btn {
+			font-size: 1.1rem;
+			padding: 0.1rem 0.5rem;
+			cursor: default !important;
+		}
 	</style>
 
 </head>
@@ -78,10 +84,10 @@
 			</div>
 
 			<div class="row" style="position: relative">
-					<?php
-					$parentDir = dirname(__DIR__ . '..');
-					require($parentDir . '/common/sub_drop_down.php');
-					?>
+				<?php
+				$parentDir = dirname(__DIR__ . '..');
+				require($parentDir . '/common/sub_drop_down.php');
+				?>
 			</div>
 
 			<!--본문-->
@@ -89,12 +95,12 @@
 				<img src="/asset/images/mobile/icon_sub_title_bar.png">
 				<h1>공지사항</h1>
 			</div>
-			
+
 			<div class="row" style="display: block;margin-top: 5rem">
 				<table class="notice-table" id="noticeTable">
 					<thead>
 					<tr>
-						<th width="10px">NO</th>
+						<th width="5px">NO</th>
 						<th>제목</th>
 						<th>작성일</th>
 					</tr>
@@ -119,7 +125,7 @@
 				<div style="display: flex; margin: 0 auto;width: 80%">
 					<input type="text" id="searchWord" class="search-input" placeholder="검색어를 입력하세요"
 						   onkeyup="enterKey()">
-					<div class="search-btn" onclick="searchNoticeData(0)">
+					<div class="search-btn" onclick="searchInformation(0)">
 						<img src="/asset/images/icon_search.png" width="50%">
 					</div>
 				</div>
@@ -150,40 +156,44 @@
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
 
-	var pagingNum = 0;
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
+	?>
+
+	var pageNum = 0;
 	var pageCount = 0;
-	var searchWord = "";
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
-	userData.pagingNum = pagingNum;
-	userData.searchWord = searchWord;
+	userData.pagingNum = pageNum;
 
-	searchNoticeData(0);
+	searchInformation(0);
 
-	//검색 - 엔터키
-	function enterKey() {
-		if (window.event.keyCode == 13) {
-			// 엔터키가 눌렸을 때 실행할 내용
-			searchNoticeData(0);
+	//페이징-숫자클릭
+	function searchInformation(index) {
+		if ($("#searchWord").val().length == 1) {
+			alert('두 글자 이상 검색어로 입력주세요.');
+			return false;
 		}
+
+		pageNum = index;
+		drawTable();
 	}
 
 	//공지 검색
-	function searchNoticeData(index) {
-		pagingNum = index;
+	function drawTable() {
+		pageNum = parseInt(pageNum);
 
-		userData.pagingNum = pagingNum;
+		userData.pagingNum = pageNum;
 		userData.searchWord = $("#searchWord").val();
-
-		console.log(userData);
 
 		instance.post('CU_007_001', userData).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-			setNoticeList(res.data.noticeList);
+			setNoticeList(res.data.noticeList, pageNum);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
 
@@ -191,47 +201,46 @@
 	}
 
 	//공지 테이블 셋팅
-	function setNoticeList(data) {
+	function setNoticeList(data, index) {
+		setPaging(index);
 
-
-		$("#paging").empty();
 		$("#noticeTable > tbody").empty();
 
-		var html = "";
-		var pre = pagingNum - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
-		html += '<a class="arrow pprev" onclick= "searchNoticeData(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -1 + '\')" href="#"></a>'
-		$("#paging").append(html);
-
-		for (i = 0; i < pageCount; i++) {
+		if (data.length == 0) {
 			var html = '';
-
-			var num = i + 1;
-
-			if (i == pagingNum) {
-				html += '<a onclick= "searchNoticeData(\'' + i + '\')" class="active">' + num + '</a>';
-			} else {
-				html += '<a onclick= "searchNoticeData(\'' + i + '\')" href="#">' + num + '</a>';
-			}
-
-			$("#paging").append(html);
+			html += '<tr>';
+			html += '<td colspan="4">해당하는 검색 결과가 없습니다.</td>';
+			html += '</tr>';
+			$("#noticeTable > tbody").append(html);
+			$("#paging").empty();
+			return false;
 		}
-
-		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 1 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchNoticeData(\'' + (pageCount - 1) + '\')" href="#"></a>'
-		$("#paging").append(html);
 
 		for (i = 0; i < data.length; i++) {
+			var no = 0;
+			if (index == 0) {
+				no = index + i;
+			} else {
+				no = index * 10 + (i + 1);
+			}
+
 			var tbody = "";
-			tbody += '<tr>' +
-					'<td>' + data[i].id + '</td>' +
-					'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>' +
-					'<td>' + data[i].createDate + '</td>' +
-					'<tr>';
+			if (i == 0 && pageNum == 0) {
+				tbody += '<tr style="background: #fdf7f7">' +
+						'<td><div class="btn btn-danger">공지</div></td>' +
+						'<td class="title" style="color: #ff4e59;font-weight: 400;"' +
+						'onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
+			} else {
+				tbody += '<tr>' +
+						'<td>' + no + '</td>' +
+						'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
+			}
+			if (data[i].createDate.indexOf('9999') != -1) {
+				tbody += '<td class="date">2020.12.22</td>';
+			} else {
+				tbody += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>';
+			}
+			tbody += '<tr>';
 
 			$("#noticeTable").append(tbody);
 		}

@@ -88,12 +88,13 @@ a:link {
 }
 
 .search-input {
-	border: 1px solid #464646;
+	border: 1px solid #999999 !important;
 	height: 35px;
 	width: 21rem;
 	padding: 0.5rem;
 	border-radius: 0;
 	font-size: 1.4rem;
+	outline: none;
 }
 
 .search-btn {

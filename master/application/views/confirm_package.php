@@ -43,10 +43,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="coName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'coBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="coBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 
@@ -55,7 +55,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="hoName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -65,7 +65,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="dualApproval" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 								<option value="true">Y</option>
 								<option value="false">N</option>
 							</select>
@@ -75,7 +75,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="coApproval" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 								<option value="true">Y</option>
 								<option value="false">N</option>
 							</select>
@@ -94,7 +94,6 @@
 
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
-			<div class="btn-default-small excel" style="float: right"></div>
 			<table id="packageConfirmInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -209,23 +208,9 @@ require('check_data.php');
 
 		searchItems.pageNum = pageNum;
 
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-		} else if (searchItems.coBranch == "-선택-") {
-			alert('사업장을 선택해주세요.');
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
 			return false;
-		}
-		if (searchItems.pkgName == "-전체-") {
-			searchItems.pkgName = "all";
-		}
-		if (searchItems.hoName == "-전체-") {
-			searchItems.hoName = "all";
-		}
-		if (searchItems.dualApproval == "-전체-") {
-			searchItems.dualApproval = "all";
-		}
-		if (searchItems.coApproval == "-전체-") {
-			searchItems.coApproval = "all";
 		}
 
 		instance.post('M016002', searchItems).then(res => {
@@ -277,13 +262,7 @@ require('check_data.php');
 			html += '<td>' + data[i].hoName + '</td>';
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
-
-			if (data[i].hoSuggest) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
-
+			html += '<td>' + (data[i].hoSuggest ? 'Y' : 'N') + '</td>';
 			html += '<td>' + dual + '</td>';
 			html += '<td>' + company + '</td>';
 			html += '<td>' + data[i].price.toLocaleString() + '</td>';

@@ -228,7 +228,7 @@
 						</div>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 218, 163, 0, 0.7)">
-						<div class="menu5 wrap" style="width: inherit;height: inherit">
+						<div class="menu5 wrap" style="width: inherit;height: inherit" onclick="location.href ='/customer/health_encyclopedia_list'">
 							<div class="inner">
 								<img src="/asset/images/icon5.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">건강 컨텐츠<br></span>
@@ -292,8 +292,20 @@
 		for (i = 0; i < 3; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td class="title" style="width: 80%" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + "· " + data[i].title + '</td>';
-			html += '<td class="date">' + data[i].createDate + '</td>';
+
+			if(i == 0) {
+				html += '<td class="title" style="width: 80%; font-weight: 400; color: #ff4e59" ' +
+						'onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + "· " + data[i].title + '</td>';
+			} else {
+				html += '<td class="title" style="width: 80%" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + "· " + data[i].title + '</td>';
+			}
+
+			if (data[i].createDate.indexOf('9999') != -1) {
+				html += '<td class="date">2020.12.22</td>';
+			} else {
+				html += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>';
+			}
+
 			html += '</tr>';
 
 			$("#mainNoticeInfos").append(html);

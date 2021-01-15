@@ -96,7 +96,7 @@
 
 	//textarea 줄바꿈 처리
 	function textareaLine(text) {
-		text = text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
 		return text;
 	}
 
@@ -190,5 +190,27 @@
 		var view = new Uint8Array(buf);  //create uint8array as viewer
 		for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
 		return buf;
+	}
+
+	//양식 다운로드
+	function downloadBasicSheet(tag, title){
+		var params = new FormData();
+		params.append('tag', tag);
+
+		fileURL.post('downloadBaseSheetExcel', params,{
+			responseType: 'arraybuffer',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(response => {
+			const type = response.headers['content-type'];
+			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
+			const link = document.createElement('a');
+			link.href = window.URL.createObjectURL(blob);
+			link.download = title;
+			link.click();
+
+			console.log(response);
+		})
 	}
 </script>

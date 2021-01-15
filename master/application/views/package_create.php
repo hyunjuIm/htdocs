@@ -8,7 +8,7 @@
 	?>
 
 	<style>
-		
+
 	</style>
 
 </head>
@@ -25,6 +25,11 @@
 
 <!--콘텐츠 내용-->
 <div class="container" style="padding-top: 50px; max-width: none">
+
+	<table class="table table-bordered" id="pckExcel" style="display: none">
+
+	</table>
+
 	<div class="row">
 		<div class="col">
 			<form style="margin: 0 auto; width: 95%; max-width: 1150px; padding: 20px">
@@ -41,10 +46,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="pacComName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'pacComBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="pacComBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 
@@ -53,7 +58,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="pkgName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -63,7 +68,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="price" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -71,7 +76,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="hosName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -81,7 +86,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="coApprove" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -89,7 +94,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="ijSet" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -99,7 +104,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="status" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -126,8 +131,7 @@
 
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
-			<div
-					class="btn-default-small excel" style="float: right"></div>
+			<div class="btn-default-small excel" onclick="tableExcelDownload()" style="float: right"></div>
 			<table id="packageCreateInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -242,7 +246,7 @@ require('check_data.php');
 		//사용
 		for (i = 0; i < data.coApprove.length; i++) {
 			var html = '';
-			if(data.coApprove[i] == "true") {
+			if (data.coApprove[i] == "true") {
 				html += '<option value="true">Y</option>'
 			} else {
 				html += '<option value="false">N</option>'
@@ -252,7 +256,7 @@ require('check_data.php');
 		//세부항목
 		for (i = 0; i < data.ijSet.length; i++) {
 			var html = '';
-			if(data.ijSet[i] == "true") {
+			if (data.ijSet[i] == "true") {
 				html += '<option value="true">설정완료</option>'
 			} else {
 				html += '<option value="false">미완료</option>'
@@ -262,7 +266,7 @@ require('check_data.php');
 		//상태
 		for (i = 0; i < data.status.length; i++) {
 			var html = '';
-			if(data.status[i] == "true") {
+			if (data.status[i] == "true") {
 				html += '<option value="true">승인</option>'
 			} else {
 				html += '<option value="false">미승인</option>'
@@ -296,33 +300,10 @@ require('check_data.php');
 
 		searchItems.pageNum = pageNum;
 
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-			searchItems.coBranch = "all";
-		} else if (searchItems.coBranch == "-선택-") {
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
 			alert("사업장을 선택해주세요.");
 			return false;
 		}
-		if (searchItems.pkgName == "-전체-") {
-			searchItems.pkgName = "all";
-		}
-		if (searchItems.price == "-전체-") {
-			searchItems.price = "all";
-		}
-		if (searchItems.hosName == "-전체-") {
-			searchItems.hosName = "all";
-		}
-		if (searchItems.coApprove == "-전체-") {
-			searchItems.coApprove = "all";
-		}
-		if (searchItems.ijSet == "-전체-") {
-			searchItems.ijSet = "all";
-		}
-		if (searchItems.status == "-전체-") {
-			searchItems.status = "all";
-		}
-
-		console.log(searchItems);
 
 		instance.post('M007008_REQ_RES', searchItems).then(res => {
 			pageCount = 0;
@@ -330,7 +311,6 @@ require('check_data.php');
 				pageCount++;
 			}
 
-			console.log(res.data);
 			setPackageCreateData(res.data.packageDTOList, pageNum);
 		});
 	}
@@ -345,7 +325,7 @@ require('check_data.php');
 
 		$('#packageCreateInfos > tbody').empty();
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
 			html += '<td colspan="12">해당하는 검색 결과가 없습니다.</td>';
@@ -364,31 +344,18 @@ require('check_data.php');
 			if (index == 0) {
 				no = (index + 1) + i;
 			} else {
-				no = index * 10 + (i+1);
+				no = index * 10 + (i + 1);
 			}
 			html += '<td>' + no + '</td>';
-
-			if (data[i].status) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
+			html += '<td>' + (data[i].status ? 'Y' : 'N') + '</td>';
 			html += '<td>' + data[i].hoName + '</td>';
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
 			html += '<td>' + data[i].pkgName + '</td>';
 			html += '<td>' + data[i].price.toLocaleString() + '</td>';
-			if (data[i].coApprove) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
+			html += '<td>' + (data[i].coApprove ? 'Y' : 'N') + '</td>';
 			html += '<td style="width: 15%">' + data[i].reservationStartDate + "~" + data[i].reservationEndDate + '</td>';
-			if (data[i].ijSet) {
-				html += '<td>설정완료</td>';
-			} else {
-				html += '<td>미완료</td>';
-			}
+			html += '<td>' + (data[i].ijSet ? 'Y' : 'N') + '</td>';
 			html += '<td><a style="color: white" onclick="sendPackageID(\'' + data[i].pkgId + '\')">' +
 					'<div class="btn-purple-square" style="padding: 2px 8px; font-size: 13px">설정</div></a></td>';
 			html += '</tr>';
@@ -400,5 +367,188 @@ require('check_data.php');
 	//세부항목 설정에 pkgID 값 던지기
 	function sendPackageID(index) {
 		location.href = "package_injection_item?pkgID=" + index;
+	}
+
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.coName = $("#pacComName option:selected").val();
+		searchItems.coBranch = $("#pacComBranch option:selected").val();
+		searchItems.pkgName = $("#pkgName option:selected").val();
+		searchItems.hosName = $("#hosName option:selected").val();
+
+		if (searchItems.coName == 'all') {
+			alert("고객사를 선택해주세요.");
+			return false;
+		}
+		if (searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		}
+
+		fileURL.post('downloadExcel/M0708', searchItems).then(res => {
+			makeTable(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function makeTable(data) {
+		$('#pckExcel').empty();
+
+		console.log(data);
+		const serviceYear = data.serviceYear;
+		const coNameBranch = data.coNameBranch;
+		const packageDetailDTOList = data.packageDetailDTOList;
+		const basicInspectionList_1 = data.basicInspectionList;
+
+		const column = [];
+
+		var html = '';
+
+		var today = todayString();
+		html += '<tr>'
+		html += '<th colspan=\'' + (packageDetailDTOList.length + 3) + '\'>[' + today + ']&nbsp;' +
+				coNameBranch + '&nbsp;듀얼헬스케어 제안서</th>';
+		html += '</tr>';
+
+		html += '<tr>' +
+				'<th rowspan="3" colspan="3"></th>';
+
+		//병원명 정렬
+		packageDetailDTOList.sort(function (a, b) {
+			const titleA = a.hosName.toUpperCase(); // ignore upper and lowercase
+			const titleB = b.hosName.toUpperCase(); // ignore upper and lowercase
+			if (titleA < titleB) {
+				return -1;
+			}
+			if (titleA > titleB) {
+				return 1;
+			}
+			return 0;
+		});
+
+		//병원명 출력
+		var count = 1;
+		for (let i = 0; i < packageDetailDTOList.length - 1; i++) {
+			if (packageDetailDTOList[i].hosName == packageDetailDTOList[i + 1].hosName) {
+				count += 1;
+			}
+			if (packageDetailDTOList[i].hosName != packageDetailDTOList[i + 1].hosName) {
+				html += '<th colspan=\'' + count + '\'>' + packageDetailDTOList[i].hosName + '</th>';
+				count = 1;
+			}
+			if (i == packageDetailDTOList.length - 2) {
+				html += '<th colspan=\'' + count + '\'>' + packageDetailDTOList[i + 1].hosName + '</th>';
+			}
+		}
+		html += '</tr>';
+
+
+		//패키지명 출력
+		html += '<tr>';
+		for (let i = 0; i < packageDetailDTOList.length; i++) {
+			html += '<th>' + packageDetailDTOList[i].pkgName + '</th>';
+		}
+		html += '</tr>';
+
+		//패키지가격 출력
+		html += '<tr>';
+		for (let i = 0; i < packageDetailDTOList.length; i++) {
+			html += '<th>' + packageDetailDTOList[i].pkgPrice.toLocaleString() + '</th>';
+		}
+		html += '</tr>';
+
+		//TH및 패키지 간략정보 출력
+		html += '<tr>';
+		html += '<th>검진분류</th>';
+		html += '<th>항목명</th>';
+		html += '<th>검진설명</th>';
+		for (let i = 0; i < packageDetailDTOList.length; i++) {
+			html += '<th>' + packageDetailDTOList[i].pkgMemo.replaceAll('\n', '<br>') + '</th>';
+		}
+		html += '</tr>';
+
+		for (let i = 0; i < basicInspectionList_1.length; i++) {
+			const string = basicInspectionList_1[i].split("!@#");
+			html += '<tr>';
+			html += '<th>' + string[0] + '</th>';
+			html += '<th>' + string[1] + '</th>';
+			html += '<th>' + string[2] + '</th>';
+			for (let j = 0; j < packageDetailDTOList.length; j++) {
+				if (packageDetailDTOList[j].basicInspectionSheet[i]) {
+					html += '<td>O</td>';
+				} else {
+					html += '<td></td>';
+				}
+			}
+			html += '</tr>';
+		}
+
+		let maxChoiceCategoryNum = 0;
+
+		for (let i = 0; i < packageDetailDTOList.length; i++) {
+			let count = 0;
+			for (let j = 0; j < packageDetailDTOList[i].packageItemDTOList.length; j++) {
+				if (packageDetailDTOList[i].packageItemDTOList[j].ipClass.indexOf("선택") !== -1) {
+					count++;
+				}
+			}
+			maxChoiceCategoryNum = (maxChoiceCategoryNum < count) ? count : maxChoiceCategoryNum;
+		}
+
+
+		for (let i = 0; i < maxChoiceCategoryNum; i++) {
+			const category = (i === 0) ? 'A' : (i === 1) ? 'B' : (i === 2) ? 'C' : (i === 3) ? 'D' : 'Error';
+			html += '<tr>';
+			html += '<th>' + '선택' + category + '</th>';
+			html += '<th>' + '-' + '</th>';
+			html += '<th>' + '-' + '</th>';
+
+			for (j = 0; j < packageDetailDTOList.length; j++) {
+				html += '<td>';
+				for (k = 0; k < packageDetailDTOList[j].packageItemDTOList.length; k++) {
+					if (packageDetailDTOList[j].packageItemDTOList[k].ipClass == ('선택' + category)) {
+						html += packageDetailDTOList[j].packageItemDTOList[k].inspection.join("<br>");
+					}
+				}
+				html += '</td>';
+			}
+			html += '</tr>';
+		}
+
+
+		$('#pckExcel').append(html);
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 듀얼제안서.xlsx';
+			},
+			getSheetName: function () {
+				return data.serviceYear;
+			},
+			getExcelData: function () {
+				return document.getElementById('pckExcel');
+			},
+			getWorksheet: function () {
+				return XLSX.utils.table_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
 	}
 </script>

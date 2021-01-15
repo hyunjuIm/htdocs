@@ -8,7 +8,8 @@
 	?>
 
 	<!--그래프-->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
+	<script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
 
 	<style>
 		.table {
@@ -68,7 +69,7 @@
 						<div class="form-group col" style="display: flex">
 							<select id="stComName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'stComBranch')">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -76,7 +77,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="stComBranch" class="form-control">
-								<option selected>-선택-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -101,15 +102,15 @@
 	<div class="row" style="margin: 0 auto;padding: 50px">
 		<canvas id="companyChart" width="90%" height="15%"></canvas>
 	</div>
-	
+
 	<div class="row " style="margin: 0px 30px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
-				class="btn-default-small excel" style="float: right"></div>
+					class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="statisticsCompanyInfos" class="table table-bordered" style="margin-top: 45px">
 				<tbody>
 				<tr>
-					<th colspan="3"></th>
+					<th colspan="3" id="year">사업연도</th>
 					<th style="color: red">합계</th>
 					<th>1</th>
 					<th>2</th>
@@ -176,19 +177,18 @@ require('check_data.php');
 		searchItems.coBranch = $("#stComBranch option:selected").val();
 		searchItems.year = $("#stYear option:selected").val();
 
-		if (searchItems.coName == "-선택-") {
-			searchItems.coName = "all";
-			alert("고객사명을 선택해주세요.");
-		} else if (searchItems.coBranch == "-선택-") {
-			alert("회사명을 선택해주세요.");
+		if (searchItems.coName == 'all') {
+			alert("고객사를 선택해주세요.");
+			return false;
 		}
-		else {
-			instance.post('M011002_REQ_RES', searchItems).then(res => {
-				setStaticsCompanyData(res.data);
-			});
+		if (searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
 		}
 
-		console.log(searchItems);
+		instance.post('M011002_REQ_RES', searchItems).then(res => {
+			setStaticsCompanyData(res.data);
+		});
 	}
 
 	//검색 selector
@@ -205,18 +205,18 @@ require('check_data.php');
 			var jbSplit = data.coNameBranch[i].split('-');
 			var companyName = jbSplit[0];
 
-			for(var j=0; j<nameSize; j++) {
-				if(name[j] == companyName) {
+			for (var j = 0; j < nameSize; j++) {
+				if (name[j] == companyName) {
 					check += 1;
 				}
 			}
-			if(check < 1) {
+			if (check < 1) {
 				name[nameSize] = companyName;
 				nameSize += 1;
 			}
 		}
 
-		for(i=0; i<nameSize; i++) {
+		for (i = 0; i < nameSize; i++) {
 			var html = '';
 			html += '<option value=\'' + name[i] + '\'>' + name[i] + '</option>'
 			$("#stComName").append(html);
@@ -235,9 +235,8 @@ require('check_data.php');
 
 	//기업 통계 테이블
 	function setStaticsCompanyData(data) {
-
-
 		$('#statisticsCompanyInfos > tbody > tr > td').remove();
+		$('#year').text('사업연도) ' + ($("#stYear option:selected").val()));
 
 		//합계
 		var targetSum = 0;
@@ -246,7 +245,7 @@ require('check_data.php');
 		var famRsvSum = 0;
 		var ispSum = 0;
 		var famIspSum = 0;
-		
+
 		for (i = 0; i < data.length; i++) {
 			targetSum += data[i].targetCount;
 			famTargetSum += data[i].famTargetCount;
@@ -337,4 +336,57 @@ require('check_data.php');
 		});
 	}
 
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.coName = $("#stComName option:selected").val();
+		searchItems.coBranch = $("#stComBranch option:selected").val();
+		searchItems.year = $("#stYear option:selected").val();
+
+		if (searchItems.coName == 'all') {
+			alert("고객사를 선택해주세요.");
+			return false;
+		}
+		if (searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		}
+
+		fileURL.post('downloadExcel/M1102', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 기업통계.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				return document.getElementById('statisticsCompanyInfos');
+			},
+			getWorksheet: function () {
+				return XLSX.utils.table_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	}
 </script>

@@ -63,6 +63,9 @@
 					</div>
 					<hr>
 					<div style="float: right">
+						<div class="btn-light-purple-square" onclick="downloadBasicSheet('customer', '회사명_사업장명_날짜_직원입력 양식.xlsx')">
+							신규회원 양식 다운로드
+						</div>
 						<div class="btn-purple-square" data-toggle="modal" data-target="#customerUploadModal">
 							신규회원 엑셀 업로드
 						</div>

@@ -111,6 +111,30 @@ class master extends CI_Controller
 		$this->load->view('statistics_hospital');
 	}
 
+	//질병백과 - 전체 리스트
+	public function health_encyclopedia_list()
+	{
+		$this->load->view('health_encyclopedia_list');
+	}
+
+	//질병백과 - 글보기
+	public function health_encyclopedia_detail()
+	{
+		$this->load->view('health_encyclopedia_detail');
+	}
+
+	//질병백과 - 글쓰기
+	public function health_encyclopedia_write()
+	{
+		$this->load->view('health_encyclopedia_write');
+	}
+
+	//질병백과 - 글수정
+	public function health_encyclopedia_update()
+	{
+		$this->load->view('health_encyclopedia_update');
+	}
+
 	//공지사항 - 전체 리스트
 	public function service_notice()
 	{

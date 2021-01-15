@@ -74,57 +74,18 @@
 								<tr>
 									<th>기준날짜</th>
 									<td>
-										<input type="text" id="billingCalculationStartDate" placeholder=""
+										<input type="date" id="billingCalculationStartDate"
 											   style="border:none;text-align: center;width: 110px">
-										<script>
-											$(function () {
-												$("#billingCalculationStartDate").datepicker({
-													changeMonth: true,
-													changeYear: true,
-													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-													dateFormat: "yy-mm-dd",
-												});
-											});
-										</script>
-										~
-										<input type="text" id="billingCalculationEndDate" placeholder=""
+										<span>&nbsp;~&nbsp;</span>
+										<input type="date" id="billingCalculationEndDate"
 											   style="border:none;text-align: center;width: 110px">
-										<script>
-											$(function () {
-												$("#billingCalculationEndDate").datepicker({
-													changeMonth: true,
-													changeYear: true,
-													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-													dateFormat: "yy-mm-dd",
-												});
-											});
-										</script>
 									</td>
 								</tr>
 								<tr>
 									<th>계산서날짜</th>
 									<td>
-										<input type="text" id="billingCalculationDate" placeholder=""
+										<input type="date" id="billingCalculationDate"
 											   style="border:none;text-align: center">
-										<script>
-											$(function () {
-												$("#billingCalculationDate").datepicker({
-													changeMonth: true,
-													changeYear: true,
-													dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-													dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-													monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-													monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-													dateFormat: "yy-mm-dd",
-												});
-											});
-										</script>
 									</td>
 								</tr>
 								</tbody>
@@ -156,26 +117,29 @@
 						<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
 						청구상세
 					</div>
-					<table id="billDetailModalInfos" class="table table-hover" style="margin-top: 30px">
-						<thead>
-						<tr>
-							<th style="width: 5%">NO</th>
-							<th>상태</th>
-							<th>서비스</th>
-							<th style="width: 10%">고객사</th>
-							<th style="width: 10%">사업장</th>
-							<th>아이디(사번)</th>
-							<th>성명</th>
-							<th>관계</th>
-							<th>검진완료일</th>
-							<th>기업청구금</th>
-							<th>공단청구금</th>
-							<th>개인부담금</th>
-						</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
+					<div class="btn-default-small excel" style="float: right; margin-bottom: 5px" onclick="tableDetailExcelDownload()"></div>
+					<div>
+						<table id="billDetailModalInfos" class="table table-hover">
+							<thead>
+							<tr>
+								<th style="width: 5%">NO</th>
+								<th>상태</th>
+								<th>서비스</th>
+								<th style="width: 10%">고객사</th>
+								<th style="width: 10%">사업장</th>
+								<th>아이디(사번)</th>
+								<th>성명</th>
+								<th>관계</th>
+								<th>검진완료일</th>
+								<th>기업청구금</th>
+								<th>공단청구금</th>
+								<th>개인부담금</th>
+							</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -293,12 +257,17 @@
 		}
 	}
 
+	var sendBId;
+	var sendHosId;
 	//청구상세 리스트 api 호출
 	function clickBillingDetail(bId, hosId) {
 		var sendID = new Object();
 
 		sendID.bId = bId;
 		sendID.hosId = hosId;
+
+		sendBId = bId;
+		sendHosId = hosId;
 
 		instance.post('M009008_REQ_RES', sendID).then(res => {
 			setBillingModalDetailData(res.data);
@@ -333,4 +302,82 @@
 		}
 	}
 
+	function tableDetailExcelDownload() {
+		var sendID = new Object();
+
+		sendID.bId = sendBId;
+		sendID.hosId = sendHosId;
+
+		fileURL.post('downloadExcel/M0908', sendID).then(res => {
+			console.log(res.data);
+			exportDetailExcel(res.data);
+		});
+	}
+
+	function exportDetailExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 청구상세.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("상태");
+				tt.push("서비스");
+				tt.push("고객사");
+				tt.push("사업장");
+				tt.push("아이디");
+				tt.push("성명");
+				tt.push("관계");
+				tt.push("검진완료일");
+				tt.push("기업청구금");
+				tt.push("공단청구금");
+				tt.push("개인부담금");
+
+				table.push(tt);
+
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].status);
+					td.push(data[i].serviceName);
+					td.push(data[i].coName);
+					td.push(data[i].coBranch);
+					td.push(data[i].cuId);
+					td.push(data[i].famName);
+					td.push(data[i].famGrade);
+					td.push(data[i].ipDate);
+					td.push(data[i].coCharge.toLocaleString());
+					td.push(data[i].pcCharge.toLocaleString());
+					td.push(data[i].psnCharge.toLocaleString());
+
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	}
 </script>

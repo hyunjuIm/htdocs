@@ -296,6 +296,7 @@
 				instance.post('M007002_REQ', saveItems).then(res => {
 					console.log(res.data.message);
 					alert("저장되었습니다.");
+					location.reload();
 				});
 			} else {
 				return false;
@@ -310,8 +311,6 @@
 
 	//지역 selector
 	function setPlaceModalSelectData(data) {
-
-
 		for (i = 0; i < data.placeList.length; i++) {
 			var html = '';
 			html += '<option>' + data.placeList[i] + '</option>'
@@ -350,7 +349,6 @@
 
 	//패키지 병원 할당 테이블
 	function setHospitalPackageData(data) {
-
 		$("input[name=hospitalNo]").prop("checked", false);
 
 		for (i = 0; i < data.length; i++) {
@@ -381,6 +379,8 @@
 
 	//병원 미할당 패키지 테이블
 	function setPackageData(data) {
+		$("#pacInfoTable2 > tbody").empty();
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
@@ -441,6 +441,10 @@
 				instance.post('M007006_REQ', sendItems).then(res => {
 					if(res.data.message == "success") {
 						alert("전송되었습니다.");
+						//병원 미할탕 패키지 불러오기
+						instance.post('M007005_RES').then(res => {
+							setPackageData(res.data);
+						});
 					}
 				});
 			} else {

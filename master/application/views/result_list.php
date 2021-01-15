@@ -37,10 +37,10 @@
 						<div class="form-group col" style="display: flex">
 							<select id="resComName" class="form-control" style="margin-right: 10px"
 									onchange="setCompanySelectOption(this, 'resComBranch')">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 							<select id="resComBranch" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-선택-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -48,7 +48,7 @@
 						</label>
 						<div class="form-group col">
 							<select id="hosName" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 					</div>
@@ -58,41 +58,16 @@
 						</label>
 						<div class="form-group col">
 							<select id="resultUpload" class="form-control">
-								<option selected>-전체-</option>
+								<option value="all" selected>-전체-</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
 							<li>수검일</li>
 						</label>
 						<div class="form-group col" style="display: flex">
-							<input class="form-control" type="text" id="ipStartDate" style="margin-right: 10px" placeholder="시작일">
-							<script>
-								$(function () {
-									$("#ipStartDate").datepicker({
-										changeMonth: true,
-										changeYear: true,
-										dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-										dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-										monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-										monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-										dateFormat: "yy-mm-dd",
-									});
-								});
-							</script>
-							<input class="form-control" type="text" id="ipEndDate" placeholder="종료일">
-							<script>
-								$(function () {
-									$("#ipEndDate").datepicker({
-										changeMonth: true,
-										changeYear: true,
-										dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-										dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-										monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-										monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-										dateFormat: "yy-mm-dd",
-									});
-								});
-							</script>
+							<input class="form-control" type="date" id="ipStartDate" data-placement="시작일" style="width: 50%; border: 1px solid #DCDCDC">
+							<div style="padding: 5px 10px">~</div>
+							<input class="form-control" type="date" id="ipEndDate" data-placement="종료일" style="width: 50%; border: 1px solid #DCDCDC">
 						</div>
 					</div>
 					<hr>
@@ -110,7 +85,7 @@
 	<div class="row " style="margin-left: 30px; margin-right: 30px; margin-top: 120px">
 		<form class="table-responsive" style="margin: 0 auto">
 			<div
-				class="btn-default-small excel" style="float: right"></div>
+				class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="resultInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
@@ -122,7 +97,7 @@
 					<th>사업장</th>
 					<th>아이디</th>
 					<th>성명</th>
-					<th>등급</th>
+					<th>관계</th>
 					<th>검진완료일</th>
 					<th>결과등록</th>
 				</tr>
@@ -247,24 +222,13 @@ require('check_data.php');
 
 		searchItems.pageNum = pageNum;
 
-		if (searchItems.coName == "-전체-") {
-			searchItems.coName = "all";
-		}
-		if (searchItems.coBranch == "-전체-") {
-			searchItems.coBranch = "all";
-		}
-		if (searchItems.hoName == "-전체-") {
-			searchItems.hoName = "all";
-		}
-		if (searchItems.resultUpload == "-전체-") {
-			searchItems.resultUpload = "all";
-		}
-		//TODO: 수검일 데이터 넣기
-		if (searchItems.ipStartDate == "") {
-			searchItems.ipStartDate = "2020-01-01";
-		}
-		if (searchItems.ipEndDate == "") {
-			searchItems.ipEndDate = "2025-01-01";
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		} if (searchItems.ipStartDate == '' || searchItems.ipStartDate == null) {
+			searchItems.ipStartDate = '2018-01-01';
+		} if (searchItems.ipEndDate == '' || searchItems.ipEndDate == null) {
+			searchItems.ipEndDate = '2022-01-01';
 		}
 
 		console.log(searchItems);
@@ -279,48 +243,9 @@ require('check_data.php');
 		});
 	}
 
-	//페이징-화살표클릭
-	function pmPageNum(val) {//화살표클릭
-		pageNum = Math.floor(parseInt(val) / 10) * 10;
-		if (pageNum < 0) pageNum = 0;
-		if (pageCount <= pageNum) pageNum = pageCount - 1;
-		drawTable();
-	}
-
-	//페이징
-	function setPaging(index) {
-		$("#paging").empty();
-
-		var html = "";
-		var pre = parseInt(index) - 1;
-		if (pre < 0) {
-			pre = 0;
-		}
-		html += '<a class="arrow pprev" onclick= "searchInformation(\'' + 0 + '\')" href="#"></a>'
-		html += '<a class="arrow prev" onclick= "pmPageNum(\'' + -10 + '\')" href="#"></a>'
-		$("#paging").append(html);
-
-		var start = index - Math.floor((index % 10)) + 1;
-
-		for (i = start; i < (start + 10); i++) {
-			var html = '';
-
-			if ((i - 1) < pageCount) {
-				if (i == index + 1) {
-					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" class="active">' + i + '</a>';
-				} else {
-					html += '<a onclick= "searchInformation(\'' + (i - 1) + '\')" href="#">' + i + '</a>';
-				}
-			}
-
-			$("#paging").append(html);
-		}
-
-		var html = "";
-		html += '<a class="arrow next" onclick= "pmPageNum(\'' + 10 + '\')" href="#"></a>'
-		html += '<a class="arrow nnext" onclick= "searchInformation(\'' + (pageCount - 1) + '\')" href="#"></a>'
-		$("#paging").append(html);
-	}
+	<?php
+	require('paging.js');
+	?>
 
 	//패키지 생성 테이블
 	function setResultData(data, index) {
@@ -358,15 +283,101 @@ require('check_data.php');
 			html += '<td>' + data[i].famName + '</td>';
 			html += '<td>' + data[i].famGrade + '</td>';
 			html += '<td>' + data[i].ipDate + '</td>';
-			if (data[i].resultUpload) {
-				html += '<td>Y</td>';
-			} else {
-				html += '<td>N</td>';
-			}
+			html += '<td>' + (data[i].resultUpload ? 'Y' : 'N') + '</td>';
 
 			html += '</tr>';
 
 			$("#resultInfos").append(html);
 		}
+	}
+
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.coName = $("#resComName option:selected").val();
+		searchItems.coBranch = $("#resComBranch option:selected").val();
+		searchItems.hoName = $("#hosName option:selected").val();
+		searchItems.resultUpload = $("#resultUpload option:selected").val();
+		searchItems.ipStartDate = $("#ipStartDate").val();
+		searchItems.ipEndDate = $("#ipEndDate").val();
+
+		searchItems.pageNum = pageNum;
+
+		if (searchItems.coName != 'all' && searchItems.coBranch == 'all') {
+			alert("사업장을 선택해주세요.");
+			return false;
+		} if (searchItems.ipStartDate == '' || searchItems.ipStartDate == null) {
+			searchItems.ipStartDate = '2018-01-01';
+		} if (searchItems.ipEndDate == '' || searchItems.ipEndDate == null) {
+			searchItems.ipEndDate = '2022-01-01';
+		}
+
+		fileURL.post('downloadExcel/M1004', searchItems).then(res => {
+			console.log(res.data);
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 검진결과.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("병원명");
+				tt.push("서비스");
+				tt.push("고객사");
+				tt.push("사업장");
+				tt.push("아이디");
+				tt.push("성명");
+				tt.push("관계");
+				tt.push("검진완료일");
+				tt.push("결과등록");
+
+				table.push(tt);
+
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].hoName);
+					td.push(data[i].serviceName);
+					td.push(data[i].coName);
+					td.push(data[i].coBranch);
+					td.push(data[i].cusId);
+					td.push(data[i].famName);
+					td.push(data[i].famGrade);
+					td.push(data[i].ipDate);
+					td.push(data[i].resultUpload ? 'Y' : 'N');
+
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
 	}
 </script>

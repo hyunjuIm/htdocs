@@ -358,9 +358,15 @@ require('check_data.php');
 			html += '<td>' + data[i].familyGrade + '</td>';
 			html += '<td>' + data[i].familyBirthDate + '</td>';
 			html += '<td>' + data[i].hospitalName + '</td>';
-			html += '<td style="font-size: 14px">' + data[i].familyPhone;
-			html += '<td style="font-size: 14px">1차 ' + data[i].firstWishDate;
-			html += '<br>2차 ' + data[i].secondWishDate + '</td>';
+			html += '<td style="font-size: 14px">' + data[i].familyPhone + '</td>';
+
+			if(data[i].ipDate == '' || data[i].ipDate == null) {
+				html += '<td style="font-size: 14px;line-height: 20px">1차: ' + data[i].firstWishDate;
+				html += '<br>2차: ' + data[i].secondWishDate + '</td>';
+			} else {
+				html += '<td>' + data[i].ipDate + '</td>';
+			}
+
 			html += '<td>' + (data[i].ipCheck ? 'Y' : 'N') + '</td>';
 			html += '<td>' + data[i].packageName + '</td>';
 			html += '<td>' + data[i].packagePrice.toLocaleString() + '</td>';
@@ -440,7 +446,11 @@ require('check_data.php');
 					td.push(data[i].familyBirthDate);
 					td.push(data[i].hospitalName);
 					td.push(data[i].familyPhone);
-					td.push("1차 예약일: " + data[i].firstWishDate + " | 2차 예약일: " + data[i].secondWishDate);
+					if(data[i].ipDate == '' || data[i].ipDate == null) {
+						td.push("1차 예약일: " + data[i].firstWishDate + " | 2차 예약일: " + data[i].secondWishDate);
+					} else {
+						td.push(data[i].ipDate);
+					}
 					td.push(data[i].ipCheck ? 'Y' : 'N');
 					td.push(data[i].packageName);
 					td.push(data[i].packagePrice.toLocaleString());

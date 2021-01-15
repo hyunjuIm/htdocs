@@ -124,7 +124,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	padding: 0.5rem;
 	border-radius: 0 !important;
 	font-size: 1.2rem;
-	border: 1px solid #464646;
+	border: 1px solid #999999 !important;
 }
 
 .search-btn {
