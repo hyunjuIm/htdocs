@@ -4,7 +4,7 @@
 	<title>듀얼헬스케어:로그인</title>
 
 	<?php
-	require('head.php');
+	require('pc/common/head.php');
 	?>
 
 	<style>
@@ -321,7 +321,7 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			baseURL: "https://api.dualhealth.kr/permission/",
+			baseURL: "http://192.168.219.111:8080/permission/",
 			timeout: 5000
 		});
 

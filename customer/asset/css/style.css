@@ -169,3 +169,8 @@ a:link {
 	color: #fff;
 	border: 1px solid #3529b1;
 }
+
+.point {
+	font-weight: 500;
+	color: #f93c48;
+}

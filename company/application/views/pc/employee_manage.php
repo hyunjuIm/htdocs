@@ -122,7 +122,7 @@ require('employee_modal.php');
 		if(data.length == 0) {
 			var html = '';
 			html += '<tr>';
-			html += '<td colspan="10">해당하는 검색 결과가 없습니다.</td>';
+			html += '<td colspan="20">해당하는 결과가 없습니다.</td>';
 			html += '</tr>';
 			$("#employeeManageTable").append(html);
 			$("#paging").empty();

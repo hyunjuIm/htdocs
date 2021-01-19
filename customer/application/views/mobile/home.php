@@ -72,7 +72,7 @@
 		}
 
 		#mainNoticeInfos .title:hover {
-			color: #5645ED;
+			color: grey;
 		}
 
 		#mainNoticeInfos .date {
@@ -250,7 +250,7 @@
 					</tr>
 					<tr>
 						<td style="background: url(../../../asset/images/mobile/main5.jpg);background-size: 100%"
-							onclick="alert('서비스 준비중입니다.')">
+							onclick="location.href='/m/health_encyclopedia_list'">
 							<div>
 								<span class="menu">건강컨텐츠</span><br>
 								HEALTH CONTENTS
@@ -315,15 +315,13 @@
 	});
 
 	function setMainNotice(data) {
-
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
 			if (i == 0) {
-				html += '<td class="title" onclick="moveNoticeDetail(\'' + data[i].id + '\')" ' +
-						'style="color: #ff4e59;font-weight: 400;">' + "· " + data[i].title + '</td>';
+				html += '<td class="title point" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			} else {
-				html += '<td class="title" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + "· " + data[i].title + '</td>';
+				html += '<td class="title" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			}
 			if (data[i].createDate.indexOf('9999') != -1) {
 				html += '<td class="date">2020.12.22</td>';

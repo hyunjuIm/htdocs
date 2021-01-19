@@ -209,7 +209,7 @@
 		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
-			html += '<td colspan="4">해당하는 검색 결과가 없습니다.</td>';
+			html += '<td colspan="20">해당하는 결과가 없습니다.</td>';
 			html += '</tr>';
 			$("#noticeTable > tbody").append(html);
 			$("#paging").empty();

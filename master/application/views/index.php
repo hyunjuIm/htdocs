@@ -4,7 +4,7 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('head.php');
+	require('common/head.php');
 	?>
 
 	<style>
@@ -36,7 +36,7 @@
 <!--상단 네비바-->
 <header>
 	<?php
-	require('header.php');
+	require('common/header.php');
 	?>
 </header>
 <!--상단 네비바-->

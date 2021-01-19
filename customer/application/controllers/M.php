@@ -28,31 +28,43 @@ class m extends CI_Controller
 	//검진예약1
 	public function reservation_step1()
 	{
-		$this->load->view('mobile/reservation_service/reservation_step1');
+		$this->load->view('mobile/reservation/reservation_step1');
 	}
 
 	//검진예약2
 	public function reservation_step2()
 	{
-		$this->load->view('mobile/reservation_service/reservation_step2');
+		$this->load->view('mobile/reservation/reservation_step2');
 	}
 
 	//검진예약3
 	public function reservation_step3()
 	{
-		$this->load->view('mobile/reservation_service/reservation_step3');
+		$this->load->view('mobile/reservation/reservation_step3');
 	}
 
 	//검진예약3
 	public function reservation_step4()
 	{
-		$this->load->view('mobile/reservation_service/reservation_step4');
+		$this->load->view('mobile/reservation/reservation_step4');
 	}
 
 	//예약현황
 	public function reservation_list()
 	{
-		$this->load->view('mobile/reservation_service/reservation_list');
+		$this->load->view('mobile/reservation/reservation_list');
+	}
+
+	//질병백과 - 전체 리스트
+	public function health_encyclopedia_list()
+	{
+		$this->load->view('mobile/health_info/health_encyclopedia_list');
+	}
+
+	//질병백과 - 글보기
+	public function health_encyclopedia_detail()
+	{
+		$this->load->view('mobile/health_info/health_encyclopedia_detail');
 	}
 
 	//공지사항
@@ -82,18 +94,18 @@ class m extends CI_Controller
 	//자주 묻는 질문
 	public function customer_service_faq()
 	{
-		$this->load->view('mobile/customer_center/customer_service_faq');
+		$this->load->view('mobile/service/customer_service_faq');
 	}
 
 	//1:1 문의
 	public function customer_service_one_inquiry()
 	{
-		$this->load->view('mobile/customer_center/customer_service_one_inquiry');
+		$this->load->view('mobile/service/customer_service_one_inquiry');
 	}
 
 	//내 문의 내역
 	public function customer_service_inquiry_list()
 	{
-		$this->load->view('mobile/customer_center/customer_service_inquiry_list');
+		$this->load->view('mobile/service/customer_service_inquiry_list');
 	}
 }
