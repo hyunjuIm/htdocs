@@ -9,6 +9,8 @@
 	?>
 
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 
 	<style>
 		.result-table {
@@ -114,6 +116,67 @@
 		.mainInspectionTable td:not(:last-child) {
 			padding: 1.3rem;
 		}
+
+		.year-arrow {
+			width: 100%;
+			line-height: 1rem;
+			position: absolute;
+			font-size: 1rem;
+			margin: 0 auto;
+		}
+
+		.bar-div {
+			position: relative;
+			top: 1.6rem;
+		}
+
+		.bar-div img {
+			width: 27rem;
+			height: 2rem;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.accordion-menu {
+			width: 100%;
+			border-radius: 4px;
+			background: #e7f1ff;
+			text-align: left;
+			border-top: 1px solid #F1F1F1;
+			border-left: 1px solid #F1F1F1;
+			border-right: 1px solid #F1F1F1;
+		}
+
+		.dropdownlink {
+			cursor: pointer;
+			display: block;
+			border-bottom: 1px solid #F1F1F1;
+			color: #212121;
+			transition: all 0.4s ease-out;
+			padding: 1rem 2.5rem;
+		}
+
+		.submenuItems {
+			display: none;
+			background: white;
+		}
+
+		.submenuItems li {
+			border-bottom: 1px solid #f1f1f1;
+			padding: 1rem 2.5rem;
+		}
+
+		.submenuItems a {
+			display: block;
+			color: #525252;
+			transition: all 0.4s ease-out;
+		}
+
+		.submenuItems li:hover {
+			background-color: #c8d7e6;
+		}
 	</style>
 
 </head>
@@ -180,17 +243,15 @@
 
 						<div class="row" style="margin-top: 2.5rem;">
 							<div style="margin-bottom: 0.6rem;display: inline-block;width: 100%">
-								<div style="float:left;">
+								<div style="float:right;">
 									<select id="familySelect" onchange="setDataSelectOption()">
 										<option value="ch">- 수검자 선택 -</option>
 									</select>
 								</div>
 							</div>
-
-
 						</div>
 
-						<div class="row" style="display:block; margin-top: 5rem">
+						<div class="row" style="display:block; margin-top: 2rem">
 							<div style=" text-align: left;font-size: 2rem;font-weight: bolder">
 								주요결과
 							</div>
@@ -223,6 +284,32 @@
 										</table>
 									</div>
 								</div>
+							</div>
+						</div>
+
+						<div class="row" style="display:flex; margin-top: 4rem">
+							<div style="width: 70%;padding-right: 2rem" id="graph">
+								<!--<canvas id="myChart"></canvas>-->
+							</div>
+							<div style="width: 30%;overflow-y: auto;height: 40rem">
+								<ul class="accordion-menu" id="resultAcc">
+<!--									<li>-->
+<!--										<div class="dropdownlink">History</div>-->
+<!--										<ul class="submenuItems">-->
+<!--											<li><a href="#">History book 1</a></li>-->
+<!--											<li><a href="#">History book 2</a></li>-->
+<!--											<li><a href="#">History book 3</a></li>-->
+<!--										</ul>-->
+<!--									</li>-->
+<!--									<li>-->
+<!--										<div class="dropdownlink">Fiction</div>-->
+<!--										<ul class="submenuItems">-->
+<!--											<li><a href="#">Fiction book 1</a></li>-->
+<!--											<li><a href="#">Fiction book 2</a></li>-->
+<!--											<li><a href="#">Fiction book 3</a></li>-->
+<!--										</ul>-->
+<!--									</li>-->
+								</ul>
 							</div>
 						</div>
 
@@ -276,6 +363,19 @@
 
 		instance.post('CU_005_002', sendItems).then(res => {
 			resultData = res.data;
+			// 연도별 정렬
+
+			resultData.sort(function (a, b) {
+				const yearA = a.year.toUpperCase(); // ignore upper and lowercase
+				const yearB = b.year.toUpperCase(); // ignore upper and lowercase
+				if (yearA < yearB) {
+					return -1;
+				}
+				if (yearA > yearB) {
+					return 1;
+				}
+				return 0;
+			});
 
 			classifyCategory();
 		});
@@ -365,12 +465,7 @@
 			obj.title = categoryTitleA;
 			obj.list = categoryBList;
 			category.push(obj);
-
 		}
-
-		console.log(category);
-
-
 		setInspectionItemTable();
 	}
 
@@ -381,6 +476,7 @@
 		let cnt = 0;
 		for (let i = 0; i < categoryA.length; i++) {
 			let imgIdx = baseCategory.indexOf(categoryA[i]) + 1;
+			console.log(categoryA[i]);
 			let html =
 					'<td onclick="categoryClick(this, \'' + i + '\')">' +
 					'<div class="item">' +
@@ -396,7 +492,7 @@
 					'</div>' +
 					'</div>' +
 					'</td>';
-			categoryADraw(i, html)
+			categoryADraw(i, html);
 			cnt = i;
 		}
 
@@ -414,8 +510,12 @@
 		}
 	}
 
-	//카테고리 클릭 테이블 뷰 셋팅
-	function categoryClick(item, idx) {
+	var yearArr = new Array();
+	var select1Arr = new Array();
+	var select2Arr = new Array();
+
+	function settingTable(item, idx){
+
 		$(item).children('.item').hide();
 		$(item).children('.item-hover').show();
 		$(item).addClass('active');
@@ -425,27 +525,31 @@
 		$('.item-table td').not(item).removeClass('active');
 
 		$("#resultTable").empty();
+		$("#resultAcc").empty();
+		yearArr = [];
+		select1Arr = [];
+		select2Arr = [];
 
 		var tableHead = '';
 		tableHead += '<tr><th width="35%">검사항목</th>';
-		var year = '';
+		var yearString = '';
 		for (i = 0; i < resultData.length; i++) {
+			yearArr.push(resultData[i].year.split('-')[0]);
 			tableHead += '<th>' + resultData[i].year.split('-')[0] + '</th>';
-			let color = (i === 0) ? '#000000' : (i === 1) ? '#717171' : '#bbbbbb';
-			year += '<span style="color:' + color + '">▲&nbsp;</span>' + resultData[i].year.split('-')[0];
+			let color = (i === 0) ? '#af7f36' : (i === 1) ? '#3480bf' : '#000000';
+			yearString += '<span style="color:' + color + '">▲&nbsp;</span>' + resultData[i].year.split('-')[0];
 			if (i != resultData.length - 1) {
-				year += '&nbsp;&nbsp';
+				yearString += '&nbsp;&nbsp';
 			}
 		}
-		tableHead += '<th width="35%">검사결과 <span style="font-size: 1.3rem">(' + year + ')</span></th></tr>';
+		tableHead += '<th width="35%">검사결과 ' +
+				'<span style="font-size: 1.3rem">(' + yearString + ')</span>' +
+				'</th></tr>';
 
 		let html = '';
+		var AccHtml = '';
 
 		let selectedCategory = category[idx].list;
-
-		console.log(resultData);
-		console.log(selectedCategory);
-
 
 		for (i = 0; i < selectedCategory.length; i++) {
 			let inspectionList = selectedCategory[i].list;
@@ -455,7 +559,7 @@
 			var subHtml = '';
 			subHtml += '<div style="width: 100%;height: 4rem">' +
 					'<div style="float: left">' +
-					'<h1>' + categoryBTitle + '</h1>' +
+					'<h1>' + categoryBTitle + '</h1>' + //중분류 검사명
 					'</div>' +
 					'</div>' +
 					'<table class="mainInspectionTable table-striped">' +
@@ -463,11 +567,17 @@
 					tableHead +
 					'</thead>' +
 					'<tbody>';
+			select1Arr.push(categoryBTitle);
+			AccHtml += '<li>' +
+					'<div class="dropdownlink">' + categoryBTitle + '</div>' +
+					'<ul class="submenuItems">';
 
 			for (j = 0; j < inspectionList.length; j++) {
 				let inspection = inspectionList[j];
 
+				//검사항목명
 				var tmpHtml = '<tr><td>' + inspection + '</td>';
+				select2Arr.push(inspection);
 				var canDraw = false;
 				var arrowArr = ['blank', 'blank', 'blank'];
 
@@ -476,7 +586,6 @@
 					for (let l = 0; l < resultItemList.length; l++) {
 						if (resultItemList[l].inspection === inspection) {
 							tmpHtml += '<td>' + resultItemList[l].result + '</td>';
-
 							arrowArr[k] = resultItemList[l].resultCase + "/" + resultItemList[l].resultRatio;
 							if (!canDraw) {
 								if (resultItemList[l].resultCase === 'B') {//낮정~높정 아니면 비정상
@@ -486,9 +595,6 @@
 								} else if (resultItemList[l].resultCase === 'D') {//높으면 비정상
 									canDraw = resultItemList[l].resultRatio > 50;
 								}
-
-								console.log(inspection + "이 들어왔는데 " + resultItemList[l].resultCase + "케이스고 " + resultItemList[l].resultRatio + "점수여서" + canDraw + "여");
-
 							}
 							break;
 						} else if (l === resultItemList.length - 1) {
@@ -496,9 +602,8 @@
 						}
 					}
 				}
-				console.log(arrowArr);
 
-				tmpHtml += '<td><div style="width: 100%;padding-bottom: 1.2rem">';
+				tmpHtml += '<td><div style="width: 100%;padding-bottom: 1.8rem">';
 
 				if (canDraw) {
 					canWrite = true;
@@ -516,47 +621,154 @@
 						if (arrowArr[k] !== 'blank') {
 							let a = parseFloat(arrowArr[k].split("/")[1]);
 							let rRatio = (a - 50) * 2.7 * 0.1;
-							let color = (k === 0) ? '#000000' : (k === 1) ? '#717171' : '#bbbbbb';
+							let color = (k === 0) ? '#af7f36' : (k === 1) ? '#3480bf' : '#000000';
 							if (rCase !== 'A') {
-								tmpHtml += '<div style="width: 100%; color:' + color + ';margin: 0 auto 0 ' +
-										rRatio + 'rem;font-size: 1.2rem;position: absolute">▼</div>';
+								tmpHtml += '<div class="year-arrow" ' +
+										'style="color:' + color + '; ' +
+										'margin-left: ' + rRatio + 'rem">' +
+										'<span style="font-size: 0.6rem">' + yearArr[k] +
+										'</span><br>▼' + '</div>';
 							}
 						}
 					}
 					tmpHtml += '</div>';
-
 					if (rCase === 'B') {
-						tmpHtml += '<div style="position: relative;top: 1.2rem;">' +
-								'<img style="width: 27rem;height: 2rem" src="/asset/images/img_grade_bar.png">' +
+						tmpHtml += '<div class="bar-div">' +
+								'<img src="/asset/images/img_grade_bar.png">' +
 								'</div>';
 					} else {
-						tmpHtml += '<div style="position: relative;top: 1.2rem;">' +
-								'<img style="width: 27rem;height: 2rem" src="/asset/images/img_true_false_bar.png">' +
+						tmpHtml += '<div class="bar-div">' +
+								'<img src="/asset/images/img_true_false_bar.png">' +
 								'</div>';
 					}
-
 					tmpHtml += '</div></td></tr>';
-
-					subHtml += tmpHtml
-				} else {
-					console.log(inspection);
+					subHtml += tmpHtml;
 				}
-
-
 			}
-
 			if (canWrite) {
 				html += subHtml;
 				html += '</tbody>';
 				html += '</table><br>';
-
+				AccHtml += '</ul></li>';
 			}
-
 		}
 
+		$("#resultAcc").append(AccHtml);
 		$("#resultTable").append(html);
+
+		if ($("#resultTable").text() == '') {
+			$("#resultTable").append('<tr><td>해당 결과에 이상이 없습니다.</td></tr>');
+		}
 	}
 
+	function settingGraph(item, idx){
+		$('#resultAcc').empty();
+		var html = '';
+
+
+		let categoryAList = category[idx].list;
+		for(let i = 0; i< categoryAList.length; i++){
+			console.log(categoryAList[i].title);
+			html += '<li>' +
+					'<div class="dropdownlink">'+categoryAList[i].title+'</div>' +
+					'<ul class="submenuItems">';
+
+			let categoryBList = categoryAList[i].list;
+			for(let j=0; j< categoryBList.length; j++){
+				html += '<li><a href="#">'+categoryBList[j]+'</a></li>';
+			}
+
+			html += '</ul>' +
+					'</li>';
+		}
+		$('#resultAcc').append(html);
+
+		$('#graph').html('<canvas id="myChart"></canvas>');
+
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: yearArr,
+				datasets: [{
+					label: 'My First dataset',
+					backgroundColor: 'rgba(255, 255, 255, 0)',
+					borderColor: 'rgb(255,153,0)',
+					pointBackgroundColor: 'rgb(255,153,0)',
+					data: [0, 10, 5, 2, 20, 30, 45]
+				}]
+			},
+			options: {}
+		});
+	}
+
+	//카테고리 클릭 테이블 뷰 셋팅
+	function categoryClick(item, idx) {
+		console.log(category);
+		settingTable(item, idx);
+		settingGraph(item, idx);
+
+	}
+
+	$(document).on("click", "#resultAcc", function () {
+		var Accordion = function(el, multiple) {
+			this.el = el || {};
+			// more then one submenu open?
+			this.multiple = multiple || false;
+
+			var dropdownlink = this.el.find('.dropdownlink');
+			dropdownlink.on('click',
+					{ el: this.el, multiple: this.multiple },
+					this.dropdown);
+		};
+
+		Accordion.prototype.dropdown = function(e) {
+			var $el = e.data.el,
+					$this = $(this),
+					//this is the ul.submenuItems
+					$next = $this.next();
+
+			$next.slideToggle();
+			$this.parent().toggleClass('open');
+
+			if(!e.data.multiple) {
+				//show only one menu at the same time
+				$el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
+			}
+		}
+
+		var accordion = new Accordion($('#resultAcc'), false);
+	});
+
+	// $(function() {
+	// 	var Accordion = function(el, multiple) {
+	// 		this.el = el || {};
+	// 		// more then one submenu open?
+	// 		this.multiple = multiple || false;
+	//
+	// 		var dropdownlink = this.el.find('.dropdownlink');
+	// 		dropdownlink.on('click',
+	// 				{ el: this.el, multiple: this.multiple },
+	// 				this.dropdown);
+	// 	};
+	//
+	// 	Accordion.prototype.dropdown = function(e) {
+	// 		var $el = e.data.el,
+	// 				$this = $(this),
+	// 				//this is the ul.submenuItems
+	// 				$next = $this.next();
+	//
+	// 		$next.slideToggle();
+	// 		$this.parent().toggleClass('open');
+	//
+	// 		if(!e.data.multiple) {
+	// 			//show only one menu at the same time
+	// 			$el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
+	// 		}
+	// 	}
+	//
+	// 	var accordion = new Accordion($('.accordion-menu'), false);
+	// })
 </script>
 
 </html>

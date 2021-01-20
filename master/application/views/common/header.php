@@ -274,7 +274,7 @@
 
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.111:8080/permission/",
+		baseURL: "http://192.168.219.107:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -294,7 +294,7 @@
 	$('#loading').hide();
 
 	const instance = axios.create({
-		baseURL: "http://192.168.219.111:8080/master/api/v1/",
+		baseURL: "http://192.168.219.107:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
@@ -321,7 +321,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "http://192.168.219.111:8080/",
+		baseURL: "http://192.168.219.107:8080/",
 		timeout: 20000,
 		headers: {'token': token}
 	});
