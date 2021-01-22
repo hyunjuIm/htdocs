@@ -241,9 +241,12 @@
 
 		instance.post('CU_003_002', userData).then(res => {
 			pageCount = 0;
-			for (i = 0; i < res.data.count; i += 10) {
+			for (i = 0; i < res.data.count; i += 6) {
 				pageCount++;
 			}
+
+			$("#hosCount").empty();
+			$("#hosCount").append(res.data.count);
 
 			addSelectOption(res.data.regionList);
 			setHospitalCard(res.data.hospitalList, pageNum);
@@ -270,8 +273,6 @@
 	function setHospitalCard(data, index) {
 		setPaging(index);
 
-		$("#hosCount").empty();
-		$("#hosCount").append(data.length);
 		$("#hospitalInfos").empty();
 
 		if (data.length == 0) {
@@ -329,11 +330,17 @@
 
 	//홈페이지 바로가기 버튼 활성화
 	function hospitalCardHover(layer, url) {
-		console.log();
+
 		$(layer).children('.layer').css("display", "block");
+		url.replaceAll("http://", "");
+		url.replaceAll("https://", "");
+
+
 		$(layer).click(function () {
-			window.open(url, "hospital", "location = no");
+			alert("간다!");
+			window.open("https://" + url);
 		});
+
 	}
 
 	//홈페이지 바로가기 버튼 비활성화

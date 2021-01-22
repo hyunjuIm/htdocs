@@ -55,6 +55,18 @@ class m extends CI_Controller
 		$this->load->view('mobile/reservation/reservation_list');
 	}
 
+	//종합결과
+	public function result_final()
+	{
+		$this->load->view('mobile/result/result_final');
+	}
+
+	//주요결과
+	public function result_main()
+	{
+		$this->load->view('mobile/result/result_main');
+	}
+
 	//질병백과 - 전체 리스트
 	public function health_encyclopedia_list()
 	{

@@ -176,7 +176,7 @@
 
     var userData = new Object();
     userData.cusId = sessionStorage.getItem("userCusID");
-    userData.pagingNum = pageNum;
+    userData.pageNum = pageNum;
 
     searchInformation(0);
 
@@ -195,10 +195,8 @@
     function drawTable() {
         pageNum = parseInt(pageNum);
 
-        userData.pagingNum = pageNum;
+        userData.pageNum = pageNum;
         userData.searchWord = $("#searchWord").val();
-
-		console.log(userData);
 
         instance.post('CU_007_001', userData).then(res => {
             pageCount = 0;

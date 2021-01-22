@@ -232,7 +232,7 @@
 					</tr>
 					<tr>
 						<td style="background: url(../../../asset/images/mobile/main3.jpg);background-size: 100%"
-							onclick="alert('서비스 준비중입니다.')">
+							onclick="location.href='/m/result_final'">
 							<div>
 								<span class="menu">검진결과</span><br>
 								RESULT
@@ -240,7 +240,7 @@
 							<img src="../../../asset/images/mobile/m_icon3.png" width="50%">
 						</td>
 						<td style="background: url(../../../asset/images/mobile/main4.jpg);background-size: 100%"
-							onclick=window.open("/customer/comparison_hospital")>
+							onclick="location.href='/m/comparison_hospital'">
 							<div>
 								<span class="menu">병원별비교</span><br>
 								COMPARE HOSPITALS

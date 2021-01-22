@@ -13,13 +13,13 @@ if ($('#menu1 .nav-button').text() == '예약서비스') {
 } else if ($('#menu1 .nav-button').text() == '검진결과') {
 	var option = '';
 	option += '<li><a href="#" class="nav-button">-</a></li>' +
-		'<li><a href="#">종합결과</a></li>' +
-		'<li><a href="#">주요결과</a></li>';
+		'<li><a href="/m/result_final">종합결과</a></li>' +
+		'<li><a href="/m/result_main">주요결과</a></li>';
 	$('#menu2 ul').append(option);
 } else if ($('#menu1 .nav-button').text() == '건강정보') {
 	var option = '';
 	option += '<li><a href="#" class="nav-button">-</a></li>' +
-		'<li><a href="#">질병백과</a></li>';
+		'<li><a href="/m/health_encyclopedia_list">질병백과</a></li>';
 	$('#menu2 ul').append(option);
 } else if ($('#menu1 .nav-button').text() == '이용안내') {
 	var option = '';

@@ -68,8 +68,8 @@
 						<div class="form-group col">
 							<select id="dualApproval" class="form-control">
 								<option value="all" selected>-전체-</option>
-								<option value="true">Y</option>
-								<option value="false">N</option>
+								<option value="Y">Y</option>
+								<option value="N">N</option>
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
@@ -78,8 +78,8 @@
 						<div class="form-group col">
 							<select id="coApproval" class="form-control">
 								<option value="all" selected>-전체-</option>
-								<option value="true">Y</option>
-								<option value="false">N</option>
+								<option value="Y">Y</option>
+								<option value="N">N</option>
 							</select>
 						</div>
 					</div>
@@ -207,7 +207,7 @@
 		searchItems.coName = $("#coName option:selected").val();
 		searchItems.coBranch = $("#coBranch option:selected").val();
 		searchItems.hoName = $("#hoName option:selected").val();
-		searchItems.dualApproval= $("#hoName option:selected").val();
+		searchItems.dualApproval= $("#dualApproval option:selected").val();
 		searchItems.coApproval= $("#coApproval option:selected").val();
 
 		searchItems.pageNum = pageNum;

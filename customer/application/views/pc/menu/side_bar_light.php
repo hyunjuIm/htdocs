@@ -101,17 +101,17 @@
 		display: none;
 	}
 
-	.main-menu {
+	#nav .main-menu {
 		border-bottom: 1px solid #c4c4c4;
 	}
 
-	.sub-menu {
+	#nav .sub-menu {
 		padding-left: 3rem;
 		border-bottom: none;
 		color: #5645ED;
 	}
 
-	.main-menu a:hover, .sub-menu:hover {
+	#nav .main-menu a:hover, .sub-menu:hover {
 		/*background-color: rgba(255, 255, 255, 0.2);*/
 		background-color: whitesmoke;
 	}

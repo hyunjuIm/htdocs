@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:검진결과</title>
+	<title>듀얼헬스케어:종합결과</title>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/head.php');
 	?>
 
-	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 
 	<style>
 		.result-table {
@@ -23,15 +23,15 @@
 
 		.result-table th {
 			background: #f6f6f6;
-			text-align: left;
-			padding: 1.3rem 3rem;
+			text-align: center;
+			padding: 1rem 2rem;
 			vertical-align: middle;
 			font-weight: 400;
 		}
 
 		.result-table td {
 			vertical-align: middle;
-			padding: 1.3rem 3rem;
+			padding: 1rem 2rem;
 			max-width: 30%;
 		}
 
@@ -46,27 +46,26 @@
 		}
 
 		.item-table img {
-			width: 72px;
-			height: 72px
+			width: 50%;
+			height: 50%;
 		}
 
 		.item-table td {
 			text-align: center;
-			width: calc(120rem / 6);
-			height: calc(120rem / 6);
 			font-weight: bolder;
-			font-size: 1.7rem;
 			cursor: pointer;
 			border: 1px solid #DCDCDC;
+			word-break:break-all;
+			padding: 0 1rem;
 		}
 
 		.item-table .active, .item-table td:hover {
-			background: #f1f1fa;
+			/*box-shadow: 0 0 0 3px #3529b1 inset;*/
 		}
 
 		.item, .item-hover {
 			align-items: center;
-			font-size: 1.5rem;
+			font-size: 1.4rem;
 			cursor: pointer;
 		}
 
@@ -102,17 +101,35 @@
 		}
 
 		.mainInspectionTable th {
-			padding: 1.5rem;
-			font-size: 1.8rem;
+			padding: 0.5rem;
+			font-size: 1.4rem;
 			font-weight: 500;
 		}
 
 		.mainInspectionTable td {
+			padding: 0.5rem 0;
 			border-bottom: 1px solid #DCDCDC;
+			font-size: 1.3rem;
 		}
 
-		.mainInspectionTable td:not(:last-child) {
-			padding: 1.3rem;
+		.mainInspectionTable .grade {
+			padding: 0.7rem 0;
+		}
+
+		.bar-div {
+			position: relative;
+			top: 1.6rem;
+		}
+
+		.bar-div img {
+			width: 27rem;
+			height: 2rem;
+		}
+
+		.year-arrow {
+			width: 100%;
+			font-size: 1rem;
+			margin: -1.8rem auto;
 		}
 	</style>
 
@@ -124,141 +141,147 @@
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/header.php');
 	?>
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/menu/side.php');
+	?>
 </header>
 
-<div class="container-fluid">
-	<div class="row" style="display: table">
-		<!-- 좌측 사이드바 -->
-		<?php
-		$parentDir = dirname(__DIR__ . '..');
-		require($parentDir . '/menu/side_bar_light.php');
-		?>
-		<!-- 우측 컨텐츠 -->
-		<div class="col"
-			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
-				<!-- 상단 메뉴 -->
-				<div class="container top-menu"
-					 style="background-image: url(../../../../asset/images/title2.jpg)">
-					<div class="row line">
-						<div class="line-content">
-							<img src="/asset/images/icon_home.png">
-							<span>｜</span>
-							<span>검진결과</span>
-							<span>｜</span>
-							<span>종합결과</span>
-						</div>
-					</div>
-					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span class="title">검진결과<br></span>
-							Examination Results
-						</div>
-					</div>
-					<div class="row" style="height: 4.5rem">
-						<div style="margin: 0 auto; display: flex">
-							<div class="title-menu-select" style="border-right: #828282 1px solid">
-								종합결과
-							</div>
-							<a href="/customer/result_main">
-								<div class="title-menu">
-									주요결과
-								</div>
-							</a>
-						</div>
-					</div>
+<div id="main">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub3.jpg);
+		 background-size: 100%;background-position: center">
+		<div class="container">
+
+			<div class="row sub-title">
+				<div style="margin: 0 auto">
+					<span class="sub-title-name">검진결과</span><br>
+					쉽고 간편하게 지난 검진 결과를 <br>
+					확인하실 수 있습니다.
+				</div>
+			</div>
+
+			<div class="row" style="position: relative">
+				<?php
+				$parentDir = dirname(__DIR__ . '..');
+				require($parentDir . '/common/sub_drop_down.php');
+				?>
+			</div>
+
+			<!--본문-->
+			<div class="row" style="display: block;margin-top: 9rem">
+				<img src="/asset/images/mobile/icon_sub_title_bar.png">
+				<h1>종합결과</h1>
+			</div>
+
+			<div class="row" style="margin-top: 5rem;">
+				<div style="margin: 0 auto 1rem auto">
+					<select id="familySelect" onchange="setDataSelectOption()">
+						<option value="ch">수검자 선택</option>
+					</select>
+					<select id="dateSelect" onchange="setChoiceFamilyData()">
+					</select>
 				</div>
 
-				<!-- 컨텐츠내용 -->
-				<div style="margin:0 10rem">
-					<div class="container content-view">
-						<div class="row" style="padding-top: 3rem">
-							<div class="sub-title">종합결과</div>
-						</div>
+				<table class="result-table" id="resultView1" style="display: none">
+					<tr>
+						<th width="30%">검진종류</th>
+						<td id="service"></td>
+					</tr>
+					<tr>
+						<th>검진센터</th>
+						<td id="hospitalName"></td>
+					</tr>
+					<tr>
+						<th>검진일</th>
+						<td id="year"></td>
+					</tr>
+					<tr>
+						<th colspan="2" style="text-align: center">종합소견</th>
+					</tr>
+					<tr>
+						<td colspan="2" id="totalResult"
+							style="height: 10rem;max-height: 30rem;vertical-align: top">
+						</td>
+					</tr>
+				</table>
+			</div>
 
-						<div class="row" style="margin-top: 2.5rem;">
-							<div style="margin-bottom: 0.6rem;display: inline-block;width: 100%">
-								<div style="float:left;">
-									<select id="familySelect" onchange="setDataSelectOption()">
-										<option value="ch">- 수검자 선택 -</option>
-									</select>
-								</div>
-								<div style="float:right;">
-									검진결과선택
-									<select id="dateSelect" onchange="setChoiceFamilyData()">
-									</select>
-								</div>
-							</div>
+			<div class="row" class="result-view" id="resultView2" style="display:none; margin-top: 5rem">
+				<div style=" text-align: left;font-size: 2rem;font-weight: bolder">
+					주요결과
+				</div>
+				<div id="resultCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div style="float: left">
+						항목을 클릭하면 세부 내용을 확인할 수 있습니다.
+					</div>
+					<div style="display: flex;float: right">
+						<a class="carousel-control-prev" href="#resultCarousel" role="button"
+						   data-slide="prev"><img src="/asset/images/icon_prev.png">
+						</a>
+						<a class="carousel-control-next" href="#resultCarousel" role="button"
+						   data-slide="next"><img src="/asset/images/icon_next.png">
+						</a>
+					</div>
 
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<table class="table-bordered item-table" id="inspectionItemTable">
+								<tr id="categoryTable_1">
 
-							<table class="result-table" id="resultView1" style="display: none">
-								<tr>
-									<th width="10%">검진종류</th>
-									<td width="20%" id="service"></td>
-									<th width="10%">검진센터</th>
-									<td width="20%" id="hospitalName"></td>
-									<th width="10%">검진일</th>
-									<td width="20%" id="year"></td>
-								</tr>
-								<tr>
-									<th style="vertical-align: top">종합소견</th>
-									<td colspan="5" id="totalResult"
-										style="height: 30rem;min-height: 30rem;max-height: 30rem;vertical-align: top">
-									</td>
 								</tr>
 							</table>
 						</div>
+						<div class="carousel-item">
+							<table class="table-bordered item-table">
+								<tr id="categoryTable_2">
 
-						<div class="row" id="resultView2" style="display:none; margin-top: 5rem">
-							<div style=" text-align: left;font-size: 2rem;font-weight: bolder">
-								주요결과
-							</div>
-							<div id="resultCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-								<div style="float: left">
-									항목을 클릭하면 세부 내용을 확인할 수 있습니다.
-								</div>
-								<div style="display: flex;float: right">
-									<a class="carousel-control-prev" href="#resultCarousel" role="button"
-									   data-slide="prev"><img src="/asset/images/icon_prev.png">
-									</a>
-									<a class="carousel-control-next" href="#resultCarousel" role="button"
-									   data-slide="next"><img src="/asset/images/icon_next.png">
-									</a>
-								</div>
-
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<table class="table-bordered item-table" id="inspectionItemTable">
-											<tr id="categoryTable_1">
-
-											</tr>
-										</table>
-									</div>
-									<div class="carousel-item">
-										<table class="table-bordered item-table">
-											<tr id="categoryTable_2">
-
-											</tr>
-										</table>
-									</div>
-								</div>
-							</div>
+								</tr>
+							</table>
 						</div>
+						<div class="carousel-item">
+							<table class="table-bordered item-table">
+								<tr id="categoryTable_3">
 
-						<div class="row" style="display:block; margin-top: 4rem">
-							<div id="resultTable">
+								</tr>
+							</table>
+						</div>
+						<div class="carousel-item">
+							<table class="table-bordered item-table">
+								<tr id="categoryTable_4">
 
-							</div>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<div class="row" style="display:block; margin-top: 4rem">
+				<div id="resultTable">
+
+				</div>
+			</div>
 		</div>
+
+		<?php
+		$parentDir = dirname(__DIR__ . '..');
+		require($parentDir . '/common/footer.php');
+		?>
 	</div>
 </div>
 </body>
 
 <script>
+	$('#menu1 .nav-button').text('검진결과');
+	var menu2 = '종합결과';
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/sub_drop_down.js');
+	?>
+
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/check_data.js');
@@ -309,8 +332,6 @@
 				return 0;
 			});
 
-			console.log(resultData);
-
 			$("#dateSelect").append('<option value="ch">날짜 선택</option>');
 			for (i = 0; i < resultData.length; i++) {
 				var html = '';
@@ -339,7 +360,6 @@
 				$("#totalResult").html(resultData[i].totalResult);
 				result = setCategory(resultData[i].resultItemList);
 				setInspectionItemTable();
-				console.log(result);
 			}
 		}
 	}
@@ -356,6 +376,9 @@
 	function setInspectionItemTable() {
 		$("#categoryTable_1").empty();
 		$("#categoryTable_2").empty();
+		$("#categoryTable_3").empty();
+		$("#categoryTable_4").empty();
+
 		let cnt = 0;
 		for (let i = 0; i < categoryList.length; i++) {
 			let imgIdx = baseCategory.indexOf(categoryList[i]) + 1;
@@ -382,6 +405,23 @@
 			let html = '<td></td>';
 			categoryADraw(i, html)
 		}
+
+		var size = $('#resultCarousel').width() / 3;
+		console.log(size);
+		$('.item-table td').width(size);
+		$('.item-table td').height(size);
+	}
+
+	function categoryADraw(i, html) {
+		if (i < 3) {
+			$("#categoryTable_1").append(html);
+		} else if (i < 6) {
+			$("#categoryTable_2").append(html);
+		} else if (i < 9) {
+			$("#categoryTable_3").append(html);
+		} else {
+			$("#categoryTable_4").append(html);
+		}
 	}
 
 	//카테고리 클릭 테이블 뷰 셋팅
@@ -398,21 +438,15 @@
 
 		let tableHead =
 				'<tr>' +
-				'<th width="33%">검사항목</th>' +
-				'<th>기준수치</th>' +
-				'<th>결과수치</th>' +
-				'<th width="30%">검사결과</th>' +
+				'<th style="width: 50%">검사항목</th>' +
+				'<th style="width: 50%">결과수치</th>' +
 				'</tr>';
 
 		let html = "";
 		let categoryList = result[idx].list;
 		console.log(categoryList);
 		for (let i = 0; i < categoryList.length; i++) {
-			html += '<div style="width: 100%;height: 4rem">' +
-					'<div style="float: left">' +
-					'<h1>' + categoryList[i].category + '</h1>' +
-					'</div>' +
-					'</div>' +
+			html += '<h2 style="text-align: left">' + categoryList[i].category + '</h2>' +
 					'<table class="mainInspectionTable table-striped">' +
 					'<thead>' +
 					tableHead +
@@ -421,33 +455,38 @@
 			let categoryListB = categoryList[i].list;
 			for (let j = 0; j < categoryListB.length; j++) {
 				html += '<tr>' +
-						'<td>' + categoryListB[j].inspection + '</td>' +
-						'<td>' + categoryListB[j].normalRange + '</td>' +
-						'<td>' + categoryListB[j].result + categoryListB[j].unit + '</td>' +
-						'<td>';
-				html += '<div>';
+						'<td colspan="2">' +
+						'<div style="display: block">' +
+						'<div style="width: 50%;float: left;padding: 0 0.8rem">' +
+						categoryListB[j].inspection +
+						'</div>' +
+						'<div style="width: 50%;float: right;padding: 0 0.8rem">' +
+						categoryListB[j].result + categoryListB[j].unit +
+						'</div>' +
+						'</div>';
 
-				let resultRatio = (categoryListB[j].resultRatio < 0) ? -1 : (categoryListB[j].resultRatio - 50) * 2;
+				let resultRatio = (categoryListB[j].resultRatio < 0) ? -1 : (categoryListB[j].resultRatio - 50);
 				resultRatio = resultRatio * 2.7;
 
 				if (resultRatio !== -2.7) {
-					console.log("resultRatio:" + resultRatio);
-					html += '<div style="height:5px;margin: 0">' +
-							'<img src="/asset/images/img_grade_arrow.png" style="margin-left:' + resultRatio + 'px;margin-top: -20px; ">' +
-							'</div>';
+					html += '<div style="display: inline-block;width: 100%;padding-bottom: 1.8rem">';
+					html += '<div style="width: 100%;margin: 0 auto">';
+
+					html += '<div class="year-arrow" style=" ' +
+							'margin-left: ' + (resultRatio * 0.1) + 'rem">' +
+							'▼' + '</div>';
 
 					if (categoryListB[j].resultCase === 'B') {
-						html += '<div style="width:fit-content;margin: 0 auto">' +
+						html += '<div class="bar-div">' +
 								'<img src="/asset/images/img_grade_bar.png">' +
 								'</div>';
 					} else {
-						html += '<div style="width:fit-content;margin: 0 auto">' +
+						html += '<div class="bar-div">' +
 								'<img src="/asset/images/img_true_false_bar.png">' +
 								'</div>';
 					}
 
-					html += '</div>' +
-							'</td>' +
+					html += '</div></div></td>' +
 							'</tr>';
 
 				}
@@ -459,13 +498,6 @@
 		$("#resultTable").append(html);
 	}
 
-	function categoryADraw(i, html) {
-		if (i < 6) {
-			$("#categoryTable_1").append(html);
-		} else {
-			$("#categoryTable_2").append(html);
-		}
-	}
 
 	//어떤 카테고리를 노출시킬지 세팅하는 함수
 	function setCategory(data) {
@@ -523,7 +555,6 @@
 						inspectionResult.resultRatio = data[k].resultRatio;
 						inspectionResult.resultCase = data[k].resultCase;
 						categoryB.push(inspectionResult);
-						console.log(inspectionResult);
 					}
 				}
 				resultB.category = categoryABList[i][j];

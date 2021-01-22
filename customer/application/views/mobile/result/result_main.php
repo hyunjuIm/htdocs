@@ -1,16 +1,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:검진결과</title>
+	<title>듀얼헬스케어:주요결과</title>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/head.php');
 	?>
 
-	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+	<link rel="stylesheet" type="text/css" href="../asset/css/mobile/sub_page.css?ver=1.1"/>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
 
 	<style>
 		.result-table {
@@ -48,18 +47,17 @@
 		}
 
 		.item-table img {
-			width: 72px;
-			height: 72px
+			width: 50%;
+			height: 50%;
 		}
 
 		.item-table td {
 			text-align: center;
-			width: calc(120rem / 6);
-			height: calc(120rem / 6);
 			font-weight: bolder;
-			font-size: 1.7rem;
 			cursor: pointer;
 			border: 1px solid #DCDCDC;
+			word-break:break-all;
+			padding: 0 1rem;
 		}
 
 		.item-table .active, .item-table td:hover {
@@ -68,7 +66,7 @@
 
 		.item, .item-hover {
 			align-items: center;
-			font-size: 1.5rem;
+			font-size: 1.4rem;
 			cursor: pointer;
 		}
 
@@ -104,17 +102,19 @@
 		}
 
 		.mainInspectionTable th {
-			padding: 1.5rem;
-			font-size: 1.8rem;
+			padding: 0.5rem;
+			font-size: 1.4rem;
 			font-weight: 500;
 		}
 
 		.mainInspectionTable td {
+			padding: 0.5rem;
 			border-bottom: 1px solid #DCDCDC;
+			font-size: 1.3rem;
 		}
 
-		.mainInspectionTable td:not(:last-child) {
-			padding: 1.3rem;
+		.mainInspectionTable .grade {
+			padding: 0.7rem 0;
 		}
 
 		.year-arrow {
@@ -141,47 +141,19 @@
 
 		#navResult {
 			display: none;
-			border-radius: 4px;
-			border-top: 1px solid #c4c4c4;
-			border-left: 1px solid #c4c4c4;
-			border-right: 1px solid #c4c4c4;
 		}
 
-		#navResult li a {
+		#simpleDraw {
 			display: block;
-			padding: 1.2rem 2.7rem;
-			text-decoration: none;
-			color: black;
-			text-align: left;
+			width: 100%;
+			margin-top: 2rem;
 		}
 
-		#navResult li ul {
-			display: none;
-		}
-
-		#navResult .main-menu {
-			background-color: #ece7f3;
-			border-bottom: 1px solid #c4c4c4;
-		}
-
-		#navResult .sub-menu {
-			border-bottom: none;
-			color: #404044;
-			background: white;
-			font-size: 1.4rem;
-		}
-
-		#navResult .main-menu a:hover,
-		#navResult .main-menu .active,
-		#navResult .sub-menu a:hover,
-		#navResult .sub-menu .active {
-			font-weight: 500;
-			color: #404044;
-		}
-
-		#navResult .sub-menu a:hover,
-		#navResult .sub-menu .active {
-			background-color: #f1f1fa;
+		.table-box {
+			margin: 0.3rem;
+			background-color: white;
+			box-shadow: 0px 0px 15px #cdcdcd;
+			border-radius: 4px;
 		}
 
 		.simple-result {
@@ -194,24 +166,23 @@
 		}
 
 		.simple-result td {
+			width: 100%;
 			vertical-align: middle;
-			padding: 1rem 3rem;
+			padding: 0.3rem 2rem;
 			word-break: break-all;
+			text-align: left;
 		}
 
 		.simple-result .year {
-			font-size: 2rem;
+			font-size: 1.5rem;
 			font-weight: 400;
+			background: #f8eece;
 		}
 
-		.simple-result .content-1 {
-			font-size: 6rem;
-			font-weight: 500;
-		}
-
-		.simple-result .content-2 {
-			font-size: 3rem;
-			font-weight: 500;
+		.simple-result .content {
+			font-size: 2rem;
+			font-weight: 300;
+			padding: 0.3rem 3rem;
 		}
 	</style>
 
@@ -223,131 +194,137 @@
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/header.php');
 	?>
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/menu/side.php');
+	?>
 </header>
 
-<div class="container-fluid">
-	<div class="row" style="display: table">
-		<!-- 좌측 사이드바 -->
-		<?php
-		$parentDir = dirname(__DIR__ . '..');
-		require($parentDir . '/menu/side_bar_light.php');
-		?>
-		<!-- 우측 컨텐츠 -->
-		<div class="col"
-			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
-				<!-- 상단 메뉴 -->
-				<div class="container top-menu"
-					 style="background-image: url(../../../../asset/images/title2.jpg)">
-					<div class="row line">
-						<div class="line-content">
-							<img src="/asset/images/icon_home.png">
-							<span>｜</span>
-							<span>검진결과</span>
-							<span>｜</span>
-							<span>주요결과</span>
-						</div>
-					</div>
-					<div class="row wrap" style="height: 22rem">
-						<div class="inner" style="margin: 0 auto; ">
-							<span class="title">검진결과<br></span>
-							Examination Results
-						</div>
-					</div>
-					<div class="row" style="height: 4.5rem">
-						<div style="margin: 0 auto; display: flex">
-							<a href="/customer/result_final">
-								<div class="title-menu" style="border-right: #828282 1px solid">
-									종합결과
-								</div>
-							</a>
-							<a href="/customer/result_main">
-								<div class="title-menu-select">
-									주요결과
-								</div>
-							</a>
-						</div>
-					</div>
+<div id="main">
+	<div class="sub-title-height"
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub3.jpg);
+		 background-size: 100%;background-position: center">
+		<div class="container">
+
+			<div class="row sub-title">
+				<div style="margin: 0 auto">
+					<span class="sub-title-name">검진결과</span><br>
+					쉽고 간편하게 지난 검진 결과를 <br>
+					확인하실 수 있습니다.
 				</div>
+			</div>
 
-				<!-- 컨텐츠내용 -->
-				<div style="margin:0 10rem">
-					<div class="container content-view">
-						<div class="row" style="padding-top: 3rem">
-							<div class="sub-title">주요결과</div>
+			<div class="row" style="position: relative">
+				<?php
+				$parentDir = dirname(__DIR__ . '..');
+				require($parentDir . '/common/sub_drop_down.php');
+				?>
+			</div>
+
+			<!--본문-->
+			<div class="row" style="display: block;margin-top: 9rem">
+				<img src="/asset/images/mobile/icon_sub_title_bar.png">
+				<h1>주요결과</h1>
+			</div>
+
+			<div class="row" style="margin-top: 5rem;display: inline-block">
+				<select id="familySelect" style="float:right;"
+						onchange="setDataSelectOption()">
+					<option value="ch">- 수검자 선택 -</option>
+				</select>
+			</div>
+
+			<hr>
+
+			<div class="row" id="resultView1" style="display:none;">
+				<div style=" text-align: left;font-size: 2rem;font-weight: bolder">
+					주요결과
+				</div>
+				<div id="resultCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+					<div style="float: left">
+						항목을 클릭하면 세부 내용을 확인할 수 있습니다.
+					</div>
+					<div style="display: flex;float: right">
+						<a class="carousel-control-prev" href="#resultCarousel" role="button"
+						   data-slide="prev"><img src="/asset/images/icon_prev.png">
+						</a>
+						<a class="carousel-control-next" href="#resultCarousel" role="button"
+						   data-slide="next"><img src="/asset/images/icon_next.png">
+						</a>
+					</div>
+
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<table class="table-bordered item-table" id="inspectionItemTable">
+								<tr id="categoryTable_1">
+
+								</tr>
+							</table>
 						</div>
+						<div class="carousel-item">
+							<table class="table-bordered item-table">
+								<tr id="categoryTable_2">
 
-						<div class="row" style="margin-top: 2.5rem;">
-							<div style="margin-bottom: 0.6rem;display: inline-block;width: 100%">
-								<div style="float:right;">
-									<select id="familySelect" onchange="setDataSelectOption()">
-										<option value="ch">- 수검자 선택 -</option>
-									</select>
-								</div>
-							</div>
+								</tr>
+							</table>
 						</div>
+						<div class="carousel-item">
+							<table class="table-bordered item-table">
+								<tr id="categoryTable_3">
 
-						<div class="row" id="resultView1" style="display:none; margin-top: 2rem">
-							<div style=" text-align: left;font-size: 2rem;font-weight: bolder">
-								주요결과
-							</div>
-							<div id="resultCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-								<div style="float: left">
-									항목을 클릭하면 세부 내용을 확인할 수 있습니다.
-								</div>
-								<div style="display: flex;float: right">
-									<a class="carousel-control-prev" href="#resultCarousel" role="button"
-									   data-slide="prev"><img src="/asset/images/icon_prev.png">
-									</a>
-									<a class="carousel-control-next" href="#resultCarousel" role="button"
-									   data-slide="next"><img src="/asset/images/icon_next.png">
-									</a>
-								</div>
-
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<table class="table-bordered item-table" id="inspectionItemTable">
-											<tr id="categoryTable_1">
-
-											</tr>
-										</table>
-									</div>
-									<div class="carousel-item">
-										<table class="table-bordered item-table">
-											<tr id="categoryTable_2">
-
-											</tr>
-										</table>
-									</div>
-								</div>
-							</div>
+								</tr>
+							</table>
 						</div>
+						<div class="carousel-item">
+							<table class="table-bordered item-table">
+								<tr id="categoryTable_4">
 
-						<div class="row" style="display:flex; margin-top: 4rem">
-							<div style="width: 70%;padding-right: 2rem" id="simpleDraw">
-
-							</div>
-							<div style="width: 30%;overflow-y: auto;height: 40rem">
-								<ul id="navResult">
-
-								</ul>
-							</div>
-						</div>
-
-						<div class="row" style="display:block; margin-top: 5rem">
-							<div id="resultTable">
-
-							</div>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<div class="row" style="margin-top: 4rem">
+				<div id="navResult" style="margin: 0 auto">
+					<div style="font-size: 1.3rem; color: #5849ea; font-weight: 400">선택한 검사의 결과수치를 그래프로 확인하실 수 있습니다.
+					</div>
+					<select id="resultOption1" onchange="setSelectSubOption()">
+					</select>
+					<select id="resultOption2" onchange="setSimpleResult();">
+					</select>
+				</div>
+				<div id="simpleDraw">
+
+				</div>
+			</div>
+
+			<div class="row" style="display:block; margin-top: 5rem">
+				<div id="resultTable">
+
+				</div>
+			</div>
 		</div>
+
+		<?php
+		$parentDir = dirname(__DIR__ . '..');
+		require($parentDir . '/common/footer.php');
+		?>
 	</div>
 </div>
 </body>
 
 <script>
+	$('#menu1 .nav-button').text('검진결과');
+	var menu2 = '종합결과';
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/sub_drop_down.js');
+	?>
+
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/check_data.js');
@@ -496,6 +473,9 @@
 	function setInspectionItemTable() {
 		$("#categoryTable_1").empty();
 		$("#categoryTable_2").empty();
+		$("#categoryTable_3").empty();
+		$("#categoryTable_4").empty();
+
 		let cnt = 0;
 		for (let i = 0; i < categoryA.length; i++) {
 			let imgIdx = baseCategory.indexOf(categoryA[i]) + 1;
@@ -522,13 +502,22 @@
 			let html = '<td></td>';
 			categoryADraw(i, html)
 		}
+
+		var size = $('#resultCarousel').width() / 3;
+		console.log(size);
+		$('.item-table td').width(size);
+		$('.item-table td').height(size);
 	}
 
 	function categoryADraw(i, html) {
-		if (i < 6) {
+		if (i < 3) {
 			$("#categoryTable_1").append(html);
-		} else {
+		} else if (i < 6) {
 			$("#categoryTable_2").append(html);
+		} else if (i < 9) {
+			$("#categoryTable_3").append(html);
+		} else {
+			$("#categoryTable_4").append(html);
 		}
 	}
 
@@ -545,6 +534,7 @@
 
 		$("#resultTable").empty();
 		$("#resultAcc").empty();
+
 		yearArr = [];
 
 		var tableHead = '';
@@ -559,9 +549,7 @@
 				yearString += '&nbsp;&nbsp';
 			}
 		}
-		tableHead += '<th width="35%">검사결과 ' +
-				'<span style="font-size: 1.3rem">(' + yearString + ')</span>' +
-				'</th></tr>';
+		tableHead += '</tr>';
 
 		let html = '';
 		var AccHtml = '';
@@ -574,10 +562,7 @@
 
 			var canWrite = false;
 			var subHtml = '';
-			subHtml += '<div style="width: 100%;height: 4rem">' +
-					'<div style="float: left">' +
-					'<h1>' + categoryBTitle + '</h1>' + //중분류 검사명
-					'</div>' +
+			subHtml += '<h2 style="float: left">' + categoryBTitle + '</h2>' + //중분류 검사명
 					'</div>' +
 					'<table class="mainInspectionTable table-striped">' +
 					'<thead>' +
@@ -601,16 +586,24 @@
 					let resultItemList = resultData[k].resultItemList;
 					for (let l = 0; l < resultItemList.length; l++) {
 						if (resultItemList[l].inspection === inspection) {
-							tmpHtml += '<td>' + resultItemList[l].result + '</td>';
 							arrowArr[k] = resultItemList[l].resultCase + "/" + resultItemList[l].resultRatio;
-							if (!canDraw) {
-								if (resultItemList[l].resultCase === 'B') {//낮정~높정 아니면 비정상
-									canDraw = resultItemList[l].resultRatio < 33 || resultItemList[l].resultRatio > 66;
-								} else if (resultItemList[l].resultCase === 'C') {//낮으면 비정상
-									canDraw = resultItemList[l].resultRatio < 50;
-								} else if (resultItemList[l].resultCase === 'D') {//높으면 비정상
-									canDraw = resultItemList[l].resultRatio > 50;
-								}
+							if (resultItemList[l].resultCase === 'B') {//낮정~높정 아니면 비정상
+								canDraw = resultItemList[l].resultRatio < 33 || resultItemList[l].resultRatio > 66;
+								if (resultItemList[l].resultRatio < 33) {
+									tmpHtml += '<td style="color: blue">' + resultItemList[l].result + ' ▼</td>';
+								} else if (resultItemList[l].resultRatio > 66) {
+									tmpHtml += '<td style="color: red">' + resultItemList[l].result + ' ▲</td>';
+								} else tmpHtml += '<td>' + resultItemList[l].result + '</td>';
+							} else if (resultItemList[l].resultCase === 'C') {//낮으면 비정상
+								canDraw = resultItemList[l].resultRatio < 50;
+								if (resultItemList[l].resultRatio < 50) {
+									tmpHtml += '<td style="color: blue">' + resultItemList[l].result + ' ▼</td>';
+								} else tmpHtml += '<td>' + resultItemList[l].result + '</td>';
+							} else if (resultItemList[l].resultCase === 'D') {//높으면 비정상
+								canDraw = resultItemList[l].resultRatio > 50;
+								if (resultItemList[l].resultRatio > 50) {
+									tmpHtml += '<td style="color: red">' + resultItemList[l].result + ' ▲</td>';
+								} else tmpHtml += '<td>' + resultItemList[l].result + '</td>';
 							}
 							break;
 						} else if (l === resultItemList.length - 1) {
@@ -619,51 +612,14 @@
 					}
 				}
 
-				tmpHtml += '<td><div style="width: 100%;padding-bottom: 1.8rem">';
-
 				if (canDraw) {
 					canWrite = true;
-					let rCase = 'A';
-
-					for (let k = 0; k < resultData.length; k++) {
-						if (arrowArr[k] !== 'blank') {
-							rCase = arrowArr[k].split("/")[0];
-						}
-					}
-
-					tmpHtml += '<div style="position: relative;width: 100%;margin: 0 auto">';
-
-					for (let k = 0; k < resultData.length; k++) {
-						if (arrowArr[k] !== 'blank') {
-							let a = parseFloat(arrowArr[k].split("/")[1]);
-							let rRatio = (a - 50) * 2.7 * 0.1;
-							let color = (k === 0) ? '#af7f36' : (k === 1) ? '#3480bf' : '#000000';
-							if (rCase !== 'A') {
-								tmpHtml += '<div class="year-arrow" ' +
-										'style="color:' + color + '; ' +
-										'margin-left: ' + rRatio + 'rem">' +
-										'<span style="font-size: 0.6rem">' + yearArr[k] +
-										'</span><br>▼' + '</div>';
-							}
-						}
-					}
-					tmpHtml += '</div>';
-					if (rCase === 'B') {
-						tmpHtml += '<div class="bar-div">' +
-								'<img src="/asset/images/img_grade_bar.png">' +
-								'</div>';
-					} else {
-						tmpHtml += '<div class="bar-div">' +
-								'<img src="/asset/images/img_true_false_bar.png">' +
-								'</div>';
-					}
-					tmpHtml += '</div></td></tr>';
 					subHtml += tmpHtml;
 				}
 			}
 			if (canWrite) {
 				html += subHtml;
-				html += '</tbody>';
+				html += '</tr></tbody>';
 				html += '</table><br>';
 				AccHtml += '</ul></li>';
 			}
@@ -672,6 +628,8 @@
 		$("#resultAcc").append(AccHtml);
 		$("#resultTable").append(html);
 
+		console.log(resultData);
+
 		if ($("#resultTable").text() == '') {
 			$("#resultTable").append('<tr><td>해당 결과에 이상이 없습니다.</td></tr>');
 		}
@@ -679,27 +637,46 @@
 
 	function settingGraph(item, idx) {
 		$('#navResult').show();
+		$('#resultOption1').empty();
+		$('#resultOption2').empty();
 
-		$('#navResult').empty();
-		var html = '';
+		var html = '<option>선택</option>';
 		let categoryAList = category[idx].list;
+
 		for (let i = 0; i < categoryAList.length; i++) {
-			html += '<li class="main-menu">' +
-					'<a class="main-menu-item" href="#">' +
-					(categoryAList[i].title == '' ? category[idx].title : categoryAList[i].title)
-					+ '</a>' + '<ul>';
-			let categoryBList = categoryAList[i].list;
-			for (let j = 0; j < categoryBList.length; j++) {
-				html += '<li class="sub-menu" onclick="setSimpleResult(\'' + categoryBList[j] + '\')">' +
-						'<a href="#">' + categoryBList[j] + '</a></li>';
-			}
-			html += '</ul>' +
-					'</li>';
+			var option = (categoryAList[i].title == '' ? category[idx].title : categoryAList[i].title);
+			html += '<option value=\'' + idx + '\')">' + option + '</option>'
 		}
-		$('#navResult').append(html);
+
+		$('#resultOption1').append(html);
 	}
 
-	function setSimpleResult(inspection) {
+	function setSelectSubOption() {
+		$('#resultOption2').empty();
+		var idx = $("#resultOption1 option:selected").val();
+		if (idx == '선택') {
+			return false;
+		}
+
+		let categoryAList = category[idx].list;
+
+		var index = $("#resultOption1 option").index($("#resultOption1 option:selected")) - 1;
+
+		console.log(categoryAList[index].list);
+
+		var html = '';
+
+		for (let j = 0; j < categoryAList[index].list.length; j++) {
+			let categoryBList = categoryAList[index].list;
+			html += '<option>' + categoryBList[j] + '</option>';
+		}
+
+		$('#resultOption2').append(html);
+		setSimpleResult();
+	}
+
+	function setSimpleResult() {
+		var inspection = $("#resultOption2 option:selected").val();
 		var inspectionResult = new Array();
 		var basic = new Array();
 
@@ -743,8 +720,11 @@
 
 					var yRangeBeginPixel = yaxis.getPixelForValue(yRangeBegin);
 					var yRangeEndPixel = yaxis.getPixelForValue(yRangeEnd);
-					ctx.fillStyle = 'rgba(150,255,150,0.1)';
-					ctx.fillRect(xaxis.left, Math.min(yRangeBeginPixel, yRangeEndPixel), xaxis.right - xaxis.left, Math.max(yRangeBeginPixel, yRangeEndPixel) - Math.min(yRangeBeginPixel, yRangeEndPixel));
+
+					ctx.fillStyle = 'rgba(195,255,195,0.2)';
+					ctx.fillRect(xaxis.left, Math.min(yRangeBeginPixel, yRangeEndPixel), xaxis.right - xaxis.left,
+							Math.max(yRangeBeginPixel, yRangeEndPixel) - Math.min(yRangeBeginPixel, yRangeEndPixel));
+
 
 					ctx.save();
 					ctx.restore();
@@ -763,40 +743,27 @@
 					data: inspectionResult,
 					fill: false,
 					borderColor: 'rgb(255,153,0)',
-					pointBackgroundColor: 'rgb(255,153,0)',
-					borderWidth: 3
+					pointBackgroundColor: 'rgb(255,153,0)'
 				}],
 				yHighlightRange: {
 					begin: 50,
 					end: 100
 				}
 			},
-			options: {
-			}
+			options: {}
 		});
 	}
 
 	function drawString(inspection, inspectionResult) {
 		var html = '';
-		html += '<h2 style="float: left">' + inspection + '</h2>' +
-				'<table class="simple-result">' +
-				'<tr>';
+
+		html += '<div class="table-box"><table class="simple-result">';
 
 		for (i = 0; i < inspectionResult.length; i++) {
-			if (i % 2 == 0) {
-				html += '<td style="background: #f8eece">';
-			} else {
-				html += '<td style="background: #d7e3ec">';
-			}
-			html += '<div class="year">' + yearArr[i] + '</div>';
-
-			if (inspectionResult[i].length < 10) {
-				html += '<div class="content-1">' + inspectionResult[i] + '</div>';
-			} else {
-				html += '<div class="content-2">' + inspectionResult[i] + '</div>';
-			}
-			html += '</td>';
+			html += '<tr><td class="year">' + yearArr[i] + '</td></tr>';
+			html += '<tr><td class="content">' + inspectionResult[i] + '</td></tr>';
 		}
+		html += '</div>';
 		$('#simpleDraw').html(html);
 	}
 
@@ -816,6 +783,7 @@
 		$(this).addClass('active');
 		$('.sub-menu a').not(this).removeClass('active');
 	});
+
 </script>
 
 </html>

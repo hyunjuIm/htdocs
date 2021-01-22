@@ -166,7 +166,7 @@
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
-	userData.pagingNum = pageNum;
+	userData.pageNum = pageNum;
 
 	searchInformation(0);
 
@@ -185,7 +185,7 @@
 	function drawTable() {
 		pageNum = parseInt(pageNum);
 
-		userData.pagingNum = pageNum;
+		userData.pageNum = pageNum;
 		userData.searchWord = $("#searchWord").val();
 
 		instance.post('CU_007_001', userData).then(res => {
@@ -194,6 +194,7 @@
 				pageCount++;
 			}
 			setNoticeList(res.data.noticeList, pageNum);
+			console.log(res.data);
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")
 
@@ -253,11 +254,6 @@
 	function detailNoticePage(noticeId) {
 		location.href = "notice_detail?noticeId=" + noticeId;
 	}
-
-	<?php
-	$parentDir = dirname(__DIR__ . '..');
-	require($parentDir . '/common/paging.js');
-	?>
 
 </script>
 
