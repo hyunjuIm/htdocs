@@ -80,6 +80,15 @@
 		#question-content, #answer-content {
 			white-space: pre-wrap;
 		}
+
+		#ready {
+			display: none;
+			width: 100%;
+			padding: 3rem 0;
+			background: whitesmoke;
+			text-align: center;
+			font-size: 1.4rem;
+		}
 	</style>
 
 </head>
@@ -143,8 +152,8 @@
 			?>
 
 			<div class="row" style="margin: 3rem 0">
-				<form style="margin: 0 auto; width: 85%; padding: 1rem">
-					<div class="page_wrap">
+				<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 						<div class="page_nation" id="paging">
 						</div>
 					</div>

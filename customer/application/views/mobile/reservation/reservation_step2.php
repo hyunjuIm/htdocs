@@ -158,8 +158,8 @@
 				</div>
 			</div>
 			<div class="row" style="margin-top: 3rem">
-				<form style="margin: 0 auto; width: 85%; padding: 1rem">
-					<div class="page_wrap">
+				<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 						<div class="page_nation" id="paging">
 						</div>
 					</div>

@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -118,7 +119,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -163,7 +165,7 @@
 								<label for="file-upload">파일찾기<input type="file" id="file-upload"></label>
 							</form>
 							<div class="btn-red" onclick="deleteFile()">삭제</div>
-							<div class="btn-white" onclick="downloadBasicSheet('customer', '회사명_사업장명_날짜_직원입력 양식.xlsx')">양식다운로드</div>
+							<div class="btn-white" onclick="downloadBasicSheet('customer', '회사명_사업장_날짜_직원입력 양식.xlsx')">양식다운로드</div>
 						</div>
 					</td>
 				</tr>
@@ -185,7 +187,10 @@
 	$('#topMenu2').addClass('active');
 	$('#topMenu2').before('<div class="menu-select-line"></div>');
 
-	$('#loading').hide();
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/file_data.js');
+	?>
 
 	//파일 업로드명 셋팅
 	$('#file-upload').change(function () {
@@ -239,7 +244,13 @@
 		saveItems.author = sessionStorage.getItem("userComID");//companyManagerId
 		saveItems.companyId = sessionStorage.getItem("userCoID");//companyId
 
-		console.log(saveItems);
+		if (saveItems.title == '') {
+			alert('제목을 입력해주세요.');
+			return false;
+		} else if (saveItems.content == '') {
+			alert('글 내용을 입력해주세요.');
+			return false;
+		}
 
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('C0301', saveItems).then(res => {
@@ -279,10 +290,6 @@
 		});
 		return true;
 	}
-
-	<?php
-	require('common/file_data.js');
-	?>
 
 </script>
 

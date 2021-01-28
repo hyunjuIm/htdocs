@@ -275,7 +275,7 @@
 	</style>
 </head>
 
-<body background="../../asset/images/bg_login.jpg">
+<body id="body" background="../../asset/images/bg_login.jpg">
 <div class="container" style="height: inherit">
 	<div class="col-sm wrapper fadeInDown">
 		<form id="formContent">
@@ -345,7 +345,7 @@
 		id = requestMember.id;
 
 		const instance = axios.create({
-			baseURL: "http://192.168.219.104:8080/permission/",
+			baseURL: "http://192.168.219.108:8080/permission/",
 			timeout: 5000
 		});
 
@@ -360,6 +360,12 @@
 				sessionStorage.setItem("userCoID", split[0]);
 				sessionStorage.setItem("userComID", split[1]);
 				sessionStorage.setItem("userName", split[2]);
+
+				if($('#body').width() < 550) {
+					isMobile = true;
+				} else {
+					isMobile = false;
+				}
 
 				//모바일인지 pc인지
 				if(isMobile) {

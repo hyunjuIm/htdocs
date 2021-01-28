@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -25,7 +26,8 @@
 
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -43,8 +45,8 @@
 				사업연도
 			</div>
 			<select id="servedYear" onchange="searchInformation()">
-				<option selected>2021</option>
-				<option>2020</option>
+				<option>2021</option>
+				<option selected>2020</option>
 				<option>2019</option>
 				<option>2018</option>
 			</select>
@@ -53,7 +55,7 @@
 		<table class="basic-table" id="billAllTable" style="margin-top: 1rem;display: none">
 			<thead>
 			<tr>
-				<th>기업명</th>
+				<th>고객사</th>
 				<th>청구년월</th>
 				<th>청구조건</th>
 				<th>기준일자</th>
@@ -88,7 +90,8 @@
 
 <footer>
 	<?php
-	require('common/footer.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/footer.php');
 	?>
 </footer>
 
@@ -185,7 +188,7 @@
 			rebateTotal += data[i].priceOfRebate;
 			html += '<tr>' +
 				'<td>' + data[i].hosName + '</td>' +
-				'<td>' + data[i].countOfReservation + '</td>' +
+				'<td>' + data[i].countOfReservation.toLocaleString() + '</td>' +
 				'<td>' + data[i].priceOfBilling.toLocaleString() + '</td>' +
 				'<td>' + data[i].priceOfRebate.toLocaleString() + '</td>';
 			if (data[i].companyConfirm) {

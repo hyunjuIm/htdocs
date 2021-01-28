@@ -22,12 +22,21 @@
 		}
 
 		.table-box {
+			min-width: 600px;
 			min-height: 340px;
 		}
 
 		#noticeTable .title {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 			text-align: left;
 			cursor: pointer;
+		}
+
+		#noticeTable .title:hover {
+			color: #5645ED;
 		}
 	</style>
 </head>
@@ -106,7 +115,7 @@
 				<thead>
 				<tr>
 					<th style="width: 10%">NO</th>
-					<th>제목</th>
+					<th style="width: 60%">제목</th>
 					<th>작성자</th>
 					<th>등록일</th>
 				</tr>
@@ -121,7 +130,7 @@
 			<table id="companyManagerTable" class="table">
 				<thead>
 				<tr>
-					<th>기업명</th>
+					<th>고객사</th>
 					<th>사업장</th>
 					<th>이름</th>
 					<th>연락처</th>
@@ -136,7 +145,7 @@
 			<table id="manageScheduleTable" class="table">
 				<thead>
 				<tr>
-					<th>병원명</th>
+					<th>병원</th>
 					<th>고객사</th>
 					<th>사업장</th>
 					<th>오픈일</th>
@@ -186,14 +195,16 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			html += '<td style="width: 10%">' + (i+1) + '</td>';
+			html += '<td>' + (i+1) + '</td>';
 			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
-			html += '<td style="width: 20%">' + data[i].author + '</td>';
-			html += '<td style="width: 20%">' + data[i].createDate + '</td>';
+			html += '<td>' + data[i].author + '</td>';
+			html += '<td>' + data[i].createDate.replace('9999', '2020') + '</td>';
 			html += '</tr>';
 
 			$("#noticeTable").append(html);
 		}
+
+		$('.title').width($('#noticeTable').width() * 0.6);
 	}
 
 	//공지 게시글 디테일에 값 던지기

@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -133,7 +134,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 

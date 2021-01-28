@@ -46,7 +46,7 @@
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
-							<li>병원명</li>
+							<li>병원</li>
 						</label>
 						<div class="form-group col">
 							<select id="hosName" class="form-control">
@@ -92,11 +92,11 @@
 				<tr>
 					<th style="width: 5%"><input type="checkbox" id="resultCheck" name="resultCheck" onclick="clickAll(id, name)"></th>
 					<th style="width: 5%">NO</th>
-					<th>병원명</th>
+					<th>병원</th>
 					<th>서비스</th>
 					<th>고객사</th>
 					<th>사업장</th>
-					<th>아이디</th>
+					<th>사번</th>
 					<th>성명</th>
 					<th>관계</th>
 					<th>검진완료일</th>
@@ -182,7 +182,7 @@
 
 		companySelect = data.coNameBranch;
 
-		//병원명
+		//병원
 		for (i = 0; i < data.hoName.length; i++) {
 			var html = '';
 			html += '<option>' + data.hoName[i] + '</option>'
@@ -328,11 +328,11 @@
 				const table = [];
 				const tt = [];
 				tt.push("사업연도");
-				tt.push("병원명");
+				tt.push("병원");
 				tt.push("서비스");
 				tt.push("고객사");
 				tt.push("사업장");
-				tt.push("아이디");
+				tt.push("사번");
 				tt.push("성명");
 				tt.push("관계");
 				tt.push("검진완료일");

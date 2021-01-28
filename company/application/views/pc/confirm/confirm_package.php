@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -23,7 +24,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -44,11 +46,11 @@
 						<div class="select-list" style="float:left;">
 							<div class="select-label">
 								<img src="/asset/images/icon_dot_menu.png">
-								병원명
+								병원
 							</div>
 							<div class="select-content">
 								<select id="hoName">
-									<option selected>-전체-</option>
+									<option value="all" selected>-전체-</option>
 								</select>
 							</div>
 						</div>
@@ -61,9 +63,9 @@
 							</div>
 							<div class="select-content">
 								<select id="coApproval">
-									<option selected>-전체-</option>
-									<option value="true">Y</option>
-									<option value="false">N</option>
+									<option value="all" selected>-전체-</option>
+									<option value="Y">Y</option>
+									<option value="N">N</option>
 								</select>
 							</div>
 						</div>
@@ -95,9 +97,9 @@
 		</table>
 	</div>
 
-	<div class="row" style="margin-top: 5rem">
-		<form style="margin: 0 auto; width: 85%; padding: 1rem">
-			<div class="page_wrap">
+	<div class="row">
+		<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 				<div class="page_nation" id="paging">
 				</div>
 			</div>
@@ -124,7 +126,7 @@
 
 	//검색 selector
 	function setPackageConfirmSelectData(data) {
-		//병원명
+		//병원
 		for (i = 0; i < data.hoName.length; i++) {
 			var html = '';
 			html += '<option>' + data.hoName[i] + '</option>'
@@ -151,13 +153,6 @@
 		searchItems.coApproval= $("#coApproval option:selected").val();
 		searchItems.pagingNum = pageNum;
 
-		if (searchItems.hoName == "-전체-") {
-			searchItems.hoName = "all";
-		}
-		if (searchItems.coApproval == "-전체-") {
-			searchItems.coApproval = "all";
-		}
-
 		console.log(searchItems);
 
 		instance.post('C0602', searchItems).then(res => {
@@ -171,7 +166,8 @@
 	}
 
 	<?php
-	require('common/paging.js');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
 	?>
 
 	//패키지 생성 테이블

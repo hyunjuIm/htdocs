@@ -132,11 +132,11 @@
 				<tr>
 					<th style="width: 3%"><input type="checkbox" id="packageCheck" name="packageCheck" onclick="clickAll(id, name)"></th>
 					<th style="width: 3%">NO</th>
-					<th style="width: 10%">고객사명</th>
-					<th style="width: 5%; color: #3529b1;">사업장명</th>
+					<th style="width: 10%">고객사</th>
+					<th style="width: 5%; color: #3529b1;">사업장</th>
 					<th>서비스</th>
 					<th style="width: 4%">지역</th>
-					<th style="width: 10%; color: #3529b1;">병원명</th>
+					<th style="width: 10%; color: #3529b1;">병원</th>
 					<th>고객사계약</th>
 					<th style="width: 7%">단가</th>
 					<th style="width: 5%">직원수</th>
@@ -244,7 +244,7 @@ require($parentDir . '/integrated/hospital_modal.php');
 			html += '<option>' + data.service[i] + '</option>'
 			$("#service").append(html);
 		}
-		//병원명
+		//병원
 		for (i = 0; i < data.hoName.length; i++) {
 			var html = '';
 			html += '<option>' + data.hoName[i] + '</option>'
@@ -396,11 +396,11 @@ require($parentDir . '/integrated/hospital_modal.php');
 				const table = [];
 				const tt = [];
 				tt.push("사업연도");
-				tt.push("고객사명");
-				tt.push("사업장명");
+				tt.push("고객사");
+				tt.push("사업장");
 				tt.push("서비스");
 				tt.push("지역");
-				tt.push("병원명");
+				tt.push("병원");
 				tt.push("고객사계약");
 				tt.push("단가");
 				tt.push("직원수");

@@ -243,10 +243,10 @@
 			alert('예약기간을 선택해주세요.');
 			return false;
 		} else if (searchItems.coName == "choice") {
-			alert("고객사명을 선택해주세요.");
+			alert("고객사를 선택해주세요.");
 			return false;
 		} else if (searchItems.coBranch == "choice") {
-			alert("사업장명을 선택해주세요.");
+			alert("사업장을 선택해주세요.");
 			return false;
 		}
 
@@ -344,10 +344,10 @@
 			alert('예약기간을 선택해주세요.');
 			return false;
 		} else if (searchItems.coName == "choice") {
-			alert("고객사명을 선택해주세요.");
+			alert("고객사를 선택해주세요.");
 			return false;
 		} else if (searchItems.coBranch == "choice") {
-			alert("사업장명을 선택해주세요.");
+			alert("사업장을 선택해주세요.");
 			return false;
 		}
 

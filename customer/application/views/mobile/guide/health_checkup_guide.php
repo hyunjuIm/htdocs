@@ -64,6 +64,17 @@
 			transform: rotate(90deg);
 		}
 
+		.order-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.order-comment {
+			width: 27rem;
+			height: fit-content;
+		}
+
 		.order-img {
 			text-align: right;
 		}
@@ -184,78 +195,87 @@
 					<div class="tab-pane fade show active" id="tab1">
 						<table class="order-table">
 							<tr>
-								<td class="order-img">
-									<img src="/asset/images/icon7.png" width="130px">
-								</td>
-								<td width="60%">
-									<div class="order-title">검진예약</div>
-									<div class="order-content">
-										인터넷, 전화를 통해 실시간 예약이 가능합니다.
-										추가 검사는 사전에 검진기관에서 별도 예약하셔야 합니다.
+								<td style="display: block">
+									<div class="order-box">
+										<img src="/asset/images/icon7.png" width="130px">
+										<div class="order-comment">
+											<div class="order-title" style="vertical-align: middle">검진예약</div>
+											<div class="order-content" style="vertical-align: middle">
+												인터넷, 전화를 통해 실시간 예약이 가능합니다.
+												추가 검사는 사전에 검진기관에서 별도 예약하셔야 합니다.
+											</div>
+										</div>
 									</div>
 								</td>
-							</tr>
 							<tr>
-								<td colspan="2" style="text-align: center;">
+								<td style="text-align: center;">
 									<img src="/asset/images/next_button.png" class="order-next">
 								</td>
 							</tr>
 							<tr>
-								<td class="order-img">
-									<img src="/asset/images/icon8.png" width="130px">
-								</td>
-								<td width="60%">
-									<div class="order-title">예약일자확정</div>
-									<div class="order-content">
-										검진 신청 후 3일 이내에 검진기관에서 확정일자를 통보합니다.
+								<td>
+									<div class="order-box">
+										<img src="/asset/images/icon8.png" width="130px">
+										<div class="order-comment">
+											<div class="order-title">예약일자확정</div>
+											<div class="order-content">
+												검진 신청 후 3일 이내에 검진기관에서 확정일자를 통보합니다.
+											</div>
+										</div>
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2" style="text-align: center;">
+								<td style="text-align: center;">
 									<img src="/asset/images/next_button.png" class="order-next">
 								</td>
 							</tr>
 							<tr>
-								<td class="order-img">
-									<img src="/asset/images/icon9.png" width="130px">
-								</td>
-								<td width="60%">
-									<div class="order-title">준비물 우송 및 예약안내</div>
-									<div class="order-content">
-										검진기관에서 검진 관련 준비물 우송 및 안내전화를 드립니다.
+								<td>
+									<div class="order-box">
+										<img src="/asset/images/icon9.png" width="130px">
+										<div class="order-comment">
+											<div class="order-title">준비물 우송 및 예약안내</div>
+											<div class="order-content">
+												검진기관에서 검진 관련 준비물 우송 및 안내전화를 드립니다.
+											</div>
+										</div>
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2" style="text-align: center;">
+								<td style="text-align: center;">
 									<img src="/asset/images/next_button.png" class="order-next">
 								</td>
 							</tr>
 							<tr>
-								<td class="order-img">
-									<img src="/asset/images/icon10.png" width="130px">
-								</td>
-								<td width="60%">
-									<div class="order-title">검강검진시행</div>
-									<div class="order-content">
-										정해진 병원에서 건강검진을 시행합니다.
+								<td>
+									<div class="order-box">
+										<img src="/asset/images/icon10.png" width="130px">
+										<div class="order-comment">
+											<div class="order-title">검강검진시행</div>
+											<div class="order-content">
+												정해진 병원에서 건강검진을 시행합니다.
+											</div>
+										</div>
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2" style="text-align: center;">
+								<td style="text-align: center;">
 									<img src="/asset/images/next_button.png" class="order-next">
 								</td>
 							</tr>
 							<tr>
-								<td class="order-img">
-									<img src="/asset/images/icon11.png" width="130px">
-								</td>
-								<td width="60%">
-									<div class="order-title">결과상담</div>
-									<div class="order-content">
-										건강검진 종료 후 결과를 바탕으로 상담을 진행합니다.
+								<td>
+									<div class="order-box">
+										<img src="/asset/images/icon11.png" width="130px">
+										<div class="order-comment">
+											<div class="order-title">결과상담</div>
+											<div class="order-content">
+												건강검진 종료 후 결과를 바탕으로 상담을 진행합니다.
+											</div>
+										</div>
 									</div>
 								</td>
 							</tr>
@@ -384,13 +404,13 @@
 									</div>
 								</td>
 								<td>
-<!--									<div class="item" data-toggle="modal" data-target="#inspectionModal"-->
-<!--										 onclick="setItemContent('기타검사')">-->
-<!--										<img src="/asset/images/icon21.png">-->
-<!--										<div class="item-content">-->
-<!--											장비검사-->
-<!--										</div>-->
-<!--									</div>-->
+									<!--									<div class="item" data-toggle="modal" data-target="#inspectionModal"-->
+									<!--										 onclick="setItemContent('기타검사')">-->
+									<!--										<img src="/asset/images/icon21.png">-->
+									<!--										<div class="item-content">-->
+									<!--											장비검사-->
+									<!--										</div>-->
+									<!--									</div>-->
 								</td>
 							</tr>
 						</table>
@@ -414,9 +434,6 @@
 						<div id="itemContent" class="item-hover">
 
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 					</div>
 				</div>
 			</div>

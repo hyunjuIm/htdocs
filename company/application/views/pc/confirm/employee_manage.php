@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -24,7 +25,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -60,7 +62,7 @@
 		</div>
 
 		<div class="row" style="margin-top: 5rem">
-			<form style="margin: 0 auto; width: 85%; padding: 1rem">
+			<form style="margin: 0 auto; padding: 1rem 0">
 				<div class="page_wrap">
 					<div class="page_nation" id="paging">
 					</div>
@@ -79,6 +81,11 @@ require('employee_modal.php');
 	//상단바 선택된 메뉴
 	$('#topMenu2').addClass('active');
 	$('#topMenu2').before('<div class="menu-select-line"></div>');
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
+	?>
 
 	var pageCount = 0;
 	var pageNum = 0;
@@ -108,10 +115,6 @@ require('employee_modal.php');
 			console.log(res.data);
 		});
 	}
-
-	<?php
-	require('common/paging.js');
-	?>
 
 	//직원관리 리스트 셋팅
 	function setEmployeeManageTable(data, index) {

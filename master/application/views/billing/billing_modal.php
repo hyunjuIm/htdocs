@@ -19,7 +19,7 @@
 							<table class="table" id="billCreateInfoTable">
 								<tbody>
 								<tr>
-									<th>고객사명</th>
+									<th>고객사</th>
 									<td colspan="2">
 										<select id="billingCompanyName" class="form-control"
 												onchange="setBillingModalCompanySelectOption(this, 'billingCompanyBranch')">
@@ -28,7 +28,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th>사업장명</th>
+									<th>사업장</th>
 									<td colspan="2">
 										<select id="billingCompanyBranch" class="form-control">
 											<option>-선택-</option>
@@ -127,12 +127,11 @@
 								<th>서비스</th>
 								<th style="width: 10%">고객사</th>
 								<th style="width: 10%">사업장</th>
-								<th>아이디(사번)</th>
+								<th>사번</th>
 								<th>성명</th>
 								<th>관계</th>
 								<th>검진완료일</th>
 								<th>기업청구금</th>
-								<th>공단청구금</th>
 								<th>개인부담금</th>
 							</tr>
 							</thead>
@@ -294,7 +293,6 @@
 			html += '<td>' + data[i].famGrade + '</td>';
 			html += '<td>' + data[i].ipDate + '</td>';
 			html += '<td>' + data[i].coCharge.toLocaleString() + '</td>';
-			html += '<td>' + data[i].pcCharge.toLocaleString() + '</td>';
 			html += '<td>' + data[i].psnCharge.toLocaleString() + '</td>';
 			html += '</tr>';
 
@@ -335,7 +333,6 @@
 				tt.push("관계");
 				tt.push("검진완료일");
 				tt.push("기업청구금");
-				tt.push("공단청구금");
 				tt.push("개인부담금");
 
 				table.push(tt);
@@ -352,7 +349,6 @@
 					td.push(data[i].famGrade);
 					td.push(data[i].ipDate);
 					td.push(data[i].coCharge.toLocaleString());
-					td.push(data[i].pcCharge.toLocaleString());
 					td.push(data[i].psnCharge.toLocaleString());
 
 					table.push(td);

@@ -85,7 +85,7 @@
 			<div class="row" style="margin-top:5rem">
 				<table class="result-table">
 					<tr>
-						<th>병원명</th>
+						<th>병원</th>
 						<td id="hosName"></td>
 					</tr>
 					<tr>

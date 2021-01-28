@@ -135,7 +135,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title4.jpg)">
@@ -182,7 +182,7 @@
 						<div class="row" style="padding-top: 3rem">
 							<div class="sub-title">건강검진 안내</div>
 						</div>
-						<div class="row" style="display: block;margin-top: 6rem;width: 100%">
+						<div class="row" style="display: block;margin-top: 6rem;">
 							<ul class="nav">
 								<li class="nav-item">
 									<a class="nav-link active" data-toggle="tab" href="#tab1">검사진행안내</a>

@@ -26,7 +26,7 @@
 	<div class="footer-middle">
 		<div style="font-size: 1.5rem; color: white;margin-bottom: 0.3rem;font-weight: 400">
 			(주) 듀얼헬스케어
-			<div class="btn btn-secondary pc-btn" onclick="location.href='/'">PC버전</div>
+			<div class="btn btn-secondary pc-btn" onclick="movePage()">PC버전</div>
 		</div>
 		<div>
 			대표자 : 김영이 <br>
@@ -36,3 +36,12 @@
 		</div>
 	</div>
 </div>
+
+<script>
+
+	function movePage() {
+		var url = window.location.href.replace('/m/', '/company/');
+		location.href = url;
+	}
+
+</script>

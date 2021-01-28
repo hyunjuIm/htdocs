@@ -90,7 +90,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title4.jpg)">
@@ -144,19 +144,19 @@
 									<th class="select">
 										<select id="hos1" class="form-control"
 												onchange="setPackageSelectOption(this, 'pkg1')">
-											<option selected>- 선택 -</option>
+											<option value="before" selected>- 선택 -</option>
 										</select>
 									</th>
 									<th class="select">
 										<select id="hos2" class="form-control"
 												onchange="setPackageSelectOption(this, 'pkg2')">
-											<option selected>- 선택 -</option>
+											<option value="before" selected>- 선택 -</option>
 										</select>
 									</th>
 									<th class="select">
 										<select id="hos3" class="form-control"
 												onchange="setPackageSelectOption(this, 'pkg3')">
-											<option selected>- 선택 -</option>
+											<option value="before" selected>- 선택 -</option>
 										</select>
 									</th>
 								</tr>
@@ -164,17 +164,17 @@
 									<td>패키지</td>
 									<th class="select">
 										<select id="pkg1" class="form-control" onchange="setSearchPackage(id)">
-											<option selected>- 선택 -</option>
+											<option value="before" selected>- 선택 -</option>
 										</select>
 									</th>
 									<th class="select">
 										<select id="pkg2" class="form-control" onchange="setSearchPackage(id)">
-											<option selected>- 선택 -</option>
+											<option value="before" selected>- 선택 -</option>
 										</select>
 									</th>
 									<th class="select">
 										<select id="pkg3" class="form-control" onchange="setSearchPackage(id)">
-											<option selected>- 선택 -</option>
+											<option value="before" selected>- 선택 -</option>
 										</select>
 									</th>
 								</tr>
@@ -291,6 +291,9 @@
 	//패키지 검색
 	function setSearchPackage(id) {
 		var pkgId = $("#" + id + " option:selected").val();
+		if(pkgId == 'before') {
+			return false;
+		}
 
 		var sendItems = new Object();
 		sendItems.pkgId = pkgId;
@@ -415,7 +418,7 @@
 					html += '<td>';
 					html += '<div class="choiceNum">선택개수 : ' + selectInjection[j][i].choiceLimit + '</div><br>';
 					for (k = 0; k < selectInjection[j][i].inspection.length; k++) {
-						html += selectInjection[j][i].inspection[k] + '<br>';
+						html += '- ' + selectInjection[j][i].inspection[k] + '<br>';
 					}
 					html += '</td>';
 				} else {
@@ -451,7 +454,7 @@
 			html += '<td>'
 			if (addInspection[i] != null) {
 				for (j = 0; j < addInspection[i].length; j++) {
-					html += addInspection[i][j] + '<br>';
+					html += '- ' + addInspection[i][j] + '<br>';
 				}
 			}
 			html += '</td>';

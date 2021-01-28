@@ -23,14 +23,20 @@
 
 <div class="footer">
 	<div class="footer-top">
-		<div>
+		<div style="cursor: pointer" onclick="location.href='/m/policy1'">
 			서비스이용약관
 		</div>
 		<div style="padding: 0 1rem; color: #c4c4c4">
 			|
 		</div>
-		<div>
+		<div style="cursor: pointer" onclick="location.href='/m/policy2'">
 			개인정보처리방침
+		</div>
+		<div style="padding: 0 1rem; color: #c4c4c4">
+			|
+		</div>
+		<div style="cursor: pointer" onclick="movePage()">
+			PC버전
 		</div>
 	</div>
 	<div class="footer-middle">
@@ -45,3 +51,12 @@
 		</div>
 	</div>
 </div>
+
+<script>
+
+	function movePage() {
+		var url = window.location.href.replace('/m/', '/customer/');
+		location.href = url;
+	}
+
+</script>

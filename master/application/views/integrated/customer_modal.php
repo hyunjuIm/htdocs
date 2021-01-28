@@ -57,7 +57,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th>소속</th>
+									<th>고객사</th>
 									<td>
 										<input class="info-input" type="text" id="customerCompanyName">
 									</td>
@@ -165,7 +165,7 @@
 														<th>연락처</th>
 														<td>
 															<input class="info-input" type="text"
-																   id="phone">
+																   id="phone" onkeyup="setPhoneHyphen(this)">
 														</td>
 													</tr>
 													<tr>
@@ -262,18 +262,18 @@
 
 												<table class="table" id="info3">
 													<tbody>
-													<tr>
-														<th>지원금비율</th>
-														<td>
-															<input class="info-input" type="number"
-																   style="width: 60px" id="supportPercent">%
-														</td>
-													</tr>
+<!--													<tr>-->
+<!--														<th>지원금비율</th>-->
+<!--														<td>-->
+<!--															<input class="info-input" type="number"-->
+<!--																   style="width: 60px" id="supportPercent">%-->
+<!--														</td>-->
+<!--													</tr>-->
 													<tr>
 														<th>지원금</th>
 														<td>
 															<input class="info-input" type="text"
-																   id="supportPrice">
+																   id="supportPrice" onkeyup="setComma(id, value)">
 														</td>
 													</tr>
 													</tbody>
@@ -442,7 +442,7 @@
 			$("#customerId").focus();
 			return;
 		} else if ($("#customerCompanyName").val() == "") {
-			alert("소속을 입력해주세요.");
+			alert("고객사를 입력해주세요.");
 			$("#customerCompanyName").focus();
 			return;
 		} else if ($("#customerCompanyBranch").val() == "") {
@@ -477,7 +477,7 @@
 					alert("저장되었습니다.");
 					searchInformation(pageNum);
 				} else if (res.data.message == "companyFailed") {
-					alert("소속과 사업장을 다시 확인해주세요.");
+					alert("고객사과 사업장을 다시 확인해주세요.");
 				} else if (res.data.message == "customerFailed") {
 					alert("이름과 아이디를 다시 확인해주세요.");
 				} else if (res.data.message == "passwordFailed") {

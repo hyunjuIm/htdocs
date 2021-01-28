@@ -18,7 +18,7 @@
 							<table class="table" id="info1">
 								<tbody>
 								<tr>
-									<th>소속</th>
+									<th>고객사</th>
 									<td id="cus-companyName"></td>
 								</tr>
 								<tr>
@@ -40,7 +40,7 @@
 								<tr>
 									<th>연락처</th>
 									<td>
-										<input type="text" id="cus-familyPhone">
+										<input type="text" id="cus-familyPhone" onkeyup="setPhoneHyphen(this)">
 									</td>
 								</tr>
 								<tr>
@@ -180,7 +180,7 @@
 								<tr>
 									<th>회사지원금</th>
 									<td>
-										<input type="text" id="cus-companySupportPrice">
+										<input type="text" id="cus-companySupportPrice" onkeyup="setComma(id, value)">
 									</td>
 								</tr>
 								<tr>

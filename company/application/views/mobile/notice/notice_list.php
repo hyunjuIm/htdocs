@@ -4,11 +4,13 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
 		.basic-table {
+			max-width: 100%;
 			font-size: 1.4rem !important;
 		}
 
@@ -19,18 +21,22 @@
 			padding: 0.2rem !important;
 		}
 
-		.basic-table .title {
-			width: 60%;
-			text-align: left;
-			cursor: pointer;
+		.basic-table td {
+			padding: ;
 		}
 
-		.basic-table .title div {
-			display: inline-block;
+		.basic-table .title {
+			display: block;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			vertical-align: middle !important;
+			text-align: left;
+			padding-left: 1.5rem;
+		}
+
+		.basic-table .date {
+			font-size: 1.2rem;
+			color: #adadad;
 		}
 
 	</style>
@@ -39,7 +45,8 @@
 
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -69,7 +76,6 @@
 		<table class="basic-table">
 			<thead>
 			<tr>
-				<th>No</th>
 				<th>제목</th>
 				<th>작성일</th>
 			</tr>
@@ -80,8 +86,8 @@
 	</div>
 
 	<div class="row" style="margin-top: 20px">
-		<form style="margin: 0 auto; width: 85%; padding: 1rem">
-			<div class="page_wrap">
+		<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 				<div class="page_nation" id="paging">
 				</div>
 			</div>
@@ -93,13 +99,19 @@
 
 <footer>
 	<?php
-	require('common/footer.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/footer.php');
 	?>
 </footer>
 
 </html>
 
 <script>
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
+	?>
+
 	var pageCount = 0;
 	var pageNum = 0;
 
@@ -123,7 +135,7 @@
 
 	//페이징-숫자클릭
 	function searchInformation(index) {
-		if($("#searchWord").val().length == 1) {
+		if ($("#searchWord").val().length == 1) {
 			alert('두 글자 이상 검색어로 입력주세요.');
 			return false;
 		}
@@ -136,7 +148,8 @@
 		pageNum = parseInt(pageNum);
 		var searchItems = new Object();
 
-		searchItems.coId = sessionStorage.getItem("userCoID");;
+		searchItems.coId = sessionStorage.getItem("userCoID");
+		;
 		searchItems.pageNum = pageNum;
 		searchItems.title = $("#searchWord").val();
 		searchItems.year = $("#ntYear option:selected").val();
@@ -154,17 +167,13 @@
 		});
 	}
 
-	<?php
-	require('common/paging.js');
-	?>
-
 	//공지사항 테이블
 	function setNoticeListData(data, index) {
 		setPaging(index);
 
 		$("#noticeTable").empty();
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
 			html += '<td colspan="20">해당하는 결과가 없습니다.</td>';
@@ -176,27 +185,14 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-
-			var no = 0;
-			if (index == 0) {
-				no = (index + 1) + i;
-			} else {
-				no = index * 10 + (i+1);
-			}
-			html += '<td>' + no + '</td>';
-
-			html += '<td class="title" ' +
-				'onclick="sendNoticeID(\'' + data[i].id + '\')">' +
-				'<div>' + data[i].title + '</div></td>';
-			html += '<td>' + data[i].createDate + '</td>';
-
+			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
+			html += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>';
 			html += '</tr>';
 
 			$("#noticeTable").append(html);
 		}
 
-		var width = $('.basic-table').width() * 0.6;
-		$('.basic-table .title div').width(width);
+		$('.title').width($('#noticeTable').width() * 0.6);
 	}
 
 	//공지 게시글 디테일에 값 던지기

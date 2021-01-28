@@ -63,8 +63,8 @@
 
 		#mainNoticeInfos .title {
 			display: inline-block;
-			width: 75%;
-			font-size: 1.5rem;
+			width: 70%;
+			font-size: 1.4rem;
 			cursor: pointer;
 			white-space: nowrap;
 			overflow: hidden;
@@ -76,7 +76,7 @@
 		}
 
 		#mainNoticeInfos .date {
-			width: 25%;
+			width: 30%;
 			display: inline-block;
 			font-size: 1.2rem;
 			color: #adadad;

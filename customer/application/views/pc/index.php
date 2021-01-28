@@ -220,7 +220,7 @@
 							</div>
 						</div>
 					</td>
-					<td class="sub-content" style="background-color: rgba( 0, 0, 0, 0.75)">
+					<td class="sub-content" style="background-color: rgba( 0, 0, 0, 0.75)" onclick="location.href ='/customer/result_final'">
 						<div class="menu3 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon3.png" style="margin-bottom: 10px"><br>

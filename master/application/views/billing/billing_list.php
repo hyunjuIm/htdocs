@@ -97,12 +97,11 @@
 				<tr>
 					<th style="width: 5%"><input type="checkbox" id="billingCheck" name="billingCheck" onclick="clickAll(id, name)"></th>
 					<th style="width: 5%">NO</th>
-					<th style="width: 10%">고객사명</th>
-					<th style="width: 10%">사업장명</th>
+					<th style="width: 10%">고객사</th>
+					<th style="width: 10%">사업장</th>
 					<th>수검인원</th>
 					<th>청구인원</th>
 					<th>기업부담금</th>
-					<th>공단부담금</th>
 					<th>개인부담금</th>
 					<th>계산일자</th>
 					<th style="width: 15%">청구기간</th>
@@ -271,7 +270,6 @@ require('billing_modal.php');
 			html += '<td>' + data[i].ipCount.toLocaleString() + '</td>';
 			html += '<td>' + data[i].billCount.toLocaleString() + '</td>';
 			html += '<td>' + data[i].coCharge.toLocaleString() + '</td>';
-			html += '<td>' + data[i].pcCharge.toLocaleString() + '</td>';
 			html += '<td>' + data[i].psnCharge.toLocaleString() + '</td>';
 			html += '<td>' + data[i].calculateDate + '</td>';
 			html += '<td>' + data[i].calculateStartDate + "~" +  data[i].calculateEndDate+'</td>';

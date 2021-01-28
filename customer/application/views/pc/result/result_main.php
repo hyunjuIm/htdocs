@@ -235,7 +235,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title2.jpg)">
@@ -701,14 +701,14 @@
 
 	function setSimpleResult(inspection) {
 		var inspectionResult = new Array();
-		var basic = new Array();
+		var basic = '';
 
 		console.log(resultData);
 		for (i = 0; i < resultData.length; i++) {
 			for (j = 0; j < resultData[i].resultItemList.length; j++) {
 				if (resultData[i].resultItemList[j].inspection == inspection) {
 					inspectionResult.push(resultData[i].resultItemList[j].result);
-					basic.push(resultData[i].resultItemList[j].normalRange);
+					basic = resultData[i].resultItemList[j].normalRange;
 				}
 			}
 		}
@@ -720,9 +720,9 @@
 		}
 	}
 
-
 	function drawGraph(inspection, inspectionResult, basic) {
-		$('#simpleDraw').html('<canvas id="chart" style="width: 100%;height: 100%"></canvas>');
+		$('#simpleDraw').html('<canvas id="chart" style="width: 100%;height: 100%"></canvas>' +
+				'<div style="text-align: right"><span style="color:rgb(195,255,195) ">■</span> 정상수치범위</div>');
 
 		var ctx = document.getElementById('chart');
 
@@ -744,7 +744,8 @@
 					var yRangeBeginPixel = yaxis.getPixelForValue(yRangeBegin);
 					var yRangeEndPixel = yaxis.getPixelForValue(yRangeEnd);
 					ctx.fillStyle = 'rgba(150,255,150,0.1)';
-					ctx.fillRect(xaxis.left, Math.min(yRangeBeginPixel, yRangeEndPixel), xaxis.right - xaxis.left, Math.max(yRangeBeginPixel, yRangeEndPixel) - Math.min(yRangeBeginPixel, yRangeEndPixel));
+					ctx.fillRect(xaxis.left, Math.min(yRangeBeginPixel, yRangeEndPixel), xaxis.right - xaxis.left,
+							Math.max(yRangeBeginPixel, yRangeEndPixel) - Math.min(yRangeBeginPixel, yRangeEndPixel));
 
 					ctx.save();
 					ctx.restore();
@@ -753,6 +754,19 @@
 				originalLineDraw.apply(this, arguments);
 			}
 		});
+
+		var basicArr = new Array();
+		if (basic.indexOf('이상') != -1) {
+			basicArr[0] = basic.split('이상')[0];
+			basicArr[1] = 1000;
+
+		} else if(basic.indexOf('이하') != -1) {
+			basicArr[0] = -1000;
+			basicArr[1] = basic.split('이하')[0];
+		} else {
+			basicArr = basic.split('~');
+		}
+		console.log(basicArr);
 
 		var myChart = new Chart(ctx, {
 			type: 'line',
@@ -767,12 +781,11 @@
 					borderWidth: 3
 				}],
 				yHighlightRange: {
-					begin: 50,
-					end: 100
+					begin: basicArr[0],
+					end: basicArr[1]
 				}
 			},
-			options: {
-			}
+			options: {}
 		});
 	}
 

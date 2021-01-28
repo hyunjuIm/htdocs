@@ -78,7 +78,7 @@
 		.card-body {
 			padding: 0;
 			max-height: 30rem;
-			overflow-y: scroll;
+			overflow-y: auto;
 		}
 
 		.injection-count {
@@ -282,7 +282,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title3.jpg); height: 30rem">
@@ -380,7 +380,7 @@
 							<!--검진유형선택-->
 							<div class="container">
 
-								<div class="row" style="display:block;margin-top: 7rem">
+								<div class="row" style="display:block;margin-top: 7rem;margin-bottom: 7rem">
 									<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem">
 										검진유형
 									</div>
@@ -409,15 +409,15 @@
 											선택검사
 										</div>
 
-										<div class="accordion" id="accordionExample">
+										<div class="accordion" id="choiceInjectionList">
 
 										</div>
 									</div>
-									<div class="row" style="display:block;margin-top: 5rem">
+									<div class="row" id="addInjectionView" style="display:block;margin-top: 5rem">
 										<div style="font-size: 2.6rem;font-weight: 500;margin-bottom: 2.5rem;text-align: left">
 											추가검사
 										</div>
-										<div class="accordion" id="accordionExample">
+										<div class="accordion" id="addInjectionTitle">
 											<div class="card-header" id="headingOne">
 												<div class="text-left"
 													 data-toggle="collapse" data-target="#collapseOne"
@@ -433,7 +433,7 @@
 
 											</div>
 											<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-												 data-parent="#accordionExample">
+												 data-parent="#addInjectionTitle">
 												<div class="card-body" id="addInjection">
 
 												</div>
@@ -441,13 +441,14 @@
 											<div id="choiceAddView">
 
 											</div>
-										</div>
-										<div style="float: right;font-weight: 400;margin-top: 1rem">
-											총 추가금액 : <span id="addInjectionPrice">0</span>원
+
+											<div style="font-weight: 400;margin-top: 3rem;float: right">
+												총 추가금액 : <span id="addInjectionPrice">0</span>원
+											</div>
 										</div>
 									</div>
 
-									<div class="row" style="display:flex;margin-top: 5rem">
+									<div class="row" style="display:flex;margin-top: 10rem">
 										<div style="margin: 0 auto">
 											<div class="btn-cancel-square" style="font-size: 1.4rem"
 												 onclick="cancelBack()">
@@ -725,6 +726,7 @@
 		sendItems.pipList = pipList;
 		sendItems.firstWishDate = firstWishDate;
 		sendItems.secondWishDate = secondWishDate;
+		sendItems.additionalPrice = sum;
 
 		console.log(sendItems);
 

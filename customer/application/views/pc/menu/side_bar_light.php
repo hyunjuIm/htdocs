@@ -77,7 +77,7 @@
 
 	/*사이드 메뉴*/
 	ul, li {
-		list-style-type: none;
+		/*list-style-type: none;*/
 		padding-left: 0px;
 	}
 
@@ -230,13 +230,13 @@
 
 	<form class="footer">
 		<div class="footer-top">
-			<div>
+			<div style="cursor: pointer" onclick="location.href='/customer/policy1'">
 				서비스이용약관
 			</div>
 			<div style="padding: 0 1rem; color: #c4c4c4">
 				|
 			</div>
-			<div>
+			<div style="cursor: pointer" onclick="location.href='/customer/policy2'">
 				개인정보처리방침
 			</div>
 		</div>

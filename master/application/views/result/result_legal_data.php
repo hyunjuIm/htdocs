@@ -68,9 +68,9 @@
 <!--					<th style="width: 5%"><input type="checkbox" id="legalCheck" name="legalCheck"-->
 <!--												 onclick="clickAll(id, name)"></th>-->
 					<th style="width: 5%">NO</th>
-					<th style="">병원명</th>
-					<th style="">고객사명</th>
-					<th style="">사업장명</th>
+					<th style="">병원</th>
+					<th style="">고객사</th>
+					<th style="">사업장</th>
 					<th style="">서비스</th>
 					<th style="width: 30%">자료구분<span style="font-size: 13px">(구분값은 ','표시)</span></th>
 					<th style="width: 8%">상태</th>
@@ -80,7 +80,7 @@
 				</tbody>
 			</table>
 
-			<div class="btn-default-small excel" style="float: left" onclick="tableExcelDownload()"></div>
+<!--			<div class="btn-default-small excel" style="float: left" onclick="tableExcelDownload()"></div>-->
 
 			<div style="float:right">
 				<div class="btn-save-square" onclick="saveLegalData()">저장</div>
@@ -330,9 +330,9 @@
 				const table = [];
 				const tt = [];
 				tt.push("사업연도");
-				tt.push("병원명");
-				tt.push("고객사명");
-				tt.push("사업장명");
+				tt.push("병원");
+				tt.push("고객사");
+				tt.push("사업장");
 				tt.push("서비스");
 				tt.push("자료구분");
 				tt.push("상태");

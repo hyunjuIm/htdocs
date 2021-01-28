@@ -7,6 +7,7 @@
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/head.php');
 	?>
+
 	<style>
 
 	</style>
@@ -73,7 +74,7 @@
 							</select>
 						</div>
 						<label class="col-form-label" style="margin-left: 20px">
-							<li>병원명</li>
+							<li>병원</li>
 						</label>
 						<div class="form-group col">
 							<select id="hosName" class="form-control">
@@ -140,9 +141,9 @@
 												 onclick="clickAll(id, name)"></th>
 					<th style="width: 5%">NO</th>
 					<th style="width: 5%">사용</th>
-					<th style="width: 10%">병원명</th>
-					<th style="width: 10%">고객사명</th>
-					<th style="width: 10%">사업장명</th>
+					<th style="width: 10%">병원</th>
+					<th style="width: 10%">고객사</th>
+					<th style="width: 10%">사업장</th>
 					<th style="width: 10%">패키지</th>
 					<th>패키지단가</th>
 					<th>기업승인여부</th>
@@ -230,19 +231,23 @@ require('package_modal.php');
 		companySelect = data.coNameBranch;
 
 		//패키지
+		data.pkgName.sort();
 		for (i = 0; i < data.pkgName.length; i++) {
 			var html = '';
 			html += '<option>' + data.pkgName[i] + '</option>'
 			$("#pkgName").append(html);
 		}
 		//단가
-		for (i = 0; i < data.price.length; i++) {
+		var price = Array.from((data.price), x => Number(x));
+		price.sort(function (a, b) { // 오름차순
+			return a - b;
+		});
+		for (i = 0; i < price.length; i++) {
 			var html = '';
-			var price = parseInt(data.price[i]).toLocaleString();
-			html += '<option value=\'' + data.price[i] + '\'>' + price + '</option>'
+			html += '<option value=\'' + price[i] + '\'>' + price[i].toLocaleString() + '</option>'
 			$("#price").append(html);
 		}
-		//병원명
+		//병원
 		for (i = 0; i < data.hosName.length; i++) {
 			var html = '';
 			html += '<option>' + data.hosName[i] + '</option>'
@@ -389,7 +394,7 @@ require('package_modal.php');
 
 		fileURL.post('downloadExcel/M0708', searchItems).then(res => {
 			makeTable(res.data);
-			exportExcel(res.data);
+			// exportExcel(res.data);
 		});
 	}
 
@@ -415,7 +420,7 @@ require('package_modal.php');
 		html += '<tr>' +
 				'<th rowspan="3" colspan="3"></th>';
 
-		//병원명 정렬
+		//병원 정렬
 		packageDetailDTOList.sort(function (a, b) {
 			const titleA = a.hosName.toUpperCase(); // ignore upper and lowercase
 			const titleB = b.hosName.toUpperCase(); // ignore upper and lowercase
@@ -428,7 +433,7 @@ require('package_modal.php');
 			return 0;
 		});
 
-		//병원명 출력
+		//병원 출력
 		var count = 1;
 		for (let i = 0; i < packageDetailDTOList.length - 1; i++) {
 			if (packageDetailDTOList[i].hosName == packageDetailDTOList[i + 1].hosName) {
@@ -471,6 +476,7 @@ require('package_modal.php');
 
 		for (let i = 0; i < basicInspectionList_1.length; i++) {
 			const string = basicInspectionList_1[i].split("!@#");
+			console.log(basicInspectionList_1[i]);
 			html += '<tr>';
 			html += '<th>' + string[0] + '</th>';
 			html += '<th>' + string[1] + '</th>';
@@ -507,11 +513,14 @@ require('package_modal.php');
 
 			for (j = 0; j < packageDetailDTOList.length; j++) {
 				html += '<td>';
+				var testHtml = ''
 				for (k = 0; k < packageDetailDTOList[j].packageItemDTOList.length; k++) {
 					if (packageDetailDTOList[j].packageItemDTOList[k].ipClass == ('선택' + category)) {
-						html += packageDetailDTOList[j].packageItemDTOList[k].inspection.join("<br>");
+						testHtml += packageDetailDTOList[j].packageItemDTOList[k].inspection.join("<br/>");
 					}
 				}
+				console.log(testHtml);
+				html += testHtml;
 				html += '</td>';
 			}
 			html += '</tr>';
@@ -519,37 +528,95 @@ require('package_modal.php');
 
 
 		$('#pckExcel').append(html);
+
+		fnExcelReport('pckExcel', ('[' + todayString() + ']' + ' 듀얼제안서'), data.serviceYear);
 	}
 
-	function exportExcel(data) {
-		var excelHandler = {
-			getExcelFileName: function () {
-				return '[' + todayString() + ']' + ' 듀얼제안서.xlsx';
-			},
-			getSheetName: function () {
-				return data.serviceYear;
-			},
-			getExcelData: function () {
-				return document.getElementById('pckExcel');
-			},
-			getWorksheet: function () {
-				return XLSX.utils.table_to_sheet(this.getExcelData());
+	function fnExcelReport(id, title, year) {
+		var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+		tab_text = tab_text
+				+ '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+		tab_text = tab_text
+				+ '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+		tab_text = tab_text + '<x:Name>' + year + '</x:Name>';
+		tab_text = tab_text
+				+ '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+		tab_text = tab_text
+				+ '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+		tab_text = tab_text + "<table border='1px'>";
+		var exportTable = $('#' + id).clone();
+		exportTable.find('input').each(function (index, elem) {
+			$(elem).remove();
+		});
+		tab_text = tab_text + exportTable.html();
+		tab_text = tab_text + '</table></body></html>';
+		var data_type = 'data:application/vnd.ms-excel';
+		var ua = window.navigator.userAgent;
+		var msie = ua.indexOf("MSIE ");
+		var fileName = title + '.xls';
+		//Explorer 환경에서 다운로드
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+			if (window.navigator.msSaveBlob) {
+				var blob = new Blob([tab_text], {
+					type: "application/csv;charset=utf-8;"
+				});
+				navigator.msSaveBlob(blob, fileName);
 			}
+		} else {
+			var blob2 = new Blob([tab_text], {
+				type: "application/csv;charset=utf-8;"
+			});
+			var filename = fileName;
+			var elem = window.document.createElement('a');
+			elem.href = window.URL.createObjectURL(blob2);
+			elem.download = filename;
+			document.body.appendChild(elem);
+			elem.click();
+			document.body.removeChild(elem);
 		}
-
-		// step 1. workbook 생성
-		var wb = XLSX.utils.book_new();
-
-		// step 2. 시트 만들기
-		var newWorksheet = excelHandler.getWorksheet();
-
-		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
-		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
-
-		// step 4. 엑셀 파일 만들기
-		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
-
-		// step 5. 엑셀 파일 내보내기
-		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
 	}
+
+	function tableToExcel(id) {
+		var data_type = 'data:application/vnd.ms-excel;charset=utf-8';
+		var table_html = encodeURIComponent(document.getElementById(id).outerHTML);
+
+		var a = document.createElement('a');
+		a.href = data_type + ',%EF%BB%BF' + table_html;
+		a.download = id + '_excel' + '.xls';
+		a.click();
+
+		$('#pckExcel').hide();
+	}
+
+	// function exportExcel(data) {
+	// 	var excelHandler = {
+	// 		getExcelFileName: function () {
+	// 			return '[' + todayString() + ']' + ' 듀얼제안서.xlsx';
+	// 		},
+	// 		getSheetName: function () {
+	// 			return data.serviceYear;
+	// 		},
+	// 		getExcelData: function () {
+	// 			return document.getElementById('pckExcel');
+	// 		},
+	// 		getWorksheet: function () {
+	// 			return XLSX.utils.table_to_sheet(this.getExcelData());
+	// 		}
+	// 	}
+	//
+	// 	// step 1. workbook 생성
+	// 	var wb = XLSX.utils.book_new();
+	//
+	// 	// step 2. 시트 만들기
+	// 	var newWorksheet = excelHandler.getWorksheet();
+	//
+	// 	// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+	// 	XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+	//
+	// 	// step 4. 엑셀 파일 만들기
+	// 	var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+	//
+	// 	// step 5. 엑셀 파일 내보내기
+	// 	saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	// }
 </script>

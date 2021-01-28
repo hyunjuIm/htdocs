@@ -177,7 +177,7 @@
 			html += '</tr>' +
 					'<tr>' +
 					'<th rowspan="3">예약병원</th>' +
-					'<td class="title">병원명</td>' +
+					'<td class="title">병원</td>' +
 					'<td>' + data[i].hoName + '</td>' +
 					'</tr>' +
 					'<tr>' +

@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -19,7 +20,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -93,21 +95,21 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<div class="select-list" style="float:left;">
-							<div class="select-label">
-								<img src="/asset/images/icon_dot_menu.png">
-								지원율
-							</div>
-							<div class="select-content">
-								<select id="supportPercent">
-									<option selected>- 전체 -</option>
-								</select>
-							</div>
-						</div>
-					</td>
-				</tr>
+<!--				<tr>-->
+<!--					<td>-->
+<!--						<div class="select-list" style="float:left;">-->
+<!--							<div class="select-label">-->
+<!--								<img src="/asset/images/icon_dot_menu.png">-->
+<!--								지원율-->
+<!--							</div>-->
+<!--							<div class="select-content">-->
+<!--								<select id="supportPercent">-->
+<!--									<option selected>- 전체 -</option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</td>-->
+<!--				</tr>-->
 			</table>
 		</div>
 		<div class="row" style="margin-top: 1rem">
@@ -130,8 +132,8 @@
 			<th>아이디</th>
 			<th>이름</th>
 			<th>주민번호</th>
-			<th>가족관계</th>
-			<th>지원율</th>
+			<th>관계</th>
+<!--			<th>지원율</th>-->
 			<th>예약일</th>
 			<th>예약병원</th>
 			<th>예약상태</th>
@@ -142,9 +144,9 @@
 		</table>
 	</div>
 
-	<div class="row" style="margin-top: 5rem">
-		<form style="margin: 0 auto; width: 85%; padding: 1rem">
-			<div class="page_wrap">
+	<div class="row">
+		<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 				<div class="page_nation" id="paging">
 				</div>
 			</div>
@@ -160,7 +162,12 @@
 	$('#topMenu1').before('<div class="menu-select-line"></div>');
 
 	<?php
-	require('common/check_data.js');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/check_data.js');
+	?>
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
 	?>
 
 	var pageCount = 0;
@@ -194,11 +201,11 @@
 			$("#serviceName").append(html);
 		}
 		//서비스
-		for (i = 0; i < data.supportPercent.length; i++) {
-			var html = '';
-			html += '<option value=\'' + data.supportPercent[i] + '\'>' + data.supportPercent[i] + '%</option>'
-			$("#supportPercent").append(html);
-		}
+		// for (i = 0; i < data.supportPercent.length; i++) {
+		// 	var html = '';
+		// 	html += '<option value=\'' + data.supportPercent[i] + '\'>' + data.supportPercent[i] + '%</option>'
+		// 	$("#supportPercent").append(html);
+		// }
 
 		searchInformation(0);
 	}
@@ -227,7 +234,7 @@
 		searchItems.reservationStartDate = $("#reservationStartDate").val();
 		searchItems.reservationEndDate = $("#reservationEndDate").val();
 		searchItems.serviceName = $("#serviceName option:selected").val();
-		searchItems.supportPercent = $("#supportPercent option:selected").val();
+		searchItems.supportPercent = 'all';
 
 		searchItems.pagingNum = pageNum;
 
@@ -256,10 +263,6 @@
 			console.log(res.data);
 		});
 	}
-
-	<?php
-	require('common/paging.js');
-	?>
 
 	//예약관리 테이블 셋팅
 	function setReservationTable(data, index) {
@@ -293,7 +296,7 @@
 			html += '<td>' + data[i].name + '</td>';
 			html += '<td>' + data[i].birthDate + '</td>';
 			html += '<td>' + data[i].grade + '</td>';
-			html += '<td>' + data[i].supportPercent + ' %</td>';
+			// html += '<td>' + data[i].supportPercent + ' %</td>';
 			html += '<td>' + data[i].reservedDate + '</td>';
 			html += '<td>' + data[i].hospitalName + '</td>';
 			html += '<td>' + data[i].status + '</td>';

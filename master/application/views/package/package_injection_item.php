@@ -8,16 +8,35 @@
 	require($parentDir . '/common/head.php');
 	?>
 
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
 	<style>
 		#selectNumTable {
-			border: none;
-			margin: 5px;
+			display: none;
+			margin: 0 5px;
 			float: right;
+			font-size: 15px;
+			width: fit-content;
+		}
+
+		#selectNumTable input {
+			text-align: center;
+			width: 50px;
 		}
 
 		select {
 			font-size: 15px !important;
 		}
+
+		.icon-control {
+			font-size: 40px;
+			cursor: pointer;
+		}
+
+		.icon-control:hover {
+			color: #494949;
+		}
+
 	</style>
 
 </head>
@@ -40,7 +59,8 @@
 			<div class="btn-purple-square" data-toggle="modal" data-target="#packageUploadModal">
 				패키지구성항목 엑셀 업로드
 			</div>
-			<div class="btn-save-square" onclick="downloadBasicSheet('inspection', '회사명_사업장명_날짜_패키지구성항목 양식.xlsx')">
+			<div class="btn-light-purple-square"
+				 onclick="downloadBasicSheet('inspection', '회사명_사업장_날짜_패키지구성항목 양식.xlsx')">
 				패키지구성항목 양식 다운로드
 			</div>
 		</div>
@@ -83,21 +103,14 @@
 				</ul>
 				<div class="tab-content" style="height: 400px; overflow-y: scroll">
 					<div class="tab-pane fade show active" id="packageTab">
-						<table id="selectNumTable" style="display: none; font-size: 15px; width: fit-content">
-							<tbody>
-							<tr>
-								<td style="font-weight: 400; padding-right: 5px">최대선택개수</td>
-								<td><input type="number" class="form-control" id="choiceLimit"
-										   min="1" max="10" placeholder=""
-										   style="width: 70px"></td>
-								<td>
-									<div class="btn-save-square" style="padding: 2px 15px; font-size: 13px"
-										 onclick="setChoiceNum()">설정
-									</div>
-								</td>
-							</tr>
-							</tbody>
-						</table>
+						<div id="selectNumTable">
+							<div style="display: flex;align-items: center">
+								<div style="margin-right: 3px">최대선택개수</div>
+								<i class="icon-control ri-checkbox-indeterminate-fill ri-10x" onclick="setChoiceNum('-')"></i>
+								<input type="text" class="form-control" id="choiceLimit" readonly>
+								<i class="icon-control ri-add-box-fill ri-10x" onclick="setChoiceNum('+')"></i>
+							</div>
+						</div>
 
 						<table id="packageTable">
 							<thead>
@@ -467,8 +480,14 @@ require('package_modal.php');
 			sex += '</select></td>';
 			html += sex;
 
-			html += '<td contentEditable="true" onkeyup="savePrice(\'' + packageTabItems[id][i].ipCode + '\', this)">' + packageTabItems[id][i].price + '</td>';
-			html += '<td contentEditable="true"onkeyup="saveMemo(\'' + packageTabItems[id][i].ipCode + '\', this)">' + packageTabItems[id][i].memo + '</td>';
+			var tmpId = id + String(i);
+			html += '<td><input type="text" value=\'' + packageTabItems[id][i].price.toLocaleString() + '\' ' +
+					'onkeyup="setComma(id, value)" ' +
+					'onblur="savePck(1, \'' + packageTabItems[id][i].ipCode + '\', value)" ' +
+					'id=\'' + tmpId + '\'></td>';
+
+			html += '<td><input type="text" value=\'' + packageTabItems[id][i].memo + '\' ' +
+					'onblur="savePck(2, \'' + packageTabItems[id][i].ipCode + '\', value)"></td>';
 			html += '</tr>';
 
 			$("#packageTable").append(html);
@@ -553,53 +572,70 @@ require('package_modal.php');
 		packageTabItems[0][index].sex = sex;
 	}
 
-	function savePrice(code, value) {
-		var price = parseInt(value.innerHTML);
+	//마우스 떠날 때 저장
+	function savePck(num, code, val) {
+		if (num == 1) {
+			savePrice(code, val);
+		} else if (num == 2) {
+			saveMemo(code, val);
+		}
+	}
 
+	function savePrice(code, value) {
 		for (i = 0; i < packageTabItems[0].length; i++) {
 			if (packageTabItems[0][i].ipCode == code) {
-				packageTabItems[0][i].price = price;
+				packageTabItems[0][i].price = value;
 			}
 		}
 
 		for (i = 1; i < tabSize; i++) {
 			for (j = 0; j < packageTabItems[i].length; j++) {
 				if (packageTabItems[i][j].ipCode == code) {
-					packageTabItems[i][j].price = price;
+					packageTabItems[i][j].price = value;
 				}
 			}
 		}
 	}
 
 	function saveMemo(code, value) {
-		var memo = value.innerHTML;
-
 		for (i = 0; i < packageTabItems[0].length; i++) {
 			if (packageTabItems[0][i].ipCode == code) {
-				packageTabItems[0][i].memo = memo;
+				packageTabItems[0][i].memo = value;
 			}
 		}
 
 		for (i = 1; i < tabSize; i++) {
 			for (j = 0; j < packageTabItems[i].length; j++) {
 				if (packageTabItems[i][j].ipCode == code) {
-					packageTabItems[i][j].memo = memo;
+					packageTabItems[i][j].memo = value;
 				}
 			}
 		}
 	}
 
 	//패키지구성 선택항목 최대선택개수
-	function setChoiceNum() {
-		if ($("#choiceLimit").val() < 1 || $("#choiceLimit").val() > 10) {
-			alert('설정값을 초과하였습니다. 다시 설정해주세요.');
-		} else {
-			choiceLimitArr[tabId] = $("#choiceLimit").val();
-			for (i = 0; i < packageTabItems[tabId].length; i++) {
-				packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
-			}
-			alert('설정되었습니다.');
+	function setChoiceNum(kind) {
+		if (kind == '-') {
+			$("#choiceLimit").val(parseInt($("#choiceLimit").val()) - 1);
+		} else if (kind == '+') {
+			$("#choiceLimit").val(parseInt($("#choiceLimit").val()) + 1);
 		}
+
+		choiceLimitArr[tabId] = $("#choiceLimit").val();
+		for (i = 0; i < packageTabItems[tabId].length; i++) {
+			packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
+		}
+
+
+		// if ($("#choiceLimit").val() < 1 || $("#choiceLimit").val() > 10) {
+		// 	alert('설정값을 초과하였습니다. 다시 설정해주세요.');
+		// } else {
+		// 	choiceLimitArr[tabId] = $("#choiceLimit").val();
+		// 	for (i = 0; i < packageTabItems[tabId].length; i++) {
+		// 		packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
+		// 	}
+		// 	alert('설정되었습니다.');
+		// }
 	}
 
 	//검사항목 추가
@@ -625,17 +661,22 @@ require('package_modal.php');
 					add.inspection = values[0];
 					add.detail = values[1];
 					add.ipCode = values[2];
-					add.ipClass = "전체";
 					add.sex = 0;
 					add.price = 0;
 					add.memo = "";
-					add.choiceLimit = 0;
-					packageTabItems[0].push(add);
-					
+					// add.choiceLimit = 0;
+
 					//검사항목 추가 임시 배열 (해당탭)
 					add.ipClass = tabItems[tabId];
 					add.choiceLimit = choiceLimitArr[tabId];
-					packageTabItems[tabId].push(add);
+					// packageTabItems[tabId].push(add);
+
+					if (tabItems[tabId] == '전체') {
+						packageTabItems[0].push(add);
+					} else {
+						packageTabItems[0].push(add);
+						packageTabItems[tabId].push(add);
+					}
 				}
 
 				$("input:checkbox[name=injectionCheck]:checked").prop("checked", false);
@@ -675,16 +716,22 @@ require('package_modal.php');
 				text += packageTabItems[0][i].detail + "\n"
 			}
 
-			if(packageTabItems[0][i].ipClass.indexOf('선택') != -1) {
-				if(packageTabItems[0][i].choiceLimit < 1) {
+			if (packageTabItems[0][i].ipClass.indexOf('선택') != -1) {
+				if (packageTabItems[0][i].choiceLimit < 1) {
 					alert(packageTabItems[0][i].ipClass + ': 최대선택개수를 설정해주세요.');
 					return false;
 				}
 			}
 		}
 
+		for (i = 0; i < packageTabItems[0].length; i++) {
+			var price = String(packageTabItems[0][i].price);
+			packageTabItems[0][i].price = price.replaceAll(',', '');
+			console.log(packageTabItems[0][i].price);
+		}
+
 		if (text != "") {
-			alert(text + "\n구분 변경 후, 저장하세요.");
+			alert(text + "\n구분이 [전체]인 상태로 저장할 수 없습니다. 구분 변경 후, 저장하세요.");
 		} else {
 			sendItems.pkgId = pkgId.pkgId;
 			sendItems.ispList = packageTabItems[0];

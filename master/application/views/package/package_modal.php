@@ -24,6 +24,14 @@
 		overflow: hidden;
 		background: whitesmoke;
 	}
+
+	table input[type=text] {
+		width: 100%;
+		background: none;
+		outline: none;
+		border: none;
+		text-align: center;
+	}
 </style>
 
 <!-- 병원 전송 Modal -->
@@ -64,7 +72,7 @@
 				</div>
 				<div style="margin-top: 30px; padding: 10px">
 					<div class="row">
-						<div class="col">
+						<div class="col" style="height: 400px;overflow-y: auto">
 							<table class="table" id="pacInfoTable1">
 								<thead>
 								<tr>
@@ -72,7 +80,7 @@
 																 name="packageHosCheck" onclick="clickAll(id, name)">
 									</th>
 									<th style="width: 10%">NO</th>
-									<th style="width: 40%">병원명</th>
+									<th style="width: 40%">병원</th>
 									<th style="width: 20%">등급</th>
 									<th>공단대상유무</th>
 								</tr>
@@ -81,7 +89,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="col">
+						<div class="col" style="height: 400px;overflow-y: auto">
 							<table class="table" id="pacInfoTable2">
 								<thead>
 								<tr>
@@ -90,8 +98,8 @@
 									</th>
 									<th style="width: 5%">NO</th>
 									<th>패키지명</th>
-									<th>고객사명</th>
-									<th>사업장명</th>
+									<th>고객사</th>
+									<th>사업장</th>
 									<th style="width: 15%">직원수</th>
 									<th>공단대상유무</th>
 								</tr>
@@ -132,7 +140,7 @@
 							<table class="table" id="ComInfoTable1">
 								<tbody>
 								<tr>
-									<th>고객사명</th>
+									<th>고객사</th>
 									<td>
 										<select id="companyName" class="form-control"
 												onchange="setPackageModalCompanySelectOption(this, 'companyBranch')">
@@ -141,7 +149,7 @@
 									</td>
 								</tr>
 								<tr>
-									<th>사업장명</th>
+									<th>사업장</th>
 									<td>
 										<select id="companyBranch" class="form-control">
 											<option>-선택-</option>
@@ -150,11 +158,15 @@
 								</tr>
 								<tr>
 									<th>패키지명</th>
-									<td id="add-pac-name" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="add-pac-name">
+									</td>
 								</tr>
 								<tr>
 									<th>단가</th>
-									<td id="add-pac-price" contentEditable="true"></td>
+									<td>
+										<input class="info-input" type="text" id="add-pac-price">
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -281,8 +293,8 @@
 		var saveItems = new Object();
 
 		saveItems.coId = $("#companyBranch").val();
-		saveItems.pkgName = document.getElementById('add-pac-name').innerText;
-		saveItems.price = document.getElementById('add-pac-price').innerText;
+		saveItems.pkgName = $('#add-pac-name').val();
+		saveItems.price = $('#add-pac-price').val();
 
 		console.log(saveItems);
 

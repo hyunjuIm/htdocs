@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -68,7 +69,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -136,7 +138,6 @@
 	//상단바 선택된 메뉴
 	$('#topMenu2').addClass('active');
 	$('#topMenu2').before('<div class="menu-select-line"></div>');
-
 
 	//pkgID 값 받기
 	var pkgId = new Object();

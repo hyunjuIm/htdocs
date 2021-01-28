@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -15,6 +16,7 @@
 		.basic-table .sum td {
 			background: #555555;
 			color: white;
+			cursor: default;
 		}
 
 		#billAllTable tbody tr,
@@ -32,7 +34,8 @@
 <!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -53,6 +56,7 @@
 					사업연도
 				</div>
 				<select id="servedYear" onchange="searchInformation()">
+					<option>2021</option>
 					<option selected>2020</option>
 					<option>2019</option>
 					<option>2018</option>
@@ -63,7 +67,7 @@
 				<thead>
 				<tr>
 					<th>기업 ID</th>
-					<th>기업명</th>
+					<th>고객사</th>
 					<th>청구년월</th>
 					<th>청구조건</th>
 					<th width="22%">기준일자</th>
@@ -87,10 +91,10 @@
 					<th>병원</th>
 					<th>인원</th>
 					<th>검진비용 총합</th>
-					<th style="line-height: 1.5rem">
-						청구금액<br>
-						<span style="font-size: 1.3rem">(급여+기업+포인트<br>선택검사회사분)</span>
-					</th>
+<!--					<th style="line-height: 1.5rem">-->
+<!--						청구금액<br>-->
+<!--						<span style="font-size: 1.3rem">(급여+기업+포인트<br>선택검사회사분)</span>-->
+<!--					</th>-->
 					<th>계산서금액</th>
 					<th>정보이용료</th>
 					<th>병원확인</th>
@@ -113,8 +117,6 @@ require('bill_modal.php');
 	//상단바 선택된 메뉴
 	$('#topMenu4').addClass('active');
 	$('#topMenu4').before('<div class="menu-select-line"></div>');
-
-	$('#loading').hide();
 
 	var coIdObj = new Object();
 	coIdObj.coId = sessionStorage.getItem("userCoID");
@@ -146,7 +148,8 @@ require('bill_modal.php');
 			$('#billAllTable').show();
 		} else {
 			$('#billAllTable').hide();
-			alert('해당기간 자료가 없습니다.')
+			alert('해당기간 자료가 없습니다.');
+			return false;
 		}
 
 		for (i = 0; i < data.length; i++) {
@@ -210,9 +213,9 @@ require('bill_modal.php');
 					'<td>' + (i + 1) + '</td>' +
 					'<td>' + data[i].hosId + '</td>' +
 					'<td>' + data[i].hosName + '</td>' +
-					'<td>' + data[i].countOfReservation + '</td>' +
+					'<td>' + data[i].countOfReservation.toLocaleString() + '</td>' +
 					'<td>' + data[i].priceOfTotalInspection.toLocaleString() + '</td>' +
-					'<td>' + data[i].priceOfBilling.toLocaleString() + '</td>' +
+					// '<td>' + data[i].priceOfBilling.toLocaleString() + '</td>' +
 					'<td>' + data[i].priceOfCalculate.toLocaleString() + '</td>' +
 					'<td>' + data[i].priceOfRebate.toLocaleString() + '</td>';
 			if (data[i].hospitalConfirm) {
@@ -229,7 +232,8 @@ require('bill_modal.php');
 			$("#billMonthTable > tbody").append(html);
 		}
 
-		setTotal(countTotal.toLocaleString(), inspectionTotal.toLocaleString(), billingTotal.toLocaleString(), calculateTotal.toLocaleString(), rebateTotal.toLocaleString());
+		setTotal(countTotal.toLocaleString(), inspectionTotal.toLocaleString(), billingTotal.toLocaleString(),
+				calculateTotal.toLocaleString(), rebateTotal.toLocaleString());
 	}
 
 	function setTotal(countTotal, inspectionTotal, billingTotal, calculateTotal, rebateTotal) {
@@ -239,14 +243,13 @@ require('bill_modal.php');
 				'<td>계</td>' +
 				'<td>' + countTotal + '</td>' +
 				'<td>' + inspectionTotal + '</td>' +
-				'<td>' + billingTotal + '</td>' +
+				// '<td>' + billingTotal + '</td>' +
 				'<td>' + calculateTotal + '</td>' +
 				'<td>' + rebateTotal + '</td>' +
 				'<td colspan="4"></td>' +
 				'</tr>'
 		$("#billMonthTable > tbody").append(html);
 	}
-
 
 	function companyConfirm(billingId, value) {
 		var searchItems = new Object();

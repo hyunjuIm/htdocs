@@ -27,6 +27,7 @@
 	}
 
 	#content, #answer {
+		width: 100%;
 		white-space: pre-wrap;
 		text-align: left;
 	}
@@ -42,11 +43,21 @@
 		background: whitesmoke;
 	}
 
+	#fileName:hover {
+		cursor: pointer;
+		color: #5645ED;
+		text-decoration: underline;
+	}
+
+	.cell {
+		width: 100%;
+		padding: 1rem 2rem;
+		border-top: 1px solid #DCDCDC;
+		border-bottom: 1px solid #DCDCDC;
+	}
+
 	.btn {
-		display: none;
-		margin-left: 0.5rem;
-		font-size: 1.2rem;
-		padding: 0.2rem 0.5rem;
+		font-size: 1.5rem;
 	}
 </style>
 
@@ -69,14 +80,17 @@
 						<div style="float:right">작성자: <span id="author"></span></div>
 					</div>
 					<div id="content"></div>
-					<hr>
-					<div style="width: 100%;height: fit-content;text-align: left;padding: 0 2rem;display: flex">
-						첨부파일 :&nbsp;<span id="fileName"></span>
-						<div class="btn btn-secondary" onclick="downloadFile()">다운로드</div>
+					<div class="cell" style="text-align: left;">
+						첨부파일 :&nbsp;<span id="fileName" onclick="downloadFile()"></span>
 					</div>
-					<hr>
-					<div id="answerView">
-						<div style="text-align: left;padding: 1rem;font-weight: 400">처리결과</div>
+					<div style="display: inline-block;width: 100%;padding: 1rem 0;">
+						<div style="float:right;">
+							<div class="btn btn-secondary" onclick="sendUpdateID()">수정</div>
+							<div class="btn btn-danger" onclick="deleteContent()">삭제</div>
+						</div>
+					</div>
+					<div>
+						<div id="answerView" style="text-align: left;padding: 1rem;font-weight: 400">처리결과</div>
 						<div id="answer"></div>
 					</div>
 				</form>
@@ -104,13 +118,6 @@
 
 	//게시물 view
 	function setEmployeeManageView(data) {
-		console.log(data);
-		if (data.answer == null || data.status == '처리이전') {
-			$("#answerView").hide();
-		} else {
-			$("#answerView").show();
-		}
-
 		$("#title").text(data.title);
 		$("#createDate").text(data.createDate);
 		$("#status").text(data.status);
@@ -129,13 +136,18 @@
 		if (data.fileName != null) {
 			$("#fileName").text(data.fileName);
 			fileName = data.fileName;
-			$('.btn').show();
 		} else {
 			$("#fileName").html('&nbsp;');
-			$('.btn').hide();
 		}
 
 		$("#answer").html(data.answer);
+
+		if (data.answer == null || data.status == '처리이전') {
+			$("#answerView").hide();
+			$('#answer').append('<div style="text-align: center">답변이 아직 등록되지 않았습니다.</div>');
+		} else {
+			$("#answerView").show();
+		}
 	}
 
 	//파일 다운로드
@@ -143,7 +155,7 @@
 		var sendItems = new Object();
 		sendItems.hlpId = hlpId;
 
-		instance.post('C0305', sendItems,{
+		instance.post('C0305', sendItems, {
 			responseType: 'arraybuffer',
 			headers: {
 				'Content-Type': 'application/json'
@@ -157,6 +169,29 @@
 			link.download = fileName;
 			link.click();
 		})
+	}
+
+	function sendUpdateID() {
+		location.href = "employee_manage_update?id=" + hlpId;
+	}
+
+	//삭제
+	function deleteContent() {
+		var sendItems = new Object();
+		sendItems.hlpId = hlpId;
+
+		if (confirm("삭제하시겠습니까?") == true) {
+			instance.post('C0306', sendItems).then(res => {
+				if (res.data.message == "success") {
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			}).catch(function (error) {
+				alert("잘못된 접근입니다.")
+			});
+		} else {
+			return false;
+		}
 	}
 
 </script>

@@ -12,6 +12,23 @@
 		margin-left: 3px;
 	}
 
+	table input[type=text] {
+		width: 100%;
+		background: none;
+		outline: none;
+		border: none;
+		text-align: center;
+	}
+
+	table textarea {
+		width: 100%;
+		height: 150px;
+		background: none;
+		outline: none;
+		border: none;
+		font-weight: 300;
+	}
+
 	.manage-head {
 		padding: 3px 0 0 0 !important;
 		border: none !important;
@@ -48,13 +65,16 @@
 							<table class="table" id="ComInfoTable1">
 								<tbody>
 								<tr>
-									<th>기업명</th>
-									<td id="com-companyName"
-									="true" ></td>
+									<th>고객사</th>
+									<td>
+										<input type="text" id="com-companyName">
+									</td>
 								</tr>
 								<tr>
-									<th>사업장명</th>
-									<td id="com-companyBranch" contentEditable="true"></td>
+									<th>사업장</th>
+									<td>
+										<input type="text" id="com-companyBranch">
+									</td>
 								</tr>
 								<tr>
 									<th>시스템오픈</th>
@@ -108,7 +128,9 @@
 								</tr>
 								<tr>
 									<th>서비스이용료</th>
-									<td id="com-rebatePrice" contentEditable="true"></td>
+									<td>
+										<input type="text" id="com-rebatePrice" onkeyup="setComma(id, value)">
+									</td>
 								</tr>
 								<tr>
 									<th>패키지</th>
@@ -116,7 +138,7 @@
 								</tr>
 								<tr>
 									<th>지원금</th>
-									<td id="com-supportPriceList" style="text-align: right;padding: 0.75rem 1.5rem"></td>
+									<td id="com-supportPriceList"></td>
 								</tr>
 								<tr>
 									<th>공단대상</th>
@@ -156,7 +178,9 @@
 								<tbody>
 								<tr style="height: 200px">
 									<th>관리자메모</th>
-									<td id="com-memo" contentEditable="true"></td>
+									<td>
+										<textarea id="com-memo"></textarea>
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -175,15 +199,21 @@
 									<tbody>
 									<tr>
 										<th>이메일</th>
-										<td id="com-email" contentEditable="true"></td>
+										<td>
+											<input type="text" id="com-email">
+										</td>
 									</tr>
 									<tr>
 										<th>이름</th>
-										<td id="com-name" contentEditable="true"></td>
+										<td>
+											<input type="text" id="com-name">
+										</td>
 									</tr>
 									<tr>
 										<th>연락처</th>
-										<td id="com-phone" contentEditable="true"></td>
+										<td>
+											<input type="text" id="com-phone" onkeyup="setPhoneHyphen(this)">
+										</td>
 									</tr>
 									</tbody>
 								</table>
@@ -332,12 +362,16 @@
 							<table class="table" id="ComInfoTable1">
 								<tbody>
 								<tr>
-									<th>기업명</th>
-									<td id="add-com-name" contentEditable="true"></td>
+									<th>고객사</th>
+									<td>
+										<input type="text" id="add-com-name">
+									</td>
 								</tr>
 								<tr>
 									<th>사업장</th>
-									<td id="add-com-branch" contentEditable="true"></td>
+									<td>
+										<input type="text" id="add-com-branch">
+									</td>
 								</tr>
 								<tr>
 									<th>시스템오픈</th>
@@ -390,15 +424,21 @@
 								</tr>
 								<tr>
 									<th>주소</th>
-									<td id="add-com-address" contentEditable="true"></td>
+									<td>
+										<input type="text" id="add-com-address">
+									</td>
 								</tr>
 								<tr>
 									<th>이메일</th>
-									<td id="add-com-email" contentEditable="true"></td>
+									<td>
+										<input type="text" id="add-com-email">
+									</td>
 								</tr>
 								<tr>
 									<th>서비스이용료</th>
-									<td id="add-com-rebatePrice" contentEditable="true"></td>
+									<td>
+										<input type="text" id="add-com-rebatePrice" onkeyup="setComma(id, value)">
+									</td>
 								</tr>
 								<tr>
 									<th>공단대상</th>
@@ -436,7 +476,9 @@
 								</tr>
 								<tr>
 									<th>사업자<br>등록번호</th>
-									<td id="add-com-license" contentEditable="true"></td>
+									<td>
+										<input type="text" id="add-com-license">
+									</td>
 								</tr>
 								</tbody>
 							</table>
@@ -535,7 +577,9 @@
 									<tbody>
 									<tr style="height: 200px">
 										<th>관리자메모</th>
-										<td id="add-com-memo" contentEditable="true"></td>
+										<td>
+											<textarea id="add-com-memo"></textarea>
+										</td>
 									</tr>
 									</tbody>
 								</table>
@@ -566,8 +610,8 @@
 	//클릭시 기업정보
 	function setDetailCompanyData(data) {
 		//ComInfoTable1 기업정보
-		document.getElementById('com-companyName').innerHTML = data.companyName;
-		document.getElementById('com-companyBranch').innerHTML = data.companyBranch;
+		$('#com-companyName').val(data.companyName);
+		$('#com-companyBranch').val(data.companyBranch);
 
 		if (data.systemOpen) {
 			$("input:checkbox[id='systemOpenYes']").prop("checked", true);
@@ -577,7 +621,7 @@
 			$("input:checkbox[id='systemOpenNo']").prop("checked", true);
 		}
 
-		document.getElementById('com-serviceName').innerHTML = regExp(data.serviceName);
+		$('#com-serviceName').text(regExp(data.serviceName));
 
 		if (data.contract) {
 			$("input:checkbox[id='contractYes']").prop("checked", true);
@@ -592,19 +636,19 @@
 		$('#com-inspectionStartDate').val(data.inspectionStartDate);
 		$('#com-inspectionEndDate').val(data.inspectionEndDate);
 
-		document.getElementById('com-rebatePrice').innerHTML = data.rebatePrice.toLocaleString();
+		$('#com-rebatePrice').val(data.rebatePrice.toLocaleString());
 
 		var packagePrice = Array();
 		for (i = 0; i < data.packagePriceList.length; i++) {
 			packagePrice[i] = parseInt(data.packagePriceList[i]).toLocaleString();
 		}
-		document.getElementById('com-packagePriceList').innerHTML = packagePrice.join("<br>");
+		$('#com-packagePriceList').html(packagePrice.join("<br>"));
 
 		var supportPrice = Array();
 		for (i = 0; i < data.supportPriceList.length; i++) {
 			supportPrice[i] = parseInt(data.supportPriceList[i]).toLocaleString();
 		}
-		document.getElementById('com-supportPriceList').innerHTML = supportPrice.join("<br>");
+		$('#com-supportPriceList').html(supportPrice.join("<br>"));
 
 		if (data.pcDiscount) {
 			$("input:checkbox[id='pcDiscountYes']").prop("checked", true);
@@ -656,17 +700,18 @@
 		for (i = 0; i < data.fpackagePriceList.length; i++) {
 			fpackagePrice[i] = parseInt(data.fpackagePriceList[i]).toLocaleString();
 		}
-		document.getElementById('com-fpackagePriceList').innerHTML = fpackagePrice.join(" / ");
+		$('#com-fpackagePriceList').html(fpackagePrice.join("<br>"));
+
 		var fsupportPrice = Array();
 		for (i = 0; i < data.fsupportPriceList.length; i++) {
 			fsupportPrice[i] = parseInt(data.fsupportPriceList[i]).toLocaleString();
 		}
-		document.getElementById('com-fsupportPriceList').innerHTML = fsupportPrice.join(" / ");
+		$('#com-fsupportPriceList').html(fsupportPrice.join("<br>"));
 
 		//담당자 추가 입력폼 초기화
-		document.getElementById('com-email').innerHTML = "";
-		document.getElementById('com-name').innerHTML = "";
-		document.getElementById('com-phone').innerHTML = "";
+		$('#com-email').val('');
+		$('#com-name').val('');
+		$('#com-phone').val('');
 
 		//ComManagerTable 담당자정보
 		$("#ComManagerTable").empty();
@@ -687,19 +732,19 @@
 			html += '<tr style="border-top: 2px solid #424242">';
 			html += '<th>이름</th>';
 			html += '<td>' +
-					'<input type="text" id=\'' + id + 'Name' +'\' value=\'' + data.companyManagerDTOList[i].name + '\'>' +
+					'<input type="text" id=\'' + id + 'Name' + '\' value=\'' + data.companyManagerDTOList[i].name + '\'>' +
 					'</td>';
 			html += '</tr>';
 			html += '<tr>';
 			html += '<th>연락처</th>';
 			html += '<td>' +
-					'<input type="text" id=\'' + id  + 'Phone' + '\' value=\'' + data.companyManagerDTOList[i].phone + '\'>' +
+					'<input type="text" id=\'' + id + 'Phone' + '\' value=\'' + data.companyManagerDTOList[i].phone + '\' onkeyup="setPhoneHyphen(this)">' +
 					'</td>';
 			html += '</tr>';
 			html += '<tr style="border-bottom: 1px solid #DCDCDC">';
 			html += '<th>이메일</th>';
 			html += '<td>' +
-					'<input type="text" id=\'' + id  + 'Email' + '\' value=\'' + data.companyManagerDTOList[i].email + '\'>' +
+					'<input type="text" id=\'' + id + 'Email' + '\' value=\'' + data.companyManagerDTOList[i].email + '\'>' +
 					'</td>';
 			html += '</tr>';
 
@@ -712,9 +757,9 @@
 		var saveItems = new Object();
 
 		saveItems.companyId = cmnId.companyId;
-		saveItems.email = document.getElementById('com-email').innerText;
-		saveItems.name = document.getElementById('com-name').innerText;
-		saveItems.phone = document.getElementById('com-phone').innerText;
+		saveItems.email = $('#com-email').val();
+		saveItems.name = $('#com-name').val();
+		saveItems.phone = $('#com-phone').val();
 
 		console.log(saveItems);
 
@@ -736,9 +781,11 @@
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						clickCompanyDetail(saveItems.companyId);
-						document.getElementById('com-email').innerHTML = "";
-						document.getElementById('com-name').innerHTML = "";
-						document.getElementById('com-phone').innerHTML = "";
+						$('#com-email').val('');
+						$('#com-name').val('');
+						$('#com-phone').val('');
+					} else {
+						alert('저장에 실패했습니다.');
 					}
 				});
 			} else {
@@ -753,9 +800,9 @@
 		saveItems.id = id;
 
 		id = id.replace('#', '');
-		saveItems.name = $('#'+id+'Name').val();
-		saveItems.email = $('#'+id+'Email').val();
-		saveItems.phone = $('#'+id+'Phone').val();
+		saveItems.name = $('#' + id + 'Name').val();
+		saveItems.email = $('#' + id + 'Email').val();
+		saveItems.phone = $('#' + id + 'Phone').val();
 
 		console.log(saveItems);
 
@@ -765,6 +812,8 @@
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
 					clickCompanyDetail(cmnId.companyId);
+				} else {
+					alert('저장에 실패하였습니다.');
 				}
 			});
 		} else {
@@ -795,18 +844,18 @@
 		var saveItems = new Object();
 
 		saveItems.companyId = cmnId.companyId;
-		saveItems.companyName = document.getElementById('com-companyName').innerText;
-		saveItems.companyBranch = document.getElementById('com-companyBranch').innerText;
+		saveItems.companyName = $('#com-companyName').val();
+		saveItems.companyBranch = $('#com-companyBranch').val();
 		saveItems.systemOpen = booleanData("com-systemOpen");
 		saveItems.contract = booleanData("com-contract");
 		saveItems.reservationStartDate = $('#com-reservationStartDate').val();
 		saveItems.reservationEndDate = $('#com-reservationEndDate').val();
 		saveItems.inspectionStartDate = $('#com-inspectionStartDate').val();
 		saveItems.inspectionEndDate = $('#com-inspectionEndDate').val();
-		saveItems.rebatePrice = savePrice('com-rebatePrice');
+		saveItems.rebatePrice = savePrice1('com-rebatePrice');
 		saveItems.pcDiscount = booleanData("com-pcDiscount");
 		saveItems.familySupport = booleanData("com-familySupport");
-		saveItems.memo = $('#com-memo').html();
+		saveItems.memo = $('#com-memo').val();
 		saveItems.paymentCode = booleanData('com-paymentCode');
 		saveItems.supportFundCode = booleanData('com-supportFundCode');
 		saveItems.balanceCode = booleanData('com-balanceCode');
@@ -815,7 +864,7 @@
 
 		//입력된 정보 검사
 		if (saveItems.companyName == "") {
-			alert("기업명을 입력해주세요.");
+			alert("고객사를 입력해주세요.");
 		} else if (saveItems.companyBranch == "") {
 			alert("사업장을 입력해주세요.");
 		} else if (saveItems.reservationStartDate == "" || saveItems.reservationEndDate == "") {
@@ -845,20 +894,20 @@
 	function createCompanyData() {
 		var saveItems = new Object();
 
-		saveItems.name = document.getElementById('add-com-name').innerText;
-		saveItems.branch = document.getElementById('add-com-branch').innerText;
+		saveItems.name = $('#add-com-name').val();
+		saveItems.branch = $('#add-com-branch').val();
 		saveItems.systemOpen = booleanData('add-com-systemOpen');
 		saveItems.contract = booleanData('add-com-contract');
-		saveItems.address = document.getElementById('add-com-address').innerText;
-		saveItems.email = document.getElementById('add-com-email').innerText;
-		saveItems.rebatePrice = savePrice('add-com-rebatePrice');
+		saveItems.address = $('#add-com-address').val();
+		saveItems.email = $('#add-com-email').val();
+		saveItems.rebatePrice = savePrice1('add-com-rebatePrice');
 		saveItems.pcDiscount = booleanData('add-com-pcDiscount');
 		saveItems.paymentCode = booleanData('add-com-paymentCode');
 		saveItems.supportFundCode = booleanData('add-com-supportFundCode');
 		saveItems.balanceCode = booleanData('add-com-balanceCode');
 		saveItems.familySupport = booleanData('add-com-familySupport');
-		saveItems.license = document.getElementById('add-com-license').innerText;
-		saveItems.memo = document.getElementById('add-com-memo').innerText;
+		saveItems.license = $('#add-com-license').val();
+		saveItems.memo = $('#add-com-memo').val();
 		saveItems.reservationStartDate = $('#add-com-reservationStartDate').val();
 		saveItems.reservationEndDate = $('#add-com-reservationEndDate').val();
 		saveItems.inspectionStartDate = $('#add-com-inspectionStartDate').val();
@@ -868,7 +917,7 @@
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
-			alert("기업명을 입력해주세요.");
+			alert("고객사를 입력해주세요.");
 		} else if (saveItems.branch == "") {
 			alert("사업장을 입력해주세요.");
 		} else if (saveItems.reservationStartDate == "" || saveItems.reservationEndDate == "") {

@@ -53,7 +53,7 @@
 						</div>
 
 						<label class="col-form-label" style="margin-left: 20px">
-							<li>병원명</li>
+							<li>병원</li>
 						</label>
 						<div class="form-group col">
 							<select id="hoName" class="form-control">
@@ -117,8 +117,8 @@
 	</div>
 
 	<div class="row" style="margin-top: 3rem">
-		<form style="margin: 0 auto; width: 85%; padding: 1rem">
-			<div class="page_wrap">
+		<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 				<div class="page_nation" id="paging">
 				</div>
 			</div>
@@ -182,7 +182,7 @@
 
 		companySelect = data.coNameBranch;
 
-		//병원명
+		//병원
 		for (i = 0; i < data.hoName.length; i++) {
 			var html = '';
 			html += '<option>' + data.hoName[i] + '</option>'
@@ -216,6 +216,8 @@
 			alert("사업장을 선택해주세요.");
 			return false;
 		}
+
+		console.log(searchItems);
 
 		instance.post('M016002', searchItems).then(res => {
 			pageCount = 0;

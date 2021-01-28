@@ -154,7 +154,7 @@
 					<th>서비스</th>
 					<th>고객사</th>
 					<th>사업장</th>
-					<th>아이디<br>(사번)</th>
+					<th>사번</th>
 					<th>성명</th>
 					<th>등급</th>
 					<th style="width: 7%">생년월일</th>
@@ -269,7 +269,7 @@ require('reservation_modal.php');
 			}
 			$("#reservationStatus").append(html);
 		}
-		//병원명
+		//병원
 		for (i = 0; i < data.hospitalName.length; i++) {
 			var html = '';
 			html += '<option>' + data.hospitalName[i] + '</option>'
@@ -419,7 +419,7 @@ require('reservation_modal.php');
 				tt.push("서비스");
 				tt.push("고객사");
 				tt.push("사업장");
-				tt.push("아이디");
+				tt.push("사번");
 				tt.push("성명");
 				tt.push("관계");
 				tt.push("생년월일");

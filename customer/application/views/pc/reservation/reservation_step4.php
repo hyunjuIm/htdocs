@@ -109,7 +109,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title3.jpg); height: 30rem">
@@ -162,7 +162,7 @@
 						<div class="row" style="margin-top: 5rem">
 							<table class="result-table">
 								<tr>
-									<th>병원명</th>
+									<th>병원</th>
 									<td id="hosName"></td>
 								</tr>
 								<tr>

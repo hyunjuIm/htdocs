@@ -81,6 +81,18 @@ class customer extends CI_Controller
 		$this->load->view('pc/health_info/health_encyclopedia_detail');
 	}
 
+	//이용약관
+	public function policy1()
+	{
+		$this->load->view('pc/guide/policy_1');
+	}
+
+	//개인정보 처리방침
+	public function policy2()
+	{
+		$this->load->view('pc/guide/policy_2');
+	}
+
 	//공지사항
 	public function notice_list()
 	{

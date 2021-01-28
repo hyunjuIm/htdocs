@@ -1,5 +1,5 @@
 .container {
-	min-height: calc(100vh - 240px);
+	min-height: 100vh;
 	padding: 20px;
 	font-size: 1.4rem;
 	color: black;

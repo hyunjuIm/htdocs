@@ -31,6 +31,11 @@
 
 				<hr>
 
+				<div id="ready">
+					답변이 아직 등록되지 않았습니다.<br>
+					듀얼헬스케어는 신속한 답변을 위해 노력하겠습니다.
+				</div>
+
 				<table id="answer" class="qna-table" style="margin-top: 3rem">
 					<tr>
 						<td rowspan="3" class="title">A</td>
@@ -72,8 +77,10 @@
 	function setInquiryDetail(data, status) {
 		if (status == 'true') {
 			$("#answer").show();
+			$("#ready").hide();
 		} else {
 			$("#answer").hide();
+			$("#ready").show();
 		}
 
 		$("#question-title").text(data.title);

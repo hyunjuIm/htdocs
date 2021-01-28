@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -51,7 +52,8 @@
 
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -69,7 +71,7 @@
 				<th>사업년도</th>
 				<td>
 					<select id="servedYear">
-						<option selected>- 전체 -</option>
+						<option value="all" selected>-전체-</option>
 					</select>
 				</td>
 			</tr>
@@ -77,7 +79,7 @@
 				<th>검진병원</th>
 				<td>
 					<select id="hospitalName">
-						<option selected>- 전체 -</option>
+						<option value="all" selected>-전체-</option>
 					</select>
 				</td>
 			</tr>
@@ -97,18 +99,18 @@
 				<th>서비스</th>
 				<td>
 					<select id="serviceName">
-						<option selected>- 전체 -</option>
+						<option value="all" selected>-전체-</option>
 					</select>
 				</td>
 			</tr>
-			<tr>
-				<th>지원율</th>
-				<td>
-					<select id="supportPercent">
-						<option selected>- 전체 -</option>
-					</select>
-				</td>
-			</tr>
+			<!--			<tr>-->
+			<!--				<th>지원율</th>-->
+			<!--				<td>-->
+			<!--					<select id="supportPercent">-->
+			<!--						<option selected>- 전체 -</option>-->
+			<!--					</select>-->
+			<!--				</td>-->
+			<!--			</tr>-->
 		</table>
 	</div>
 
@@ -139,7 +141,7 @@
 	</div>
 
 	<div class="row" style="margin-top: 20px">
-		<form style="margin: 0 auto; width: 85%; padding: 1rem">
+		<form style="margin: 0 auto; padding: 1rem 0">
 			<div class="page_wrap">
 				<div class="page_nation" id="paging">
 				</div>
@@ -152,13 +154,19 @@
 
 <footer>
 	<?php
-	require('common/footer.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/footer.php');
 	?>
 </footer>
 
 </html>
 
 <script>
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
+	?>
+
 	var pageCount = 0;
 	var pageNum = 0;
 
@@ -189,12 +197,12 @@
 			html += '<option>' + data.serviceName[i] + '</option>'
 			$("#serviceName").append(html);
 		}
-		//서비스
-		for (i = 0; i < data.supportPercent.length; i++) {
-			var html = '';
-			html += '<option value=\'' + data.supportPercent[i] + '\'>' + data.supportPercent[i] + '%</option>'
-			$("#supportPercent").append(html);
-		}
+		// //서비스
+		// for (i = 0; i < data.supportPercent.length; i++) {
+		// 	var html = '';
+		// 	html += '<option value=\'' + data.supportPercent[i] + '\'>' + data.supportPercent[i] + '%</option>'
+		// 	$("#supportPercent").append(html);
+		// }
 
 		//로딩 되자마자 초기 셋팅
 		searchInformation(0);
@@ -202,7 +210,7 @@
 
 	//페이징-숫자클릭
 	function searchInformation(index) {
-		if($("#searchWord").val().length == 1) {
+		if ($("#searchWord").val().length == 1) {
 			alert('두 글자 이상 검색어로 입력주세요.');
 			return false;
 		}
@@ -225,20 +233,13 @@
 		searchItems.reservationStartDate = $("#reservationStartDate").val();
 		searchItems.reservationEndDate = $("#reservationEndDate").val();
 		searchItems.serviceName = $("#serviceName option:selected").val();
-		searchItems.supportPercent = $("#supportPercent option:selected").val();
+		searchItems.supportPercent = "all";
 
-		if (searchItems.servedYear == "- 전체 -") {
-			searchItems.servedYear = "all";
-		} if (searchItems.hospitalName == "- 전체 -") {
-			searchItems.hospitalName = "all";
-		} if (searchItems.reservationStartDate == "") {
+		if (searchItems.reservationStartDate == "") {
 			searchItems.reservationStartDate = "2012-01-01";
-		} if (searchItems.reservationEndDate == "") {
+		}
+		if (searchItems.reservationEndDate == "") {
 			searchItems.reservationEndDate = "2030-01-01";
-		} if (searchItems.serviceName == "- 전체 -") {
-			searchItems.serviceName = "all";
-		} if (searchItems.supportPercent == "- 전체 -") {
-			searchItems.supportPercent = "all";
 		}
 
 		instance.post('C0202', searchItems).then(res => {
@@ -251,17 +252,13 @@
 		});
 	}
 
-	<?php
-	require('common/paging.js');
-	?>
-
 	//예약관리 테이블 셋팅
 	function setReservationTable(data, index) {
 		setPaging(index);
 
 		$("#reservationTable").empty();
 
-		if(data.length == 0) {
+		if (data.length == 0) {
 			var html = '';
 			html += '<tr>';
 			html += '<td colspan="20">해당하는 결과가 없습니다.</td>';

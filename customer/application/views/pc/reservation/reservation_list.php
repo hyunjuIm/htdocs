@@ -92,7 +92,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title3.jpg)">
@@ -194,7 +194,7 @@
 					'</tr>' +
 					'<tr>' +
 					'<th rowspan="2">예약병원</th>' +
-					'<td class="title">병원명</td>' +
+					'<td class="title">병원</td>' +
 					'<td>' + data[i].hoName + '</td>' +
 					'<td class="title">전화번호</td>' +
 					'<td>' + data[i].hoPhone + '</td>' +

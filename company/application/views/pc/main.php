@@ -23,6 +23,10 @@
 			padding: 1.2rem;
 		}
 
+		.box {
+			min-width: 60rem;
+		}
+
 		.doughnuts {
 			position: relative;
 			width: 17rem;
@@ -78,9 +82,10 @@
 		}
 
 		.down-btn {
-			width: 28rem;
-			height: 13rem;
+			width: 280px;
+			height: 130px;
 			cursor: pointer;
+			box-shadow: 0 0 10px #d7d7d7;
 		}
 	</style>
 </head>
@@ -172,7 +177,7 @@
 							<thead>
 							<tr>
 								<th style="width: 10%">NO</th>
-								<th>제목</th>
+								<th style="width: 60%">제목</th>
 								<th>작성자</th>
 								<th>등록일</th>
 							</tr>
@@ -202,10 +207,17 @@
 						</div>
 					</div>
 				</div>
-				<div style="padding-top: 3rem">
-					<div class="down-btn"
-						 style="background-image: url(../../../asset/images/btn_manual.png);background-size: 100% 100%;"
-						 onclick="downloadBasicSheet('company_manual', '매뉴얼.pptx')"></div>
+				<div style="display: block;padding: 3rem 0;width: 100%">
+					<div style="display: flex;margin: 0 auto;width: fit-content">
+						<div class="down-btn"
+							 style="background-image: url(../../../asset/images/btn_hos.png);background-size: 100% 100%;margin-right: 3rem"></div>
+						<div class="down-btn"
+							 style="background-image: url(../../../asset/images/btn_target.png);background-size: 100% 100%;margin-right: 3rem"></div>
+						<div class="down-btn"
+							 style="background-image: url(../../../asset/images/btn_manual.png);background-size: 100% 100%;"
+							 onclick="downloadBasicSheet('company_manual', '매뉴얼.pptx')"></div>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -216,6 +228,10 @@
 </html>
 
 <script>
+	<?php
+	require('common/file_data.js');
+	?>
+
 	var coIdObj = new Object();
 	coIdObj.coId = sessionStorage.getItem("userCoID");
 
@@ -382,10 +398,10 @@
 		html += '<tbody>'
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>';
-			html += '<td style="width: 10%">' + (i + 1) + '</td>';
+			html += '<td>' + (i + 1) + '</td>';
 			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].no + '\')">' + data[i].title + '</td>';
-			html += '<td style="width: 20%">' + data[i].author + '</td>';
-			html += '<td style="width: 20%">' + data[i].createDate + '</td>';
+			html += '<td>' + data[i].author + '</td>';
+			html += '<td>' + data[i].createDate + '</td>';
 			html += '</tr>';
 		}
 
@@ -398,7 +414,4 @@
 		location.href = "/company/notice_detail?id=" + index;
 	}
 
-	<?php
-	require('common/file_data.js');
-	?>
 </script>

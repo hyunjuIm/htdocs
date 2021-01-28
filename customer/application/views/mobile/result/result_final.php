@@ -48,6 +48,8 @@
 		.item-table img {
 			width: 50%;
 			height: 50%;
+			max-width: 72px;
+			max-height: 72px;
 		}
 
 		.item-table td {
@@ -60,7 +62,7 @@
 		}
 
 		.item-table .active, .item-table td:hover {
-			/*box-shadow: 0 0 0 3px #3529b1 inset;*/
+			background: #f1f1fa;
 		}
 
 		.item, .item-hover {

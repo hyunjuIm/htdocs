@@ -34,7 +34,7 @@
 							<table class="table" id="HosInfoTable1">
 								<tbody>
 								<tr>
-									<th>병원명</th>
+									<th>병원</th>
 									<td>
 										<input class="info-input" type="text" id="hos-name">
 									</td>
@@ -96,7 +96,7 @@
 								<tr>
 									<th>공단금액</th>
 									<td>
-										<input class="info-input" type="text" id="hos-pcPrice">
+										<input class="info-input" type="text" id="hos-pcPrice" onkeyup="setComma(id, value)">
 									</td>
 								</tr>
 								<tr>
@@ -291,7 +291,7 @@
 							<table class="table" id="HosInfoTable1" style="margin-bottom: 40px">
 								<tbody>
 								<tr>
-									<th>병원명</th>
+									<th>병원</th>
 									<td>
 										<input class="info-input" type="text" id="create-hos-name">
 									</td>
@@ -351,7 +351,7 @@
 								<tr>
 									<th>공단금액</th>
 									<td>
-										<input class="info-input" type="text" id="create-hos-pcPrice">
+										<input class="info-input" type="text" id="create-hos-pcPrice" onkeyup="setComma(id, value)">
 									</td>
 								</tr>
 								<tr>
@@ -770,7 +770,7 @@
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
-			alert("병원명을 입력해주세요.");
+			alert("병원을 입력해주세요.");
 		} else if (saveItems.zipCode == "" || saveItems.address == "" || saveItems.buildingNum == "") {
 			alert("주소를 입력해주세요.");
 		} else if (saveItems.grade == "") {
@@ -887,6 +887,8 @@
 						});
 						$("input:checkbox[id='receiveSMSYes']").prop("checked", false);
 						$("input:checkbox[id='receiveSMSNo']").prop("checked", false);
+					} else {
+						alert('저장에 실패했습니다.');
 					}
 				});
 			} else {
@@ -1123,7 +1125,7 @@
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
-			alert("병원명을 입력해주세요.");
+			alert("병원을 입력해주세요.");
 		} else if (saveItems.zipCode == "" || saveItems.address == "" || saveItems.buildingNum == "") {
 			alert("주소를 입력해주세요.");
 		} else if (saveItems.grade == "") {

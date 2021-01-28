@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -26,14 +27,13 @@
 		}
 
 		.notice-box .title {
-			font-size: 2.5rem;
+			font-size: 3.5rem;
 			font-weight: 400;
 			color: #3529b1;
 		}
 
 		.notice-box .date {
 			color: grey;
-			font-size: 1.4rem;
 			font-weight: 400;
 		}
 
@@ -41,10 +41,9 @@
 			display: block;
 			border-top: 2px solid black;
 			border-bottom: 1px solid #DCDCDC;
-			padding: 3rem 2rem;
+			padding: 5rem 2rem;
 			text-align: left;
 			background: white;
-			font-size: 1.5rem;
 		}
 
 		.notice-box .file {
@@ -67,56 +66,53 @@
 			text-decoration: underline;
 		}
 
-		.btn {
-			font-size: 1.4rem;
-			font-weight: 300;
-			padding: 0.5rem 3rem ;
-		}
-
 	</style>
 </head>
 <body>
 
+<!--상단 메뉴-->
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
-<div id="main">
-	<div class="row notice-box">
+<!--콘텐츠 내용-->
 
-		<div class="row" style="display: block;padding: 2rem 0 5rem 0">
-			<div class="title" id="ntTitle"></div>
-			<div class="date" id="ntDate"></div>
+<div class="main">
+	<div class="container" style="width:67%;margin: 0 auto">
+		<div class="row notice-box">
+
+			<div class="row" style="display: block;padding: 2rem 0 5rem 0">
+				<div class="title" id="ntTitle"></div>
+				<div class="date" id="ntDate"></div>
+			</div>
+
+			<div class="row content" id="ntContent"></div>
+
+			<div class="row file">
+				첨부파일 :
+				<span id="ntFile" onclick="downloadFile()"></span>
+			</div>
 		</div>
 
-		<div class="row content" id="ntContent"></div>
-
-		<div class="row file">
-			첨부파일 :
-			<span id="ntFile" onclick="downloadFile()"></span>
+		<div class="row" style="margin: 7rem 0">
+			<div style="margin: 0 auto;width: fit-content">
+				<div class="btn-white-square" onclick="location.href='/company/notice_list'">목록으로</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="row" style="margin: 5rem 0">
-		<div style="margin: 0 auto;width: fit-content">
-			<div class="btn btn-dark" onclick="location.href='/m/notice_list'">목록으로</div>
-		</div>
-	</div>
-</div>
-
 </body>
-
-<footer>
-	<?php
-	require('common/footer.php');
-	?>
-</footer>
-
 </html>
 
 <script>
+	//상단바 선택된 메뉴
+	$('#noticeMenu').addClass('active');
+	$('#noticeMenu').before('<div class="menu-select-line"></div>');
+
+	$('#loading').hide();
+
 	var pageCount = 0;
 	var pageNum = 0;
 
@@ -124,7 +120,7 @@
 	var nId = new Object();
 	$(document).ready(function () {
 		var val = location.href.substr(
-			location.href.lastIndexOf('=') + 1
+				location.href.lastIndexOf('=') + 1
 		);
 		nId.id = val;
 
@@ -170,3 +166,4 @@
 		})
 	}
 </script>
+

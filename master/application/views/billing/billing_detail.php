@@ -25,18 +25,19 @@
 <div class="container" style="padding-top: 50px; max-width: none">
 	<div class="row" style="margin: 30px; padding: 20px">
 		<form class="table-box" style="margin: 0 auto; padding: 30px; width: 85%; max-width: 1500px">
+			<div class="btn-save-square" style="float: left" onclick="reloadBilling()">청구갱신</div>
 			<div class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="billDetailInfos" class="table table-hover" style="margin-top: 45px">
 				<thead>
 				<tr>
-					<th style="width: 4%"><input type="checkbox" id="billingDetailCheck" name="billingDetailCheck" onclick="clickAll(id, name)"></th>
+					<th style="width: 4%"><input type="checkbox" id="billingDetailCheck" name="billingDetailCheck"
+												 onclick="clickAll(id, name)"></th>
 					<th style="width: 4%">NO</th>
-					<th style="width: 13%">고객사명</th>
-					<th style="width: 13%">사업장명</th>
-					<th style="width: 13%;color: #3529b1; font-weight: bold">병원명</th>
+					<th style="width: 13%">고객사</th>
+					<th style="width: 13%">사업장</th>
+					<th style="width: 13%;color: #3529b1; font-weight: bold">병원</th>
 					<th style="width: 13%">서비스</th>
 					<th>기업부담금</th>
-					<th>공단부담금</th>
 					<th>개인부담금</th>
 					<th style="width: 7%">계산서</th>
 					<th style="width: 7%">청구서</th>
@@ -69,7 +70,7 @@ require('billing_modal.php');
 	var bId = new Object();
 	$(document).ready(function () {
 		var val = location.href.substr(
-			location.href.lastIndexOf('=') + 1
+				location.href.lastIndexOf('=') + 1
 		);
 		bId.bId = val;
 
@@ -78,6 +79,19 @@ require('billing_modal.php');
 		});
 	})
 
+	function reloadBilling() {
+		var sendItems = new Object();
+		sendItems.bId = bId.bId;
+
+		console.log(sendItems);
+
+		instance.post('M009009_REQ', sendItems).then(res => {
+			if (res.data.message == "success") {
+				alert("갱신되었습니다.");
+			}
+		});
+	}
+
 	//청구관리 테이블
 	function setBillDetailData(data) {
 		for (i = 0; i < data.length; i++) {
@@ -85,17 +99,16 @@ require('billing_modal.php');
 			html += '<tr>';
 			html += '<td><input type="checkbox" name="billingDetailCheck" onclick="clickOne(name)"></td>';
 
-			var no = i+1;
+			var no = i + 1;
 			html += '<td>' + no + '</td>';
 
 			html += '<td>' + data[i].coName + '</td>';
 			html += '<td>' + data[i].coBranch + '</td>';
 			html += '<td data-toggle="modal" data-target="#billingDetailModal" ' +
-					'style="cursor: pointer; color: #3529b1; font-weight: bold" '+
+					'style="cursor: pointer; color: #3529b1; font-weight: bold" ' +
 					'onClick="clickBillingDetail(\'' + bId.bId + '\', \'' + data[i].hosId + '\')">' + data[i].hosName + '</td>';
 			html += '<td>' + data[i].serviceName + '</td>';
 			html += '<td>' + data[i].coCharge.toLocaleString() + '</td>';
-			html += '<td>' + data[i].pcCharge.toLocaleString() + '</td>';
 			html += '<td>' + data[i].psnCharge.toLocaleString() + '</td>';
 
 			//계산서
@@ -127,13 +140,13 @@ require('billing_modal.php');
 
 		console.log(saveItems);
 
-		if(type == 0) {
+		if (type == 0) {
 			instance.post('M009006_REQ', saveItems).then(res => {
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
 				}
 			});
-		} else if(type == 1) {
+		} else if (type == 1) {
 			instance.post('M009007_REQ', saveItems).then(res => {
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
@@ -161,11 +174,10 @@ require('billing_modal.php');
 				const table = [];
 				const tt = [];
 				tt.push("사업연도");
-				tt.push("고객사명");
-				tt.push("사업장명");
+				tt.push("고객사");
+				tt.push("사업장");
 				tt.push("서비스");
 				tt.push("기업부담금");
-				tt.push("공단부담금");
 				tt.push("개인부담금");
 				tt.push("계산서");
 				tt.push("청구서");
@@ -179,7 +191,6 @@ require('billing_modal.php');
 					td.push(data[i].coBranch);
 					td.push(data[i].serviceName);
 					td.push(data[i].coCharge.toLocaleString());
-					td.push(data[i].pcCharge.toLocaleString());
 					td.push(data[i].psnCharge.toLocaleString());
 					td.push(data[i].showBill ? 'Y' : 'N');
 					td.push(data[i].showCharge ? 'Y' : 'N');

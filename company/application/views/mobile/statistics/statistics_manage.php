@@ -4,7 +4,8 @@
 	<title>듀얼헬스케어</title>
 
 	<?php
-	require('common/head.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/head.php');
 	?>
 
 	<style>
@@ -178,7 +179,8 @@
 
 <header>
 	<?php
-	require('common/header.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/header.php');
 	?>
 </header>
 
@@ -228,14 +230,16 @@
 
 <footer>
 	<?php
-	require('common/footer.php');
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/footer.php');
 	?>
 </footer>
-
 
 
 </html>
 
 <script>
+
+	$('#loading').hide();
 
 </script>

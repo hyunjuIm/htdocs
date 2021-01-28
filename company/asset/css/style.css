@@ -118,7 +118,7 @@ body {
 }
 
 .basic-table tbody tr:hover {
-	background-color: whitesmoke;
+	background-color: #fafafa;
 }
 
 /*박스 스타일 - 흰배경 검은그림자*/

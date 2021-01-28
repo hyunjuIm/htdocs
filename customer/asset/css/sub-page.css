@@ -75,7 +75,21 @@ body {
 	text-align: center;
 	color: black;
 	width: 120rem;
-	padding: 6rem 0;
+	padding: 6rem 0 11rem 0;
+}
+
+.policy {
+	display: block;
+	margin-top: 8.5rem;
+	text-align: left;
+}
+
+.policy p {
+	line-height: 3rem;
+}
+
+.policy li, .policy ul, .policy ol {
+	line-height: 3rem !important;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {

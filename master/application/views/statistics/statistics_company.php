@@ -106,7 +106,7 @@
 	</div>
 
 	<div class="row " style="margin: 0px 30px">
-		<form class="table-responsive" style="margin: 0 auto">
+		<div class="table-responsive" id="statisticsCompanyView" style="margin: 0 auto;display: none">
 			<div
 					class="btn-default-small excel" style="float: right" onclick="tableExcelDownload()"></div>
 			<table id="statisticsCompanyInfos" class="table table-bordered" style="margin-top: 45px">
@@ -151,7 +151,7 @@
 				</tr>
 				</tbody>
 			</table>
-		</form>
+		</div>
 	</div>
 
 </div>
@@ -237,6 +237,7 @@
 
 	//기업 통계 테이블
 	function setStaticsCompanyData(data) {
+		$('#statisticsCompanyView').show();
 		$('#statisticsCompanyInfos > tbody > tr > td').remove();
 		$('#year').text('사업연도) ' + ($("#stYear option:selected").val()));
 

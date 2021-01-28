@@ -105,7 +105,7 @@
 				<tr>
 					<th style="width: 5%"><input type="checkbox" id="hospitalCheck" name="hospitalCheck" onclick="clickAll(id, name)"></th>
 					<th style="width: 5%">NO</th>
-					<th style="color: #3529b1">병원명</th>
+					<th style="color: #3529b1">병원</th>
 					<th>지역</th>
 					<th>서비스</th>
 					<th>계약유무</th>
@@ -310,7 +310,7 @@ require('hospital_modal.php');
 				const table = [];
 				const tt = [];
 				tt.push("사업연도");
-				tt.push("병원명");
+				tt.push("병원");
 				tt.push("지역");
 				tt.push("주소");
 				tt.push("등급");

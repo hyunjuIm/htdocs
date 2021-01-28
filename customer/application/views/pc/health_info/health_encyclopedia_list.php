@@ -63,7 +63,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title4.jpg)">
@@ -106,8 +106,8 @@
 							</table>
 						</div>
 						<div class="row" style="margin-top: 3rem">
-							<form style="margin: 0 auto; width: 85%; padding: 1rem">
-								<div class="page_wrap">
+							<form style="margin: 0 auto; padding: 1rem 0">
+				<div class="page_wrap">
 									<div class="page_nation" id="paging">
 									</div>
 								</div>

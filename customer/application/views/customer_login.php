@@ -254,7 +254,7 @@
 	</style>
 </head>
 
-<body background="../../asset/images/bg_login.jpg">
+<body id="body" background="../../asset/images/bg_login.jpg">
 <div class="container" style="height: inherit">
 	<div class="col-sm wrapper fadeInDown">
 		<form id="formContent">
@@ -275,6 +275,7 @@
 </body>
 
 <script>
+	console.log($('#body').width());
 
 	// 모바일 여부
 	var isMobile = false;
@@ -321,7 +322,7 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			baseURL: "http://192.168.219.104:8080/permission/",
+			baseURL: "http://192.168.219.108:8080/permission/",
 			timeout: 5000
 		});
 
@@ -334,6 +335,12 @@
 				sessionStorage.setItem("userID", requestMember.id);
 				sessionStorage.setItem("userName", split[0]);
 				sessionStorage.setItem("userCusID", split[1]);
+
+				if($('#body').width() < 550) {
+					isMobile = true;
+				} else {
+					isMobile = false;
+				}
 
 				//모바일인지 pc인지
 				if(isMobile) {

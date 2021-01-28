@@ -136,7 +136,7 @@
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
-			<div style="height:100vh; overflow-y: scroll;min-height: 90rem;">
+			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
 					 style="background-image: url(../../../../asset/images/title2.jpg)">
@@ -398,9 +398,9 @@
 
 		let tableHead =
 				'<tr>' +
-				'<th width="33%">검사항목</th>' +
-				'<th>기준수치</th>' +
-				'<th>결과수치</th>' +
+				'<th width="34%">검사항목</th>' +
+				'<th width="18%">정상수치</th>' +
+				'<th width="18%">결과수치</th>' +
 				'<th width="30%">검사결과</th>' +
 				'</tr>';
 
