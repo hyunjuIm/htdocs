@@ -177,7 +177,7 @@
 					'</tr>' +
 					'<tr>' +
 					'<td class="title">연락처</td>' +
-					'<td><input type="text" id=\'' + phone + '\' value="' + data[i].phone + '"></td>' +
+					'<td><input type="text" id=\'' + phone + '\' value="' + data[i].phone + '" onkeyup="setPhoneHyphen(this)"></td>' +
 					'</tr>' +
 					'<tr>' +
 					'<td class="title">이메일</td>' +

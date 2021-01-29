@@ -32,8 +32,12 @@
 				<hr>
 
 				<div id="ready">
-					답변이 아직 등록되지 않았습니다.<br>
-					듀얼헬스케어는 신속한 답변을 위해 노력하겠습니다.
+
+					<div>
+						답변이 아직 등록되지 않았습니다.<br>
+						듀얼헬스케어는 신속한 답변을 위해 노력하겠습니다.
+					</div>
+
 				</div>
 
 				<table id="answer" class="qna-table" style="margin-top: 3rem">

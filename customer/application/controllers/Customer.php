@@ -9,6 +9,14 @@ class customer extends CI_Controller
 		$this->load->view('customer_login');
 	}
 
+
+	//메인화면
+	public function doIt()
+	{
+		$this->load->view('pc/common/govData');
+	}
+
+
 	//메인화면
 	public function index()
 	{

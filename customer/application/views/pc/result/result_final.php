@@ -8,7 +8,7 @@
 	require($parentDir . '/common/head.php');
 	?>
 
-	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css?ver=1.1"/>
 
 	<style>
 		.result-table {
@@ -176,7 +176,13 @@
 							<div class="sub-title">종합결과</div>
 						</div>
 
-						<div class="row" style="margin-top: 2.5rem;">
+						<div class="row empty-box" id="empty" style="display: none;">
+							<div>
+								검사 결과가 없습니다.
+							</div>
+						</div>
+
+						<div class="row" id="select" style="display: none;margin-top: 2.5rem;">
 							<div style="margin-bottom: 0.6rem;display: inline-block;width: 100%">
 								<div style="float:left;">
 									<select id="familySelect" onchange="setDataSelectOption()">
@@ -273,6 +279,15 @@
 
 	//수검자 이름 셀렉트 셋팅
 	function setFamilySelectOption(data) {
+		if(data.length == 0) {
+			$('#empty').show();
+			$('#select').hide();
+			return false;
+		} else {
+			$('#empty').hide();
+			$('#select').show();
+		}
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<option value=\'' + data[i].famId + '\'>' + data[i].famName + '</option>'

@@ -193,17 +193,17 @@
 						<h2>(주)듀얼헬스케어 고객센터</h2>
 					</div>
 					<div>
-						<div>
-							<img src="/asset/images/main_list_ico01.png">
-							담당자 : 김듀얼
+						<div style="display: flex; align-items: center">
+							<i class="ri-user-line ri-xl"></i>
+							<span style="margin: 0.3rem 0.5rem">담당자: 김듀얼</span>
 						</div>
-						<div style="padding: 0.5rem 0">
-							<img src="/asset/images/main_list_ico02.png">
-							이메일 : kimdd.dualhealth@gmail.com
+						<div style="display: flex; align-items: center">
+							<i class="ri-mail-line ri-xl"></i>
+							<span style="margin: 0.3rem 0.5rem">이메일: dualhealth@gmail.com</span>
 						</div>
-						<div>
-							<img src="/asset/images/main_list_ico03.png">
-							전화 : 1661-2645
+						<div style="display: flex; align-items: center">
+							<i class="ri-customer-service-2-fill ri-xl"></i>
+							<span style="margin: 0.3rem 0.5rem">전화: 1661-2645</span>
 						</div>
 					</div>
 				</div>

@@ -8,10 +8,6 @@
 	require($parentDir . '/common/head.php');
 	?>
 
-	<!--그래프-->
-	<script type="text/javascript"
-			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
-
 	<style>
 		.table {
 			font-size: 15px;
@@ -101,7 +97,7 @@
 		</div>
 	</div>
 
-	<div class="row" style="margin: 0 auto;padding: 50px">
+	<div class="row" id="companyChartView" style="margin: 0 auto;padding: 50px">
 		<canvas id="companyChart" width="90%" height="15%"></canvas>
 	</div>
 
@@ -302,6 +298,8 @@
 			$("#famIspCount").append(html);
 			famIspCount.push(data[i].famIspCount);
 		}
+
+		$('#companyChartView').html('<canvas id="companyChart" width="90%" height="15%"></canvas>');
 
 		//기업 통계 그래프 그리기
 		var ctx = document.getElementById("companyChart");

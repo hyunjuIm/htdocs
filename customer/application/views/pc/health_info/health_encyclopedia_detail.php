@@ -92,7 +92,7 @@
 			<div style="height:100vh; overflow-y: auto;min-height: 90rem;">
 				<!-- 상단 메뉴 -->
 				<div class="container top-menu"
-					 style="background-image: url(../../../../asset/images/title4.jpg)">
+					 style="background-image: url(../../../../asset/images/title6.png)">
 					<div class="row line">
 						<div class="line-content">
 							<img src="/asset/images/icon_home.png">

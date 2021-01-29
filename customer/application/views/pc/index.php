@@ -3,9 +3,9 @@
 <head>
 	<title>듀얼헬스케어</title>
 
-    <?php
-    require('common/head.php');
-    ?>
+	<?php
+	require('common/head.php');
+	?>
 
 	<style>
 		html {
@@ -200,10 +200,12 @@
 			<table style="margin: 0 auto">
 				<tr>
 					<td class="main-content" rowspan="2" colspan="2">
-						<img src="/asset/images/banner2.png" style="width: inherit;height: inherit">
+						<img src="/asset/images/banner2.png" style="width: inherit;height: inherit"
+							 onclick="location.href ='/customer/health_checkup_guide'">
 					</td>
 					<td class="sub-content" style="background-color: rgba( 108, 4, 3, 0.8)">
-						<div class="menu1 wrap" style="width: inherit;height: inherit" onclick="location.href ='/customer/reservation_list'">
+						<div class="menu1 wrap" style="width: inherit;height: inherit"
+							 onclick="location.href ='/customer/reservation_list'">
 							<div class="inner">
 								<img src="/asset/images/icon1.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">내예약<br></span>
@@ -211,7 +213,8 @@
 							</div>
 						</div>
 					</td>
-					<td class="sub-content" style="background-color: rgba( 88, 83, 69, 0.7)" onclick="location.href ='/customer/reservation_step1'">
+					<td class="sub-content" style="background-color: rgba( 88, 83, 69, 0.7)"
+						onclick="location.href ='/customer/reservation_step1'">
 						<div class="menu2 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon2.png" style="margin-bottom: 10px"><br>
@@ -220,7 +223,8 @@
 							</div>
 						</div>
 					</td>
-					<td class="sub-content" style="background-color: rgba( 0, 0, 0, 0.75)" onclick="location.href ='/customer/result_final'">
+					<td class="sub-content" style="background-color: rgba( 0, 0, 0, 0.75)"
+						onclick="location.href ='/customer/result_final'">
 						<div class="menu3 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon3.png" style="margin-bottom: 10px"><br>
@@ -231,7 +235,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="sub-content" style="background-color: rgba( 2, 10, 43, 0.85)" onclick="location.href ='/customer/comparison_hospital'">
+					<td class="sub-content" style="background-color: rgba( 2, 10, 43, 0.85)"
+						onclick="location.href ='/customer/comparison_hospital'">
 						<div class="menu4 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon4.png" style="margin-bottom: 10px"><br>
@@ -241,7 +246,8 @@
 						</div>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 218, 163, 0, 0.7)">
-						<div class="menu5 wrap" style="width: inherit;height: inherit" onclick="location.href ='/customer/health_encyclopedia_list'">
+						<div class="menu5 wrap" style="width: inherit;height: inherit"
+							 onclick="location.href ='/customer/health_encyclopedia_list'">
 							<div class="inner">
 								<img src="/asset/images/icon5.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">건강 컨텐츠<br></span>
@@ -272,10 +278,12 @@
 							</div>
 						</div>
 						<a href="/customer/notice_list">
-							<img src="/asset/images/btn_plus.png" style="cursor: pointer;float:right;width: 3.5rem;height: 3.5rem">
+							<img src="/asset/images/btn_plus.png"
+								 style="cursor: pointer;float:right;width: 3.5rem;height: 3.5rem">
 						</a>
 					</td>
-					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)" onclick="location.href ='/customer/customer_service_inquiry_list'">
+					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)"
+						onclick="location.href ='/customer/customer_service_inquiry_list'">
 						<div class="menu6 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
@@ -301,12 +309,45 @@
 		setMainNotice(res.data);
 	});
 
+	var xhr = new XMLHttpRequest();
+	xhr.addEventListener("readystatechange", function () {
+		if (this.readyState === 4) {
+
+		}
+	});
+
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log(this.response);
+			var str = this.response;
+			var dateArr = [];
+			var cut = 0;
+			while(str.indexOf("2021") > -1){
+				let startIndex = str.indexOf("2021");
+				let endIndex = startIndex+3;
+				let dateNum = str.substr(startIndex, endIndex);
+				console.log(startIndex + "\t" + endIndex + "\t"+dateNum);
+				dateArr.push(dateNum);
+				cut++;
+				if(cut > 10) break;
+
+			}
+			console.log(this.response.length);
+		}
+	};
+
+	xhr.open("GET", "http://customer.localhost/customer/doIt");
+	xhr.send();
+
+	// var obj = JSON.parse('{ "이름":"김지훈", "나이":26, "지역":"서울" }')
+	// document.getElementById("demo").innerHTML = obj.이름 + ", " + obj.나이;
+
 	function setMainNotice(data) {
 		for (i = 0; i < 3; i++) {
 			var html = '';
 			html += '<tr>';
 
-			if(i == 0) {
+			if (i == 0) {
 				html += '<td class="title point" ' +
 						'onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			} else {

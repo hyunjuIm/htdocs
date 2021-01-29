@@ -10,6 +10,7 @@
 
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
+	<script type="text/javascript" src="../../../../asset/lib/ajax-cross-origin/js/jquery.ajax-cross-origin.min.js"></script>
 
 	<style>
 		.form-check {
@@ -279,6 +280,7 @@
 		$parentDir = dirname(__DIR__ . '..');
 		require($parentDir . '/menu/side_bar_light.php');
 		?>
+
 		<!-- 우측 컨텐츠 -->
 		<div class="col"
 			 style="display: table-cell;min-width: fit-content;margin: 0;padding: 0;color: white;vertical-align: top;">
@@ -441,14 +443,16 @@
 											<div id="choiceAddView">
 
 											</div>
-
-											<div style="font-weight: 400;margin-top: 3rem;float: right">
-												총 추가금액 : <span id="addInjectionPrice">0</span>원
-											</div>
 										</div>
 									</div>
 
-									<div class="row" style="display:flex;margin-top: 10rem">
+									<div class="row" style="display:block;margin-top: 5rem">
+										<div style="font-weight: 400;text-align: right">
+											총 추가금액 : <span id="addInjectionPrice">0</span>원
+										</div>
+									</div>
+
+									<div class="row" style="display:flex;margin-top: 5rem">
 										<div style="margin: 0 auto">
 											<div class="btn-cancel-square" style="font-size: 1.4rem"
 												 onclick="cancelBack()">

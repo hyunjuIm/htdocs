@@ -8,8 +8,6 @@
 	require($parentDir . '/common/head.php');
 	?>
 
-	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
 	<style>
 		#selectNumTable {
 			display: none;
@@ -36,7 +34,6 @@
 		.icon-control:hover {
 			color: #494949;
 		}
-
 	</style>
 
 </head>
@@ -625,17 +622,6 @@ require('package_modal.php');
 		for (i = 0; i < packageTabItems[tabId].length; i++) {
 			packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
 		}
-
-
-		// if ($("#choiceLimit").val() < 1 || $("#choiceLimit").val() > 10) {
-		// 	alert('설정값을 초과하였습니다. 다시 설정해주세요.');
-		// } else {
-		// 	choiceLimitArr[tabId] = $("#choiceLimit").val();
-		// 	for (i = 0; i < packageTabItems[tabId].length; i++) {
-		// 		packageTabItems[tabId][i].choiceLimit = choiceLimitArr[tabId];
-		// 	}
-		// 	alert('설정되었습니다.');
-		// }
 	}
 
 	//검사항목 추가

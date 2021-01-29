@@ -26,3 +26,6 @@
 
 <!--그래프-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<!--아이콘-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">

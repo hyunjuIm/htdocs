@@ -144,7 +144,7 @@
 
 		if (data.answer == null || data.status == '처리이전') {
 			$("#answerView").hide();
-			$('#answer').append('<div style="text-align: center">답변이 아직 등록되지 않았습니다.</div>');
+			$('#answer').append('<div style="text-align: center">아직 처리 전입니다.</div>');
 		} else {
 			$("#answerView").show();
 		}

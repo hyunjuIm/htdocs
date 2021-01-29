@@ -181,7 +181,7 @@
 					'<tr>' +
 					'<th>연락처</th>' +
 					'<td colspan="3">' +
-					'<input type="text" id=\'' + phone + '\' value="' + data[i].phone + '">' +
+					'<input type="text" id=\'' + phone + '\' value="' + data[i].phone + '" onkeyup="setPhoneHyphen(this)">' +
 					'</td>' +
 					'</tr>' +
 					'<tr>' +

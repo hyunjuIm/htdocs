@@ -59,7 +59,7 @@
 
 <div id="main">
 	<div class="sub-title-height"
-		 style="background-image: url(../../../../asset/images/mobile/bg_sub2.jpg);
+		 style="background-image: url(../../../../asset/images/mobile/bg_sub6.png);
 		 background-size: 100%;background-position: center">
 		<div class="container">
 

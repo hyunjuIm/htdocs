@@ -260,6 +260,8 @@
 			return false;
 		}
 
+		console.log(data);
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
