@@ -1,8 +1,7 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 html, body {
-    width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
 }
@@ -14,10 +13,17 @@ html {
 body {
     font-size: 1.6rem;
     background: whitesmoke;
+	width: 100%;
+	max-width: 50rem;
+	margin: 0 auto;
 }
 
 a {
     text-decoration: none !important;
+}
+
+i {
+	cursor: pointer;
 }
 
 .row {
@@ -34,6 +40,7 @@ a {
     padding: 3rem 0 3rem 2rem;
 }
 
+/*대메뉴*/
 .title1 {
     font-size: 2.2rem;
     font-weight: 500;
@@ -43,11 +50,13 @@ a {
     color: #7b1fe2;
 }
 
+/*소메뉴*/
 .title2 {
     padding: 2rem 0 1rem 0;
     font-weight: 400;
 }
 
+/*더보기 버튼*/
 .more {
     font-size: 1.4rem;
     display: flex;
@@ -61,10 +70,10 @@ a {
     color: #444444;
 }
 
+/*전체 컨텐츠*/
 .contents {
     width: 100%;
     max-width: 50rem;
-
     padding: 0.5rem 0.3rem;
     overflow-x: scroll;
     display: flex;
@@ -84,6 +93,7 @@ a {
     padding-right: 2rem;
 }
 
+/*카드뉴스*/
 .card {
     width: 20rem;
     min-width: 20rem;
@@ -105,8 +115,10 @@ a {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     word-break: keep-all;
+	height: 8rem;
 }
 
+/*영상*/
 .video {
     width: 28rem;
     height: 15.75rem;
@@ -142,6 +154,7 @@ a {
     transform: translate(-50%, -50%);
 }
 
+/*질병백과*/
 .encyclopedia-btn {
     display: inline-block;
     width: fit-content;
@@ -167,4 +180,46 @@ a {
     border: 1px solid #DCDCDC;
     box-shadow: 0px 0px 7px #d0d0d0;
     border-radius: 10px;
+}
+
+/*스와이프*/
+.swiper-container {
+	width: 100%;
+	height: fit-content;
+}
+
+.swiper-wrapper {
+	display: inline-block;
+	height: fit-content;
+}
+
+.swiper-slide {
+	width: 100%;
+	text-align: center;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.swiper-pagination {
+	width: 92%;
+	max-width: 48rem;
+	display: inline-block;
+	margin: 0 auto;
+	padding-top: 0.3rem;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+	margin: 0 0.3rem;
+	background: white;
 }
