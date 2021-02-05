@@ -33,7 +33,7 @@
 			cursor: pointer;
 			color: white;
 			text-align: center;
-			line-height: 18.5rem;
+			line-height: 16rem;
 			background: rgba(0, 0, 0, 0.4);
 		}
 
@@ -41,7 +41,7 @@
 			width: 100%;
 			padding: 1rem 1rem 1rem 2rem;
 			display: block;
-			font-size: 1.3rem;
+			font-size: 1.2rem;
 			height: 16rem;
 		}
 
@@ -159,7 +159,7 @@
 			</div>
 			<div class="row" style="margin-top: 3rem">
 				<form style="margin: 0 auto; padding: 1rem 0">
-				<div class="page_wrap">
+					<div class="page_wrap">
 						<div class="page_nation" id="paging">
 						</div>
 					</div>
@@ -227,18 +227,21 @@
 		userData.region = $("#searchWordSelect").val();
 		userData.searchWord = $("#searchWord").val();
 
-		console.log(userData);
+
 
 		instance.post('CU_003_002', userData).then(res => {
 			pageCount = 0;
-			for (i = 0; i < res.data.count; i += 10) {
+			for (i = 0; i < res.data.count; i += 6) {
 				pageCount++;
 			}
+
+			$("#hosCount").empty();
+			$("#hosCount").append(res.data.count);
 
 			addSelectOption(res.data.regionList);
 			setHospitalCard(res.data.hospitalList, pageNum);
 
-			console.log(res.data);
+
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.");
 			console.log(error);
@@ -260,8 +263,6 @@
 	function setHospitalCard(data, index) {
 		setPaging(index);
 
-		$("#hosCount").empty();
-		$("#hosCount").append(data.length);
 		$("#hospitalInfos").empty();
 
 		if (data.length == 0) {
@@ -278,15 +279,15 @@
 		for (i = 0; i < data.length; i++) {
 			html += '<tr><td>' +
 					'<div class="hos-card">' +
-					'<div class="hos-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')" ' +
+					'<div class="hos-img" onmouseover="hospitalCardHover(this)" ' +
 					'onmouseleave="hospitalCardLeave()"' +
 					'style="background-image: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ');' +
 					'background-size: auto 100%;background-position: center">' +
-					'<div class="layer">홈페이지 바로가기<br></div></div>' +
+					'<div class="layer" onclick="hospitalCardUrlEnter(\'' + data[i].hosURL + '\')">홈페이지 바로가기<br></div></div>' +
 					'<div class="hos-content">' +
 					'<div style="height: 78%">' +
 					'<div class="hos-name">' + data[i].hosName + '</div>' + data[i].hosAddress + '<br>' +
-					'<div class="hos-point">' + data[i].totalPoint + '<span style="font-size: 1.5rem">/10 &nbsp</span>';
+					'<div class="hos-point">' + (data[i].totalPoint / 2).toFixed(1) + '<span style="font-size: 1.5rem">/10 &nbsp</span>';
 			html += starPoint(data[i].totalPoint);
 			html += '</div>' +
 					'</div>' +
@@ -301,16 +302,19 @@
 		$("#hospitalInfos").append(html);
 	}
 
-	//홈페이지 바로가기 버튼 활성화
+	//홈페이지 바로가기 버튼 보이게
 	function hospitalCardHover(layer, url) {
 		$(layer).children('.layer').css("display", "block");
-		$(layer).click(function () {
-			console.log(url);
-			window.open(url, "hospital");
-		});
 	}
 
-	//홈페이지 바로가기 버튼 비활성화
+	//홈페이지 바로가기 버튼 활성화
+	function hospitalCardUrlEnter(url) {
+		url.replaceAll("http://", "");
+		url.replaceAll("https://", "");
+		window.open("https://" + url);
+	}
+
+	//홈페이지 바로가기 버튼 안보이게
 	function hospitalCardLeave() {
 		$('.layer').css("display", "none");
 	}

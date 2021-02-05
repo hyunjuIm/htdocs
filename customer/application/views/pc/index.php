@@ -309,35 +309,6 @@
 		setMainNotice(res.data);
 	});
 
-	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("readystatechange", function () {
-		if (this.readyState === 4) {
-
-		}
-	});
-
-	xhr.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
-			console.log(this.response);
-			var str = this.response;
-			var dateArr = [];
-			var cut = 0;
-			while(str.indexOf("2021") > -1){
-				let startIndex = str.indexOf("2021");
-				let endIndex = startIndex+3;
-				let dateNum = str.substr(startIndex, endIndex);
-				console.log(startIndex + "\t" + endIndex + "\t"+dateNum);
-				dateArr.push(dateNum);
-				cut++;
-				if(cut > 10) break;
-
-			}
-			console.log(this.response.length);
-		}
-	};
-
-	xhr.open("GET", "http://customer.localhost/customer/doIt");
-	xhr.send();
 
 	// var obj = JSON.parse('{ "이름":"김지훈", "나이":26, "지역":"서울" }')
 	// document.getElementById("demo").innerHTML = obj.이름 + ", " + obj.나이;

@@ -136,7 +136,7 @@
 
 	//게시물 view
 	function setEmployeeManageView(data) {
-		console.log(data);
+
 
 		$("#title").text(data.title);
 		$("#createDate").text(data.createDate);
@@ -183,7 +183,7 @@
 				'Content-Type': 'application/json'
 			}
 		}).then(response => {
-			console.log(response);
+
 			const type = response.headers['content-type'];
 			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');
@@ -205,7 +205,7 @@
 			return false;
 		}
 
-		console.log(saveItems);
+
 
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M015005', saveItems).then(res => {

@@ -131,7 +131,7 @@
 
 	var fileName;
 	function setNoticeDetailData(data){
-		console.log(data);
+
 		$('#ntTitle').text(data.title);
 		$('#ntDate').text(data.createDate);
 
@@ -141,8 +141,6 @@
 		var str = data.content;
 		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
 		$('#ntContent').html(str);
-
-		console.log(data.content);
 	}
 
 	//파일 다운로드
@@ -156,7 +154,7 @@
 				'Content-Type': 'application/json'
 			}
 		}).then(response => {
-			console.log(response);
+
 			const type = response.headers['content-type'];
 			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');

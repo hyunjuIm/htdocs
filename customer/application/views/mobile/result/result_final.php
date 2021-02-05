@@ -177,7 +177,13 @@
 				<h1>종합결과</h1>
 			</div>
 
-			<div class="row" style="margin-top: 5rem;">
+			<div class="row empty-box" id="empty" style="display: none;">
+				<div>
+					검사 결과가 없습니다.
+				</div>
+			</div>
+
+			<div class="row" id="select" style="margin-top: 5rem;">
 				<div style="margin: 0 auto 1rem auto">
 					<select id="familySelect" onchange="setDataSelectOption()">
 						<option value="ch">수검자 선택</option>
@@ -298,6 +304,15 @@
 
 	//수검자 이름 셀렉트 셋팅
 	function setFamilySelectOption(data) {
+		if(data.length == 0) {
+			$('#empty').show();
+			$('#select').hide();
+			return false;
+		} else {
+			$('#empty').hide();
+			$('#select').show();
+		}
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<option value=\'' + data[i].famId + '\'>' + data[i].famName + '</option>'
@@ -409,7 +424,6 @@
 		}
 
 		var size = $('#resultCarousel').width() / 3;
-		console.log(size);
 		$('.item-table td').width(size);
 		$('.item-table td').height(size);
 	}
@@ -446,7 +460,6 @@
 
 		let html = "";
 		let categoryList = result[idx].list;
-		console.log(categoryList);
 		for (let i = 0; i < categoryList.length; i++) {
 			html += '<h2 style="text-align: left">' + categoryList[i].category + '</h2>' +
 					'<table class="mainInspectionTable table-striped">' +

@@ -112,7 +112,7 @@ require('employee_modal.php');
 				pageCount++;
 			}
 			setEmployeeManageTable(res.data.helpdeskDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

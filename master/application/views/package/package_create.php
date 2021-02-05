@@ -401,7 +401,7 @@ require('package_modal.php');
 	function makeTable(data) {
 		$('#pckExcel').empty();
 
-		console.log(data);
+
 		const serviceYear = data.serviceYear;
 		const coNameBranch = data.coNameBranch;
 		const packageDetailDTOList = data.packageDetailDTOList;
@@ -476,7 +476,6 @@ require('package_modal.php');
 
 		for (let i = 0; i < basicInspectionList_1.length; i++) {
 			const string = basicInspectionList_1[i].split("!@#");
-			console.log(basicInspectionList_1[i]);
 			html += '<tr>';
 			html += '<th>' + string[0] + '</th>';
 			html += '<th>' + string[1] + '</th>';
@@ -519,7 +518,6 @@ require('package_modal.php');
 						testHtml += packageDetailDTOList[j].packageItemDTOList[k].inspection.join("<br/>");
 					}
 				}
-				console.log(testHtml);
 				html += testHtml;
 				html += '</td>';
 			}

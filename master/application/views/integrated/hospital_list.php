@@ -218,7 +218,7 @@ require('hospital_modal.php');
 		searchItems.pageNum = pageNum;
 		searchItems.searchWord = $("#searchWord").val();
 
-		console.log(searchItems);
+
 
 		instance.post('M005002_REQ_RES', searchItems).then(res => {
 			pageCount = 0;
@@ -226,7 +226,7 @@ require('hospital_modal.php');
 				pageCount++;
 			}
 
-			console.log(res.data);
+
 			setHospitalData(res.data.hospitalDTOList, pageNum);
 		});
 	}
@@ -293,7 +293,7 @@ require('hospital_modal.php');
 		searchItems.searchWord = $("#searchWord").val();
 
 		fileURL.post('downloadExcel/M0502', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

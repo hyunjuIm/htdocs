@@ -184,7 +184,7 @@
 			}
 
 			setLegalData(res.data.legalDataDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 
@@ -292,7 +292,7 @@
 	function saveLegalData() {
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M010002_REQ', legalData).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
 					location.reload();
@@ -313,7 +313,7 @@
 		searchItems.searchWord = $("#searchWord").val();
 
 		fileURL.post('downloadExcel/M1001', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

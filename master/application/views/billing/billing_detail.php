@@ -83,7 +83,7 @@ require('billing_modal.php');
 		var sendItems = new Object();
 		sendItems.bId = bId.bId;
 
-		console.log(sendItems);
+
 
 		instance.post('M009009_REQ', sendItems).then(res => {
 			if (res.data.message == "success") {
@@ -138,7 +138,7 @@ require('billing_modal.php');
 		saveItems.hosId = saveHosId;
 		saveItems.value = $(check).is(':checked');
 
-		console.log(saveItems);
+
 
 		if (type == 0) {
 			instance.post('M009006_REQ', saveItems).then(res => {
@@ -157,7 +157,7 @@ require('billing_modal.php');
 
 	function tableExcelDownload() {
 		fileURL.post('downloadExcel/M0905', bId).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

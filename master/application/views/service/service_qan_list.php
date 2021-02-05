@@ -158,7 +158,7 @@ require('service_qna_modal.php');
 			}
 
 			setQnAListData(res.data.qnADTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

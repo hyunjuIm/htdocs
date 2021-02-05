@@ -497,7 +497,6 @@ require('package_modal.php');
 	function clickPackageTab(id) {
 		tabId = id;
 		leftTableRefresh(id);
-		console.log('tabId : ', tabId);
 
 		//선택검사 - 최대 선택개수
 		$("#choiceLimit").val(choiceLimitArr[id]);
@@ -713,7 +712,6 @@ require('package_modal.php');
 		for (i = 0; i < packageTabItems[0].length; i++) {
 			var price = String(packageTabItems[0][i].price);
 			packageTabItems[0][i].price = price.replaceAll(',', '');
-			console.log(packageTabItems[0][i].price);
 		}
 
 		if (text != "") {
@@ -724,7 +722,7 @@ require('package_modal.php');
 
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M008002_REQ', sendItems).then(res => {
-					console.log(res.data.message);
+
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						location.reload();

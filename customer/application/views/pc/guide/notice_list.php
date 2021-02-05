@@ -204,7 +204,7 @@
                 pageCount++;
             }
             setNoticeList(res.data.noticeList, pageNum);
-            console.log(res.data);
+
         }).catch(function (error) {
             alert("잘못된 접근입니다.")
         });

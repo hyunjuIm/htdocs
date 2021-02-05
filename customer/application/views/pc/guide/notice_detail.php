@@ -166,7 +166,7 @@
 
 	//선택한 병원 정보
 	instance.post('CU_007_002', sendItems).then(res => {
-		console.log(res.data)
+
 		setNoticeContent(res.data);
 	});
 
@@ -193,7 +193,7 @@
 				'Content-Type': 'application/json'
 			}
 		}).then(response => {
-			console.log(response);
+
 			const type = response.headers['content-type'];
 			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');

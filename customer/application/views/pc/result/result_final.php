@@ -324,7 +324,7 @@
 				return 0;
 			});
 
-			console.log(resultData);
+
 
 			$("#dateSelect").append('<option value="ch">날짜 선택</option>');
 			for (i = 0; i < resultData.length; i++) {
@@ -354,7 +354,6 @@
 				$("#totalResult").html(resultData[i].totalResult);
 				result = setCategory(resultData[i].resultItemList);
 				setInspectionItemTable();
-				console.log(result);
 			}
 		}
 	}
@@ -421,7 +420,6 @@
 
 		let html = "";
 		let categoryList = result[idx].list;
-		console.log(categoryList);
 		for (let i = 0; i < categoryList.length; i++) {
 			html += '<div style="width: 100%;height: 4rem">' +
 					'<div style="float: left">' +
@@ -446,7 +444,6 @@
 				resultRatio = resultRatio * 2.7;
 
 				if (resultRatio !== -2.7) {
-					console.log("resultRatio:" + resultRatio);
 					html += '<div style="height:5px;margin: 0">' +
 							'<img src="/asset/images/img_grade_arrow.png" style="margin-left:' + resultRatio + 'px;margin-top: -20px; ">' +
 							'</div>';
@@ -538,7 +535,6 @@
 						inspectionResult.resultRatio = data[k].resultRatio;
 						inspectionResult.resultCase = data[k].resultCase;
 						categoryB.push(inspectionResult);
-						console.log(inspectionResult);
 					}
 				}
 				resultB.category = categoryABList[i][j];

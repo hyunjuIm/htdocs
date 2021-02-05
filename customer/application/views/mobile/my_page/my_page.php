@@ -236,11 +236,11 @@
 		saveItems.buildingNum = $("#" + buildingName + "").val();
 		saveItems.phone = $("#" + phone + "").val();
 		saveItems.email = $("#" + email + "").val();
-		console.log(saveItems);
+
 
 		if (confirm("수정하시겠습니까?") == true) {
 			instance.post('CU_002_002', saveItems).then(res => {
-				console.log(res.data);
+
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
 					location.reload();

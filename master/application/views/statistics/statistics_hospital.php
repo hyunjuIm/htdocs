@@ -352,7 +352,7 @@
 		}
 
 		fileURL.post('downloadExcel/M1203', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

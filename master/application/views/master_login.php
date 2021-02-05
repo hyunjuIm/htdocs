@@ -317,7 +317,7 @@
 		requestMember.level = "MASTER";
 
 		const instance = axios.create({
-			baseURL: "http://192.168.219.100:8080/permission/",
+			baseURL: "http://192.168.219.108:8080/permission/",
 			timeout: 5000
 		});
 
@@ -327,10 +327,10 @@
 			} else if(res.data.message == "SUCCESS") {
 				sessionStorage.setItem("token", res.data.data);
 				location.href = "./index";
-				console.log(res.data);
+
 			} else {
 				alert("잘못된 접근입니다.")
-				console.log(res.data);
+
 			}
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.")

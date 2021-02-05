@@ -110,7 +110,7 @@
 			}
 
 			setEncyclopediaListData(res.data.healthContentDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

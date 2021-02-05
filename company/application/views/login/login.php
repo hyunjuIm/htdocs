@@ -345,7 +345,7 @@
 		id = requestMember.id;
 
 		const instance = axios.create({
-			baseURL: "http://192.168.219.100:8080/permission/",
+			baseURL: "http://192.168.219.108:8080/permission/",
 			timeout: 5000
 		});
 
@@ -353,7 +353,7 @@
 			if (res.data.message == "FAILED") {
 				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
 			} else {
-				console.log(res.data);
+
 				var split = res.data.message.split('/');
 				sessionStorage.setItem("token", res.data.data);
 				sessionStorage.setItem("userID", id);

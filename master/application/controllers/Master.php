@@ -135,6 +135,12 @@ class master extends CI_Controller
 		$this->load->view('content/health_encyclopedia_update');
 	}
 
+	//챗봇관리
+	public function chat_bot()
+	{
+		$this->load->view('content/chat_bot');
+	}
+
 	//공지사항 - 전체 리스트
 	public function service_notice()
 	{

@@ -217,7 +217,7 @@
 			return false;
 		}
 
-		console.log(searchItems);
+
 
 		instance.post('M016002', searchItems).then(res => {
 			pageCount = 0;
@@ -225,7 +225,7 @@
 				pageCount++;
 			}
 			setPackageConfirmData(res.data.packageListDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

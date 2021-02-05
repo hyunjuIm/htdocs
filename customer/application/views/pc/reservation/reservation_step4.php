@@ -246,7 +246,7 @@
 		var userData = new Object();
 		userData.famId = val;
 
-		console.log(userData);
+
 
 		// 패키지 목록 가져오기
 		instance.post('CU_003_006', userData).then(res => {

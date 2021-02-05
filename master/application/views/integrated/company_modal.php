@@ -761,7 +761,7 @@
 		saveItems.name = $('#com-name').val();
 		saveItems.phone = $('#com-phone').val();
 
-		console.log(saveItems);
+
 
 		//입력된 정보 검사
 		if (saveItems.email == "") {
@@ -777,7 +777,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M004004_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						clickCompanyDetail(saveItems.companyId);
@@ -804,11 +804,11 @@
 		saveItems.email = $('#' + id + 'Email').val();
 		saveItems.phone = $('#' + id + 'Phone').val();
 
-		console.log(saveItems);
+
 
 		if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
 			instance.post('M0407', saveItems).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
 					clickCompanyDetail(cmnId.companyId);
@@ -828,7 +828,7 @@
 
 		if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
 			instance.post('M0408', sendItems).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("삭제되었습니다.");
 					clickCompanyDetail(cmnId.companyId);
@@ -860,7 +860,7 @@
 		saveItems.supportFundCode = booleanData('com-supportFundCode');
 		saveItems.balanceCode = booleanData('com-balanceCode');
 
-		console.log(saveItems);
+
 
 		//입력된 정보 검사
 		if (saveItems.companyName == "") {
@@ -880,7 +880,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M004005_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					alert("저장되었습니다.");
 					clickCompanyDetail(saveItems.companyId);
 				});
@@ -913,7 +913,7 @@
 		saveItems.inspectionStartDate = $('#add-com-inspectionStartDate').val();
 		saveItems.inspectionEndDate = $('#add-com-inspectionEndDate').val();
 
-		console.log(saveItems);
+
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
@@ -941,7 +941,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M004006_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					alert("저장되었습니다.");
 					location.reload();
 				});

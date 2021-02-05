@@ -307,7 +307,7 @@
 		sendID.hosId = sendHosId;
 
 		fileURL.post('downloadExcel/M0908', sendID).then(res => {
-			console.log(res.data);
+
 			exportDetailExcel(res.data);
 		});
 	}

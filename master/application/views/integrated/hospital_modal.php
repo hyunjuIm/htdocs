@@ -766,7 +766,7 @@
 		plusInfoArr = plusInfo.split(",");
 		saveItems.plusInfo = plusInfoArr;
 
-		console.log(saveItems);
+
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
@@ -794,7 +794,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005005_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					alert("저장되었습니다.");
 					clickHospitalDetail(saveItems.hospitalId);
 				});
@@ -878,7 +878,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005004_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						clickHospitalManagerDetail(saveItems.hospitalId);
@@ -959,7 +959,7 @@
 		} else {
 			if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
 				instance.post('M0509', saveItems).then(res => {
-					console.log(res.data.message);
+
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						clickHospitalManagerDetail(hosId.hospitalId);
@@ -985,7 +985,7 @@
 
 		if (confirm("삭제하시겠습니까?") == true) {
 			instance.post('M0510', sendItems).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("삭제되었습니다.");
 					clickHospitalManagerDetail(hosId.hospitalId);
@@ -1082,11 +1082,9 @@
 			hosEQListSize += 1;
 		}
 
-		console.log(hosEQList);
-
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M005007_REQ', hosEQList).then(res => {
-				console.log(res.data.message);
+
 				alert("저장되었습니다.");
 			});
 		} else {
@@ -1121,7 +1119,7 @@
 		plusInfoArr = plusInfo.split(",");
 		saveItems.plusInfo = plusInfoArr;
 
-		console.log(saveItems);
+
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {
@@ -1149,7 +1147,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M005006_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					var id = res.data.message;
 					if (res.data.message != "failed") {
 						uploadFile('create-hosImgFile', 'hospital', 'image', id);

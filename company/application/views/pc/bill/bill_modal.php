@@ -42,10 +42,8 @@
 		searchItems.billingId = billingId;
 		searchItems.hosId = hosId;
 
-		console.log(searchItems)
-
 		instance.post('C0503', searchItems).then(res => {
-			console.log(res.data);
+
 			setBillDetailData(res.data);
 		});
 	}

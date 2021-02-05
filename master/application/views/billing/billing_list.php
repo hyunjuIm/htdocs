@@ -232,7 +232,7 @@ require('billing_modal.php');
 			}
 
 			setBillData(res.data.billingDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

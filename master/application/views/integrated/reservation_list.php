@@ -316,7 +316,7 @@ require('reservation_modal.php');
 				pageCount++;
 			}
 
-			console.log(res.data);
+
 			setReservationData(res.data.reservationDTOList, pageNum);
 		});
 	}
@@ -399,7 +399,7 @@ require('reservation_modal.php');
 		}
 
 		fileURL.post('downloadExcel/M0302', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

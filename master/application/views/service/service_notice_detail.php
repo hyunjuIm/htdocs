@@ -116,7 +116,7 @@
 
 	var fileName;
 	function setNoticeDetailData(data){
-		console.log(data);
+
 
 		document.getElementById('ntTitle').innerHTML = data.title;
 		document.getElementById('ntAuthor').innerHTML = data.author;
@@ -142,7 +142,7 @@
 				'Content-Type': 'application/json'
 			}
 		}).then(response => {
-			console.log(response);
+
 			const type = response.headers['content-type'];
 			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');
@@ -159,9 +159,8 @@
 
 	function deleteNotice() {
 		if (confirm("삭제하시겠습니까?") == true) {
-			console.log(nId);
 			instance.post('M013005_REQ', nId).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("삭제되었습니다.");
 					history.back();

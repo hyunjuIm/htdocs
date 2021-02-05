@@ -210,12 +210,14 @@
 				<div style="display: block;padding: 3rem 0;width: 100%">
 					<div style="display: flex;margin: 0 auto;width: fit-content">
 						<div class="down-btn"
-							 style="background-image: url(../../../asset/images/btn_hos.png);background-size: 100% 100%;margin-right: 3rem"></div>
+							 style="background-image: url(../../../asset/images/btn_hos.png);background-size: 100% 100%;margin-right: 3rem"
+							 onclick="hospitalExcelDownload()"></div>
 						<div class="down-btn"
-							 style="background-image: url(../../../asset/images/btn_target.png);background-size: 100% 100%;margin-right: 3rem"></div>
+							 style="background-image: url(../../../asset/images/btn_target.png);background-size: 100% 100%;margin-right: 3rem"
+							 onclick="targetExcelDownload()"></div>
 						<div class="down-btn"
 							 style="background-image: url(../../../asset/images/btn_manual.png);background-size: 100% 100%;"
-							 onclick="downloadBasicSheet('company_manual', '매뉴얼.pptx')"></div>
+							 onclick="downloadBasicSheet('company_manual', '매뉴얼.pdf')"></div>
 					</div>
 
 				</div>
@@ -229,6 +231,9 @@
 
 <script>
 	<?php
+	require('common/check_data.js');
+	?>
+	<?php
 	require('common/file_data.js');
 	?>
 
@@ -236,7 +241,7 @@
 	coIdObj.coId = sessionStorage.getItem("userCoID");
 
 	instance.post('C0101', coIdObj).then(res => {
-		console.log(res.data);
+
 		setReservationData(res.data.reservationInfoDTOList, 1, 2, 3);
 		setExaminationData(res.data.examinationInfoDTOList);
 		setNoticeData(res.data.noticeDTOList);
@@ -296,8 +301,6 @@
 			$('#chart2').css('color', 'white');
 		}
 		chart3.push(chart1[0] - chart3[0]);
-
-		console.log(chart1, chart2, chart3);
 
 		setGraphDoughnutChart();
 	}
@@ -412,6 +415,142 @@
 	//공지 게시글 디테일에 값 던지기
 	function sendNoticeID(index) {
 		location.href = "/company/notice_detail?id=" + index;
+	}
+
+	//병원 엑셀 다운로드
+	function hospitalExcelDownload() {
+		fileURL.post('downloadExcel/C0102', coIdObj).then(res => {
+			var data = res.data;
+
+			var excelHandler = {
+				getExcelFileName: function () {
+					return '[' + todayString() + ']' + ' 병원.xlsx';
+				},
+				getSheetName: function () {
+					return 'sheet 1';
+				},
+				getExcelData: function () {
+					const table = [];
+					const tt = [];
+					tt.push("사업연도");
+					tt.push("병원");
+					tt.push("지역");
+					tt.push("등급");
+					tt.push("대표번호");
+					tt.push("주소");
+
+					table.push(tt);
+
+					for (var i = 0; i < data.length; i++) {
+						const td = [];
+						td.push(data[i].serviceYear);
+						td.push(data[i].hosName);
+						td.push(data[i].region);
+						td.push(data[i].grade);
+						td.push(data[i].phone);
+						td.push(data[i].address);
+
+						table.push(td);
+					}
+
+					return table;
+				},
+				getWorksheet: function () {
+					return XLSX.utils.aoa_to_sheet(this.getExcelData());
+				}
+			}
+
+			// step 1. workbook 생성
+			var wb = XLSX.utils.book_new();
+
+			// step 2. 시트 만들기
+			var newWorksheet = excelHandler.getWorksheet();
+
+			// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+			XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+			// step 4. 엑셀 파일 만들기
+			var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+			// step 5. 엑셀 파일 내보내기
+			saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+		});
+	}
+
+	//대상자 엑셀 다운로드
+	function targetExcelDownload() {
+		fileURL.post('downloadExcel/C0103', coIdObj).then(res => {
+			var data = res.data;
+
+			var excelHandler = {
+				getExcelFileName: function () {
+					return '[' + todayString() + ']' + ' 대상자.xlsx';
+				},
+				getSheetName: function () {
+					return 'sheet 1';
+				},
+				getExcelData: function () {
+					const table = [];
+					const tt = [];
+					tt.push("고객사");
+					tt.push("사업장");
+					tt.push("부서");
+					tt.push("사번");
+					tt.push("사원명");
+					tt.push("대상자명");
+					tt.push("관계");
+					tt.push("이메일");
+					tt.push("생년월일");
+					tt.push("성별");
+					tt.push("연락처");
+					tt.push("주소");
+					tt.push("공단대상여부");
+					tt.push("지원금");
+
+					table.push(tt);
+
+					for (var i = 0; i < data.length; i++) {
+						const td = [];
+						td.push(data[i].coName);
+						td.push(data[i].coBranch);
+						td.push(data[i].cusDepartment);
+						td.push(data[i].cusId);
+						td.push(data[i].cusName);
+						td.push(data[i].famName);
+						td.push(data[i].famGrade);
+						td.push(data[i].famEmail);
+						td.push(data[i].famBirthDate);
+						td.push(data[i].famSex  ? '남' : '여');
+						td.push(data[i].famPhone);
+						td.push(data[i].famAddress);
+						td.push(data[i].famPC ? 'Y' : 'N');
+						td.push(data[i].famSupportPrice.toLocaleString());
+
+						table.push(td);
+					}
+
+					return table;
+				},
+				getWorksheet: function () {
+					return XLSX.utils.aoa_to_sheet(this.getExcelData());
+				}
+			}
+
+			// step 1. workbook 생성
+			var wb = XLSX.utils.book_new();
+
+			// step 2. 시트 만들기
+			var newWorksheet = excelHandler.getWorksheet();
+
+			// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+			XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+			// step 4. 엑셀 파일 만들기
+			var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+			// step 5. 엑셀 파일 내보내기
+			saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+		});
 	}
 
 </script>

@@ -58,7 +58,6 @@ function setInjectionData(id, value) {
 
 	var count = 0;
 	for (i = 0; i < injectionData.length; i++) {
-		console.log(injectionData[i].category);
 		if (injectionData[i].ipClass == '기본' && value == injectionData[i].category) {
 			var html = "";
 			count += 1;
@@ -153,10 +152,11 @@ function setChoiceInjectionList(data) {
 					'<div class="form-check form-check-inline">' +
 					'<input class="form-check-input" type="checkbox" id=\'' + data[j].ipCode + '\'' +
 					'name=\'' + choiceList[i].title + '\' value=\'' + data[j].id + '\' ' +
-					'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\');' +
+					'onclick="choiceInjectionCount(this, name, \'' + choiceList[i].count + '\', \'' + data[j].price + '\');' +
 					'choiceInjection(name, choiceAllList, \'' + chId + '\')">' +
 					'<label class="form-check-label" for=\'' + data[j].ipCode + '\'>&nbsp&nbsp' + data[j].inspection +
-					'<span class="injection-memo">&nbsp&nbsp' + data[j].memo + '</span></label></div></div>';
+					'<span class="injection-price">&nbsp&nbsp' + data[j].price.toLocaleString() +
+					'원 <span class="injection-memo">&nbsp&nbsp' + data[j].memo + '</span></label></div></div>';
 			}
 		}
 
@@ -170,10 +170,12 @@ function setChoiceInjectionList(data) {
 }
 
 //체크박스 선택검사 항목 체크 개수 제한
-function choiceInjectionCount(chk, name, max) {
+function choiceInjectionCount(chk, name, max, price) {
 	if ($('input:checkbox[name=' + name + ']:checked').length > max) {
 		alert("최대 선택 개수를 초과하였습니다.");
 		chk.checked = false;
+	} else {
+		addInjectionPrice(chk, price);
 	}
 }
 
@@ -234,10 +236,8 @@ function choiceInjection(name, list, chList) {
 				if (item == list[i].id) {
 					html += '<div class="injection-choice">' +
 						count + '. ' + list[i].inspection;
-					if (list[i].ipClass == '추가') {
-						html += '&nbsp<span class="injection-price">' +
-							list[i].price.toLocaleString() + '원</span>';
-					}
+					html += '&nbsp<span class="injection-price">' +
+						list[i].price.toLocaleString() + '원</span>';
 					html += '</div>';
 
 					count += 1;

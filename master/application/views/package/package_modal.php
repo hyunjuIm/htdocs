@@ -260,7 +260,6 @@
 
 	//사업장 리스트 셋팅
 	function setPackageModalCompanySelectOption(selectCompany, targetBranch) {
-		console.log(packageCompanySelect);
 		var branch = document.getElementById(targetBranch);
 
 		var opt = document.createElement("option");
@@ -296,7 +295,7 @@
 		saveItems.pkgName = $('#add-pac-name').val();
 		saveItems.price = $('#add-pac-price').val();
 
-		console.log(saveItems);
+
 
 		if ($("#companyName").val() == "-선택-") {
 			alert("고객사를 선택해주세요.")
@@ -309,7 +308,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M007002_REQ', saveItems).then(res => {
-					console.log(res.data.message);
+
 					alert("저장되었습니다.");
 					location.reload();
 				});

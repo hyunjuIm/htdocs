@@ -232,7 +232,7 @@
 			searchItems.ipEndDate = '2022-01-01';
 		}
 
-		console.log(searchItems);
+
 
 		instance.post('M010004_REQ_RES', searchItems).then(res => {
 			pageCount = 0;
@@ -240,7 +240,7 @@
 				pageCount++;
 			}
 			setResultData(res.data.reservationDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 
@@ -260,7 +260,7 @@
 			return false;
 		}
 
-		console.log(data);
+
 
 		for (i = 0; i < data.length; i++) {
 			var html = '';
@@ -313,7 +313,6 @@
 		}
 
 		fileURL.post('downloadExcel/M1004', searchItems).then(res => {
-			console.log(res.data);
 			exportExcel(res.data);
 		});
 	}

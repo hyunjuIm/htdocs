@@ -263,7 +263,7 @@
 		}
 
 		.ui-datepicker-calendar > tbody td.ui-datepicker-week-end:first-child > .ui-state-default,
-		.ui-datepicker-calendar > thead th.ui-datepicker-week-end:first-child {
+		.ui-datepicker-calendar > thead th.ui-datepicker-week-end:first-child, .holiday span {
 			color: red !important;
 		}
 
@@ -455,7 +455,10 @@
 
 								</div>
 							</div>
-							<div style="float: right;font-weight: 400;margin-top: 1rem">
+						</div>
+
+						<div class="row" style="display:block;margin-top: 5rem">
+							<div style="font-weight: 400;text-align: right">
 								총 추가금액 : <span id="addInjectionPrice">0</span>원
 							</div>
 						</div>
@@ -478,7 +481,7 @@
 			<div class="row" id="step2" style="display: none">
 				<div class="row" style="display:block;margin-top: 5rem">
 					<h2>검진일선택</h2>
-					<div style="font-size: 1.1rem;color: #5849ea; font-weight: bolder" >
+					<div style="font-size: 1.1rem;color: #5849ea; font-weight: bolder">
 						※ 검진일은 현재 날짜 기준, 2주 후 날짜부터 선택이 가능합니다.
 					</div>
 					<hr>
@@ -538,9 +541,9 @@
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
 
-	$('.btn-scroll').on('click',function(e){
+	$('.btn-scroll').on('click', function (e) {
 		e.preventDefault();
-		$('html,body').animate({scrollTop:750},200);
+		$('html,body').animate({scrollTop: 750}, 200);
 	});
 
 	//예약을 위한 id 가져오기
@@ -668,6 +671,17 @@
 	var firstWishDate;
 	var secondWishDate;
 
+	// 제외할 날짜
+	var disabledDays = ["2021-1-1",
+		"2021-2-11", "2021-2-12", "2021-2-13",
+		"2021-3-1",
+		"2021-5-5", "2021-5-19",
+		"2021-6-6",
+		"2021-8-15",
+		"2021-9-20", "2021-9-21", "2021-9-22",
+		"2021-10-3", "2021-10-9",
+		"2021-12-25"];
+
 	$.datepicker.setDefaults({
 		dateFormat: 'yy-mm-dd',
 		prevText: '이전 달',
@@ -680,13 +694,22 @@
 		showMonthAfterYear: true,
 		yearSuffix: '년',
 		minDate: 14,
-		maxDate: '+2m',
+		// maxDate: '+2m',
+
 		//일요일 선택 불가
-		beforeShowDay: function (date) {
-			var day = date.getDay();
-			return [(day != 0)];
-		}
+		beforeShowDay: disableSomeDay
 	});
+
+	// 날짜를 나타내기 전에(beforeShowDay) 실행할 함수
+	function disableSomeDay(date) {
+		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+		for (i = 0; i < disabledDays.length; i++) {
+			if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
+				return [false, 'holiday', 'holiday'];
+			}
+		}
+		return [date.getDay() != 0];
+	}
 
 	$(function () {
 		$("#firstDatepicker").datepicker({
@@ -705,7 +728,6 @@
 				var week = new Array("일", "월", "화", "수", "목", "금", "토");
 
 				var html = year + '.' + month + '.' + day + '(' + week[date.getDay()] + ')';
-				console.log(html);
 				$("#firstWishDate").text(html);
 			}
 		});
@@ -726,7 +748,6 @@
 				var week = new Array("일", "월", "화", "수", "목", "금", "토");
 
 				var html = year + '.' + month + '.' + day + '(' + week[date.getDay()] + ')';
-				console.log(html);
 				$("#secondWishDate").text(html);
 			}
 		});
@@ -742,22 +763,22 @@
 		sendItems.firstWishDate = firstWishDate;
 		sendItems.secondWishDate = secondWishDate;
 
-		console.log(sendItems);
+
 
 		if (firstWishDate == null || firstWishDate == '') {
 			alert('1차 예약일을 선택해주세요.');
 			return false;
-		} else if (secondWishDate == null || secondWishDate == ''){
+		} else if (secondWishDate == null || secondWishDate == '') {
 			alert('2차 예약일을 선택해주세요.');
 			return false;
-		} else if(firstWishDate == secondWishDate) {
+		} else if (firstWishDate == secondWishDate) {
 			alert('1차, 2차 동일한 날짜로 예약하실 수 없습니다. 다시 설정해주세요.');
 			return false;
 		}
 
 		if (confirm("예약하시겠습니까?") == true) {
 			instance.post('CU_003_005', sendItems).then(res => {
-				console.log(res.data);
+
 				if (res.data.message == "success") {
 					location.href = "reservation_step4?famId=" + famId;
 				}

@@ -101,7 +101,6 @@ function textareaLine(text) {
 
 //엑셀 다운로드
 function excelDownload(id) {
-	console.log("엑셀 다운로드");
 	var data_type = 'data:application/vnd.ms-excel;charset=utf-8';
 	var table_html = encodeURIComponent(document.getElementById(id).outerHTML);
 
@@ -208,14 +207,11 @@ function downloadBasicSheet(tag, title) {
 		link.href = window.URL.createObjectURL(blob);
 		link.download = title;
 		link.click();
-
-		console.log(response);
 	})
 }
 
 //금액 입력과 동시에 콤마
 function setComma(id, x) {
-	console.log(id, x);
 	x = x.replace(/[^0-9]/g, '');   // 입력값이 숫자가 아니면 공백
 	x = x.replace(/,/g, '');          // ,값 공백처리
 	$("#" + id).val(x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // 정규식을 이용해서 3자리 마다 , 추

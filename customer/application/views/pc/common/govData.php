@@ -1,12 +1,15 @@
 <?php
 
+$year = $_GET['year'];
+$month = $_GET['month'];
+
 $ch = curl_init();
-$url = 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getHoliDeInfo'; /*URL*/
+$url = 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo'; /*URL*/
 $queryParams = '?' . urlencode('ServiceKey') . '=eiUQbanel5nr1dG333YsGXR5IzgQ6BCX93%2BMNZleRkewYOWNVQefXBM03ON8LGu%2FQPoA8xjmyrDuIhVYhmksXg%3D%3D'; /*Service Key*/
 //$queryParams .= '&' . urlencode('pageNo') . '=' . urlencode('1'); /**/
 //$queryParams .= '&' . urlencode('numOfRows') . '=' . urlencode('10'); /**/
-$queryParams .= '&' . urlencode('solYear') . '=' . urlencode('2021'); /**/
-//$queryParams .= '&' . urlencode('solMonth') . '=' . urlencode('02'); /**/
+$queryParams .= '&' . urlencode('solYear') . '=' . urlencode($year); /**/
+$queryParams .= '&' . urlencode('solMonth') . '=' . urlencode($month); /**/
 
 curl_setopt($ch, CURLOPT_URL, $url . $queryParams);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);

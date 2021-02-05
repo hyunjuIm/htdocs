@@ -191,7 +191,7 @@
 
 	//검색 selector
 	function setStaticsCompanyOption(data) {
-		console.log(data);
+
 		//회사
 		var name = [];
 		var nameSize = 0;
@@ -354,7 +354,7 @@
 		}
 
 		fileURL.post('downloadExcel/M1102', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

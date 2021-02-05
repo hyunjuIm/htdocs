@@ -302,7 +302,6 @@
 	var a = $(".home-menu td").height() - 95;
 	var b = $(".home-menu td img").height();
 	var top = (a - b);
-	console.log(top);
 	$(".home-menu td img").css('margin-top', a - b);
 
 	//유저 데이터

@@ -27,7 +27,6 @@ function uploadFile(id, fileTarget, fileClass, sendId) {
 		if(res.data != '') {
 			alert('업로드 되었습니다.');
 		}
-		console.log(res.data.fileName);
 	}).catch(function (error) {
 		alert('파일 크기가 10MB를 넘길 수 없습니다. 다시 확인해주세요.');
 	});
@@ -55,6 +54,6 @@ function downloadFile(id, fileTarget, fileClass, sendId) {
 		link.download = $("#" + id + "").val();
 		link.click();
 
-		console.log(response);
+
 	})
 }

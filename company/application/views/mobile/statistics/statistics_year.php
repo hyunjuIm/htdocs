@@ -139,7 +139,7 @@
 
 	//통계 표 셋팅
 	function setYearStatisticsData(data) {
-		console.log(data);
+
 		$('#yearChartView').show();
 
 		//전체

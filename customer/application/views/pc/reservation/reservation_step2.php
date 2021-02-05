@@ -40,6 +40,7 @@
 
 		#hospitalInfos .hos-content {
 			width: 100%;
+			font-size: 1.4rem;
 			padding: 1rem 1rem 1rem 2rem;
 			display: block;
 			height: 18.5rem;
@@ -181,7 +182,7 @@
 						</div>
 						<div class="row" style="margin-top: 3rem">
 							<form style="margin: 0 auto; padding: 1rem 0">
-				<div class="page_wrap">
+								<div class="page_wrap">
 									<div class="page_nation" id="paging">
 									</div>
 								</div>
@@ -237,7 +238,6 @@
 		userData.region = $("#searchWordSelect").val();
 		userData.searchWord = $("#searchWord").val();
 
-		console.log(userData);
 
 		instance.post('CU_003_002', userData).then(res => {
 			pageCount = 0;
@@ -251,7 +251,7 @@
 			addSelectOption(res.data.regionList);
 			setHospitalCard(res.data.hospitalList, pageNum);
 
-			console.log(res.data);
+
 		}).catch(function (error) {
 			alert("잘못된 접근입니다.");
 			console.log(error);
@@ -295,13 +295,13 @@
 			}
 			html += '<td>' +
 					'<div class="hos-card">' +
-					'<div class="hos-img" onmouseover="hospitalCardHover(this, \'' + data[i].hosURL + '\')" onmouseleave="hospitalCardLeave()"' +
+					'<div class="hos-img" onmouseover="hospitalCardHover(this)" onmouseleave="hospitalCardLeave()"' +
 					'style="background: url(https://file.dualhealth.kr/images/' + data[i].hosImage + ');background-size: 100% 100%;">' +
-					'<div class="layer">홈페이지 바로가기<br></div></div>' +
+					'<div class="layer" onclick="hospitalCardUrlEnter(\'' + data[i].hosURL + '\')">홈페이지 바로가기<br></div></div>' +
 					'<div class="hos-content">' +
 					'<div style="height: 78%">' +
 					'<div class="hos-name">' + data[i].hosName + '</div>' + data[i].hosAddress + '<br>' +
-					'<div class="hos-point">' + data[i].totalPoint + '<span style="font-size: 1.5rem">/10 &nbsp</span>';
+					'<div class="hos-point">' + (data[i].totalPoint / 2).toFixed(1) + '<span style="font-size: 1.5rem">/5 &nbsp</span>';
 			html += starPoint(data[i].totalPoint);
 			html += '</div>' +
 					'</div>' +
@@ -328,19 +328,16 @@
 
 	}
 
-	//홈페이지 바로가기 버튼 활성화
+	//홈페이지 바로가기 버튼 보이게
 	function hospitalCardHover(layer, url) {
-
 		$(layer).children('.layer').css("display", "block");
+	}
+
+	//홈페이지 바로가기 버튼 활성화
+	function hospitalCardUrlEnter(url) {
 		url.replaceAll("http://", "");
 		url.replaceAll("https://", "");
-
-
-		$(layer).click(function () {
-			alert("간다!");
-			window.open("https://" + url);
-		});
-
+		window.open("https://" + url);
 	}
 
 	//홈페이지 바로가기 버튼 비활성화

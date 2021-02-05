@@ -278,7 +278,7 @@
 		params.append("file", file.files[0]);
 		params.append('fileName', $('#filename').text());
 		params.append('hlpId', id);
-		console.log(params);
+
 
 		instance.post('C0302', params, {
 			headers: {

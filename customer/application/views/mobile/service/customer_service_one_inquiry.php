@@ -132,11 +132,11 @@
 		sendItems.title = $("#title").val();
 		sendItems.question = $("#question").val();
 
-		console.log(sendItems);
+
 
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('CU_008_002', sendItems).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("저장되었습니다.");
 					location.href = '/m/customer_service_inquiry_list';

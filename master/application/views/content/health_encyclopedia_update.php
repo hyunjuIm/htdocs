@@ -226,7 +226,7 @@
 		saveItems.content7 = $('#content7').val();
 		saveItems.fileName = $('#filename').text();
 
-		console.log(saveItems);
+
 
 		if (saveItems.title == "") {
 			alert("제목을 입력해주세요.");
@@ -239,7 +239,7 @@
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M1704', saveItems).then(res => {
 				if (res.data.message != "FAILED") {
-					console.log(res.data);
+
 					uploadFile(BoardId.id);
 				}
 			});
@@ -270,14 +270,13 @@
 		params.append("file", file.files[0]);
 		params.append('fileName', $('#filename').text());
 		params.append('id', id);
-		console.log(params);
+
 
 		instance.post('M1706', params, {
 			headers: {
 				'Content-Type': 'multipart/form-data'
 			}
 		}).then(res => {
-			console.log(res);
 			alert('저장되었습니다');
 			location.href = '/master/health_encyclopedia_list';
 		});

@@ -133,9 +133,34 @@
 </body>
 
 <script>
-	
+
+	//비밀번호 정규식
+	function chkPW(pw) {
+		var id = sessionStorage.getItem("userCusID");
+		var checkNumber = pw.search(/[0-9]/g);
+		var checkEnglish = pw.search(/[a-z]/ig);
+
+		if (!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(pw)) {
+			alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
+			return false;
+		} else if (checkNumber < 0 || checkEnglish < 0) {
+			alert("숫자와 영문자를 혼용하여야 합니다.");
+			return false;
+		} else if (/(\w)\1\1\1/.test(pw)) {
+			alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+			return false;
+		} else if (pw.search(id) > -1) {
+			alert("비밀번호에 아이디가 포함되었습니다.");
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	//비밀번호 변경
 	function changePassword() {
+		var chk = false;
+
 		if ($("#beforePassword").val() == "") {
 			alert("현재 비밀번호를 입력해주세요.");
 			$("#beforePassword").focus();
@@ -150,28 +175,34 @@
 			return;
 		} else if ($("#afterPassword").val() != $("#afterPasswordCheck").val()) {
 			alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+		} else {
+			if(chkPW($("#afterPassword").val())) {
+				chk = chkPW($("#afterPasswordCheck").val());
+			}
 		}
 
-		var saveItems = new Object();
+		if(chk) {
+			var saveItems = new Object();
 
-		saveItems.cusId = sessionStorage.getItem("userCusID");
-		saveItems.beforePassword = $("#beforePassword").val();
-		saveItems.afterPassword = $("#afterPassword").val();
-		saveItems.afterPasswordCheck = $("#afterPasswordCheck").val();
+			saveItems.cusId = sessionStorage.getItem("userCusID");
+			saveItems.beforePassword = $("#beforePassword").val();
+			saveItems.afterPassword = $("#afterPassword").val();
+			saveItems.afterPasswordCheck = $("#afterPasswordCheck").val();
 
-		console.log(saveItems);
 
-		// 내정보
-		instance.post('CU_002_003', saveItems).then(res => {
-			console.log(res.data);
-			if (res.data.message == "success") {
-				sessionStorage.clear();
-				alert("비밀번호가 변경되었습니다. 다시 로그인해주세요.");
-				location.href = "/customer/customer_login";
-			} else {
-				alert("비밀번호를 다시 확인해주세요.");
-			}
-		});
+
+			// 내정보
+			instance.post('CU_002_003', saveItems).then(res => {
+
+				if (res.data.message == "success") {
+					sessionStorage.clear();
+					alert("비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+					location.href = "/customer/customer_login";
+				} else {
+					alert("비밀번호를 다시 확인해주세요.");
+				}
+			});
+		}
 	}
 
 </script>

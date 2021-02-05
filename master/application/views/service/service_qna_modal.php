@@ -85,7 +85,7 @@
 		saveItems.helper = "관리자";
 		saveItems.answer = answer;
 
-		console.log(saveItems);
+
 
 		if(status) {
 			if (confirm("답변을 등록하시겠습니까?") == true) {

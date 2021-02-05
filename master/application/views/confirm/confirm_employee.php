@@ -179,7 +179,7 @@ require('confirm_modal.php');
 				pageCount++;
 			}
 			setEmployeeManageData(res.data.helpdeskDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

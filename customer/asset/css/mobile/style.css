@@ -203,3 +203,15 @@ input[type="text"], input[type="email"], input[type="password"] {
 	font-weight: 500;
 	color: #f93c48;
 }
+
+.empty-box {
+	margin-top: 5rem;
+	border-top: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
+	padding: 3rem 0;
+}
+
+.empty-box div {
+	text-align: center;
+	width: 100%;
+}

@@ -231,7 +231,7 @@ require('company_modal.php');
 		searchItems.pageNum = pageNum;
 		searchItems.searchWord = $("#searchWord").val();
 
-		console.log(searchItems);
+
 
 		instance.post('M004002_REQ_RES', searchItems).then(res => {
 			pageCount = 0;
@@ -239,7 +239,7 @@ require('company_modal.php');
 				pageCount++;
 			}
 
-			console.log(res.data);
+
 			setCompanyData(res.data.companyDTOList, pageNum);
 		});
 	}
@@ -300,7 +300,7 @@ require('company_modal.php');
 		searchItems.searchWord = $("#searchWord").val();
 
 		fileURL.post('downloadExcel/M0402', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

@@ -47,6 +47,7 @@
 
 		.health-content .content {
 			font-size: 15px;
+			text-align: justify;
 		}
 
 		h4 {
@@ -198,9 +199,8 @@
 	//삭제
 	function deleteEncyclopedia() {
 		if (confirm("삭제하시겠습니까?") == true) {
-			console.log(BoardId);
 			instance.post('M1705', BoardId).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("삭제되었습니다.");
 					history.back();

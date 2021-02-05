@@ -230,19 +230,26 @@
 				<h1>주요결과</h1>
 			</div>
 
-			<div class="row" style="margin-top: 5rem;display: inline-block">
+			<div class="row empty-box" id="empty" style="display: none;">
+				<div>
+					검사 결과가 없습니다.
+				</div>
+			</div>
+
+			<div class="row" id="select" style="margin-top: 5rem;display: inline-block">
 				<select id="familySelect" style="float:right;"
 						onchange="setDataSelectOption()">
 					<option value="ch">- 수검자 선택 -</option>
 				</select>
 			</div>
 
-			<hr>
-
 			<div class="row" id="resultView1" style="display:none;">
+				<hr>
+
 				<div style=" text-align: left;font-size: 2rem;font-weight: bolder">
 					주요결과
 				</div>
+
 				<div id="resultCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
 					<div style="float: left">
 						항목을 클릭하면 세부 내용을 확인할 수 있습니다.
@@ -341,6 +348,16 @@
 
 	//수검자 이름 셀렉트 셋팅
 	function setFamilySelectOption(data) {
+
+		if(data.length == 0) {
+			$('#empty').show();
+			$('#select').hide();
+			return false;
+		} else {
+			$('#empty').hide();
+			$('#select').show();
+		}
+
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<option value=\'' + data[i].famId + '\'>' + data[i].famName + '</option>'
@@ -506,7 +523,6 @@
 		}
 
 		var size = $('#resultCarousel').width() / 3;
-		console.log(size);
 		$('.item-table td').width(size);
 		$('.item-table td').height(size);
 	}
@@ -630,8 +646,6 @@
 		$("#resultAcc").append(AccHtml);
 		$("#resultTable").append(html);
 
-		console.log(resultData);
-
 		if ($("#resultTable").text() == '') {
 			$("#resultTable").append('<tr><td>해당 결과에 이상이 없습니다.</td></tr>');
 		}
@@ -664,8 +678,6 @@
 
 		var index = $("#resultOption1 option").index($("#resultOption1 option:selected")) - 1;
 
-		console.log(categoryAList[index].list);
-
 		var html = '';
 
 		for (let j = 0; j < categoryAList[index].list.length; j++) {
@@ -682,7 +694,6 @@
 		var inspectionResult = new Array();
 		var basic = '';
 
-		console.log(resultData);
 		for (i = 0; i < resultData.length; i++) {
 			for (j = 0; j < resultData[i].resultItemList.length; j++) {
 				if (resultData[i].resultItemList[j].inspection == inspection) {
@@ -748,7 +759,6 @@
 		} else {
 			basicArr = basic.split('~');
 		}
-		console.log(basicArr);
 
 		var myChart = new Chart(ctx, {
 			type: 'line',

@@ -248,7 +248,7 @@
 				pageCount++;
 			}
 			setReservationTable(res.data.reservationDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

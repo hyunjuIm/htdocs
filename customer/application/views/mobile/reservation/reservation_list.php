@@ -217,11 +217,11 @@
 		var sendItems = new Object();
 		sendItems.rsvId = id;
 
-		console.log(sendItems);
+
 
 		if (confirm("예약을 취소하시겠습니까?") == true) {
 			instance.post('CU_004_002', sendItems).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("취소되었습니다.");
 					location.reload();

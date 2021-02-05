@@ -207,6 +207,8 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
 					<a class="dropdown-item" href="/master/health_encyclopedia_list">질병백과</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/master/chat_bot">챗봇관리</a>
 				</div>
 			</li>
 
@@ -273,14 +275,14 @@
 
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.100:8080/permission/",
+		baseURL: "http://192.168.219.108:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
 		}
 	});
 	permissionCheck.post('isOk').then(res => {
-		console.log(res.data);
+
 		if (res.data != "SUCCESS") {
 			sessionStorage.clear();
 			alert("중복로그인이 감지되어 로그아웃 되었습니다.");
@@ -293,7 +295,7 @@
 	$('#loading').hide();
 
 	const instance = axios.create({
-		baseURL: "http://192.168.219.100:8080/master/api/v1/",
+		baseURL: "http://192.168.219.108:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
@@ -320,7 +322,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "http://192.168.219.100:8080/",
+		baseURL: "http://192.168.219.108:8080/",
 		timeout: 20000,
 		headers: {'token': token}
 	});

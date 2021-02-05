@@ -161,7 +161,7 @@
 				'Content-Type': 'application/json'
 			}
 		}).then(response => {
-			console.log(response);
+
 			const type = response.headers['content-type'];
 			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
 			const link = document.createElement('a');

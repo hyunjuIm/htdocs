@@ -257,12 +257,10 @@ require('bill_modal.php');
 		searchItems.billingId = billingId;
 		searchItems.confirm = value;
 
-		console.log(searchItems.billingId);
-
 		if (searchItems.confirm == 'true' || searchItems.confirm == true) {
 			if (confirm("승인하시겠습니까?") == true) {
 				instance.post('C0504', searchItems).then(res => {
-					console.log(res.data.message);
+
 					if (res.data.message == "success") {
 						alert("승인되었습니다.");
 						$('#' + billingId.replace("#", "")).html('<div class="btn btn-danger" onClick="companyConfirm(\'' + billingId + '\', false)" >취소</div>');
@@ -276,7 +274,7 @@ require('bill_modal.php');
 		} else {
 			if (confirm("취소하시겠습니까?") == true) {
 				instance.post('C0504', searchItems).then(res => {
-					console.log(res.data.message);
+
 					if (res.data.message == "success") {
 						alert("취소되었습니다.");
 						$('#' + billingId.replace("#", "")).html('<div class="btn btn-primary" onClick="companyConfirm(\'' + billingId + '\',true)" >승인</div>');

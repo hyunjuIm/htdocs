@@ -138,7 +138,7 @@
 						</div>
 						<div class="row" style="margin-top: 4rem">
 						<span style="font-size: 2.4rem;font-weight: bolder;margin-bottom: 2rem">
-							개인정보 수집이용안내
+							개인정보 수집이용 안내
 						</span>
 							<br>
 							<div class="personal-info-agree">

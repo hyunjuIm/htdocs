@@ -302,7 +302,7 @@ require($parentDir . '/integrated/hospital_modal.php');
 				pageCount++;
 			}
 
-			console.log(searchItems);
+
 			setPackageData(res.data.packageDTOList, pageNum);
 		});
 	}
@@ -379,7 +379,7 @@ require($parentDir . '/integrated/hospital_modal.php');
 		}
 
 		fileURL.post('downloadExcel/M0602', searchItems).then(res => {
-			console.log(res.data);
+
 			exportExcel(res.data);
 		});
 	}

@@ -224,7 +224,7 @@
 
 	//클릭시 고객정보
 	function setDetailCustomerData(data) {
-		console.log(data);
+
 
 		//info1 고객세부정보
 		document.getElementById('cus-companyName').innerHTML = data.companyName;
@@ -327,7 +327,7 @@
 		saveItems.companySupportPrice = savePrice1('cus-companySupportPrice');
 		saveItems.memo = $('#cus-memo').val();
 
-		console.log(saveItems);
+
 
 		//입력된 정보 검사
 		if (saveItems.familyName == "") {
@@ -351,7 +351,7 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M003004_REQ_RES', saveItems).then(res => {
-					console.log(res.data.message);
+
 					alert("저장되었습니다.");
 					clickDetail(saveItems.reservationId);
 					searchInformation(pageNum);

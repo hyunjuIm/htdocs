@@ -469,7 +469,7 @@
 		sendItems.password = $("#customerPassword").val();
 		sendItems.passwordCheck = $("#customerPasswordCheck").val();
 
-		console.log(sendItems);
+
 
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M001004_REQ_RES', sendItems).then(res => {
@@ -577,7 +577,7 @@
 		sendItems.supportPercent = $("#supportPercent").val();
 		sendItems.supportPrice = saveSupportPrice('supportPrice');
 
-		console.log(sendItems);
+
 
 		if (confirm("저장하시겠습니까?") == true) {
 			instance.post('M001005_REQ_RES', sendItems).then(res => {
@@ -621,7 +621,7 @@
 				'Content-Type': 'multipart/form-data'
 			}
 		}).then(res => {
-			console.log(res.data);
+
 			alert(res.data);
 			location.reload();
 		});

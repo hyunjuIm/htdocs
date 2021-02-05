@@ -153,7 +153,7 @@
 		searchItems.coApproval= $("#coApproval option:selected").val();
 		searchItems.pagingNum = pageNum;
 
-		console.log(searchItems);
+
 
 		instance.post('C0602', searchItems).then(res => {
 			pageCount = 0;
@@ -161,7 +161,7 @@
 				pageCount++;
 			}
 			setPackageConfirmData(res.data.packageListDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

@@ -718,7 +718,7 @@
 		var inspectionResult = new Array();
 		var basic = '';
 
-		console.log(resultData);
+
 		for (i = 0; i < resultData.length; i++) {
 			for (j = 0; j < resultData[i].resultItemList.length; j++) {
 				if (resultData[i].resultItemList[j].inspection == inspection) {
@@ -781,7 +781,6 @@
 		} else {
 			basicArr = basic.split('~');
 		}
-		console.log(basicArr);
 
 		var myChart = new Chart(ctx, {
 			type: 'line',

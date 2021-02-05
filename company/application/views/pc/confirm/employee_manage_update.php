@@ -209,7 +209,7 @@
 
 	//글수정 뷰 셋팅
 	function setEmployeeManageView(data) {
-		console.log(data);
+
 		$("#division").val(data.division);
 		$("#title").val(data.title);
 		$("#content").val(data.content);
@@ -299,7 +299,6 @@
 
 			instance.post('C0308', sendItems).then(res => {
 				if (res.data.message == "success") {
-					console.log('삭제완료');
 					alert('저장되었습니다');
 					location.href = '/company/employee_manage';
 				}
@@ -311,7 +310,7 @@
 			params.append("file", file.files[0]);
 			params.append('fileName', $('#filename').text());
 			params.append('hlpId', id);
-			console.log(params);
+
 
 			instance.post('C0302', params, {
 				headers: {

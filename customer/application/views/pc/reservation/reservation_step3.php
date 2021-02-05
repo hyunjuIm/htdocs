@@ -10,7 +10,6 @@
 
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/asset/css/sub-page.css"/>
-	<script type="text/javascript" src="../../../../asset/lib/ajax-cross-origin/js/jquery.ajax-cross-origin.min.js"></script>
 
 	<style>
 		.form-check {
@@ -257,7 +256,7 @@
 		}
 
 		.ui-datepicker-calendar > tbody td.ui-datepicker-week-end:first-child > .ui-state-default,
-		.ui-datepicker-calendar > thead th.ui-datepicker-week-end:first-child {
+		.ui-datepicker-calendar > thead th.ui-datepicker-week-end:first-child, .holiday span {
 			color: red !important;
 		}
 
@@ -534,6 +533,37 @@
 	require($parentDir . '/common/check_data.js');
 	?>
 
+	// console.log(getRestDateList('2021', '9') + '<<');
+	//
+	// function getRestDateList(year, month) {
+	// 	let restDateSet = new Set();
+	//
+	// 	month = (month < 10) ? 0 + '' + month : month + '';
+	// 	var xhr = new XMLHttpRequest();
+	// 	xhr.
+	// 	xhr.onreadystatechange = function () {
+	// 		if (this.readyState == 4 && this.status == 200) {
+	// 			var str = this.response;
+	// 			var cut = 0;
+	// 			while (str.indexOf("2021") > -1) {
+	// 				let startIndex = str.indexOf("2021");
+	// 				let endIndex = startIndex + 8;
+	// 				let dateNum = str.substring(startIndex, endIndex);
+	// 				restDateSet.add(dateNum);
+	// 				cut++;
+	// 				str = str.substring(endIndex, str.length)
+	// 			}
+	// 			console.log(restDateSet);
+	// 		}
+	// 	};
+	// 	xhr.open("GET", "http://customer.localhost/customer/doIt?year=" + year + "&month=" + month);
+	// 	xhr.send();
+	// 	console.log(xhr.send());
+	// 	console.log("나간다");
+	// 	return (Array.from(restDateSet).sort());
+	// }
+
+
 	//예약을 위한 id 가져오기
 	var get = location.href.substr(
 			location.href.indexOf('=', 1) + 1
@@ -658,6 +688,17 @@
 	var firstWishDate;
 	var secondWishDate;
 
+	// 제외할 날짜
+	var disabledDays = ["2021-1-1",
+		"2021-2-11", "2021-2-12", "2021-2-13",
+		"2021-3-1",
+		"2021-5-5", "2021-5-19",
+		"2021-6-6",
+		"2021-8-15",
+		"2021-9-20", "2021-9-21", "2021-9-22",
+		"2021-10-3", "2021-10-9",
+		"2021-12-25"];
+
 	$.datepicker.setDefaults({
 		dateFormat: 'yy-mm-dd',
 		prevText: '이전 달',
@@ -670,12 +711,27 @@
 		showMonthAfterYear: true,
 		yearSuffix: '년',
 		minDate: 14,
-		maxDate: '+2m',
+		// maxDate: '+2m',
+
 		//일요일 선택 불가
-		beforeShowDay: function (date) {
-			return [date.getDay() != 0, ''];
-		}
+		beforeShowDay: disableSomeDay
 	});
+
+	// 날짜를 나타내기 전에(beforeShowDay) 실행할 함수
+	function disableSomeDay(date) {
+		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+		for (i = 0; i < disabledDays.length; i++) {
+			if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
+				return [false, 'holiday', 'holiday'];
+			}
+		}
+		return [date.getDay() != 0];
+	}
+
+	// // 일요일만 선택 막기
+	// function noSundays(date) {
+	// 	return [date.getDay() != 0, ''];
+	// }
 
 	$(function () {
 		$("#firstDatepicker").datepicker({
@@ -694,11 +750,9 @@
 				var week = new Array("일", "월", "화", "수", "목", "금", "토");
 
 				var html = year + '.' + month + '.' + day + '(' + week[date.getDay()] + ')';
-				console.log(html);
 				$("#firstWishDate").text(html);
 			}
 		});
-
 		$("#secondDatepicker").datepicker({
 			onSelect: function (d) {
 				//요일 가져오기
@@ -715,7 +769,6 @@
 				var week = new Array("일", "월", "화", "수", "목", "금", "토");
 
 				var html = year + '.' + month + '.' + day + '(' + week[date.getDay()] + ')';
-				console.log(html);
 				$("#secondWishDate").text(html);
 			}
 		});
@@ -732,7 +785,7 @@
 		sendItems.secondWishDate = secondWishDate;
 		sendItems.additionalPrice = sum;
 
-		console.log(sendItems);
+
 
 		if (firstWishDate == null || firstWishDate == '') {
 			alert('1차 예약일을 선택해주세요.');
@@ -747,7 +800,7 @@
 
 		if (confirm("예약하시겠습니까?") == true) {
 			instance.post('CU_003_005', sendItems).then(res => {
-				console.log(res.data);
+
 				if (res.data.message == "success") {
 					location.href = "reservation_step4?famId=" + famId;
 				}

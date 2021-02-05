@@ -162,8 +162,6 @@
 	var noticeData;
 
 	function setNoticeUpdateData(data) {
-		console.log(data.fileName);
-
 		$('#ntTitle').val(data.title);
 		$('#filename').text(data.fileName);
 		$('#ntContent').val(data.content);
@@ -333,7 +331,7 @@
 		}
 		saveItems.targetName = name;
 
-		console.log(saveItems);
+
 
 		if (saveItems.title == "") {
 			alert("제목을 입력해주세요.")
@@ -344,9 +342,9 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M01300401', saveItems).then(res => {
-					console.log(res.data);
+
 					if (res.data.message != "FAILED") {
-						console.log(res.data);
+
 						uploadFile(res.data.message);
 					}
 				});
@@ -377,7 +375,7 @@
 		params.append("file", file.files[0]);
 		params.append('fileName', $('#filename').text());
 		params.append('noticeId', id);
-		console.log(params);
+
 
 		instance.post('M01300402', params, {
 			headers: {

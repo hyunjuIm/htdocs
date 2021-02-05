@@ -137,7 +137,7 @@
 		searchItems.title = $("#searchWord").val();
 		searchItems.year = $("#ntYear option:selected").val();
 
-		console.log(searchItems);
+
 
 		instance.post('M013002_REQ_RES', searchItems).then(res => {
 			pageCount = 0;
@@ -146,7 +146,7 @@
 			}
 
 			setNoticeListData(res.data.noticeDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 

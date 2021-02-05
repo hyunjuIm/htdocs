@@ -13,6 +13,10 @@
 			width: 100%;
 			display: block;
 		}
+
+		.btn {
+			font-size: 1.6rem;
+		}
 	</style>
 </head>
 <body>
@@ -46,7 +50,7 @@
 							</div>
 							<div class="select-content">
 								<select id="servedYear">
-									<option selected>- 전체 -</option>
+									<option value="all" selected>-전체-</option>
 								</select>
 							</div>
 						</div>
@@ -59,7 +63,7 @@
 							</div>
 							<div class="select-content">
 								<select id="hospitalName">
-									<option selected>- 전체 -</option>
+									<option value="all" selected>-전체-</option>
 								</select>
 							</div>
 						</div>
@@ -89,7 +93,7 @@
 							</div>
 							<div class="select-content">
 								<select id="serviceName">
-									<option selected>- 전체 -</option>
+									<option value="all" selected>-전체-</option>
 								</select>
 							</div>
 						</div>
@@ -126,7 +130,16 @@
 			</div>
 		</div>
 
-		<table class="basic-table" id="reservationTable" style="margin-top: 5rem">
+		<div style="display: inline-block;margin-top: 5rem;width: 100%;font-size: 1.6rem">
+			<div class="btn btn-outline-success" style="float: right;" onclick="tableExcelDownload()">
+				<div style="display: flex;align-items: center; ">
+					<i class="ri-file-excel-2-fill ri-lg"></i>&nbsp;엑셀 다운로드
+				</div>
+			</div>
+		</div>
+
+
+		<table class="basic-table" id="reservationTable" style="margin-top: 0.3rem">
 			<thead>
 			<th>NO</th>
 			<th>아이디</th>
@@ -164,6 +177,10 @@
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
 	require($parentDir . '/common/check_data.js');
+	?>
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/file_data.js');
 	?>
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
@@ -238,21 +255,11 @@
 
 		searchItems.pagingNum = pageNum;
 
-		if (searchItems.servedYear == "- 전체 -") {
-			searchItems.servedYear = "all";
-		} if (searchItems.hospitalName == "- 전체 -") {
-			searchItems.hospitalName = "all";
-		} if (searchItems.reservationStartDate == "") {
+		if (searchItems.reservationStartDate == "") {
 			searchItems.reservationStartDate = "2012-01-01";
 		} if (searchItems.reservationEndDate == "") {
 			searchItems.reservationEndDate = "2030-01-01";
-		} if (searchItems.serviceName == "- 전체 -") {
-			searchItems.serviceName = "all";
-		} if (searchItems.supportPercent == "- 전체 -") {
-			searchItems.supportPercent = "all";
 		}
-
-		console.log(searchItems);
 
 		instance.post('C0202', searchItems).then(res => {
 			pageCount = 0;
@@ -260,7 +267,7 @@
 				pageCount++;
 			}
 			setReservationTable(res.data.reservationDTOList, pageNum);
-			console.log(res.data);
+
 		});
 	}
 
@@ -305,5 +312,92 @@
 			$("#reservationTable > tbody").append(html);
 		}
 	}
+
+	function tableExcelDownload() {
+		var searchItems = new Object();
+
+		searchItems.coId = coIdObj.coId;
+		searchItems.searchWord = $("#searchWord").val();
+
+		searchItems.servedYear = $("#servedYear option:selected").val();
+		searchItems.hospitalName = $("#hospitalName option:selected").val();
+		searchItems.reservationStartDate = $("#reservationStartDate").val();
+		searchItems.reservationEndDate = $("#reservationEndDate").val();
+		searchItems.serviceName = $("#serviceName option:selected").val();
+		searchItems.supportPercent = 'all';
+
+		searchItems.pagingNum = pageNum;
+
+		if (searchItems.reservationStartDate == "") {
+			searchItems.reservationStartDate = "2012-01-01";
+		} if (searchItems.reservationEndDate == "") {
+			searchItems.reservationEndDate = "2030-01-01";
+		}
+
+		fileURL.post('downloadExcel/C0202', searchItems).then(res => {
+			exportExcel(res.data);
+		});
+	}
+
+	function exportExcel(data) {
+		console.log(data);
+		var excelHandler = {
+			getExcelFileName: function () {
+				return '[' + todayString() + ']' + ' 예약관리.xlsx';
+			},
+			getSheetName: function () {
+				return 'sheet 1';
+			},
+			getExcelData: function () {
+				const table = [];
+				const tt = [];
+				tt.push("사업연도");
+				tt.push("아이디");
+				tt.push("이름");
+				tt.push("주민번호");
+				tt.push("관계");
+				tt.push("예약일");
+				tt.push("예약병원");
+				tt.push("예약상태");
+
+				table.push(tt);
+
+				for (var i = 0; i < data.length; i++) {
+					const td = [];
+					td.push(data[i].serviceYear);
+					td.push(data[i].email);
+					td.push(data[i].name);
+					td.push(data[i].birthDate);
+					td.push(data[i].grade);
+					td.push(data[i].reservedDate);
+					td.push(data[i].hospitalName);
+					td.push(data[i].status);
+
+					table.push(td);
+				}
+
+				return table;
+			},
+			getWorksheet: function () {
+				return XLSX.utils.aoa_to_sheet(this.getExcelData());
+			}
+		}
+
+		// step 1. workbook 생성
+		var wb = XLSX.utils.book_new();
+
+		// step 2. 시트 만들기
+		var newWorksheet = excelHandler.getWorksheet();
+
+		// step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.
+		XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+		// step 4. 엑셀 파일 만들기
+		var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+
+		// step 5. 엑셀 파일 내보내기
+		saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), excelHandler.getExcelFileName());
+	}
+
 </script>
 

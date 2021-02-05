@@ -259,7 +259,7 @@
 
 		if (confirm("승인 상태를 변경하시겠습니까?") == true) {
 			instance.post('C0604', sendItems).then(res => {
-				console.log(res.data.message);
+
 				if (res.data.message == "success") {
 					alert("변경되었습니다.");
 					if (sendItems.status == 'true') {
