@@ -14,4 +14,16 @@ class Content extends CI_Controller {
     {
         $this->load->view('custom_health_info');
     }
+
+	//알아두면 쓸모있는 건강정보
+	public function all()
+	{
+		$this->load->view('all_health_info');
+	}
+
+	//건강정보 검색
+	public function search()
+	{
+		$this->load->view('search_health_info');
+	}
 }

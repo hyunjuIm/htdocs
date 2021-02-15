@@ -12,7 +12,7 @@ html {
 
 body {
     font-size: 1.6rem;
-    background: whitesmoke;
+    background: white;
 	width: 100%;
 	max-width: 50rem;
 	margin: 0 auto;
@@ -97,6 +97,7 @@ i {
 .card {
     width: 20rem;
     min-width: 20rem;
+    max-width: 20rem;
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #c2c2c2;
@@ -106,6 +107,8 @@ i {
 .card img {
     width: 100%;
     height: 14rem;
+    min-height: 14rem;
+    max-height: 14rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -115,7 +118,8 @@ i {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     word-break: keep-all;
-	height: 8rem;
+	padding: 1rem;
+	min-height: 8rem;
 }
 
 /*영상*/
@@ -180,6 +184,30 @@ i {
     border: 1px solid #DCDCDC;
     box-shadow: 0px 0px 7px #d0d0d0;
     border-radius: 10px;
+}
+
+.encyclopedia {
+	width: 100%;
+	height: 12rem;
+	position: relative;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.encyclopedia .black-layer {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 10px;
+	display: inline-block;
+	text-align: center;
+	line-height: 12rem;
+	color: white;
+	font-size: 2.5rem;
+	font-weight: 400;
 }
 
 /*스와이프*/

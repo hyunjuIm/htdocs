@@ -143,10 +143,14 @@
 
 		.card img {
 			height: 18.5rem;
+			min-height: 18.5rem;
+			max-height: 18.5rem;
 		}
 
 		.card {
 			width: 22rem;
+			min-width: 22rem;
+			max-width: 22rem;
 			box-shadow: 0px 0px 10px #aaaaaa;
 		}
 
@@ -278,8 +282,7 @@
 			breakpointsInverse: true,
 			breakpoints: {
 				280: {
-					slidesPerView: 2,
-					spaceBetween: 170,
+					slidesPerView: 1,
 				},
 				320: {
 					slidesPerView: 2,

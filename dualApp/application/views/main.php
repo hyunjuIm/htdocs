@@ -65,7 +65,7 @@
 </div>
 
 <!--xx님을 위한 맞춤 건강정보-->
-<div class="row">
+<div class="row" style="border-bottom: 1.5rem solid whitesmoke">
     <div class="row-padding">
         <div class="row" style="display: inline-block">
             <div class="title1" style="float: left">
@@ -117,14 +117,14 @@
 </div>
 
 <!-- 알아두면 쓸모있는 건강정보-->
-<div class="row" style="margin-top: 1.5rem">
+<div class="row">
     <div class="row-padding" style="padding-bottom: 7rem">
         <div class="row" style="display: inline-block">
             <div class="title1" style="float: left">
                 알아두면 쓸모있는 건강정보
             </div>
             <div style="float: right;margin-top: 0.8rem;padding-right: 2rem">
-                <a class="more">
+                <a class="more" href="/content/all">
                     more
                     <span style="font-size: 1.1rem">
                         <i class="ri-arrow-right-s-line"></i>
