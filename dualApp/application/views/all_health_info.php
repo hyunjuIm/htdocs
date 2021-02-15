@@ -171,8 +171,6 @@
 			background: white;
 			/*position: absolute;*/
 			top: 0;
-			left: ;
-			transform: translate(150%);
 			width: 100%;
 			max-width: 50rem;
 			height: 100%;

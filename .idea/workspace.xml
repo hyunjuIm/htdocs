@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d931473-2b8e-4fdd-a9bf-b0494273f30e" name="Default Changelist" comment="-">
-      <change afterPath="$PROJECT_DIR$/dualApp/application/views/all_health_info.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dualApp/application/views/detail_card.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dualApp/application/views/search_health_info.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dualApp/application/controllers/Content.php" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/application/controllers/Content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dualApp/application/views/custom_health_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/application/views/custom_health_info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dualApp/application/views/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/application/views/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dualApp/application/views/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/application/views/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dualApp/application/views/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/application/views/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dualApp/asset/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/asset/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dualApp/application/views/all_health_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/dualApp/application/views/all_health_info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +102,7 @@
       <workItem from="1612138048484" duration="708000" />
       <workItem from="1612140267244" duration="122809000" />
       <workItem from="1612742484866" duration="50797000" />
+      <workItem from="1613347238490" duration="3211000" />
     </task>
     <task id="LOCAL-00001" summary="-">
       <created>1609152198297</created>
@@ -251,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612513298739</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="-">
+      <created>1613347379353</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1613347379353</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,19 +306,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="510" height="446" key="SwitcherDM/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1611538010551" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612492293330">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1613347385670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612492293330" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613347385670" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1610013247593" />
     <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612426513978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="775" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612426513978" />
-    <state x="2101" y="0" width="1022" height="1027" key="dock-window-1" timestamp="1612924730585">
+    <state x="2101" y="0" width="1022" height="1027" key="dock-window-1" timestamp="1613347789527">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2101" y="0" width="1022" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612924730585" />
+    <state x="2101" y="0" width="1022" height="1027" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1613347789527" />
     <state x="1920" y="0" width="1190" height="1027" key="dock-window-10" timestamp="1611295394023">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
