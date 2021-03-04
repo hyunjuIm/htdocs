@@ -98,7 +98,11 @@
 	?>
 
 	var pageCount = 0;
-	var pageNum = 0;
+
+	if (sessionStorage.getItem("pageNum") == null) {
+		sessionStorage.setItem("pageNum", 0);
+	}
+	var pageNum = sessionStorage.getItem("pageNum");
 	
 	//검색항목리스트
 	instance.post('M013001_RES').then(res => {
@@ -115,7 +119,7 @@
 		}
 
 		//로딩 되자마자 초기 셋팅
-		searchInformation(0);
+		searchInformation(pageNum);
 	}
 
 	//페이징-숫자클릭
@@ -131,13 +135,13 @@
 
 	function drawTable() {
 		pageNum = parseInt(pageNum);
+		sessionStorage.setItem("pageNum", pageNum);
+
 		var searchItems = new Object();
 
 		searchItems.pageNum = pageNum;
 		searchItems.title = $("#searchWord").val();
 		searchItems.year = $("#ntYear option:selected").val();
-
-
 
 		instance.post('M013002_REQ_RES', searchItems).then(res => {
 			pageCount = 0;

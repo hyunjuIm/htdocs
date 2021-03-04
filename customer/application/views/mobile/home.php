@@ -250,7 +250,7 @@
 					</tr>
 					<tr>
 						<td style="background: url(../../../asset/images/mobile/main5.jpg);background-size: 100%"
-							onclick="location.href='/m/health_encyclopedia_list'">
+							onclick="location.href='/m/health_encyclopedia_list';resetPaging()">
 							<div>
 								<span class="menu">건강컨텐츠</span><br>
 								HEALTH CONTENTS
@@ -258,7 +258,7 @@
 							<img src="../../../asset/images/mobile/m_icon5.png" width="50%">
 						</td>
 						<td style="background: url(../../../asset/images/mobile/main6.jpg);background-size: 100%"
-							onclick="location.href='/m/customer_service_faq'">
+							onclick="location.href='/m/customer_service_faq';resetPaging()">
 							<div>
 								<span class="menu">고객센터</span><br>
 								CUSTOMER CENTER
@@ -273,7 +273,7 @@
 				<div class="notice-box">
 					<div class="row" style="display: block;font-weight: bolder">
 						<div style="font-size: 1.6rem;color: #5645ED;margin: 0 auto"
-							 onclick="location.href='/m/notice_list'">NOTICE
+							 onclick="location.href='/m/notice_list';resetPaging()">NOTICE
 						</div>
 						<div style="font-size: 2.3rem;color: black;padding-bottom: 1rem;margin: 0 auto">공지사항</div>
 					</div>

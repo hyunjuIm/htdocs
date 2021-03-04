@@ -29,7 +29,7 @@
 <!--모바일 헤더-->
 <div class="row top-bar">
 	<div class="left">
-		<i class="ri-arrow-left-line" onclick="location.href='/content/'"></i>
+		<i class="ri-arrow-left-line" onclick="history.back();"></i>
 	</div>
 	<div class="center" id="topTitle">
 		알아두면 쓸모있는 건강정보
@@ -40,18 +40,5 @@
 </div>
 
 <script>
-	document.documentElement.addEventListener('touchstart', function (event) {
-		if (event.touches.length > 1) {
-			event.preventDefault();
-		}
-	}, false);
 
-	var lastTouchEnd = 0;
-
-	document.documentElement.addEventListener('touchend', function (event) {
-		var now = (new Date()).getTime();
-		if (now - lastTouchEnd <= 300) {
-			event.preventDefault();
-		} lastTouchEnd = now;
-	}, false);
 </script>

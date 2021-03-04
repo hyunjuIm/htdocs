@@ -87,10 +87,14 @@
 	?>
 
 	var pageCount = 0;
-	var pageNum = 0;
+
+	if (sessionStorage.getItem("pageNum") == null) {
+		sessionStorage.setItem("pageNum", 0);
+	}
+	var pageNum = sessionStorage.getItem("pageNum");
 
 	//로딩 되자마자 초기 셋팅
-	searchInformation(0);
+	searchInformation(pageNum);
 
 	//페이징-숫자클릭
 	function searchInformation(index) {
@@ -100,7 +104,10 @@
 
 	function drawTable() {
 		pageNum = parseInt(pageNum);
+		sessionStorage.setItem("pageNum", pageNum);
+
 		var searchItems = new Object();
+
 		searchItems.pageNum = pageNum;
 
 		instance.post('M1701', searchItems).then(res => {
@@ -108,9 +115,7 @@
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-
 			setEncyclopediaListData(res.data.healthContentDTOList, pageNum);
-
 		});
 	}
 

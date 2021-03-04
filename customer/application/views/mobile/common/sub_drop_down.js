@@ -19,12 +19,12 @@ if ($('#menu1 .nav-button').text() == '예약서비스') {
 } else if ($('#menu1 .nav-button').text() == '건강정보') {
 	var option = '';
 	option += '<li><a href="#" class="nav-button">-</a></li>' +
-		'<li><a href="/m/health_encyclopedia_list">질병백과</a></li>';
+		'<li><a href="/m/health_encyclopedia_list" onclick="resetPaging()">질병백과</a></li>';
 	$('#menu2 ul').append(option);
 } else if ($('#menu1 .nav-button').text() == '이용안내') {
 	var option = '';
 	option += '<li><a href="#" class="nav-button">-</a></li>' +
-		'<li><a href="/m/notice_list">공지사항</a></li>' +
+		'<li><a href="/m/notice_list" onclick="resetPaging()">공지사항</a></li>' +
 		'<li><a href="#" onclick=window.open("/customer/comparison_hospital")>병원별검진항목비교</a></li>' +
 		'<li><a href="/m/health_checkup_guide">건강검진 안내</a></li>';
 	$('#menu2 ul').append(option);
@@ -33,7 +33,7 @@ if ($('#menu1 .nav-button').text() == '예약서비스') {
 	option += '<li><a href="#" class="nav-button">-</a></li>' +
 		'<li><a href="/m/customer_service_faq">자주 묻는 질문</a></li>' +
 		'<li><a href="/m/customer_service_one_inquiry">1:1 문의</a></li>' +
-		'<li><a href="/m/customer_service_inquiry_list">내 문의 내역</a></li>';
+		'<li><a href="/m/customer_service_inquiry_list" onclick="resetPaging()">내 문의 내역</a></li>';
 	$('#menu2 ul').append(option);
 }
 

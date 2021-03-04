@@ -110,7 +110,7 @@
 		</div>
 		<div class="col table-box">
 			<h5><img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px"> 공지사항</h5>
-			<a href="/master/service_notice" class="all-menu"> 전체보기 </a>
+			<a href="/master/service_notice" class="all-menu" onclick="resetPaging()"> 전체보기 </a>
 			<table id="noticeTable" class="table">
 				<thead>
 				<tr>

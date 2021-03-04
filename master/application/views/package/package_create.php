@@ -191,7 +191,11 @@ require('package_modal.php');
 	?>
 
 	var pageCount = 0;
-	var pageNum = 0;
+
+	if (sessionStorage.getItem("pageNum") == null) {
+		sessionStorage.setItem("pageNum", 0);
+	}
+	var pageNum = sessionStorage.getItem("pageNum");
 
 	//검색항목리스트
 	instance.post('M007007_RES').then(res => {
@@ -285,7 +289,7 @@ require('package_modal.php');
 		}
 
 		//로딩 되자마자 초기 셋팅
-		searchInformation(0);
+		searchInformation(pageNum);
 	}
 
 	//페이징-숫자클릭
@@ -297,6 +301,8 @@ require('package_modal.php');
 	//검색
 	function drawTable() {
 		pageNum = parseInt(pageNum);
+		sessionStorage.setItem("pageNum", pageNum);
+
 		var searchItems = new Object();
 
 		searchItems.coName = $("#pacComName option:selected").val();
@@ -400,7 +406,6 @@ require('package_modal.php');
 
 	function makeTable(data) {
 		$('#pckExcel').empty();
-
 
 		const serviceYear = data.serviceYear;
 		const coNameBranch = data.coNameBranch;

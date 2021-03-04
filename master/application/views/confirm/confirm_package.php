@@ -141,8 +141,12 @@
 	require($parentDir . '/common/paging.js');
 	?>
 
-	var pagingNum = 0;
 	var pageCount = 0;
+
+	if (sessionStorage.getItem("pageNum") == null) {
+		sessionStorage.setItem("pageNum", 0);
+	}
+	var pageNum = sessionStorage.getItem("pageNum");
 
 	//검색항목리스트
 	instance.post('M016001').then(res => {
@@ -190,7 +194,7 @@
 		}
 
 		//로딩 되자마자 초기 셋팅
-		searchInformation(0);
+		searchInformation(pageNum);
 	}
 
 	//페이징-숫자클릭
@@ -202,6 +206,8 @@
 	//검색
 	function drawTable() {
 		pageNum = parseInt(pageNum);
+		sessionStorage.setItem("pageNum", pageNum);
+
 		var searchItems = new Object();
 
 		searchItems.coName = $("#coName option:selected").val();
@@ -217,15 +223,12 @@
 			return false;
 		}
 
-
-
 		instance.post('M016002', searchItems).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
 			setPackageConfirmData(res.data.packageListDTOList, pageNum);
-
 		});
 	}
 

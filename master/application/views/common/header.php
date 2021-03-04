@@ -156,7 +156,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
 					<a class="dropdown-item" href="/master/package_list">패키지관리</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/master/package_create">패키지생성</a>
+					<a class="dropdown-item" href="/master/package_create" onclick="resetPaging()">패키지생성</a>
 				</div>
 			</li>
 
@@ -168,12 +168,12 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
 					<a class="dropdown-item" href="/master/confirm_employee">직원관리</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/master/confirm_package">패키지승인</a>
+					<a class="dropdown-item" href="/master/confirm_package" onclick="resetPaging()">패키지승인</a>
 				</div>
 			</li>
 
 			<li class="nav-item ">
-				<a class="nav-link" href="/master/billing_list">청구관리</a>
+				<a class="nav-link" href="/master/billing_list" onclick="resetPaging()">청구관리</a>
 			</li>
 
 			<li class="nav-item dropdown">
@@ -206,7 +206,7 @@
 					컨텐츠관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
-					<a class="dropdown-item" href="/master/health_encyclopedia_list">질병백과</a>
+					<a class="dropdown-item" href="/master/health_encyclopedia_list" onclick="resetPaging()">질병백과</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/master/chat_bot">챗봇관리</a>
 				</div>
@@ -218,7 +218,7 @@
 					서비스관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
-					<a class="dropdown-item" href="/master/service_notice">공지사항</a>
+					<a class="dropdown-item" href="/master/service_notice" onclick="resetPaging()">공지사항</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/master/service_qan_list">고객센터</a>
 				</div>
@@ -275,7 +275,7 @@
 
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.108:8080/permission/",
+		baseURL: "http://192.168.219.111:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -295,7 +295,7 @@
 	$('#loading').hide();
 
 	const instance = axios.create({
-		baseURL: "http://192.168.219.108:8080/master/api/v1/",
+		baseURL: "http://192.168.219.111:8080/master/api/v1/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
@@ -322,7 +322,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "http://192.168.219.108:8080/",
+		baseURL: "http://192.168.219.111:8080/",
 		timeout: 20000,
 		headers: {'token': token}
 	});
@@ -346,5 +346,10 @@
 				$('#loading').hide();
 			}
 	);
+
+	//페이징 번호 0으로
+	function resetPaging() {
+		sessionStorage.setItem("pageNum", 0);
+	}
 </script>
 

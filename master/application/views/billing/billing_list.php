@@ -145,7 +145,11 @@ require('billing_modal.php');
 	?>
 
 	var pageCount = 0;
-	var pageNum = 0;
+
+	if (sessionStorage.getItem("pageNum") == null) {
+		sessionStorage.setItem("pageNum", 0);
+	}
+	var pageNum = sessionStorage.getItem("pageNum");
 
 	//검색항목리스트
 	instance.post('M009003_RES').then(res => {
@@ -199,7 +203,7 @@ require('billing_modal.php');
 		}
 
 		//로딩 되자마자 초기 셋팅
-		searchInformation(0);
+		searchInformation(pageNum);
 	}
 
 	//페이징-숫자클릭
@@ -211,6 +215,8 @@ require('billing_modal.php');
 	//검색
 	function drawTable() {
 		pageNum = parseInt(pageNum);
+		sessionStorage.setItem("pageNum", pageNum);
+
 		var searchItems = new Object();
 
 		searchItems.year = $("#billYear option:selected").val();

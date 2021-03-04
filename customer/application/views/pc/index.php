@@ -247,7 +247,7 @@
 					</td>
 					<td class="sub-content" style="background-color: rgba( 218, 163, 0, 0.7)">
 						<div class="menu5 wrap" style="width: inherit;height: inherit"
-							 onclick="location.href ='/customer/health_encyclopedia_list'">
+							 onclick="location.href ='/customer/health_encyclopedia_list';resetPaging()">
 							<div class="inner">
 								<img src="/asset/images/icon5.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">건강 컨텐츠<br></span>
@@ -277,13 +277,13 @@
 								</table>
 							</div>
 						</div>
-						<a href="/customer/notice_list">
+						<a href="/customer/notice_list" onclick="resetPaging()">
 							<img src="/asset/images/btn_plus.png"
 								 style="cursor: pointer;float:right;width: 3.5rem;height: 3.5rem">
 						</a>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)"
-						onclick="location.href ='/customer/customer_service_inquiry_list'">
+						onclick="location.href ='/customer/customer_service_inquiry_list';resetPaging()">
 						<div class="menu6 wrap" style="width: inherit;height: inherit">
 							<div class="inner">
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>

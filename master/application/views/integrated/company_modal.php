@@ -172,6 +172,12 @@
 										</div>
 									</td>
 								</tr>
+								<tr>
+									<th>사업자등록번호</th>
+									<td>
+										<input type="text" id="com-license">
+									</td>
+								</tr>
 								</tbody>
 							</table>
 							<table class="table" id="ComInfoTable2">
@@ -609,6 +615,8 @@
 
 	//클릭시 기업정보
 	function setDetailCompanyData(data) {
+		 console.log(data);
+
 		//ComInfoTable1 기업정보
 		$('#com-companyName').val(data.companyName);
 		$('#com-companyBranch').val(data.companyBranch);
@@ -665,6 +673,8 @@
 			$("input:checkbox[id='familySupportYes']").prop("checked", false);
 			$("input:checkbox[id='familySupportNo']").prop("checked", true);
 		}
+
+		$('#com-license').val(data.license);
 
 		//ComInfoTable2 관리자메모
 		$('#com-memo').html(data.memo);
@@ -761,8 +771,6 @@
 		saveItems.name = $('#com-name').val();
 		saveItems.phone = $('#com-phone').val();
 
-
-
 		//입력된 정보 검사
 		if (saveItems.email == "") {
 			alert("이메일을 입력해주세요.");
@@ -804,8 +812,6 @@
 		saveItems.email = $('#' + id + 'Email').val();
 		saveItems.phone = $('#' + id + 'Phone').val();
 
-
-
 		if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
 			instance.post('M0407', saveItems).then(res => {
 
@@ -828,7 +834,6 @@
 
 		if (confirm("수정된 내용으로 저장하시겠습니까?") == true) {
 			instance.post('M0408', sendItems).then(res => {
-
 				if (res.data.message == "success") {
 					alert("삭제되었습니다.");
 					clickCompanyDetail(cmnId.companyId);
@@ -855,11 +860,11 @@
 		saveItems.rebatePrice = savePrice1('com-rebatePrice');
 		saveItems.pcDiscount = booleanData("com-pcDiscount");
 		saveItems.familySupport = booleanData("com-familySupport");
+		saveItems.license = $('#com-license').val();
 		saveItems.memo = $('#com-memo').val();
 		saveItems.paymentCode = booleanData('com-paymentCode');
 		saveItems.supportFundCode = booleanData('com-supportFundCode');
 		saveItems.balanceCode = booleanData('com-balanceCode');
-
 
 
 		//입력된 정보 검사
@@ -880,7 +885,6 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M004005_REQ', saveItems).then(res => {
-
 					alert("저장되었습니다.");
 					clickCompanyDetail(saveItems.companyId);
 				});
@@ -912,8 +916,6 @@
 		saveItems.reservationEndDate = $('#add-com-reservationEndDate').val();
 		saveItems.inspectionStartDate = $('#add-com-inspectionStartDate').val();
 		saveItems.inspectionEndDate = $('#add-com-inspectionEndDate').val();
-
-
 
 		//입력된 정보 검사
 		if (saveItems.name == "") {

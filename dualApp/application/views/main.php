@@ -202,7 +202,7 @@
         for (i = 0; i < 6; i++) {
             var html = '';
             html += '<div class="item">' +
-                '<div class="card">' +
+                '<div class="card" onclick="location.href=\'/content/card\'">' +
                 '<img src="http://placeimg.com/640/480/any" class="card-img-top">' +
                 '<div class="card-body">' +
                 '카드뉴스 제목' +
@@ -232,7 +232,7 @@
         for (i = 0; i < 6; i++) {
             var html = '';
             html += '<div class="item">' +
-                '<div class="card">' +
+                '<div class="card" onclick="location.href=\'/content/card\'">' +
                 '<img src="http://placeimg.com/640/480/any" class="card-img-top">' +
                 '<div class="card-body">' +
                 '카드뉴스 제목' +
@@ -255,6 +255,10 @@
         }
     }
 
+	sessionStorage.setItem('category', 0);
+	sessionStorage.setItem('cardIndex', 0);
+	sessionStorage.setItem('videoIndex', 0);
+	sessionStorage.setItem('encyclopediaIndex', 0);
 </script>
 
 </body>

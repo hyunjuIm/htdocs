@@ -201,7 +201,6 @@
 </head>
 <body>
 
-
 <div class="wrapper">
 	<div class="main">
 		<header>
@@ -213,9 +212,9 @@
 		<div class="row" style="padding-top: 5.8rem;">
 			<div class="tab">
 				<ul class="tabs">
-					<li><a href="#">카드뉴스</a></li>
-					<li><a href="#">동영상</a></li>
-					<li><a href="#">질병백과</a></li>
+					<li><a href="#" id="cardTab">카드뉴스</a></li>
+					<li><a href="#" id="videoTab">동영상</a></li>
+					<li><a href="#" id="encyclopediaTab">질병백과</a></li>
 				</ul> <!-- / tabs -->
 
 				<div class="row" style="margin-top:7rem">
@@ -292,10 +291,6 @@
 		</div>
 	</div>
 
-
-	<!--카드뉴스-->
-	<div class="mobile-nav hide" id="cardForm">
-	</div>
 </div><!-- wrapper -->
 
 <script>
@@ -312,9 +307,20 @@
 		})
 	})();
 
+	var cardIndex = parseInt(sessionStorage.getItem('cardIndex'));
+	var videoIndex = parseInt(sessionStorage.getItem('videoIndex'));
+	var encyclopediaIndex = parseInt(sessionStorage.getItem('encyclopediaIndex'));
+	var categoryNum = parseInt(sessionStorage.getItem('category'));
+
 	$(document).ready(function () {
+		console.log(categoryNum);
+		if (categoryNum == null) {
+			categoryNum = 0;
+		}
+		console.log(categoryNum);
+
 		(function ($) {
-			$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+			$('.tab ul.tabs').addClass('active').find('> li:eq(\'' + categoryNum + '\')').addClass('current');
 
 			$('.tab ul.tabs li a').click(function (g) {
 				var tab = $(this).closest('.tab'),
@@ -330,10 +336,41 @@
 			});
 		})(jQuery);
 
-		setCardView();
-		setVideoView();
-		setEncyclopediaView();
+		cardIndex = startIndex(cardIndex, 0);
+		videoIndex = startIndex(videoIndex, 1);
+		encyclopediaIndex = startIndex(encyclopediaIndex, 2);
+
+		if(categoryNum == 0) {
+			$('#cardTab').trigger("click");
+		} else if(categoryNum == 1) {
+			$('#videoTab').trigger("click");
+		} else if(categoryNum == 2) {
+			$('#encyclopediaTab').trigger("click");
+		}
 	});
+
+	function startIndex(index, category) {
+		var count = parseInt(index / 6);
+		if (index % 6 > 0) {
+			count += 1;
+		} else if (count == 0) {
+			count = 1;
+		}
+
+		for (k = 0; k < count; k++) {
+			if (category == 0) {
+				setCardView();
+			} else if (category == 1) {
+				setVideoView();
+			} else if (category == 2) {
+				setEncyclopediaView();
+			}
+		}
+
+		console.log(index, category);
+
+		return 0;
+	}
 
 	function setCardView() {
 		var html = '';
@@ -341,9 +378,12 @@
 			if (i % 2 == 0) {
 				html += '<tr>';
 			}
+			cardIndex += 1;
 
 			html += '<td>' +
-					'<div class="card">' +
+					'<div class="card"' +
+					'onclick="saveSessionState(0, \'' + cardIndex + '\', );' +
+					'location.href=\'/content/card\'">' +
 					'<img src="http://placeimg.com/640/480/any" class="card-img-top">' +
 					'<div class="card-body">' +
 					'카드뉴스 제목' +
@@ -362,10 +402,12 @@
 	function setVideoView() {
 		var html = '';
 		for (i = 0; i < 6; i++) {
+			videoIndex += 1;
 			html += '<tr>' +
 					'<td>' +
 					'<div class="video"' +
-					' onclick="location.href=\'https://www.youtube.com/watch?v=CPJXRRr4Q5c&feature=share\'">' +
+					'onclick="saveSessionState(1, \'' + videoIndex + '\');' +
+					'location.href=\'https://www.youtube.com/watch?v=CPJXRRr4Q5c&feature=share\'">' +
 					'<img src="https://i.ytimg.com/vi/CPJXRRr4Q5c/maxresdefault.jpg">' +
 					'<div class="black-layer">' +
 					'<img class="ico-play" src="../../asset/img/ico_play.png">' +
@@ -384,9 +426,12 @@
 	function setEncyclopediaView() {
 		var html = '';
 		for (i = 0; i < 6; i++) {
+			encyclopediaIndex += 1;
 			html += '<tr>' +
 					'<td>' +
 					'<div class="encyclopedia"' +
+					'onclick="saveSessionState(2, \'' + encyclopediaIndex + '\');' +
+					'location.href=\'/content/encyclopedia\'"' +
 					' style="background-image: url(https://file.dualhealth.kr/healthContent/images/39_image.jpg);' +
 					'background-size: auto 100%;background-position: center">' +
 					'<div class="black-layer">' +
@@ -396,8 +441,19 @@
 					'</td>' +
 					'</tr>'
 		}
-
 		$('#encyclopediaView').append(html);
+	}
+
+	function saveSessionState(category, num) {
+		sessionStorage.setItem('category', category);
+
+		if (category == 0) {
+			sessionStorage.setItem('cardIndex', num);
+		} else if (category == 1) {
+			sessionStorage.setItem('videoIndex', num);
+		} else if (category == 2) {
+			sessionStorage.setItem('encyclopediaIndex', num);
+		}
 	}
 </script>
 

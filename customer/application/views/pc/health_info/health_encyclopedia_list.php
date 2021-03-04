@@ -131,14 +131,18 @@
 	require($parentDir . '/common/paging.js');
 	?>
 
-	var pageNum = 0;
 	var pageCount = 0;
+
+	if (sessionStorage.getItem("pageNum") == null) {
+		sessionStorage.setItem("pageNum", 0);
+	}
+	var pageNum = sessionStorage.getItem("pageNum");
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	userData.pageNum = pageNum;
 
-	searchInformation(0);
+	searchInformation(pageNum);
 
 	//페이징-숫자클릭
 	function searchInformation(index) {
@@ -148,6 +152,8 @@
 
 	function drawTable() {
 		pageNum = parseInt(pageNum);
+		sessionStorage.setItem("pageNum", pageNum);
+
 		userData.pageNum = pageNum;
 
 		instance.post('CU0901', userData).then(res => {

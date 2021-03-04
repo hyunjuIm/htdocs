@@ -314,7 +314,8 @@
 			var html = '';
 			html += '<div class="swiper-slide">' +
 					'<div class="item">' +
-					'<div class="card">' +
+					'<div class="card"' +
+					'onclick="location.href=\'/content/card\'">' +
 					'<img src="http://placeimg.com/640/480/any" class="card-img-top">' +
 					'<div class="card-body">' +
 					'카드뉴스 제목' +

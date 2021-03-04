@@ -228,7 +228,7 @@
 					<h2>공지사항</h2>
 				</div>
 			</div>
-			<div class="plus" style="float:right;" onclick="location.href='/m/notice_list'">
+			<div class="plus" style="float:right;" onclick="location.href='/m/notice_list';resetPaging()">
 				+
 			</div>
 		</div>

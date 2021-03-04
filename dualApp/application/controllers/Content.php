@@ -26,4 +26,16 @@ class Content extends CI_Controller {
 	{
 		$this->load->view('search_health_info');
 	}
+
+	//카드뉴스 상세
+	public function card()
+	{
+		$this->load->view('detail_card');
+	}
+
+	//질병백과 상세
+	public function encyclopedia()
+	{
+		$this->load->view('detail_encyclopedia');
+	}
 }

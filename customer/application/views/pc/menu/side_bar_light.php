@@ -208,12 +208,12 @@
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">건강정보</a>
 				<ul>
-					<li class="sub-menu"><a href="/customer/health_encyclopedia_list">질병백과</a></li>
+					<li class="sub-menu"><a href="/customer/health_encyclopedia_list" onclick="resetPaging()">질병백과</a></li>
 				</ul>
 			</li>
 			<li class="main-menu"><a class="main-menu-item" href="#">이용안내</a>
 				<ul>
-					<li class="sub-menu"><a href="/customer/notice_list">공지사항</a></li>
+					<li class="sub-menu"><a href="/customer/notice_list" onclick="resetPaging()">공지사항</a></li>
 					<li class="sub-menu"><a href="/customer/comparison_hospital">병원별 검진 항목 비교</a></li>
 					<li class="sub-menu"><a href="/customer/health_checkup_guide">건강검진 안내</a></li>
 				</ul>
@@ -222,7 +222,7 @@
 				<ul>
 					<li class="sub-menu"><a href="/customer/customer_service_faq">자주 묻는 질문</a></li>
 					<li class="sub-menu"><a href="/customer/customer_service_one_inquiry">1:1 문의</a></li>
-					<li class="sub-menu"><a href="/customer/customer_service_inquiry_list">내 문의 내역</a></li>
+					<li class="sub-menu"><a href="/customer/customer_service_inquiry_list" onclick="resetPaging()">내 문의 내역</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -266,6 +266,11 @@
 			$('#nav > li > a').not(this).next().slideUp(300);
 		});
 	});
+
+	//페이징 번호 0으로
+	function resetPaging() {
+		sessionStorage.setItem("pageNum", 0);
+	}
 
 	// $(document).ready(function () {
 	// 	//사이드바 메뉴
