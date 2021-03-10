@@ -103,6 +103,12 @@
 		sessionStorage.setItem("pageNum", 0);
 	}
 	var pageNum = sessionStorage.getItem("pageNum");
+
+	if (sessionStorage.getItem("searchWord") == null) {
+		sessionStorage.setItem("searchWord", '');
+	}
+	var searchWord = sessionStorage.getItem("searchWord");
+	$("#searchWord").val(searchWord);
 	
 	//검색항목리스트
 	instance.post('M013001_RES').then(res => {
@@ -141,6 +147,7 @@
 
 		searchItems.pageNum = pageNum;
 		searchItems.title = $("#searchWord").val();
+		sessionStorage.setItem("searchWord", searchItems.title);
 		searchItems.year = $("#ntYear option:selected").val();
 
 		instance.post('M013002_REQ_RES', searchItems).then(res => {
@@ -148,9 +155,7 @@
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-
 			setNoticeListData(res.data.noticeDTOList, pageNum);
-
 		});
 	}
 

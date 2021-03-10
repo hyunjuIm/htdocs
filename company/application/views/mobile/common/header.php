@@ -417,6 +417,35 @@
 
 <!--로그인 세션 관리-->
 <script>
+	//로그인 안되어있으면 로그인 화면으로
+	let token = sessionStorage.getItem("token");
+
+	//중복로그인 로그아웃
+	const permissionCheck = axios.create({
+		baseURL: "http://192.168.219.108:8080/permission/",
+		timeout: 5000,
+		headers: {
+			'token': token
+		}
+	});
+
+	if (token == null) {
+		location.href = "/company/login";
+	}
+	else {
+		var sendItems = new Object();
+		sendItems.token = token;
+		permissionCheck.post('isOk', sendItems).then(res => {
+			if (res.data != "Success") {
+				sessionStorage.clear();
+				alert("로그인 정보가 변경되어 로그아웃 되었습니다.");
+				location.href = "/company/login";
+			}
+		}).catch(function (error) {
+			alert("잘못된 접근입니다.");
+		});
+	}
+
 	var initMinute;  // 최초 설정할 시간(min)
 	var remainSecond;  // 남은시간(sec)
 
@@ -450,32 +479,8 @@
 		location.href = "/company/login";
 	}
 
-	//로그인 안되어있으면 로그인 화면으로
-	var token = sessionStorage.getItem("token");
-	if (token == null) {
-		location.href = "/company/login";
-	}
-
-	//중복로그인 로그아웃
-	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.111:8080/permission/",
-		timeout: 5000,
-		headers: {
-			'token': token
-		}
-	});
-	permissionCheck.post('isOk').then(res => {
-		if (res.data != "SUCCESS") {
-			sessionStorage.clear();
-			alert("중복로그인이 감지되어 로그아웃 되었습니다.");
-			location.href = "/company/login";
-		}
-	}).catch(function (error) {
-
-	});
-
 	const instance = axios.create({
-		baseURL: "http://192.168.219.111:8080/company/api/v1/",
+		baseURL: "http://192.168.219.108:8080/company/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -505,7 +510,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "http://192.168.219.111:8080/",
+		baseURL: "http://192.168.219.108:8080/",
 		timeout: 20000,
 		headers: {'token': token}
 	});
@@ -533,5 +538,6 @@
 	//페이징 번호 0으로
 	function resetPaging() {
 		sessionStorage.setItem("pageNum", 0);
+		sessionStorage.setItem("searchWord", '');
 	}
 </script>

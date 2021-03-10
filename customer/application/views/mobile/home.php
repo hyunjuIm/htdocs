@@ -317,16 +317,15 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-			if (i == 0) {
+
+			if (data[i].createDate.indexOf('9999') != -1) {
+				data[i].createDate = '2020-12-22';
 				html += '<td class="title point" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			} else {
 				html += '<td class="title" onclick="moveNoticeDetail(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			}
-			if (data[i].createDate.indexOf('9999') != -1) {
-				html += '<td class="date">2020.12.22</td>';
-			} else {
-				html += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>';
-			}
+
+			html += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>';
 			html += '</tr>';
 
 			$("#mainNoticeInfos").append(html);

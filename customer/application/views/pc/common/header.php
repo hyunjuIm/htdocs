@@ -1,5 +1,51 @@
 <!--axios-->
 <script>
+	let token = sessionStorage.getItem('token');
+
+	//중복로그인 로그아웃
+	const permissionCheck = axios.create({
+		baseURL: "http://192.168.219.108:8080/permission/",
+		timeout: 5000,
+		headers: {
+			'token': token
+		}
+	});
+
+	if (token == null) {
+		let s_token = getParam('t');
+		let s_id = getParam('i');
+
+		//인증정보가 없으면 로그인 화면으로
+		if (s_token == null || s_id == null || s_token === '' || s_id === '') {
+			location.href = "/customer/customer_login";
+		} else {
+			var sendItems = new Object();
+			sendItems.id = s_id;
+			sendItems.token = s_token;
+			permissionCheck.post('whoIs', sendItems).then(res => {
+				if (res.data.message === "Success") {
+					sessionStorage.setItem("token", s_token);
+					sessionStorage.setItem("userID", s_id);
+					sessionStorage.setItem("userName", res.data.name);
+					sessionStorage.setItem("userCusID", res.data.userId);
+					location.reload();
+				} else {
+					location.href = "/customer/customer_login";
+				}
+			}).catch(function (error) {
+			});
+		}
+	} else {
+		permissionCheck.post('isAuth').then(res => {
+			if (res.data.message !== "Success") {
+				sessionStorage.clear();
+				alert("로그인 정보가 변경되어 로그아웃 되었습니다.");
+				location.href = "/customer/customer_login";
+			}
+		}).catch(function (error) {
+		});
+	}
+
 	var initMinute;  // 최초 설정할 시간(min)
 	var remainSecond;  // 남은시간(sec)
 
@@ -33,31 +79,8 @@
 		location.href = "/customer/customer_login";
 	}
 
-	//로그인 안되어있으면 로그인 화면으로
-	var token = sessionStorage.getItem("token");
-	if (token == null) {
-		location.href = "/customer/customer_login";
-	}
-
-	//중복로그인 로그아웃
-	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.111:8080/permission/",
-		timeout: 5000,
-		headers: {
-			'token': token
-		}
-	});
-	permissionCheck.post('isOk').then(res => {
-		if (res.data != "SUCCESS") {
-			sessionStorage.clear();
-			alert("중복로그인이 감지되어 로그아웃 되었습니다.");
-			location.href = "/customer/customer_login";
-		}
-	}).catch(function (error) {
-	});
-
 	const instance = axios.create({
-		baseURL: "http://192.168.219.111:8080/customer/api/v1/",
+		baseURL: "http://192.168.219.108:8080/customer/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -67,23 +90,34 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		//baseURL: "http://192.168.219.111:8080/",
-		baseURL: "http://192.168.219.111:8080/",
+		//baseURL: "http://192.168.219.108:8080/",
+		baseURL: "http://192.168.219.108:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
 
-	//사이드바 정보
-	$(document).ready(function () {
-		//사이드바 사용자 정보
+	//get 파라미터
+	function getParam(sname) {
+		var params = location.search.substr(location.search.indexOf("?") + 1);
+		var sval = "";
+		params = params.split("&");
+		for (var i = 0; i < params.length; i++) {
+			temp = params[i].split("=");
+			if ([temp[0]] == sname) {
+				sval = temp[1];
+			}
+		}
+		return sval;
+	}
+
+	//사이드바 사용자 정보
+	var userData = new Object();
+	userData.cusId = sessionStorage.getItem("userCusID");
+	instance.post('CU_001_002', userData).then(res => {
 		var userName = sessionStorage.getItem("userName");
 		$('#nameView').text(userName);
 
-		var userData = new Object();
-		userData.cusId = sessionStorage.getItem("userCusID");
-		instance.post('CU_001_002', userData).then(res => {
-			setMainUserInfo(res.data);
-		});
+		setMainUserInfo(res.data);
 	});
 
 	function setMainUserInfo(data) {
@@ -104,7 +138,7 @@
 				html += '<div class="carousel-item">';
 			}
 			html += data[i].name + '(' + data[i].grade + ')' + '\n';
-			if(data[i].newBadge){
+			if (data[i].newBadge) {
 				html += '<span class="badge bg-warning text-dark">New</span>';
 			}
 			html += '<br>';

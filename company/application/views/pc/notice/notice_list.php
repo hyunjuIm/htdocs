@@ -108,6 +108,12 @@
 	}
 	var pageNum = sessionStorage.getItem("pageNum");
 
+	if (sessionStorage.getItem("searchWord") == null) {
+		sessionStorage.setItem("searchWord", '');
+	}
+	var searchWord = sessionStorage.getItem("searchWord");
+	$("#searchWord").val(searchWord);
+
 	//검색항목리스트
 	instance.post('C0701').then(res => {
 		setNoticeOption(res.data);
@@ -146,18 +152,15 @@
 		searchItems.coId = sessionStorage.getItem("userCoID");;
 		searchItems.pageNum = pageNum;
 		searchItems.title = $("#searchWord").val();
+		sessionStorage.setItem("searchWord", searchItems.title);
 		searchItems.year = $("#ntYear option:selected").val();
-
-
 
 		instance.post('C0702', searchItems).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
-
 			setNoticeListData(res.data.noticeDTOList, pageNum);
-
 		});
 	}
 

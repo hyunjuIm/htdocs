@@ -226,6 +226,20 @@
 	require($parentDir . '/common/check_data.js');
 	?>
 
+	// const urlParams = new URLSearchParams("?wordid=ekw000033653&q=coffee");
+	//
+	// // URLSearchParams.has()
+	// document.writeln(urlParams.has('wordid')); // true
+	// document.writeln(urlParams.has('name')); // false
+	//
+	// if()
+	// var communicateToken = getParam("t");
+	// var communicateId = getParam("i");
+	// sessionStorage.setItem("token", communicateToken);
+	// sessionStorage.setItem("userCusID", communicateId);
+	//
+	// console.log(communicateToken, communicateId);
+
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	// 내정보

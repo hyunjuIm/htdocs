@@ -112,7 +112,7 @@
 
 			<div class="row" style="margin: 3rem 0">
 				<form style="margin: 0 auto; padding: 1rem 0">
-				<div class="page_wrap">
+					<div class="page_wrap">
 						<div class="page_nation" id="paging">
 						</div>
 					</div>
@@ -232,7 +232,8 @@
 			}
 
 			var tbody = "";
-			if (i == 0 && pageNum == 0) {
+			if (data[i].createDate.indexOf('9999') != -1) {
+				data[i].createDate = '2020-12-22';
 				tbody += '<tr style="background: #fdf7f7">' +
 						'<td><div class="btn btn-danger">공지</div></td>' +
 						'<td class="title" style="color: #ff4e59;font-weight: 400;"' +
@@ -242,12 +243,7 @@
 						'<td>' + no + '</td>' +
 						'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			}
-			if (data[i].createDate.indexOf('9999') != -1) {
-				tbody += '<td class="date">2020.12.22</td>';
-			} else {
-				tbody += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>';
-			}
-			tbody += '<tr>';
+			tbody += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>' + '<tr>';
 
 			$("#noticeTable").append(tbody);
 		}

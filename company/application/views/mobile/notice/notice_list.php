@@ -66,7 +66,7 @@
 				</select>
 			</div>
 			<div class="input-text">
-				<input type="text" placeholder="사원번호, 이름으로 검색하세요." id="searchWord" onkeyup="enterKey()">
+				<input type="text" placeholder="제목으로 검색하세요." id="searchWord" onkeyup="enterKey()">
 				<img src="/asset/images/icon_search.png" onclick="searchInformation(0)">
 			</div>
 		</div>
@@ -119,6 +119,12 @@
 	}
 	var pageNum = sessionStorage.getItem("pageNum");
 
+	if (sessionStorage.getItem("searchWord") == null) {
+		sessionStorage.setItem("searchWord", '');
+	}
+	var searchWord = sessionStorage.getItem("searchWord");
+	$("#searchWord").val(searchWord);
+
 	//검색항목리스트
 	instance.post('C0701').then(res => {
 		setNoticeOption(res.data);
@@ -155,12 +161,10 @@
 		var searchItems = new Object();
 
 		searchItems.coId = sessionStorage.getItem("userCoID");
-		;
 		searchItems.pageNum = pageNum;
 		searchItems.title = $("#searchWord").val();
+		sessionStorage.setItem("searchWord", searchItems.title);
 		searchItems.year = $("#ntYear option:selected").val();
-
-
 
 		instance.post('C0702', searchItems).then(res => {
 			pageCount = 0;

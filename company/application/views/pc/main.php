@@ -87,6 +87,21 @@
 			cursor: pointer;
 			box-shadow: 0 0 10px #d7d7d7;
 		}
+
+		.ready-box {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			margin: 0 auto;
+			position: absolute;
+			z-index: 999;
+			top: 0;
+			left: 0;
+			align-items: center;
+			justify-content: center;
+		}
 	</style>
 </head>
 <body>
@@ -103,7 +118,7 @@
 <div class="main">
 	<div class="container">
 		<div class="row main-row">
-			<div class="col">
+			<div class="col" style="position: relative">
 				<div class="box">
 					<div class="box-title">
 						<img src="/asset/images/icon_title.png">
@@ -130,8 +145,11 @@
 						</div>
 					</div>
 				</div>
+				<div class="ready-box" id="ready1">
+					아직 서비스 운영 전입니다.
+				</div>
 			</div>
-			<div class="col">
+			<div class="col" style="position: relative">
 				<div class="box">
 					<div class="box-title" style="margin-bottom: 0">
 						<img src="/asset/images/icon_title.png">
@@ -157,6 +175,9 @@
 							</thead>
 						</table>
 					</div>
+				</div>
+				<div class="ready-box" id="ready2">
+					아직 서비스 운영 전입니다.
 				</div>
 			</div>
 		</div>
@@ -241,7 +262,7 @@
 	coIdObj.coId = sessionStorage.getItem("userCoID");
 
 	instance.post('C0101', coIdObj).then(res => {
-
+		console.log(res.data);
 		setReservationData(res.data.reservationInfoDTOList, 1, 2, 3);
 		setExaminationData(res.data.examinationInfoDTOList);
 		setNoticeData(res.data.noticeDTOList);
@@ -253,6 +274,13 @@
 
 	//예약현황판
 	function setReservationData(data, idx1, idx2, idx3) {
+		if (data.length == null || data.length == 0) {
+			$('#ready1').show();
+			return false;
+		} else {
+			$('#ready1').hide();
+		}
+
 		let id1 = 'doughnut' + idx1;
 		let id2 = 'doughnut' + idx2;
 		let id3 = 'doughnut' + idx3;
@@ -302,7 +330,11 @@
 		}
 		chart3.push(chart1[0] - chart3[0]);
 
-		setGraphDoughnutChart();
+
+		$(document).ready(function () {
+			setGraphDoughnutChart();
+		});
+		// setGraphDoughnutChart();
 	}
 
 	//예약현황판 도넛차트 그리기
@@ -374,6 +406,13 @@
 
 	//운영정보
 	function setExaminationData(data) {
+		if (data.length == null || data.length == 0) {
+			$('#ready2').show();
+			return false;
+		} else {
+			$('#ready2').hide();
+		}
+
 		var html = '';
 		html += '<tbody>'
 		for (i = 0; i < data.length; i++) {
@@ -520,7 +559,7 @@
 						td.push(data[i].famGrade);
 						td.push(data[i].famEmail);
 						td.push(data[i].famBirthDate);
-						td.push(data[i].famSex  ? '남' : '여');
+						td.push(data[i].famSex ? '남' : '여');
 						td.push(data[i].famPhone);
 						td.push(data[i].famAddress);
 						td.push(data[i].famPC ? 'Y' : 'N');

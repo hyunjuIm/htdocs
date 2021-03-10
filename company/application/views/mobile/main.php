@@ -137,6 +137,21 @@
 			width: 150px;
 			height: 150px;
 		}
+
+		.ready-box {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			margin: 0 auto;
+			position: absolute;
+			z-index: 777;
+			top: 0;
+			left: 0;
+			align-items: center;
+			justify-content: center;
+		}
 	</style>
 </head>
 <body>
@@ -153,7 +168,10 @@
 			<img src="/asset/images/icon_title.png">
 			<h2>운영정보</h2>
 		</div>
-		<div class="box">
+		<div class="box" style="position: relative">
+			<div class="ready-box" id="ready1">
+				아직 서비스 운영 전입니다.
+			</div>
 			<table class="simple-table1">
 				<tr id="service">
 					<th>서비스</th>
@@ -185,14 +203,17 @@
 			<img src="/asset/images/icon_title.png">
 			<h2>예약현황판</h2>
 		</div>
-		<div class="box">
+		<div class="box" style="position: relative">
+			<div class="ready-box" id="ready2">
+				아직 서비스 운영 전입니다.
+			</div>
 			<div class="row">
 				<div class="doughnut-view">
 					<div class="count">
 						<!--데이터 추가되면 수정 필요-->
-						<div id="targetNum" class="num1">300명</div>
-						<div id="reservedNum" class="num2">800명</div>
-						<div id="completeNum" class="num3">1000명</div>
+						<div id="targetNum" class="num1"></div>
+						<div id="reservedNum" class="num2"></div>
+						<div id="completeNum" class="num3"></div>
 					</div>
 					<canvas id="reservationStatistics"></canvas>
 				</div>
@@ -282,6 +303,13 @@
 
 	//운영정보
 	function setExaminationData(data) {
+		if (data.length == null || data.length == 0) {
+			$('#ready1').show();
+			return false;
+		} else {
+			$('#ready1').hide();
+		}
+
 		var html = '';
 		for (i = 0; i < data.length; i++) {
 			html = '<td style="color: #5645ED;font-weight: 400">' + data[i].service + '</td>'
@@ -314,6 +342,14 @@
 
 	//예약현황판
 	function setReservationData(data) {
+		console.log(data.length);
+		if (data.length == null || data.length < 0) {
+			$('#ready2').show();
+			return false;
+		} else {
+			$('#ready2').hide();
+		}
+
 		var html = '';
 		for (i = 0; i < data.length; i++) {
 			html += '<tr>' +

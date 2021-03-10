@@ -1,125 +1,52 @@
-<style>
-	.loader-container {
-		height: 100%;
-		width: 100%;
-		position: fixed;
-		background: rgba(255, 255, 255, 0.5);
-		z-index: 999999;
-	}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport"
+	  content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-	.loader {
-		height: 2rem;
-		width: 25rem;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-	}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-	.loader--dot {
-		animation-name: loader;
-		animation-timing-function: ease-in-out;
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-		height: 2rem;
-		width: 2rem;
-		border-radius: 100%;
-		background-color: black;
-		position: absolute;
-		border: 2px solid white;
-	}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Array.prototype.find"></script>
 
-	.loader--dot:first-child {
-		background-color: #8cc759;
-		animation-delay: 0.5s;
-	}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-	.loader--dot:nth-child(2) {
-		background-color: #8c6daf;
-		animation-delay: 0.4s;
-	}
+<!--css-->
+<link rel="stylesheet" type="text/css" href="../../../asset/css/app/style.css?ver=1.1"/>
 
-	.loader--dot:nth-child(3) {
-		background-color: #ef5d74;
-		animation-delay: 0.3s;
-	}
+<!--axios-->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-	.loader--dot:nth-child(4) {
-		background-color: #f9a74b;
-		animation-delay: 0.2s;
-	}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes">
 
-	.loader--dot:nth-child(5) {
-		background-color: #60beeb;
-		animation-delay: 0.1s;
-	}
+<!--스와이프-->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 
-	.loader--dot:nth-child(6) {
-		background-color: #fbef5a;
-		animation-delay: 0s;
-	}
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-	.loader--text {
-		position: absolute;
-		z-index: 999999;
-		top: 200%;
-		left: 0;
-		right: 0;
-		width: 4rem;
-		margin: auto;
-	}
+<!--다음 주소-->
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 
-	.loader--text:after {
-		content: "Loading";
-		font-weight: bold;
-		animation-name: loading-text;
-		animation-duration: 3s;
-		animation-iteration-count: infinite;
-	}
+<!--아이콘-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-	@keyframes loader {
-		15% {
-			transform: translateX(0);
-		}
-		45% {
-			transform: translateX(230px);
-		}
-		65% {
-			transform: translateX(230px);
-		}
-		95% {
-			transform: translateX(0);
-		}
-	}
 
-	@keyframes loading-text {
-		0% {
-			content: "Loading";
-		}
-		25% {
-			content: "Loading.";
-		}
-		50% {
-			content: "Loading..";
-		}
-		75% {
-			content: "Loading...";
-		}
-	}
-</style>
-
-<div id="loading" class='loader-container'>
-	<div class='loader'>
-		<div class='loader--dot'></div>
-		<div class='loader--dot'></div>
-		<div class='loader--dot'></div>
-		<div class='loader--dot'></div>
-		<div class='loader--dot'></div>
-		<div class='loader--dot'></div>
-		<div class='loader--text'></div>
-	</div>
+<div class='loader--dot'></div>
+<div class='loader--dot'></div>
+<div class='loader--dot'></div>
+<div class='loader--dot'></div>
+<div class='loader--text'></div>
+</div>
 </div>
 
 <!--axios-->
@@ -270,56 +197,6 @@
 			}
 		}
 		return sval;
-	}
-
-	//사이드바 사용자 정보
-	var userData = new Object();
-	userData.cusId = sessionStorage.getItem("userCusID");
-	instance.post('CU_001_002', userData).then(res => {
-		var userName = sessionStorage.getItem("userName");
-		$('#nameView').text(userName);
-
-		setMainUserInfo(res.data);
-		console.log(res.data);
-	});
-
-	function setMainUserInfo(data) {
-		if (data.length == 0) {
-			var html = '';
-			html += '<div class="carousel-item active">';
-			html += '예약내역 없음';
-			html += '</div>';
-			$("#userScheduleInfos").append(html);
-		}
-
-		for (i = 0; i < data.length; i++) {
-			var html = '';
-
-			if (data[i].grade == '본인') {
-				html += '<div class="carousel-item active">';
-			} else {
-				html += '<div class="carousel-item">';
-			}
-			html += data[i].name + '(' + data[i].grade + ')' + '<br>';
-			if (data[i].newBadge) {
-				html += '<span class="badge bg-warning text-dark">New</span>';
-			}
-			if (data[i].hospital != 'none') {
-				html += '예약병원 : ' + data[i].hospital + '<br>';
-			}
-			html += data[i].schedule;
-			if (data[i].hospital == 'none') {
-				html += '<br> <br>';
-			}
-			html += '</div>';
-
-			$("#userScheduleInfos").append(html);
-		}
-	}
-
-	//페이징 번호 0으로
-	function resetPaging() {
-		sessionStorage.setItem("pageNum", 0);
 	}
 
 </script>

@@ -80,12 +80,14 @@
 		}
 
 		.order-title {
+			width: 80%;
 			font-size: 1.8rem;
 			font-weight: bolder;
 			padding: 0 1.5rem;
 		}
 
 		.order-content {
+			width: 80%;
 			padding: 0.5rem 1.5rem;
 		}
 
@@ -120,6 +122,7 @@
 			padding: 2rem;
 			font-size: 1.4rem;
 			font-weight: 300;
+			text-align: justify;
 		}
 
 		.item-hover span {
@@ -296,7 +299,7 @@
 							<tr>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('기본계측검사')">
+										 onclick="setItemContent('기본검사')">
 										<img src="/asset/images/icon_inspection1_1.png">
 										<div class="item-content">
 											기본검사
@@ -305,7 +308,7 @@
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('혈액검사')">
+										 onclick="setItemContent('신장검사')">
 										<img src="/asset/images/icon_inspection2_1.png">
 										<div class="item-content">
 											신장검사
@@ -316,7 +319,7 @@
 							<tr>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('비뇨생식계 및 성병질환검사')">
+										 onclick="setItemContent('일반혈액검사')">
 										<img src="/asset/images/icon_inspection3_1.png">
 										<div class="item-content">
 											일반혈액검사
@@ -325,7 +328,7 @@
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('간기능/당뇨검사')">
+										 onclick="setItemContent('심혈관계검사')">
 										<img src="/asset/images/icon_inspection4_1.png">
 										<div class="item-content">
 											심혈관계검사
@@ -336,7 +339,7 @@
 							<tr>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('심혈관/고지혈증검사')">
+										 onclick="setItemContent('간기능/간염검사')">
 										<img src="/asset/images/icon_inspection5_1.png">
 										<div class="item-content">
 											간기능/간염검사
@@ -345,7 +348,7 @@
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('갑상선/관절염/통풍')">
+										 onclick="setItemContent('당뇨/췌장/빈혈검사')">
 										<img src="/asset/images/icon_inspection6_1.png">
 										<div class="item-content">
 											당뇨/췌장/빈혈검사
@@ -356,7 +359,7 @@
 							<tr>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('방사선검사')">
+										 onclick="setItemContent('갑상선/류마티스/통풍검사')">
 										<img src="/asset/images/icon_inspection7_1.png">
 										<div class="item-content">
 											갑상선/류마티스/통풍검사
@@ -365,7 +368,7 @@
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('초음파검사')">
+										 onclick="setItemContent('종양검사')">
 										<img src="/asset/images/icon_inspection8_1.png">
 										<div class="item-content">
 											종양검사
@@ -376,7 +379,7 @@
 							<tr>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('소화기계검사')">
+										 onclick="setItemContent('비뇨생식계 및 성별 질환')">
 										<img src="/asset/images/icon_inspection9_1.png">
 										<div class="item-content">
 											비뇨생식계 및 성별 질환
@@ -385,7 +388,7 @@
 								</td>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('기타검사')">
+										 onclick="setItemContent('장비검사')">
 										<img src="/asset/images/icon_inspection10_1.png">
 										<div class="item-content">
 											장비검사
@@ -396,7 +399,7 @@
 							<tr>
 								<td>
 									<div class="item" data-toggle="modal" data-target="#inspectionModal"
-										 onclick="setItemContent('소화기계검사')">
+										 onclick="setItemContent('기타검사')">
 										<img src="/asset/images/icon_inspection11_1.png">
 										<div class="item-content">
 											기타검사
@@ -470,57 +473,49 @@
 		$('#itemContent').empty();
 		$('#inspectionModalLabel').text(name);
 
-		if (name == '기본계측검사') {
+		if (name == '기본검사') {
 			$('#itemContent').append(
-					'<span>신체계측, 순환기계검사, 안과, 청력, 치과검사, 호흡기계검사</span><br><br>' +
-					'- 신체계측 : 이를 이용해 비만도와 체질량지수 값을 계산할 수 있습니다.<br>' +
-					'- 순환기계검사 : 혈압, 맥박, 심전도검사<br>' +
-					'- 안과 : 안저, 안압검사를 통해 녹내장, 뇌압 상승 여부, 망막의 이상을 확인합니다.'
+					'신체계측을 포함한 기본 순환기계, 호흡기계, 안과 검사 등을 포함한 검사로 우리몸의 기초적 기능을 알아보는 검사입니다.'
 			);
-		} else if (name == '혈액검사') {
+		} else if (name == '신장검사') {
 			$('#itemContent').append(
-					'<span>일반혈액검사, 혈액형검사, 빈혈검사, 종양표지자검사</span><br><br>' +
-					'- 일반혈액검사 : 혈액질환, 빈혈, 적혈구 증가증 등 다양한 질환을 확인합니다.<br>' +
-					'- 종양표지자검사 : 암의 선별, 진단에 이용됩니다.<br>'
+					'신장은 우리 몸에서 대사산물의 노폐물 제거, 수분과 염분의 양 조절, 내분비계 조절 등 많은 역할을 합니다. 이 검사는 크레아티닌, 신사구체여과율, 요단백, 요비중 등으로 이뤄져있으며 혈액 및 소변 검사로 진행 됩니다. 이 검사를 통해 신장의 손상 정도를 알아볼 수 있습니다.'
 			);
-		} else if (name == '비뇨생식계 및 성병질환검사') {
+		} else if (name == '일반혈액검사') {
 			$('#itemContent').append(
-					'<span>신장기능검사, 요검사, 성병검사, 호르몬검사, 부인과검사</span><br><br>' +
-					'- 신장기능검사 : 소변을 통해 노폐물을 배출하는 능력 등 신장 기능을 검사합니다.<br>' +
-					'- 부인과검사 : 유방 X-ray, 자궁 세포진 검사 등으로 부인과 질환을 검사합니다.'
+					'백혈구, 적혈구, 헤모글로빈 등 항목으로 이뤄진 일반 혈액검사는 전반적인 건강 상태를 알아보는 검사로 특정 질병을 선별하거나 진단을 확인하고 치료하는데 이용되는 기본 검사입니다.'
 			);
-		} else if (name == '간기능/당뇨검사') {
+		} else if (name == '심혈관계검사') {
 			$('#itemContent').append(
-					'<span>간기능검사, 당뇨검사, 간염검사, 췌장기능검사</span>'
+					'심혈관은 심장과 혈관으로 구성되고 심장으로 나온 혈액을 온몸에 공급하여 산소, 영양소, 수분 등을 필요한 곳으로 공급하는 역할을 합니다. 심혈관계 검사는 전해질, 심장효소, 지질검사 등으로 이뤄져 있습니다.'
 			);
-		} else if (name == '심혈관/고지혈증검사') {
+		} else if (name == '간기능/간염검사') {
 			$('#itemContent').append(
-					'<span>심혈관계검사, 심전도검사, 지질검사, 전해질검사</span>'
+					'간은 우리 몸의 대사과정에 중요한 장기로 섭취한 음식물을 우리 몸에 필요한 영양소 형태로 변화 및 대사 후 노폐물을 처리하는 기능을 합니다. 간 효소(ALT, AST) 등을 검사하며 간의 손상 여부를 확인하며 간염검사는 간의 바이러스 감염여부를 확인합니다.'
 			);
-		} else if (name == '갑상선/관절염/통풍') {
+		} else if (name == '당뇨/췌장/빈혈검사') {
 			$('#itemContent').append(
-					'<span>갑상선검사, 통풍 및 류마티스관절염검사, 분변검사</span><br><br>' +
-					'- 갑상선검사 : free T4, T3, TSH 등 호르몬 검사를 조합하여 진단합니다.<br>' +
-					'- 통풍검사 : 혈중 요산 농도를 측정하여 통풍을 진단합니다.'
+					'공복혈당,  당화색소, 인슐린 검사 등을 통해 당뇨 여부를 확인하고 췌장 효소 검사로 췌장의 기능 검사를 합니다. 철, 페르틴 검사 등으로 빈혈 여부를 확인합니다.'
 			);
-		} else if (name == '방사선검사') {
+		} else if (name == '갑상선/류마티스/통풍검사') {
 			$('#itemContent').append(
-					'<span>방사선검사</span><br><br>' +
-					'- 흉부 X-ray : 폐와 심장 계통의 질환을 검사합니다.'
+					'갑상선 호르몬은 우리 몸의 대사 속도를 조절하는 역할을 하며 이 검사는 갑상선 호르몬 수치를 통해 갑상선 기능 이상 유무를 확인합니다. 류마티스 인자와 요산의 수치를 통해 류마티스와 통풍의 여부를 각각 확인할 수 있는 검사입니다.'
 			);
-		} else if (name == '초음파검사') {
+		} else if (name == '종양검사') {
 			$('#itemContent').append(
-					'<span>초음파검사</span><br><br>' +
-					'- 상복부 초음파 : 간, 췌장, 담장, 비장 등의 이상 여부를 확인합니다.'
+					'이 검사는 우리몸의 종양 여부를 확인하는 혈액 검사로 난소암, 전립선암, 폐암 등을 확인 할 수 있습니다.'
 			);
-		} else if (name == '소화기계검사') {
+		} else if (name == '비뇨생식계 및 성별 질환') {
 			$('#itemContent').append(
-					'<span>위내시경, 대장내시경</span><br><br>' +
-					'- 내시경을 통해 위, 대장암 선별과 병변을 확인합니다.'
+					'이 검사는 남/여 호르몬 수치를 확인하여 비뇨생식계 기능을 확인하는 검사와 성병 여부를 확인 할 수 있는 혈액검사입니다.'
+			);
+		} else if (name == '장비검사') {
+			$('#itemContent').append(
+					'장비검사는 검사 장비를 이용하여 질병을 정밀히 검사하는 것으로 초음파검사, CT, MRI/MRA 검사를 말합니다.'
 			);
 		} else if (name == '기타검사') {
 			$('#itemContent').append(
-					'<span>유전자검사, MRI</span>'
+					'선택형 정밀검사에 속하는 검사들로 예를 들어 유전자검사, 건강나이, 중금속 검사 등 입니다.'
 			);
 		}
 	}

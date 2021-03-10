@@ -92,6 +92,9 @@
 					<li class="nav-item" id="selectPackageD" style="display: none">
 						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(6)">선택D</a>
 					</li>
+					<li class="nav-item" id="selectPackageE" style="display: none">
+						<a class="nav-link" data-toggle="tab" href="#" onclick="clickPackageTab(7)">선택E</a>
+					</li>
 					<li class="nav-item" id="addTab">
 						<a class="nav-link" data-toggle="tab" href="#addTab"
 						   style="font-weight: bold; background: #E6E6E6"
@@ -218,9 +221,9 @@ require('package_modal.php');
 	?>
 
 	var tabSize = 3;
-	var tabItems = ["전체", "기본", "추가", "선택A", "선택B", "선택C", "선택D"];
+	var tabItems = ["전체", "기본", "추가", "선택A", "선택B", "선택C", "선택D", "선택E"];
 	var tabId = 0;
-	var choiceLimitArr = [-1, -1, -1, -1, -1, -1, -1];
+	var choiceLimitArr = [-1, -1, -1, -1, -1, -1, -1, -1];
 	var sexItems = ["전체", "남", "여"];
 
 	//선택항목 탭
@@ -240,9 +243,14 @@ require('package_modal.php');
 					if ($("#selectPackageD").css("display") == "none") {
 						$("#selectPackageD").show();
 						tabSize = 7;
-						$("#addTab").hide();
 					} else {
-						alert("더이상 추가할 수 없습니다.");
+						if ($("#selectPackageE").css("display") == "none") {
+							$("#selectPackageE").show();
+							tabSize = 8;
+							$("#addTab").hide();
+						} else {
+							alert("더이상 추가할 수 없습니다.");
+						}
 					}
 				}
 			}
@@ -368,6 +376,7 @@ require('package_modal.php');
 		var package4 = new Array();
 		var package5 = new Array();
 		var package6 = new Array();
+		var package7 = new Array();
 
 		// 선택검사 알파벳순 정렬
 		data.sort(function (a, b) {
@@ -412,6 +421,12 @@ require('package_modal.php');
 					tabSize = 7;
 				}
 				package6.push(data[i]);
+			} else if (data[i].ipClass == "선택E") {
+				if (tabSize < 8) {
+					$("#selectPackageE").show();
+					tabSize = 8;
+				}
+				package7.push(data[i]);
 			}
 		}
 
@@ -422,6 +437,7 @@ require('package_modal.php');
 		packageTabItems[4] = package4;
 		packageTabItems[5] = package5;
 		packageTabItems[6] = package6;
+		packageTabItems[7] = package7;
 
 		printLeftTable(0);
 	}
@@ -722,10 +738,11 @@ require('package_modal.php');
 
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M008002_REQ', sendItems).then(res => {
-
 					if (res.data.message == "success") {
 						alert("저장되었습니다.");
 						location.reload();
+					} else {
+						alert('저장에 실패하였습니다. 담당자에게 문의해주세요.');
 					}
 				});
 			} else {

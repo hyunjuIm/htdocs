@@ -202,8 +202,8 @@
 			}
 
 			body {
-				background: white;
-				height: fit-content;
+				/*background-image: linear-gradient(120deg, #c5acde 0%, #8eaafc 100%);*/
+				height: 95vh;
 			}
 
 			.container {
@@ -221,6 +221,7 @@
 				min-width: 45rem;
 				position: relative;
 				text-align: center;
+				padding: 2.5rem 0;
 			}
 		}
 
@@ -231,8 +232,8 @@
 			}
 
 			body {
-				background: white;
-				height: fit-content;
+				/*background-image: linear-gradient(120deg, #c5acde 0%, #8eaafc 100%);*/
+				height: 95vh;
 			}
 
 			.container {
@@ -249,8 +250,10 @@
 				max-width: 45rem;
 				position: relative;
 				text-align: center;
+				padding: 2.5rem 0;
 			}
 		}
+
 	</style>
 </head>
 
@@ -284,16 +287,6 @@
 
 	//이미 로그인 되어 있으면 홈으로
 	var token = sessionStorage.getItem("token");
-
-	//TODO:토큰확인
-	// $(document).ready(function () {
-	// 	var val = location.href.substr(
-	// 			location.href.lastIndexOf('=') + 1
-	// 	);
-	// 	if (val != '' || val != null) {
-	// 		token = val;
-	// 	}
-	// });
 
 	if (token != null) {
 		location.href = "/";
@@ -330,7 +323,7 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			baseURL: "http://192.168.219.111:8080/permission/",
+			baseURL: "http://192.168.219.108:8080/permission/",
 			timeout: 5000
 		});
 
