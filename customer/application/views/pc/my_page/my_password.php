@@ -197,7 +197,7 @@
 				if (res.data.message == "success") {
 					sessionStorage.clear();
 					alert("비밀번호가 변경되었습니다. 다시 로그인해주세요.");
-					location.href = "/customer/customer_login";
+					location.href = "/customer/login";
 				} else {
 					alert("비밀번호를 다시 확인해주세요.");
 				}

@@ -340,7 +340,6 @@
 	}
 
 	function exportExcel(data) {
-		console.log(data);
 		var excelHandler = {
 			getExcelFileName: function () {
 				return '[' + todayString() + ']' + ' 예약관리.xlsx';

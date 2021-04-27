@@ -10,7 +10,7 @@
 	<style>
 		.swiper-container {
 			width: 100%;
-			background: grey;
+			background: white;
 			vertical-align: middle;
 		}
 
@@ -55,47 +55,81 @@
 	?>
 </header>
 
-<div class="row" style="padding-top: 5.8rem">
+<div class="row">
 	<div class="swiper-container">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=0&preView=ok">
-			</div>
-			<div class="swiper-slide">
-				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=1&preView=ok">
-			</div>
-			<div class="swiper-slide">
-				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=2&preView=ok">
-			</div>
-			<div class="swiper-slide">
-				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=3&preView=ok">
-			</div>
-			<div class="swiper-slide">
-				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=4&preView=ok">
-			</div>
+		<div class="swiper-wrapper"  id="cardNewsImg">
+<!--			<div class="swiper-slide">-->
+<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=0&preView=ok">-->
+<!--			</div>-->
+<!--			<div class="swiper-slide">-->
+<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=1&preView=ok">-->
+<!--			</div>-->
+<!--			<div class="swiper-slide">-->
+<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=2&preView=ok">-->
+<!--			</div>-->
+<!--			<div class="swiper-slide">-->
+<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=3&preView=ok">-->
+<!--			</div>-->
+<!--			<div class="swiper-slide">-->
+<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=4&preView=ok">-->
+<!--			</div>-->
 		</div>
 		<!-- Add Arrows -->
 		<div class="swiper-button-next"></div>
 		<div class="swiper-button-prev"></div>
 		<!-- Add Pagination -->
-		<div class="swiper-pagination"></div>
+<!--		<div class="swiper-pagination"></div>-->
 	</div>
 </div>
 
 <script>
-	$('#topTitle').text('카드뉴스');
 
-	var mySwiper = new Swiper('.swiper-container', {
-		slidesPerView: 1, //슬라이드를 한번에 3개를 보여준다
-		loop: false, //loop 를 true 로 할경우 무한반복 슬라이드 false 로 할경우 슬라이드의 끝에서 더보여지지 않음
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-		},
-		pagination: {
-			el: '.swiper-pagination',
-		},
+	var searchItems = new Object();
+	searchItems.id = getParameterByName(location.search, 'id');
+
+	fileURL.post('content/readCardNewsDetail', searchItems).then(res => {
+		setCardNewsData(res.data);
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: 1, //슬라이드를 한번에 3개를 보여준다
+			loop: false, //loop 를 true 로 할경우 무한반복 슬라이드 false 로 할경우 슬라이드의 끝에서 더보여지지 않음
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+				observer: true,
+				observeParents: true,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+			},
+		});
+		swiper.update();
 	});
+
+	//카드뉴스 자세히 보기
+	function setCardNewsData(data) {
+		var bar = getParameterByName(location.search, 'm');
+		if (bar == '1') {
+			$('.top-bar').hide();
+		} else {
+			$('.top-bar').show();
+			$('#cardNewsImg').css('padding-top', '5.8rem');
+			$('#topTitle').text('카드뉴스');
+		}
+
+		$('#cardNewsImg').empty();
+		var img = data.images;
+		for (i = 0; i < img.length; i++) {
+			var html = '';
+			html += '<div class="swiper-slide">' +
+					'<img src="https://file.dualhealth.kr/healthContent/cardNews/' + img[i] + '">' +
+					'</div>'
+			$('#cardNewsImg').append(html);
+		}
+
+		var tag = data.hashTags.join(", ");
+		// $('#cardNewsHashTags').text(tag);
+	}
+
 </script>
 
 </body>

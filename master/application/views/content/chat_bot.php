@@ -198,7 +198,6 @@ require('chat_bot_modal.php');
 
 	function refreshChatBotTable() {
 		instance.post('M1801').then(res => {
-			console.log(res.data);
 			chatBotItems = res.data;
 			setChatBotTable(res.data);
 		});
@@ -255,8 +254,6 @@ require('chat_bot_modal.php');
 		saveItems.keywords = '';
 		saveItems.question = $('#question').val();
 		saveItems.answer = $('#answer').val();
-
-		console.log(saveItems);
 
 		if (confirm("새로운 시트를 추가하시겠습니까?") == true) {
 			instance.post('M1803', saveItems).then(res => {

@@ -23,8 +23,8 @@
 		.main-content {
 			width: 46rem;
 			height: 46rem;
-			min-width: 46rem;
-			min-height: 46rem;
+			/*min-width: 46rem;*/
+			/*min-height: 46rem;*/
 			cursor: pointer;
 			padding: 0;
 		}
@@ -32,8 +32,10 @@
 		.sub-content {
 			width: 23rem;
 			height: 23rem;
-			min-width: 23rem;
-			min-height: 23rem;
+			/*min-width: 23rem;*/
+			/*min-height: 23rem;*/
+			/*max-width: 23rem;*/
+			/*max-height: 23rem;*/
 			color: white;
 			font-size: 1.3rem;
 			font-weight: bolder;
@@ -108,15 +110,28 @@
 		}
 
 		.notice-div {
-			text-align: left;
-			cursor: default;
-			font-size: 1.5rem;
-			font-weight: bolder;
-			padding: 2rem 4rem;
+			position: relative;
+			background: white;
+			border: white solid 1px;
+			height: 100%;
+			vertical-align: top;
+		}
+
+		.notice-btn {
+			position: absolute;
+			z-index: 99;
+			right: 0;
+			bottom: 0;
+		}
+
+		.notice-btn img {
+			cursor: pointer;
+			width: 3.5rem;
+			height: 3.5rem;
 		}
 
 		#mainNoticeInfos {
-			margin: 0 auto;
+			/*margin: 0 2rem;*/
 			width: 100%;
 			text-align: left;
 			color: black;
@@ -133,7 +148,7 @@
 
 		#mainNoticeInfos .title {
 			display: inline-block;
-			width: 95%;
+			width: 90%;
 			font-size: 1.5rem;
 			cursor: pointer;
 			white-space: nowrap;
@@ -146,7 +161,7 @@
 		}
 
 		#mainNoticeInfos .date {
-			width: 20%;
+			width: 10%;
 			font-size: 1.3rem;
 			color: #adadad;
 			text-align: right;
@@ -155,6 +170,8 @@
 		.wrap {
 			display: flex;
 			justify-content: center;
+			width: 23rem;
+			height: 23rem;
 		}
 
 		.inner {
@@ -197,14 +214,14 @@
 		?>
 		<!-- 우측 컨텐츠 -->
 		<div class="col" style="display: table-cell;vertical-align: middle;">
-			<table style="margin: 0 auto">
+			<table class="main-table" style="margin: 0 auto">
 				<tr>
 					<td class="main-content" rowspan="2" colspan="2">
 						<img src="/asset/images/banner2.png" style="width: inherit;height: inherit"
 							 onclick="location.href ='/customer/health_checkup_guide'">
 					</td>
 					<td class="sub-content" style="background-color: rgba( 108, 4, 3, 0.8)">
-						<div class="menu1 wrap" style="width: inherit;height: inherit"
+						<div class="menu1 wrap"
 							 onclick="location.href ='/customer/reservation_list'">
 							<div class="inner">
 								<img src="/asset/images/icon1.png" style="margin-bottom: 10px"><br>
@@ -215,7 +232,7 @@
 					</td>
 					<td class="sub-content" style="background-color: rgba( 88, 83, 69, 0.7)"
 						onclick="location.href ='/customer/reservation_step1'">
-						<div class="menu2 wrap" style="width: inherit;height: inherit">
+						<div class="menu2 wrap">
 							<div class="inner">
 								<img src="/asset/images/icon2.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">검진예약<br></span>
@@ -225,7 +242,7 @@
 					</td>
 					<td class="sub-content" style="background-color: rgba( 0, 0, 0, 0.75)"
 						onclick="location.href ='/customer/result_final'">
-						<div class="menu3 wrap" style="width: inherit;height: inherit">
+						<div class="menu3 wrap">
 							<div class="inner">
 								<img src="/asset/images/icon3.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">검진결과<br></span>
@@ -237,7 +254,7 @@
 				<tr>
 					<td class="sub-content" style="background-color: rgba( 2, 10, 43, 0.85)"
 						onclick="location.href ='/customer/comparison_hospital'">
-						<div class="menu4 wrap" style="width: inherit;height: inherit">
+						<div class="menu4 wrap">
 							<div class="inner">
 								<img src="/asset/images/icon4.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">병원별 비교<br></span>
@@ -246,7 +263,7 @@
 						</div>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 218, 163, 0, 0.7)">
-						<div class="menu5 wrap" style="width: inherit;height: inherit"
+						<div class="menu5 wrap"
 							 onclick="location.href ='/customer/health_encyclopedia_list';resetPaging()">
 							<div class="inner">
 								<img src="/asset/images/icon5.png" style="margin-bottom: 10px"><br>
@@ -259,32 +276,32 @@
 				<tr>
 					<td colspan="2">
 					</td>
-					<td colspan="2"
-						style="background: white;border: white solid 1px;height: 100%">
-						<div class="notice-div">
-							<div class="row"
-								 style="font-size: 1.4rem;color: #5645ED">
+					<td colspan="2" class="notice-div">
+						<div style="padding: 2rem;width: 100%;text-align: left;font-weight: 400">
+							<div style="font-size: 1.4rem;color: #5645ED">
 								NOTICE
 							</div>
-							<div class="row"
-								 style="font-size: 2rem;color: black;padding-bottom: 1rem">
+							<div style="font-size: 2rem;color: black">
 								공지사항
 							</div>
-							<div class="row" style="height: 9.3rem">
-								<table id="mainNoticeInfos" style="vertical-align: top">
-									<tbody>
-									</tbody>
-								</table>
-							</div>
 						</div>
-						<a href="/customer/notice_list" onclick="resetPaging()">
-							<img src="/asset/images/btn_plus.png"
-								 style="cursor: pointer;float:right;width: 3.5rem;height: 3.5rem">
-						</a>
+
+						<div style="padding: 0 2rem;">
+							<table id="mainNoticeInfos">
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="notice-btn">
+							<a href="/customer/notice_list" onclick="resetPaging()">
+								<img src="/asset/images/btn_plus.png">
+							</a>
+						</div>
 					</td>
 					<td class="sub-content" style="background-color: rgba( 7, 75, 55, 0.8)"
 						onclick="location.href ='/customer/customer_service_inquiry_list';resetPaging()">
-						<div class="menu6 wrap" style="width: inherit;height: inherit">
+						<div class="menu6 wrap">
 							<div class="inner">
 								<img src="/asset/images/icon6.png" style="margin-bottom: 10px"><br>
 								<span class="sub-content-title">고객센터<br></span>
@@ -308,8 +325,6 @@
 	instance.post('CU_001_001', userData).then(res => {
 		setMainNotice(res.data);
 	});
-
-	console.log(sessionStorage);
 
 	function setMainNotice(data) {
 		for (i = 0; i < 3; i++) {

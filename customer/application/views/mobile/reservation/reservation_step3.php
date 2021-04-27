@@ -586,7 +586,7 @@
 	instance.post('CU_003_003', userData).then(res => {
 		setPackageList(res.data)
 	}).catch(function (error) {
-		alert("잘못된 접근입니다.")
+
 	});
 
 	//패키지 목록
@@ -665,7 +665,6 @@
 
 		$("#step1").show();
 		$("#step2").hide();
-
 	}
 
 	var firstWishDate;
@@ -783,7 +782,7 @@
 					location.href = "reservation_step4?famId=" + famId;
 				}
 			}).catch(function (error) {
-				alert("잘못된 접근입니다.")
+
 
 			});
 		} else {

@@ -342,7 +342,6 @@
 
 	//예약현황판
 	function setReservationData(data) {
-		console.log(data.length);
 		if (data.length == null || data.length < 0) {
 			$('#ready2').show();
 			return false;

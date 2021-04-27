@@ -128,7 +128,7 @@
 		instance.post('M015003', sendItems).then(res => {
 			setEmployeeManageView(res.data);
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
+
 		});
 	}
 
@@ -214,7 +214,7 @@
 					location.reload();
 				}
 			}).catch(function (error) {
-				alert("잘못된 접근입니다.")
+
 			});
 		} else {
 			return false;

@@ -287,7 +287,7 @@
 				location.href = "/company/login";
 			}
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.");
+
 		});
 	}
 
@@ -315,6 +315,7 @@
 			alert("세션이 만료되었습니다. 로그인 후 이용해주세요.");
 			location.href = "/company/login";
 		}
+
 	}
 
 	//로그아웃
@@ -323,6 +324,8 @@
 		alert("로그아웃 되었습니다.");
 		location.href = "/company/login";
 	}
+
+	$('#loading').hide();
 
 	const instance = axios.create({
 		baseURL: "http://192.168.219.108:8080/company/api/v1/",

@@ -56,6 +56,11 @@
 			font-weight: bolder;
 		}
 
+		#hospitalInfos .hos-content .hos-point img {
+			width: 1.2rem;
+			height: 1.2rem;
+		}
+
 		.hos-btn {
 			float: right;
 			vertical-align: bottom;
@@ -165,6 +170,14 @@
 					</div>
 				</form>
 			</div>
+
+			<div class="row" style="display:flex;margin-top: 5rem">
+				<div style="margin: 0 auto">
+					<div class="btn-cancel-square btn-scroll" onclick="history.back()">
+						이전단계
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<?php
@@ -243,8 +256,7 @@
 
 
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.");
-			console.log(error);
+
 		});
 	}
 
@@ -309,9 +321,10 @@
 
 	//홈페이지 바로가기 버튼 활성화
 	function hospitalCardUrlEnter(url) {
-		url.replaceAll("http://", "");
-		url.replaceAll("https://", "");
-		window.open("https://" + url);
+		if (!url.match(/^http?:\/\//i) || !url.match(/^https?:\/\//i)) {
+			url = 'http://' + url;
+		}
+		window.open(url);
 	}
 
 	//홈페이지 바로가기 버튼 안보이게

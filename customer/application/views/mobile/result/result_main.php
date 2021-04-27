@@ -608,9 +608,9 @@
 							if (resultItemList[l].resultCase === 'B') {//낮정~높정 아니면 비정상
 								canDraw = resultItemList[l].resultRatio < 33 || resultItemList[l].resultRatio > 66;
 								if (resultItemList[l].resultRatio < 33) {
-									tmpHtml += '<td style="color: blue">' + resultItemList[l].result + ' ▼</td>';
+									tmpHtml += '<td style="color: #0000ff">' + resultItemList[l].result + ' ▼</td>';
 								} else if (resultItemList[l].resultRatio > 66) {
-									tmpHtml += '<td style="color: red">' + resultItemList[l].result + ' ▲</td>';
+									tmpHtml += '<td style="color: #ff0000">' + resultItemList[l].result + ' ▲</td>';
 								} else tmpHtml += '<td>' + resultItemList[l].result + '</td>';
 							} else if (resultItemList[l].resultCase === 'C') {//낮으면 비정상
 								canDraw = resultItemList[l].resultRatio < 50;

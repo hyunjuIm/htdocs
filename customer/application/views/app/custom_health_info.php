@@ -145,6 +145,7 @@
 			height: 18.5rem;
 			min-height: 18.5rem;
 			max-height: 18.5rem;
+			object-fit: cover;
 		}
 
 		.card {
@@ -274,72 +275,100 @@
 		}
 	});
 
-	$(document).ready(function () {
-		var swiper = new Swiper('.swiper-container', {
-			slidesPerView: 2,
-			spaceBetween: 170,
-			centeredSlides: true,
-			breakpointsInverse: true,
-			breakpoints: {
-				280: {
-					slidesPerView: 1,
-				},
-				320: {
-					slidesPerView: 2,
-					spaceBetween: 170,
-				},
-				370: {
-					slidesPerView: 2,
-					spaceBetween: 120,
-				},
-				390: {
-					slidesPerView: 2,
-					spaceBetween: 80,
-				}
-			},
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-		});
+	sessionStorage.removeItem('searchKeyword');
 
-		setCustomContentView();
+	var swiper = new Swiper('.swiper-container', {
+		slidesPerView: 2,
+		spaceBetween: 170,
+		centeredSlides: true,
+		breakpointsInverse: true,
+		breakpoints: {
+			280: {
+				slidesPerView: 1,
+			},
+			320: {
+				slidesPerView: 2,
+				spaceBetween: 170,
+			},
+			370: {
+				slidesPerView: 2,
+				spaceBetween: 120,
+			},
+			390: {
+				slidesPerView: 2,
+				spaceBetween: 80,
+			}
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
 	});
+
+	setCustomContentView();
 
 	function setCustomContentView() {
 		$('#cardView').empty();
 		$('#videoView').empty();
 
-		for (i = 0; i < 6; i++) {
-			var html = '';
+		fileURL.get('content/readCardNewsByHashTag', {
+			params: {
+				id: sessionStorage.getItem('userID'),
+				hashTags: sessionStorage.getItem('hashTags')
+			}
+		}).then(res => {
+			var html = setCardNewsListData(res.data.cardNewsList);
+			$('#cardView').append(html);
+		});
+
+		fileURL.get('content/readYouTubeByHashTag', {
+			params: {
+				id: sessionStorage.getItem('userID'),
+				hashTags: sessionStorage.getItem('hashTags')
+			}
+		}).then(res => {
+			var html = setVideoListData(res.data.youTubeList);
+			$('#videoView').append(html);
+		});
+	}
+
+	function setCardNewsListData(data) {
+		var html = '';
+		for (i = 0; i < data.length; i++) {
+			var img = 'https://file.dualhealth.kr/healthContent/cardNews/' + data[i].thumbNail;
+
 			html += '<div class="swiper-slide">' +
 					'<div class="item">' +
 					'<div class="card"' +
-					'onclick="location.href=\'/app/card\'">' +
-					'<img src="http://placeimg.com/640/480/any" class="card-img-top">' +
-					'<div class="card-body">' +
-					'카드뉴스 제목' +
-					'</div>' +
+					'onclick="detailCardNews(\'' + data[i].id + '\')">' +
+					'<img src="' + img + '" class="card-img-top">' +
+					'<div class="card-body">' + data[i].title + '</div>' +
 					'</div>' +
 					'</div>' +
 					'</div>';
-			$('#cardView').append(html);
 		}
+		return html;
+	}
 
-		for (i = 0; i < 3; i++) {
-			var html = '';
+	function setVideoListData(data) {
+		var html = '';
+		for (i = 0; i < data.length; i++) {
+			var src = 'https://img.youtube.com/vi/' + getParameterByName(data[i].url, 'v') + '/original.jpg'
+
 			html += '<div class="item">' +
 					'<div class="video"' +
-					'onclick="location.href=\'https://www.youtube.com/watch?v=CPJXRRr4Q5c&feature=share\'">' +
-					'<img src="https://i.ytimg.com/vi/2fpHY0ACkaE/maxresdefault.jpg">' +
+					'onclick="location.href=\'' + data[i].url + '\'">' +
+					'<img src=' + src + '>' +
 					'<div class="black-layer">' +
 					'<img class="ico-play" src="../../asset/images/ico_play.png">' +
 					'</div>' +
 					'</div>' +
+					'<div class="video-title">' + data[i].title + '</div>' +
 					'</div>'
-			$('#videoView').append(html);
 		}
+		return html;
 	}
+
 
 </script>
 

@@ -211,7 +211,6 @@
 		sessionStorage.setItem("searchWord", userData.searchWord);
 
 		instance.post('CU_007_001', userData).then(res => {
-			console.log(res.data);
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
@@ -219,7 +218,7 @@
 			setNoticeList(res.data.noticeList, pageNum);
 
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
+
 		});
 	}
 
@@ -240,13 +239,6 @@
 		}
 
 		for (i = 0; i < data.length; i++) {
-			var no = 0;
-			if (index == 0) {
-				no = index + i;
-			} else {
-				no = index * 10 + (i + 1);
-			}
-
 			var tbody = "";
 			if (data[i].createDate.indexOf('9999') != -1) {
 				data[i].createDate = '2020-12-22';
@@ -257,7 +249,7 @@
 						'onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			} else {
 				tbody += '<tr>' +
-						'<td>' + no + '</td>' +
+						'<td>' + data[i].id + '</td>' +
 						'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			}
 			tbody += '<td>' + data[i].author + '</td>' +

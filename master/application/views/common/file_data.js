@@ -53,7 +53,5 @@ function downloadFile(id, fileTarget, fileClass, sendId) {
 		link.href = window.URL.createObjectURL(blob);
 		link.download = $("#" + id + "").val();
 		link.click();
-
-
 	})
 }

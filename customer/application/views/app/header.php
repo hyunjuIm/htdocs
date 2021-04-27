@@ -41,4 +41,22 @@
 
 <script>
 
+	if (!(Object.keys(sessionStorage).includes('cardIndex'))) {
+		sessionStorage.setItem('cardIndex', 0);
+	}
+	if (!(Object.keys(sessionStorage).includes('videoIndex'))) {
+		sessionStorage.setItem('videoIndex', 0);
+	}
+	if (!(Object.keys(sessionStorage).includes('encyclopediaIndex'))) {
+		sessionStorage.setItem('encyclopediaIndex', 0);
+	}
+	if (!(Object.keys(sessionStorage).includes('category'))) {
+		sessionStorage.setItem('category', 0);
+	}
+
+	var cardIndex = parseInt(sessionStorage.getItem('cardIndex'));
+	var videoIndex = parseInt(sessionStorage.getItem('videoIndex'));
+	var encyclopediaIndex = parseInt(sessionStorage.getItem('encyclopediaIndex'));
+	var categoryNum = parseInt(sessionStorage.getItem('category'));
+
 </script>

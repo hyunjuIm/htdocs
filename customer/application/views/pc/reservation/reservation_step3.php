@@ -533,37 +533,6 @@
 	require($parentDir . '/common/check_data.js');
 	?>
 
-	// console.log(getRestDateList('2021', '9') + '<<');
-	//
-	// function getRestDateList(year, month) {
-	// 	let restDateSet = new Set();
-	//
-	// 	month = (month < 10) ? 0 + '' + month : month + '';
-	// 	var xhr = new XMLHttpRequest();
-	// 	xhr.
-	// 	xhr.onreadystatechange = function () {
-	// 		if (this.readyState == 4 && this.status == 200) {
-	// 			var str = this.response;
-	// 			var cut = 0;
-	// 			while (str.indexOf("2021") > -1) {
-	// 				let startIndex = str.indexOf("2021");
-	// 				let endIndex = startIndex + 8;
-	// 				let dateNum = str.substring(startIndex, endIndex);
-	// 				restDateSet.add(dateNum);
-	// 				cut++;
-	// 				str = str.substring(endIndex, str.length)
-	// 			}
-	// 			console.log(restDateSet);
-	// 		}
-	// 	};
-	// 	xhr.open("GET", "http://customer.localhost/customer/doIt?year=" + year + "&month=" + month);
-	// 	xhr.send();
-	// 	console.log(xhr.send());
-	// 	console.log("나간다");
-	// 	return (Array.from(restDateSet).sort());
-	// }
-
-
 	//예약을 위한 id 가져오기
 	var get = location.href.substr(
 			location.href.indexOf('=', 1) + 1
@@ -604,7 +573,7 @@
 	instance.post('CU_003_003', userData).then(res => {
 		setPackageList(res.data)
 	}).catch(function (error) {
-		alert("잘못된 접근입니다.")
+
 	});
 
 	//패키지 목록
@@ -805,7 +774,7 @@
 					location.href = "reservation_step4?famId=" + famId;
 				}
 			}).catch(function (error) {
-				alert("잘못된 접근입니다.")
+
 
 			});
 		} else {

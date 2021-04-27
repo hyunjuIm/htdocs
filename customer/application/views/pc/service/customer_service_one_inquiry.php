@@ -152,7 +152,7 @@
 					location.href = '/customer/customer_service_inquiry_list';
 				}
 			}).catch(function (error) {
-				alert("잘못된 접근입니다.")
+
 			});
 		} else {
 			return false;

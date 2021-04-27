@@ -191,7 +191,7 @@
 
 <script>
 	$('#menu1 .nav-button').text('이용안내');
-	var menu2 = '건강검진 안내';
+	var menu2 = '병원별검진항목비교';
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');

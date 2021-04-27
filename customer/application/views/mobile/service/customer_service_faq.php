@@ -96,68 +96,68 @@
 				<h1>자주 묻는 질문</h1>
 			</div>
 
-			<div class="row" style="display: block;margin-top: 5rem">
-				<div class="accordion" id="accordionFAQ">
-					<div>
-						<div class="card-header" id="headingOne">
-							<div class="text-left"
-								 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-								 aria-controls="collapseOne">
-								<span>Q</span>
-								이것은 자주 묻는 질문 입니다
-								<div style="float:right">
-									<img src="/asset/images/icon_drop_down.png">
-								</div>
-							</div>
-						</div>
-
-						<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-							 data-parent="#accordionFAQ">
-							<div class="card-body">
-								그렇지요 (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="card-header" id="headingTwo">
-							<div class="text-left"
-								 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-								 aria-controls="collapseTwo">
-								<span>Q</span>
-								이것 또한 자주 묻는 질문이지요,,
-								<div style="float:right;">
-									<img src="/asset/images/icon_drop_down.png">
-								</div>
-							</div>
-						</div>
-						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-							 data-parent="#accordionFAQ">
-							<div class="card-body">
-								╰(*°▽°*)╯╰(*°▽°*)╯
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="card-header" id="headingThree">
-							<div class="text-left"
-								 data-toggle="collapse" data-target="#collapseThree"
-								 aria-expanded="false" aria-controls="collapseThree">
-								<span>Q</span>
-								나랑 저스트 댄스 할 사람~?!
-								<div style="float:right;">
-									<img src="/asset/images/icon_drop_down.png">
-								</div>
-							</div>
-						</div>
-						<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-							 data-parent="#accordionFAQ">
-							<div class="card-body">
-								아무도 없나요...
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<!--			<div class="row" style="display: block;margin-top: 5rem">-->
+<!--				<div class="accordion" id="accordionFAQ">-->
+<!--					<div>-->
+<!--						<div class="card-header" id="headingOne">-->
+<!--							<div class="text-left"-->
+<!--								 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"-->
+<!--								 aria-controls="collapseOne">-->
+<!--								<span>Q</span>-->
+<!--								이것은 자주 묻는 질문 입니다-->
+<!--								<div style="float:right">-->
+<!--									<img src="/asset/images/icon_drop_down.png">-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!---->
+<!--						<div id="collapseOne" class="collapse" aria-labelledby="headingOne"-->
+<!--							 data-parent="#accordionFAQ">-->
+<!--							<div class="card-body">-->
+<!--								그렇지요 (☞ﾟヮﾟ)☞☜(ﾟヮﾟ☜)-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div>-->
+<!--						<div class="card-header" id="headingTwo">-->
+<!--							<div class="text-left"-->
+<!--								 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"-->
+<!--								 aria-controls="collapseTwo">-->
+<!--								<span>Q</span>-->
+<!--								이것 또한 자주 묻는 질문이지요,,-->
+<!--								<div style="float:right;">-->
+<!--									<img src="/asset/images/icon_drop_down.png">-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"-->
+<!--							 data-parent="#accordionFAQ">-->
+<!--							<div class="card-body">-->
+<!--								╰(*°▽°*)╯╰(*°▽°*)╯-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div>-->
+<!--						<div class="card-header" id="headingThree">-->
+<!--							<div class="text-left"-->
+<!--								 data-toggle="collapse" data-target="#collapseThree"-->
+<!--								 aria-expanded="false" aria-controls="collapseThree">-->
+<!--								<span>Q</span>-->
+<!--								나랑 저스트 댄스 할 사람~?!-->
+<!--								<div style="float:right;">-->
+<!--									<img src="/asset/images/icon_drop_down.png">-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div id="collapseThree" class="collapse" aria-labelledby="headingThree"-->
+<!--							 data-parent="#accordionFAQ">-->
+<!--							<div class="card-body">-->
+<!--								아무도 없나요...-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 
 		</div>
 

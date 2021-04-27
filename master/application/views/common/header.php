@@ -206,6 +206,10 @@
 					컨텐츠관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown_menu_1">
+					<a class="dropdown-item" href="/master/card_news_list" onclick="resetPaging()">카드뉴스</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/master/video_list" onclick="resetPaging()">동영상</a>
+					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/master/health_encyclopedia_list" onclick="resetPaging()">질병백과</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/master/chat_bot">챗봇관리</a>
@@ -249,8 +253,7 @@
 
 	if (token == null) {
 		location.href = "/master/master_login";
-	}
-	else {
+	} else {
 		var sendItems = new Object();
 		sendItems.token = token;
 		permissionCheck.post('isOk', sendItems).then(res => {
@@ -260,7 +263,7 @@
 				location.href = "/master/master_login";
 			}
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.");
+
 		});
 	}
 

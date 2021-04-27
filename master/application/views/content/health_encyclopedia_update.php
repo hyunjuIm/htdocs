@@ -291,7 +291,6 @@
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				debugger;
 				$('#file-img').attr('src', e.target.result);
 				$('#file-img').hide();
 				$('#file-img').fadeIn(500);

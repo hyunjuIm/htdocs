@@ -138,16 +138,8 @@
 		for (i = 0; i < data.length; i++) {
 			var html = '';
 			html += '<tr>';
-
-			var no = 0;
-			if (index == 0) {
-				no = (index + 1) + i;
-			} else {
-				no = index * 10 + (i + 1);
-			}
-			html += '<td>' + no + '</td>';
-
-			html += '<td class="title" onclick="sendNoticeID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
+			html += '<td>' + data[i].id + '</td>';
+			html += '<td class="title" onclick="sendEncyclopediaID(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			html += '<td>' + data[i].author + '</td>';
 			html += '<td>' + data[i].createDate + '</td>';
 
@@ -158,7 +150,7 @@
 	}
 
 	//질병백과 게시글 디테일에 값 던지기
-	function sendNoticeID(index) {
+	function sendEncyclopediaID(index) {
 		location.href = "health_encyclopedia_detail?id=" + index;
 	}
 </script>

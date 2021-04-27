@@ -147,8 +147,40 @@
 </div>
 
 <script>
+	
 	$('#topTitle').text('질병백과');
+	
+	//ID 값 받기
+	var BoardId = new Object();
+	$(document).ready(function () {
+		var val = location.href.substr(
+				location.href.lastIndexOf('=') + 1
+		);
+		BoardId.id = val;
 
+		instance.post('CU0902', BoardId).then(res => {
+			setEncyclopediaDetailData(res.data);
+		});
+	})
+
+	function setEncyclopediaDetailData(data) {
+		$('#mainImg').attr('src', 'https://file.dualhealth.kr/healthContent/images/' + data.fileName);
+		$('#title').text(data.title);
+		$('#content1').html(textareaLine(data.content1));
+		$('#content2').html(textareaLine(data.content2));
+		$('#content3').html(textareaLine(data.content3));
+		$('#content4').html(textareaLine(data.content4));
+		$('#content5').html(textareaLine(data.content5));
+		$('#content61').html(textareaLine(data.content61));
+		$('#content62').html(textareaLine(data.content62));
+		$('#content7').html(textareaLine(data.content7));
+	}
+
+	//textarea 줄바꿈 처리
+	function textareaLine(text) {
+		text = text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		return text;
+	}
 </script>
 
 </body>

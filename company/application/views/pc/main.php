@@ -262,7 +262,6 @@
 	coIdObj.coId = sessionStorage.getItem("userCoID");
 
 	instance.post('C0101', coIdObj).then(res => {
-		console.log(res.data);
 		setReservationData(res.data.reservationInfoDTOList, 1, 2, 3);
 		setExaminationData(res.data.examinationInfoDTOList);
 		setNoticeData(res.data.noticeDTOList);
@@ -446,7 +445,6 @@
 			html += '<td>' + data[i].createDate + '</td>';
 			html += '</tr>';
 		}
-
 		html += '</tbody>'
 		$("#noticeTable").append(html);
 	}

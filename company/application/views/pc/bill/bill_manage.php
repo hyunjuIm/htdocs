@@ -266,7 +266,7 @@ require('bill_modal.php');
 						$('#' + billingId.replace("#", "")).html('<div class="btn btn-danger" onClick="companyConfirm(\'' + billingId + '\', false)" >취소</div>');
 					}
 				}).catch(function (error) {
-					alert("잘못된 접근입니다.")
+
 				});
 			} else {
 				return false;
@@ -280,7 +280,7 @@ require('bill_modal.php');
 						$('#' + billingId.replace("#", "")).html('<div class="btn btn-primary" onClick="companyConfirm(\'' + billingId + '\',true)" >승인</div>');
 					}
 				}).catch(function (error) {
-					alert("잘못된 접근입니다.")
+
 				});
 			} else {
 				return false;

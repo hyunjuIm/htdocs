@@ -125,6 +125,7 @@
 <!--axios-->
 <script>
 	let token = sessionStorage.getItem('token');
+
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
 		baseURL: "http://192.168.219.108:8080/permission/",
@@ -134,13 +135,13 @@
 		}
 	});
 
-	if (sessionStorage.getItem('token') == null) {
+	if (sessionStorage.getItem('token') == null || !(Object.keys(sessionStorage).includes('token'))) {
 		let s_token = getParam('t');
 		let s_id = getParam('i');
 
 		//인증정보가 없으면 로그인 화면으로
 		if (s_token == null || s_id == null || s_token === '' || s_id === '') {
-			location.href = "/customer/customer_login";
+			location.href = "/customer/login";
 		} else {
 			var sendItems = new Object();
 			sendItems.id = s_id;
@@ -153,7 +154,7 @@
 					sessionStorage.setItem("userCusID", res.data.userId);
 					location.reload();
 				} else {
-					location.href = "/customer/customer_login";
+					location.href = "/customer/login";
 				}
 			}).catch(function (error) {
 			});
@@ -163,7 +164,7 @@
 			if (res.data.message !== "Success") {
 				sessionStorage.clear();
 				alert("로그인 정보가 변경되어 로그아웃 되었습니다.");
-				location.href = "/customer/customer_login";
+				location.href = "/customer/login";
 			}
 		}).catch(function (error) {
 		});
@@ -191,7 +192,7 @@
 		} else { //세션만료 로그아웃
 			sessionStorage.clear();
 			alert("세션이 만료되었습니다. 로그인 후 이용해주세요.");
-			location.href = "/customer/customer_login";
+			location.href = "/customer/login";
 		}
 	}
 
@@ -199,7 +200,7 @@
 	function customerLogout() {
 		sessionStorage.clear();
 		alert("로그아웃 되었습니다.");
-		location.href = "/customer/customer_login";
+		location.href = "/customer/login";
 	}
 
 	const instance = axios.create({
@@ -280,7 +281,6 @@
 		$('#nameView').text(userName);
 
 		setMainUserInfo(res.data);
-		console.log(res.data);
 	});
 
 	function setMainUserInfo(data) {

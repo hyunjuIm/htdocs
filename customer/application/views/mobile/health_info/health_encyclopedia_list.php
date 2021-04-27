@@ -149,8 +149,6 @@
 				pageCount++;
 			}
 			setEncyclopediaList(res.data.healthContentDTOList, pageNum);
-		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
 		});
 	}
 

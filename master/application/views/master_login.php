@@ -329,10 +329,10 @@
 				sessionStorage.setItem("token", res.data.data);
 				location.href = "./index";
 			} else {
-				alert("잘못된 접근입니다.")
+
 			}
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
+
 		});
 	}
 

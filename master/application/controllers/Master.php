@@ -111,6 +111,30 @@ class master extends CI_Controller
 		$this->load->view('statistics/statistics_hospital');
 	}
 
+	//카드뉴스 - 전체 리스트
+	public function card_news_list()
+	{
+		$this->load->view('content/card_news_list');
+	}
+
+	//카드뉴스 - 글보기
+	public function card_news_detail()
+	{
+		$this->load->view('content/card_news_detail');
+	}
+
+	//카드뉴스 - 글쓰기
+	public function card_news_write()
+	{
+		$this->load->view('content/card_news_write');
+	}
+
+	//동영상 - 전체 리스트
+	public function video_list()
+	{
+		$this->load->view('content/video_list');
+	}
+
 	//질병백과 - 전체 리스트
 	public function health_encyclopedia_list()
 	{

@@ -156,22 +156,12 @@
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
 
-	<?php
-	$parentDir = dirname(__DIR__ . '..');
-	require($parentDir . '/common/paging.js');
-	?>
-
 	var pageCount = 0;
 
 	if (sessionStorage.getItem("pageNum") == null) {
 		sessionStorage.setItem("pageNum", 0);
 	}
 	var pageNum = sessionStorage.getItem("pageNum");
-
-
-	var userData = new Object();
-	userData.cusId = sessionStorage.getItem("userCusID");
-	userData.pageNum = pageNum;
 
 	searchInformation(pageNum);
 
@@ -191,21 +181,26 @@
 		pageNum = parseInt(pageNum);
 		sessionStorage.setItem("pageNum", pageNum);
 
+		var userData = new Object();
+		userData.cusId = sessionStorage.getItem("userCusID");
 		userData.pageNum = pageNum;
 		userData.searchWord = $("#searchWord").val();
+		sessionStorage.setItem("searchWord", userData.searchWord);
 
+		//여기에 유저데이터가 빠져있었음
 		instance.post('CU_007_001', userData).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
 			}
 			setNoticeList(res.data.noticeList, pageNum);
-
-		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
-
 		});
 	}
+
+	<?php
+	$parentDir = dirname(__DIR__ . '..');
+	require($parentDir . '/common/paging.js');
+	?>
 
 	//공지 테이블 셋팅
 	function setNoticeList(data, index) {
@@ -213,24 +208,17 @@
 
 		$("#noticeTable > tbody").empty();
 
-		if (data.length == 0) {
-			var html = '';
-			html += '<tr>';
-			html += '<td colspan="20">해당하는 결과가 없습니다.</td>';
-			html += '</tr>';
-			$("#noticeTable > tbody").append(html);
-			$("#paging").empty();
-			return false;
-		}
+		// if (data.length == 0) {
+		// 	var html = '';
+		// 	html += '<tr>';
+		// 	html += '<td colspan="20">해당하는 결과가 없습니다.</td>';
+		// 	html += '</tr>';
+		// 	$("#noticeTable > tbody").append(html);
+		// 	$("#paging").empty();
+		// 	return false;
+		// }
 
 		for (i = 0; i < data.length; i++) {
-			var no = 0;
-			if (index == 0) {
-				no = index + i;
-			} else {
-				no = index * 10 + (i + 1);
-			}
-
 			var tbody = "";
 			if (data[i].createDate.indexOf('9999') != -1) {
 				data[i].createDate = '2020-12-22';
@@ -240,7 +228,7 @@
 						'onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			} else {
 				tbody += '<tr>' +
-						'<td>' + no + '</td>' +
+						'<td>' + data[i].id + '</td>' +
 						'<td class="title" onclick="detailNoticePage(\'' + data[i].id + '\')">' + data[i].title + '</td>';
 			}
 			tbody += '<td class="date">' + data[i].createDate.replaceAll('-', '.') + '</td>' + '<tr>';

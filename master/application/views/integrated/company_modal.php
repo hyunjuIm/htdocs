@@ -615,8 +615,6 @@
 
 	//클릭시 기업정보
 	function setDetailCompanyData(data) {
-		 console.log(data);
-
 		//ComInfoTable1 기업정보
 		$('#com-companyName').val(data.companyName);
 		$('#com-companyBranch').val(data.companyBranch);

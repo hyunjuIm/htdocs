@@ -4,9 +4,9 @@
 			<li><a href="#" class="nav-button"></a></li>
 			<li><a href="/m/reservation_step1">예약서비스</a></li>
 			<li><a href="/m/result_final">검진결과</a></li>
-			<li><a href="/m/health_encyclopedia_list">건강정보</a></li>
-			<li><a href="/m/notice_list">이용안내</a></li>
-			<li><a href="/m/customer_service_faq">고객센터</a></li>
+			<li><a href="/m/health_encyclopedia_list" onclick="resetPaging()">건강정보</a></li>
+			<li><a href="/m/notice_list" onclick="resetPaging()">이용안내</a></li>
+			<li><a href="/m/customer_service_faq" onclick="resetPaging()">고객센터</a></li>
 		</ul>
 	</nav>
 	<nav id="menu2">

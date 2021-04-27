@@ -189,7 +189,7 @@
 		instance.post('CU_003_006', userData).then(res => {
 			setReservationResult(res.data);
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.")
+
 
 		});
 	})

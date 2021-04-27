@@ -442,7 +442,7 @@
 				location.href = "/company/login";
 			}
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.");
+
 		});
 	}
 
@@ -534,6 +534,8 @@
 				$('#loading').hide();
 			}
 	);
+
+	$('#loading').hide();
 
 	//페이징 번호 0으로
 	function resetPaging() {

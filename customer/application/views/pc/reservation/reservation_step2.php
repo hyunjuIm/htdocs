@@ -253,8 +253,7 @@
 
 
 		}).catch(function (error) {
-			alert("잘못된 접근입니다.");
-			console.log(error);
+
 		});
 	}
 
@@ -335,9 +334,10 @@
 
 	//홈페이지 바로가기 버튼 활성화
 	function hospitalCardUrlEnter(url) {
-		url.replaceAll("http://", "");
-		url.replaceAll("https://", "");
-		window.open("https://" + url);
+		if (!url.match(/^http?:\/\//i) || !url.match(/^https?:\/\//i)) {
+			url = 'http://' + url;
+		}
+		window.open(url);
 	}
 
 	//홈페이지 바로가기 버튼 비활성화

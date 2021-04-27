@@ -238,7 +238,6 @@
 	// sessionStorage.setItem("token", communicateToken);
 	// sessionStorage.setItem("userCusID", communicateId);
 	//
-	// console.log(communicateToken, communicateId);
 
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");

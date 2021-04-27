@@ -155,7 +155,7 @@
 	instance.post('CU_004_001', userData).then(res => {
 		setReservationList(res.data);
 	}).catch(function (error) {
-		alert("잘못된 접근입니다.")
+
 	});
 
 	//예약내역 셋팅

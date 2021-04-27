@@ -258,7 +258,7 @@
 					uploadFile(res.data);
 				}
 			}).catch(function (error) {
-				alert("잘못된 접근입니다.")
+
 			});
 		} else {
 			return false;

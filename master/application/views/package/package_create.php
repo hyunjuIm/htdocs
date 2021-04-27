@@ -509,7 +509,7 @@ require('package_modal.php');
 
 
 		for (let i = 0; i < maxChoiceCategoryNum; i++) {
-			const category = (i === 0) ? 'A' : (i === 1) ? 'B' : (i === 2) ? 'C' : (i === 3) ? 'D' : 'Error';
+			const category = (i === 0) ? 'A' : (i === 1) ? 'B' : (i === 2) ? 'C' : (i === 3) ? 'D' : (i === 4) ? 'E' : 'Error';
 			html += '<tr>';
 			html += '<th>' + '선택' + category + '</th>';
 			html += '<th>' + '-' + '</th>';

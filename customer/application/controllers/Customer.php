@@ -3,10 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class customer extends CI_Controller
 {
+
+	//국민클럽
+	public function kmclub()
+	{
+		$this->load->view('pc/kmclub');
+	}
 	//로그인
-	public function customer_login()
+	public function login()
 	{
 		$this->load->view('customer_login');
+	}
+
+	//회원가입
+	public function join()
+	{
+		$this->load->view('customer_join');
 	}
 
 	//메인화면
