@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:공지사항 (예약 웹)</title>
+	<title>듀얼헬스케어:공지사항 (듀얼케어 앱)</title>
 
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/head.php');
 	?>
 
@@ -35,7 +35,7 @@
 <!--상단 네비바-->
 <header>
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/header.php');
 	?>
 </header>
@@ -47,7 +47,7 @@
 		<form style="margin: 0 auto; width: 70%">
 			<div class="menu-title" style="font-size: 22px">
 				<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
-				공지사항 (예약 웹)
+				공지사항 (듀얼케어 앱)
 			</div>
 
 			<table id="noticeInfos" class="table" style="margin-top: 30px;">
@@ -61,19 +61,6 @@
 					<td id="ntAuthor"></td>
 				</tr>
 				<tr>
-					<th>파일</th>
-					<td>
-						<div style="display: flex">
-							<div id="ntFile"></div>
-							<div class="btn btn-secondary" id="BtnNtFile" onclick="downloadFile()">다운로드</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th>읽기대상</th>
-					<td id="ntTarget"></td>
-				</tr>
-				<tr>
 					<td id="ntContent" colspan="2" style="height: 400px; background: white; padding: 40px"></td>
 				</tr>
 				</tbody>
@@ -84,7 +71,7 @@
 	<div class="row">
 	<form style="margin: 0 auto; width: 70%">
 		<div style="float:right">
-			<div class="btn-cancel-square" onclick="location.href='/master/service_notice'">목록</div>
+			<div class="btn-cancel-square" onclick="location.href='/master/app_service_notice'">목록</div>
 			<div class="btn-purple-square" onclick="sendNoticeID()"> 수정 </div>
 			<div class="btn-light-purple-square" onclick="deleteNotice()"> 삭제 </div>
 		</div>
@@ -97,7 +84,7 @@
 
 <script>
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/check_data.js');
 	?>
 
@@ -109,58 +96,26 @@
 		);
 		nId.id = val;
 
-		instance.post('M013003_REQ_RES', nId).then(res => {
+		instance.post('M019003_REQ_RES', nId).then(res => {
 			setNoticeDetailData(res.data);
 		});
 	})
 
 	var fileName;
 	function setNoticeDetailData(data){
-
-
 		document.getElementById('ntTitle').innerHTML = data.title;
 		document.getElementById('ntAuthor').innerHTML = data.author;
-		if(data.fileName != '' && data.fileName != null) {
-			$('#BtnNtFile').show();
-			document.getElementById('ntFile').innerHTML = data.fileName;
-			fileName = data.fileName;
-		} else {
-			$('#BtnNtFile').hide();
-		}
-		document.getElementById('ntTarget').innerHTML = data.target+ " ) " +data.targetName;
 		document.getElementById('ntContent').innerHTML = textareaLine(data.content);
-	}
-
-	//파일 다운로드
-	function downloadFile() {
-		var sendItems = new Object();
-		sendItems.id = nId.id;
-
-		instance.post('M01300403', sendItems,{
-			responseType: 'arraybuffer',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}).then(response => {
-
-			const type = response.headers['content-type'];
-			const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'});
-			const link = document.createElement('a');
-			link.href = window.URL.createObjectURL(blob);
-			link.download = fileName;
-			link.click();
-		})
 	}
 
 	//공지 수정에 값 던지기
 	function sendNoticeID() {
-		location.href = "service_notice_update?id=" + nId.id;
+		location.href = "app_service_notice_update?id=" + nId.id;
 	}
 
 	function deleteNotice() {
 		if (confirm("삭제하시겠습니까?") == true) {
-			instance.post('M013005_REQ', nId).then(res => {
-
+			instance.post('M019005_REQ', nId).then(res => {
 				if (res.data.message == "success") {
 					alert("삭제되었습니다.");
 					history.back();

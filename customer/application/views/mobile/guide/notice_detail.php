@@ -111,15 +111,12 @@
 	require($parentDir . '/common/sub_drop_down.js');
 	?>
 
-	//예약을 위한 id 가져오기
 	var sendItems = new Object();
 	sendItems.noticeId = location.href.substr(
 			location.href.lastIndexOf('=') + 1
 	);
 
-	//선택한 병원 정보
 	instance.post('CU_007_002', sendItems).then(res => {
-
 		setNoticeContent(res.data);
 	});
 

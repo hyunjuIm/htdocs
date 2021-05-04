@@ -165,28 +165,52 @@ class master extends CI_Controller
 		$this->load->view('content/chat_bot');
 	}
 
-	//공지사항 - 전체 리스트
+	//공지사항 (건강검진 예약) - 전체 리스트
 	public function service_notice()
 	{
 		$this->load->view('service/service_notice');
 	}
 
-	//공지사항 - 글보기
+	//공지사항 (건강검진 예약) - 글보기
 	public function service_notice_detail()
 	{
 		$this->load->view('service/service_notice_detail');
 	}
 
-	//공지사항 - 글쓰기
+	//공지사항 (건강검진 예약) - 글쓰기
 	public function service_notice_write()
 	{
 		$this->load->view('service/service_notice_write');
 	}
 
-	//공지사항 - 글수정
+	//공지사항 (건강검진 예약) - 글수정
 	public function service_notice_update()
 	{
 		$this->load->view('service/service_notice_update');
+	}
+
+	//공지사항 (듀얼케어 앱) - 전체 리스트
+	public function app_service_notice()
+	{
+		$this->load->view('service/app_service_notice');
+	}
+
+	//공지사항 (듀얼케어 앱) - 글보기
+	public function app_service_notice_detail()
+	{
+		$this->load->view('service/app_service_notice_detail');
+	}
+
+	//공지사항 (듀얼케어 앱) - 글쓰기
+	public function app_service_notice_write()
+	{
+		$this->load->view('service/app_service_notice_write');
+	}
+
+	//공지사항 (듀얼케어 앱) - 글수정
+	public function app_service_notice_update()
+	{
+		$this->load->view('service/app_service_notice_update');
 	}
 
 	//고객센터 - 전체 리스트

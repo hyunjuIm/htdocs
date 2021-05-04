@@ -299,10 +299,12 @@
 				spaceBetween: 80,
 			}
 		},
+		observer: true,
+		observeParents: true,
 		pagination: {
 			el: '.swiper-pagination',
 			clickable: true,
-		},
+		}
 	});
 
 	setCustomContentView();

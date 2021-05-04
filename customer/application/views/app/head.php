@@ -6,6 +6,7 @@
 	  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
 		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
 		crossorigin="anonymous"></script>
@@ -54,7 +55,7 @@
 	let token = sessionStorage.getItem('token');
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.108:8080/permission/",
+		baseURL: "http://192.168.219.111:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -133,7 +134,7 @@
 	// }
 
 	const instance = axios.create({
-		baseURL: "http://192.168.219.108:8080/customer/api/v1/",
+		baseURL: "http://192.168.219.111:8080/customer/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -163,7 +164,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "http://192.168.219.108:8080/",
+		baseURL: "http://192.168.219.111:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:공지사항</title>
+	<title>듀얼헬스케어:공지사항 (예약 웹)</title>
 
 	<?php
 	$parentDir = dirname(__DIR__ . '..');
@@ -67,7 +67,7 @@
 		<form style="margin: 0 auto; width: 70%">
 			<div class="menu-title" style="font-size: 22px">
 				<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px">
-				공지사항 - 글수정
+				공지사항 (예약 웹) - 글수정
 			</div>
 
 			<table id="noticeInfos" class="table" style="margin-top: 30px">

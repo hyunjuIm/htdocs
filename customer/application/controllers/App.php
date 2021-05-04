@@ -38,4 +38,16 @@ class App extends CI_Controller {
 	{
 		$this->load->view('app/detail_encyclopedia');
 	}
+
+	//공지
+	public function notice()
+	{
+		$this->load->view('app/notice');
+	}
+
+	//공지 상세
+	public function notice_detail()
+	{
+		$this->load->view('app/notice_detail');
+	}
 }

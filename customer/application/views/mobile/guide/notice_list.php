@@ -187,7 +187,6 @@
 		userData.searchWord = $("#searchWord").val();
 		sessionStorage.setItem("searchWord", userData.searchWord);
 
-		//여기에 유저데이터가 빠져있었음
 		instance.post('CU_007_001', userData).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {

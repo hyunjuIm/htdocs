@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:공지사항 (예약 웹)</title>
+	<title>듀얼헬스케어:공지사항 (듀얼케어 앱)</title>
 
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/head.php');
 	?>
 
@@ -22,7 +22,7 @@
 <!--상단 네비바-->
 <header>
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/header.php');
 	?>
 </header>
@@ -34,7 +34,7 @@
 		<form style="margin: 0 auto; width: 85%">
 			<div class="menu-title" style="font-size: 22px">
 				<img src="/asset/images/bg_h2_tit.png" style="margin-right: 10px;">
-				공지사항 (예약 웹)
+				공지사항 (듀얼케어 앱)
 			</div>
 
 			<div style="float:right; display: flex; flex-direction: row; align-items: center;margin-bottom: 10px">
@@ -65,7 +65,7 @@
 
 	<div class="row">
 		<form style="margin: 0 auto; width: 85%">
-			<a style="color: white" href="/master/service_notice_write">
+			<a style="color: white" href="/master/app_service_notice_write">
 				<div class="btn-purple-square" style="float:right">
 					글쓰기
 				</div>
@@ -89,11 +89,11 @@
 
 <script>
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/check_data.js');
 	?>
 	<?php
-	$parentDir = dirname(__DIR__ . '..');
+	$parentDir = dirname(__DIR__ . 'views');
 	require($parentDir . '/common/paging.js');
 	?>
 
@@ -111,7 +111,7 @@
 	$("#searchWord").val(searchWord);
 	
 	//검색항목리스트
-	instance.post('M013001_RES').then(res => {
+	instance.post('M019001_RES').then(res => {
 		setNoticeOption(res.data);
 	});
 
@@ -150,7 +150,7 @@
 		sessionStorage.setItem("searchWord", searchItems.title);
 		searchItems.year = $("#ntYear option:selected").val();
 
-		instance.post('M013002_REQ_RES', searchItems).then(res => {
+		instance.post('M019002_REQ_RES', searchItems).then(res => {
 			pageCount = 0;
 			for (i = 0; i < res.data.count; i += 10) {
 				pageCount++;
@@ -200,7 +200,7 @@
 
 	//공지 게시글 디테일에 값 던지기
 	function sendNoticeID(index) {
-		location.href = "service_notice_detail?id=" + index;
+		location.href = "app_service_notice_detail?id=" + index;
 	}
 
 </script>
