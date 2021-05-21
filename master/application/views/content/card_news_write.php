@@ -325,7 +325,6 @@
 			for (var i in items) {
 				var item_number = items[i];
 				saveItems.append('files', storedFiles[item_number]);
-				console.log(item_number);
 			}
 
 			var hashTags = ($('#hashTags').val()).split(',');

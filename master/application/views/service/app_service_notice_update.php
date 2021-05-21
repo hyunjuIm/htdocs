@@ -151,7 +151,6 @@
 		} else {
 			if (confirm("저장하시겠습니까?") == true) {
 				instance.post('M01900401', saveItems).then(res => {
-					console.log(res.data);
 					if (res.data.message != "FAILED") {
 						alert('저장되었습니다');
 						location.href = '/master/app_service_notice';

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:건강콘텐츠</title>
+	<title>듀얼헬스케어:건강컨텐츠</title>
 
 	<?php
 	require('head.php');
@@ -58,27 +58,12 @@
 <div class="row">
 	<div class="swiper-container">
 		<div class="swiper-wrapper"  id="cardNewsImg">
-<!--			<div class="swiper-slide">-->
-<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=0&preView=ok">-->
-<!--			</div>-->
-<!--			<div class="swiper-slide">-->
-<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=1&preView=ok">-->
-<!--			</div>-->
-<!--			<div class="swiper-slide">-->
-<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=2&preView=ok">-->
-<!--			</div>-->
-<!--			<div class="swiper-slide">-->
-<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=3&preView=ok">-->
-<!--			</div>-->
-<!--			<div class="swiper-slide">-->
-<!--				<img src="https://www.mois.go.kr/cmm/fms/getImage.do?atchFileId=FILE_00099413yb3jelE&fileSn=4&preView=ok">-->
-<!--			</div>-->
+
 		</div>
 		<!-- Add Arrows -->
 		<div class="swiper-button-next"></div>
 		<div class="swiper-button-prev"></div>
 		<!-- Add Pagination -->
-<!--		<div class="swiper-pagination"></div>-->
 	</div>
 </div>
 

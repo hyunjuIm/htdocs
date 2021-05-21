@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:건강콘텐츠</title>
+	<title>듀얼헬스케어:건강컨텐츠</title>
 
 	<?php
 	require('head.php');
@@ -87,7 +87,7 @@
 		<div class="text">
             <span>나를 위한<br>
                 맞춤형<br></span>
-			건강콘텐츠
+			건강컨텐츠
 		</div>
 	</div>
 </div>
@@ -109,23 +109,24 @@
 			</div>
 		</div>
 
-		<div class="row title2">
-			카드뉴스
-		</div>
-		<div class="row">
-			<div class="contents" id="customCardView">
+		<div class="row" id="customCardView">
+			<span class="title2">카드뉴스</span>
+			<div class="row">
+				<div class="contents">
 
+				</div>
 			</div>
 		</div>
 
-		<div class="row title2">
-			동영상
-		</div>
-		<div class="row">
-			<div class="contents" id="customVideoView">
+		<div class="row" id="customVideoView">
+			<span class="title2">동영상</span>
+			<div class="row">
+				<div class="contents">
 
+				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
 
@@ -195,8 +196,8 @@
 
 	//맞춤 정보 호출
 	function setCustomContentView() {
-		$('#customCardView').empty();
-		$('#customVideoView').empty();
+		$('#customCardView .contents').empty();
+		$('#customVideoView .contents').empty();
 
 		fileURL.get('content/readCardNewsByHashTag', {
 			params: {
@@ -204,8 +205,13 @@
 				hashTags: sessionStorage.getItem('hashTags')
 			}
 		}).then(res => {
-			var html = setCardNewsListData(res.data.cardNewsList);
-			$('#customCardView').append(html);
+			var data = res.data.cardNewsList;
+			if (data.length < 1) {
+				$('#customCardView').empty();
+			} else {
+				var html = setCardNewsListData(data);
+				$('#customCardView .contents').append(html);
+			}
 		});
 
 		fileURL.get('content/readYouTubeByHashTag', {
@@ -214,8 +220,13 @@
 				hashTags: sessionStorage.getItem('hashTags')
 			}
 		}).then(res => {
-			var html = setVideoListData(res.data.youTubeList);
-			$('#customVideoView').append(html);
+			var data = res.data.youTubeList;
+			if (data.length < 1) {
+				$('#customVideoView').empty();
+			} else {
+				var html = setVideoListData(data);
+				$('#customVideoView .contents').append(html);
+			}
 		});
 	}
 
@@ -252,11 +263,11 @@
 			var img = 'https://file.dualhealth.kr/healthContent/cardNews/' + data[i].thumbNail;
 
 			html += '<div class="item">' +
-				'<div class="card" onclick="detailCardNews(\'' + data[i].id + '\')">' +
-				'<img src="' + img + '" class="card-img-top">' +
-				'<div class="card-body">' + data[i].title + '</div>' +
-				'</div>' +
-				'</div>';
+					'<div class="card" onclick="detailCardNews(\'' + data[i].id + '\')">' +
+					'<img src="' + img + '" class="card-img-top">' +
+					'<div class="card-body">' + data[i].title + '</div>' +
+					'</div>' +
+					'</div>';
 		}
 		return html;
 	}
@@ -267,17 +278,22 @@
 			var src = 'https://img.youtube.com/vi/' + getParameterByName(data[i].url, 'v') + '/original.jpg'
 
 			html += '<div class="item">' +
-				'<div class="video"' +
-				'onclick="location.href=\'' + data[i].url + '\'">' +
-				'<img src=' + src + '>' +
-				'<div class="black-layer">' +
-				'<img class="ico-play" src="../../asset/images/ico_play.png">' +
-				'</div>' +
-				'</div>' +
-				'<div class="video-title">' + data[i].title + '</div>' +
-				'</div>'
+					'<div class="video"' +
+					'onclick="detailVideoPage(\'' + data[i].url + '\')">' +
+					'<img src=' + src + '>' +
+					'<div class="black-layer">' +
+					'<img class="ico-play" src="../../asset/images/ico_play.png">' +
+					'</div>' +
+					'</div>' +
+					'<div class="video-title">' + data[i].title + '</div>' +
+					'</div>'
 		}
 		return html;
+	}
+
+	//다음 페이지에 id 값 넘기기
+	function detailVideoPage(url) {
+		location.href = "video?v=" + getParameterByName(url, 'v');
 	}
 
 	function setEncyclopediaListData(data) {
@@ -285,7 +301,7 @@
 			var html = '';
 
 			html += '<div class="encyclopedia-btn" ' +
-				'onclick="detailEncyclopediaPage(\'' + data[i].id + '\')">#' + data[i].title + '</div>';
+					'onclick="detailEncyclopediaPage(\'' + data[i].id + '\')">#' + data[i].title + '</div>';
 
 			$('#allEncyclopediaView').append(html);
 
@@ -293,8 +309,8 @@
 			var src = 'https://file.dualhealth.kr/healthContent/images/' + data[i].fileName;
 
 			html += '<div>' +
-				'<img src=' + src + '>' +
-				'</div>';
+					'<img src=' + src + '>' +
+					'</div>';
 
 			$('#encyclopediaImg').append(html);
 			$("#encyclopediaImg > div:gt(0)").hide();
@@ -304,11 +320,11 @@
 	//이미지 슬라이드
 	setInterval(function () {
 		$('#encyclopediaImg > div:first')
-			.fadeOut(1000)
-			.next()
-			.fadeIn(1000)
-			.end()
-			.appendTo('#encyclopediaImg');
+				.fadeOut(1000)
+				.next()
+				.fadeIn(1000)
+				.end()
+				.appendTo('#encyclopediaImg');
 	}, 3000);
 
 

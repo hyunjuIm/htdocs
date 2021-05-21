@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:건강콘텐츠</title>
+	<title>듀얼헬스케어:건강컨텐츠</title>
 
 	<?php
 	require('head.php');
@@ -513,6 +513,8 @@
 	}
 
 	function setCardNewsListData(data) {
+		setLoadBtn(data.length);
+
 		var html = '';
 		for (i = 0; i < data.length; i++) {
 			if (i % 2 == 0) {
@@ -538,6 +540,8 @@
 	}
 
 	function setVideoListData(data) {
+		setLoadBtn(data.length);
+
 		var html = '';
 		for (i = 0; i < data.length; i++) {
 			var src = 'https://img.youtube.com/vi/' + getParameterByName(data[i].url, 'v') + '/original.jpg'
@@ -545,7 +549,7 @@
 			html += '<tr>' +
 					'<td>' +
 					'<div class="video"' +
-					'onclick="saveSessionState(1, videoIndex);location.href=\'' + data[i].url + '\'">' +
+					'onclick="saveSessionState(1, videoIndex);detailVideoPage(\'' + data[i].url + '\')">' +
 					'<img src=' + src + '>' +
 					'<div class="black-layer">' +
 					'<img class="ico-play" src="../../asset/images/ico_play.png">' +
@@ -558,6 +562,11 @@
 					'</tr>'
 		}
 		$('#videoView').append(html);
+	}
+
+	//다음 페이지에 id 값 넘기기
+	function detailVideoPage(url) {
+		location.href = "video?v=" + getParameterByName(url, 'v');
 	}
 
 	function setEncyclopediaView(data) {

@@ -39,6 +39,15 @@
 			display: flex;
 		}
 
+		.video-card .title {
+			cursor: pointer;
+		}
+
+		.video-card .title:hover {
+			color: #3529b1;
+			text-decoration: underline;
+		}
+
 		.video-card img {
 			width: 200px;
 			height: auto;
@@ -81,23 +90,7 @@
 
 		<table id="videoInfos" class="card-table">
 			<tbody>
-<!--			<tr>-->
-<!--				<td style="vertical-align: center !important;">-->
-<!--					<div class="video-card">-->
-<!--						<img id="thumbNail"-->
-<!--							 src="https://i.ytimg.com/an_webp/UZDHyYXFHvw/mqdefault_6s.webp?du=3000&sqp=CLDNy4IG&rs=AOn4CLC4x8dUtZX3DGMUg0of3xPQ2lAmAQ">-->
-<!--						<div style="text-align: left">-->
-<!--							<div style="font-size: 25px">-->
-<!--								<span id="title">제목</span>-->
-<!--								<span class="badge badge-danger">삭제</span>-->
-<!--							</div>-->
-<!--							<div style="font-size: 15px">-->
-<!--								태그: <span id="hashTags">태그1, 태그2</span>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</td>-->
-<!--			</tr>-->
+
 			</tbody>
 		</table>
 	</div>
@@ -195,7 +188,7 @@ require('video_modal.php');
 					'<img src=' + src + '>' +
 					'<div style="text-align: left">' +
 					'<div style="font-size: 25px">' +
-					'<span>' + data[i].title + '&nbsp;</span>' +
+					'<span class="title" onclick="location.href=\'' + data[i].url + '\'">' + data[i].title + '</span>&nbsp;' +
 					'<span class="badge badge-danger" onclick="deleteVideo(\'' + data[i].id + '\')">삭제</span>' +
 					'</div>' +
 					'<div style="font-size: 15px">' +
@@ -216,7 +209,6 @@ require('video_modal.php');
 
 		if (confirm("삭제하시겠습니까?") == true) {
 			fileURL.post('content/deleteYouTube', searchItems).then(res => {
-
 				if (res.data.message == "Success") {
 					alert("삭제되었습니다.");
 					location.reload();

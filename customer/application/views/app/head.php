@@ -13,7 +13,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
-<script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Array.prototype.find"></script>
+<script
+	src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Array.prototype.find"></script>
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -55,7 +56,7 @@
 	let token = sessionStorage.getItem('token');
 	//중복로그인 로그아웃
 	const permissionCheck = axios.create({
-		baseURL: "http://192.168.219.111:8080/permission/",
+		baseURL: "http://192.168.219.113:8080/permission/",
 		timeout: 5000,
 		headers: {
 			'token': token
@@ -65,9 +66,8 @@
 	if (sessionStorage.getItem('token') == null) {
 		let s_token = getParameterByName(location.search, 't');
 		let s_id = getParameterByName(location.search, 'i');
-
 		let s_tag = getParameterByName(location.search, 'hashTags');
-		sessionStorage.setItem("hashTags", s_tag.replaceAll('"', ''));
+		sessionStorage.setItem("hashTags", s_tag);
 
 		//인증정보가 없으면 로그인 화면으로
 		if (s_token == null || s_id == null || s_token === '' || s_id === '') {
@@ -134,7 +134,7 @@
 	// }
 
 	const instance = axios.create({
-		baseURL: "http://192.168.219.111:8080/customer/api/v1/",
+		baseURL: "http://192.168.219.113:8080/customer/api/v1/",
 		timeout: 5000,
 		headers: {
 			'token': token,
@@ -164,7 +164,7 @@
 
 	//파일 업로드 다운로드
 	const fileURL = axios.create({
-		baseURL: "http://192.168.219.111:8080/",
+		baseURL: "http://192.168.219.113:8080/",
 		timeout: 5000,
 		headers: {'token': token}
 	});
@@ -193,7 +193,7 @@
 	function getParameterByName(url, name) {
 		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-				results = regex.exec(url);
+			results = regex.exec(url);
 		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:건강콘텐츠</title>
+	<title>듀얼헬스케어:건강컨텐츠</title>
 
 	<?php
 	require('head.php');

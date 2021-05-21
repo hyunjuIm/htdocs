@@ -106,7 +106,7 @@
 				<h1>예약하기</h1>
 			</div>
 
-			<div class="row" style="display: block;margin-top: 5rem">
+			<div class="row" id="policy" style="display: block;margin-top: 5rem">
 				<div style="font-size: 1.6rem;font-weight: bolder;text-align:left;line-height:4rem">
 					개인정보 수집이용 안내
 				</div>
@@ -208,6 +208,7 @@
 	});
 
 	function setPersonalInfo(data) {
+		var resCount = 0;
 
 		for (i = 0; i < data.length; i++) {
 			var html = "";
@@ -221,6 +222,7 @@
 
 			if (data[i].reserved) {
 				html += '<div class="btn-light-purple-square" onclick="doReservation(\'' + data[i].famId + '\')"> 예약하기 </div>';
+				resCount++;
 			} else {
 				html += '<div class="btn-cancel-square" style="cursor: default"> 예약완료 </div>';
 			}
@@ -243,6 +245,8 @@
 
 			$("#personalInfos").append(html);
 		}
+
+		(resCount < 1) ? $("#policy").hide() : $("#policy").show();
 	}
 
 	function sendNoticeID() {

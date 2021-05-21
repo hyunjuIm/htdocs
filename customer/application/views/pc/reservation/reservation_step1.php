@@ -136,7 +136,7 @@
 						<div class="row" style="padding-top: 3rem">
 							<div class="sub-title">예약</div>
 						</div>
-						<div class="row" style="margin-top: 4rem">
+						<div class="row" id="policy" style="margin-top: 4rem">
 						<span style="font-size: 2.4rem;font-weight: bolder;margin-bottom: 2rem">
 							개인정보 수집이용 안내
 						</span>
@@ -198,13 +198,6 @@
 											&nbsp동의합니다. &nbsp
 										</label>
 									</div>
-									<!--									<div class="form-check form-check-inline">-->
-									<!--										<input class="form-check-input" type="radio" name="agree" id="agreeNo"-->
-									<!--											   value="false">-->
-									<!--										<label class="form-check-label" for="agreeNo">-->
-									<!--											&nbsp동의하지않습니다.-->
-									<!--										</label>-->
-									<!--									</div>-->
 								</div>
 							</div>
 						</div>
@@ -226,27 +219,15 @@
 	require($parentDir . '/common/check_data.js');
 	?>
 
-	// const urlParams = new URLSearchParams("?wordid=ekw000033653&q=coffee");
-	//
-	// // URLSearchParams.has()
-	// document.writeln(urlParams.has('wordid')); // true
-	// document.writeln(urlParams.has('name')); // false
-	//
-	// if()
-	// var communicateToken = getParam("t");
-	// var communicateId = getParam("i");
-	// sessionStorage.setItem("token", communicateToken);
-	// sessionStorage.setItem("userCusID", communicateId);
-	//
-
 	var userData = new Object();
 	userData.cusId = sessionStorage.getItem("userCusID");
 	// 내정보
 	instance.post('CU_003_001', userData).then(res => {
-		setPersonalInfo(res.data)
+		setPersonalInfo(res.data);
 	});
 
 	function setPersonalInfo(data) {
+		var resCount = 0;
 
 		for (i = 0; i < data.length; i++) {
 			var html = "";
@@ -259,6 +240,7 @@
 
 			if (data[i].reserved) {
 				html += '<div class="btn-light-purple-square" onclick="doReservation(\'' + data[i].famId + '\')"> 예약하기 </div>';
+				resCount++;
 			} else {
 				html += '<div class="btn-cancel-square" style="cursor: default"> 예약완료 </div>';
 			}
@@ -276,6 +258,8 @@
 					'</tbody>';
 			$("#personalInfos").append(html);
 		}
+
+		(resCount < 1) ? $("#policy").hide() : $("#policy").show();
 	}
 
 	function sendNoticeID() {

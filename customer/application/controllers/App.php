@@ -33,6 +33,12 @@ class App extends CI_Controller {
 		$this->load->view('app/detail_card');
 	}
 
+	//비디오 상세
+	public function video()
+	{
+		$this->load->view('app/detail_video');
+	}
+
 	//질병백과 상세
 	public function encyclopedia()
 	{

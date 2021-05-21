@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>듀얼헬스케어:건강콘텐츠</title>
+	<title>듀얼헬스케어:건강컨텐츠</title>
 
 	<?php
 	require('head.php');
@@ -359,7 +359,7 @@
 
 			html += '<div class="item">' +
 					'<div class="video"' +
-					'onclick="location.href=\'' + data[i].url + '\'">' +
+					'onclick="detailVideoPage(\'' + data[i].url + '\')">' +
 					'<img src=' + src + '>' +
 					'<div class="black-layer">' +
 					'<img class="ico-play" src="../../asset/images/ico_play.png">' +
@@ -369,6 +369,11 @@
 					'</div>'
 		}
 		return html;
+	}
+
+	//다음 페이지에 id 값 넘기기
+	function detailVideoPage(url) {
+		location.href = "video?v=" + getParameterByName(url, 'v');
 	}
 
 

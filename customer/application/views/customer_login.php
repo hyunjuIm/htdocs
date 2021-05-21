@@ -58,6 +58,17 @@
 
 </body>
 
+<?php //echo hash("sha256", "rnralsrhksfl1!")?>
+<!--<br>-->
+<?php //echo hash("sha256", "rnralsrhksfl2!")?>
+<!--<br>-->
+<?php //echo hash("sha256", "rnralsrhksfl3!")?>
+<!--<br>-->
+<?php //echo hash("sha256", "rnralsrhksfl4!")?>
+<!--<br>-->
+<?php //echo hash("sha256", "rnralsrhksfl5!")?>
+<!--<br>-->
+
 <script>
 	// 모바일 여부
 	var isMobile = false;
@@ -102,7 +113,7 @@
 		requestMember.level = "CUSTOMER";
 
 		const instance = axios.create({
-			baseURL: "http://192.168.219.111:8080/permission/",
+			baseURL: "http://192.168.219.113:8080/permission/",
 			timeout: 5000
 		});
 
